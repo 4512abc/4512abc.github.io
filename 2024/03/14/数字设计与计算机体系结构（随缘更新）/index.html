@@ -1,0 +1,724 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>数字设计与计算机体系结构（随缘更新） | Totoroの旅</title><meta name="author" content="Totoro"><meta name="copyright" content="Totoro"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="数字设计和计算机体系结构抽象管理复杂性的关键在于抽象，隐蔽不重要的细节。（可以有不同层面的抽象） 电子-&gt;器件-&gt;模拟电路-&gt;数字电路-&gt;逻辑-&gt;微结构-&gt;体系结构-&gt;操作系统-&gt;应用软件 约束约束是对设计选择的一种内在限制，使得在更高的抽象层次上工作。（例如数字电路的约束） 三条准则： 层次化：将系统划分为多个模块，并进一步划分 模块化：所有模块有">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数字设计与计算机体系结构（随缘更新）">
+<meta property="og:url" content="http://totorocatcat.top/2024/03/14/%E6%95%B0%E5%AD%97%E8%AE%BE%E8%AE%A1%E4%B8%8E%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%EF%BC%88%E9%9A%8F%E7%BC%98%E6%9B%B4%E6%96%B0%EF%BC%89/index.html">
+<meta property="og:site_name" content="Totoroの旅">
+<meta property="og:description" content="数字设计和计算机体系结构抽象管理复杂性的关键在于抽象，隐蔽不重要的细节。（可以有不同层面的抽象） 电子-&gt;器件-&gt;模拟电路-&gt;数字电路-&gt;逻辑-&gt;微结构-&gt;体系结构-&gt;操作系统-&gt;应用软件 约束约束是对设计选择的一种内在限制，使得在更高的抽象层次上工作。（例如数字电路的约束） 三条准则： 层次化：将系统划分为多个模块，并进一步划分 模块化：所有模块有">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://npm.elemecdn.com/ushio-api-img-moe@5.0.18/img_183_774x1040_349.986572265625_null_normal.jpg">
+<meta property="article:published_time" content="2024-03-14T09:38:35.000Z">
+<meta property="article:modified_time" content="2024-03-14T09:43:23.677Z">
+<meta property="article:author" content="Totoro">
+<meta property="article:tag" content="基础">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://npm.elemecdn.com/ushio-api-img-moe@5.0.18/img_183_774x1040_349.986572265625_null_normal.jpg"><link rel="shortcut icon" href="https://source.fomal.cc/img/default_cover_227.webp"><link rel="canonical" href="http://totorocatcat.top/2024/03/14/%E6%95%B0%E5%AD%97%E8%AE%BE%E8%AE%A1%E4%B8%8E%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%EF%BC%88%E9%9A%8F%E7%BC%98%E6%9B%B4%E6%96%B0%EF%BC%89/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta/><link rel="stylesheet" href="/css/index.css?v=4.12.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  noticeOutdate: {"limitDay":365,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":false,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体中文","cht_to_chs":"你已切换为简体中文","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"top-right"},
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '数字设计与计算机体系结构（随缘更新）',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-03-14 17:43:23'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const now = new Date()
+          const hour = now.getHours()
+          const isNight = hour <= 6 || hour >= 18
+          if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/universe.css"><link rel="stylesheet" href="/css/scrollbar.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-categories-card@1.0.0/lib/categorybar.css"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiperstyle.css" media="print" onload="this.media='all'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/px3.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">158</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-envelope-open"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://npm.elemecdn.com/ushio-api-img-moe@5.0.18/img_183_774x1040_349.986572265625_null_normal.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="Totoroの旅"><span class="site-name">Totoroの旅</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-envelope-open"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">数字设计与计算机体系结构（随缘更新）<a class="post-edit-link" href="null_posts/数字设计与计算机体系结构（随缘更新）.md" title="编辑" target="_blank"><i class="fas fa-pencil-alt"></i></a></h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-03-14T09:38:35.000Z" title="发表于 2024-03-14 17:38:35">2024-03-14</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-03-14T09:43:23.677Z" title="更新于 2024-03-14 17:43:23">2024-03-14</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/">编程基础</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">5.1k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>18分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="数字设计与计算机体系结构（随缘更新）"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="数字设计和计算机体系结构"><a href="#数字设计和计算机体系结构" class="headerlink" title="数字设计和计算机体系结构"></a>数字设计和计算机体系结构</h1><h2 id="抽象"><a href="#抽象" class="headerlink" title="抽象"></a>抽象</h2><p>管理复杂性的关键在于抽象，隐蔽不重要的细节。（可以有不同层面的抽象）</p>
+<p>电子-&gt;器件-&gt;模拟电路-&gt;数字电路-&gt;逻辑-&gt;微结构-&gt;体系结构-&gt;操作系统-&gt;应用软件</p>
+<h2 id="约束"><a href="#约束" class="headerlink" title="约束"></a>约束</h2><p>约束是对设计选择的一种内在限制，使得在更高的抽象层次上工作。（例如数字电路的约束）</p>
+<p>三条准则：</p>
+<p>层次化：将系统划分为多个模块，并进一步划分</p>
+<p>模块化：所有模块有定义好的功能和接口，易于相互连接。</p>
+<p>规整化：在模块之间寻求一致，通用的模块的可以重新使用多次，以减少设计不同模块的数量。</p>
+<blockquote>
+<p>数字系统使用离散值变量</p>
+</blockquote>
+<p>有N个不同状态的离散值变量的信息量D由比特bit衡量</p>
+<p>公式为：D=log2N bit</p>
+<p>布尔逻辑：一种针对于二进制变量进行逻辑操作的系统</p>
+<p>数字抽象：设计者可以只关注0或1.</p>
+<p>十进制数（很容易理解）</p>
+<p>二进制数</p>
+<blockquote>
+<p>一个概念叫做基数，二进制基数是2。</p>
+<p>一个N次方的二进制数字代表了$2^N$个数字中的一个。</p>
+<p><strong>1.十进制： 都是以0-9这九个数字组成，不能以0开头。</strong></p>
+<p><strong>2.二进制： 由0和1两个数字组成。</strong></p>
+<p><strong>3.八进制： 由0-7数字组成，为了区分与其他进制的数字区别，开头都是以0开始。</strong></p>
+<p><strong>4.十六进制：由0-9和A-F组成。为了区分于其他数字的区别，开头都是以0x开始。</strong></p>
+</blockquote>
+<h3 id="十进制转二进制"><a href="#十进制转二进制" class="headerlink" title="十进制转二进制"></a><strong>十进制转二进制</strong></h3><p>（1）十进制转二进制的转换原理：除以2，反向取余数，直到商为0终止。</p>
+<p>（2）具体做法：</p>
+<blockquote>
+<p>将某个十进制数除2得到的整数部分保留，作为第二次除2时的被除数，得到的余数依次记下，重复上述步骤，直到整数部分为0就结束，将所有得到的余数最终逆序输出，则为该十进制对应的二进制数。</p>
+</blockquote>
+<h3 id="十进制转八进制"><a href="#十进制转八进制" class="headerlink" title="十进制转八进制"></a>十进制转八进制</h3><p>（1）转换原理：除以8，反向取余数，直到商为0终止。</p>
+<p>（2）具体步骤与二进制一样</p>
+<h3 id="十进制转十六进制"><a href="#十进制转十六进制" class="headerlink" title="十进制转十六进制"></a>十进制转十六进制</h3><p>（1）转换原理：除以16，反向取余数，直到商为0终止。</p>
+<p>（2）具体步骤也和二进制、八进制一样，重复上述做法即可得到十六进制数。</p>
+<h3 id="十进制转二进制-1"><a href="#十进制转二进制-1" class="headerlink" title="十进制转二进制"></a>十进制转二进制</h3><p>（1）原理：十进制小数转换成二进制小数采用 “乘2取整，顺序输出” 法。</p>
+<blockquote>
+<p>例题： 0.68D = <strong>__</strong> B（精确到小数点后5位）<br>如下所示，0.68乘以2，取整，然后再将小数乘以2，取整，直到达到题目要求精度。得到结果：0.10101B.<br>例如：十进制小数0.68转换为二进制数<br>具体步骤：<br>0.68<em> 2=1.36 —&gt;1<br>0.36</em> 2=0.72 —&gt;0<br>0.72<em> 2=1.44 —&gt;1<br>0.44</em> 2=0.88–&gt;0<br>0.88* 2=1.76 —&gt;1<br>已经达到了题目要求的精度，最后将取出的整数部分顺序输出即可<br>则为：0.68D–&gt;0.10101B</p>
+</blockquote>
+<h3 id="十进制转八进制-1"><a href="#十进制转八进制-1" class="headerlink" title="十进制转八进制"></a>十进制转八进制</h3><p>（1）原理：十进制小数转换成八进制小数采用 “乘8取整，顺序输出” 法。</p>
+<p>（2）思路和十进制转二进制一样，参考如下例题：</p>
+<blockquote>
+<p>例题： 10.68D = <strong>__</strong> Q（精确到小数点后3位）<br>解析：如下图所示，整数部分除以8取余数，直到无法整除。小数部分0.68乘以8，取整，然后再将小数乘以8，取整，直到达到题目要求精度。得到结果：12.534Q.</p>
+<p>例如：十进制数10.68转换成八进制数，分为整数部分和小数部分求解<br>步骤：<br>(1)整数部分<br>10/8=1 —&gt;2<br>1/8=0 —&gt;1<br>倒序输出为12<br>(2)小数部分<br>0.68<em> 8=5.44 —&gt;5<br>0.44</em> 8=3.52 —&gt;3<br>0.52* 8=4.16 —&gt;4<br>已经达到了题目要求的精度，即可结束<br>则小数部分为：0.68–&gt;0.534<br>因此10.68D —&gt;12.534Q</p>
+</blockquote>
+<h3 id="十进制转十六进制-1"><a href="#十进制转十六进制-1" class="headerlink" title="十进制转十六进制"></a>十进制转十六进制</h3><p>（1）原理：十进制小数转换成十六进制小数采用 “乘16取整，顺序输出” 法。</p>
+<p>（2）思路也是一样的，就不重复了</p>
+<h3 id="二进制-转-十进制"><a href="#二进制-转-十进制" class="headerlink" title="二进制 转 十进制"></a><strong>二进制 转 十进制</strong></h3><p>直接计算罢</p>
+<blockquote>
+<p>二进制数：<strong>0101</strong> 转 十进制数： <strong>5</strong></p>
+</blockquote>
+<p><strong>十六进制 转 十进制</strong></p>
+<blockquote>
+<p>十六进制数：<strong>2AC</strong> 转 十进制数：<strong>684</strong></p>
+</blockquote>
+<p><strong>二进制 转 十六进制</strong></p>
+<blockquote>
+<p>二进制数：<strong>10101101110</strong> 转 十六进制数：<strong>56E</strong></p>
+<p>四个为一组</p>
+</blockquote>
+<p><strong>十六进制 转 二进制</strong></p>
+<blockquote>
+<p>十六进制数：<strong>56E</strong> 转 二进制数：<strong>10101101110</strong></p>
+</blockquote>
+<p>8个一组的比特位称为字节</p>
+<p>4个一组的比特位或者半个字节称为半字节</p>
+<p>字的大小则取决于未处理器的结构偶。一般为8位或者16位。</p>
+<p>在一组位中，权为1的那一位被称为最低有效位，另一端就叫做最高有效位。</p>
+<p>同样也有最高有效字节和最低有效字节，16进制就是最后两位。</p>
+<blockquote>
+<p>估算技巧 $2^{24}$估算的话只需要知道2的20次方接近于1兆，因此就是16兆了</p>
+<p>1024就是1千字节（KB)</p>
+</blockquote>
+<p>二进制的加法</p>
+<p>直接加，可能会溢出</p>
+<p>也有符号位的表示</p>
+<p>首位表示0就是正数</p>
+<p>首位是1就是0</p>
+<p>不过这些都不太常用。</p>
+<p>补码才是重点：</p>
+<h3 id="1-原码"><a href="#1-原码" class="headerlink" title="1.原码"></a>1.原码</h3><p>原码就是符号位加上真值的绝对值，即用第一位表示符号，其余位表示值。比如如果是8位二进制：</p>
+<p>[+1]= 0000 0001</p>
+<p>[-1] = 1000 0001</p>
+<p><strong>第一位是符号位</strong>，所以8位二进制数的取值范围就是：</p>
+<p>[1111 1111 , 0111 1111]</p>
+<p>即</p>
+<p>[-127 , 127]</p>
+<p>原码是人脑最容易理解和计算的表示方式。</p>
+<p>2.反码<br>反码的表示方法是: 正数的反码是其本身，负数的反码是在其原码的基础上，符号位不变，其余各个位取反。</p>
+<p>[+1] = 00000001= 00000001</p>
+<p>[-1] = 10000001= 11111110</p>
+<p>可见如果一个反码表示的是负数，人脑无法直观的看出来它的数值。通常要将其转换成原码再计算。</p>
+<p>.补码<br>补码的表示方法是：正数的补码就是其本身，负数的补码是在其原码的基础上，符号位不变，其余各位取反，最后+1 (即在反码的基础上+1)。</p>
+<p>[+1] = 00000001 = 00000001 = 00000001</p>
+<p>[-1] = 10000001 = 11111110 = 11111111</p>
+<p>对于负数，补码表示方式也是人脑无法直观看出其数值的。通常也需要转换成原码在计算其数值。</p>
+<p>补码解决了0的符号以及两个编码的问题，让计算机的减法可以直接转为加法运算(计算机内部都是用补码直接运算，只有负数与原码不一致):</p>
+<p>1-1 = 1 + (-1) = [0000 0001]原 + [1000 0001]原 = [0000 0001]补 + [1111 1111]补 = [0000 0000]补=[0000 0000]原</p>
+<p>这样0用[0000 0000]表示, 而以前出现问题的-0则不存在了.而且可以用[1000 0000]表示-128:</p>
+<p>(-1) + (-127) = [1000 0001]原 + [1111 1111]原 = [1111 1111]补 + [1000 0001]补 = [1000 0000]补</p>
+<p>-1-127的结果应该是-128，在用补码运算的结果中，[1000 0000]补就是-128。但是注意因为实际上是使用以前的-0的补码来表示-128，所以-128并没有原码和反码表示 。</p>
+<p>使用补码，不仅仅修复了0的符号以及存在两个编码的问题，而且还能够：多表示一个最低数。这就是为什么8位二进制，使用原码或反码表示的范围为[-127, +127]，而使用补码表示的范围为[-128, 127]。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/image-20240314164120496.png" alt="image-20240314164120496"></p>
+<h2 id="逻辑门"><a href="#逻辑门" class="headerlink" title="逻辑门"></a>逻辑门</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzQ2MzYwNTMy,size_16,color_FFFFFF,t_70.png" alt="【笔记】逻辑门图解—与门、或门、非门、与非门、或非门、异或门、同或门-CSDN博客"></p>
+<h3 id="非门"><a href="#非门" class="headerlink" title="非门"></a><strong>非门</strong></h3><p>NOT 逻辑门具有一个输入和一个输出，其中输出是输入的补码。如果输入为 0（低），则非门的输出为 1（高），如果输入为 1（高），非门的输出为 0（低）。</p>
+<p>由于非门的输出是输入的补码，因此也称为反相或补码电路（门）。</p>
+<p>如果 A 是 NOT 门的输入，Y 是其输出，则 NOT 门的逻辑方程为 Y = 。</p>
+<p>下面给出了非门的逻辑符号和真值表。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>输入 (A)</th>
+<th>输出（Y = A）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="或门"><a href="#或门" class="headerlink" title="或门"></a><strong>或门</strong></h3><p>或门是一个双输入逻辑门，可对其输入执行布尔或运算。仅当两个输入均为 0（低）时，或门的输出才为 0（低）。对于输入的所有其他组合，或门的输出为 1（高）。</p>
+<p>如果 A 和 B 是 OR Gate 的输入，Y 是其输出，则 OR Gate 的逻辑表达式为 Y = A + B，读作“Y 等于 A OR B”。</p>
+<p>OR门的逻辑符号和真值表如下所示。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>输入 (A)</th>
+<th>输入 (B)</th>
+<th>输出（Y =A+B）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="与门"><a href="#与门" class="headerlink" title="与门"></a><strong>与门</strong></h3><p>与门是一个双输入逻辑门，可对其输入执行布尔与运算。与门的输出只有在其两个输入均为 1（高电平）时才为 1（高电平）。对于所有其他情况，与门的输出为 0（低）。</p>
+<p>如果 A 和 B 是 AND 门的输入，Y 是其输出，则 AND 门的逻辑表达式为 Y = A ‧ B，读作“Y 等于 A AND B”。</p>
+<p>与门的逻辑符号和真值表如下所示。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>输入 (A)</th>
+<th>输入 (B)</th>
+<th>输出 (Y=A‧B)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="异或门"><a href="#异或门" class="headerlink" title="异或门"></a><strong>异或门</strong></h3><p>异或门，通常写为异或门或异或门，是一个双输入逻辑门，对其输入执行异或运算。如果输入不同，即一个输入为 1（高）而另一个输入为 0（低），则异或门的输出为 1（高）。如果两个输入相同，即均为 1（HIGH）或均为 0（LOW），则 XOR Gate 的输出为 0（LOW）。</p>
+<p>如果 A 和 B 是 XOR Gate 的输入，Y 是其输出，则 XOR 门的逻辑表达式为 Y = A B + A B 或 Y = A ⊕ B。</p>
+<p>异或门的逻辑符号和真值表如下所示。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>输入 (A)</th>
+<th>输入 (B)</th>
+<th>输出（Y=A⊕B）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="缓冲"><a href="#缓冲" class="headerlink" title="缓冲"></a><strong>缓冲</strong></h3><p>缓冲器是一个有趣的电路，它不做任何逻辑运算，而是充当信号放大器。缓冲区的输出与输入相同，它充当传递函数。</p>
+<p>通常，缓冲器可用作三态缓冲器，它有一个额外的“启用”输入。当Enable (E) 输入为0 (LOW) 时，输出处于高阻状态，当Enable (E) 输入为1 (HIGH) 时，输出跟随输入，即与输入相同。</p>
+<p>在内部，缓冲器被配置为两个背靠背连接的非门。</p>
+<p>缓冲器的逻辑符号和真值表如下所示。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>输入 (A)</th>
+<th>输出（Y=A）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="与非门"><a href="#与非门" class="headerlink" title="与非门"></a><strong>与非门</strong></h3><p>接下来的两个门被称为通用门。其中，第一个是与非门。它代表非与门，即一个与门后跟一个非门。与非的输出是与门的补码，即只有当两个输入均为 1（高）时，与非门的输出才为 0（低）。在所有其他情况下，其输出为 1（高）。</p>
+<p>如果 A 和 B 是 NAND 门的输入，Y 是其输出，则 NAND 门的逻辑表达式为 Y = A ‧ B。</p>
+<p>NAND门的逻辑符号和真值表如下所示。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>输入 (A)</th>
+<th>输入 (B)</th>
+<th>输出 (Y= A ‧ B )</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="或非门"><a href="#或非门" class="headerlink" title="或非门"></a><strong>或非门</strong></h3><p>就像 AND 有 NAND，OR 门有 NOR 门。它代表非或门，正如预期的那样，它是一个或门，后跟一个非门。当且仅当其两个输入均为 0（低）时，或非门的输出为 1（高）。在所有其他输入组合中，或非门的输出为 0（低）。</p>
+<p>如果 A 和 B 是 NOR Gate 的输入，Y 是它的输出，那么 NOR Gate 的逻辑表达式是 Y= A + B。</p>
+<p>或非门的逻辑符号和真值表如下所示。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>输入 (A)</th>
+<th>输入 (B)</th>
+<th>输出（Y= A + B）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="异或门-1"><a href="#异或门-1" class="headerlink" title="异或门"></a><strong>异或门</strong></h3><p>最后一个重要的逻辑门是异或门。它通常写为 EX-NOR 或 XNOR Gate。它相当于一个 XOR 门后跟一个 NOT 门。如果 XNOR Gate 的两个输入相同，即两个输入均为 0（LOW）或 1（HIGH），则 XNOR Gate 的输出为 1（HIGH）。如果 XNOR Gate 的输入不同，则其输出为 0 (LOW)。</p>
+<p>如果 A 和 B 是 XNOR Gate 的输入，Y 是它的输出，那么 XNOR Gate 的逻辑表达式是 Y = A ⊕ B。</p>
+<p>或非门的逻辑符号和真值表如下所示。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>输入 (A)</th>
+<th>输入 (B)</th>
+<th>输出 (Y= A ⊕ B )</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>多输入门没什么区别，牢记上述即可。</p>
+<h2 id="数字抽象之下"><a href="#数字抽象之下" class="headerlink" title="数字抽象之下"></a>数字抽象之下</h2><p>逻辑电平，将连续变量映射到离散的二进制变量</p>
+<p>第一个门称为驱动源</p>
+<p>第二个门称为接收端</p>
+<p>驱动源的输出连接到接收端的输入</p>
+<blockquote>
+<p>电压处在0-$V_{OL}$之间的画驱动源产生LOW（0）输出</p>
+<p>否则产生High(1)输出</p>
+<p>电压位于$V_{OH}$-$V_{DD}$之间</p>
+<p>OH和OL称之为输出高和输出低逻辑电平</p>
+</blockquote>
+<hr>
+<p>如果是0-$V_{IL}$之间就是low，$V_{IH}-V_{DD}$就是HIgh</p>
+<p>如果接收端处于$V_{IL}-V_{IH}$之间就是禁止区域，无法预测</p>
+<p>IH和IL称之为输入高和输入低电平</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/image-20240314171840390.png" alt="image-20240314171840390"></p>
+<p>习题计算：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/image-20240314172026815.png" alt="image-20240314172026815"></p>
+<h2 id="章末习题讲解："><a href="#章末习题讲解：" class="headerlink" title="章末习题讲解："></a>章末习题讲解：</h2><p>练习1.1</p>
+<p>(a) 生物学家在许多层面研究细胞。细胞由线粒体、核糖体和叶绿体等细胞器构建而成。细胞器由蛋白质、脂质、核酸和碳水化合物等生物化学大分子构建而成。这些生物化学大分子由简单的分子如碳链和氨基酸构建而成。当研究其中一个抽象级别时，生物学家通常对上下级别感兴趣：该级别上的结构用于构建什么，以及结构本身如何构建。</p>
+<p>(b) 化学的基本构建块是电子、质子和中子（物理学家对质子和中子的构建感兴趣）。这些构建块组合形成原子。原子组合形成分子。例如，当化学家研究分子时，他们可以抽象出较低级别的细节，以便能够描述苯等分子的一般特性，而无需计算分子中各个电子的运动。</p>
+<p>练习1.2</p>
+<p>(a) 汽车设计师使用层次结构从主要组件（如发动机、车身和悬架）构建汽车。这些组件由子组件构成；例如，发动机包括气缸、燃油喷射器、点火系统和传动轴。模块化允许组件在不重新设计车辆的情况下进行更换；例如，座椅可以是布制、皮革制或带有加热器的皮革制，具体取决于车辆型号，只要它们都安装在相同的位置。规律性涉及可互换零部件的使用以及在不同车辆之间共享零部件；65R14轮胎可以用于许多不同的汽车。</p>
+<p>(b) 企业在其组织结构图中使用层次结构。员工向经理汇报，经理向总经理汇报，总经理向副总裁汇报，副总裁向总裁汇报。模块化包括部门之间定义明确的接口。在销售人员在笔记本电脑上洒了可乐后，他只需拨打一个电话号码寻求技术支持，无需了解详细的信息系统部门组织。规律性包括使用标准程序。会计按照一套明确定义的规则计算利润和损失，以便将每个部门的财务汇总以确定公司的财务状况，并将公司的财务状况报告给投资者，以便他们与其他公司进行直接比较。</p>
+<p>练习1.3</p>
+<p>本可以使用层次结构设计房屋。首先，他可以决定需要多少间卧室、浴室、厨房和其他房间。然后，他可以跳到更高级别的层次，决定房屋的整体布局和尺寸。在层次结构的最高级别，他可以决定使用的材料、屋顶类型等。然后，他可以跳到更低级别的层次，决定每个房间的具体布局，门窗的位置等。他可以在规划房屋的框架时使用规律性。通过使用相同类型的材料，他可以根据每个房间的尺寸进行框架设计。他还可以使用规律性选择每个房间相同（或一小组）的门和窗户。这样，当他安装新的门或窗户时，他无需从头重新设计尺寸、材料、布局规格。这也是模块化的一个例子：一旦他设计了一个房间中窗户的规格，例如，当他在另一个房间使用相同的窗户时，他无需重新指定它们。这将节省他设计时间，从而节省金钱。他还可以通过批量购买一些物品（如窗户）来节省成本。</p>
+<p>练习1.4</p>
+<p>一个精度为+/- 50毫伏的信号意味着该信号可以分辨为100毫伏的间隔。在0-5伏的范围内有50个这样的间隔，因此该信号表示log2 50 = 5.64位的信息量。</p>
+<p>练习1.5</p>
+<p>(a) 时针可以分辨为12 * 4 = 48个位置，这代表着log2 48 = 5.58位的信息量。</p>
+<p>(b) 知道是上午还是下午再增加一位。</p>
+<p>练习1.6</p>
+<p>每个数字传达log2 60 = 5.91位的信息量。400010 = 1 6 4060（3600位数列中有1，60位数列中有6，1位数列中有40）。</p>
+<p>Exercise 1.7</p>
+<p>216 = 65,536 numbers.<br>Exercise 1.8</p>
+<p>$2^{32}$-1 = 4,294,967,295</p>
+<p>Exercise 1.9</p>
+<p>(a) 216-1 = 65535; (b) 215-1 = 32767; (c) 215-1 = 32767</p>
+<p>Exercise 1.10</p>
+<p>(a) 232-1 = 4,294,967,295; (b) 231-1 = 2,147,483,647; (c) 231-1 =<br>2,147,483,647<br>Exercise 1.11</p>
+<p>(a) 0; (b) -215 = -32768; (c) -(215-1) = -32767<br>Exercise 1.12</p>
+<p>(a) 0; (b) -231 = -2,147,483,648; (c) -(231-1) = -2,147,483,647;</p>
+<p>Exercise 1.13</p>
+<p>(a) 10; (b) 54; (c) 240; (d) 6311</p>
+<p>Exercise 1.14</p>
+<p>(a) 14; (b) 36; (c) 215; (d) 15,012</p>
+<p>Exercise 1.15</p>
+<p>(a) A; (b) 36; (c) F0; (d) 18A7</p>
+<p>Exercise 1.16</p>
+<p>(a) E; (b) 24; (c) D7; (d) 3AA4<br>Exercise 1.17</p>
+<p>(a) 165; (b) 59; (c) 65535; (d) 3489660928<br>Exercise 1.18</p>
+<p>(a) 78; (b) 124; (c) 60,730; (d) 1,077,915, 649<br>Exercise 1.19</p>
+<p>(a) 10100101; (b) 00111011; (c) 1111111111111111;<br>(d) 11010000000000000000000000000000<br>Exercise 1.20</p>
+<p>(a) 1001110; (b) 1111100; (c) 1110110100111010; (d) 100 0000 0011<br>1111 1011 0000 0000 0001<br>Exercise 1.21</p>
+<p>(a) -6; (b) -10; (c) 112; (d) -97<br>Exercise 1.22</p>
+<p>(a) -2 (-8+4+2 = -2 or magnitude = 0001+1 = 0010: thus, -2); (b) -29 (-32</p>
+<ul>
+<li>2 + 1 = -29 or magnitude = 011100+1 = 011101: thus, -29); (c) 78;    (d) -75<br>Exercise 1.23</li>
+</ul>
+<p>(a) -2; (b) -22; (c) 112; (d) -31<br>Exercise 1.24</p>
+<p>(a) -6; (b) -3; (c) 78; (d) -53<br>Exercise 1.25</p>
+<p>(a) 101010; (b) 111111; (c) 11100101; (d) 1101001101</p>
+<p>Exercise 1.26</p>
+<p>(a) 1110; (b) 110100; (c) 101010011; (d) 1011000111<br>Exercise 1.27</p>
+<p>(a) 2A; (b) 3F; (c) E5; (d) 34D<br>Exercise 1.28</p>
+<p>(a) E; (b) 34; (c) 153; (d) 2C7;<br>Exercise 1.29</p>
+<p>(a) 00101010; (b) 11000001; (c) 01111100; (d) 10000000; (e) overflow<br>Exercise 1.30</p>
+<p>(a) 00011000; (b) 11000101; (c) overflow; (d) overflow; (e) 01111111\<br>Exercise 1.31</p>
+<p>00101010; (b) 10111111; (c) 01111100; (d) overflow; (e) overflow<br>Exercise 1.32</p>
+<p>(a) 00011000; (b) 10111011; (c) overflow; (d) overflow; (e) 01111111<br>Exercise 1.33</p>
+<p>(a) 00000101; (b) 11111010<br>Exercise 1.34</p>
+<p>(a) 00000111; (b) 11111001<br>Exercise 1.35</p>
+<p>(a) 00000101; (b) 00001010<br>Exercise 1.36</p>
+<p>(a) 00000111; (b) 00001001<br>Exercise 1.37</p>
+<p>(a) 52; (b) 77; (c) 345; (d) 1515<br>Exercise 1.38</p>
+<p>(a) 0o16; (b) 0o64; (c) 0o339; (d) 0o1307<br>Exercise 1.39</p>
+<p>(a) 1000102, 2216, 3410; (b) 1100112, 3316, 5110; (c) 0101011012, AD16,<br>17310; (d) 0110001001112, 62716, 157510<br>Exercise 1.40</p>
+<p>(a) 0b10011; 0x13; 19; (b) 0b100101; 0x25; 37; (c) 0b11111001; 0xF9; 249; (d) 0b10101110000; 0x570; 1392<br>Exercise 1.41</p>
+<p>15 greater than 0, 16 less than 0; 15 greater and 15 less for sign/magnitude<br>Exercise 1.42</p>
+<p>(26-1) are greater than 0; 26 are less than 0. For sign/magnitude numbers,<br>(26-1) are still greater than 0, but (26-1) are less than 0.<br>Exercise 1.43</p>
+<p>4, 8<br>Exercise 1.44</p>
+<p>8<br>Exercise 1.45</p>
+<p>5,760,000<br>Exercise 1.46</p>
+<p>(5 × 109 bits/second)(60 seconds/minute)(1 byte/8 bits) = 3.75 × 1010 bytes<br>Exercise 1.47</p>
+<p>46.566 gigabytes</p>
+<p>Exercise 1.48</p>
+<p>2 billion<br>Exercise 1.49</p>
+<p>128 kbits</p>
+<p>Exercise 1.52</p>
+<p>(a) 1101; (b) 11000 (overflows)<br>Exercise 1.53</p>
+<p>(a) 11011101; (b) 110001000 (overflows)<br>Exercise 1.54</p>
+<p>(a)    11012, no overflow; (b) 10002, no overflow<br>Exercise 1.55</p>
+<p>(a) 11011101; (b) 110001000<br>Exercise 1.56</p>
+<p>(a) 010000 + 001001 = 011001;<br>(b) 011011 + 011111 = 111010 (overflow);<br>(c) 111100 + 010011 = 001111;<br>(d) 000011 + 100000 = 100011;<br>(e) 110000 + 110111 = 100111;<br>(f) 100101 + 100001 = 000110 (overflow)<br>Exercise 1.57</p>
+<p>(a) 000111 + 001101 = 010100<br>(b) 010001 + 011001 = 101010, overflow<br>(c) 100110 + 001000 = 101110<br>(d) 011111 + 110010 = 010001<br>(e) 101101 + 101010 = 010111, overflow<br>(f) 111110 + 100011 = 100001<br>Exercise 1.58</p>
+<p>(a) 10; (b) 3B; (c) E9; (d) 13C (overflow)<br>Exercise 1.59</p>
+<p>(a) 0x2A; (b) 0x9F; (c) 0xFE; (d) 0x66, overflow<br>Exercise 1.60</p>
+<p>(a) 01001 - 00111 = 00010; (b) 01100 - 01111 = 11101; (c) 11010 - 01011<br>= 01111; (d) 00100 - 11000 = 01100<br>Exercise 1.61</p>
+<p>(a) 010010 + 110100 = 000110; (b) 011110 + 110111 = 010101; (c) 100100</p>
+<ul>
+<li>111101 = 100001; (d) 110000 + 101011 = 011011, overflow</li>
+</ul>
+<p><strong>Exercise 1.71</strong></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/image-20240314173632439.png" alt="image-20240314173632439"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/image-20240314173657870.png" alt="image-20240314173657870"></p>
+<p>Exercise 1.73</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/image-20240314173717984.png" alt="image-20240314173717984"></p>
+<p>Exercise 1.74</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/image-20240314173736338.png" alt="image-20240314173736338"></p>
+<p>Exercise 1.75</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/image-20240314173748784.png" alt="image-20240314173748784"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://totorocatcat.top">Totoro</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://totorocatcat.top/2024/03/14/%E6%95%B0%E5%AD%97%E8%AE%BE%E8%AE%A1%E4%B8%8E%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%EF%BC%88%E9%9A%8F%E7%BC%98%E6%9B%B4%E6%96%B0%EF%BC%89/">http://totorocatcat.top/2024/03/14/%E6%95%B0%E5%AD%97%E8%AE%BE%E8%AE%A1%E4%B8%8E%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%EF%BC%88%E9%9A%8F%E7%BC%98%E6%9B%B4%E6%96%B0%EF%BC%89/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://totorocatcat.top" target="_blank">Totoroの旅</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%9F%BA%E7%A1%80/">基础</a></div><div class="post_share"><div class="social-share" data-image="https://npm.elemecdn.com/ushio-api-img-moe@5.0.18/img_183_774x1040_349.986572265625_null_normal.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2024/03/14/%E5%88%86%E5%9D%97/" title="分块"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://source.fomal.cc/img/default_cover_8.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">分块</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2024/03/12/CF933/" title="CF933"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/ushio-api-img-moe@5.0.77/img_771_600x839_72_null_normal.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-03-12</div><div class="title">CF933</div></div></a></div><div><a href="/2024/03/03/Markdown%E6%A0%BC%E5%BC%8F/" title="Markdown格式"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/ushio-api-img-moe@5.0.48/img_482_1920x1080_96_null_normal.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-03-03</div><div class="title">Markdown格式</div></div></a></div><div><a href="/2024/03/04/C-%E5%9F%BA%E7%A1%80/" title="C++基础"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/ushio-api-img-moe@5.0.24/img_249_2081x1420_96_null_normal.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-03-04</div><div class="title">C++基础</div></div></a></div><div><a href="/2024/02/24/git%E5%AD%A6%E4%B9%A0/" title="git学习"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/ushio-api-img-moe@5.0.16/img_169_2560x1440_96_null_normal.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-02-24</div><div class="title">git学习</div></div></a></div><div><a href="/2024/02/18/Python%E4%B9%8B%E6%97%85/" title="Python之旅"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/ushio-api-img-moe@5.0.43/img_438_1920x1080_72_null_normal.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-02-18</div><div class="title">Python之旅</div></div></a></div><div><a href="/2024/01/28/%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="C++类与对象学习"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://source.fomal.cc/img/default_cover_70.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-01-28</div><div class="title">C++类与对象学习</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/px3.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Totoro</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">158</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/4512abc"><i class="fab fa-github"></i><span>🛴前往小窝......</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/4512abc" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:4512abc@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到龙猫の小窝</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E5%AD%97%E8%AE%BE%E8%AE%A1%E5%92%8C%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84"><span class="toc-number">1.</span> <span class="toc-text">数字设计和计算机体系结构</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8A%BD%E8%B1%A1"><span class="toc-number">1.1.</span> <span class="toc-text">抽象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%A6%E6%9D%9F"><span class="toc-number">1.2.</span> <span class="toc-text">约束</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%81%E8%BF%9B%E5%88%B6%E8%BD%AC%E4%BA%8C%E8%BF%9B%E5%88%B6"><span class="toc-number">1.2.1.</span> <span class="toc-text">十进制转二进制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%81%E8%BF%9B%E5%88%B6%E8%BD%AC%E5%85%AB%E8%BF%9B%E5%88%B6"><span class="toc-number">1.2.2.</span> <span class="toc-text">十进制转八进制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%81%E8%BF%9B%E5%88%B6%E8%BD%AC%E5%8D%81%E5%85%AD%E8%BF%9B%E5%88%B6"><span class="toc-number">1.2.3.</span> <span class="toc-text">十进制转十六进制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%81%E8%BF%9B%E5%88%B6%E8%BD%AC%E4%BA%8C%E8%BF%9B%E5%88%B6-1"><span class="toc-number">1.2.4.</span> <span class="toc-text">十进制转二进制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%81%E8%BF%9B%E5%88%B6%E8%BD%AC%E5%85%AB%E8%BF%9B%E5%88%B6-1"><span class="toc-number">1.2.5.</span> <span class="toc-text">十进制转八进制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%81%E8%BF%9B%E5%88%B6%E8%BD%AC%E5%8D%81%E5%85%AD%E8%BF%9B%E5%88%B6-1"><span class="toc-number">1.2.6.</span> <span class="toc-text">十进制转十六进制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E8%BF%9B%E5%88%B6-%E8%BD%AC-%E5%8D%81%E8%BF%9B%E5%88%B6"><span class="toc-number">1.2.7.</span> <span class="toc-text">二进制 转 十进制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%8E%9F%E7%A0%81"><span class="toc-number">1.2.8.</span> <span class="toc-text">1.原码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%BB%E8%BE%91%E9%97%A8"><span class="toc-number">1.3.</span> <span class="toc-text">逻辑门</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%9E%E9%97%A8"><span class="toc-number">1.3.1.</span> <span class="toc-text">非门</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%88%96%E9%97%A8"><span class="toc-number">1.3.2.</span> <span class="toc-text">或门</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8E%E9%97%A8"><span class="toc-number">1.3.3.</span> <span class="toc-text">与门</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%82%E6%88%96%E9%97%A8"><span class="toc-number">1.3.4.</span> <span class="toc-text">异或门</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%93%E5%86%B2"><span class="toc-number">1.3.5.</span> <span class="toc-text">缓冲</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8E%E9%9D%9E%E9%97%A8"><span class="toc-number">1.3.6.</span> <span class="toc-text">与非门</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%88%96%E9%9D%9E%E9%97%A8"><span class="toc-number">1.3.7.</span> <span class="toc-text">或非门</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%82%E6%88%96%E9%97%A8-1"><span class="toc-number">1.3.8.</span> <span class="toc-text">异或门</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E5%AD%97%E6%8A%BD%E8%B1%A1%E4%B9%8B%E4%B8%8B"><span class="toc-number">1.4.</span> <span class="toc-text">数字抽象之下</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AB%A0%E6%9C%AB%E4%B9%A0%E9%A2%98%E8%AE%B2%E8%A7%A3%EF%BC%9A"><span class="toc-number">1.5.</span> <span class="toc-text">章末习题讲解：</span></a></li></ol></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 By Totoro</div><div class="footer_custom_text">I wish you to become your own sun, no need to rely on who's light.<p><a target="_blank" href="https://hexo.io/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&logo=hexo" title="博客框架为Hexo"></a>&nbsp;<a target="_blank" href="https://butterfly.js.org/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&logo=bitdefender" title="主题采用butterfly"></a>&nbsp;<a target="_blank" href="https://www.jsdelivr.com/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&logo=jsDelivr" title="本站使用JsDelivr为静态资源提供CDN加速"></a> &nbsp;<a target="_blank" href="https://vercel.com/ "><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Hosted-Vervel-brightgreen?style=flat&logo=Vercel" title="本站采用双线部署，默认线路托管于Vercel"></a>&nbsp;<a target="_blank" href="https://vercel.com/ "><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Hosted-Coding-0cedbe?style=flat&logo=Codio" title="本站采用双线部署，联通线路托管于Coding"></a>&nbsp;<a target="_blank" href="https://github.com/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&logo=GitHub" title="本站项目由Gtihub托管"></a>&nbsp;<a target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&logo=Claris" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"></a></p></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="/js/tw_cn.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@5.2.0/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script></div><script defer src="/js/light.js"></script><canvas id="universe"></canvas><script defer src="/js/universe.js"></script><script async src="/js/title.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="30" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/click-show-text.min.js" data-mobile="true" data-text="只此无为身，且前行,忘记过去的人注定重蹈覆辙,我是我，我靠自己站立，我会做好自身,如果我睡大觉，谁给我摘月亮呢,假期和朋友，是人生中顶好的两样东西啊。,去爱，去失去，要不负相遇,没什么想不想通的，只是固执而已,我们深爱星辰，乃至不惧夜的黑,吃，喝，享受幸福，接受奇迹,浊水若长流，自清澄,雅俗共赏,总会有什么也不想的幸福时刻吧,时间顺流而下，生活逆流而上,悟已往之不谏，知来者之可追,希望你的小世界里,山花烂漫,茶酒俱全,安宁清淡,明朗欢愉" data-fontsize="18px" data-random="false" async="async"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.12.0"></script></div></div><!-- hexo injector body_end start --><script data-pjax>
+    function butterfly_categories_card_injector_config(){
+      var parent_div_git = document.getElementById('recent-posts');
+      var item_html = '<style>li.categoryBar-list-item{width:32.3%;}.categoryBar-list{max-height: 380px;overflow:auto;}.categoryBar-list::-webkit-scrollbar{width:0!important}@media screen and (max-width: 650px){.categoryBar-list{max-height: 320px;}}</style><div class="recent-post-item" style="height:auto;width:100%;padding:0px;"><div id="categoryBar"><ul class="categoryBar-list"><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_12.webp);"> <a class="categoryBar-list-link" href="categories/刷题计划/">刷题计划</a><span class="categoryBar-list-count">58</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_13.webp);"> <a class="categoryBar-list-link" href="categories/数学建模/">数学建模</a><span class="categoryBar-list-count">31</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_14.webp);"> <a class="categoryBar-list-link" href="categories/ACMの旅/">ACMの旅</a><span class="categoryBar-list-count">27</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_17.webp);"> <a class="categoryBar-list-link" href="categories/编程基础/">编程基础</a><span class="categoryBar-list-count">11</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_18.webp);"> <a class="categoryBar-list-link" href="categories/文学/">文学</a><span class="categoryBar-list-count">27</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_19.webp);"> <a class="categoryBar-list-link" href="categories/数据结构/">数据结构</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_20.webp);"> <a class="categoryBar-list-link" href="categories/少年游/">少年游</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li></ul></div></div>';
+      console.log('已挂载butterfly_categories_card')
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+      }
+    if( document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+    butterfly_categories_card_injector_config()
+    }
+  </script><script data-pjax>
+  function butterfly_swiper_injector_config(){
+    var parent_div_git = document.getElementById('recent-posts');
+    var item_html = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms;"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2024/01/29/诗兴大发/" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://source.fomal.cc/img/default_cover_69.webp" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-01-29</span><a class="blog-slider__title" href="2024/01/29/诗兴大发/" alt="">诗兴大发</a><div class="blog-slider__text">未觉，却是中二少年的诗仙梦</div><a class="blog-slider__button" href="2024/01/29/诗兴大发/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2024/02/13/数据结构与算法-1/" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/ushio-api-img-moe@5.0.64/img_649_702x1000_300_null_normal.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-02-13</span><a class="blog-slider__title" href="2024/02/13/数据结构与算法-1/" alt="">数据结构与算法(总)</a><div class="blog-slider__text">方便大二看（）</div><a class="blog-slider__button" href="2024/02/13/数据结构与算法-1/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2024/02/24/常见优化技巧/" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://source.fomal.cc/img/default_cover_238.webp" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-02-24</span><a class="blog-slider__title" href="2024/02/24/常见优化技巧/" alt="">常见优化技巧</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" href="2024/02/24/常见优化技巧/" alt="">详情   </a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载butterfly_swiper')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_swiper_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_swiper_injector_config();
+  }
+  </script><script defer src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.js"></script><script defer data-pjax src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper_init.js"></script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>
