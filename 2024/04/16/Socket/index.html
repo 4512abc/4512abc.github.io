@@ -1,0 +1,691 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Socket | Totoroの旅</title><meta name="author" content="Totoro"><meta name="copyright" content="Totoro"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Sockaddr_in和Sockaddr的区别 - Socket套接字编程 - C语言网 (dotcpp.com) Linux下的socket演示程序 (biancheng.net) 基于TCP的Qt网络通信 | 爱编程的大丙 (subingwen.cn) 以上为抄袭对象  卡哇伊的图片   Socketsocket是什么？套接字是什么？网络编程就是编写程序使两台联网的计算机相互交换数据。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Socket">
+<meta property="og:url" content="http://totorocatcat.top/2024/04/16/Socket/index.html">
+<meta property="og:site_name" content="Totoroの旅">
+<meta property="og:description" content="Sockaddr_in和Sockaddr的区别 - Socket套接字编程 - C语言网 (dotcpp.com) Linux下的socket演示程序 (biancheng.net) 基于TCP的Qt网络通信 | 爱编程的大丙 (subingwen.cn) 以上为抄袭对象  卡哇伊的图片   Socketsocket是什么？套接字是什么？网络编程就是编写程序使两台联网的计算机相互交换数据。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://npm.elemecdn.com/ushio-api-img-moe@5.0.55/img_550_2500x1405_72_null_normal.jpg">
+<meta property="article:published_time" content="2024-04-15T17:31:59.000Z">
+<meta property="article:modified_time" content="2024-04-15T17:36:26.267Z">
+<meta property="article:author" content="Totoro">
+<meta property="article:tag" content="基础">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://npm.elemecdn.com/ushio-api-img-moe@5.0.55/img_550_2500x1405_72_null_normal.jpg"><link rel="shortcut icon" href="https://source.fomal.cc/img/default_cover_227.webp"><link rel="canonical" href="http://totorocatcat.top/2024/04/16/Socket/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta/><link rel="stylesheet" href="/css/index.css?v=4.12.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  noticeOutdate: {"limitDay":365,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":false,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体中文","cht_to_chs":"你已切换为简体中文","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"top-right"},
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Socket',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-04-16 01:36:26'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const now = new Date()
+          const hour = now.getHours()
+          const isNight = hour <= 6 || hour >= 18
+          if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/universe.css"><link rel="stylesheet" href="/css/scrollbar.css"><link rel="stylesheet" href="/css/cat.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-categories-card@1.0.0/lib/categorybar.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-double-row-display@1.00/cardlistpost.min.css"/>
+<style>#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags:before {content:"\A";
+  white-space: pre;}#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags > .article-meta__separator{display:none}</style>
+<link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiperstyle.css" media="print" onload="this.media='all'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/px3.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">254</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-envelope-open"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 趣味</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://npm.elemecdn.com/ushio-api-img-moe@5.0.55/img_550_2500x1405_72_null_normal.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="Totoroの旅"><span class="site-name">Totoroの旅</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-envelope-open"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 趣味</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Socket<a class="post-edit-link" href="null_posts/Socket.md" title="编辑" target="_blank"><i class="fas fa-pencil-alt"></i></a></h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-04-15T17:31:59.000Z" title="发表于 2024-04-16 01:31:59">2024-04-16</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-04-15T17:36:26.267Z" title="更新于 2024-04-16 01:36:26">2024-04-16</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/">编程基础</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">14.6k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>46分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Socket"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=2024541857&auto=1&height=66"></iframe>
+
+
+
+<p><a target="_blank" rel="noopener" href="https://www.dotcpp.com/course/810">Sockaddr_in和Sockaddr的区别 - Socket套接字编程 - C语言网 (dotcpp.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://c.biancheng.net/view/2128.html">Linux下的socket演示程序 (biancheng.net)</a></p>
+<p><a target="_blank" rel="noopener" href="https://subingwen.cn/qt/socket-tcp/">基于TCP的Qt网络通信 | 爱编程的大丙 (subingwen.cn)</a></p>
+<p>以上为抄袭对象</p>
+<blockquote>
+<p>卡哇伊的图片</p>
+</blockquote>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/709c58c45c30513c9db8bff703a492c.png" alt="709c58c45c30513c9db8bff703a492c"></p>
+<h1 id="Socket"><a href="#Socket" class="headerlink" title="Socket"></a>Socket</h1><h2 id="socket是什么？套接字是什么？"><a href="#socket是什么？套接字是什么？" class="headerlink" title="socket是什么？套接字是什么？"></a>socket是什么？套接字是什么？</h2><p>网络编程就是编写程序使两台联网的计算机相互交换数据。那么，这两台计算机之间用什么传输数据呢？首先需要物理连接。如今大部分计算机都已经连接到互联网，因此不用担心这一点。</p>
+<p>在此基础上，只需要考虑如何编写数据传输程序。但实际上这点也不用愁，因为操作系统已经提供了 socket。即使对网络数据传输的原理不太熟悉，我们也能通过 socket 来编程。</p>
+<h3 id="什么是-socket？"><a href="#什么是-socket？" class="headerlink" title="什么是 socket？"></a>什么是 socket？</h3><p>socket 的原意是“插座”，在计算机通信领域，socket 被翻译为“套接字”，它是计算机之间进行通信的一种约定或一种方式。通过 socket 这种约定，一台计算机可以接收其他计算机的数据，也可以向其他计算机发送数据。</p>
+<p>我们把插头插到插座上就能从电网获得电力供应，同样，为了与远程计算机进行数据传输，需要连接到因特网，而 socket 就是用来连接到因特网的工具。</p>
+<p>socket 的典型应用就是 Web 服务器和浏览器：浏览器获取用户输入的 URL，向服务器发起请求，服务器分析接收到的 URL，将对应的网页内容返回给浏览器，浏览器再经过解析和渲染，就将文字、图片、视频等元素呈现给用户。</p>
+<p>学习 socket，也就是学习计算机之间如何通信，并编写出实用的程序。</p>
+<h3 id="UNIX-Linux-中的-socket-是什么？"><a href="#UNIX-Linux-中的-socket-是什么？" class="headerlink" title="UNIX/Linux 中的 socket 是什么？"></a>UNIX/Linux 中的 socket 是什么？</h3><p>在 UNIX/Linux 系统中，为了统一对各种硬件的操作，简化接口，不同的硬件设备也都被看成一个文件。对这些文件的操作，等同于对磁盘上普通文件的操作。</p>
+<p>为了表示和区分已经打开的文件，UNIX/Linux 会给每个文件分配一个 ID，这个 ID 就是一个整数，被称为文件描述符（File Descriptor）。例如：</p>
+<ul>
+<li>通常用 0 来表示标准输入文件（stdin），它对应的硬件设备就是键盘；</li>
+<li>通常用 1 来表示标准输出文件（stdout），它对应的硬件设备就是显示器。</li>
+</ul>
+<p>UNIX/Linux 程序在执行任何形式的 I/O 操作时，都是在读取或者写入一个文件描述符。一个文件描述符只是一个和打开的文件相关联的整数，它的背后可能是一个硬盘上的普通文件、FIFO、管道、终端、键盘、显示器，甚至是一个网络连接。</p>
+<p>请注意，网络连接也是一个文件，它也有文件描述符！你必须理解这句话。</p>
+<p>我们可以通过 socket() 函数来创建一个网络连接，或者说打开一个网络文件，socket() 的返回值就是文件描述符。有了文件描述符，我们就可以使用普通的文件操作函数来传输数据了，例如：</p>
+<ul>
+<li>用 read() 读取从远程计算机传来的数据；</li>
+<li>用 write() 向远程计算机写入数据。</li>
+</ul>
+<p>你看，只要用 socket() 创建了连接，剩下的就是文件操作了.</p>
+<h3 id="Window-系统中的-socket-是什么？"><a href="#Window-系统中的-socket-是什么？" class="headerlink" title="Window 系统中的 socket 是什么？"></a>Window 系统中的 socket 是什么？</h3><p>Windows 也有类似“文件描述符”的概念，但通常被称为“文件句柄”。因此，本教程如果涉及 Windows 平台将使用“句柄”，如果涉及 Linux 平台则使用“描述符”。</p>
+<p>与 UNIX/Linux 不同的是，Windows 会区分 socket 和文件，Windows 就把 socket 当做一个网络连接来对待，因此需要调用专门针对 socket 而设计的数据传输函数，针对普通文件的输入输出函数就无效了。</p>
+<h2 id="套接字有哪些类型？socket有哪些类型？"><a href="#套接字有哪些类型？socket有哪些类型？" class="headerlink" title="套接字有哪些类型？socket有哪些类型？"></a>套接字有哪些类型？socket有哪些类型？</h2><p>这个世界上有很多种套接字socket，比如 DARPA Internet 地址（Internet 套接字）、本地节点的路径名（Unix套接字）、CCITT X.25地址（X.25 套接字）等。但本教程只讲第一种套接字——Internet 套接字，它是最具代表性的，也是最经典最常用的。以后我们提及套接字，指的都是 Internet 套接字。</p>
+<p>根据数据的传输方式，可以将 Internet 套接字分成两种类型。通过 socket() 函数创建连接时，必须告诉它使用哪种数据传输方式。</p>
+<blockquote>
+<p>Internet 套接字其实还有很多其它数据传输方式。</p>
+</blockquote>
+<h3 id="流格式套接字（SOCK-STREAM）"><a href="#流格式套接字（SOCK-STREAM）" class="headerlink" title="流格式套接字（SOCK_STREAM）"></a>流格式套接字（SOCK_STREAM）</h3><p>流格式套接字（Stream Sockets）也叫“面向连接的套接字”，在代码中使用 SOCK_STREAM 表示。</p>
+<p>SOCK_STREAM 是一种可靠的、双向的通信数据流，数据可以准确无误地到达另一台计算机，如果损坏或丢失，可以重新发送。</p>
+<blockquote>
+<p>流格式套接字有自己的纠错机制，在此我们就不讨论了。</p>
+</blockquote>
+<p>SOCK_STREAM 有以下几个特征：</p>
+<ul>
+<li>数据在传输过程中不会消失；</li>
+<li>数据是按照顺序传输的；</li>
+<li>数据的发送和接收不是同步的（有的教程也称“不存在数据边界”）。</li>
+</ul>
+<p>可以将 SOCK_STREAM 比喻成一条传送带，只要传送带本身没有问题（不会断网），就能保证数据不丢失；同时，较晚传送的数据不会先到达，较早传送的数据不会晚到达，这就保证了数据是按照顺序传递的。</p>
+<p>为什么流格式套接字可以达到高质量的数据传输呢？这是因为它使用了 TCP 协议（The Transmission Control Protocol，传输控制协议），TCP 协议会控制你的数据按照顺序到达并且没有错误。</p>
+<p>你也许见过 TCP，是因为你经常听说“TCP/IP”。TCP 用来确保数据的正确性，IP（Internet Protocol，网络协议）用来控制数据如何从源头到达目的地，也就是常说的“路由”。</p>
+<p>那么，“数据的发送和接收不同步”该如何理解呢？</p>
+<p>假设传送带传送的是水果，接收者需要凑齐 100 个后才能装袋，但是传送带可能把这 100 个水果分批传送，比如第一批传送 20 个，第二批传送 50 个，第三批传送 30 个。接收者不需要和传送带保持同步，只要根据自己的节奏来装袋即可，不用管传送带传送了几批，也不用每到一批就装袋一次，可以等到凑够了 100 个水果再装袋。</p>
+<p>流格式套接字的内部有一个缓冲区（也就是字符数组），通过 socket 传输的数据将保存到这个缓冲区。接收端在收到数据后并不一定立即读取，只要数据不超过缓冲区的容量，接收端有可能在缓冲区被填满以后一次性地读取，也可能分成好几次读取。</p>
+<p>也就是说，不管数据分几次传送过来，接收端只需要根据自己的要求读取，不用非得在数据到达时立即读取。传送端有自己的节奏，接收端也有自己的节奏，它们是不一致的。</p>
+<p>流格式套接字有什么实际的应用场景吗？浏览器所使用的 http 协议就基于面向连接的套接字，因为必须要确保数据准确无误，否则加载的 HTML 将无法解析。</p>
+<h3 id="数据报格式套接字（SOCK-DGRAM）"><a href="#数据报格式套接字（SOCK-DGRAM）" class="headerlink" title="数据报格式套接字（SOCK_DGRAM）"></a>数据报格式套接字（SOCK_DGRAM）</h3><p>数据报格式套接字（Datagram Sockets）也叫“无连接的套接字”，在代码中使用 SOCK_DGRAM 表示。</p>
+<p>计算机只管传输数据，不作数据校验，如果数据在传输中损坏，或者没有到达另一台计算机，是没有办法补救的。也就是说，数据错了就错了，无法重传。</p>
+<p>因为数据报套接字所做的校验工作少，所以在传输效率方面比流格式套接字要高。</p>
+<p>可以将 SOCK_DGRAM 比喻成高速移动的摩托车快递，它有以下特征：</p>
+<ul>
+<li>强调快速传输而非传输顺序；</li>
+<li>传输的数据可能丢失也可能损毁；</li>
+<li>限制每次传输的数据大小；</li>
+<li>数据的发送和接收是同步的（有的教程也称“存在数据边界”）。</li>
+</ul>
+<p>众所周知，速度是快递行业的生命。用摩托车发往同一地点的两件包裹无需保证顺序，只要以最快的速度交给客户就行。这种方式存在损坏或丢失的风险，而且包裹大小有一定限制。因此，想要传递大量包裹，就得分配发送。</p>
+<p>另外，用两辆摩托车分别发送两件包裹，那么接收者也需要分两次接收，所以“数据的发送和接收是同步的”；换句话说，接收次数应该和发送次数相同。</p>
+<p>总之，数据报套接字是一种不可靠的、不按顺序传递的、以追求速度为目的的套接字。</p>
+<p>数据报套接字也使用 IP 协议作路由，但是它不使用 TCP 协议，而是使用 UDP 协议（User Datagram Protocol，用户数据报协议）。</p>
+<p>QQ 视频聊天和语音聊天就使用 SOCK_DGRAM 来传输数据，因为首先要保证通信的效率，尽量减小延迟，而数据的正确性是次要的，即使丢失很小的一部分数据，视频和音频也可以正常解析，最多出现噪点或杂音，不会对通信质量有实质的影响。</p>
+<blockquote>
+<p>注意：SOCK_DGRAM 没有想象中的糟糕，不会频繁的丢失数据，数据错误只是小概率事件。</p>
+</blockquote>
+<h2 id="面向连接和面向无连接套接字"><a href="#面向连接和面向无连接套接字" class="headerlink" title="面向连接和面向无连接套接字"></a>面向连接和面向无连接套接字</h2><p>之前我们提到了<strong>流式套接字</strong>和<strong>数据报式套接字</strong>，在介绍中，我们说到了流式套接字是面向连接的套接字，数据报套接字是面向无连接的套接字。那么面向连接的和面向无连接的套接字有什么区别呢？</p>
+<p>举个例子简单地说明面向连接就像有一条管道连接着发送端和接收端，数据包都通过这条管道来传输。当然，两台计算机在通信之前必须先搭建好管道。</p>
+<p>无连接就像无头苍蝇乱飞，数据包从发送端到接收端并没有固定的线路，想怎么走就怎么走，只要能到达就行。每个数据包都比较自私，不和别人分享自己的线路，但是，大家最终都能到达接收端。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2024/04/16/Socket/Totoro.trip\blog-demo\source\images\1658456902248616.png" alt="面向连接和面向无连接套接字"></p>
+<p>上图是一个简化互联网模型，H1 ~ H6 表示计算机，A~E 表示路由器，发送端发送的数据必须经过路由器的转发才能到达接收端。</p>
+<p>假设 H1 要发送若干个数据包给 H6，那么有多条路径可以选择，比如：</p>
+<p>路径①：H1 —&gt; A —&gt; C —&gt; E —&gt; H6</p>
+<p>路径②：H1 —&gt; A —&gt; B —&gt; E —&gt; H</p>
+<p> 路径③：H1 —&gt; A —&gt; B —&gt; D —&gt; E —&gt; H6</p>
+<p> 路径④：H1 —&gt; A —&gt; B —&gt; C —&gt; E —&gt; H6</p>
+<p>路径⑤：H1 —&gt; A —&gt; C —&gt; B —&gt; D —&gt; E —&gt; H6</p>
+<h2 id="面向连接套接字"><a href="#面向连接套接字" class="headerlink" title="面向连接套接字"></a>面向连接套接字</h2><p>面向连接的套接字在正式通信之前要先确定一条路径，没有特殊情况的话，以后就固定使用这条路径来传递数据包了。当然，路径被破坏的话，比如某个路由器断电了，那么会重新建立路径。</p>
+<p>很多网络通信教程中，这条预先建立好的路径被称为“虚电路”，就是一条虚拟的通信电路。</p>
+<p>  为了保证数据包准确、顺序地到达，发送端在发送数据包以后，必须得到接收端的确认才能发送下一个数据包；如果数据包已经发出去了，在数据包发出去的一段时间后仍没有接收端的回应，那么发送端就会重新再发送一次，直到得到接收端的回应。这样就能保证，发送端发送的所有数据包都能准确有序地到达接收端，那么发送端如何得到接收端的回应呢？这就像两个小人在互相发消息的过程，发送端小人为每一个数据包分配ID，然后发送给接收端小人，接收端小人在接收到数据包后就会给发送端小人也回复一个数据包，并且回复发送端：我接收到了一个ID是XX的数据包，就导致了面向连接的套接字会比无连接的套接字多出很多数据包。</p>
+<h2 id="面向无连接套接字"><a href="#面向无连接套接字" class="headerlink" title="面向无连接套接字"></a>面向无连接套接字</h2><p>  面向无连接的套接字，每个数据包都可以选择不同的路径，比如第一个数据包选择路径②，第二个数据包选择路径④，第三个数据包选择路径①……当然，它们也可以选择相同的路径，但那不过是拐一年摇一年的感觉，缘分呐。</p>
+<p>每个数据包之间都是一个独立的个体，它们都有着我命由我不由天的气势，它们不服管啊，它们非要各走各路，谁也不care谁，但是它们除了迷路的和发生意外的最后都能到达 H6。可到达的顺序是不确定的，比如：</p>
+<p>第一个数据包选择了一条比较长的路径（比如路径⑤），第三个数据包选择了一条比较短的路径（比如路径①），虽然第一个数据包很早就出发了，但是走的路比较远，最终还是晚于第三个数据包达到。</p>
+<p>还有一些意外情况的发生，比如：</p>
+<p>第一个数据包选择了路径①，但是路由器C突然断电了，那它就到不了 H6 了。第三个数据包选择了路径②，虽然路不远，但是太拥堵，以至于它等待的时间太长，路由器把它丢弃了。</p>
+<p>总之，对于无连接的套接字，数据包在传输过程中会发生各种不测，也会发生各种奇迹。H1 只负责把数据包发出，至于它什么时候到达，先到达还是后到达，有没有成功到达，H1 都不管了；H6 也没有选择的权利，只能被动接收，收到什么算什么，爱用不用。</p>
+<p> 无连接套接字遵循的是尽最大努力完成任务的原则，做不到了也没办法。谁让无连接套接字提供的就是没有质量保证的服务呢。人家讲究的就是快而广比如广播。</p>
+<h2 id="Socket编程中的相关概念"><a href="#Socket编程中的相关概念" class="headerlink" title="Socket编程中的相关概念"></a>Socket编程中的相关概念</h2><p><strong>1、流（Stream）</strong></p>
+<p>   计算机中的流其实是一种信息的转换。于某一对象，通常把对象接收外界的信息输入称为输入流，把对象向外输出信息为输出流，合称为输入/输出流（I/O Stream）。</p>
+<p>​    对象间进行数据交换时总是先将数据转换为某种形式的流，再通过流的传输，到达目的对象后再将流转换为对象数据。所以，可以把流看作是一种数据的载体，通过它可以实现数据交换和传输。</p>
+<p><strong>2、连接（Connection）</strong></p>
+<p><strong>3、阻塞(Block)、非阻塞(Non-block)</strong></p>
+<p>   阻塞调用是指调用结果返回（或者收到通知）之前，当前线程会被挂起，即不继续执行后续操作;</p>
+<p>   非阻塞调用指在不能立刻得到结果之前，该调用不会阻塞当前线程。</p>
+<p><strong>4、同步(Synchronous)、异步(asynchronous)</strong></p>
+<p>​    所谓同步，就是在发出一个功能调用时，在没有得到结果之前，该调用就不返回，同时其它线程也不能调用这个方法。</p>
+<p>​    异步呢，就是发出一个功能调用后，不管没有结果的返回，都不影响当前任务的继续执行。即两个生产线相互独立。</p>
+<p>以上两个问题，阻塞非阻塞和同步异步，其实非常相似，但主要区别在于角度不同，同步异步，是对于被调用者而言的；而阻塞非阻塞，则是对调用者而言的。</p>
+<p><strong>5、 IP地址 (IP Address)</strong>  四段0~255之间的十进制数字，如常见的内网地址192.168.0.1或某公网地址114.55.92.xxx</p>
+<p><strong>6、字节顺序（Bytes Order）</strong></p>
+<p>​    字节顺序是指占内存多于一个字节类型的数据在内存中的存放顺序，通常有小端、大端两种字节顺序。</p>
+<p><strong>7、带外数据（Outband Data）</strong></p>
+<p>​    带外数据，也称为TCP紧急数据，是相连的每一对流套接口间一个逻辑上独立的传输通道。带外数据是独立于普通数据传送给用户的。</p>
+<h2 id="OSI网络七层模型简明教程"><a href="#OSI网络七层模型简明教程" class="headerlink" title="OSI网络七层模型简明教程"></a>OSI网络七层模型简明教程</h2><p>OSI 模型把网络通信的工作分为 7 层，从下到上分别是物理层、数据链路层、网络层、传输层、会话层、表示层和应用层。</p>
+<p>OSI 只是存在于概念和理论上的一种模型，它的缺点是分层太多，增加了网络工作的复杂性，所以没有大规模应用。后来人们对 OSI 进行了简化，合并了一些层，最终只保留了 4 层，从下到上分别是接口层、网络层、传输层和应用层，这就是大名鼎鼎的 TCP/IP 模型。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2024/04/16/Socket/Totoro.trip\blog-demo\source\images\1-1Z1241445324H.jpg" alt="OSI 七层网络模型和 TCP/IP 四层网络模型的对比"></p>
+<p>这个网络模型究竟是干什么呢？简而言之就是进行数据封装的。</p>
+<p>我们平常使用的程序（或者说软件）一般都是通过应用层来访问网络的，程序产生的数据会一层一层地往下传输，直到最后的网络接口层，就通过网线发送到互联网上去了。数据每往下走一层，就会被这一层的协议增加一层包装，等到发送到互联网上时，已经比原始数据多了四层包装。整个数据封装的过程就像俄罗斯套娃。</p>
+<p>当另一台计算机接收到数据包时，会从网络接口层再一层一层往上传输，每传输一层就拆开一层包装，直到最后的应用层，就得到了最原始的数据，这才是程序要使用的数据。</p>
+<p>给数据加包装的过程，实际上就是在数据的头部增加一个标志（一个数据块），表示数据经过了这一层，我已经处理过了。给数据拆包装的过程正好相反，就是去掉数据头部的标志，让它逐渐现出原形。</p>
+<p>你看，在互联网上传输一份数据是多么地复杂啊，而我们却感受不到，这就是网络模型的厉害之处。我们只需要在代码中调用一个函数，就能让下面的所有网络层为我们工作。</p>
+<p>我们所说的 socket 编程，是站在传输层的基础上，所以可以使用 TCP/UDP 协议，但是不能干「访问网页」这样的事情，因为访问网页所需要的 http 协议位于应用层。</p>
+<p>两台计算机进行通信时，必须遵守以下原则：</p>
+<ul>
+<li>必须是同一层次进行通信，比如，A 计算机的应用层和 B 计算机的传输层就不能通信，因为它们不在一个层次，数据的拆包会遇到问题。</li>
+<li>每一层的功能都必须相同，也就是拥有完全相同的网络模型。如果网络模型都不同，那不就乱套了，谁都不认识谁。</li>
+<li>数据只能逐层传输，不能跃层。</li>
+<li>每一层可以使用下层提供的服务，并向上层提供服务。</li>
+</ul>
+<h2 id="TCP-IP协议族"><a href="#TCP-IP协议族" class="headerlink" title="TCP/IP协议族"></a>TCP/IP协议族</h2><p>目前实际使用的网络模型是 TCP/IP 模型，它对 OSI 模型进行了简化，只包含了四层，从上到下分别是应用层、传输层、网络层和链路层（网络接口层），每一层都包含了若干协议。</p>
+<p>协议（Protocol）就是网络通信过程中的约定或者合同，通信的双方必须都遵守才能正常收发数据。协议有很多种，例如 TCP、UDP、IP 等，通信的双方必须使用同一协议才能通信。协议是一种规范，由计算机组织制定，规定了很多细节，例如，如何建立连接，如何相互识别等。</p>
+<blockquote>
+<p>协议仅仅是一种规范，必须由计算机软件来实现。例如 IP 协议规定了如何找到目标计算机，那么各个开发商在开发自己的软件时就必须遵守该协议，不能另起炉灶。</p>
+</blockquote>
+<p>TCP/IP 模型包含了 TCP、IP、UDP、Telnet、FTP、SMTP 等上百个互为关联的协议，其中 TCP 和 IP 是最常用的两种底层协议，所以把它们统称为“TCP/IP 协议族”。</p>
+<p>也就是说，“TCP/IP模型”中所涉及到的协议称为“TCP/IP协议族”，你可以区分这两个概念，也可以认为它们是等价的，随便你怎么想。</p>
+<p> 当前学习的socket 编程是基于 TCP 和 UDP 协议的，它们的层级关系如下图所示：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2024/04/16/Socket/Totoro.trip\blog-demo\source\images\1-1Z126104435N0.gif" alt="TCP/IP协议的层次图"></p>
+<h3 id="【扩展阅读】开放式系统（Open-System）"><a href="#【扩展阅读】开放式系统（Open-System）" class="headerlink" title="【扩展阅读】开放式系统（Open System）"></a>【扩展阅读】开放式系统（Open System）</h3><p>把协议分成多个层次有哪些优点？协议设计更容易？当然这也足以成为优点之一。但是还有更重要的原因，就是为了通过标准化操作设计成开放式系统。</p>
+<p>标准本身就是对外公开的，会引导更多的人遵守规范。以多个标准为依据设计的系统称为开放式系统（Open System），我们现在学习的 TCP/IP 协议族也属于其中之一。</p>
+<p>接下来了解一下开放式系统具有哪些优点。</p>
+<p>路由器用来完成 IP 层的交互任务。某个网络原来使用 A 公司的路由器，现要将其替换成 B 公司的，是否可行？这并非难事，并不一定要换成同一公司的同一型号路由器，因为所有生产商都会按照 IP 层标准制造。</p>
+<p>再举个例子。大家的计算机是否装有网络接口卡，也就是所谓的网卡？尚未安装也无妨，其实很容易买到，因为所有网卡制造商都会遵守链路层的协议标准。这就是开放式系统的优点。</p>
+<p>标准的存在意味着高速的技术发展，这也是开放式系统设计最大的原因所在。实际上，软件工程中的“面向对象（Object Oriented）”的诞生背景中也有标准化的影子。也就是说，标准对于技术发展起着举足轻重的作用。</p>
+<h2 id="IP、MAC和端口号——网络通信中确认身份信息的三要素"><a href="#IP、MAC和端口号——网络通信中确认身份信息的三要素" class="headerlink" title="IP、MAC和端口号——网络通信中确认身份信息的三要素"></a>IP、MAC和端口号——网络通信中确认身份信息的三要素</h2><p>在茫茫的互联网海洋中，要找到一台计算机非常不容易，有三个要素必须具备，它们分别是 IP 地址、MAC 地址和端口号。</p>
+<h3 id="IP地址"><a href="#IP地址" class="headerlink" title="IP地址"></a>IP地址</h3><p>IP地址是 Internet Protocol Address 的缩写，译为“网际协议地址”。</p>
+<p>目前大部分软件使用 IPv4 地址，但 IPv6 也正在被人们接受，尤其是在教育网中，已经大量使用。</p>
+<p>一台计算机可以拥有一个独立的 IP 地址，一个局域网也可以拥有一个独立的 IP 地址（对外就好像只有一台计算机）。对于目前广泛使用 IPv4 地址，它的资源是非常有限的，一台计算机一个 IP 地址是不现实的，往往是一个局域网才拥有一个 IP 地址。</p>
+<p>在因特网上进行通信时，必须要知道对方的 IP 地址。实际上数据包中已经附带了 IP 地址，把数据包发送给路由器以后，路由器会根据 IP 地址找到对方的地里位置，完成一次数据的传递。路由器有非常高效和智能的算法，很快就会找到目标计算机。</p>
+<h3 id="MAC地址"><a href="#MAC地址" class="headerlink" title="MAC地址"></a>MAC地址</h3><p>现实的情况是，一个局域网往往才能拥有一个独立的 IP；换句话说，IP 地址只能定位到一个局域网，无法定位到具体的一台计算机。这可怎么办呀？这样也没法通信啊。</p>
+<p>其实，真正能唯一标识一台计算机的是 MAC 地址，每个网卡的 MAC 地址在全世界都是独一无二的。计算机出厂时，MAC 地址已经被写死到网卡里面了（当然通过某些“奇巧淫技”也是可以修改的）。局域网中的路由器/交换机会记录每台计算机的 MAC 地址。</p>
+<blockquote>
+<p>MAC 地址是 Media Access Control Address 的缩写，直译为“媒体访问控制地址”，也称为局域网地址（LAN Address），以太网地址（Ethernet Address）或物理地址（Physical Address）。</p>
+</blockquote>
+<p>数据包中除了会附带对方的 IP 地址，还会附带对方的 MAC 地址，当数据包达到局域网以后，路由器/交换机会根据数据包中的 MAC 地址找到对应的计算机，然后把数据包转交给它，这样就完成了数据的传递。</p>
+<h3 id="端口号"><a href="#端口号" class="headerlink" title="端口号"></a>端口号</h3><p>有了 IP 地址和 MAC 地址，虽然可以找到目标计算机，但仍然不能进行通信。一台计算机可以同时提供多种网络服务，例如 Web 服务（网站）、FTP 服务（文件传输服务）、SMTP 服务（邮箱服务）等，仅有 IP 地址和 MAC 地址，计算机虽然可以正确接收到数据包，但是却不知道要将数据包交给哪个网络程序来处理，所以通信失败。</p>
+<p>为了区分不同的网络程序，计算机会为每个网络程序分配一个独一无二的端口号（Port Number），例如，Web 服务的端口号是 80，FTP 服务的端口号是 21，SMTP 服务的端口号是 25。</p>
+<p>端口（Port）是一个虚拟的、逻辑上的概念。可以将端口理解为一道门，数据通过这道门流入流出，每道门有不同的编号，就是端口号。如下图所示：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2024/04/16/Socket/Totoro.trip\blog-demo\source\images\15060130Z-0.jpg" alt="img"></p>
+<h2 id="TCP的服务端代码流程简述"><a href="#TCP的服务端代码流程简述" class="headerlink" title="TCP的服务端代码流程简述"></a>TCP的服务端代码流程简述</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2024/04/16/Socket/Totoro.trip\blog-demo\source\images\1659148880190653.png" alt="Socket通信服务端"></p>
+<p>通过上图我们可以看到一个完整的Socket网络通信，是有客户端和服务端两部分代码组成的，即两个程序（你发给我，我接收；我发给你，你接收）组成。左侧为客户端，右侧为服务端。每一步都是由Socket为我们封装好的函数实现，简单说，我们只需要弄明白每一步的作用和使用方法即可。本章我们先着重讲解服务端的每一步，TCP服务端调用的函数依次是<strong>socket( )、bind( )、listen( )、accept( )、recv( )、send( )、closesocket( )，</strong>我们会逐一详细的介绍每一个函数的作用及用法。除此之外，还会为大家介绍一下服务端和客户端都会用到的WSAStartup( )函数，在windows系统中我们需要这个函数来以指明 WinSock 规范的版本。以及WSACleanup函数，这个函数用来终止对Socket字库的使用。</p>
+<h3 id="Socket编程之WSAStartup函数"><a href="#Socket编程之WSAStartup函数" class="headerlink" title="Socket编程之WSAStartup函数"></a>Socket编程之WSAStartup函数</h3><p>上一节我们介绍了客户端与服务端相互通信的模型图，每一步都有具体的函数实现，但需要明白的是，使用这些函数之前，在Windows系统下，需要先调用WSAStartup函数进行必要的初始化，才可以顺利的进行，</p>
+<p>而使用WSAStartup函数又需要事先先包含对应的头文件winsock2.h及静态库ws2_32.lib文件（在windows环境下）</p>
+<p>具体如下：</p>
+<p><strong>函数功能：</strong></p>
+<p>用于初始化Socket编程，指明Windows系统中Socket( )版本</p>
+<p><strong>依赖静态库库：</strong></p>
+<p>ws2_32.lib</p>
+<p>需要用#pragma命令包含，即：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">pragma</span> comment(lib,<span class="string">&quot;ws2_32.lib&quot;</span>)  <span class="comment">//表示链接Ws2_32.lib这个库。ws2_32.lib是Winsock2的库文件。</span></span></span><br></pre></td></tr></table></figure>
+<p><strong>函数原型：</strong></p>
+<p>int WSAStartup(WORD wVersionRequested, LPWSADATA lpWSAData);</p>
+<p><strong>返回值类型：</strong></p>
+<p>成功返回0，失败返回-1</p>
+<p><strong>参数说明：</strong></p>
+<p>第一个参数wVersionRequested为 WinSock 规范的版本号它的类型WORD,所以要用MAKEWORD( )宏函数对它的版本号进行转换。低字节为主版本号，高字节为副版本号。</p>
+<p>代码示例：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wVersionRequired=<span class="built_in">MAKEWORD</span>(<span class="number">1</span>,<span class="number">2</span>)   <span class="comment">//即主版本号是1，副版本号位2，那么它表示的就是调用WinSock 1.2版本。     现在我们一般用2.2版本 ，即MAKEWORD(1,2)</span></span><br></pre></td></tr></table></figure>
+<p>第二个参数lpWSAData 为指向 WSAData 结构体的指针。其定义原型如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span>` `<span class="keyword">struct</span>` `WSAData &#123;``  ``WORD`    `wVersion;  ``<span class="comment">//ws2_32.dll 建议我们使用的版本号``  ``WORD`    `wHighVersion;  ``//ws2_32.dll 支持的最高版本号``#ifdef _WIN64``  ``unsigned ``short` `iMaxSockets;   ``//2.0以后不再使用``  ``unsigned ``short` `iMaxUdpDg;   ``//2.0以后不再使用``  ``char`    `*lpVendorInfo;   ``//2.0以后不再使用``  ``char`    `szDescription[WSADESCRIPTION_LEN+1]; ``//一个以 null 结尾的字符串，用来说明 ws2_32.dll 的实现以及厂商信息``  ``char`    `szSystemStatus[WSASYS_STATUS_LEN+1]; ``//一个以 null 结尾的字符串，用来说明 ws2_32.dll 的状态以及配置信息``#else``  ``char`    `szDescription[WSADESCRIPTION_LEN+1];  ``//32位版本，同上``  ``char`    `szSystemStatus[WSASYS_STATUS_LEN+1];  ``//32位版本，同上``  ``unsigned ``short` `iMaxSockets;  ``//32位版本，同上``  ``unsigned ``short` `iMaxUdpDg;  ``//32位版本，同上``  ``char`    `*lpVendorInfo;  32位版本，同上``#endif``&#125; WSADATA, *LPWSADATA;</span></span><br></pre></td></tr></table></figure>
+<p>因此我们只需要包含头文件、静态库，然后完善这两个参数，传入WSAStartup调用即可。</p>
+<p>当然，完整可编译的代码，则需要将以上代码放入main函数中，并且包含对应的头文件及相对应的静态库，使用方式如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//www.dotcpp.com</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;winsock2.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">pragma</span> comment (lib, <span class="string">&quot;ws2_32.lib&quot;</span>)</span></span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">WSADATA wsaData;</span><br><span class="line"><span class="built_in">WSAStartup</span>( <span class="built_in">MAKEWORD</span>(<span class="number">2</span>, <span class="number">2</span>), &amp;wsaData); <span class="comment">//目前建议使用最新2.2版本</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">//以下为测试信息，打印相应的数值用于测试</span></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;wVersion: %d.%d\n&quot;</span>, <span class="built_in">LOBYTE</span>(wsaData.wVersion), <span class="built_in">HIBYTE</span>(wsaData.wVersion));</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;wHighVersion: %d.%d\n&quot;</span>, <span class="built_in">LOBYTE</span>(wsaData.wHighVersion), <span class="built_in">HIBYTE</span>(wsaData.wHighVersion));</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;szDescription: %s\n&quot;</span>, wsaData.szDescription);</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;szSystemStatus: %s\n&quot;</span>, wsaData.szSystemStatus);</span><br><span class="line"> </span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="socket函数"><a href="#socket函数" class="headerlink" title="socket函数"></a>socket函数</h3><p>如下图所示，是Socket通信的原理图，左侧为服务端，右侧是客户端，可以看到服务端的步骤要多一些，客户端将在后面讲解。本节开始将从左侧服务端第一步开始逐步讲解，本步骤目标为创建一个套接字，其返回值为后面的步骤使用。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2024/04/16/Socket/Totoro.trip\blog-demo\source\images\1659144952398198.png" alt="Socket通信服务端"></p>
+<p><strong>函数功能：</strong></p>
+<p>创建套接字</p>
+<p><strong>头文件：</strong></p>
+<p>#include <winsock2.h></winsock2.h></p>
+<p><strong>函数原型：</strong></p>
+<p>int socket( int af, int type, int protocol);</p>
+<p><strong>返回值类型：</strong></p>
+<p>整型</p>
+<p><strong>返回值:</strong></p>
+<p>成功返回非负值，表示套接字的文件描述符，失败返回-1，通常返回-1错误很可能是没有执行 WSAStartup初始化导致！</p>
+<p><strong>参数说明：</strong></p>
+<p>第一个参数af指明了协议族，通常用AF_INET、AF_INET6、AF_LOCAL等。AF表示地址族，选择 AF_INET 的目的就是使用 IPv4 进行通信。因为 IPv4 使用 32 位地址，相比 IPv6 的 128 位来说，计算更快，便于用于局域网通信。</p>
+<p>第二个参数type是Socket类型，常用的Socket类型我们之前已经介绍过了分别是SOCK_STREAM和SOCK_DGRAM因为我们要写的是TCP Socket编程所以我们使用SOCK_STREAM。 </p>
+<p>第三个参数protocol表示传输协议一般取为0。因为一般情况下有了 domain和 type 两个参数就可以创建套接字了，操作系统会自动推演出协议类型，除非遇到这样的情况：有两种不同的协议支持同一种地址类型和数据传输类型。如果我们不指明使用哪种协议，操作系统是没办法自动推演的。</p>
+<p>调用socket函数整体代码的实现：</p>
+<p>调用socket函数整体代码的实现：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span>` `sockfd=socket(AF_INET,SOCK_STREAM,<span class="number">0</span>);``<span class="comment">//建立套接字</span></span><br></pre></td></tr></table></figure>
+<p>显而易见的，那么UDP的写法则为：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sockfd=socket(AF_INET, SOCK_DGRAM,<span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="Socket编程之bind函数"><a href="#Socket编程之bind函数" class="headerlink" title="Socket编程之bind函数"></a>Socket编程之bind函数</h3><p>在完成第一步创建套接字，分配了一个Socket描述符后，<strong>服务端</strong>的第二步就是使用在这个描述符用<strong>Bind</strong>绑定</p>
+<p>Bind()系统调用的主要用处：</p>
+<p>1.服务器向系统注册它的众所周知的地址。面向连接和无连接的服务器在接受客户的请求之前都必须做这一步。 </p>
+<p>2.客户可为自己注册一个特定的地址，以便服务器可以用这个有效的地址送回响应。</p>
+<p><strong>函数功能：</strong></p>
+<p>将监听套接字绑定到本地地址和端口上。</p>
+<p><strong>头文件：</strong></p>
+<p>#include <winsock2.h></winsock2.h></p>
+<p><strong>函数原型：</strong></p>
+<p>int bind(int sockfd, const struct sockaddr_in *addr, int addrlen);</p>
+<p><strong>返回值类型：</strong></p>
+<p>整型</p>
+<p><strong>返回值:</strong></p>
+<p>成功返回非负值，失败返回-1，最常见的错误一般是端口被占用。需要注意的是，在Linux系统中，1024以下的端口都需要root权限的程序才可以绑定</p>
+<p><strong>参数说明：</strong></p>
+<p>第一个参数sockfd为上一步创建socket时的返回值。</p>
+<p>第二个参数addr 为 sockaddr 结构体变量的指针。该类型的定义原型如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">sockaddr_in</span> &#123;</span>  <span class="type">short</span>  sin_family;  <span class="comment">//协议族，与前面Socket函数中提到的一样，我们这里使用AF_INET``  ``u_short sin_port;    ``//端口号，需要``  ``struct` `in_addr sin_addr;  ``//IP地址，需要使用网络序``  ``char`  `sin_zero[8];  ``//没有实际意义,只是为了跟SOCKADDR结构在内存中对齐``&#125;;</span></span><br></pre></td></tr></table></figure>
+<p>第三个参数addrlen为addr 变量的大小，可由 sizeof() 计算得出。     </p>
+<p>调用bind函数整体代码的参考代码</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span>` `<span class="title">sockaddr_in</span> <span class="title">serv_addr</span>  ``//创建结构体变量``<span class="title">servaddr</span>.<span class="title">sin_family</span>=</span>AF_INET;  ``<span class="comment">//sin_family指代协议族和前面讲述socket()的第一个参数的含义相同，取值也需跟socke函数第一个参数值一样。``servaddr.sin_port=htons(2000);  ``//sin_port存储端口号（使用网络字节顺序，对于htons()函数我们还有单独一章的说明，2000这个端口转换为网络字节序列。``理论上端口号的取值范围为是0到65536，但0到1023的端口一般由系统分配给特定的服务程序，比如Web 服务的端口号为 80所以我们的程序要尽量在 1024~65536 之间分配端口号。` `servaddr.sin_addr.s_addr=inet_addr(``&quot;127.0.0.1&quot;``);  ``//将iP地址127.0.0.1也就是本机地址转换为十进制``bind(sockfd,(sockaddr*)&amp;servaddr,``sizeof``(servaddr));  ``// 将套接字绑定到本地地址和端口上。</span></span><br></pre></td></tr></table></figure>
+<h3 id="Socket编程之listen函数"><a href="#Socket编程之listen函数" class="headerlink" title="Socket编程之listen函数"></a>Socket编程之listen函数</h3><p>接着，在完成bind函数之后，服务端接下来就可以用listen函数监听了，用于监听是否有客户端连接它，以便存储多个用户的连接建立请求，listen函数具体如下：</p>
+<p><strong>函数功能：</strong></p>
+<p>让socket进入被动监听状态。什么是被动监听呢，是指当没有客户端请求时，socket处于“沉睡”中，只有当接收到客户端请求时，socket才会被“叫醒”来响应请求。</p>
+<p><strong>头文件：</strong></p>
+<p>#include <winsock2.h></winsock2.h></p>
+<p><strong>函数原型：</strong></p>
+<p>int listen(int sockfd, intqueue_length);</p>
+<p><strong>返回值类型：</strong></p>
+<p>整型</p>
+<p><strong>返回值:</strong></p>
+<p>成功返回0，失败返回-1</p>
+<p><strong>参数说明：</strong></p>
+<p>第一个参数为第一步sockfd创建socket时的返回值，套接字的描述符。</p>
+<p>第二个参数queue_length用于指定接收队列的长度，也就是在Server程序调用accept函数之前最大允许进入的连接请求数，多余的连接请求将被拒绝，典型取值为5。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">listen(sockfd,<span class="number">5</span>);<span class="comment">//监听sockfd为创建套接字时的返回值。</span></span><br></pre></td></tr></table></figure>
+<h3 id="Socket编程之accept函数"><a href="#Socket编程之accept函数" class="headerlink" title="Socket编程之accept函数"></a>Socket编程之accept函数</h3><p>在listen监听到有新客户端时，就可以用accept函数响应客户的连接请求，建立与客户端的连接。产生一个新的socket描述符来描述该连接，这个连接用来与发起该连接请求的客户交换数据。</p>
+<p><strong>函数功能：</strong></p>
+<p>接收客户端连接请求</p>
+<p><strong>头文件：</strong></p>
+<p>#include <winsock2.h></winsock2.h></p>
+<p><strong>函数原型：</strong></p>
+<p>int accept(int sockfd, struct sockaddr <em>addr, int </em>addrlen);</p>
+<p><strong>返回值类型：</strong></p>
+<p>整型</p>
+<p><strong>返回值:</strong></p>
+<p>成功返回非负值，失败返回-1</p>
+<p><strong>参数说明：</strong></p>
+<p>sockfd为建立socket函数返回的值。</p>
+<p>addr为 sockaddr 结构体变量的指针，这个参数是指针类型，是向外传内容的，即addr将在函数调用后填入对方(客户端)的地址信息，如对方的IP、端口等。</p>
+<p>addrlen为 addr变量的大小，可由 sizeof() 计算得出。                    </p>
+<p>调用accept函数整体代码的实现：</p>
+<p>struct sockaddr_in clientaddr//创建客户端地址结构体</p>
+<p>int aID;//用来接收accept函数返回值</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">aID=accept(sockfd,(sockaddr*)&amp;clientaddr,&amp;``<span class="keyword">sizeof</span>``( clientaddr));``<span class="comment">//等待接收客户连接请求</span></span><br></pre></td></tr></table></figure>
+<h3 id="Socket编程之recv函数"><a href="#Socket编程之recv函数" class="headerlink" title="Socket编程之recv函数"></a>Socket编程之recv函数</h3><p><strong>函数功能：</strong></p>
+<p>接收客户端或服务端传来的数据,也就是客户端和服务端都要用到</p>
+<p><strong>头文件：</strong></p>
+<p>#include <winsock2.h></winsock2.h></p>
+<p><strong>函数原型：</strong></p>
+<p>int recv(int aID, char *buf, int len, int flags);</p>
+<p><strong>返回值类型：</strong></p>
+<p>整型  </p>
+<p><strong>返回值:</strong></p>
+<p>返回值小于0,socket报错。返回值等于0没有接收到数据，返回值大于0成功，返回值即为接收到的数据长度</p>
+<p><strong>参数说明：</strong></p>
+<p>第一个参数aID，表示连接成功的套接字描述符。</p>
+<p>注意：这一步对于服务端而言是上一步accept的返回值；对于客户端而言是connect的返回值，并非是第一步socket创建套接字的返回值，请大家理解不要搞混！</p>
+<p>第二个参数buf，就是为要接收的数据所在的缓冲区地址，也就是一个空的字符数组的首地址，这里放结果。</p>
+<p>第三个参数len为要接收数据的字节数。</p>
+<p>第四个参数flags为发送数据时的附带标记 ，一般情况下设置为0。但可以选择下列设置:</p>
+<p>MSG_DONTROUTE：表示不使用指定路由，对send、sendto有效 </p>
+<p>MSG_PEEK：对recv, recvfrom有效，表示读出网络数据后不清除已读的数据 </p>
+<p>MSG_OOB：对发送接收都有效，表示发送或接受加急数据          </p>
+<p>调用recv函数整体代码的实现：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> recBuf[<span class="number">200</span>];</span><br><span class="line"><span class="comment">//定义一个字符串用来保存客户端发来的数据</span></span><br><span class="line">recv(aID,recBuf,<span class="number">200</span>,<span class="number">0</span>);</span><br><span class="line"><span class="comment">//接收来自客户端或服务端的数据</span></span><br></pre></td></tr></table></figure>
+<p>需要注意的是，recv缺省是阻塞函数，直到收到信息或出错才会返回。</p>
+<h3 id="Socket编程之send函数"><a href="#Socket编程之send函数" class="headerlink" title="Socket编程之send函数"></a>Socket编程之send函数</h3><p>与是recv一样，有收就会有发，发送内容对应send函数，也是从服务端accept后或客户端connect后就可以用的函数，其说明如下：</p>
+<p><strong>函数功能：</strong></p>
+<p>发送服务端或客户端的数据</p>
+<p><strong>头文件：</strong></p>
+<p>#include <winsock2.h></winsock2.h></p>
+<p><strong>函数原型：</strong></p>
+<p>int send(int aID, const char *buf, int len, int flags);</p>
+<p><strong>返回值类型：</strong></p>
+<p>整型 </p>
+<p><strong>返回值:</strong></p>
+<p>返回值小于0,socket报错。返回值等于0对方调用了close API来关闭连接，返回值大于0成功，返回值为发送的的数据长度</p>
+<p><strong>参数说明：</strong></p>
+<p>第一个参数aID，表示连接成功的套接字描述符。</p>
+<p>注意：这一步对于服务端而言是上一步accept的返回值；对于客户端而言是connect的返回值，并非是第一步socket创建套接字的返回值，请大家理解不要搞混！</p>
+<p>第二个参数buf为要发送的数据所在的缓冲区地址，即一个已经存好内容的字符数组</p>
+<p>第三个参数len为要发送的数据的实际字节数+1。</p>
+<p>第四个参数flags为发送数据时的附带标记 ，一般情况下设置为0。但可以选择下列设置:</p>
+<p>MSG_DONTROUTE：表示不使用指定路由，对send、sendto有效 </p>
+<p>MSG_PEEK：对recv, recvfrom有效，表示读出网络数据后不清除已读的数据 </p>
+<p>MSG_OOB：对发送接收都有效，表示发送或接受加急数据</p>
+<p>调用send函数整体代码的实现：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> sendBuf[<span class="number">200</span>];<span class="comment">//定义一个数组用来保存发送的数据</span></span><br><span class="line">send(aID,sendBuf,<span class="built_in">strlen</span>(sendBuf)+<span class="number">1</span>,<span class="number">0</span>);<span class="comment">//用来发送服务端或客户端的数据</span></span><br></pre></td></tr></table></figure>
+<p>与recv同样，send函数缺省也是阻塞函数，直到发送完毕或出错才会返回。</p>
+<blockquote>
+<p>需要注意，如果函数返回值与参数len不相等，则剩余未发送的信息需要再次发送。</p>
+</blockquote>
+<h3 id="Socket编程之closesocket函数"><a href="#Socket编程之closesocket函数" class="headerlink" title="Socket编程之closesocket函数"></a>Socket编程之closesocket函数</h3><p>一旦决定要停止通信，就要关闭套接字，释放资源，则需要调用closesocket函数进行</p>
+<p>其函数介绍如下：</p>
+<p><strong>函数功能：</strong></p>
+<p>与socket函数功能相反关闭套接字</p>
+<p><strong>头文件：</strong></p>
+<p>#include <winsock2.h></winsock2.h></p>
+<p><strong>函数原型：</strong></p>
+<p>int closesocket(int aID);</p>
+<p><strong>返回值类型：</strong></p>
+<p>整型 </p>
+<p><strong>参数说明：</strong></p>
+<p>aID为接收客户端请求的返回值。</p>
+<p>调用closesocket函数整体代码的实现：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">closesocket(aID);</span><br></pre></td></tr></table></figure>
+<p>这一步与第一步创建套接字一样，无论客户端还是服务端都需要进行</p>
+<h3 id="Socket编程之WSACleanup函数"><a href="#Socket编程之WSACleanup函数" class="headerlink" title="Socket编程之WSACleanup函数"></a>Socket编程之WSACleanup函数</h3><p>一旦程序结束需要停止Socket库的使用，需要调用WSACleanup函数，这一步和最开始的WSAStartup是对应的。</p>
+<p><strong>函数功能</strong></p>
+<p>用于终止对So：cket字库的使用。</p>
+<p><strong>库链接：</strong></p>
+<p>#pragma comment(lib,”ws2_32.lib”)表示链接Ws2_32.lib这个库。 ws2_32.lib是Winsock2的库文件。</p>
+<p>函数原型：</p>
+<p>int PASCAL FAR WSACleanup (void)。</p>
+<p><strong>返回值类型：</strong></p>
+<p>整型 </p>
+<p><strong>返回值:</strong></p>
+<p>成功返回0</p>
+<p><strong>参数说明：</strong></p>
+<p>无参数</p>
+<p>因此调用WSACleanup函数也很简单，如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">WSACleanup();</span><br></pre></td></tr></table></figure>
+<h3 id="Socket服务端完整参考代码"><a href="#Socket服务端完整参考代码" class="headerlink" title="Socket服务端完整参考代码"></a>Socket服务端完整参考代码</h3><p>前面讲解了Socket通信中服务端的每一步功能作用及实现，而重点是多个步骤在一起时，上下文 函数之间的信息传递需要我们理解，如SOCKADDR_IN的结构体、各个SOCKET描述符等参数，以及在此基础之上改进得到的希望的实际效果（如需要不停的接受消息、发送消息）</p>
+<p>下面我们将所有步骤串联在一起，提供一个可以连续接收客户端信息的服务端程序:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;winsock2.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">pragma</span> comment(lib,<span class="string">&quot;ws2_32.lib&quot;</span>)</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  </span><br><span class="line">   WSADATA wsaData;</span><br><span class="line">    <span class="built_in">WSAStartup</span>( <span class="built_in">MAKEWORD</span>(<span class="number">2</span>, <span class="number">2</span>), &amp;wsaData); <span class="comment">//目前建议使用最新2.2版本</span></span><br><span class="line">    SOCKET serSocket=<span class="built_in">socket</span>(AF_INET,SOCK_STREAM,<span class="number">0</span>);<span class="comment">//创建了可识别套接字</span></span><br><span class="line">    <span class="keyword">if</span>(serSocket!=<span class="number">-1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;成功创建套接字！%d\n&quot;</span>,serSocket);  </span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="comment">//需要绑定的参数，主要是本地的socket的一些信息。</span></span><br><span class="line">    SOCKADDR_IN addr;</span><br><span class="line">    addr.sin_family=AF_INET;</span><br><span class="line">    addr.sin_addr.S_un.S_addr=<span class="built_in">htonl</span>(INADDR_ANY);<span class="comment">//ip地址</span></span><br><span class="line">    addr.sin_port=<span class="built_in">htons</span>(<span class="number">12345</span>);<span class="comment">//绑定端口</span></span><br><span class="line"> </span><br><span class="line">    <span class="built_in">bind</span>(serSocket,(SOCKADDR*)&amp;addr,<span class="built_in">sizeof</span>(SOCKADDR));<span class="comment">//绑定完成</span></span><br><span class="line">    <span class="built_in">listen</span>(serSocket,<span class="number">5</span>);<span class="comment">//其中第二个参数代表能够接收的最多的连接数</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;等待客户端...\n&quot;</span>);</span><br><span class="line">    SOCKADDR_IN clientsocket;</span><br><span class="line">    <span class="type">int</span> len=<span class="built_in">sizeof</span>(SOCKADDR);</span><br><span class="line">    <span class="comment">//第二次握手，通过accept来接受对方的套接字的信息</span></span><br><span class="line">    SOCKET serConn=<span class="built_in">accept</span>(serSocket,(SOCKADDR*)&amp;clientsocket,&amp;len);</span><br><span class="line">    <span class="comment">//如果这里不是accept而是conection的话。。就会不断的监听</span></span><br><span class="line">    <span class="keyword">if</span>(serConn)</span><br><span class="line">    &#123;</span><br><span class="line">       <span class="built_in">printf</span>(<span class="string">&quot;监听到新的客户端...\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">char</span> sendBuf[<span class="number">100</span>];</span><br><span class="line">        <span class="built_in">sprintf</span>(sendBuf,<span class="string">&quot;welcome %s to here&quot;</span>,<span class="built_in">inet_ntoa</span>(clientsocket.sin_addr));<span class="comment">//找对对应的IP并且将这行字打印到那里</span></span><br><span class="line">        <span class="comment">//发送信息</span></span><br><span class="line">        <span class="built_in">send</span>(serConn,sendBuf,<span class="built_in">strlen</span>(sendBuf)+<span class="number">1</span>,<span class="number">0</span>);</span><br><span class="line">        <span class="type">char</span> receiveBuf[<span class="number">100</span>];<span class="comment">//接收</span></span><br><span class="line">        <span class="type">int</span> RecvLen;</span><br><span class="line">        RecvLen=<span class="built_in">recv</span>(serConn,receiveBuf,<span class="number">100</span>,<span class="number">0</span>);</span><br><span class="line">        <span class="keyword">if</span>(RecvLen!=<span class="number">-1</span>)</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;%d %s\n&quot;</span>,RecvLen,receiveBuf);</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line"> </span><br><span class="line">       &#125;</span><br><span class="line">       <span class="built_in">closesocket</span>(serConn);<span class="comment">//关闭</span></span><br><span class="line">       <span class="built_in">WSACleanup</span>();<span class="comment">//释放资源的操作</span></span><br><span class="line">       <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>因为暂时没有客户端连接，运行后为等待效果状态.</p>
+<h2 id="TCP的客户端代码流程简述"><a href="#TCP的客户端代码流程简述" class="headerlink" title="TCP的客户端代码流程简述"></a>TCP的客户端代码流程简述</h2><p>这一章将为大家讲解Socket通信中客户端的实现过程，还是先上图，请大家了解客户端的步骤</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2024/04/16/Socket/Totoro.trip\blog-demo\source\images\1659145783848210.png" alt="Socket通信客户端"></p>
+<p>可以看到，相比服务端，客户端的步骤简单的很多。事实上这种情况比较多，比如一个服务端会有多个客户端连接。</p>
+<p>通过图片我们可以看到TCP客务端调用的函数依次是socket( )、connect( )、recv( )、<a target="_blank" rel="noopener" href="https://www.dotcpp.com/course/782">send( )</a>、closessocket( )</p>
+<p>由于在服务端这章的讲解中我们提到socket()[recv()]、send()、closesocket()、WSAStartup()、WSACleanup()的函数，在客户端中同样需要这些函数，使用方式是一样的，因此这里不再赘述。</p>
+<h2 id="Socket编程之connect函数"><a href="#Socket编程之connect函数" class="headerlink" title="Socket编程之connect函数"></a>Socket编程之connect函数</h2><p>这一节我们讲connect连接，这一步位于客户端的第二步，调用connect阻塞客户程序，传输层实体开始建立连接，当连接建立完成时，取消阻塞；</p>
+<p><strong>函数功能：</strong></p>
+<p>向服务端发起连接请求</p>
+<p><strong>头文件：</strong></p>
+<p>#include <winsock2.h></winsock2.h></p>
+<p><strong>函数原型：</strong></p>
+<p>int connect(int sockcd, const struct sockaddr *addr, int addrlen);</p>
+<p><strong>返回值类型：</strong></p>
+<p>整型</p>
+<p><strong>返回值:</strong></p>
+<p>成功返回0，失败返回-1。当客户端调用 connect（）函数之后，发生以下情况之一才会返回（完成函数调用）</p>
+<p>1、服务器端接收连接请求</p>
+<p>2、发生断网的异常情况而终端连接请求</p>
+<p><strong>参数说明：</strong></p>
+<p>sockcd为客户端建立socket函数的返回值。</p>
+<p>addr是一个sockaddr结构的指针，用于指定所要连接的服务器的地址（服务端的IP地址和端口号，要和服务端的实际IP地址以及绑定的端口一致才可以）。</p>
+<p>addrlen为addr变量的大小，可由 sizeof()计算得出。    </p>
+<p>调用connect函数整体代码的实现：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">connect</span>(sockcd,(sockaddr*)&amp;seraddr,<span class="built_in">sizeof</span>(seraddr));</span><br><span class="line"><span class="comment">//需要注意的是，所谓的“接收连接”并不意味着服务器调用</span></span><br></pre></td></tr></table></figure>
+<p>accept（）函数，其实是服务器端把连接请求信息记录到等待队列。因此connect（）函数返回后并不进行数据交换。而是要等服务器端 accept 之后才能进行数据交换。</p>
+<p>这一步调用完成之后，就和服务端建立了通信，就可以使用send或recv相互发送和接收消息了</p>
+<h2 id="Socket客户端完整参考代码"><a href="#Socket客户端完整参考代码" class="headerlink" title="Socket客户端完整参考代码"></a>Socket客户端完整参考代码</h2><p>本代码用于和第二章服务端代码一致，监听12345端口，可以不断的发送消息，直至输入”quit”退出程序，完整参考代码如下:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;winsock2.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">pragma</span> comment(lib,<span class="string">&quot;ws2_32.lib&quot;</span>)</span></span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> err;</span><br><span class="line">    <span class="type">char</span> SendBuf[<span class="number">100</span>];</span><br><span class="line">    WORD versionRequired;</span><br><span class="line">    WSADATA wsaData;</span><br><span class="line">    versionRequired=<span class="built_in">MAKEWORD</span>(<span class="number">2</span>,<span class="number">2</span>);</span><br><span class="line">    err=<span class="built_in">WSAStartup</span>(versionRequired,&amp;wsaData);<span class="comment">//协议库的版本信息</span></span><br><span class="line">    <span class="comment">//通过WSACleanup的返回值来确定socket协议是否启动</span></span><br><span class="line">    <span class="keyword">if</span> (!err)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;客户端套接字已经打开!\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;客户端套接字打开失败!\n&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;<span class="comment">//结束</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//注意socket这个函数，他三个参数定义了socket的所处的系统，socket的类型，以及一些其他信息</span></span><br><span class="line">    SOCKET clientSocket=<span class="built_in">socket</span>(AF_INET,SOCK_STREAM,<span class="number">0</span>);</span><br><span class="line"> </span><br><span class="line">    <span class="comment">//socket编程中，它定义了一个结构体SOCKADDR_IN来存计算机的一些信息，像socket的系统，</span></span><br><span class="line">    <span class="comment">//端口号，ip地址等信息，这里存储的是服务器端的计算机的信息</span></span><br><span class="line">    SOCKADDR_IN clientsock_in;</span><br><span class="line">    clientsock_in.sin_addr.S_un.S_addr=<span class="built_in">inet_addr</span>(<span class="string">&quot;127.0.0.1&quot;</span>);</span><br><span class="line">    clientsock_in.sin_family=AF_INET;</span><br><span class="line">    clientsock_in.sin_port=<span class="built_in">htons</span>(<span class="number">12345</span>);</span><br><span class="line"> </span><br><span class="line">    <span class="comment">//前期定义了套接字，定义了服务器端的计算机的一些信息存储在clientsock_in中，</span></span><br><span class="line">    <span class="comment">//准备工作完成后，然后开始将这个套接字链接到远程的计算机</span></span><br><span class="line">    <span class="comment">//也就是第一次握手</span></span><br><span class="line">    <span class="type">int</span> r=<span class="built_in">connect</span>(clientSocket,(SOCKADDR*)&amp;clientsock_in,<span class="built_in">sizeof</span>(SOCKADDR));<span class="comment">//开始连接</span></span><br><span class="line">   <span class="comment">// printf(&quot;%d\n&quot;,r);</span></span><br><span class="line"> </span><br><span class="line">    <span class="keyword">while</span>(<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">gets</span>(SendBuf);</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">strcmp</span>(SendBuf,<span class="string">&quot;quit&quot;</span>)==<span class="number">0</span>)</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="built_in">send</span>(clientSocket,SendBuf,<span class="built_in">strlen</span>(SendBuf)+<span class="number">1</span>,<span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">    <span class="built_in">closesocket</span>(clientSocket);</span><br><span class="line">    <span class="comment">//关闭服务</span></span><br><span class="line">    <span class="built_in">WSACleanup</span>();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>单独运行客户端，只会有客户端套接字已经打开</p>
+<p>若是连同前面的服务端一起测试，先运行服务端，再运行客户端，即可完成通信效果。</p>
+<p>客户端向服务端发送三条消息，服务端都已接收，并打印长度和消息信息，第四条信息退出，之后双方退出结束程序</p>
+<h2 id="什么是字节序？大小端还有网络序和主机序？"><a href="#什么是字节序？大小端还有网络序和主机序？" class="headerlink" title="什么是字节序？大小端还有网络序和主机序？"></a>什么是字节序？大小端还有网络序和主机序？</h2><h3 id="1-字节序"><a href="#1-字节序" class="headerlink" title="1.字节序"></a><strong>1.字节序</strong></h3><p>字节序，又称端序或尾序，指的是多字节数据在内存中的存放顺序。学过C语言后，我们知道一个int型变量a是占用4个字节，假设它的起始地址也就是&amp;a是0x10处，那么变量a的四个字节将会被存储在0x10、0x11、0x12和0x13这四个字节位置上。</p>
+<p>但是当我们写好通信程序发送数据时候的时候，这个a变量通过TCP连接传输后收到的与发送的不一致，即有可能发过去的序列变成了0x12、0x13的值在前，0x10、0x11上的值在后，这样组成的四个字节的int类型值肯定就不一样了。</p>
+<p>所以要引入大端和小端的概念。</p>
+<h3 id="2-大端和小端"><a href="#2-大端和小端" class="headerlink" title="2.大端和小端"></a><strong>2.大端和小端</strong></h3><p>计算机有两种储存数据的方式：<strong>大端字节序</strong>（Big Endian）和<strong>小端字节序</strong>（Little Endian）。</p>
+<p>大端模式：是指数据的高字节保存在内存的低地址中，低字节保存在内存的高地址端。</p>
+<p>小端模式：是指数据的高字节保存在内存的高地址中，低字节保存在内存的低地址端。</p>
+<p>以一个两字节short型变量0x0102的存储举例：</p>
+<p>大端字节序：高位字节在前，低位字节在后，01|02，从左往右看着更习惯。</p>
+<p>小端字节序：低位字节在前，高位字节在后，02|01，也存在这种存储顺序。</p>
+<p>我们以0x12345678这个数字为例，它的大端模式和小端模式分别如下：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2024/04/16/Socket/Totoro.trip\blog-demo\source\images\1659496846338871.png" alt="大小端存储顺序"></p>
+<h3 id="3-原因？"><a href="#3-原因？" class="headerlink" title="3.原因？"></a><strong>3.原因？</strong></h3><p>计算机处理字节序的时候，不知道什么是高位字节，什么是低位字节。它只知道按顺序读取字节，先读第一个字节，再读第二个字节…</p>
+<p>如果是大端字节序，先读到的就是高位字节，后读到的就是低位字节；小端字节序正好相反。</p>
+<p>如果这样，那统一用符合我们人类读写习惯的大端序就好了呀，为何还要弄出个小端序了？</p>
+<p>这是疑问计算机电路先处理低位字节，效率比较高，因为计算都是从低位开始的，所以计算机的内部处理都是小端字节序。</p>
+<p>但是人类还是习惯读写大端字节序，所以除了计算机的内部处理，其他的场合几乎都是大端字节序，比如网络传输和文件储存。</p>
+<h3 id="4-网络序和主机序"><a href="#4-网络序和主机序" class="headerlink" title="4.网络序和主机序"></a><strong>4.网络序和主机序</strong></h3><p>明白了大小端之后，网络序和主机序也就好理解了，</p>
+<p>网络字节序：TCP/IP各层协议将字节序定义为Big Endian，即大端模式，TCP/IP协议中使用的字节序是大端序。</p>
+<p>主机字节序：整数在内存中存储的顺序，目前以Little Endian，即小端模式，比较普遍（不同的CPU有不同的字节序）。</p>
+<p>C/C++语言编写的程序里数据存储顺序是跟编译平台所在的CPU相关的，而现在比较普遍的x86处理器是小端模式（Little Endian）。Java编写的程序则唯一采用Big Endian方式来存储数据。</p>
+<p>所以，如果你的C/C++程序通过Socket将变量a = 0x12345678的首地址传递给了Java程序，由于Java采取Big Endian方式存取数据，很显然，本地数据没问题，传过去就变成0x78563412，这就出问题了。毕竟不是所有的客户端和服务端都是同一种语言、同一种CPU。因此转换的问题就来了</p>
+<h3 id="5-如何转换"><a href="#5-如何转换" class="headerlink" title="5.如何转换"></a><strong>5.如何转换</strong></h3><p>为避免开头说到的网络通信中存在的问题，我们可以在传输数据之前和接收数据之后对数据进行相应处理，也就是主机序和网络序的转换。</p>
+<h2 id="htos和htol函数-主机序转换到网络序"><a href="#htos和htol函数-主机序转换到网络序" class="headerlink" title="htos和htol函数:主机序转换到网络序"></a>htos和htol函数:主机序转换到网络序</h2><p>在网络传输过程中，一定会涉及到主机序和网络序的问题，即本机的存储和网络的传输是完全两套存储方式，我们保证不了目标主机的字节序是否和网络序一致，因此一定要考虑这个问题，这里介绍常用的两个函数htos和htol函数，使主机序转换到网络序</p>
+<h2 id="1-htos函数"><a href="#1-htos函数" class="headerlink" title="1.htos函数:"></a><strong>1.htos函数:</strong></h2><h3 id="函数功能："><a href="#函数功能：" class="headerlink" title="函数功能："></a><strong>函数功能：</strong></h3><p>将主机无符号短整形数转换成网络，比如古人读12345的顺序是从右往左54321，而现代人读12345的顺序是从左往右读12345，htos函数就是完成类似的转换功能，举例说明如果把htons(16)输出你会看到得到的结果是4096，为什么呢？因为16的十六进制是0X0010，而4096的十六进制是0X1000。不同的存储方式，会导致高低位存储时顺序的不同，这就是即00 10和10 00 的存储不同的原因。</p>
+<h3 id="头文件："><a href="#头文件：" class="headerlink" title="头文件："></a><strong>头文件：</strong></h3><p>#include <winsock2.h></winsock2.h></p>
+<h3 id="函数原型："><a href="#函数原型：" class="headerlink" title="函数原型："></a><strong>函数原型：</strong></h3><p>uint16_t htons(uint16_t hostlong);</p>
+<h3 id="返回值类型："><a href="#返回值类型：" class="headerlink" title="返回值类型："></a>返回值类型：</h3><p>整型</p>
+<h3 id="返回值："><a href="#返回值：" class="headerlink" title="返回值："></a><strong>返回值：</strong></h3><p>返回一个网络字节顺序的值</p>
+<h3 id="参数说明："><a href="#参数说明：" class="headerlink" title="参数说明："></a><strong>参数说明：</strong></h3><p>其中hostlong是主机字节顺序表达的16位数，htons中的h表示host意思是主机地址，to表示to意思是去往,转换为的意思，n表示net意思是网络，s表示signed long意思是无符号的短整型。</p>
+<p>调用htos函数代码举例;</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">htos(<span class="number">5200</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="2-htol函数"><a href="#2-htol函数" class="headerlink" title="2.htol函数"></a><strong>2.htol函数</strong></h2><h3 id="函数功能：-1"><a href="#函数功能：-1" class="headerlink" title="函数功能："></a><strong>函数功能：</strong></h3><p>将一个32位数从主机字节顺序转换成网络字节顺序。</p>
+<h3 id="头文件：-1"><a href="#头文件：-1" class="headerlink" title="头文件："></a><strong>头文件：</strong></h3><p>#include <winsock2.h></winsock2.h></p>
+<h3 id="函数原型：-1"><a href="#函数原型：-1" class="headerlink" title="函数原型："></a>函数原型：</h3><p>uint16_t htons(uint32_t hostlong);</p>
+<h3 id="返回值类型：-1"><a href="#返回值类型：-1" class="headerlink" title="返回值类型："></a><strong>返回值类型：</strong></h3><p>整型</p>
+<h3 id="返回值：-1"><a href="#返回值：-1" class="headerlink" title="返回值："></a><strong>返回值：</strong></h3><p>返回一个网络字节顺序的值</p>
+<h3 id="参数说明：-1"><a href="#参数说明：-1" class="headerlink" title="参数说明："></a><strong>参数说明：</strong></h3><p>其中hostlong是主机字节顺序表达的32位数，htons中的h表示host意思是主机地址，to表示to意思是去往,转换为的意思，n表示net意思是网络,l 是 unsigned long表示32位长整数</p>
+<p>调用htol函数代码举例;</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">htol( <span class="number">0x403214</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="ntohl和ntohs函数-网络序转换到主机序"><a href="#ntohl和ntohs函数-网络序转换到主机序" class="headerlink" title="ntohl和ntohs函数:网络序转换到主机序"></a>ntohl和ntohs函数:网络序转换到主机序</h2><p>有主机序转网络序，就有网络序转主机序，分别是ntohl和ntohs函数，接下来为大家讲解这两个函数。</p>
+<h2 id="1-ntohl函数"><a href="#1-ntohl函数" class="headerlink" title="1.ntohl函数"></a><strong>1.ntohl函数</strong></h2><h3 id="函数功能：-2"><a href="#函数功能：-2" class="headerlink" title="函数功能："></a><strong>函数功能：</strong></h3><p>将一个无符号短整型数从网络字节顺序转换成主机字节顺序。这个函数与htons原理相同，不过是htos是主机序到网络序，而ntohs是网络序到主机序。</p>
+<h3 id="头文件：-2"><a href="#头文件：-2" class="headerlink" title="头文件："></a><strong>头文件：</strong></h3><p>#include <winsock2.h></winsock2.h></p>
+<h3 id="函数原型：-2"><a href="#函数原型：-2" class="headerlink" title="函数原型："></a><strong>函数原型：</strong></h3><p>uint16_t ntohs(uint16_t netshort);</p>
+<h3 id="返回值类型：-2"><a href="#返回值类型：-2" class="headerlink" title="返回值类型："></a><strong>返回值类型：</strong></h3><p>整型</p>
+<h3 id="返回值：-2"><a href="#返回值：-2" class="headerlink" title="返回值："></a><strong>返回值：</strong></h3><p>返回一个主机字节顺序表达的数。</p>
+<h3 id="参数说明：-2"><a href="#参数说明：-2" class="headerlink" title="参数说明："></a><strong>参数说明：</strong></h3><p>其中netshort一个以网络字节顺序表达的16位数，ntohs中的h表示host意思是主机地址，to表示to意思是去往,n表示net意思是网络,s表示signed long意思是无符号的短整型(32位的系统是2字节)。</p>
+<p>调用ntohs函数代码举例;</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ntohs(<span class="number">5200</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="2-ntohl函数"><a href="#2-ntohl函数" class="headerlink" title="2.ntohl函数"></a><strong>2.ntohl函数</strong></h2><h2 id="函数功能：-3"><a href="#函数功能：-3" class="headerlink" title="函数功能："></a><strong>函数功能：</strong></h2><p>将一个无符号长整型从网络字节顺序转换成主机字节顺序。这个函数与htonl原理相同，不过是htol是主机序到网络序，而ntohl是网络序到主机序。</p>
+<h3 id="头文件：-3"><a href="#头文件：-3" class="headerlink" title="头文件："></a><strong>头文件：</strong></h3><p>#include <winsock2.h></winsock2.h></p>
+<h3 id="函数原型：-3"><a href="#函数原型：-3" class="headerlink" title="函数原型："></a><strong>函数原型：</strong></h3><p>uint16_t ntohs(uint16_t netlong);</p>
+<h3 id="返回值类型：-3"><a href="#返回值类型：-3" class="headerlink" title="返回值类型："></a><strong>返回值类型：</strong></h3><p>整型</p>
+<h3 id="返回值：-3"><a href="#返回值：-3" class="headerlink" title="返回值："></a><strong>返回值：</strong></h3><p>返回一个主机字节顺序表达的数。</p>
+<h3 id="参数说明：-3"><a href="#参数说明：-3" class="headerlink" title="参数说明："></a><strong>参数说明：</strong></h3><p>其中netlong一个以网络字节顺序表达的32位数，ntohs中的h表示host意思是主机地址，to表示to意思是去往,n表示net意思是网络,s表示signed long意思是无符号的短整型(32位的系统是2字节)。</p>
+<p>调用ntohl函数代码举例;</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ntohl( <span class="number">0x403214</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="Sockaddr-in和Sockaddr的区别"><a href="#Sockaddr-in和Sockaddr的区别" class="headerlink" title="Sockaddr_in和Sockaddr的区别"></a>Sockaddr_in和Sockaddr的区别</h2><p>sockaddr和sockaddr_in都是结构体，并且它们的功能都是用来处理网络通信的地址。网络中的地址主要有3个方面的属性：</p>
+<p>1、地址类型例如是互联网协议第四版（ipv4）和互联网协议第六版(ipv6)。</p>
+<p>2、IP地址，主要有5类分别是A类：(1.0.0.0-126.0.0.0)，地址的网络号取值于1~126之间。一般用于大型网络。</p>
+<p>  B类：(128.0.0.0-191.255.0.0)，地址的网络号取值于128~191之间。一般用于中等规模网络。</p>
+<p>  C类：(192.0.0.0-223.255.255.0)，地址的网络号取值于192~223之间。一般用于小型网络。</p>
+<p>  D类：是多播地址，地址的网络号取值于224~239之间。一般用于多路广播用户 。</p>
+<p>  E类：是保留地址，地址的网络号取值于240~255之间。</p>
+<p>3、端口，它就像门牌号一样，客户端可以通过ip地址找到对应的服务器端，但是服务器端有很多端口，每个应用程序对应一个端口号，通过类似门牌号的端口号，客户端才能真正的访问到该服务器。为了对端口进行区分，将每个端口进行了编号，这就是端口号，范围是0—-65535。</p>
+<p>用于存储参与（IP）Windows套接字通信的计算机上的一个internet协议（IP）地址。为了统一地址结构的表示方法 ，统一接口函数，使得不同的地址结构可以被bind()、connect()、recv()、send()等函数调用。但一般的编程中并不直接对此数据结构进行操作，而使用另一个与之等价的数据结构sockaddr_in。这是由于Microsoft TCP/IP套接字开发人员的工具箱仅支持internet地址字段，而实际填充字段的每一部分则遵循sockaddr_in数据结构，两者大小都是16字节，所以二者之间可以进行切换。</p>
+<p>sockaddr_in中的in就表示internet也就是网络地址的意思，它弥补了sockaddr的缺陷，把port(端口号)，和addr(目标地址)分开存储在两个变量中。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a><strong>总结</strong></h3><p>二者长度一样，都是16个字节，即占用的内存大小是一致的，因此可以互相转化。二者是并列结构，指向sockaddr_in结构的指针也可以指向sockaddr。</p>
+<p>sockaddr常用于bind、connect、recv、send等函数的参数，指明地址信息，是一种通用的套接字地址。</p>
+<p>sockaddr_in 是internet环境下套接字的地址形式。所以在网络编程中我们会对sockaddr_in结构体进行操作，使用sockaddr_in来建立所需的信息，最后使用强制类型转化就可以了。一般先把sockaddr_in变量赋值后，强制类型转换后传入用sockaddr做参数的函数：sockaddr_in用于socket定义和赋值；sockaddr用于函数参数。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://totorocatcat.top">Totoro</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://totorocatcat.top/2024/04/16/Socket/">http://totorocatcat.top/2024/04/16/Socket/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://totorocatcat.top" target="_blank">Totoroの旅</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%9F%BA%E7%A1%80/">基础</a></div><div class="post_share"><div class="social-share" data-image="https://npm.elemecdn.com/ushio-api-img-moe@5.0.55/img_550_2500x1405_72_null_normal.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2024/04/15/40/" title="牛客周赛round40"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/ushio-api-img-moe@5.0.71/img_712_516x728_72_null_normal.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">牛客周赛round40</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2024/03/12/CF933/" title="CF933"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/ushio-api-img-moe@5.0.77/img_771_600x839_72_null_normal.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-03-12</div><div class="title">CF933</div></div></a></div><div><a href="/2024/03/04/C-%E5%9F%BA%E7%A1%80/" title="C++基础"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/ushio-api-img-moe@5.0.24/img_249_2081x1420_96_null_normal.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-03-04</div><div class="title">C++基础</div></div></a></div><div><a href="/2024/03/16/HTML%E5%88%9D%E6%AD%A5/" title="HTML初步"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/ushio-api-img-moe@5.0.16/img_169_2560x1440_96_null_normal.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-03-16</div><div class="title">HTML初步</div></div></a></div><div><a href="/2024/04/05/IO%E5%BA%93/" title="IO库"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/ushio-api-img-moe@5.0.45/img_457_2249x1064_350_null_normal.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-04-05</div><div class="title">IO库</div></div></a></div><div><a href="/2024/03/03/Markdown%E6%A0%BC%E5%BC%8F/" title="Markdown格式"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/ushio-api-img-moe@5.0.48/img_482_1920x1080_96_null_normal.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-03-03</div><div class="title">Markdown格式</div></div></a></div><div><a href="/2024/04/06/Library/" title="chapter8.the.Library"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/ushio-api-img-moe@5.0.26/img_260_1920x1115_72_null_normal.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-04-06</div><div class="title">chapter8.the.Library</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/px3.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Totoro</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">254</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/4512abc"><i class="fab fa-github"></i><span>🛴前往小窝......</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/4512abc" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:4512abc@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到龙猫の小窝</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Socket"><span class="toc-number">1.</span> <span class="toc-text">Socket</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#socket%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%E5%A5%97%E6%8E%A5%E5%AD%97%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">1.1.</span> <span class="toc-text">socket是什么？套接字是什么？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-socket%EF%BC%9F"><span class="toc-number">1.1.1.</span> <span class="toc-text">什么是 socket？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#UNIX-Linux-%E4%B8%AD%E7%9A%84-socket-%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">1.1.2.</span> <span class="toc-text">UNIX&#x2F;Linux 中的 socket 是什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Window-%E7%B3%BB%E7%BB%9F%E4%B8%AD%E7%9A%84-socket-%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">1.1.3.</span> <span class="toc-text">Window 系统中的 socket 是什么？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A5%97%E6%8E%A5%E5%AD%97%E6%9C%89%E5%93%AA%E4%BA%9B%E7%B1%BB%E5%9E%8B%EF%BC%9Fsocket%E6%9C%89%E5%93%AA%E4%BA%9B%E7%B1%BB%E5%9E%8B%EF%BC%9F"><span class="toc-number">1.2.</span> <span class="toc-text">套接字有哪些类型？socket有哪些类型？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%81%E6%A0%BC%E5%BC%8F%E5%A5%97%E6%8E%A5%E5%AD%97%EF%BC%88SOCK-STREAM%EF%BC%89"><span class="toc-number">1.2.1.</span> <span class="toc-text">流格式套接字（SOCK_STREAM）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E6%8A%A5%E6%A0%BC%E5%BC%8F%E5%A5%97%E6%8E%A5%E5%AD%97%EF%BC%88SOCK-DGRAM%EF%BC%89"><span class="toc-number">1.2.2.</span> <span class="toc-text">数据报格式套接字（SOCK_DGRAM）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%A2%E5%90%91%E8%BF%9E%E6%8E%A5%E5%92%8C%E9%9D%A2%E5%90%91%E6%97%A0%E8%BF%9E%E6%8E%A5%E5%A5%97%E6%8E%A5%E5%AD%97"><span class="toc-number">1.3.</span> <span class="toc-text">面向连接和面向无连接套接字</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%A2%E5%90%91%E8%BF%9E%E6%8E%A5%E5%A5%97%E6%8E%A5%E5%AD%97"><span class="toc-number">1.4.</span> <span class="toc-text">面向连接套接字</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%A2%E5%90%91%E6%97%A0%E8%BF%9E%E6%8E%A5%E5%A5%97%E6%8E%A5%E5%AD%97"><span class="toc-number">1.5.</span> <span class="toc-text">面向无连接套接字</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Socket%E7%BC%96%E7%A8%8B%E4%B8%AD%E7%9A%84%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5"><span class="toc-number">1.6.</span> <span class="toc-text">Socket编程中的相关概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OSI%E7%BD%91%E7%BB%9C%E4%B8%83%E5%B1%82%E6%A8%A1%E5%9E%8B%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B"><span class="toc-number">1.7.</span> <span class="toc-text">OSI网络七层模型简明教程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TCP-IP%E5%8D%8F%E8%AE%AE%E6%97%8F"><span class="toc-number">1.8.</span> <span class="toc-text">TCP&#x2F;IP协议族</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E3%80%90%E6%89%A9%E5%B1%95%E9%98%85%E8%AF%BB%E3%80%91%E5%BC%80%E6%94%BE%E5%BC%8F%E7%B3%BB%E7%BB%9F%EF%BC%88Open-System%EF%BC%89"><span class="toc-number">1.8.1.</span> <span class="toc-text">【扩展阅读】开放式系统（Open System）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IP%E3%80%81MAC%E5%92%8C%E7%AB%AF%E5%8F%A3%E5%8F%B7%E2%80%94%E2%80%94%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1%E4%B8%AD%E7%A1%AE%E8%AE%A4%E8%BA%AB%E4%BB%BD%E4%BF%A1%E6%81%AF%E7%9A%84%E4%B8%89%E8%A6%81%E7%B4%A0"><span class="toc-number">1.9.</span> <span class="toc-text">IP、MAC和端口号——网络通信中确认身份信息的三要素</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#IP%E5%9C%B0%E5%9D%80"><span class="toc-number">1.9.1.</span> <span class="toc-text">IP地址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MAC%E5%9C%B0%E5%9D%80"><span class="toc-number">1.9.2.</span> <span class="toc-text">MAC地址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AB%AF%E5%8F%A3%E5%8F%B7"><span class="toc-number">1.9.3.</span> <span class="toc-text">端口号</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TCP%E7%9A%84%E6%9C%8D%E5%8A%A1%E7%AB%AF%E4%BB%A3%E7%A0%81%E6%B5%81%E7%A8%8B%E7%AE%80%E8%BF%B0"><span class="toc-number">1.10.</span> <span class="toc-text">TCP的服务端代码流程简述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Socket%E7%BC%96%E7%A8%8B%E4%B9%8BWSAStartup%E5%87%BD%E6%95%B0"><span class="toc-number">1.10.1.</span> <span class="toc-text">Socket编程之WSAStartup函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#socket%E5%87%BD%E6%95%B0"><span class="toc-number">1.10.2.</span> <span class="toc-text">socket函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Socket%E7%BC%96%E7%A8%8B%E4%B9%8Bbind%E5%87%BD%E6%95%B0"><span class="toc-number">1.10.3.</span> <span class="toc-text">Socket编程之bind函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Socket%E7%BC%96%E7%A8%8B%E4%B9%8Blisten%E5%87%BD%E6%95%B0"><span class="toc-number">1.10.4.</span> <span class="toc-text">Socket编程之listen函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Socket%E7%BC%96%E7%A8%8B%E4%B9%8Baccept%E5%87%BD%E6%95%B0"><span class="toc-number">1.10.5.</span> <span class="toc-text">Socket编程之accept函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Socket%E7%BC%96%E7%A8%8B%E4%B9%8Brecv%E5%87%BD%E6%95%B0"><span class="toc-number">1.10.6.</span> <span class="toc-text">Socket编程之recv函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Socket%E7%BC%96%E7%A8%8B%E4%B9%8Bsend%E5%87%BD%E6%95%B0"><span class="toc-number">1.10.7.</span> <span class="toc-text">Socket编程之send函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Socket%E7%BC%96%E7%A8%8B%E4%B9%8Bclosesocket%E5%87%BD%E6%95%B0"><span class="toc-number">1.10.8.</span> <span class="toc-text">Socket编程之closesocket函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Socket%E7%BC%96%E7%A8%8B%E4%B9%8BWSACleanup%E5%87%BD%E6%95%B0"><span class="toc-number">1.10.9.</span> <span class="toc-text">Socket编程之WSACleanup函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Socket%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%AE%8C%E6%95%B4%E5%8F%82%E8%80%83%E4%BB%A3%E7%A0%81"><span class="toc-number">1.10.10.</span> <span class="toc-text">Socket服务端完整参考代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TCP%E7%9A%84%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%BB%A3%E7%A0%81%E6%B5%81%E7%A8%8B%E7%AE%80%E8%BF%B0"><span class="toc-number">1.11.</span> <span class="toc-text">TCP的客户端代码流程简述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Socket%E7%BC%96%E7%A8%8B%E4%B9%8Bconnect%E5%87%BD%E6%95%B0"><span class="toc-number">1.12.</span> <span class="toc-text">Socket编程之connect函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Socket%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%AE%8C%E6%95%B4%E5%8F%82%E8%80%83%E4%BB%A3%E7%A0%81"><span class="toc-number">1.13.</span> <span class="toc-text">Socket客户端完整参考代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%AD%97%E8%8A%82%E5%BA%8F%EF%BC%9F%E5%A4%A7%E5%B0%8F%E7%AB%AF%E8%BF%98%E6%9C%89%E7%BD%91%E7%BB%9C%E5%BA%8F%E5%92%8C%E4%B8%BB%E6%9C%BA%E5%BA%8F%EF%BC%9F"><span class="toc-number">1.14.</span> <span class="toc-text">什么是字节序？大小端还有网络序和主机序？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%AD%97%E8%8A%82%E5%BA%8F"><span class="toc-number">1.14.1.</span> <span class="toc-text">1.字节序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%A4%A7%E7%AB%AF%E5%92%8C%E5%B0%8F%E7%AB%AF"><span class="toc-number">1.14.2.</span> <span class="toc-text">2.大端和小端</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%8E%9F%E5%9B%A0%EF%BC%9F"><span class="toc-number">1.14.3.</span> <span class="toc-text">3.原因？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E7%BD%91%E7%BB%9C%E5%BA%8F%E5%92%8C%E4%B8%BB%E6%9C%BA%E5%BA%8F"><span class="toc-number">1.14.4.</span> <span class="toc-text">4.网络序和主机序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E5%A6%82%E4%BD%95%E8%BD%AC%E6%8D%A2"><span class="toc-number">1.14.5.</span> <span class="toc-text">5.如何转换</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#htos%E5%92%8Chtol%E5%87%BD%E6%95%B0-%E4%B8%BB%E6%9C%BA%E5%BA%8F%E8%BD%AC%E6%8D%A2%E5%88%B0%E7%BD%91%E7%BB%9C%E5%BA%8F"><span class="toc-number">1.15.</span> <span class="toc-text">htos和htol函数:主机序转换到网络序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-htos%E5%87%BD%E6%95%B0"><span class="toc-number">1.16.</span> <span class="toc-text">1.htos函数:</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E5%8A%9F%E8%83%BD%EF%BC%9A"><span class="toc-number">1.16.1.</span> <span class="toc-text">函数功能：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%B4%E6%96%87%E4%BB%B6%EF%BC%9A"><span class="toc-number">1.16.2.</span> <span class="toc-text">头文件：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E5%8E%9F%E5%9E%8B%EF%BC%9A"><span class="toc-number">1.16.3.</span> <span class="toc-text">函数原型：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%94%E5%9B%9E%E5%80%BC%E7%B1%BB%E5%9E%8B%EF%BC%9A"><span class="toc-number">1.16.4.</span> <span class="toc-text">返回值类型：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%94%E5%9B%9E%E5%80%BC%EF%BC%9A"><span class="toc-number">1.16.5.</span> <span class="toc-text">返回值：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E%EF%BC%9A"><span class="toc-number">1.16.6.</span> <span class="toc-text">参数说明：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-htol%E5%87%BD%E6%95%B0"><span class="toc-number">1.17.</span> <span class="toc-text">2.htol函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E5%8A%9F%E8%83%BD%EF%BC%9A-1"><span class="toc-number">1.17.1.</span> <span class="toc-text">函数功能：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%B4%E6%96%87%E4%BB%B6%EF%BC%9A-1"><span class="toc-number">1.17.2.</span> <span class="toc-text">头文件：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E5%8E%9F%E5%9E%8B%EF%BC%9A-1"><span class="toc-number">1.17.3.</span> <span class="toc-text">函数原型：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%94%E5%9B%9E%E5%80%BC%E7%B1%BB%E5%9E%8B%EF%BC%9A-1"><span class="toc-number">1.17.4.</span> <span class="toc-text">返回值类型：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%94%E5%9B%9E%E5%80%BC%EF%BC%9A-1"><span class="toc-number">1.17.5.</span> <span class="toc-text">返回值：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E%EF%BC%9A-1"><span class="toc-number">1.17.6.</span> <span class="toc-text">参数说明：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ntohl%E5%92%8Cntohs%E5%87%BD%E6%95%B0-%E7%BD%91%E7%BB%9C%E5%BA%8F%E8%BD%AC%E6%8D%A2%E5%88%B0%E4%B8%BB%E6%9C%BA%E5%BA%8F"><span class="toc-number">1.18.</span> <span class="toc-text">ntohl和ntohs函数:网络序转换到主机序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-ntohl%E5%87%BD%E6%95%B0"><span class="toc-number">1.19.</span> <span class="toc-text">1.ntohl函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E5%8A%9F%E8%83%BD%EF%BC%9A-2"><span class="toc-number">1.19.1.</span> <span class="toc-text">函数功能：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%B4%E6%96%87%E4%BB%B6%EF%BC%9A-2"><span class="toc-number">1.19.2.</span> <span class="toc-text">头文件：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E5%8E%9F%E5%9E%8B%EF%BC%9A-2"><span class="toc-number">1.19.3.</span> <span class="toc-text">函数原型：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%94%E5%9B%9E%E5%80%BC%E7%B1%BB%E5%9E%8B%EF%BC%9A-2"><span class="toc-number">1.19.4.</span> <span class="toc-text">返回值类型：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%94%E5%9B%9E%E5%80%BC%EF%BC%9A-2"><span class="toc-number">1.19.5.</span> <span class="toc-text">返回值：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E%EF%BC%9A-2"><span class="toc-number">1.19.6.</span> <span class="toc-text">参数说明：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-ntohl%E5%87%BD%E6%95%B0"><span class="toc-number">1.20.</span> <span class="toc-text">2.ntohl函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E5%8A%9F%E8%83%BD%EF%BC%9A-3"><span class="toc-number">1.21.</span> <span class="toc-text">函数功能：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%B4%E6%96%87%E4%BB%B6%EF%BC%9A-3"><span class="toc-number">1.21.1.</span> <span class="toc-text">头文件：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E5%8E%9F%E5%9E%8B%EF%BC%9A-3"><span class="toc-number">1.21.2.</span> <span class="toc-text">函数原型：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%94%E5%9B%9E%E5%80%BC%E7%B1%BB%E5%9E%8B%EF%BC%9A-3"><span class="toc-number">1.21.3.</span> <span class="toc-text">返回值类型：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%94%E5%9B%9E%E5%80%BC%EF%BC%9A-3"><span class="toc-number">1.21.4.</span> <span class="toc-text">返回值：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E%EF%BC%9A-3"><span class="toc-number">1.21.5.</span> <span class="toc-text">参数说明：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Sockaddr-in%E5%92%8CSockaddr%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">1.22.</span> <span class="toc-text">Sockaddr_in和Sockaddr的区别</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">1.22.1.</span> <span class="toc-text">总结</span></a></li></ol></li></ol></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 By Totoro</div><div class="footer_custom_text">I wish you to become your own sun, no need to rely on who's light.<p><a target="_blank" href="https://hexo.io/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&logo=hexo" title="博客框架为Hexo"></a>&nbsp;<a target="_blank" href="https://butterfly.js.org/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&logo=bitdefender" title="主题采用butterfly"></a>&nbsp;<a target="_blank" href="https://www.jsdelivr.com/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&logo=jsDelivr" title="本站使用JsDelivr为静态资源提供CDN加速"></a> &nbsp;<a target="_blank" href="https://vercel.com/ "><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Hosted-Vervel-brightgreen?style=flat&logo=Vercel" title="本站采用双线部署，默认线路托管于Vercel"></a>&nbsp;<a target="_blank" href="https://vercel.com/ "><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Hosted-Coding-0cedbe?style=flat&logo=Codio" title="本站采用双线部署，联通线路托管于Coding"></a>&nbsp;<a target="_blank" href="https://github.com/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&logo=GitHub" title="本站项目由Gtihub托管"></a>&nbsp;<a target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&logo=Claris" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"></a></p></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="/js/tw_cn.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@5.2.0/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script></div><script defer src="/js/light.js"></script><canvas id="universe"></canvas><script defer src="/js/universe.js"></script><script async src="/js/title.js"></script><script defer src="https://npm.elemecdn.com/jquery@latest/dist/jquery.min.js"></script><script defer data-pjax src="/js/cat.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="30" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/click-show-text.min.js" data-mobile="true" data-text="只此无为身，且前行,忘记过去的人注定重蹈覆辙,我是我，我靠自己站立，我会做好自身,如果我睡大觉，谁给我摘月亮呢,假期和朋友，是人生中顶好的两样东西啊。,去爱，去失去，要不负相遇,没什么想不想通的，只是固执而已,我们深爱星辰，乃至不惧夜的黑,吃，喝，享受幸福，接受奇迹,浊水若长流，自清澄,雅俗共赏,总会有什么也不想的幸福时刻吧,时间顺流而下，生活逆流而上,悟已往之不谏，知来者之可追,希望你的小世界里,山花烂漫,茶酒俱全,安宁清淡,明朗欢愉" data-fontsize="18px" data-random="false" async="async"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.12.0"></script></div></div><!-- hexo injector body_end start --><script data-pjax>
+    function butterfly_categories_card_injector_config(){
+      var parent_div_git = document.getElementById('recent-posts');
+      var item_html = '<style>li.categoryBar-list-item{width:32.3%;}.categoryBar-list{max-height: 380px;overflow:auto;}.categoryBar-list::-webkit-scrollbar{width:0!important}@media screen and (max-width: 650px){.categoryBar-list{max-height: 320px;}}</style><div class="recent-post-item" style="height:auto;width:100%;padding:0px;"><div id="categoryBar"><ul class="categoryBar-list"><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_12.webp);"> <a class="categoryBar-list-link" href="categories/刷题计划/">刷题计划</a><span class="categoryBar-list-count">89</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_13.webp);"> <a class="categoryBar-list-link" href="categories/ACMの旅/">ACMの旅</a><span class="categoryBar-list-count">65</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_14.webp);"> <a class="categoryBar-list-link" href="categories/数学建模/">数学建模</a><span class="categoryBar-list-count">31</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_17.webp);"> <a class="categoryBar-list-link" href="categories/编程基础/">编程基础</a><span class="categoryBar-list-count">30</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_18.webp);"> <a class="categoryBar-list-link" href="categories/CS知识/">CS知识</a><span class="categoryBar-list-count">2</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_19.webp);"> <a class="categoryBar-list-link" href="categories/前端の旅/">前端の旅</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_20.webp);"> <a class="categoryBar-list-link" href="categories/个人安排/">个人安排</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_21.webp);"> <a class="categoryBar-list-link" href="categories/文学/">文学</a><span class="categoryBar-list-count">28</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_22.webp);"> <a class="categoryBar-list-link" href="categories/杂项/">杂项</a><span class="categoryBar-list-count">5</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_22.webp);"> <a class="categoryBar-list-link" href="categories/数据结构/">数据结构</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_23.webp);"> <a class="categoryBar-list-link" href="categories/少年游/">少年游</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li></ul></div></div>';
+      console.log('已挂载butterfly_categories_card')
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+      }
+    if( document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+    butterfly_categories_card_injector_config()
+    }
+  </script><script data-pjax>
+  function butterfly_swiper_injector_config(){
+    var parent_div_git = document.getElementById('recent-posts');
+    var item_html = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms;"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2024/01/29/诗兴大发/" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://source.fomal.cc/img/default_cover_69.webp" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-01-29</span><a class="blog-slider__title" href="2024/01/29/诗兴大发/" alt="">诗兴大发</a><div class="blog-slider__text">未觉，却是中二少年的诗仙梦</div><a class="blog-slider__button" href="2024/01/29/诗兴大发/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2024/02/13/数据结构与算法-1/" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/ushio-api-img-moe@5.0.64/img_649_702x1000_300_null_normal.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-02-13</span><a class="blog-slider__title" href="2024/02/13/数据结构与算法-1/" alt="">数据结构与算法(总)</a><div class="blog-slider__text">方便大二看（）</div><a class="blog-slider__button" href="2024/02/13/数据结构与算法-1/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2024/02/24/常见优化技巧/" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://source.fomal.cc/img/default_cover_238.webp" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-02-24</span><a class="blog-slider__title" href="2024/02/24/常见优化技巧/" alt="">常见优化技巧</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" href="2024/02/24/常见优化技巧/" alt="">详情   </a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载butterfly_swiper')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_swiper_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_swiper_injector_config();
+  }
+  </script><script defer src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.js"></script><script defer data-pjax src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper_init.js"></script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>
