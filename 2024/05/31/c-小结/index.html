@@ -1,0 +1,438 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>c++小结 | Totoroの旅</title><meta name="author" content="Totoro"><meta name="copyright" content="Totoro"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="1、面向对象编程的特性:  抽象、封装和数据隐藏、多态、继承、代码的可重用性 面向对象编程（Object-Oriented Programming, OOP）是一种软件开发范式，其核心思想是将现实世界中的事物抽象为对象，对象之间通过消息传递来完成任务。面向对象编程具有以下主要特性：  抽象（Abstraction）：抽象是将复杂的现实世界问题简化为程序设计中的对象模型。通过抽象，可以忽略对象的具体">
+<meta property="og:type" content="article">
+<meta property="og:title" content="c++小结">
+<meta property="og:url" content="http://totorocatcat.top/2024/05/31/c-%E5%B0%8F%E7%BB%93/index.html">
+<meta property="og:site_name" content="Totoroの旅">
+<meta property="og:description" content="1、面向对象编程的特性:  抽象、封装和数据隐藏、多态、继承、代码的可重用性 面向对象编程（Object-Oriented Programming, OOP）是一种软件开发范式，其核心思想是将现实世界中的事物抽象为对象，对象之间通过消息传递来完成任务。面向对象编程具有以下主要特性：  抽象（Abstraction）：抽象是将复杂的现实世界问题简化为程序设计中的对象模型。通过抽象，可以忽略对象的具体">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://api.r10086.com/%E5%9B%BE%E5%8C%85webp/%E5%8A%A8%E6%BC%AB%E7%BB%BC%E5%90%881/81617-106.webp">
+<meta property="article:published_time" content="2024-05-30T17:25:07.000Z">
+<meta property="article:modified_time" content="2024-05-30T17:27:26.858Z">
+<meta property="article:author" content="Totoro">
+<meta property="article:tag" content="有趣">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://api.r10086.com/%E5%9B%BE%E5%8C%85webp/%E5%8A%A8%E6%BC%AB%E7%BB%BC%E5%90%881/81617-106.webp"><link rel="shortcut icon" href="https://source.fomal.cc/img/default_cover_227.webp"><link rel="canonical" href="http://totorocatcat.top/2024/05/31/c-%E5%B0%8F%E7%BB%93/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta/><link rel="stylesheet" href="/css/index.css?v=4.12.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  noticeOutdate: {"limitDay":365,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":false,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体中文","cht_to_chs":"你已切换为简体中文","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"top-right"},
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'c++小结',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2024-05-31 01:27:26'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const now = new Date()
+          const hour = now.getHours()
+          const isNight = hour <= 6 || hour >= 18
+          if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/universe.css"><link rel="stylesheet" href="/css/scrollbar.css"><link rel="stylesheet" href="/css/cat.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-double-row-display@1.00/cardlistpost.min.css"/>
+<style>#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags:before {content:"\A";
+  white-space: pre;}#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags > .article-meta__separator{display:none}</style>
+<link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-categories-card@1.0.0/lib/categorybar.css"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiperstyle.css" media="print" onload="this.media='all'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/px3.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">332</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">6</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">14</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-envelope-open"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 趣味</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://api.r10086.com/%E5%9B%BE%E5%8C%85webp/%E5%8A%A8%E6%BC%AB%E7%BB%BC%E5%90%881/81617-106.webp')"><nav id="nav"><span id="blog-info"><a href="/" title="Totoroの旅"><span class="site-name">Totoroの旅</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-envelope-open"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 趣味</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">c++小结<a class="post-edit-link" href="null_posts/c-小结.md" title="编辑" target="_blank"><i class="fas fa-pencil-alt"></i></a></h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-05-30T17:25:07.000Z" title="发表于 2024-05-31 01:25:07">2024-05-31</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-05-30T17:27:26.858Z" title="更新于 2024-05-31 01:27:26">2024-05-31</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%9C%9F%E6%9C%AB%E3%81%AE%E6%97%85/">期末の旅</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">4.8k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>14分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="c++小结"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>1、面向对象编程的特性:</p>
+<blockquote>
+<p>抽象、封装和数据隐藏、多态、继承、代码的可重用性</p>
+<p>面向对象编程（Object-Oriented Programming, OOP）是一种软件开发范式，其核心思想是将现实世界中的事物抽象为对象，对象之间通过消息传递来完成任务。面向对象编程具有以下主要特性：</p>
+<ol>
+<li><p><strong>抽象（Abstraction）</strong>：抽象是将复杂的现实世界问题简化为程序设计中的对象模型。通过抽象，可以忽略对象的具体细节，只关注对象的重要特征和行为，从而更容易理解和处理问题。</p>
+</li>
+<li><p><strong>封装和数据隐藏（Encapsulation and Data Hiding）</strong>：封装是将对象的属性（数据）和行为（方法）打包在一起，形成一个相对独立的单元。封装可以隐藏对象的内部实现细节，只向外界提供有限的访问接口，从而增强了代码的安全性和可维护性。</p>
+</li>
+<li><p><strong>多态（Polymorphism）</strong>：多态是指相同的消息可以被不同类型的对象接收和处理，实现了同一接口的多种不同表现形式。多态分为编译时多态（静态多态，如函数重载）和运行时多态（动态多态，如虚函数）两种形式，可以提高代码的灵活性和可扩展性。</p>
+</li>
+<li><p><strong>继承（Inheritance）</strong>：继承是指一个类（子类）可以继承另一个类（父类）的属性和方法。通过继承，子类可以重用父类的代码，并在此基础上进行扩展和修改，减少了代码的重复性，提高了代码的可维护性和扩展性。</p>
+</li>
+<li><p><strong>代码的可重用性（Code Reusability）</strong>：面向对象编程提倡将问题分解为多个独立的对象，并通过组合、继承等方式组合这些对象来解决问题。这种模块化的设计使得代码更容易重用，可以在不同的项目中使用相同的对象或对象集合来实现相似的功能，提高了开发效率和代码的可维护性。</p>
+</li>
+</ol>
+</blockquote>
+<p>2、过程性编程</p>
+<blockquote>
+<p>过程性编程是一种以过程或函数为中心的编程范式，程序主要由一系列按照顺序执行的函数或过程组成。在过程性编程中，主要考虑的是问题的解决步骤和数据的处理方式，而不是将数据和行为封装在对象中。</p>
+<p>下面是过程性编程的一般步骤以及对数据的处理方式：</p>
+<ol>
+<li><p><strong>定义问题解决步骤</strong>：在过程性编程中，首先要明确问题的解决步骤，确定程序的主要流程和执行顺序。通常会将问题分解为一系列逻辑上相关的步骤或子任务，并按照顺序编写对应的函数或过程来实现这些步骤。</p>
+</li>
+<li><p><strong>表示数据</strong>：其次，需要考虑如何表示数据以及数据之间的关系。在过程性编程中，数据通常以基本数据类型或结构体的形式进行表示。数据之间的关系通过函数参数的传递来实现。</p>
+</li>
+<li><p><strong>文件存储和读取</strong>：在程序设计中，用户可能希望将数据存储在文件中，以便稍后读取或持久化数据。在过程性编程中，可以使用文件操作函数来实现数据的存储和读取。例如，使用文件输入输出流来将数据写入文件或从文件中读取数据。</p>
+</li>
+</ol>
+<p>在面向对象编程中，除了考虑数据的表示方式外，还需要考虑如何使用数据和数据之间的关系。具体来说，面向对象编程需要关注以下几个方面：</p>
+<ol>
+<li><p><strong>数据和行为的封装</strong>：面向对象编程将数据和操作数据的行为封装在对象中，通过定义类来描述对象的属性和方法。这样可以更好地组织和管理代码，提高代码的可维护性和可重用性。</p>
+</li>
+<li><p><strong>数据的使用</strong>：面向对象编程强调对象之间的交互和协作，通过定义对象之间的关系和接口来实现数据的共享和交换。对象可以通过方法调用来访问和修改数据，从而实现对数据的有效使用。</p>
+</li>
+<li><p><strong>数据的持久化</strong>：面向对象编程通常使用对象关系映射（ORM）或序列化技术来实现数据的持久化。这样可以将对象保存到数据库中或将对象序列化为文件，以便稍后读取或恢复对象状态。</p>
+</li>
+</ol>
+</blockquote>
+<p>3、类是用户定义类型的定义，类规范由两个部分组成:</p>
+<blockquote>
+<p>类是面向对象编程的基本构建块，它是一种用户自定义的数据类型，用于描述具有相似属性和行为的对象集合。一个类的规范由两个主要部分组成：</p>
+<ol>
+<li><p><strong>类声明（Class Declaration）</strong>：类声明部分描述了类的成员变量（数据成员）和成员函数（方法），但并不提供实现细节。在类声明中，可以定义公有、私有和保护的成员，以及静态成员、常量成员等。类声明通常放在头文件中，用于向外界提供类的接口。</p>
+<ul>
+<li><p><strong>数据成员（Member Variables）</strong>：描述了类的对象的属性或状态。数据成员可以是任何合法的数据类型，包括基本数据类型、数组、结构体、类对象等。</p>
+</li>
+<li><p><strong>成员函数（Member Functions）</strong>：描述了类的对象的行为或操作。成员函数定义了对象可以执行的操作，包括访问和修改数据成员、执行特定的计算或处理等。成员函数可以分为公有成员函数、私有成员函数和保护成员函数等，以控制对类的接口的访问权限。</p>
+</li>
+</ul>
+</li>
+<li><p><strong>类方法定义（Class Method Definition）</strong>：类方法定义部分实现了类声明中的成员函数，即描述了如何实现类的接口。类方法定义通常放在源文件中，包含了成员函数的具体实现代码。在类方法定义中，可以通过函数体来实现类的成员函数，包括对数据成员的操作、具体的计算逻辑等。</p>
+<ul>
+<li><p><strong>成员函数实现（Member Function Implementation）</strong>：在类方法定义中，编写了成员函数的具体实现代码。在成员函数实现中，可以通过成员函数的参数和数据成员来操作和处理数据，实现类的特定功能。</p>
+</li>
+<li><p><strong>成员函数内联（Member Function Inline）</strong>：可以选择将成员函数的定义直接放在类声明中，并在函数声明前加上 <code>inline</code> 关键字，使得成员函数变成内联函数。内联函数的定义在类声明中，可以提高函数调用的效率，但会增加代码的长度。</p>
+</li>
+</ul>
+</li>
+</ol>
+</blockquote>
+<p>4、内联函数:</p>
+<blockquote>
+<p>其定义位于类声明中的函数自动成为内联函数，也可以在类声明外定义内联函数，但要加上关键字inline</p>
+</blockquote>
+<ol>
+<li><p><strong>类构造函数</strong>：</p>
+<ul>
+<li>类构造函数（Constructor）是一种特殊的成员函数，用于在创建新对象时初始化对象的数据成员。构造函数的名称与类名相同，没有返回类型（包括void），因为它们自动返回类的实例。构造函数可以有参数，用于向对象传递初始值。</li>
+<li>构造函数的作用是确保对象在创建时具有合适的初始状态，通常用于初始化对象的数据成员、分配资源等操作。构造函数在对象创建时自动调用，不能手动调用。如果没有显式定义构造函数，编译器会自动生成默认构造函数（不带参数的构造函数）。</li>
+<li>构造函数的参数名不能与类的成员变量名相同，但可以与函数参数名相同，因为构造函数参数是局部变量，不会与类的成员变量冲突。</li>
+</ul>
+</li>
+<li><p><strong>析构函数</strong>：</p>
+<ul>
+<li>类析构函数（Destructor）是类的一种特殊成员函数，用于在对象销毁时执行必要的清理工作，例如释放动态分配的内存、关闭文件等。析构函数的名称与类名相同，前面加上波浪号“~”，没有参数和返回类型。</li>
+<li>析构函数在对象销毁时自动调用，通常用于清理对象使用的资源，防止内存泄漏和资源泄漏。如果不显式定义析构函数，编译器会生成默认析构函数，它不执行任何操作。</li>
+<li>析构函数通常在对象的生命周期结束时调用，例如对象超出作用域、delete操作符释放对象等。</li>
+</ul>
+</li>
+<li><p><strong>this指针</strong>：</p>
+<ul>
+<li>this指针是C++中的一个隐含的指针，它指向当前对象的地址。this指针可以在成员函数中使用，用于访问当前对象的数据成员和成员函数。</li>
+<li>当成员函数涉及到两个对象进行操作时，需要使用this指针来区分不同的对象，确保对正确的对象进行操作。</li>
+<li>this指针是一个常量指针，不能被修改，因此它可以被声明为常量成员函数的隐含参数。在常量成员函数中，this指针指向的对象是常量对象，因此不能修改对象的数据成员。</li>
+</ul>
+</li>
+<li><p><strong>类如何实现抽象、封装和数据隐藏</strong>：</p>
+<ul>
+<li><strong>抽象</strong>：类通过提供公有接口和实现细节的隐藏来实现抽象。类的成员函数定义了类的公有接口，外部代码只能通过这些公有接口来访问类的功能，而不需要了解类的内部实现细节。</li>
+<li><strong>封装</strong>：封装通过将数据成员和成员函数打包在一起，形成一个相对独立的单元。类的数据成员可以被声明为私有的，只能通过类的成员函数来访问，从而隐藏了数据的具体实现细节，提高了代码的安全性和可维护性。</li>
+<li><strong>数据隐藏</strong>：数据隐藏通过将类的数据成员声明为私有的，只能通过类的成员函数来访问，从而避免了外部代码直接访问和修改数据成员。外部代码只能通过类的公有接口来间接访问数据成员，实现了数据的隐藏和保护。</li>
+</ul>
+</li>
+<li><p><strong>默认构造函数</strong>：默认构造函数是没有参数或所有参数都有默认值的构造函数。当类没有显式定义构造函数时，编译器会自动生成默认构造函数。默认构造函数用于创建对象时不需要提供任何参数，可以在声明对象时不进行初始化。</p>
+</li>
+<li><strong>运算符重载</strong>：运算符重载是C++中一种形式的多态。它允许程序员重新定义运算符的含义，使得同一个运算符能够用于不同类型的操作数，以实现更加灵活的运算。通过运算符重载，可以定义自定义类型的运算符行为，提高代码的可读性和可维护性。</li>
+<li><strong>友元函数</strong>：友元函数是指被声明为类的友元的非成员函数。通过友元函数，可以赋予该函数与类的成员函数相同的访问权限，使其能够访问类的私有成员。类可以将其他函数声明为友元函数，从而授权这些函数访问类的私有数据，但友元函数本身并不是类的成员函数。</li>
+<li><strong>转换函数</strong>：转换函数是一种特殊的成员函数，用于实现类型转换。它允许将对象从一种类型转换为另一种类型。转换函数必须是类的成员函数，不能指定返回类型，也不能有参数。</li>
+<li><strong>复制构造函数</strong>：复制构造函数用于将一个对象的值复制到新创建的对象中。它是一种特殊的构造函数，用于在对象复制或传递时调用。复制构造函数通常以引用方式接受参数，并通过参数初始化新对象的数据成员。</li>
+<li><strong>默认复制构造函数</strong>：默认复制构造函数是由编译器自动生成的复制构造函数。它逐个将对象的成员赋值给新对象，包括静态成员。这种赋值方式也称为浅复制，适用于简单的数据类型或指针。</li>
+<li><strong>显式复制构造函数</strong>：显式复制构造函数也称为深度复制构造函数。它是由程序员显式定义的复制构造函数，用于处理特定的复制需求，例如在对象包含动态分配内存或其他资源时。显式复制构造函数可以实现深度复制，确保新对象拥有独立的资源副本。</li>
+<li><strong>类继承</strong>：类继承是面向对象编程中的重要概念，它允许从已有的类派生出新的类，新类称为派生类，原有类称为基类或父类。派生类继承了基类的特征和行为，并可以在此基础上添加新的特性或行为。派生类可以直接访问基类的公有成员和保护成员，但不能直接访问基类的私有成员。要访问基类的私有成员，必须通过基类的公有或保护成员函数进行间接访问。</li>
+<li><p><strong>C++的三种继承方式</strong>：</p>
+<ul>
+<li><strong>公有继承（Public Inheritance）</strong>：派生类继承了基类的公有成员和保护成员，基类的私有成员在派生类中不可访问。公有继承体现了”is-a”关系，即派生类对象也是基类对象。</li>
+<li><strong>保护继承（Protected Inheritance）</strong>：派生类继承了基类的保护成员，基类的公有成员和私有成员在派生类中不可访问。保护继承对外部对象隐藏了基类的公有成员，但仍然可以被派生类访问。</li>
+<li><strong>私有继承（Private Inheritance）</strong>：派生类继承了基类的私有成员，基类的公有成员和保护成员在派生类中不可访问。私有继承完全隐藏了基类的接口和实现细节，只能通过派生类的成员函数来访问基类的成员。</li>
+</ul>
+</li>
+<li><p><strong>多态和公有继承</strong>：</p>
+<ul>
+<li>多态（Polymorphism）是面向对象编程中的一个重要概念，指同一个方法在不同对象中的行为不同。多态可以通过函数重载、运算符重载和虚函数等方式实现。</li>
+<li>公有继承可以实现多态性，尤其是通过虚函数（Virtual Function）实现的动态多态性。在公有继承中，基类中的虚函数可以被派生类重新定义，从而实现不同对象对同一方法的不同行为。当通过基类的指针或引用调用虚函数时，程序会根据指针或引用所指向的对象的实际类型来确定调用哪个版本的虚函数，从而实现多态性。</li>
+<li>使用虚函数是实现多态性的一种常见方式，因为它允许在运行时动态地确定函数的调用版本，而不是在编译时静态地绑定函数的调用版本。这样可以实现更加灵活和可扩展的代码设计，提高代码的可维护性和可扩展性。</li>
+</ul>
+</li>
+<li><p><strong>派生类不能从基类继承的内容</strong>：</p>
+<ul>
+<li>派生类不能继承基类的构造函数、析构函数、赋值运算符重载函数以及友元函数。</li>
+<li>构造函数和析构函数不是普通的成员函数，它们是用于创建和销毁对象的特殊函数，在派生类中不能直接继承。</li>
+<li>赋值运算符重载函数和友元函数是与类关联的函数，不是类的成员函数，因此也不能继承。</li>
+</ul>
+</li>
+<li><p><strong>派生类是否需要定义构造函数</strong>：</p>
+<ul>
+<li>是的，每个类都必须至少有一个构造函数。即使派生类没有添加任何数据成员，也需要定义一个构造函数，用于初始化基类的部分。</li>
+</ul>
+</li>
+<li><p><strong>派生类何时需要定义赋值运算符</strong>：</p>
+<ul>
+<li>如果派生类具有指针成员，并且在构造函数中使用了动态内存分配，那么通常需要定义赋值运算符重载函数。</li>
+<li>当派生类对象被赋值给另一个派生类对象时，需要确保指针成员的正确拷贝和资源释放，此时定义赋值运算符重载函数可以保证对象赋值的正确性。</li>
+</ul>
+</li>
+<li><p><strong>按引用传递对象和按值传递对象的效率比较</strong>：</p>
+<ul>
+<li>按引用传递对象比按值传递对象的效率更高。这是因为按引用传递对象不会复制整个对象，而是传递对象的引用（地址），从而节省了内存和时间。</li>
+<li>另外，按引用传递对象可以确保函数调用从虚函数中受益，因为传递的是对象的引用，而不是对象的副本。这可以避免对象切片（Object Slicing）的问题，提高了程序的健壮性和可扩展性。</li>
+</ul>
+</li>
+<li><p><strong>使用<code>explicit</code>关闭隐式转换</strong>：</p>
+<ul>
+<li>在C++中，<code>explicit</code>关键字用于修饰单参数的构造函数，以防止隐式类型转换。当构造函数被声明为<code>explicit</code>时，它只能用于显式地创建对象，不能被用于隐式类型转换。</li>
+<li>通过使用<code>explicit</code>关键字，可以避免意外的类型转换，提高代码的清晰度和安全性。</li>
+</ul>
+</li>
+<li><p><strong>关键字<code>template&lt;class Type&gt;</code>用于定义模板</strong>：</p>
+<ul>
+<li><code>template&lt;class Type&gt;</code>是C++中定义模板的关键字，它用于声明一个模板类或模板函数。通过模板，可以编写通用的代码，使得代码具有更好的复用性和灵活性。</li>
+<li>模板类和模板函数可以根据不同的类型参数生成不同的实例，从而实现对不同数据类型的支持。</li>
+</ul>
+</li>
+<li><p><strong>虚基类的概念</strong>：</p>
+<ul>
+<li>虚基类用于解决多重继承中的菱形继承问题。当一个类同时从两个不同的路径继承同一个基类时，如果这两个基类中含有相同的成员，派生类将会包含两份相同的成员，导致二义性。</li>
+<li>为了避免这种二义性，可以将这个基类声明为虚基类。虚基类的成员在派生类中只有一份拷贝，从而消除了二义性。在继承体系中，最终派生类对虚基类的构造负责，保证了基类成员的唯一性。</li>
+</ul>
+</li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://totorocatcat.top">Totoro</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://totorocatcat.top/2024/05/31/c-%E5%B0%8F%E7%BB%93/">http://totorocatcat.top/2024/05/31/c-%E5%B0%8F%E7%BB%93/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://totorocatcat.top" target="_blank">Totoroの旅</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%9C%89%E8%B6%A3/">有趣</a></div><div class="post_share"><div class="social-share" data-image="https://api.r10086.com/%E5%9B%BE%E5%8C%85webp/%E5%8A%A8%E6%BC%AB%E7%BB%BC%E5%90%881/81617-106.webp" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2024/05/31/C-%E6%9C%9F%E6%9C%AB%E8%80%83%E8%AF%95/" title="C++期末考试"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.likepoems.com/resource/pc/68e21cc80a435c28fdf4c47e4652ebc17.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">C++期末考试</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2024/03/14/%E6%95%B0%E5%AD%97%E8%AE%BE%E8%AE%A1%E4%B8%8E%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%EF%BC%88%E9%9A%8F%E7%BC%98%E6%9B%B4%E6%96%B0%EF%BC%89/" title="数字设计与计算机体系结构（随缘更新）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/ushio-api-img-moe@5.0.18/img_183_774x1040_349.986572265625_null_normal.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-03-14</div><div class="title">数字设计与计算机体系结构（随缘更新）</div></div></a></div><div><a href="/2024/04/20/%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/" title="数字逻辑期末复习"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/ushio-api-img-moe@5.0.0/img_7_2000x1102_299.719970703125_null_normal.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-04-20</div><div class="title">数字逻辑期末复习</div></div></a></div><div><a href="/2024/05/31/C-%E6%9C%9F%E6%9C%AB%E8%80%83%E8%AF%95/" title="C++期末考试"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.likepoems.com/resource/pc/68e21cc80a435c28fdf4c47e4652ebc17.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-05-31</div><div class="title">C++期末考试</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/px3.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Totoro</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">332</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">6</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">14</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/4512abc"><i class="fab fa-github"></i><span>🛴前往小窝......</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/4512abc" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:4512abc@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到龙猫の小窝</div></div><div class="sticky_layout"></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 By Totoro</div><div class="footer_custom_text">I wish you to become your own sun, no need to rely on who's light.<p><a target="_blank" href="https://hexo.io/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&logo=hexo" title="博客框架为Hexo"></a>&nbsp;<a target="_blank" href="https://butterfly.js.org/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&logo=bitdefender" title="主题采用butterfly"></a>&nbsp;<a target="_blank" href="https://www.jsdelivr.com/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&logo=jsDelivr" title="本站使用JsDelivr为静态资源提供CDN加速"></a> &nbsp;<a target="_blank" href="https://vercel.com/ "><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Hosted-Vervel-brightgreen?style=flat&logo=Vercel" title="本站采用双线部署，默认线路托管于Vercel"></a>&nbsp;<a target="_blank" href="https://vercel.com/ "><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Hosted-Coding-0cedbe?style=flat&logo=Codio" title="本站采用双线部署，联通线路托管于Coding"></a>&nbsp;<a target="_blank" href="https://github.com/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&logo=GitHub" title="本站项目由Gtihub托管"></a>&nbsp;<a target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&logo=Claris" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"></a></p></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="/js/tw_cn.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@5.2.0/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'HT1PalaKkPaG1UqAXBhJXIu8-gzGzoHsz',
+      appKey: 'iT0TnVVAwf9zuZ7NqwclQItY',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://cdn.jsdelivr.net/npm/valine@1.5.1/dist/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><script defer src="/js/light.js"></script><canvas id="universe"></canvas><script defer src="/js/universe.js"></script><script async src="/js/title.js"></script><script defer src="https://npm.elemecdn.com/jquery@latest/dist/jquery.min.js"></script><script defer data-pjax src="/js/cat.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="30" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/click-show-text.min.js" data-mobile="true" data-text="只此无为身，且前行,忘记过去的人注定重蹈覆辙,我是我，我靠自己站立，我会做好自身,如果我睡大觉，谁给我摘月亮呢,假期和朋友，是人生中顶好的两样东西啊。,去爱，去失去，要不负相遇,没什么想不想通的，只是固执而已,我们深爱星辰，乃至不惧夜的黑,吃，喝，享受幸福，接受奇迹,浊水若长流，自清澄,雅俗共赏,总会有什么也不想的幸福时刻吧,时间顺流而下，生活逆流而上,悟已往之不谏，知来者之可追,希望你的小世界里,山花烂漫,茶酒俱全,安宁清淡,明朗欢愉" data-fontsize="18px" data-random="false" async="async"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.12.0"></script></div></div><!-- hexo injector body_end start --><script data-pjax>
+    function butterfly_categories_card_injector_config(){
+      var parent_div_git = document.getElementById('recent-posts');
+      var item_html = '<style>li.categoryBar-list-item{width:32.3%;}.categoryBar-list{max-height: 380px;overflow:auto;}.categoryBar-list::-webkit-scrollbar{width:0!important}@media screen and (max-width: 650px){.categoryBar-list{max-height: 320px;}}</style><div class="recent-post-item" style="height:auto;width:100%;padding:0px;"><div id="categoryBar"><ul class="categoryBar-list"><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_12.webp);"> <a class="categoryBar-list-link" href="categories/刷题计划/">刷题计划</a><span class="categoryBar-list-count">72</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_13.webp);"> <a class="categoryBar-list-link" href="categories/ACMの旅/">ACMの旅</a><span class="categoryBar-list-count">75</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_14.webp);"> <a class="categoryBar-list-link" href="categories/编程基础/">编程基础</a><span class="categoryBar-list-count">34</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_17.webp);"> <a class="categoryBar-list-link" href="categories/数学建模/">数学建模</a><span class="categoryBar-list-count">31</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_18.webp);"> <a class="categoryBar-list-link" href="categories/前端の旅/">前端の旅</a><span class="categoryBar-list-count">15</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_19.webp);"> <a class="categoryBar-list-link" href="categories/CS知识/">CS知识</a><span class="categoryBar-list-count">2</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_20.webp);"> <a class="categoryBar-list-link" href="categories/个人安排/">个人安排</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_21.webp);"> <a class="categoryBar-list-link" href="categories/文学/">文学</a><span class="categoryBar-list-count">29</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_22.webp);"> <a class="categoryBar-list-link" href="categories/杂项/">杂项</a><span class="categoryBar-list-count">6</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_22.webp);"> <a class="categoryBar-list-link" href="categories/少年游/">少年游</a><span class="categoryBar-list-count">2</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_23.webp);"> <a class="categoryBar-list-link" href="categories/数据结构/">数据结构</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_24.webp);"> <a class="categoryBar-list-link" href="categories/C-实训/">C++实训</a><span class="categoryBar-list-count">8</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_25.webp);"> <a class="categoryBar-list-link" href="categories/期末の旅/">期末の旅</a><span class="categoryBar-list-count">13</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_26.webp);"> <a class="categoryBar-list-link" href="categories/牛客の旅/">牛客の旅</a><span class="categoryBar-list-count">43</span><span class="categoryBar-list-descr"></span></li></ul></div></div>';
+      console.log('已挂载butterfly_categories_card')
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+      }
+    if( document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+    butterfly_categories_card_injector_config()
+    }
+  </script><script data-pjax>
+  function butterfly_swiper_injector_config(){
+    var parent_div_git = document.getElementById('recent-posts');
+    var item_html = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms;"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2024/01/29/诗兴大发/" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://source.fomal.cc/img/default_cover_69.webp" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-01-29</span><a class="blog-slider__title" href="2024/01/29/诗兴大发/" alt="">诗兴大发</a><div class="blog-slider__text">未觉，却是中二少年的诗仙梦</div><a class="blog-slider__button" href="2024/01/29/诗兴大发/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2024/02/13/数据结构与算法-1/" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/ushio-api-img-moe@5.0.64/img_649_702x1000_300_null_normal.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-02-13</span><a class="blog-slider__title" href="2024/02/13/数据结构与算法-1/" alt="">数据结构与算法(总)</a><div class="blog-slider__text">方便大二看（）</div><a class="blog-slider__button" href="2024/02/13/数据结构与算法-1/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2024/02/24/常见优化技巧/" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://source.fomal.cc/img/default_cover_238.webp" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-02-24</span><a class="blog-slider__title" href="2024/02/24/常见优化技巧/" alt="">常见优化技巧</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" href="2024/02/24/常见优化技巧/" alt="">详情   </a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载butterfly_swiper')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_swiper_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_swiper_injector_config();
+  }
+  </script><script defer src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.js"></script><script defer data-pjax src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper_init.js"></script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>
