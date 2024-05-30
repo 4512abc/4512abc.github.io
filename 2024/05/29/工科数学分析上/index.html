@@ -1,0 +1,641 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>工科数学分析上 | Totoroの旅</title><meta name="author" content="Totoro"><meta name="copyright" content="Totoro"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="工科数学分析上CSDN上写的拿来救一下下学期的自己，顺便勉励自己再写一篇….. ————————引言 第一节 集合与实数集比较重要的是实数具有稠密性。 即在两个实数之间存在无穷个其他实数， 然后是绝对值不等式   第一个经常用来放缩不等式，证明极限 第二个则在一道课后题出现过，证明拿到a+2b的好像是（找到原题了） 这道题需要将我们要证明的点泰勒展开，然后用三角不等式，比较难（我不看答案不会写）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="工科数学分析上">
+<meta property="og:url" content="http://totorocatcat.top/2024/05/29/%E5%B7%A5%E7%A7%91%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90%E4%B8%8A/index.html">
+<meta property="og:site_name" content="Totoroの旅">
+<meta property="og:description" content="工科数学分析上CSDN上写的拿来救一下下学期的自己，顺便勉励自己再写一篇….. ————————引言 第一节 集合与实数集比较重要的是实数具有稠密性。 即在两个实数之间存在无穷个其他实数， 然后是绝对值不等式   第一个经常用来放缩不等式，证明极限 第二个则在一道课后题出现过，证明拿到a+2b的好像是（找到原题了） 这道题需要将我们要证明的点泰勒展开，然后用三角不等式，比较难（我不看答案不会写）">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://npm.elemecdn.com/ushio-api-img-moe@5.0.90/img_906_659x909_96_null_normal.jpg">
+<meta property="article:published_time" content="2024-05-29T11:54:15.000Z">
+<meta property="article:modified_time" content="2024-05-30T12:35:02.411Z">
+<meta property="article:author" content="Totoro">
+<meta property="article:tag" content="兴趣&amp;提高">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://npm.elemecdn.com/ushio-api-img-moe@5.0.90/img_906_659x909_96_null_normal.jpg"><link rel="shortcut icon" href="https://source.fomal.cc/img/default_cover_227.webp"><link rel="canonical" href="http://totorocatcat.top/2024/05/29/%E5%B7%A5%E7%A7%91%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90%E4%B8%8A/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta/><link rel="stylesheet" href="/css/index.css?v=4.12.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  noticeOutdate: {"limitDay":365,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":false,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体中文","cht_to_chs":"你已切换为简体中文","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"top-right"},
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '工科数学分析上',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-05-30 20:35:02'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const now = new Date()
+          const hour = now.getHours()
+          const isNight = hour <= 6 || hour >= 18
+          if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/universe.css"><link rel="stylesheet" href="/css/scrollbar.css"><link rel="stylesheet" href="/css/cat.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-double-row-display@1.00/cardlistpost.min.css"/>
+<style>#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags:before {content:"\A";
+  white-space: pre;}#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags > .article-meta__separator{display:none}</style>
+<link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiperstyle.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-categories-card@1.0.0/lib/categorybar.css"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/px3.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">330</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">6</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">14</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-envelope-open"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 趣味</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://npm.elemecdn.com/ushio-api-img-moe@5.0.90/img_906_659x909_96_null_normal.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="Totoroの旅"><span class="site-name">Totoroの旅</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-envelope-open"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 趣味</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">工科数学分析上<a class="post-edit-link" href="null_posts/工科数学分析上.md" title="编辑" target="_blank"><i class="fas fa-pencil-alt"></i></a></h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-05-29T11:54:15.000Z" title="发表于 2024-05-29 19:54:15">2024-05-29</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-05-30T12:35:02.411Z" title="更新于 2024-05-30 20:35:02">2024-05-30</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%9C%9F%E6%9C%AB%E3%81%AE%E6%97%85/">期末の旅</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">3.6k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>10分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="工科数学分析上"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="工科数学分析上"><a href="#工科数学分析上" class="headerlink" title="工科数学分析上"></a>工科数学分析上</h1><p>CSDN上写的拿来救一下下学期的自己，顺便勉励自己再写一篇…..</p>
+<p>————————引言</p>
+<h2 id="第一节-集合与实数集"><a href="#第一节-集合与实数集" class="headerlink" title="第一节 集合与实数集"></a>第一节 集合与实数集</h2><p><strong>比较重要的是实数具有稠密性。</strong></p>
+<p><strong>即在两个实数之间存在无穷个其他实数，</strong></p>
+<p><strong>然后是绝对值不等式</strong></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/ef09d64eedca4976b7b3b5727825bc3c.png" alt="img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/408fa7f282654fc88b19589d1d22df9b.png" alt="img"></p>
+<p>第一个经常用来放缩不等式，证明极限</p>
+<p>第二个则在一道课后题出现过，证明拿到a+2b的好像是（找到原题了）</p>
+<p>这道题需要将我们要证明的点泰勒展开，然后用三角不等式，比较难（我不看答案不会写）</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/56fb79a358a044cca698614e8386001a.png" alt="img"></p>
+<p><strong>伯努利**</strong>(Bernoulli)<strong>**不等式</strong></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/cd3476ce793c45b1934ece356fe4dead.png" alt="img"></p>
+<p><strong>平均值不等式</strong></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/25538c7f77124b98804d525b095c9be4.png" alt="img"></p>
+<p>再掌握一下左邻域和右邻域的表示方法，可能会作为第一题出现</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/734852c896ae4bd090a54a0a027ccaa7.png" alt="img"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/f4e527a9deda49fe92aee0101a56d4fe.png" alt="img"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/183b3c5f834840c79eea298b86427749.png" alt="img"></p>
+<p>还有一个就是确界原理，</p>
+<p>一个非空有上(下)界的数集必存在上(下)确界.</p>
+<p>不过不怎么考就是说，感觉上界下界的应用集中在那个单调有界收敛定理，而不是只是证明个上确界。</p>
+<p>比如这种题</p>
+<ol>
+<li>设<em>x<strong>1</strong>=<strong>5</strong>,<strong>x</strong>n<strong>=根号（</strong>5<strong>x</strong>n<strong>-</strong>1）<strong>,</strong>n=2,3,⋯</em>，求<em>lim<strong>n</strong>→∞**xn</em>.</li>
+</ol>
+<p>先证明有上界：</p>
+<p>x1&lt;5成立</p>
+<p>假设xn&lt;5</p>
+<p>则xn+1&lt;5。</p>
+<p>再证明单增，除过去，根据刚刚结论即可</p>
+<p>再两边取无穷就行</p>
+<p>感觉泥工就喜欢考这个，不过这道比较常规。</p>
+<p>还有一些留在单调有界那里罢。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/c76dea37730e4128bd82dd9dd37bca0e.png" alt="img"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/e8f977093bbc4377b5d837f0a57d8df7.png" alt="img"></p>
+<h2 id="第二节-映射与函数"><a href="#第二节-映射与函数" class="headerlink" title="第二节 映射与函数"></a><strong>第二节 映射与函数</strong></h2><p>不见得会考什么满射，单射，一一单射。</p>
+<p>满射就是y全部有对应</p>
+<p>单射就是每个X对应的y不一样</p>
+<p>后者就是两个都有</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/2f27b48767d64dadae86865affc93688.png" alt="img"></p>
+<p>有一种判断函数是否相同的题型，注意定义域和一些其他的就行。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/f59c65ddfa20495ea9b200fedfef64f9.png" alt="img"></p>
+<p>上面是换元思想的初步体现</p>
+<p>下面有一个比较重要的函数</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/b5762a7d70cc4c2a962737e485e37c32.png" alt="img"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/5d873b3272c54d88a07fea13f3fa62c0.png" alt="img"></p>
+<p><strong>(<em>*</em></strong>C/<strong>*</strong>)<strong> </strong>完全相同的<strong>**;</strong>   </p>
+<p><strong>有一道比较坑的题目，贴出来记忆一下罢。</strong></p>
+<p> <strong>这一部分考试基本不出题（我觉得）</strong></p>
+<h2 id="第一节-函数极限的概念"><a href="#第一节-函数极限的概念" class="headerlink" title="第一节 函数极限的概念"></a><strong>第一节 函数极限的概念</strong></h2><p>主要是这<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/00414fead7bd4f9197a332f2a92d1e49.png" alt="img"></p>
+<p>其中</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/3ed5a6077aa242298d96448ab427667d.png" alt="img"></p>
+<p>一个与之相反的定义，不过我还是认为这个题没他位置</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/68e1875169c446509d66a81f501482fd.png" alt="img"></p>
+<p>一道例题，了解一下就行</p>
+<p>题型：</p>
+<ul>
+<li><ul>
+<li>函数极限<em>lim<strong>x</strong>→-∞<strong>f</strong>x=A</em>的<em>ε**-X</em>定义是</li>
+<li><em>∀G&gt;0,∃δ&gt;0,∀x:-δ&lt;x-<strong>x</strong>0&lt;0</em>,有<em>f<strong>x</strong>&lt;**-G</em>；</li>
+<li>函数值无穷引入G</li>
+<li>定义域无穷引入N</li>
+<li>左邻域加－</li>
+</ul>
+</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/3eaedef3183748f69f642a2ef9cdec56.png" alt="img"></p>
+<p>注意上一章节讲述的左极限和右极限的书写，还有本题的不等式放缩，都是上一章的内容。</p>
+<p>还有一种题型会考到，就是左右极限相等才连续，一般结合可导一起考察。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/4df5b18b93e14138b1d3cb7e96fdae98.png" alt="img"></p>
+<p>这道进行有理化之后可以进行适当的放缩，然后即可。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/debdb8f360eb468fbc372f98d3ac680f.png" alt="img"></p>
+<p>这道也是标准的做法，这里应该是默认n&gt;=1了，当成数列了应该是，不然这样放估计有点问题。</p>
+<h2 id="第二节-数列极限的概念"><a href="#第二节-数列极限的概念" class="headerlink" title="第二节 数列极限的概念"></a><strong>第二节 数列极限的概念</strong></h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/ebee83fd19d1450e9bee2443edfdfd21.png" alt="img"></p>
+<p><strong>(**</strong>函数极限与数列极限的关系<strong><strong>)(Heine</strong></strong>定理<strong>**)</strong></p>
+<p><strong>海涅定理的精髓感觉就是我可以取子列证反。</strong></p>
+<p><strong>一般是取两个子列，各自趋近于正无穷，来证伪。</strong></p>
+<h2 id="第三节-极限的运算法则"><a href="#第三节-极限的运算法则" class="headerlink" title="第三节 极限的运算法则"></a><strong>第三节 极限的运算法则</strong></h2><p><strong>感觉没什么好讲的啊（蒟蒻保命）</strong></p>
+<p>感觉会无穷小，会有理化，应该就差不多了，偶尔需要个取对（这个经常考）。</p>
+<p>比较需要注意的可能反而是渐近线。</p>
+<p>三条渐近线理解一下。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/8ae177dbfd8043df8a0ebeaa2d86d885.png" alt="img"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/8653635b7ee9481793a885dbbc901862.png" alt="img"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/6cbb6a7337f64f5d9c0bac6f05ca4875.png" alt="img"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/98b53d5dd9a840d0a2b30ddf8c08e1e3.png" alt="img"></p>
+<p>泰勒公式求极限，实际上这题可以换n分之一为t然后进行洛必达，可以一试。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/ddc8bf984b1d4a51b18c553e2e08c1c2.png" alt="img"></p>
+<p>这里需要用到积分的换元才能做下去，积分的策略是必须求导，然后观察。</p>
+<p>还有一道和这道一样的，也是需要先把里面的令成u才能做</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/620665f4d81f4d9d8f7c03bab257ec6c.png" alt="img"></p>
+<p>洛必达之后进行倒变换可以换成一类重要极限</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/1cd4f67774b2453fb61abc978f342819.png" alt="img"></p>
+<ol>
+<li>求极限<em>lim<strong>x</strong>→<strong>0</strong>arctan<strong>2</strong>x<strong>ln</strong>1<strong>-</strong>x<strong>2</strong>e<strong>x</strong>2<strong>+2</strong>cos<strong>x</strong>-3</em></li>
+</ol>
+<p>先无穷小再泰勒.、</p>
+<ul>
+<li><p>极限</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/4acf8712662e42ea94b557c2a33f899a.png" alt="img"></p>
+<p>​        </p>
+<p>；     </p>
+<ul>
+<li>本题就需要变成e为底的，再化简采用洛必达等方法</li>
+<li></li>
+<li>下面这个直接洛必达就行</li>
+<li>极限<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/389a2cd9235541d88acf7ce44903abde.png" alt="img">；</li>
+</ul>
+</li>
+</ul>
+<p>也是先等价无穷小再进行洛必达，因为有积分</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/b6b98a61d0f544eb9b61bd8a1e35e406.png" alt="img"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/b5b6708fd8384addb323080e5e03bad6.png" alt="img"></p>
+<p>洛必达就可以。</p>
+<h2 id="第四节-极限的性质与-两个重要极限"><a href="#第四节-极限的性质与-两个重要极限" class="headerlink" title="第四节 极限的性质与      两个重要极限"></a><strong>第四节 极限的性质与      两个重要极限</strong></h2><p>夹逼性，和保号性可能会考</p>
+<p>两个重要极限注意代换即可</p>
+<p>一般都是直接考上面那一种题型了</p>
+<p>无穷小部分主要夹杂在这之中。</p>
+<h2 id="第五节-实数基本定理"><a href="#第五节-实数基本定理" class="headerlink" title="第五节 实数基本定理"></a><strong>第五节 实数基本定理</strong></h2><p><strong>一、单调有界收敛定理</strong></p>
+<p><strong>经常考</strong></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/74572f6bf6f14028860d94c1dca31f75.png" alt="img"></p>
+<p>可以先求出x2判断一下单调性，然后再进行证明。</p>
+<p>这样不至于连求上界还是下界都不知道。</p>
+<p>我们这样目标就很明确，就是求下界和单调减少，</p>
+<p>xn&gt;0显然下界就有了。</p>
+<p>本题单调不太好求出，需要进行一个递推，才能证明得出，之后取极限即可。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/668ffb1780074df9903ec7fd6c42c524.png" alt="img"></p>
+<p>同样也是，我们可以求出x2判断出是单调减少，xn又大于等于根号2，就先有下界了，然后求单减就比较好求了，总体步骤就是这样。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/35e0a19b766b41e888a1fe88f5297251.png" alt="img"></p>
+<p>显然xn单增，这是可以观察得到的，但上界如何证明呢？</p>
+<p>a+xn&gt;xn的平方</p>
+<p>那么可以证明有上界，再取极限就行了。</p>
+<p>致密性定理：每个有界数列都有收敛的子列</p>
+<p>用的比较多的实际上是他的逆定理。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/e1826e8495f641f7bf75b2f77a0ca466.png" alt="img"></p>
+<p>柯西收敛</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/772bc31c3ef249d9b52ea16fa04cc123.png" alt="img"></p>
+<h2 id="第七节-连续-与间断"><a href="#第七节-连续-与间断" class="headerlink" title="第七节  连续**与间断**"></a><strong>第七节</strong>  <strong>连续**</strong>与间断**</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/601ba4ff11494880847f6f25e4373ee9.png" alt="img"></p>
+<p>可能会考分段函数那块。</p>
+<p>三类分段点</p>
+<p>第一类，左右极限都存在，就是可去或跳跃</p>
+<p>第二类：左右极限至少有一个不存在，无穷或振荡</p>
+<p>最难的还是接下来这一部分</p>
+<h2 id="第八节-连续-函数的性质"><a href="#第八节-连续-函数的性质" class="headerlink" title="第八节 连续**函数的性质**"></a><strong>第八节</strong> <strong>连续**</strong>函数的性质**</h2><p>有界性：闭区间连续必当有界</p>
+<p>最大最小值定理：闭区间连续必有最大值最小值</p>
+<p>零点存在定理：异号中间有根</p>
+<p>介值定理：两个函数值之间的任一函数值必有一x与之对应</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/93a7e72a7b634342bd413455efd22c9b.png" alt="img"></p>
+<p>康托定理在一致连续性的应用往往是用康托定理缩小范围。</p>
+<p>理论其实就这些，题目看看具体怎么考</p>
+<p>第一道题目：一致连续性结合拉格朗日进行考察，因为我们这时候已经没办法化成正常的x1-x2了，必须借助拉格朗日了</p>
+<p>经过拉格朗日的放缩后就可以出现我们需要的x1-x2了。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/4692c1762fa04ecb8c7a7897dc07fafe.png" alt="img"></p>
+<p>第二题：拉格朗日+一致连续</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/0dd3b4368acd41028d69aeb6f652e337.png" alt="img"></p>
+<p>第三题：构造e的x次方*x然后零点存在性定理就可</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/1fa278e5ac07446d82cd908c1c73b570.png" alt="img"></p>
+<p>第四题：</p>
+<p>采用和差化积，然后就可以进行放缩</p>
+<p>提供公式如下</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/4f4d37db608f480db382367d035e35d2.png" alt="img"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/82d41e573c5946ad969961a23d87f2e3.png" alt="img"></p>
+<p>第五题：康托定理和子列的选取和一致连续<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/bc372b419b644d8ca08ec8181d2da91e.png" alt="img"></p>
+<p>由于康托定理则第一个成立</p>
+<p>然后取两个子列，就可以了。</p>
+<p>取两个子列相减趋近于0，然后证明大于所谓的一波斯诺就行了。</p>
+<p>第六题：介值定理</p>
+<p>运用在后半部分，由于他肯定介于最大值最小值之间，所以一定有一个（可喜）位于（可喜1）和（可喜2）之间</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/dc938756741340d7a1f387ae506c6093.png" alt="img"></p>
+<p>第七题：好像是罗尔定理，有点串场了</p>
+<p>不过讲解一下构造函数</p>
+<p>构造x*f(x)</p>
+<p>然后还需要积分中值定理，得到F（1）=F（可喜）</p>
+<p>然后用罗尔定理，这部分请看第三章后再看。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/6100cd4f3db540ed9bdcd6f96a8a6e57.png" alt="img"></p>
+<p>第八题：构造和PPT一题一样</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/2747344c8c054e649d6d4b292a6b6123.png" alt="img"></p>
+<p>然后又拉格朗日即可</p>
+<p>第九题：还是拉格朗日加上一致连续</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/3c179cbdff074c8fb2ef8ce47a316c96.png" alt="img"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/dc5d44de6c9a4933803c9357f7837488.png" alt="img"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/fde610738eba47db89ec9fb61cdcc5e8.jpeg" alt="img"></p>
+<p>由于条件就可以得到部分一致连续，再由于康托定理又一部分连续，则全部连续</p>
+<h2 id="第一，二，三节-导数的概念，-函数的求导法则，隐函数的导数和参数式求导"><a href="#第一，二，三节-导数的概念，-函数的求导法则，隐函数的导数和参数式求导" class="headerlink" title="第一，二，三节  导数的概念， 函数的求导法则，隐函数的导数和参数式求导"></a><strong>第一，二，三节  导数的概念， 函数的求导法则，隐函数的导数和参数式求导</strong></h2><p>主要定义，有时候极限洛必达后可能会出现定义的写法，这时候不能再洛下去了，必须结合定义求解</p>
+<p>还有，对于在单独一个点的导数也需要结合定义。</p>
+<p>可导等价于左导数等于右导数</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/6aacd084fd544ec89447494daa2c2088.png" alt="img"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/4f4da33c10794f68969b2fce81f180c2.png" alt="img"></p>
+<p><strong>极坐标式求导</strong></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/6bcca4bef7ba4de6ab8a42812c5091c7.png" alt="img"></p>
+<p>对r和角度乘积求导</p>
+<p>习题1：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/622052a5a672471cbc14b2a477fbd1bc.png" alt="img"></p>
+<p>求n阶导数的应用，可以消去一些部分</p>
+<p>习题2：</p>
+<p>隐函数求导注意一下即可，</p>
+<p>第二点：求解二阶导的时候如果是参数方程，要注意÷x对t的求导</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/84f0b8ed439b40be8b002faf1e3fc0c2.png" alt="img"></p>
+<p>第三题：实际应用题：设有光强度为<em>a</em><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/f263e2be73204f1a93593fd25c70eaf6.png" alt="img">与<em>b</em><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/c24c5568fb11463f8004b16a6cda5fa3.png" alt="img">的两个光源，它们之间的距离是<em>d</em><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/3eaeeb13861c4daea151ee52cc1cb42b.png" alt="img">. 假定照度与光强度成正比而与距离的平方成反比. 试问在两光源之间的直线段上什么地方其光的照度最小？</p>
+<p>建模求导就行</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/8d772b1fa6924fdf924137347261061a.jpeg" alt="img"></p>
+<p>第四题：同样是隐函数求导</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/32b4d345af8c4c6a9a1249a124f1d089.png" alt="img"></p>
+<p>只需要进行求出导数带进去即可</p>
+<p>第五题：参数方程求导</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/e81d281b7f46444c94e63f5441df45bc.png" alt="img"></p>
+<p>注意重新÷就行。</p>
+<p>第六题：参数方程求导：</p>
+<ul>
+<li>椭圆<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/3dbc67c95f364822abe0224992586d6b.png" alt="img">在<em>t=**π4</em>处的切线方程为：<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/ebc1296856234513a94ce0d0388d1b3c.png" alt="img">；</li>
+</ul>
+<p>第七题：隐函数求导但是需要先取对数不然头大</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/8907d20689f547c090b3584115a88f88.png" alt="img"></p>
+<p>第8题：实际应用题<br> <img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/18e8b81b23d74e51bdfe4fd4583baab4.png" alt="img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动">​编辑</p>
+<p>也是建模后求导即可</p>
+<p>第9题：求n阶导数</p>
+<p>和第一题一样</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/f31dd261bd5041e493b63c9f3d4fe133.png" alt="img"></p>
+<p>第十题：求n阶导</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/3d75a33add194159be7b87eb9067e837.png" alt="img"></p>
+<p>有点巧妙，学到了</p>
+<p>第十一题：参数方程的求导</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/e0381c5c475f4b9cbba27449f243de4f.png" alt="img"></p>
+<p>第十二题：依然n阶导，和上面一样</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/ac4fbfa3d83841d5bd6cc3dca3c57e99.png" alt="img"></p>
+<h2 id="第五节-微分中值定理与泰勒公式"><a href="#第五节-微分中值定理与泰勒公式" class="headerlink" title="第五节 微分中值定理与泰勒公式"></a><strong>第五节 微分中值定理与泰勒公式</strong></h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/6c6dce72fc8949d081f4dad3869d4180.png" alt="img"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/250706432c5044688a2e988ce369314c.png" alt="img"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/7be0e126f07a4b68b79d1535ab9e9182.png" alt="img"></p>
+<p>带皮亚诺余项的</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/9b9ae06c86ad4b28b8ef92dc1b90b84d.png" alt="img"></p>
+<p>带拉格朗日余项的</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/2f99119be7ac4d36ae00e55f6fa00ed2.png" alt="img"></p>
+<h2 id="函数的性态研究"><a href="#函数的性态研究" class="headerlink" title="函数的性态研究"></a>函数的性态研究</h2><p>主要是求两个导数</p>
+<p>求出驻点和拐点，判断图像</p>
+<p>注意渐近线和无穷处的极限不能漏掉</p>
+<p>同时凹凸函数的部分性质需要掌握，比如凸函数切线都在下方，还有中间点的函数值偏小，二阶导此刻大于0</p>
+<p>第一题：拉格朗日的运用</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/84a290d35bcd4d7d8c847298ef53e0c5.png" alt="img"></p>
+<p>第二题：列表题目，正常必定会有，百分百</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/3b05fe5d5bab442fb8ebecc279bbc847.png" alt="img"></p>
+<p>先判断定义域，求驻点和拐点，列表，绘图即可，如果不要求画图的</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/cfa59a10e6134a57bcadf87f59afd70a.png" alt="img"></p>
+<p>第三题：还是一样的拉格朗日啊，真没变</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/3fd5eccf66ba4ba3a8e4bdfbfd0d2e91.png" alt="img"></p>
+<p>第四题：这题设那个点x0为最小值的点，由费马定理自然有导函数为0，然后自然就可以在该点展开，后就可以进行讨论，就恒成立。</p>
+<p>第五题：函数性态</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/25489ec2ccd74cd59c18e880fd54cf9c.png" alt="img"></p>
+<p>第六题：画出图像</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/fef462199b35403d90fdc17de365d3c1.png" alt="img"></p>
+<p>第七题：<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/5f345f954d2f41349e0feb5ef1487632.png" alt="img"></p>
+<p>第一题：求二阶导大于0就可凸函数。</p>
+<p>第二题：构造b*x&lt;x的p次方/p+b的q次方/q则进行求导带入</p>
+<p>第八题：</p>
+<p>求导</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/6fdd792a7d134224aa6e5e1c114b4fc6.png" alt="img"></p>
+<p>第九题：</p>
+<p>第二个问的第二个问不太好证明，背一下把（bushi)</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/02db863c6ae14e778527bdfe67e29f9b.png" alt="img"></p>
+<h2 id="第四章-积分"><a href="#第四章-积分" class="headerlink" title="第四章 积分"></a><strong>第四章 积分</strong></h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/84ae77d667554ce2b5cb25b22c0b6ec9.png" alt="img"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/0e6838ca640d45c9ba2c6949a40b5b3e.png" alt="img"></p>
+<p>估值用的，我想也不会考</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/b4abafd6fe894e188374fbb5f16dc150.png" alt="img"></p>
+<p>积分第一中值定理</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/f2b6d232131e4c788293d2a36253c1b8.png" alt="img"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/6f973c19a4254e07bc041a826df52006.png" alt="img"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/6391d8179d73480ebe5fd7aecbe93545.png" alt="img"></p>
+<p>牛顿莱布尼兹</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/bdf7c1491125490383b7cbc9e1115f82.png" alt="img"></p>
+<p>注意如果t混入x要么换元要么提出去</p>
+<p>还要一类十定积分的应用，或者说表示</p>
+<p>k/n时候当初x</p>
+<p>好比这题,i/n当初x写就行了</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/799fd5efe93c4d08beb8b5134b454e57.png" alt="img"></p>
+<p>掌握不定积分的三种求法和有理函数的求法，和三角有关思考变形或者万能或者分步</p>
+<p>反常积分实际上和上面没什么太大区别一般还是正常求</p>
+<p>几何上的应用在公式基础上变形即可</p>
+<p>物理应用不太可能考</p>
+<p>面积公式<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/b88b32332ad74be19a7689c5d13ac439.png" alt="img"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/78acc803aa66497dbfb0177832178fd7.png" alt="img"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/0adbbb4e4ffc4a6aab28b0dd75d1b5db.png" alt="img"></p>
+<p>体积公式：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/ffd38e560668465b82bb784b92396070.png" alt="img"></p>
+<p>后两个为绕着y轴旋转</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/aaa41dea0c3c4442848174bb32d69918.png" alt="img"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/8c65c64bffe842d0bad8425285e67d93.png" alt="img"></p>
+<p>已知截面</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/e6588e1c1a4d4776bdc87bf9095067fa.png" alt="img"></p>
+<p>弧长：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/5e8102c3cdd046c896789b8c9eaf7574.png" alt="img"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/a07c5de11e154d5086668a2618759023.png" alt="img"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/4a930848ae10488fb1e2823a44d32ea4.png" alt="img"></p>
+<p>侧面积</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/bfef4a9c4091472b8bc95513b56cf7c2.png" alt="img"></p>
+<p>还有两种同上</p>
+<p>一大波题目来袭：</p>
+<p>第一道题：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/2d026fb7fcb2456f9ac42ce9514b058c.png" alt="img"></p>
+<p>两边同时取积分</p>
+<p>第一项奇函数消去，第二项用三角变换，倍角公式</p>
+<p>第二道题：</p>
+<p>先把e-x移动进去，再把1+e-x移动进去，然后分步积分，后一部分的积分用换元可以求出</p>
+<p>换元是把e-x换掉，也可以等式上下×e的x次方，然后移动进去一个，这种方法更好。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/ab61d4de62354aab9fe2c184044dec2e.png" alt="img"></p>
+<p>第三题：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/e0b0bc69252845a3a233d68477888bb1.png" alt="img"></p>
+<p>答案直接换了，我的话应该是会化为x=secx，然后变换的，化成后会变成你认识的积分的</p>
+<p>这就是我的写法。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/ff381415c8c64dae8037aa5a859fcb5b.png" alt="img"></p>
+<p>第三道题：常规换元求解即可<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/49fce5101fd64819815542a5a0665291.png" alt="img"></p>
+<p>第四道题：求面积</p>
+<p>注意是0到4分之Π</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/c909d9aae82b4572ab63dcf69826ff19.png" alt="img"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/af00b9401034481f93cb87ffd2cd50e6.png" alt="img"></p>
+<p>第五道题目：求解体积</p>
+<p>这题无法死记忆公式，只能够分析</p>
+<p>用绕y轴的公式进行变形才行</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/eab43b05aa9b4f1c9c938f4e3eb3a88e.png" alt="img"></p>
+<p>第六道题：和上面一题一样套路<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/b2597e91f69d4cdd99caea949d90f02d.png" alt="img"></p>
+<p>第七题：想不到就先分步积分罢，能看到一样的</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/2ace121317574085bfc08d3780007006.png" alt="img"></p>
+<p>第八题：<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/1346c5a0dcf446aaab2f66ceae9e4188.png" alt="img"></p>
+<p>采用第三个面积公式。</p>
+<p>第九题：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/1e1f32e2b47d44d2831f6873548fb677.png" alt="img"></p>
+<p>第九题则是需要将区间分割为两部分分别运用第一个面积公式，不然会有负数</p>
+<p>第十题：分步一次积分，有规律</p>
+<p>然后就可以猜出来了…….</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/2fe4de34699d435face28d6c8db47a17.png" alt="img"></p>
+<p>第十一题：</p>
+<p>第一种做法自然是直接硬算，然后会有重复的一项</p>
+<p>另一种你可以万能替换</p>
+<p>分母1-t的平方</p>
+<p>如果是cos就是1+t平方</p>
+<p>如果是sin,就是2t</p>
+<p>移出来是2</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/31a05651bb344c24b17e34e3408172a1.png" alt="img"></p>
+<p>第十二题：建议用第一种方法一劳永逸<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/911b369925634f678982baa2d3c547bd.png" alt="img"></p>
+<p>第十三题：<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/4101ca362203485fa87fc9a40a74f9f1.png" alt="img"></p>
+<p>没看出和普通有什么区别，正常算就好了</p>
+<p>第十四题：典型分部积分<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/82b8fb7f604a4e268b43da03be7d4de3.png" alt="img"></p>
+<p>第十五题：</p>
+<p>分子分母速速同时×e的x次方<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/518b8fac781d40538f43be12d1963fc5.png" alt="img">第十六题：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/687c5b2a1c57477caddbd7450740f9e9.png" alt="img"></p>
+<p>只需要换个元就可以，可以观察到x分之一的罢</p>
+<p>第十七题：一样用第三个体积公式即可</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/d47f05a918e343e69e52bd0cca1bd59e.png" alt="img"></p>
+<p>第十八题：你需要分成两部分，进行计算，还有1-cosx=2sin2x/2然后进行分部积分</p>
+<p>原题x-sinx/1-cosx（忘记截屏）</p>
+<p>第十九题：第一题直接隐函数求导，第二题的用第一个面积公式记得先把化简出来</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/ea1ed7930d61469399895678ccfbd89f.png" alt="img"></p>
+<p>第20题：运用到了保号性</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/acc30fe9fb644897937400820d4a453d.png" alt="img"></p>
+<p>假设一点为0，则在一个（可喜）邻域里面他必大于0，然后用区间的可加性，这个答案写的不那么仔细，严格应该是3段区间都要写出来，放缩掉2段才行</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/7229bc4d1002436cad4e7f56d5774cac.jpeg" alt="img"></p>
+<p>第21和22题</p>
+<p>第一题可以像他这样分步，也可以用半角</p>
+<p>第二题就是直接用面积的第二个公式即可</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/a84efd400a554fc0aea64d0d6de9fb9f.png" alt="img"></p>
+<p>第23题：极坐标的求导不多见，可以康康，极坐标的弧长也是不多见，可以康康</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/942071ef34e045c4854aaa32c3377baf.png" alt="img"></p>
+<p>第24题：比较巧妙，我建议我背下来（bushi）</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/fd75fcc07bc1482ba3c75630ce041a10.png" alt="img"></p>
+<p>世间温柔，不过是芳春柳摇染花香，槐序蝉鸣入深巷，白茂叶落醉故乡。</p>
+<h1 id="再会！"><a href="#再会！" class="headerlink" title="再会！"></a>再会！</h1></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://totorocatcat.top">Totoro</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://totorocatcat.top/2024/05/29/%E5%B7%A5%E7%A7%91%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90%E4%B8%8A/">http://totorocatcat.top/2024/05/29/%E5%B7%A5%E7%A7%91%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90%E4%B8%8A/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://totorocatcat.top" target="_blank">Totoroの旅</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%85%B4%E8%B6%A3-%E6%8F%90%E9%AB%98/">兴趣&amp;提高</a></div><div class="post_share"><div class="social-share" data-image="https://npm.elemecdn.com/ushio-api-img-moe@5.0.90/img_906_659x909_96_null_normal.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/05/30/%E9%9F%B3%E4%B9%90%E8%B5%8F%E6%9E%90%E7%AC%94%E8%AE%B0/" title="音乐赏析笔记"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/ushio-api-img-moe@5.0.90/img_906_659x909_96_null_normal.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">音乐赏析笔记</div></div></a></div><div class="next-post pull-right"><a href="/2024/05/27/%E4%BF%AE%E6%AD%A3SystemVerilog/" title="修正SystemVerilog"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/ushio-api-img-moe@5.0.34/img_345_1920x1080_96_null_normal.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">修正SystemVerilog</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2024/03/21/2019%E5%B9%B4%E5%8D%8E%E5%B7%A5%E5%90%8C%E6%AD%A5%E8%B5%9B/" title="2019年华工同步赛"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/ushio-api-img-moe@5.0.22/img_223_650x521_99.9997940063477_null_normal.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-03-21</div><div class="title">2019年华工同步赛</div></div></a></div><div><a href="/2024/02/21/AC%E8%87%AA%E5%8A%A8%E6%9C%BA/" title="AC自动机"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/ushio-api-img-moe@5.0.86/img_860_2039x1147_350_null_normal.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-02-21</div><div class="title">AC自动机</div></div></a></div><div><a href="/2024/03/23/ACM%E6%A8%A1%E6%9D%BF/" title="ACM模板"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/ushio-api-img-moe@5.0.86/img_860_2039x1147_350_null_normal.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-03-23</div><div class="title">ACM模板</div></div></a></div><div><a href="/2024/03/12/CF933/" title="CF933"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/ushio-api-img-moe@5.0.69/img_692_1370x2047_96_null_normal.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-03-12</div><div class="title">CF933</div></div></a></div><div><a href="/2024/04/02/CSAPP%E7%AC%AC%E4%BA%8C%E7%AB%A0/" title="CSAPP第二章"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/ushio-api-img-moe@5.0.23/img_237_1200x856_350.011993408203_null_normal.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-04-02</div><div class="title">CSAPP第二章</div></div></a></div><div><a href="/2024/03/28/CSAPP/" title="CSAPP"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/ushio-api-img-moe@5.0.50/img_509_1875x1200_72_null_normal.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-03-28</div><div class="title">CSAPP</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/px3.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Totoro</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">330</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">6</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">14</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/4512abc"><i class="fab fa-github"></i><span>🛴前往小窝......</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/4512abc" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:4512abc@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到龙猫の小窝</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B7%A5%E7%A7%91%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90%E4%B8%8A"><span class="toc-number">1.</span> <span class="toc-text">工科数学分析上</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E8%8A%82-%E9%9B%86%E5%90%88%E4%B8%8E%E5%AE%9E%E6%95%B0%E9%9B%86"><span class="toc-number">1.1.</span> <span class="toc-text">第一节 集合与实数集</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E8%8A%82-%E6%98%A0%E5%B0%84%E4%B8%8E%E5%87%BD%E6%95%B0"><span class="toc-number">1.2.</span> <span class="toc-text">第二节 映射与函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E8%8A%82-%E5%87%BD%E6%95%B0%E6%9E%81%E9%99%90%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-number">1.3.</span> <span class="toc-text">第一节 函数极限的概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E8%8A%82-%E6%95%B0%E5%88%97%E6%9E%81%E9%99%90%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-number">1.4.</span> <span class="toc-text">第二节 数列极限的概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E8%8A%82-%E6%9E%81%E9%99%90%E7%9A%84%E8%BF%90%E7%AE%97%E6%B3%95%E5%88%99"><span class="toc-number">1.5.</span> <span class="toc-text">第三节 极限的运算法则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E8%8A%82-%E6%9E%81%E9%99%90%E7%9A%84%E6%80%A7%E8%B4%A8%E4%B8%8E-%E4%B8%A4%E4%B8%AA%E9%87%8D%E8%A6%81%E6%9E%81%E9%99%90"><span class="toc-number">1.6.</span> <span class="toc-text">第四节 极限的性质与      两个重要极限</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%94%E8%8A%82-%E5%AE%9E%E6%95%B0%E5%9F%BA%E6%9C%AC%E5%AE%9A%E7%90%86"><span class="toc-number">1.7.</span> <span class="toc-text">第五节 实数基本定理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%83%E8%8A%82-%E8%BF%9E%E7%BB%AD-%E4%B8%8E%E9%97%B4%E6%96%AD"><span class="toc-number">1.8.</span> <span class="toc-text">第七节  连续**与间断**</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E5%85%AB%E8%8A%82-%E8%BF%9E%E7%BB%AD-%E5%87%BD%E6%95%B0%E7%9A%84%E6%80%A7%E8%B4%A8"><span class="toc-number">1.9.</span> <span class="toc-text">第八节 连续**函数的性质**</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%EF%BC%8C%E4%BA%8C%EF%BC%8C%E4%B8%89%E8%8A%82-%E5%AF%BC%E6%95%B0%E7%9A%84%E6%A6%82%E5%BF%B5%EF%BC%8C-%E5%87%BD%E6%95%B0%E7%9A%84%E6%B1%82%E5%AF%BC%E6%B3%95%E5%88%99%EF%BC%8C%E9%9A%90%E5%87%BD%E6%95%B0%E7%9A%84%E5%AF%BC%E6%95%B0%E5%92%8C%E5%8F%82%E6%95%B0%E5%BC%8F%E6%B1%82%E5%AF%BC"><span class="toc-number">1.10.</span> <span class="toc-text">第一，二，三节  导数的概念， 函数的求导法则，隐函数的导数和参数式求导</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%94%E8%8A%82-%E5%BE%AE%E5%88%86%E4%B8%AD%E5%80%BC%E5%AE%9A%E7%90%86%E4%B8%8E%E6%B3%B0%E5%8B%92%E5%85%AC%E5%BC%8F"><span class="toc-number">1.11.</span> <span class="toc-text">第五节 微分中值定理与泰勒公式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E7%9A%84%E6%80%A7%E6%80%81%E7%A0%94%E7%A9%B6"><span class="toc-number">1.12.</span> <span class="toc-text">函数的性态研究</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E7%A7%AF%E5%88%86"><span class="toc-number">1.13.</span> <span class="toc-text">第四章 积分</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%86%8D%E4%BC%9A%EF%BC%81"><span class="toc-number">2.</span> <span class="toc-text">再会！</span></a></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 By Totoro</div><div class="footer_custom_text">I wish you to become your own sun, no need to rely on who's light.<p><a target="_blank" href="https://hexo.io/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&logo=hexo" title="博客框架为Hexo"></a>&nbsp;<a target="_blank" href="https://butterfly.js.org/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&logo=bitdefender" title="主题采用butterfly"></a>&nbsp;<a target="_blank" href="https://www.jsdelivr.com/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&logo=jsDelivr" title="本站使用JsDelivr为静态资源提供CDN加速"></a> &nbsp;<a target="_blank" href="https://vercel.com/ "><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Hosted-Vervel-brightgreen?style=flat&logo=Vercel" title="本站采用双线部署，默认线路托管于Vercel"></a>&nbsp;<a target="_blank" href="https://vercel.com/ "><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Hosted-Coding-0cedbe?style=flat&logo=Codio" title="本站采用双线部署，联通线路托管于Coding"></a>&nbsp;<a target="_blank" href="https://github.com/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&logo=GitHub" title="本站项目由Gtihub托管"></a>&nbsp;<a target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&logo=Claris" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"></a></p></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="/js/tw_cn.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@5.2.0/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'HT1PalaKkPaG1UqAXBhJXIu8-gzGzoHsz',
+      appKey: 'iT0TnVVAwf9zuZ7NqwclQItY',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://cdn.jsdelivr.net/npm/valine@1.5.1/dist/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><script defer src="/js/light.js"></script><canvas id="universe"></canvas><script defer src="/js/universe.js"></script><script async src="/js/title.js"></script><script defer src="https://npm.elemecdn.com/jquery@latest/dist/jquery.min.js"></script><script defer data-pjax src="/js/cat.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="30" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/click-show-text.min.js" data-mobile="true" data-text="只此无为身，且前行,忘记过去的人注定重蹈覆辙,我是我，我靠自己站立，我会做好自身,如果我睡大觉，谁给我摘月亮呢,假期和朋友，是人生中顶好的两样东西啊。,去爱，去失去，要不负相遇,没什么想不想通的，只是固执而已,我们深爱星辰，乃至不惧夜的黑,吃，喝，享受幸福，接受奇迹,浊水若长流，自清澄,雅俗共赏,总会有什么也不想的幸福时刻吧,时间顺流而下，生活逆流而上,悟已往之不谏，知来者之可追,希望你的小世界里,山花烂漫,茶酒俱全,安宁清淡,明朗欢愉" data-fontsize="18px" data-random="false" async="async"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.12.0"></script></div></div><!-- hexo injector body_end start --><script data-pjax>
+  function butterfly_swiper_injector_config(){
+    var parent_div_git = document.getElementById('recent-posts');
+    var item_html = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms;"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2024/01/29/诗兴大发/" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://source.fomal.cc/img/default_cover_69.webp" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-01-29</span><a class="blog-slider__title" href="2024/01/29/诗兴大发/" alt="">诗兴大发</a><div class="blog-slider__text">未觉，却是中二少年的诗仙梦</div><a class="blog-slider__button" href="2024/01/29/诗兴大发/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2024/02/13/数据结构与算法-1/" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/ushio-api-img-moe@5.0.64/img_649_702x1000_300_null_normal.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-02-13</span><a class="blog-slider__title" href="2024/02/13/数据结构与算法-1/" alt="">数据结构与算法(总)</a><div class="blog-slider__text">方便大二看（）</div><a class="blog-slider__button" href="2024/02/13/数据结构与算法-1/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2024/02/24/常见优化技巧/" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://source.fomal.cc/img/default_cover_238.webp" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-02-24</span><a class="blog-slider__title" href="2024/02/24/常见优化技巧/" alt="">常见优化技巧</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" href="2024/02/24/常见优化技巧/" alt="">详情   </a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载butterfly_swiper')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_swiper_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_swiper_injector_config();
+  }
+  </script><script defer src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.js"></script><script defer data-pjax src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper_init.js"></script><script data-pjax>
+    function butterfly_categories_card_injector_config(){
+      var parent_div_git = document.getElementById('recent-posts');
+      var item_html = '<style>li.categoryBar-list-item{width:32.3%;}.categoryBar-list{max-height: 380px;overflow:auto;}.categoryBar-list::-webkit-scrollbar{width:0!important}@media screen and (max-width: 650px){.categoryBar-list{max-height: 320px;}}</style><div class="recent-post-item" style="height:auto;width:100%;padding:0px;"><div id="categoryBar"><ul class="categoryBar-list"><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_12.webp);"> <a class="categoryBar-list-link" href="categories/刷题计划/">刷题计划</a><span class="categoryBar-list-count">72</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_13.webp);"> <a class="categoryBar-list-link" href="categories/ACMの旅/">ACMの旅</a><span class="categoryBar-list-count">75</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_14.webp);"> <a class="categoryBar-list-link" href="categories/编程基础/">编程基础</a><span class="categoryBar-list-count">34</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_17.webp);"> <a class="categoryBar-list-link" href="categories/数学建模/">数学建模</a><span class="categoryBar-list-count">31</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_18.webp);"> <a class="categoryBar-list-link" href="categories/前端の旅/">前端の旅</a><span class="categoryBar-list-count">15</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_19.webp);"> <a class="categoryBar-list-link" href="categories/CS知识/">CS知识</a><span class="categoryBar-list-count">2</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_20.webp);"> <a class="categoryBar-list-link" href="categories/个人安排/">个人安排</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_21.webp);"> <a class="categoryBar-list-link" href="categories/文学/">文学</a><span class="categoryBar-list-count">29</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_22.webp);"> <a class="categoryBar-list-link" href="categories/杂项/">杂项</a><span class="categoryBar-list-count">6</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_22.webp);"> <a class="categoryBar-list-link" href="categories/少年游/">少年游</a><span class="categoryBar-list-count">2</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_23.webp);"> <a class="categoryBar-list-link" href="categories/数据结构/">数据结构</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_24.webp);"> <a class="categoryBar-list-link" href="categories/C-实训/">C++实训</a><span class="categoryBar-list-count">8</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_25.webp);"> <a class="categoryBar-list-link" href="categories/期末の旅/">期末の旅</a><span class="categoryBar-list-count">11</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_26.webp);"> <a class="categoryBar-list-link" href="categories/牛客の旅/">牛客の旅</a><span class="categoryBar-list-count">43</span><span class="categoryBar-list-descr"></span></li></ul></div></div>';
+      console.log('已挂载butterfly_categories_card')
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+      }
+    if( document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+    butterfly_categories_card_injector_config()
+    }
+  </script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>
