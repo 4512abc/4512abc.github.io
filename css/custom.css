@@ -605,3 +605,8 @@ body::-webkit-scrollbar {
         background-color: transparent
     }
 }
+
+/* 隐藏 MathJax 渲染公式的滚动条 */
+.mathjax-tex, .mathjax-inline {
+    overflow: hidden;
+}
