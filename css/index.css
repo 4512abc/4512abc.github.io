@@ -2668,6 +2668,261 @@ figure.highlight pre .javascript .function {
 #recent-posts > .recent-post-item >.recent-post-info > .content {
   -webkit-line-clamp: 2;
 }
+body[data-type='stars'] #page {
+  border: 0;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  background: transparent !important;
+}
+body[data-type='stars'] .author-content.author-content-item.essayPage {
+  height: 19rem;
+  color: var(--anzhiyu-white);
+  overflow: hidden;
+  margin-top: -15px;
+  height: 350px;
+  margin-bottom: 10px;
+}
+body[data-type='stars'].flink#article-container .flink-desc {
+  margin: 0;
+  margin-top: -15px;
+}
+.flink#article-container .flink-list > .flink-list-item {
+  background: var(--anzhiyu-white);
+}
+#article-container a:not([data-fancybox="gallery"]):not(.headerlink):not(.cf-friends-link):not(.tag-Link):not(.btn-anzhiyu):not(.no-text-decoration ) {
+  height: 100px !important;
+}
+.flink#article-container .flink-desc {
+  margin: 0.2rem 0px 0.5rem;
+}
+.flink#article-container .flink-list {
+  overflow: auto;
+  padding: 10px 10px 0px;
+  text-align: center;
+}
+.flink#article-container .flink-list > .flink-list-item {
+  position: relative;
+  float: left;
+  overflow: hidden;
+  margin: 15px 7px;
+  width: calc(25% - 12px);
+  height: 90px;
+  border-radius: 5px;
+  line-height: 17px;
+  -webkit-transform: translateZ(0px);
+  -moz-transform: translateZ(0px);
+  -o-transform: translateZ(0px);
+  -ms-transform: translateZ(0px);
+  transform: translateZ(0px);
+  -webkit-transition: all 0.3s ease 0s;
+  -moz-transition: all 0.3s ease 0s;
+  -o-transition: all 0.3s ease 0s;
+  -ms-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+}
+@media screen and (max-width: 1200px) {
+  .flink#article-container .flink-list > .flink-list-item {
+    width: calc(25% - 12px) !important;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .flink#article-container .flink-list > .flink-list-item {
+    width: calc(33.3333% - 12px) !important;
+  }
+}
+@media screen and (max-width: 768px) {
+  .flink#article-container .flink-list > .flink-list-item {
+    width: calc(50% - 12px) !important;
+  }
+}
+@media screen and (max-width: 600px) {
+  .flink#article-container .flink-list > .flink-list-item {
+    width: calc(100% - 12px) !important;
+  }
+}
+.flink#article-container .flink-list > .flink-list-item:hover {
+  background: #006cf2;
+  -webkit-transform: scale(1.05);
+  -moz-transform: scale(1.05);
+  -o-transform: scale(1.05);
+  -ms-transform: scale(1.05);
+  transform: scale(1.05);
+}
+.flink#article-container .flink-list > .flink-list-item a {
+  color: var(--Jay-fontcolor);
+  text-decoration: none;
+}
+.flink#article-container .flink-list > .flink-list-item a img {
+  float: left;
+  margin: 15px 10px;
+  width: 60px;
+  height: 60px;
+  border-radius: 35px;
+  -webkit-transition: all 0.3s ease 0s;
+  -moz-transition: all 0.3s ease 0s;
+  -o-transition: all 0.3s ease 0s;
+  -ms-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+}
+.flink#article-container .flink-list > .flink-list-item a .img-alt {
+  display: none;
+}
+.flink#article-container .flink-list > .flink-list-item a .flink-item-name {
+  display: block;
+  padding: 16px 10px 0px 0px;
+  height: 40px;
+  font-weight: 700;
+  font-size: 1.43em;
+  white-space: nowrap;
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+}
+.flink#article-container .flink-list > .flink-list-item a .flink-item-desc {
+  display: block;
+  padding: 16px 10px 16px 0px;
+  height: 50px;
+  font-size: 0.93em;
+}
+.flink#article-container .flink-list {
+  padding: 0;
+  margin: 1rem -6px 0 -6px;
+  overflow-x: hidden;
+}
+.flink#article-container .flink-desc {
+  margin: 0;
+}
+.flink#article-container .flink-list > .flink-list-item a .flink-item-desc {
+  white-space: normal;
+  padding: 5px 10px 16px 0;
+  color: var(--Jay-fontcolor);
+  text-align: left;
+  height: 40px;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  opacity: 0.7;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
+  filter: alpha(opacity=70);
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+.flink#article-container .flink-list > .flink-list-item:hover a .flink-item-desc {
+  color: var(--Jay-white);
+}
+.flink-list-item .flink-item-info {
+  max-width: 136px;
+  overflow: hidden;
+}
+.flink-list-item:hover .flink-item-info {
+  max-width: 100%;
+}
+.flink#article-container .flink-list > .flink-list-item a .flink-item-name {
+  text-align: left;
+  font-size: 19px;
+  color: var(--Jay-fontcolor);
+}
+.flink#article-container .flink-list > .flink-list-item:hover a .flink-item-name {
+  color: var(--Jay-white);
+}
+.flink#article-container .flink-list > .flink-list-item a {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
+  border: none;
+}
+.flink#article-container .flink-list > .flink-list-item a:hover {
+  background: none;
+}
+.flink#article-container .flink-list > .flink-list-item a img {
+  border-radius: 32px;
+  margin: 15px 20px 15px 15px;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -o-transition: 0.3s;
+  -ms-transition: 0.3s;
+  transition: 0.3s;
+  background: var(--Jay-background);
+  min-width: 60px;
+  min-height: 60px;
+}
+.flink#article-container .flink-list > .flink-list-item:hover a img {
+  -webkit-transition: 0.6s;
+  -moz-transition: 0.6s;
+  -o-transition: 0.6s;
+  -ms-transition: 0.6s;
+  transition: 0.6s;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: alpha(opacity=0);
+  margin: 0.5rem;
+  min-width: 0px;
+  min-height: 0px;
+}
+.flink#article-container .flink-list > .flink-list-item a span {
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -o-transition: 0.3s;
+  -ms-transition: 0.3s;
+  transition: 0.3s;
+}
+.flink#article-container .flink-list > .flink-list-item:hover a .flink-item-desc {
+  overflow: inherit;
+  width: 100%;
+}
+.flink#article-container .flink-list > .flink-list-item {
+  margin: 6px 6px;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -o-transition: 0.3s;
+  -ms-transition: 0.3s;
+  transition: 0.3s;
+  border-radius: 12px;
+  -webkit-transition-timing-function: ease-in-out;
+  -moz-transition-timing-function: ease-in-out;
+  -o-transition-timing-function: ease-in-out;
+  -ms-transition-timing-function: ease-in-out;
+  transition-timing-function: ease-in-out;
+  position: relative;
+  width: calc(20% - 12px);
+  border: var(--style-border);
+  -webkit-box-shadow: var(--Jay-shadow-border);
+  box-shadow: var(--Jay-shadow-border);
+}
+.flink#article-container .flink-list > .flink-list-item:hover {
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -o-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  background: var(--Jay-theme);
+  border: var(--style-border-hover);
+  -webkit-box-shadow: var(--Jay-shadow-main);
+  box-shadow: var(--Jay-shadow-main);
+}
+@media screen and (min-width: 1300px) {
+  .flink#article-container .flink-list > .flink-list-item:hover {
+    -webkit-transform: scale(1.03);
+    -moz-transform: scale(1.03);
+    -o-transform: scale(1.03);
+    -ms-transform: scale(1.03);
+    transform: scale(1.03);
+  }
+  .flink#article-container .flink-list > .flink-list-item:active {
+    -webkit-transform: scale(0.97);
+    -moz-transform: scale(0.97);
+    -o-transform: scale(0.97);
+    -ms-transform: scale(0.97);
+    transform: scale(0.97);
+  }
+}
 .tag-cloud-list a {
   display: inline-block;
   padding: 0 8px;
