@@ -610,3 +610,9 @@ body::-webkit-scrollbar {
 .mathjax-tex, .mathjax-inline {
     overflow: hidden;
 }
+
+
+/* 隐藏所有代码块 */
+pre {
+    display: none;
+}
