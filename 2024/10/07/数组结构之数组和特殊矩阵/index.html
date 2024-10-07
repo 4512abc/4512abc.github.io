@@ -1,0 +1,602 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>数组结构之数组和特殊矩阵 | Totoroの旅</title><meta name="author" content="Totoro"><meta name="copyright" content="Totoro"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="方便大二看（）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数组结构之数组和特殊矩阵">
+<meta property="og:url" content="http://totorocatcat.top/2024/10/07/%E6%95%B0%E7%BB%84%E7%BB%93%E6%9E%84%E4%B9%8B%E6%95%B0%E7%BB%84%E5%92%8C%E7%89%B9%E6%AE%8A%E7%9F%A9%E9%98%B5/index.html">
+<meta property="og:site_name" content="Totoroの旅">
+<meta property="og:description" content="方便大二看（）">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/e36d7e73b79ba889187a59a43218fb35f7db2c8c.jpg@1256w_2298h_!web-article-pic.avif">
+<meta property="article:published_time" content="2024-10-07T10:58:27.000Z">
+<meta property="article:modified_time" content="2024-10-07T11:03:59.502Z">
+<meta property="article:author" content="Totoro">
+<meta property="article:tag" content="提高">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/e36d7e73b79ba889187a59a43218fb35f7db2c8c.jpg@1256w_2298h_!web-article-pic.avif"><link rel="shortcut icon" href="https://source.fomal.cc/img/default_cover_227.webp"><link rel="canonical" href="http://totorocatcat.top/2024/10/07/%E6%95%B0%E7%BB%84%E7%BB%93%E6%9E%84%E4%B9%8B%E6%95%B0%E7%BB%84%E5%92%8C%E7%89%B9%E6%AE%8A%E7%9F%A9%E9%98%B5/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta/><link rel="stylesheet" href="/css/index.css?v=4.12.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  noticeOutdate: {"limitDay":765,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体中文","cht_to_chs":"你已切换为简体中文","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"top-right"},
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '数组结构之数组和特殊矩阵',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: true,
+  isToc: true,
+  postUpdate: '2024-10-07 19:03:59'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const now = new Date()
+          const hour = now.getHours()
+          const isNight = hour <= 6 || hour >= 18
+          if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/universe.css"><link rel="stylesheet" href="/css/scrollbar.css"><link rel="stylesheet" href="/css/cat.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-double-row-display@1.00/cardlistpost.min.css"/>
+<style>#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags:before {content:"\A";
+  white-space: pre;}#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags > .article-meta__separator{display:none}</style>
+<link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-categories-card@1.0.0/lib/categorybar.css"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiperstyle.css" media="print" onload="this.media='all'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load',() => { preloader.endLoading() })
+
+  if (true) {
+    document.addEventListener('pjax:send', () => { preloader.initLoading() })
+    document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+  }
+})()</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/px3.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">642</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">6</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">30</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home-alt"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-envelope-open"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 趣味</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/project/"><i class="fa-fw fas fas fa-folder"></i><span> 项目</span></a></div><div class="menus_item"><a class="site-page" href="/stars/"><i class="fa-fw fas fa-bookmark"></i><span> 收藏</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/e36d7e73b79ba889187a59a43218fb35f7db2c8c.jpg@1256w_2298h_!web-article-pic.avif')"><nav id="nav"><span id="blog-info"><a href="/" title="Totoroの旅"><span class="site-name">Totoroの旅</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home-alt"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-envelope-open"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 趣味</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/project/"><i class="fa-fw fas fas fa-folder"></i><span> 项目</span></a></div><div class="menus_item"><a class="site-page" href="/stars/"><i class="fa-fw fas fa-bookmark"></i><span> 收藏</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">数组结构之数组和特殊矩阵</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-10-07T10:58:27.000Z" title="发表于 2024-10-07 18:58:27">2024-10-07</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-10-07T11:03:59.502Z" title="更新于 2024-10-07 19:03:59">2024-10-07</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">4.2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>15分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="数组结构之数组和特殊矩阵"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="数组结构之数组和特殊矩阵"><a href="#数组结构之数组和特殊矩阵" class="headerlink" title="数组结构之数组和特殊矩阵"></a>数组结构之数组和特殊矩阵</h1><h2 id="数组的存储结构"><a href="#数组的存储结构" class="headerlink" title="数组的存储结构"></a>数组的存储结构</h2><p>数组是一种重要的数据结构，几乎所有计算机语言都提供了数组数据类型。逻辑上的数组可以通过计算机语言中的数组类型来存储。在内存中，数组的所有元素占用一段连续的存储空间。</p>
+<h4 id="一维数组的存储"><a href="#一维数组的存储" class="headerlink" title="一维数组的存储"></a>一维数组的存储</h4><p>以一维数组 $ A[0..n-1] $ 为例，其存储结构关系式为：</p>
+<p>$<br>\text{LOC}(A[i]) = \text{LOC}(A[0]) + i \times L \quad (0 \leq i &lt; n)<br>$</p>
+<p>其中：</p>
+<ul>
+<li>$ \text{LOC}(A[i]) $ 表示数组元素 $ A[i] $ 在内存中的地址。</li>
+<li>$ L $ 表示每个数组元素所占的存储单元。</li>
+</ul>
+<h4 id="多维数组的存储"><a href="#多维数组的存储" class="headerlink" title="多维数组的存储"></a>多维数组的存储</h4><p>对于多维数组，通常有两种映射方法：<strong>按行优先</strong>和<strong>按列优先</strong>。</p>
+<h5 id="按行优先存储"><a href="#按行优先存储" class="headerlink" title="按行优先存储"></a>按行优先存储</h5><p><strong>基本思想</strong>：先存储行，后存储列，行号较小的元素先存储，行号相等时列号较小的元素先存储。</p>
+<p>设二维数组的行下标与列下标的范围分别为 $[0, h]$ 和 $[0, k]$，则存储结构关系式为：</p>
+<p>$<br>\text{LOC}(A[i][j]) = \text{LOC}(A[0][0]) + (i \times (k + 1) + j) \times L<br>$</p>
+<p>例如，对于一个 $ 2 \times 3 $ 的二维数组 $ A $，按行优先方式在内存中的存储形式如图 3.18 所示：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">第1行: a[0][0], a[0][1], a[0][2]</span><br><span class="line">第2行: a[1][0], a[1][1], a[1][2]</span><br></pre></td></tr></table></figure>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/image-20241007181736762.png" alt="image-20241007181736762"></p>
+<h5 id="按列优先存储"><a href="#按列优先存储" class="headerlink" title="按列优先存储"></a>按列优先存储</h5><p><strong>基本思想</strong>：先存储列，后存储行，列号较小的元素先存储，列号相等时行号较小的元素先存储。</p>
+<p>对于同样的二维数组，其存储结构关系式为：</p>
+<p>$<br>\text{LOC}(A[i][j]) = \text{LOC}(A[0][0]) + (j \times (h + 1) + i) \times L<br>$</p>
+<p>例如，对于数组 $ A $ 按列优先方式在内存中的存储形式如图 3.19 所示：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">第1列: a[0][0], a[1][0]</span><br><span class="line">第2列: a[0][1], a[1][1]</span><br><span class="line">第3列: a[0][2], a[1][2]</span><br></pre></td></tr></table></figure>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/image-20241007181721686.png" alt="image-20241007181721686"></p>
+<h2 id="对称矩阵"><a href="#对称矩阵" class="headerlink" title="对称矩阵"></a>对称矩阵</h2><p><strong>定义</strong>：若对于一个 $ n $ 阶方阵 $ A[1..n][1..n] $ 中的任意一个元素 $ a_{ij} $ 都有 $ a_{ij} = a_{ji} $ (即 $ 1 \leq i, j \leq n $)，则称其为对称矩阵。</p>
+<h3 id="矩阵的划分"><a href="#矩阵的划分" class="headerlink" title="矩阵的划分"></a>矩阵的划分</h3><p>对于一个 $ n $ 阶对称矩阵，可以将其元素划分为三个部分：</p>
+<ol>
+<li><strong>上三角区</strong>：$ i &lt; j $ 的元素。</li>
+<li><strong>主对角线</strong>：$ i = j $ 的元素。</li>
+<li><strong>下三角区</strong>：$ i &gt; j $ 的元素。</li>
+</ol>
+<p>如图 3.20 所示：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">第1行: a[1][1]</span><br><span class="line">第2行: a[2][1], a[2][2]</span><br><span class="line">第3行: a[3][1], a[3][2], a[3][3]</span><br><span class="line">...</span><br><span class="line">第n行: a[n][1], a[n][2], ..., a[n][n]</span><br></pre></td></tr></table></figure>
+<h3 id="存储方式"><a href="#存储方式" class="headerlink" title="存储方式"></a>存储方式</h3><p>由于对称矩阵的性质，上三角区的所有元素与下三角区的对应元素相同，因此如果仍采用二维数组存放，会浪费几乎一半的空间。因此，通常采用一维数组 $ B $ 来存放对称矩阵的元素。</p>
+<h4 id="存储结构"><a href="#存储结构" class="headerlink" title="存储结构"></a>存储结构</h4><p>将对称矩阵 $ A[1..n][1..n] $ 存放在一维数组 $ B $ 中，数组的大小为 $ \frac{n(n+1)}{2} $。该一维数组只存放下三角部分（包含主对角线）的元素。</p>
+<h4 id="元素存储关系"><a href="#元素存储关系" class="headerlink" title="元素存储关系"></a>元素存储关系</h4><p>在数组 $ B $ 中，元素 $ a_{ij} $ 的位置可以通过以下公式计算得到：</p>
+<ul>
+<li><p><strong>下三角区和主对角线元素</strong>（$ i \geq j $）：</p>
+<p>$<br>k = \frac{i(i-1)}{2} + j \quad (0 \leq j \leq i)<br>$</p>
+</li>
+<li><p><strong>上三角区元素</strong>（$ i &lt; j $）：</p>
+<p>$<br>a_{ij} = a_{ji} \quad \text{（可通过下三角部分找到）}<br>$</p>
+</li>
+</ul>
+<h4 id="下标计算"><a href="#下标计算" class="headerlink" title="下标计算"></a>下标计算</h4><ol>
+<li><p><strong>对于下三角区元素 $ a_{ij} $（含主对角线）</strong>：</p>
+<ul>
+<li>位置计算：<br>$<br>k = \frac{i(i-1)}{2} + j<br>$</li>
+<li>这里，$ i $ 是行索引，$ j $ 是列索引。</li>
+</ul>
+</li>
+<li><p><strong>对于上三角区元素</strong>：</p>
+<ul>
+<li>可以通过 $ a_{ij} = a_{ji} $ 访问其对应的下三角区元素。</li>
+</ul>
+</li>
+</ol>
+<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><p>假设我们有一个 $ 3 \times 3 $ 的对称矩阵 $ A $ 如下：</p>
+<p>$<br>A = \begin{bmatrix}<br>a_{11} &amp; a_{12} &amp; a_{13} \\<br>a_{12} &amp; a_{22} &amp; a_{23} \\<br>a_{13} &amp; a_{23} &amp; a_{33}<br>\end{bmatrix}<br>$</p>
+<p>在一维数组 $ B $ 中，元素的存放顺序为：</p>
+<ul>
+<li>$ B[0] = a_{11} $</li>
+<li>$ B[1] = a_{12} $</li>
+<li>$ B[2] = a_{22} $</li>
+<li>$ B[3] = a_{13} $</li>
+<li>$ B[4] = a_{23} $</li>
+<li>$ B[5] = a_{33} $</li>
+</ul>
+<p>对应的存储关系为：</p>
+<ul>
+<li>$ a_{12} $ 对应于 $ B[1] $</li>
+<li>$ a_{13} $ 对应于 $ B[3] $</li>
+<li>$ a_{23} $ 对应于 $ B[4] $</li>
+</ul>
+<p>通过这种方式，我们可以有效地存储和访问对称矩阵，而不会浪费内存。</p>
+<h2 id="三角矩阵"><a href="#三角矩阵" class="headerlink" title="三角矩阵"></a>三角矩阵</h2><p>三角矩阵分为下三角矩阵和上三角矩阵。它们的特点和存储方法如下：</p>
+<h4 id="1-下三角矩阵"><a href="#1-下三角矩阵" class="headerlink" title="1. 下三角矩阵"></a>1. 下三角矩阵</h4><p><strong>定义</strong>：下三角矩阵是指一个 $ n $ 阶矩阵 $ A[1..n][1..n] $，其上三角区的所有元素均为同一常量。</p>
+<p><strong>存储思想</strong>：与对称矩阵类似，存储下三角区和主对角线上的元素后，紧接着存储对角线上方的常量一次。</p>
+<h4 id="存储结构-1"><a href="#存储结构-1" class="headerlink" title="存储结构"></a>存储结构</h4><ul>
+<li><strong>存储数组</strong>：使用一维数组 $ B $，大小为 $ n(n+1)/2 + 1 $，其中：<ul>
+<li>下三角区和主对角线上的元素存储在前面。</li>
+<li>常量项存储在最后。</li>
+</ul>
+</li>
+</ul>
+<h4 id="元素下标关系"><a href="#元素下标关系" class="headerlink" title="元素下标关系"></a>元素下标关系</h4><ol>
+<li><p><strong>下三角区和主对角线元素</strong>（$ i \geq j $）：<br>$<br>k = \frac{i(i-1)}{2} + j<br>$<br>这里 $ i $ 是行索引，$ j $ 是列索引。</p>
+</li>
+<li><p><strong>上三角区元素</strong>（$ i &lt; j $）：<br>$<br>k = n(n+1)/2 + 1 \quad (\text{存储常量})<br>$</p>
+</li>
+</ol>
+<h4 id="存储形式"><a href="#存储形式" class="headerlink" title="存储形式"></a>存储形式</h4><p>下三角矩阵在内存中的压缩存储形式如图 3.21 所示。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">第1行: a[11]</span><br><span class="line">第2行: a[21], a[22]</span><br><span class="line">第3行: a[31], a[32], a[33]</span><br><span class="line">...</span><br><span class="line">第n行: a[n1], a[n2], ..., a[nn]</span><br><span class="line">常量项</span><br></pre></td></tr></table></figure>
+<h3 id="2-上三角矩阵"><a href="#2-上三角矩阵" class="headerlink" title="2. 上三角矩阵"></a>2. 上三角矩阵</h3><p><strong>定义</strong>：上三角矩阵是指一个 $ n $ 阶矩阵 $ A[1..n][1..n] $，其下三角区的所有元素均为同一常量。</p>
+<p><strong>存储思想</strong>：只需存储主对角线、上三角区的元素和下三角区的常量一次。</p>
+<h4 id="存储结构-2"><a href="#存储结构-2" class="headerlink" title="存储结构"></a>存储结构</h4><ul>
+<li><strong>存储数组</strong>：同样使用一维数组 $ B $，大小为 $ n(n+1)/2 + 1 $，其中：<ul>
+<li>主对角线和上三角区的元素存储在前面。</li>
+<li>常量项存储在最后。</li>
+</ul>
+</li>
+</ul>
+<h4 id="元素下标关系-1"><a href="#元素下标关系-1" class="headerlink" title="元素下标关系"></a>元素下标关系</h4><ol>
+<li><p><strong>上三角区和主对角线元素</strong>（$ i \leq j $）：<br>$<br>k = \frac{(i-1)(2n-i+2)}{2} + (j - n)<br>$</p>
+</li>
+<li><p><strong>下三角区元素</strong>（$ i &gt; j $）：<br>$<br>k = n(n+1)/2 + 1 \quad (\text{存储常量})<br>$</p>
+</li>
+</ol>
+<h4 id="存储形式-1"><a href="#存储形式-1" class="headerlink" title="存储形式"></a>存储形式</h4><p>上三角矩阵在内存中的压缩存储形式如图 3.23 所示。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">第1行: a[11], a[12], a[13], ...</span><br><span class="line">第2行: a[22], a[23], ...</span><br><span class="line">第3行: a[33], ...</span><br><span class="line">...</span><br><span class="line">常量项</span><br></pre></td></tr></table></figure>
+<h2 id="三对角矩阵"><a href="#三对角矩阵" class="headerlink" title="三对角矩阵"></a>三对角矩阵</h2><p><strong>定义</strong>：三对角矩阵（又称带状矩阵）是一个 $ n $ 阶方阵 $ A $，其满足以下条件：对于任一元素 $ a_{ij} $，当 $ |i-j| &gt; 1 $ 时，$ a_{ij} = 0 $（即矩阵中只有主对角线及其上下第一条对角线的元素非零），如图 3.24 所示。</p>
+<h4 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h4><ul>
+<li>三对角矩阵的非零元素集中在以主对角线为中心的三条对角线的区域。</li>
+<li>其余区域的元素均为零。</li>
+</ul>
+<h4 id="存储结构-3"><a href="#存储结构-3" class="headerlink" title="存储结构"></a>存储结构</h4><p>为减少内存使用，可以采用压缩存储方法，将三条对角线上的元素按行优先的方式存放在一维数组 $ B $ 中。</p>
+<ul>
+<li><strong>存储数组</strong>：大小为 $ B[n] $，其中：<ul>
+<li>$ B[0] $ 存放 $ a_{11} $（主对角线元素）。</li>
+<li>紧接着存放主对角线和上下对角线的元素。</li>
+</ul>
+</li>
+</ul>
+<h4 id="存储形式示意图"><a href="#存储形式示意图" class="headerlink" title="存储形式示意图"></a>存储形式示意图</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">   0   1   2   3   4   ...</span><br><span class="line">| 0 | a11 | a12 | 0 | 0 | ...</span><br><span class="line">| 1 | a21 | a22 | a23 | 0 | ...</span><br><span class="line">| 2 | 0 | a32 | a33 | a34 | ...</span><br><span class="line">| 3 | 0 | 0 | a43 | a44 | ...</span><br><span class="line">| 4 | 0 | 0 | 0 | a54 | ...</span><br></pre></td></tr></table></figure>
+<p>（图 3.25 三对角矩阵的压缩存储）</p>
+<h3 id="存储下标关系"><a href="#存储下标关系" class="headerlink" title="存储下标关系"></a>存储下标关系</h3><ol>
+<li><p><strong>矩阵中的元素</strong>：</p>
+<ul>
+<li>对于三条对角线上的元素 $ a_{ij} $，可以通过以下公式计算在一维数组 $ B $ 中的下标 $ k $：<br>$<br>k = 2i + (i - 3)<br>$<br>其中 $ i $ 表示行索引，$ j $ 表示列索引，且 $ |i-j| \leq 1 $。</li>
+</ul>
+</li>
+<li><p><strong>已知元素在数组中的位置</strong>：</p>
+<ul>
+<li>若已知三对角线矩阵中某元素 $ a_{ij} $ 存放于一维数组 $ B $ 的第 $ k $ 个位置，可以通过以下公式反推 $ i $ 和 $ j $：<br>$<br>i = \left\lfloor \frac{k + 1}{3} \right\rfloor + 1<br>$<br>$<br>j = k - 2i + 3<br>$<br>例如：</li>
+<li>当 $ k = 0 $ 时：<br>$<br>i = \left\lfloor \frac{0 + 1}{3} \right\rfloor + 1 = 1, \quad j = 0 - 2 \times 1 + 3 = 1<br>$<br>存放的是 $ a_{11} $。</li>
+<li>当 $ k = 2 $ 时：<br>$<br>i = \left\lfloor \frac{2 + 1}{3} \right\rfloor + 1 = 2, \quad j = 2 - 2 \times 2 + 3 = 1<br>$<br>存放的是 $ a_{21} $。</li>
+<li>当 $ k = 4 $ 时：<br>$<br>i = \left\lfloor \frac{4 + 1}{3} \right\rfloor + 1 = 2, \quad j = 4 - 2 \times 2 + 3 = 3<br>$<br>存放的是 $ a_{23} $。</li>
+</ul>
+</li>
+</ol>
+<h2 id="稀疏矩阵"><a href="#稀疏矩阵" class="headerlink" title="稀疏矩阵"></a>稀疏矩阵</h2><p><strong>定义</strong>：稀疏矩阵是指矩阵中非零元素的个数 $ t $ 相对于矩阵总元素个数 $ s $（$ s = n \times m $，其中 $ n $ 和 $ m $ 分别是矩阵的行数和列数）非常少的矩阵。通常情况下，稀疏矩阵满足条件 $ s \gg t $，即非零元素远远小于总元素。例如，一个 $ 100 \times 100 $ 的矩阵，如果只有少于 $ 100 $ 个非零元素，那么这个矩阵就是稀疏矩阵。</p>
+<h4 id="存储问题"><a href="#存储问题" class="headerlink" title="存储问题"></a>存储问题</h4><ul>
+<li><strong>存储空间浪费</strong>：若采用常规的二维数组存储稀疏矩阵，尽管绝大多数元素都是零，但这些零元素仍然占用存储空间，造成资源浪费。</li>
+</ul>
+<h4 id="稀疏矩阵的压缩存储"><a href="#稀疏矩阵的压缩存储" class="headerlink" title="稀疏矩阵的压缩存储"></a>稀疏矩阵的压缩存储</h4><p>为了解决存储空间的浪费问题，稀疏矩阵的压缩存储方法主要包括以下步骤：</p>
+<ol>
+<li><p><strong>只存储非零元素</strong>：只记录非零元素的值，而忽略零元素的存储。</p>
+</li>
+<li><p><strong>存储元素位置</strong>：</p>
+<ul>
+<li>除了存储非零元素的值，还需存储其所在的行和列，以便在后续的操作中能够准确地访问这些元素。</li>
+<li>采用<strong>三元组</strong>表示法，记录每个非零元素的行标、列标和对应的值。每个三元组的格式为：<br>$<br>(行标, 列标, 值)<br>$</li>
+</ul>
+</li>
+<li><p><strong>三元组示例</strong>：如图 3.26 所示，假设有一个稀疏矩阵如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">| 0  0  0  6  0 |</span><br><span class="line">| 0  0  2  0  0 |</span><br><span class="line">| 0  0  0  0  9 |</span><br><span class="line">| 0  3  0  0  0 |</span><br><span class="line">| 0  0  0  0  0 |</span><br></pre></td></tr></table></figure>
+<p>对应的三元组为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(0, 3, 6)</span><br><span class="line">(1, 2, 2)</span><br><span class="line">(2, 4, 9)</span><br><span class="line">(3, 1, 3)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>存储规律</strong>：三元组可以按照行优先或列优先的顺序进行存储，这取决于具体应用的需要。通常会将三元组按行标升序排列。</p>
+</li>
+</ol>
+<h4 id="随机存取特性"><a href="#随机存取特性" class="headerlink" title="随机存取特性"></a>随机存取特性</h4><ul>
+<li>由于稀疏矩阵经过压缩存储后只保留了非零元素和它们的位置，传统的随机存取特性可能会丧失。需要进行查找操作来找到特定位置的元素。</li>
+</ul>
+<h2 id="选择题"><a href="#选择题" class="headerlink" title="选择题"></a>选择题</h2><p><strong>01. </strong>对特殊矩阵采用压缩存储的主要目的是()。</p>
+<ul>
+<li>A. 表达变得简单</li>
+<li>B. 对矩阵元素的存取变得简单</li>
+<li>C. 去掉矩阵中的多余元素</li>
+<li><strong>D. 减少不必要的存储空间</strong></li>
+</ul>
+<p><strong>解析</strong>：特殊矩阵中含有许多相同元素或零元素，因此采用压缩存储可以节省存储空间。</p>
+<hr>
+<p><strong>02.</strong> 对 $ n $ 阶对称矩阵压缩存储时，需要表长为()的顺序表。</p>
+<ul>
+<li>A. $ n/2 $</li>
+<li>B. $ n \times n/2 $</li>
+<li><strong>C. $ n(n+1)/2 $</strong></li>
+<li>D. $ n(n-1)/2 $</li>
+</ul>
+<p><strong>解析</strong>：只需存储其上三角或下三角部分（含对角线），元素个数为 $ n + (n - 1) + (n - 2) + \ldots + 1 = n(n + 1)/2 $。</p>
+<hr>
+<p><strong>03.</strong> 有一个 $ n \times n $ 的对称矩阵 $ A $，将其下三角部分按行存放在一维数组 $ B $ 中，而 $ A[0][0] $ 存放于 $ B[0] $ 中，则第 $ i+1 $ 行的对角元素 $ A[i][i] $ 存放于 $ B $ 中的()处。</p>
+<ul>
+<li><strong>A. $ (i+1)i/2 $</strong></li>
+<li>B. $ (i + 3)i/2 $</li>
+<li>C. $ (2n-i+1)i/2 $</li>
+<li>D. $ (2n-i-1)i/2 $</li>
+</ul>
+<p><strong>解析</strong>：注意矩阵的最小下标为0，数组下标也是从0开始的，并且矩阵按行优先存放在数组中。计算可得第 $ i $ 行的对角元素在 $ B $ 中的位置为 $ (i+1)i/2 $。</p>
+<hr>
+<p><strong>04. </strong>在一个二维数组 $ A $ 中，假设每个数组元素的长度为3个存储单元，行下标 $ i $ 为0~8，列下标 $ j $ 为0~9，从首地址 $ S_A $ 开始连续存放。在这种情况下，元素 $ A[8][5] $ 的起始地址为( )。</p>
+<ul>
+<li>A. $ S_A + 141 $</li>
+<li>B. $ S_A + 144 $</li>
+<li>C. $ S_A + 222 $</li>
+<li><strong>D. $ S_A + 255 $</strong></li>
+</ul>
+<p><strong>解析</strong>：二维数组计算地址（按行优先顺序）的公式为<br>$<br>LOC(i,j) = LOC(0,0) + (i \times m + j) \times L<br>$<br>其中，$ LOC(0,0) = S_A $，$ L = 3 $ 是每个数组元素的长度，$ m = 10 $ 是数组的列数。因此有：<br>$<br>LOC(8,5) = S_A + (8 \times 10 + 5) \times 3 = S_A + 255<br>$</p>
+<hr>
+<p><strong>05.</strong> 将三对角矩阵 $ A[1..100][1..100] $ 按行优先存入一维数组 $ B[1..298] $ 中，$ A $ 中元素 $ A[66][65] $ 在数组 $ B $ 中的位置 $ k $ 为()。</p>
+<ul>
+<li>A. 198</li>
+<li><strong>B. 195</strong></li>
+<li>C. 197</li>
+<li>D. 196</li>
+</ul>
+<p><strong>解析</strong>：对于三对角矩阵，将 $ A[1..n][1..n] $ 压缩至 $ B[1..3n-2] $ 时，$ a_{ij} $ 与 $ k $ 的对应关系为 $ k = 2i + j - 2 $。因此：<br>$<br>k = 2 \times 66 + 65 - 2 = 195<br>$</p>
+<hr>
+<p><strong>06.</strong> 若将 $ n $ 阶上三角矩阵 $ A $ 按列优先级压缩存放在一维数组 $ B[1..n(n+1)/2+1] $ 中，则存放到 $ B[k] $ 中的非零元素 $ a_{ij} (1 \leq i,j \leq n) $ 的下标 $ i,j $ 与 $ k $ 的对应关系是( )。</p>
+<ul>
+<li>A. $ i(i+1)/2 + i $</li>
+<li>B. $ i(i-1)/2 + j - 1 $</li>
+<li><strong>C. $ j(j-1)/2 + i $</strong></li>
+<li>D. $ j(j-1)/2 + i - 1 $</li>
+</ul>
+<p><strong>解析</strong>：按列优先存储，因此元素 $ a_{ij} $ 前面有 $ j-1 $ 列，共有 $ 1 + 2 + 3 + \ldots + (j-1) = j(j-1)/2 $ 个元素，元素 $ a_{ij} $ 在第 $ j $ 列上是第 $ i $ 个元素，数组 $ B $ 的下标是从1开始，因此 $ k = j(j-1)/2 + i $。</p>
+<hr>
+<p><strong>07.</strong> 若将 $ n $ 阶下三角矩阵 A 按列优先顺序压缩存放在一维数组 $ B[1..n(n+1)/2+1] $ 中，则存放到 $ B[k] $ 中的非零元素 $ a_{ij}(1≤i,j≤n) $ 的下标 $ i,j $ 与 $ k $ 的对应关系是( )。<br>A. $(j-1)(2n-j+1)/2 + i - j$<br>B. $(j-1)(2n-j+2)/2 + i - j+1$<br>C. $(j-1)(2n-j+1)/2 + i - j - 1$<br><strong>答案：</strong> B<br><strong>解析：</strong><br>按列优先存储，故元素$a_{i,j}$之前有$j-1$列，共有$n+(n-1)+…+(n-j+2)=(j-1)(2n-j+ 2)/2$个元素，元素av是第j列上第i-j+1个元素，数组B下标从1开始，$k=(j-1)(2n-j+2)/2+i-j+1$。</p>
+<hr>
+<p><strong>08.</strong> 有一个 100 阶的三对角矩阵 M，其元素 $ m_{ij}(1≤i,j≤100) $ 按行优先依次压缩存入下标从 0 开始的一维数组 $ N $ 中。元素 $ m_{30,30} $ 在 $ N $ 中的下标是( )。<br><strong>答案：</strong> D. 87</p>
+<p><strong>解析：</strong> 在三对角矩阵中，行优先存储时，第 $ i $ 行有 $ i+1 $ 个元素，因此元素 $ m_{30,30} $ 对应的下标为 $ 3 \times 30 - 3 = 87 $。</p>
+<hr>
+<p><strong>09.</strong> 适用于压缩存储稀疏矩阵的两种存储结构是( )<br>A. 三元组表和十字链表<br>B. 三元组表和邻接矩阵<br>C. 十字链表和二叉链表<br><strong>答案：</strong> A<br><strong>解析：</strong> 三元组表存储行、列和值，十字链表结合行单链表和列单链表来存储稀疏矩阵。</p>
+<hr>
+<p><strong>10.</strong> 设有一个 $ 12 \times 12 $ 的对称矩阵 M, 将其上三角部分的元素 $ m_{ij}(1≤i≤j≤12) $ 按行优先存入 C 语言的一维数组 N 中，元素 $ m_{6,6} $ 在 N 中的下标是( )。<br>A. 50<br>B. 51<br>C. 55<br>D. 66<br><strong>答案：</strong> A<br><strong>解析：</strong> 在C语言中，数组N的下标从0开始。第一个元素m,对应存入n，矩阵M的第一行有12个元素，第二行有11个，第三行有 10个，第四行有9个，第五行有8个，所以$m_{6,6}$是第 12+11+10+9+8+1=51个元素，下标应为50。</p>
+<hr>
+<p><strong>11.</strong> 将一个 $ 10 \times 10 $ 对称矩阵 M 的上三角部分的元素 $ m_{ij}(1≤i≤j≤10) $ 按列优先存入 C 语言的一维数组 N 中，元素 $ m_{7,2} $ 在 N 中的下标是( )。<br>A. 15<br>B. 16<br>C. 22<br>D. 23<br><strong>答案：</strong> C<br><strong>解析：</strong> 对于 $ 10 \times 10 $ 的上三角矩阵，按列优先存储，元素 $ m_{12} $ 需要计算所有前面的元素，最终确定下标。</p>
+<hr>
+<p><strong>12.</strong> 二维数组 $ A $ 按行优先方式存储，每个元素占用 1 个存储单元。若元素 $ A[0][0] $ 的存储地址是 100，$ A[3][3] $ 的存储地址是 220，则元素 $ A[5][5] $ 的存储地址是( )。<br>A. 295<br>B. 300<br>C. 301<br>D. 306  </p>
+<p><strong>答案：</strong> B  </p>
+<h3 id="解析："><a href="#解析：" class="headerlink" title="解析："></a>解析：</h3><ol>
+<li><p><strong>行优先存储的地址计算</strong>：<br>在行优先存储中，元素的地址可以通过以下公式计算：<br>$<br>\text{地址}(A[i][j]) = \text{基地址} + (n \times i + j) \times \text{每个元素大小}<br>$<br>其中，$ n $ 是每行的元素数量，$ i $ 和 $ j $ 是元素的行索引和列索引。</p>
+</li>
+<li><p><strong>确定数组的行数和列数</strong>：<br>给定 $ A[0][0] $ 的地址为 100，意味着这是数组的起始地址。<br>给定 $ A[3][3] $ 的地址为 220。根据公式，$ A[3][3] $ 的地址计算如下：<br>$<br>\text{地址}(A[3][3]) = 100 + (n \times 3 + 3)<br>$<br>这等于 220：<br>$<br>100 + (3n + 3) = 220<br>$<br>$<br>3n + 3 = 120<br>$<br>$<br>3n = 117 \quad \Rightarrow \quad n = 39<br>$</p>
+</li>
+<li><p><strong>计算元素 $ A[5][5] $ 的地址</strong>：<br>使用上面的公式计算 $ A[5][5] $ 的地址：<br>$<br>\text{地址}(A[5][5]) = 100 + (39 \times 5 + 5) = 100 + (195 + 5) = 100 + 200 = 300<br>$</p>
+</li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a target="_blank" rel="noopener" href="https://www.totorocatcat.top/">Totoro</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://totorocatcat.top/2024/10/07/%E6%95%B0%E7%BB%84%E7%BB%93%E6%9E%84%E4%B9%8B%E6%95%B0%E7%BB%84%E5%92%8C%E7%89%B9%E6%AE%8A%E7%9F%A9%E9%98%B5/">http://totorocatcat.top/2024/10/07/%E6%95%B0%E7%BB%84%E7%BB%93%E6%9E%84%E4%B9%8B%E6%95%B0%E7%BB%84%E5%92%8C%E7%89%B9%E6%AE%8A%E7%9F%A9%E9%98%B5/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://totorocatcat.top" target="_blank">Totoroの旅</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%8F%90%E9%AB%98/">提高</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/e36d7e73b79ba889187a59a43218fb35f7db2c8c.jpg@1256w_2298h_!web-article-pic.avif" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2024/10/07/CS70Disc14/" title="CS70Disc14"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/1e253f0d647618a50c8a799ed714767e59cea4d6.jpg@1256w_708h_!web-article-pic.avif" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">CS70Disc14</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2024/09/01/3-1/" title="Testing Round 19 (Div. 3)"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/Suzume.2022.2160p.BluRay.x265.10bit.DTS-CTRLHD.mkv_015307.546.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-01</div><div class="title">Testing Round 19 (Div. 3)</div></div></a></div><div><a href="/2024/01/30/2023%E7%BE%8E%E8%B5%9Be%E9%A2%98%E5%88%86%E6%9E%90/" title="2023美赛e题分析"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://source.fomal.cc/img/default_cover_175.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-01-30</div><div class="title">2023美赛e题分析</div></div></a></div><div><a href="/2024/08/14/3/" title="codeforces-round-966-div.3"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/ushio-api-img-moe@5.0.47/img_472_3555x2256_72_null_normal.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-08-14</div><div class="title">codeforces-round-966-div.3</div></div></a></div><div><a href="/2024/08/14/55/" title="牛客周赛Round55"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/ushio-api-img-moe@5.0.29/img_297_1920x1080_350_null_normal.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-08-14</div><div class="title">牛客周赛Round55</div></div></a></div><div><a href="/2024/08/29/57/" title="牛客周赛Round57"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/3a970c8c00853e895b037fcb057064b.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-08-29</div><div class="title">牛客周赛Round57</div></div></a></div><div><a href="/2024/04/04/3%E9%9A%BE%E5%BA%A6%E5%9B%BE%E8%AE%BA%E6%A0%91%E8%AE%BA%E9%A2%98%E7%BB%83%E6%89%8B/" title="div3难度图论树论题练手"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/ushio-api-img-moe@5.0.29/img_296_4134x2337_72_null_normal.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-04-04</div><div class="title">div3难度图论树论题练手</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/px3.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Totoro</div><div class="author-info__description">敲代码的SCUT学生</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">642</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">6</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">30</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/4512abc"><i class="fab fa-github"></i><span>🛴前往小窝......</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/4512abc" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:4512abc@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到龙猫の小窝</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E7%BB%93%E6%9E%84%E4%B9%8B%E6%95%B0%E7%BB%84%E5%92%8C%E7%89%B9%E6%AE%8A%E7%9F%A9%E9%98%B5"><span class="toc-number">1.</span> <span class="toc-text">数组结构之数组和特殊矩阵</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E7%9A%84%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84"><span class="toc-number">1.1.</span> <span class="toc-text">数组的存储结构</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84%E7%9A%84%E5%AD%98%E5%82%A8"><span class="toc-number">1.1.0.1.</span> <span class="toc-text">一维数组的存储</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%9A%E7%BB%B4%E6%95%B0%E7%BB%84%E7%9A%84%E5%AD%98%E5%82%A8"><span class="toc-number">1.1.0.2.</span> <span class="toc-text">多维数组的存储</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%8C%89%E8%A1%8C%E4%BC%98%E5%85%88%E5%AD%98%E5%82%A8"><span class="toc-number">1.1.0.2.1.</span> <span class="toc-text">按行优先存储</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%8C%89%E5%88%97%E4%BC%98%E5%85%88%E5%AD%98%E5%82%A8"><span class="toc-number">1.1.0.2.2.</span> <span class="toc-text">按列优先存储</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%B9%E7%A7%B0%E7%9F%A9%E9%98%B5"><span class="toc-number">1.2.</span> <span class="toc-text">对称矩阵</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9F%A9%E9%98%B5%E7%9A%84%E5%88%92%E5%88%86"><span class="toc-number">1.2.1.</span> <span class="toc-text">矩阵的划分</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E6%96%B9%E5%BC%8F"><span class="toc-number">1.2.2.</span> <span class="toc-text">存储方式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84"><span class="toc-number">1.2.2.1.</span> <span class="toc-text">存储结构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%83%E7%B4%A0%E5%AD%98%E5%82%A8%E5%85%B3%E7%B3%BB"><span class="toc-number">1.2.2.2.</span> <span class="toc-text">元素存储关系</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8B%E6%A0%87%E8%AE%A1%E7%AE%97"><span class="toc-number">1.2.2.3.</span> <span class="toc-text">下标计算</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%8B%E5%AD%90"><span class="toc-number">1.2.3.</span> <span class="toc-text">例子</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E8%A7%92%E7%9F%A9%E9%98%B5"><span class="toc-number">1.3.</span> <span class="toc-text">三角矩阵</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E4%B8%8B%E4%B8%89%E8%A7%92%E7%9F%A9%E9%98%B5"><span class="toc-number">1.3.0.1.</span> <span class="toc-text">1. 下三角矩阵</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84-1"><span class="toc-number">1.3.0.2.</span> <span class="toc-text">存储结构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%83%E7%B4%A0%E4%B8%8B%E6%A0%87%E5%85%B3%E7%B3%BB"><span class="toc-number">1.3.0.3.</span> <span class="toc-text">元素下标关系</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E5%BD%A2%E5%BC%8F"><span class="toc-number">1.3.0.4.</span> <span class="toc-text">存储形式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%B8%8A%E4%B8%89%E8%A7%92%E7%9F%A9%E9%98%B5"><span class="toc-number">1.3.1.</span> <span class="toc-text">2. 上三角矩阵</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84-2"><span class="toc-number">1.3.1.1.</span> <span class="toc-text">存储结构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%83%E7%B4%A0%E4%B8%8B%E6%A0%87%E5%85%B3%E7%B3%BB-1"><span class="toc-number">1.3.1.2.</span> <span class="toc-text">元素下标关系</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E5%BD%A2%E5%BC%8F-1"><span class="toc-number">1.3.1.3.</span> <span class="toc-text">存储形式</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E5%AF%B9%E8%A7%92%E7%9F%A9%E9%98%B5"><span class="toc-number">1.4.</span> <span class="toc-text">三对角矩阵</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%89%B9%E7%82%B9"><span class="toc-number">1.4.0.1.</span> <span class="toc-text">特点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84-3"><span class="toc-number">1.4.0.2.</span> <span class="toc-text">存储结构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E5%BD%A2%E5%BC%8F%E7%A4%BA%E6%84%8F%E5%9B%BE"><span class="toc-number">1.4.0.3.</span> <span class="toc-text">存储形式示意图</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E4%B8%8B%E6%A0%87%E5%85%B3%E7%B3%BB"><span class="toc-number">1.4.1.</span> <span class="toc-text">存储下标关系</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A8%80%E7%96%8F%E7%9F%A9%E9%98%B5"><span class="toc-number">1.5.</span> <span class="toc-text">稀疏矩阵</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E9%97%AE%E9%A2%98"><span class="toc-number">1.5.0.1.</span> <span class="toc-text">存储问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A8%80%E7%96%8F%E7%9F%A9%E9%98%B5%E7%9A%84%E5%8E%8B%E7%BC%A9%E5%AD%98%E5%82%A8"><span class="toc-number">1.5.0.2.</span> <span class="toc-text">稀疏矩阵的压缩存储</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9A%8F%E6%9C%BA%E5%AD%98%E5%8F%96%E7%89%B9%E6%80%A7"><span class="toc-number">1.5.0.3.</span> <span class="toc-text">随机存取特性</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%E9%A2%98"><span class="toc-number">1.6.</span> <span class="toc-text">选择题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E6%9E%90%EF%BC%9A"><span class="toc-number">1.6.1.</span> <span class="toc-text">解析：</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/10/07/%E6%95%B0%E7%BB%84%E7%BB%93%E6%9E%84%E4%B9%8B%E6%95%B0%E7%BB%84%E5%92%8C%E7%89%B9%E6%AE%8A%E7%9F%A9%E9%98%B5/" title="数组结构之数组和特殊矩阵"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/e36d7e73b79ba889187a59a43218fb35f7db2c8c.jpg@1256w_2298h_!web-article-pic.avif" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="数组结构之数组和特殊矩阵"/></a><div class="content"><a class="title" href="/2024/10/07/%E6%95%B0%E7%BB%84%E7%BB%93%E6%9E%84%E4%B9%8B%E6%95%B0%E7%BB%84%E5%92%8C%E7%89%B9%E6%AE%8A%E7%9F%A9%E9%98%B5/" title="数组结构之数组和特殊矩阵">数组结构之数组和特殊矩阵</a><time datetime="2024-10-07T10:58:27.000Z" title="发表于 2024-10-07 18:58:27">2024-10-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/10/07/CS70Disc14/" title="CS70Disc14"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/1e253f0d647618a50c8a799ed714767e59cea4d6.jpg@1256w_708h_!web-article-pic.avif" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="CS70Disc14"/></a><div class="content"><a class="title" href="/2024/10/07/CS70Disc14/" title="CS70Disc14">CS70Disc14</a><time datetime="2024-10-07T09:17:18.000Z" title="发表于 2024-10-07 17:17:18">2024-10-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/10/07/CS70Disc13B/" title="CS70Disc13B"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/99ffb45058a4b48b4e83849dc92f2b13617436609.jpg@1256w_708h_!web-article-pic.avif" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="CS70Disc13B"/></a><div class="content"><a class="title" href="/2024/10/07/CS70Disc13B/" title="CS70Disc13B">CS70Disc13B</a><time datetime="2024-10-07T08:46:32.000Z" title="发表于 2024-10-07 16:46:32">2024-10-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/10/07/CS70Disc13A/" title="CS70Disc13A"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/06e219808777ca670f92ea5b58ac111d90c476ec.jpg@1256w_926h_!web-article-pic.avif" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="CS70Disc13A"/></a><div class="content"><a class="title" href="/2024/10/07/CS70Disc13A/" title="CS70Disc13A">CS70Disc13A</a><time datetime="2024-10-07T08:37:48.000Z" title="发表于 2024-10-07 16:37:48">2024-10-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/10/07/CS70Disc12B/" title="CS70Disc12B"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/f57630d3727f3b39957900acb652c2a38e08611c.jpg@1256w_1784h_!web-article-pic.avif" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="CS70Disc12B"/></a><div class="content"><a class="title" href="/2024/10/07/CS70Disc12B/" title="CS70Disc12B">CS70Disc12B</a><time datetime="2024-10-07T08:28:24.000Z" title="发表于 2024-10-07 16:28:24">2024-10-07</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 By Totoro</div><div class="footer_custom_text">I wish you to become your own sun, no need to rely on who's light.<p><a target="_blank" href="https://hexo.io/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&logo=hexo" title="博客框架为Hexo"></a>&nbsp;<a target="_blank" href="https://butterfly.js.org/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&logo=bitdefender" title="主题采用butterfly"></a>&nbsp;<a target="_blank" href="https://www.jsdelivr.com/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&logo=jsDelivr" title="本站使用JsDelivr为静态资源提供CDN加速"></a> &nbsp;<a target="_blank" href="https://vercel.com/ "><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Hosted-Vervel-brightgreen?style=flat&logo=Vercel" title="本站采用双线部署，默认线路托管于Vercel"></a>&nbsp;<a target="_blank" href="https://vercel.com/ "><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Hosted-Coding-0cedbe?style=flat&logo=Codio" title="本站采用双线部署，联通线路托管于Coding"></a>&nbsp;<a target="_blank" href="https://github.com/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&logo=GitHub" title="本站项目由Gtihub托管"></a>&nbsp;<a target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&logo=Claris" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"></a></p></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat-btn" type="button" title="聊天"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="/js/tw_cn.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@5.2.0/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'HT1PalaKkPaG1UqAXBhJXIu8-gzGzoHsz',
+      appKey: 'iT0TnVVAwf9zuZ7NqwclQItY',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://cdn.jsdelivr.net/npm/valine@1.5.1/dist/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><script defer src="/js/light.js"></script><canvas id="universe"></canvas><script defer src="/js/universe.js"></script><script async src="/js/title.js"></script><script defer src="https://npm.elemecdn.com/jquery@latest/dist/jquery.min.js"></script><script defer data-pjax src="/js/cat.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="1" zIndex="-1" count="30" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/click-show-text.min.js" data-mobile="true" data-text="只此无为身，且前行,忘记过去的人注定重蹈覆辙,我是我，我靠自己站立，我会做好自身,如果我睡大觉，谁给我摘月亮呢,假期和朋友，是人生中顶好的两样东西啊。,去爱，去失去，要不负相遇,没什么想不想通的，只是固执而已,我们深爱星辰，乃至不惧夜的黑,吃，喝，享受幸福，接受奇迹,浊水若长流，自清澄,雅俗共赏,总会有什么也不想的幸福时刻吧,时间顺流而下，生活逆流而上,悟已往之不谏，知来者之可追,希望你的小世界里,山花烂漫,茶酒俱全,安宁清淡,明朗欢愉" data-fontsize="20px" data-random="false" async="async"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener
+  btf.removeGlobalFnEvent('pjax')
+  btf.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.12.0"></script></div></div><!-- hexo injector body_end start --><script data-pjax>
+    function butterfly_categories_card_injector_config(){
+      var parent_div_git = document.getElementById('recent-posts');
+      var item_html = '<style>li.categoryBar-list-item{width:32.3%;}.categoryBar-list{max-height: 380px;overflow:auto;}.categoryBar-list::-webkit-scrollbar{width:0!important}@media screen and (max-width: 650px){.categoryBar-list{max-height: 320px;}}</style><div class="recent-post-item" style="height:auto;width:100%;padding:0px;"><div id="categoryBar"><ul class="categoryBar-list"><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_12.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/期末の旅/&quot;);" href="javascript:void(0);">期末の旅</a><span class="categoryBar-list-count">39</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_13.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/ACMの旅/&quot;);" href="javascript:void(0);">ACMの旅</a><span class="categoryBar-list-count">66</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_14.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/区域赛の旅/&quot;);" href="javascript:void(0);">区域赛の旅</a><span class="categoryBar-list-count">7</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_17.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/Codeforcesの旅/&quot;);" href="javascript:void(0);">Codeforcesの旅</a><span class="categoryBar-list-count">24</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_18.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/数学建模/&quot;);" href="javascript:void(0);">数学建模</a><span class="categoryBar-list-count">31</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_19.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/牛客の旅/&quot;);" href="javascript:void(0);">牛客の旅</a><span class="categoryBar-list-count">65</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_20.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/刷题计划/&quot;);" href="javascript:void(0);">刷题计划</a><span class="categoryBar-list-count">42</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_21.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/前端の旅/&quot;);" href="javascript:void(0);">前端の旅</a><span class="categoryBar-list-count">17</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_22.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/Atcoderの旅/&quot;);" href="javascript:void(0);">Atcoderの旅</a><span class="categoryBar-list-count">53</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_22.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/C-の旅/&quot;);" href="javascript:void(0);">C++の旅</a><span class="categoryBar-list-count">17</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_23.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CSAPPの旅/&quot;);" href="javascript:void(0);">CSAPPの旅</a><span class="categoryBar-list-count">2</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_24.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS知识/&quot;);" href="javascript:void(0);">CS知识</a><span class="categoryBar-list-count">3</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_25.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/编程基础/&quot;);" href="javascript:void(0);">编程基础</a><span class="categoryBar-list-count">21</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_26.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/JAVAの旅/&quot;);" href="javascript:void(0);">JAVAの旅</a><span class="categoryBar-list-count">10</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_27.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/个人安排/&quot;);" href="javascript:void(0);">个人安排</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_28.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/杂项/&quot;);" href="javascript:void(0);">杂项</a><span class="categoryBar-list-count">10</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_29.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/文学/&quot;);" href="javascript:void(0);">文学</a><span class="categoryBar-list-count">49</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_30.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/力扣の旅/&quot;);" href="javascript:void(0);">力扣の旅</a><span class="categoryBar-list-count">20</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_31.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/🗡指offer/&quot;);" href="javascript:void(0);">🗡指offer</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_32.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/少年游/&quot;);" href="javascript:void(0);">少年游</a><span class="categoryBar-list-count">2</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_33.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/算法提高课/&quot;);" href="javascript:void(0);">算法提高课</a><span class="categoryBar-list-count">4</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_34.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/数据结构/&quot;);" href="javascript:void(0);">数据结构</a><span class="categoryBar-list-count">12</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_35.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/汇编の旅/&quot;);" href="javascript:void(0);">汇编の旅</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_36.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/灵魂の旅/&quot;);" href="javascript:void(0);">灵魂の旅</a><span class="categoryBar-list-count">2</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_37.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/离散数学/&quot;);" href="javascript:void(0);">离散数学</a><span class="categoryBar-list-count">11</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_38.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/C-实训/&quot;);" href="javascript:void(0);">C++实训</a><span class="categoryBar-list-count">8</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_39.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/计算机组成原理/&quot;);" href="javascript:void(0);">计算机组成原理</a><span class="categoryBar-list-count">7</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_40.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS61B/&quot;);" href="javascript:void(0);">CS61B</a><span class="categoryBar-list-count">76</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_41.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/MIT-6-031-Software-Construction/&quot;);" href="javascript:void(0);">MIT 6.031:Software Construction</a><span class="categoryBar-list-count">16</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_42.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS70の旅/&quot;);" href="javascript:void(0);">CS70の旅</a><span class="categoryBar-list-count">25</span><span class="categoryBar-list-descr"></span></li></ul></div></div>';
+      console.log('已挂载butterfly_categories_card')
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+      }
+    if( document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+    butterfly_categories_card_injector_config()
+    }
+  </script><script data-pjax>
+  function butterfly_swiper_injector_config(){
+    var parent_div_git = document.getElementById('recent-posts');
+    var item_html = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms;"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;2024/10/05/TotoroのPlan/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/51d37eba99d243607ddedfff6e91568f617436609.jpg@1256w_1884h_!web-article-pic.avif" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-10-05</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;2024/10/05/TotoroのPlan/&quot;);" href="javascript:void(0);" alt="">TotoroのPlan</a><div class="blog-slider__text">方便大二看（）</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;2024/10/05/TotoroのPlan/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;2024/01/29/诗兴大发/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://source.fomal.cc/img/default_cover_69.webp" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-01-29</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;2024/01/29/诗兴大发/&quot;);" href="javascript:void(0);" alt="">诗兴大发</a><div class="blog-slider__text">未觉，却是中二少年的诗仙梦</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;2024/01/29/诗兴大发/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载butterfly_swiper')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_swiper_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_swiper_injector_config();
+  }
+  </script><script defer src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.js"></script><script defer data-pjax src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper_init.js"></script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>
