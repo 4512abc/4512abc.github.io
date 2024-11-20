@@ -1,0 +1,604 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Lec9 Graph Algorithms(4) | Totoroの旅</title><meta name="author" content="Totoro"><meta name="copyright" content="Totoro"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Lec9 Graph Algorithms(4) 图论的世界，探索!!!😎解决了最短路之后，接下来该你了：最小生成树问题！🤔 这一节注重算法的原理，只要给你一张图，你能够用这两种方法找到最小生成树，这一节你就已经过关了。 再立一个flag，弄一个跳转目录，这样子就可以方便别人去寻找各个方面的知识了。🎈  生成树 (Spanning Tree) 和最小生成树 (Minimum Spanning">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Lec9 Graph Algorithms(4)">
+<meta property="og:url" content="http://totorocatcat.top/2024/11/20/lec94/index.html">
+<meta property="og:site_name" content="Totoroの旅">
+<meta property="og:description" content="Lec9 Graph Algorithms(4) 图论的世界，探索!!!😎解决了最短路之后，接下来该你了：最小生成树问题！🤔 这一节注重算法的原理，只要给你一张图，你能够用这两种方法找到最小生成树，这一节你就已经过关了。 再立一个flag，弄一个跳转目录，这样子就可以方便别人去寻找各个方面的知识了。🎈  生成树 (Spanning Tree) 和最小生成树 (Minimum Spanning">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/d4f507db4948b6927219f40a357b26b.png">
+<meta property="article:published_time" content="2024-11-20T09:21:14.000Z">
+<meta property="article:modified_time" content="2024-11-20T09:22:59.977Z">
+<meta property="article:author" content="Totoro">
+<meta property="article:tag" content="提高">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/d4f507db4948b6927219f40a357b26b.png"><link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/b5ca6e582a7a45e6fde46e616eeb68e.png"><link rel="canonical" href="http://totorocatcat.top/2024/11/20/lec94/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta/><link rel="stylesheet" href="/css/index.css?v=4.12.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  noticeOutdate: {"limitDay":765,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体中文","cht_to_chs":"你已切换为简体中文","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"top-right"},
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Lec9 Graph Algorithms(4)',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: true,
+  isToc: true,
+  postUpdate: '2024-11-20 17:22:59'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const now = new Date()
+          const hour = now.getHours()
+          const isNight = hour <= 6 || hour >= 18
+          if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/universe.css"><link rel="stylesheet" href="/css/scrollbar.css"><link rel="stylesheet" href="/css/cat.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-double-row-display@1.00/cardlistpost.min.css"/>
+<style>#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags:before {content:"\A";
+  white-space: pre;}#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags > .article-meta__separator{display:none}</style>
+<link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-categories-card@1.0.0/lib/categorybar.css"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiperstyle.css" media="print" onload="this.media='all'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load',() => { preloader.endLoading() })
+
+  if (true) {
+    document.addEventListener('pjax:send', () => { preloader.initLoading() })
+    document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+  }
+})()</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/px3.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">707</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">32</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home-alt"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-envelope-open"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 趣味</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/project/"><i class="fa-fw fas fas fa-folder"></i><span> 项目</span></a></div><div class="menus_item"><a class="site-page" href="/stars/"><i class="fa-fw fas fa-bookmark"></i><span> 收藏</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/d4f507db4948b6927219f40a357b26b.png')"><nav id="nav"><span id="blog-info"><a href="/" title="Totoroの旅"><span class="site-name">Totoroの旅</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home-alt"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-envelope-open"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 趣味</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/project/"><i class="fa-fw fas fas fa-folder"></i><span> 项目</span></a></div><div class="menus_item"><a class="site-page" href="/stars/"><i class="fa-fw fas fa-bookmark"></i><span> 收藏</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Lec9 Graph Algorithms(4)</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-11-20T09:21:14.000Z" title="发表于 2024-11-20 17:21:14">2024-11-20</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-11-20T09:22:59.977Z" title="更新于 2024-11-20 17:22:59">2024-11-20</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%9C%9F%E6%9C%AB%E3%81%AE%E6%97%85/">期末の旅</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">3.6k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>11分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Lec9 Graph Algorithms(4)"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="Lec9-Graph-Algorithms-4"><a href="#Lec9-Graph-Algorithms-4" class="headerlink" title="Lec9 Graph Algorithms(4)"></a>Lec9 Graph Algorithms(4)</h1><blockquote>
+<p>图论的世界，探索!!!😎解决了最短路之后，接下来该你了：最小生成树问题！🤔</p>
+<p>这一节注重算法的原理，只要给你一张图，你能够用这两种方法找到最小生成树，这一节你就已经过关了。</p>
+<p>再立一个flag，弄一个跳转目录，这样子就可以方便别人去寻找各个方面的知识了。🎈</p>
+</blockquote>
+<h2 id="生成树-Spanning-Tree-和最小生成树-Minimum-Spanning-Tree-概述"><a href="#生成树-Spanning-Tree-和最小生成树-Minimum-Spanning-Tree-概述" class="headerlink" title="生成树 (Spanning Tree) 和最小生成树 (Minimum Spanning Tree)概述"></a><strong>生成树 (Spanning Tree) 和最小生成树 (Minimum Spanning Tree)概述</strong></h2><h3 id="生成树-Spanning-Tree"><a href="#生成树-Spanning-Tree" class="headerlink" title="生成树 (Spanning Tree)"></a><strong>生成树 (Spanning Tree)</strong></h3><p>对于一个 <strong>连接图</strong> $ G(V, E) $，其中 $ V $ 表示图的节点集合，$ E $ 表示图的边集合：</p>
+<ul>
+<li><strong>生成树</strong> $ T(V’, E’) $ 是图的一个子图，满足以下条件：<ul>
+<li><strong>覆盖所有节点</strong>：$ V’ = V $，即生成树包含图中的所有节点。</li>
+<li><strong>无环结构</strong>：生成树是一个树结构，因此它没有环（即它是一个无环连通图）。</li>
+<li><strong>边数</strong>：生成树中的边数为 $ |V| - 1 $，即生成树的边数等于节点数减去 1。</li>
+</ul>
+</li>
+</ul>
+<p>简单来说，生成树是一个包含图中所有节点的子图，且无环且连通。</p>
+<h3 id="最小生成树-Minimum-Spanning-Tree"><a href="#最小生成树-Minimum-Spanning-Tree" class="headerlink" title="最小生成树 (Minimum Spanning Tree)"></a><strong>最小生成树 (Minimum Spanning Tree)</strong></h3><ul>
+<li><strong>加权边</strong>：在加权图中，每条边都有一个权重（即成本）。</li>
+<li><strong>最小生成树</strong>的目标是：<strong>找到一个生成树，使得这棵树的边的总权重最小</strong>。</li>
+</ul>
+<p>最小生成树的应用场景很多，常见的有：</p>
+<ul>
+<li><strong>寻找最便宜的电线铺设方式</strong>：比如在某个区域内布置电线时，我们希望使用最少的成本连接所有房屋。</li>
+<li><strong>寻找最小成本的互联网信息传递路径</strong>：例如，找到在网络中传递数据时最便宜的路径。</li>
+</ul>
+<h3 id="常见算法："><a href="#常见算法：" class="headerlink" title="常见算法："></a><strong>常见算法</strong>：</h3><ol>
+<li><strong>Prim 算法</strong>：通过逐步选择最短的边来构建生成树。</li>
+<li><strong>Kruskal 算法</strong>：通过排序所有边，逐步选择不形成环的最短边来构建生成树。</li>
+</ol>
+<h2 id="最小生成树构建策略"><a href="#最小生成树构建策略" class="headerlink" title="最小生成树构建策略"></a><strong>最小生成树构建策略</strong></h2><h3 id="生成树的基本性质"><a href="#生成树的基本性质" class="headerlink" title="生成树的基本性质"></a><strong>生成树的基本性质</strong></h3><ul>
+<li>对于任何生成树 $ T $，若在树中插入一条新边 $ e_{new} $，则会形成一个环。</li>
+<li>然而，如果从这个环中删除一条边 $ e_{old} $，则可以恢复成一个生成树。</li>
+<li>如果新边 $ e_{new} $ 的权重比旧边 $ e_{old} $ 小，那么我们已经取得了进展，权重更小的生成树。</li>
+</ul>
+<h3 id="构建最小生成树的策略"><a href="#构建最小生成树的策略" class="headerlink" title="构建最小生成树的策略"></a><strong>构建最小生成树的策略</strong></h3><ol>
+<li><strong>贪心算法</strong>：每次选择一条不形成环且代价最小的边添加到生成树中。<ul>
+<li>通过逐步添加最小权重的边，保证每一步都使当前生成树的总权重最小。</li>
+</ul>
+</li>
+<li><strong>重复操作</strong>：执行 $ |V| - 1 $ 次，直到生成树包含所有节点。因为生成树中必须有 $ |V| - 1 $ 条边。</li>
+<li><strong>正确性证明</strong>：<ul>
+<li>如果在某一步中，存在一条边 $ e $ 比已选边 $ e_{old} $ 权重更小，而该边没有被选中，那么算法一定会在适当的时机选择它。</li>
+<li>因为贪心算法每次选择的是当前最优解，而如果有更优的边，算法会选择它。</li>
+</ul>
+</li>
+</ol>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a><strong>总结</strong></h3><p>最小生成树的构建可以通过贪心策略，每次选择代价最小的边来扩展生成树，确保最终生成的树的权重最小。这种策略通过不断添加边并检查环来避免冗余的路径，从而逐步构建最优解。</p>
+<h2 id="Prim-算法-增量构建生成树"><a href="#Prim-算法-增量构建生成树" class="headerlink" title="Prim 算法 (增量构建生成树)"></a><strong>Prim 算法 (增量构建生成树)</strong></h2><h3 id="算法概述"><a href="#算法概述" class="headerlink" title="算法概述"></a><strong>算法概述</strong></h3><p>Prim 算法通过逐步扩展生成树，始终选择连接当前树的最小代价边，将其加入到生成树中，直到所有的节点都包含在内。其核心思想是：每次从已选的节点中选择一条代价最小的边，并将该边连接的节点加入到生成树中。</p>
+<h3 id="算法步骤"><a href="#算法步骤" class="headerlink" title="算法步骤"></a><strong>算法步骤</strong></h3><ol>
+<li><p><strong>初始化</strong>：</p>
+<ul>
+<li>为每个节点设置初始连接成本为 “无穷大”（表示不可达）。</li>
+<li>将每个节点标记为“未访问”。</li>
+</ul>
+</li>
+<li><p><strong>选择起始节点</strong>：</p>
+<ul>
+<li>选择一个节点 $ v $，并将其代价设为 0，表示从该节点开始构建生成树。</li>
+<li>将该节点的前驱节点设为 0（起始节点无前驱）。</li>
+</ul>
+</li>
+<li><p><strong>循环直到所有节点都标记为已访问</strong>：</p>
+<ul>
+<li><strong>选择代价最小的未访问节点</strong>：从所有未访问节点中选择一个代价最小的节点 $ u $，并将其标记为已访问。</li>
+<li><strong>更新相邻节点的代价</strong>：对于与 $ u $ 相邻的每个未访问节点 $ w $，如果通过 $ u $ 到达 $ w $ 的代价小于当前 $ w $ 的代价，则更新 $ w $ 的代价为通过 $ u $ 的代价。<ul>
+<li>代价更新公式：<br>$<br>\text{cost}(w) := \text{cost}(u, w)<br>$</li>
+<li>同时，更新 $ w $ 的前驱节点为 $ u $。</li>
+<li>记录最短路径：$ \text{prev}[w] = u $</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>重复</strong>：重复步骤 3，直到所有节点都被加入生成树中。</p>
+</li>
+</ol>
+<h3 id="与-Dijkstra-算法的相似性"><a href="#与-Dijkstra-算法的相似性" class="headerlink" title="与 Dijkstra 算法的相似性"></a><strong>与 Dijkstra 算法的相似性</strong></h3><ul>
+<li><p><strong>相同点</strong>：</p>
+<ul>
+<li>两个算法都使用了贪心策略：每一步选择代价最小的节点。</li>
+<li>都采用了“标记节点”和“更新代价”的策略，确保每个节点的最短代价被逐步计算出来。</li>
+</ul>
+</li>
+<li><p><strong>不同点</strong>：</p>
+<ul>
+<li>Dijkstra 算法是单源最短路径算法，只考虑从一个源节点到其他所有节点的最短路径。</li>
+<li>Prim 算法是构建最小生成树的算法，每次选择一个边将节点加入树中，最终得到覆盖所有节点的最小代价树。</li>
+</ul>
+</li>
+</ul>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a><strong>示例</strong></h3><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/image-20241120170046023.png" alt="image-20241120170046023"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/image-20241120170055730.png" alt="image-20241120170055730"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/image-20241120170113090.png" alt="image-20241120170113090"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/image-20241120170136279.png" alt="image-20241120170136279"></p>
+<h3 id="算法实现"><a href="#算法实现" class="headerlink" title="算法实现"></a><strong>算法实现</strong></h3><p>以下是使用邻接表表示图的 Prim 算法实现：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">Prim</span><span class="params">(Graph* G, <span class="type">int</span>* D, <span class="type">int</span> s)</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> V[G-&gt;<span class="built_in">n</span>()];  <span class="comment">// 存储最小代价的节点</span></span><br><span class="line">    <span class="type">int</span> i, w;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 初始化</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; G-&gt;<span class="built_in">n</span>(); i++) &#123;</span><br><span class="line">        D[i] = INFINITY; <span class="comment">// 代价初始化为无穷大</span></span><br><span class="line">    &#125;</span><br><span class="line">    D[s] = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; G-&gt;<span class="built_in">n</span>(); i++) &#123; </span><br><span class="line">        <span class="type">int</span> v = <span class="built_in">minVertex</span>(G, D); <span class="comment">// 选择代价最小的未标记节点</span></span><br><span class="line">        G-&gt;<span class="built_in">setMark</span>(v, VISITED);  <span class="comment">// 标记节点 v 已访问</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 如果当前节点不是起始节点，则添加边到生成树</span></span><br><span class="line">        <span class="keyword">if</span> (v != s) &#123;</span><br><span class="line">            <span class="built_in">AddEdgetoMST</span>(V[v], v);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (D[v] == INFINITY) <span class="keyword">return</span>; <span class="comment">// 如果有不可达的节点，则退出</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 更新邻接节点的代价</span></span><br><span class="line">        <span class="keyword">for</span> (w = G-&gt;<span class="built_in">first</span>(v); w &lt; G-&gt;<span class="built_in">n</span>(); w = G-&gt;<span class="built_in">next</span>(v, w)) &#123;</span><br><span class="line">            <span class="keyword">if</span> (G-&gt;<span class="built_in">getMark</span>(w) == UNVISITED) &#123;</span><br><span class="line">                <span class="keyword">if</span> (D[w] &gt; G-&gt;<span class="built_in">weight</span>(v, w)) &#123;</span><br><span class="line">                    D[w] = G-&gt;<span class="built_in">weight</span>(v, w);  <span class="comment">// 更新代价</span></span><br><span class="line">                    V[w] = v;  <span class="comment">// 记录从哪里来</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a><strong>复杂度分析</strong></h3><ul>
+<li><strong>时间复杂度</strong>：如果通过二叉堆来选择最小代价的节点，时间复杂度为 $ O((n + m) \log n) $，其中 $ n $ 是节点数，$ m $ 是边数。</li>
+<li><strong>空间复杂度</strong>：主要取决于存储图结构的空间，通常为 $ O(n + m) $。</li>
+</ul>
+<h3 id="贪心策略"><a href="#贪心策略" class="headerlink" title="贪心策略"></a><strong>贪心策略</strong></h3><p>Prim 算法是一种贪心算法，在每一步中，始终选择连接已选节点和未选节点的代价最小的边。通过不断扩展生成树，最终得到最小代价的生成树。</p>
+<h3 id="正确性证明"><a href="#正确性证明" class="headerlink" title="正确性证明"></a><strong>正确性证明</strong></h3><ul>
+<li><strong>反证法</strong>：假设有一个最小生成树（MST），在某一步选择的边不是最小代价的边，那么一定存在一条更优的边，而贪心算法会选择这个边。因此，Prim 算法能够保证每次选择的是最优边，最终构建的生成树一定是最小代价的生成树。</li>
+</ul>
+<h3 id="Prim-算法的正确性证明"><a href="#Prim-算法的正确性证明" class="headerlink" title="Prim 算法的正确性证明"></a><strong>Prim 算法的正确性证明</strong></h3><p>我们通过反证法来证明 <strong>Prim 算法</strong> 总是能找到最小生成树 (MST)，即最小代价的生成树。</p>
+<h3 id="证明步骤："><a href="#证明步骤：" class="headerlink" title="证明步骤："></a><strong>证明步骤：</strong></h3><ol>
+<li><p><strong>定义顶点的顺序</strong>：</p>
+<ul>
+<li>假设图中的顶点 $ v_0, v_1, \dots, v_{n-1} $ 按照它们被算法添加到生成树 (MST) 中的顺序排列。换句话说，顶点的顺序是根据它们被选择进入 MST 的时间。</li>
+</ul>
+</li>
+<li><p><strong>假设算法出现错误</strong>：</p>
+<ul>
+<li>假设在算法的执行过程中，存在第一个边 $ e_j = (v_p, v_j) $（其中 $ p &lt; j $）是算法选择的错误边，这条边与 “真实” 最小生成树 (MST) 中的边不同。</li>
+</ul>
+</li>
+<li><p><strong>构造真实 MST 中的路径</strong>：</p>
+<ul>
+<li>在真实的最小生成树中，必然存在一条路径从 $ v_j $ 到 $ v_p $，这条路径经过某些顶点 $ v_u $ 和 $ v_w $，其中 $ u &lt; j $ 且 $ w &gt; j $，连接了顶点 $ v_p $ 和 $ v_j $。</li>
+<li>这条路径 $ v_j \to v_w \to v_u \to v_p $ 包含了在真实 MST 中的边，而 $ e_j = (v_p, v_j) $ 是不在真实 MST 中的。</li>
+</ul>
+</li>
+<li><p><strong>比较边的代价</strong>：</p>
+<ul>
+<li>假设在这条路径中，真实的边 $ e’ = (v_u, v_w) $ 的代价小于边 $ e_j = (v_p, v_j) $ 的代价。</li>
+<li>由于 Prim 算法是贪心算法，在每次选择边时都会选择当前可用的、代价最小的边。如果存在一条边 $ e’ $ 的代价比 $ e_j $ 小，那么根据算法的贪心性质，<strong>Prim 算法一定会选择边 $ e’ $</strong>，而不是边 $ e_j $。</li>
+</ul>
+</li>
+<li><p><strong>产生矛盾</strong>：</p>
+<ul>
+<li>这与我们假设的“$ e_j $ 是算法第一次错误选择的边”相矛盾。</li>
+<li>因此，我们的假设是错误的，算法不会出错，<strong>Prim 算法能够正确地选择最小生成树的边</strong>。</li>
+</ul>
+</li>
+</ol>
+<h2 id="Kruskal-算法"><a href="#Kruskal-算法" class="headerlink" title="Kruskal 算法"></a><strong>Kruskal 算法</strong></h2><h3 id="算法描述："><a href="#算法描述：" class="headerlink" title="算法描述："></a><strong>算法描述：</strong></h3><p><strong>Kruskal 算法</strong> 是一种构造最小生成树（MST）的方法。它采用贪心策略，按照边的权重从小到大选择边，逐步构建最小生成树。具体步骤如下：</p>
+<ol>
+<li><p><strong>初始化</strong>：</p>
+<ul>
+<li>初始化一个森林，其中每棵树包含一个单独的节点。</li>
+<li>建立一个优先队列，存储所有边，边的优先级按边的权重从小到大排序。</li>
+</ul>
+</li>
+<li><p><strong>算法步骤</strong>：</p>
+<ul>
+<li>重复以下操作，直到生成树包含 $ |V| - 1 $ 条边：<ol>
+<li>从优先队列中删除最小的边（边 $ e = (u, v) $）。</li>
+<li>如果这条边连接的两个顶点 $ u $ 和 $ v $ 在同一棵树中，则加入这条边会形成一个环，因此丢弃该边。</li>
+<li>如果 $ u $ 和 $ v $ 不在同一棵树中，则接受该边，它将连接这两棵树并缩小森林的规模。</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p><strong>最终结果</strong>：</p>
+<ul>
+<li>被接受的边形成了最小生成树（MST）。</li>
+</ul>
+</li>
+</ol>
+<h3 id="环路检测："><a href="#环路检测：" class="headerlink" title="环路检测："></a><strong>环路检测：</strong></h3><p>为了避免生成环路，我们需要判断添加的边是否会形成环路。具体方法如下：</p>
+<ul>
+<li>如果边 $ (u, v) $ 连接的顶点 $ u $ 和 $ v $ 已经在同一棵树中，则加入这条边会形成环路。因此，我们需要检查 $ u $ 和 $ v $ 是否在同一棵树中。</li>
+<li>使用并查集（Disjoint Set）结构来完成这一操作：<ul>
+<li>调用 <code>Find(u)</code> 和 <code>Find(v)</code> 判断 $ u $ 和 $ v $ 是否在同一棵树中。</li>
+<li>如果 $ Find(u) = Find(v) $，则丢弃该边。</li>
+<li>如果 $ Find(u) \neq Find(v) $，则接受该边，并通过 <code>Union(Find(u), Find(v))</code> 合并两棵树。</li>
+</ul>
+</li>
+</ul>
+<h3 id="并查集的性质："><a href="#并查集的性质：" class="headerlink" title="并查集的性质："></a><strong>并查集的性质：</strong></h3><ul>
+<li>在初始化时，每个节点各自是一个独立的集合（即一棵独立的树）。</li>
+<li><p><strong>并查集</strong>的数据结构支持两个主要操作：</p>
+<ul>
+<li><strong>Find</strong>：查找节点所在的树（或集合）。</li>
+<li><strong>Union</strong>：将两个不同的集合合并为一个集合。</li>
+</ul>
+</li>
+<li><p><strong>集合的合并操作（Union）</strong> 确保了每棵树的顶点是连通的，并且操作后的树结构满足以下的性质：</p>
+<ul>
+<li><strong>自反性</strong>：每个节点都与自己连通（$ u $ 与 $ u $ 连接）。</li>
+<li><strong>对称性</strong>：如果 $ u $ 与 $ v $ 连接，则 $ v $ 与 $ u $ 也连接。</li>
+<li><strong>传递性</strong>：如果 $ u $ 与 $ v $ 连接，且 $ v $ 与 $ w $ 连接，则 $ u $ 与 $ w $ 也连接。</li>
+</ul>
+</li>
+</ul>
+<h3 id="Kruskal-算法的实现："><a href="#Kruskal-算法的实现：" class="headerlink" title="Kruskal 算法的实现："></a><strong>Kruskal 算法的实现：</strong></h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">vector&lt;Edge&gt; <span class="title">kruskal</span><span class="params">(vector&lt;Edge&gt; edges, <span class="type">int</span> numVertices)</span> </span>&#123;</span><br><span class="line">    DisjSets ds&#123; numVertices &#125;;  <span class="comment">// 初始化并查集</span></span><br><span class="line">    priority_queue&lt;Edge&gt; pq&#123; edges &#125;;  <span class="comment">// 优先队列，按边的权重升序排列</span></span><br><span class="line">    vector&lt;Edge&gt; mst;  <span class="comment">// 最小生成树的边集合</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (mst.<span class="built_in">size</span>() != numVertices - <span class="number">1</span>) &#123;</span><br><span class="line">        Edge e = pq.<span class="built_in">pop</span>();  <span class="comment">// 获取最小权重的边</span></span><br><span class="line">        SetType uset = ds.<span class="built_in">find</span>(e.<span class="built_in">getu</span>());  <span class="comment">// 查找 u 所在的集合</span></span><br><span class="line">        SetType vset = ds.<span class="built_in">find</span>(e.<span class="built_in">getv</span>());  <span class="comment">// 查找 v 所在的集合</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> (uset != vset) &#123;  <span class="comment">// 如果 u 和 v 不在同一棵树中</span></span><br><span class="line">            mst.<span class="built_in">push_back</span>(e);  <span class="comment">// 接受这条边</span></span><br><span class="line">            ds.<span class="built_in">union</span>(uset, vset);  <span class="comment">// 合并 u 和 v 所在的集合</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> mst;  <span class="comment">// 返回最小生成树</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/image-20241120171455831.png" alt="image-20241120171455831"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/image-20241120171506525.png" alt="image-20241120171506525"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/image-20241120171522786.png" alt="image-20241120171522786"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/image-20241120171537889.png" alt="image-20241120171537889"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/image-20241120171546397.png" alt="image-20241120171546397"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/image-20241120171557067.png" alt="image-20241120171557067"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/image-20241120171607657.png" alt="image-20241120171607657"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/image-20241120171619250.png" alt="image-20241120171619250"></p>
+<h3 id="Kruskal-算法分析"><a href="#Kruskal-算法分析" class="headerlink" title="Kruskal 算法分析"></a><strong>Kruskal 算法分析</strong></h3><h4 id="时间复杂度分析："><a href="#时间复杂度分析：" class="headerlink" title="时间复杂度分析："></a><strong>时间复杂度分析：</strong></h4><ol>
+<li><p><strong>初始化森林：</strong>  </p>
+<ul>
+<li>初始化森林需要为每个节点建立一棵单独的树，时间复杂度为 $ O(n) $，其中 $ n $ 是图中的顶点数。</li>
+</ul>
+</li>
+<li><p><strong>初始化堆：</strong>  </p>
+<ul>
+<li>将所有的边放入优先队列（堆）中，并按权重排序。假设图中有 $ m $ 条边，时间复杂度为 $ O(m) $，其中 $ m $ 是图中边的数量。</li>
+</ul>
+</li>
+<li><p><strong>循环执行：</strong>  </p>
+<ul>
+<li>主循环会执行 $ m $ 次，每次从堆中删除最小边（<code>Deletemin</code> 操作），并执行查找和合并操作：<ul>
+<li><strong>Deletemin 操作：</strong> 从堆中删除权重最小的边，时间复杂度为 $ O(\log m) $。</li>
+<li><strong>Find 操作：</strong> 查找两个端点所在的集合（树），每次操作的时间复杂度为 $ O(\log n) $。</li>
+<li><strong>Union 操作：</strong> 合并两个不同的集合，时间复杂度为 $ O(1) $，如果使用路径压缩和按秩合并等优化方法。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>总时间复杂度：</strong>  </p>
+<ul>
+<li>主循环执行 $ m $ 次，每次执行的操作包括：<ul>
+<li>删除最小边的操作：$ O(\log m) $</li>
+<li>两次 Find 操作：$ 2 \times O(\log n) = O(\log n) $</li>
+<li>一次 Union 操作：$ O(1) $</li>
+</ul>
+</li>
+</ul>
+<p>因此，总的时间复杂度为：<br>$<br>O(m \cdot \log m + 2m \cdot \log n) = O(m \log m) = O(m \log n)<br>$<br>其中，$ m = |E| $ 是图中的边数，$ n = |V| $ 是图中的顶点数。</p>
+</li>
+</ol>
+<h4 id="与其他算法的比较："><a href="#与其他算法的比较：" class="headerlink" title="与其他算法的比较："></a><strong>与其他算法的比较：</strong></h4><ul>
+<li><p><strong>Prim 算法：</strong><br>Prim 算法的时间复杂度为 $ O((n + m) \log n) $，其中 $ n $ 是顶点数，$ m $ 是边数。</p>
+</li>
+<li><p><strong>Kruskal 算法：</strong><br>Kruskal 算法的时间复杂度为 $ O(m \log m) = O(m \log n) $，也就是边数 $ m $ 和 $ n $ 的对数关系。</p>
+</li>
+</ul>
+<h4 id="实际应用中的表现："><a href="#实际应用中的表现：" class="headerlink" title="实际应用中的表现："></a><strong>实际应用中的表现：</strong></h4><ul>
+<li>在实际应用中，<strong>Kruskal 算法</strong>通常比 <strong>Prim 算法</strong>更快，尤其是在图的边数较少时。因为在稀疏图中，Kruskal 算法可以避免查看所有的边（即无需对所有边执行 <code>Deletemin</code> 操作），而只关注较少的边。</li>
+<li>由于 Kruskal 算法通过使用优先队列来排序边，并利用并查集来避免环的生成，因此它的运行时间受限于边的数量，而不是顶点的数量。</li>
+</ul>
+<h3 id="总结："><a href="#总结：" class="headerlink" title="总结："></a><strong>总结：</strong></h3><ul>
+<li><strong>Kruskal 算法</strong>的时间复杂度是 $ O(m \log m) $，其中 $ m $ 是边的数量，通常比 <strong>Prim 算法</strong>快，尤其适用于稀疏图。</li>
+<li>在密集图中，Kruskal 算法可能会略慢，因为其操作会涉及所有边，而 <strong>Prim 算法</strong>则可能在特定情况下通过优化（如使用二叉堆）获得更好的性能。</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a target="_blank" rel="noopener" href="https://www.totorocatcat.top/">Totoro</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://totorocatcat.top/2024/11/20/lec94/">http://totorocatcat.top/2024/11/20/lec94/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://totorocatcat.top" target="_blank">Totoroの旅</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%8F%90%E9%AB%98/">提高</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/d4f507db4948b6927219f40a357b26b.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2024/11/20/lec93/" title="Lec9 Graph Algorithms(3)"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/5fde7714def1c49ec9fb4ab3e8ff4f7.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Lec9 Graph Algorithms(3)</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2024/09/10/01%EF%BC%89/" title="CS61B 课程笔记（Lecture 01）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/v2-8ec31f81be5877162f6b605704025fce_720w.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-10</div><div class="title">CS61B 课程笔记（Lecture 01）</div></div></a></div><div><a href="/2024/09/11/02%EF%BC%89/" title="CS61B 课程笔记（Lecture 02）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/v2-2ed7f4c9e1a7a699a3ef300a6f761abe_720w.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-11</div><div class="title">CS61B 课程笔记（Lecture 02）</div></div></a></div><div><a href="/2024/09/13/04%EF%BC%89/" title="CS61B 课程笔记（Lecture 04）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/2749a496aabc7d650b2912e256582e390a0a636b.jpg@1256w_1246h_!web-article-pic.avif" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-13</div><div class="title">CS61B 课程笔记（Lecture 04）</div></div></a></div><div><a href="/2024/09/12/03%EF%BC%89/" title="CS61B 课程笔记（Lecture 03）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/v2-2ed7f4c9e1a7a699a3ef300a6f761abe_720w.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-12</div><div class="title">CS61B 课程笔记（Lecture 03）</div></div></a></div><div><a href="/2024/09/15/06%EF%BC%89/" title="CS61B 课程笔记（Lecture 06）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/f00af0d55cc81c18403ccbb4957ae6bc298252208.jpg@1256w_1374h_!web-article-pic.avif" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-15</div><div class="title">CS61B 课程笔记（Lecture 06）</div></div></a></div><div><a href="/2024/09/14/05%EF%BC%89/" title="CS61B 课程笔记（Lecture 05）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/4ccebbc43a0ca31a719afadee2f86b4902402baf.jpg@1256w_786h_!web-article-pic.avif" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-14</div><div class="title">CS61B 课程笔记（Lecture 05）</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/px3.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Totoro</div><div class="author-info__description">敲代码的SCUT学生</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">707</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">32</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/4512abc"><i class="fab fa-github"></i><span>🛴前往小窝......</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/4512abc" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:4512abc@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到龙猫の小窝</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Lec9-Graph-Algorithms-4"><span class="toc-number">1.</span> <span class="toc-text">Lec9 Graph Algorithms(4)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E6%A0%91-Spanning-Tree-%E5%92%8C%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91-Minimum-Spanning-Tree-%E6%A6%82%E8%BF%B0"><span class="toc-number">1.1.</span> <span class="toc-text">生成树 (Spanning Tree) 和最小生成树 (Minimum Spanning Tree)概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E6%A0%91-Spanning-Tree"><span class="toc-number">1.1.1.</span> <span class="toc-text">生成树 (Spanning Tree)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91-Minimum-Spanning-Tree"><span class="toc-number">1.1.2.</span> <span class="toc-text">最小生成树 (Minimum Spanning Tree)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E7%AE%97%E6%B3%95%EF%BC%9A"><span class="toc-number">1.1.3.</span> <span class="toc-text">常见算法：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91%E6%9E%84%E5%BB%BA%E7%AD%96%E7%95%A5"><span class="toc-number">1.2.</span> <span class="toc-text">最小生成树构建策略</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E6%A0%91%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%80%A7%E8%B4%A8"><span class="toc-number">1.2.1.</span> <span class="toc-text">生成树的基本性质</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%84%E5%BB%BA%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91%E7%9A%84%E7%AD%96%E7%95%A5"><span class="toc-number">1.2.2.</span> <span class="toc-text">构建最小生成树的策略</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">1.2.3.</span> <span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Prim-%E7%AE%97%E6%B3%95-%E5%A2%9E%E9%87%8F%E6%9E%84%E5%BB%BA%E7%94%9F%E6%88%90%E6%A0%91"><span class="toc-number">1.3.</span> <span class="toc-text">Prim 算法 (增量构建生成树)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E6%A6%82%E8%BF%B0"><span class="toc-number">1.3.1.</span> <span class="toc-text">算法概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E6%AD%A5%E9%AA%A4"><span class="toc-number">1.3.2.</span> <span class="toc-text">算法步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8E-Dijkstra-%E7%AE%97%E6%B3%95%E7%9A%84%E7%9B%B8%E4%BC%BC%E6%80%A7"><span class="toc-number">1.3.3.</span> <span class="toc-text">与 Dijkstra 算法的相似性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B"><span class="toc-number">1.3.4.</span> <span class="toc-text">示例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.3.5.</span> <span class="toc-text">算法实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90"><span class="toc-number">1.3.6.</span> <span class="toc-text">复杂度分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B4%AA%E5%BF%83%E7%AD%96%E7%95%A5"><span class="toc-number">1.3.7.</span> <span class="toc-text">贪心策略</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A3%E7%A1%AE%E6%80%A7%E8%AF%81%E6%98%8E"><span class="toc-number">1.3.8.</span> <span class="toc-text">正确性证明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Prim-%E7%AE%97%E6%B3%95%E7%9A%84%E6%AD%A3%E7%A1%AE%E6%80%A7%E8%AF%81%E6%98%8E"><span class="toc-number">1.3.9.</span> <span class="toc-text">Prim 算法的正确性证明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%81%E6%98%8E%E6%AD%A5%E9%AA%A4%EF%BC%9A"><span class="toc-number">1.3.10.</span> <span class="toc-text">证明步骤：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Kruskal-%E7%AE%97%E6%B3%95"><span class="toc-number">1.4.</span> <span class="toc-text">Kruskal 算法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E6%8F%8F%E8%BF%B0%EF%BC%9A"><span class="toc-number">1.4.1.</span> <span class="toc-text">算法描述：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%8E%AF%E8%B7%AF%E6%A3%80%E6%B5%8B%EF%BC%9A"><span class="toc-number">1.4.2.</span> <span class="toc-text">环路检测：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B9%B6%E6%9F%A5%E9%9B%86%E7%9A%84%E6%80%A7%E8%B4%A8%EF%BC%9A"><span class="toc-number">1.4.3.</span> <span class="toc-text">并查集的性质：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Kruskal-%E7%AE%97%E6%B3%95%E7%9A%84%E5%AE%9E%E7%8E%B0%EF%BC%9A"><span class="toc-number">1.4.4.</span> <span class="toc-text">Kruskal 算法的实现：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%8B%E5%AD%90"><span class="toc-number">1.4.5.</span> <span class="toc-text">例子</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Kruskal-%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90"><span class="toc-number">1.4.6.</span> <span class="toc-text">Kruskal 算法分析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90%EF%BC%9A"><span class="toc-number">1.4.6.1.</span> <span class="toc-text">时间复杂度分析：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8E%E5%85%B6%E4%BB%96%E7%AE%97%E6%B3%95%E7%9A%84%E6%AF%94%E8%BE%83%EF%BC%9A"><span class="toc-number">1.4.6.2.</span> <span class="toc-text">与其他算法的比较：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E9%99%85%E5%BA%94%E7%94%A8%E4%B8%AD%E7%9A%84%E8%A1%A8%E7%8E%B0%EF%BC%9A"><span class="toc-number">1.4.6.3.</span> <span class="toc-text">实际应用中的表现：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93%EF%BC%9A"><span class="toc-number">1.4.7.</span> <span class="toc-text">总结：</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/11/20/lec94/" title="Lec9 Graph Algorithms(4)"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/d4f507db4948b6927219f40a357b26b.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Lec9 Graph Algorithms(4)"/></a><div class="content"><a class="title" href="/2024/11/20/lec94/" title="Lec9 Graph Algorithms(4)">Lec9 Graph Algorithms(4)</a><time datetime="2024-11-20T09:21:14.000Z" title="发表于 2024-11-20 17:21:14">2024-11-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/11/20/lec93/" title="Lec9 Graph Algorithms(3)"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/5fde7714def1c49ec9fb4ab3e8ff4f7.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Lec9 Graph Algorithms(3)"/></a><div class="content"><a class="title" href="/2024/11/20/lec93/" title="Lec9 Graph Algorithms(3)">Lec9 Graph Algorithms(3)</a><time datetime="2024-11-20T08:41:52.000Z" title="发表于 2024-11-20 16:41:52">2024-11-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/11/20/lec912/" title="Lec9 Graph Algorithms(2)"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/56a71ed278c8b437596f43cb5fcfb38.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Lec9 Graph Algorithms(2)"/></a><div class="content"><a class="title" href="/2024/11/20/lec912/" title="Lec9 Graph Algorithms(2)">Lec9 Graph Algorithms(2)</a><time datetime="2024-11-20T08:00:30.000Z" title="发表于 2024-11-20 16:00:30">2024-11-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/11/20/lec91/" title="Lec9 Graph Algorithms(1)"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/383b7bff62aee5037609cfe75dfbd42.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Lec9 Graph Algorithms(1)"/></a><div class="content"><a class="title" href="/2024/11/20/lec91/" title="Lec9 Graph Algorithms(1)">Lec9 Graph Algorithms(1)</a><time datetime="2024-11-20T07:10:58.000Z" title="发表于 2024-11-20 15:10:58">2024-11-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/11/20/lec8/" title="Lec8 Disjoint Set Class"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/03d57a9d59bc68710938fa9e1e6a860.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Lec8 Disjoint Set Class"/></a><div class="content"><a class="title" href="/2024/11/20/lec8/" title="Lec8 Disjoint Set Class">Lec8 Disjoint Set Class</a><time datetime="2024-11-20T07:01:23.000Z" title="发表于 2024-11-20 15:01:23">2024-11-20</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 By Totoro</div><div class="footer_custom_text">I wish you to become your own sun, no need to rely on who's light.<p><a target="_blank" href="https://hexo.io/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&logo=hexo" title="博客框架为Hexo"></a>&nbsp;<a target="_blank" href="https://butterfly.js.org/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&logo=bitdefender" title="主题采用butterfly"></a>&nbsp;<a target="_blank" href="https://www.jsdelivr.com/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&logo=jsDelivr" title="本站使用JsDelivr为静态资源提供CDN加速"></a> &nbsp;<a target="_blank" href="https://vercel.com/ "><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Hosted-Vervel-brightgreen?style=flat&logo=Vercel" title="本站采用双线部署，默认线路托管于Vercel"></a>&nbsp;<a target="_blank" href="https://vercel.com/ "><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Hosted-Coding-0cedbe?style=flat&logo=Codio" title="本站采用双线部署，联通线路托管于Coding"></a>&nbsp;<a target="_blank" href="https://github.com/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&logo=GitHub" title="本站项目由Gtihub托管"></a>&nbsp;<a target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&logo=Claris" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"></a></p></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat-btn" type="button" title="聊天"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="/js/tw_cn.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@5.2.0/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'HT1PalaKkPaG1UqAXBhJXIu8-gzGzoHsz',
+      appKey: 'iT0TnVVAwf9zuZ7NqwclQItY',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://cdn.jsdelivr.net/npm/valine@1.5.1/dist/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><script defer src="/js/light.js"></script><canvas id="universe"></canvas><script defer src="/js/universe.js"></script><script async src="/js/title.js"></script><script defer src="https://npm.elemecdn.com/jquery@latest/dist/jquery.min.js"></script><script defer data-pjax src="/js/cat.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="1" zIndex="-1" count="30" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/click-show-text.min.js" data-mobile="true" data-text="只此无为身，且前行,忘记过去的人注定重蹈覆辙,我是我，我靠自己站立，我会做好自身,如果我睡大觉，谁给我摘月亮呢,假期和朋友，是人生中顶好的两样东西啊。,去爱，去失去，要不负相遇,没什么想不想通的，只是固执而已,我们深爱星辰，乃至不惧夜的黑,吃，喝，享受幸福，接受奇迹,浊水若长流，自清澄,雅俗共赏,总会有什么也不想的幸福时刻吧,时间顺流而下，生活逆流而上,悟已往之不谏，知来者之可追,希望你的小世界里,山花烂漫,茶酒俱全,安宁清淡,明朗欢愉" data-fontsize="20px" data-random="false" async="async"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener
+  btf.removeGlobalFnEvent('pjax')
+  btf.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.12.0"></script></div></div><!-- hexo injector body_end start --><script data-pjax>
+    function butterfly_categories_card_injector_config(){
+      var parent_div_git = document.getElementById('recent-posts');
+      var item_html = '<style>li.categoryBar-list-item{width:32.3%;}.categoryBar-list{max-height: 380px;overflow:auto;}.categoryBar-list::-webkit-scrollbar{width:0!important}@media screen and (max-width: 650px){.categoryBar-list{max-height: 320px;}}</style><div class="recent-post-item" style="height:auto;width:100%;padding:0px;"><div id="categoryBar"><ul class="categoryBar-list"><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_12.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS70の旅/&quot;);" href="javascript:void(0);">CS70の旅</a><span class="categoryBar-list-count">25</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_13.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS61B/&quot;);" href="javascript:void(0);">CS61B</a><span class="categoryBar-list-count">76</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_14.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/期末の旅/&quot;);" href="javascript:void(0);">期末の旅</a><span class="categoryBar-list-count">59</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_17.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/ACMの旅/&quot;);" href="javascript:void(0);">ACMの旅</a><span class="categoryBar-list-count">68</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_18.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/区域赛の旅/&quot;);" href="javascript:void(0);">区域赛の旅</a><span class="categoryBar-list-count">7</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_19.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/数学建模/&quot;);" href="javascript:void(0);">数学建模</a><span class="categoryBar-list-count">31</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_20.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/Codeforcesの旅/&quot;);" href="javascript:void(0);">Codeforcesの旅</a><span class="categoryBar-list-count">24</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_21.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/刷题计划/&quot;);" href="javascript:void(0);">刷题计划</a><span class="categoryBar-list-count">40</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_22.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/牛客の旅/&quot;);" href="javascript:void(0);">牛客の旅</a><span class="categoryBar-list-count">65</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_22.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/前端の旅/&quot;);" href="javascript:void(0);">前端の旅</a><span class="categoryBar-list-count">17</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_23.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/数据结构/&quot;);" href="javascript:void(0);">数据结构</a><span class="categoryBar-list-count">47</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_24.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/Atcoderの旅/&quot;);" href="javascript:void(0);">Atcoderの旅</a><span class="categoryBar-list-count">53</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_25.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/C-の旅/&quot;);" href="javascript:void(0);">C++の旅</a><span class="categoryBar-list-count">17</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_26.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CSAPPの旅/&quot;);" href="javascript:void(0);">CSAPPの旅</a><span class="categoryBar-list-count">2</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_27.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS知识/&quot;);" href="javascript:void(0);">CS知识</a><span class="categoryBar-list-count">3</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_28.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/编程基础/&quot;);" href="javascript:void(0);">编程基础</a><span class="categoryBar-list-count">22</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_29.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/JAVAの旅/&quot;);" href="javascript:void(0);">JAVAの旅</a><span class="categoryBar-list-count">10</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_30.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/MIT-6-031-Software-Construction/&quot;);" href="javascript:void(0);">MIT 6.031:Software Construction</a><span class="categoryBar-list-count">16</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_31.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/灵魂の旅/&quot;);" href="javascript:void(0);">灵魂の旅</a><span class="categoryBar-list-count">2</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_32.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/个人安排/&quot;);" href="javascript:void(0);">个人安排</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_33.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/杂项/&quot;);" href="javascript:void(0);">杂项</a><span class="categoryBar-list-count">11</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_34.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/文学/&quot;);" href="javascript:void(0);">文学</a><span class="categoryBar-list-count">49</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_35.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/力扣の旅/&quot;);" href="javascript:void(0);">力扣の旅</a><span class="categoryBar-list-count">20</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_36.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/千里十二行/&quot;);" href="javascript:void(0);">千里十二行</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_37.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/🗡指offer/&quot;);" href="javascript:void(0);">🗡指offer</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_38.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/少年游/&quot;);" href="javascript:void(0);">少年游</a><span class="categoryBar-list-count">2</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_39.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/算法提高课/&quot;);" href="javascript:void(0);">算法提高课</a><span class="categoryBar-list-count">3</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_40.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/汇编の旅/&quot;);" href="javascript:void(0);">汇编の旅</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_41.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/离散数学/&quot;);" href="javascript:void(0);">离散数学</a><span class="categoryBar-list-count">16</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_42.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/C-实训/&quot;);" href="javascript:void(0);">C++实训</a><span class="categoryBar-list-count">8</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_43.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/计算机组成原理/&quot;);" href="javascript:void(0);">计算机组成原理</a><span class="categoryBar-list-count">7</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_44.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS-110L/&quot;);" href="javascript:void(0);">CS 110L</a><span class="categoryBar-list-count">3</span><span class="categoryBar-list-descr"></span></li></ul></div></div>';
+      console.log('已挂载butterfly_categories_card')
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+      }
+    if( document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+    butterfly_categories_card_injector_config()
+    }
+  </script><script data-pjax>
+  function butterfly_swiper_injector_config(){
+    var parent_div_git = document.getElementById('recent-posts');
+    var item_html = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms;"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;2024/10/01/诗录/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/4b31456c6f0f4489f99177f89e936de7286431045.png@1256w_708h_!web-article-pic.avif" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-10-01</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;2024/10/01/诗录/&quot;);" href="javascript:void(0);" alt="">诗录</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;2024/10/01/诗录/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;2024/01/29/诗兴大发/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://source.fomal.cc/img/default_cover_69.webp" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-01-29</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;2024/01/29/诗兴大发/&quot;);" href="javascript:void(0);" alt="">诗兴大发</a><div class="blog-slider__text">未觉，却是中二少年的诗仙梦</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;2024/01/29/诗兴大发/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;2024/10/05/TotoroのPlan/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/51d37eba99d243607ddedfff6e91568f617436609.jpg@1256w_1884h_!web-article-pic.avif" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-10-05</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;2024/10/05/TotoroのPlan/&quot;);" href="javascript:void(0);" alt="">TotoroのPlan</a><div class="blog-slider__text">方便大二看（）</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;2024/10/05/TotoroのPlan/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载butterfly_swiper')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_swiper_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_swiper_injector_config();
+  }
+  </script><script defer src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.js"></script><script defer data-pjax src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper_init.js"></script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>
