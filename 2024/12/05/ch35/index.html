@@ -1,0 +1,592 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Chapter 3 Basic Input/Output(5) | Totoroの旅</title><meta name="author" content="Totoro"><meta name="copyright" content="Totoro"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Chapter 3 Basic Input&#x2F;Output(5)    中文内容 英文内容     与CPU的通信方法 Communication Methods with CPU   程序控制I&#x2F;O（轮询） Program controlled I&#x2F;O (Polling)   中断驱动I&#x2F;O Interrupt driven I&#x2F;O   直接内存访问（DMA） Direct Memory Acce">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Chapter 3 Basic Input&#x2F;Output(5)">
+<meta property="og:url" content="http://totorocatcat.top/2024/12/05/ch35/index.html">
+<meta property="og:site_name" content="Totoroの旅">
+<meta property="og:description" content="Chapter 3 Basic Input&#x2F;Output(5)    中文内容 英文内容     与CPU的通信方法 Communication Methods with CPU   程序控制I&#x2F;O（轮询） Program controlled I&#x2F;O (Polling)   中断驱动I&#x2F;O Interrupt driven I&#x2F;O   直接内存访问（DMA） Direct Memory Acce">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/0260fb5ce221f85d68460aabab231d7.bmp">
+<meta property="article:published_time" content="2024-12-05T11:25:36.000Z">
+<meta property="article:modified_time" content="2024-12-05T11:29:28.220Z">
+<meta property="article:author" content="Totoro">
+<meta property="article:tag" content="基础">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/0260fb5ce221f85d68460aabab231d7.bmp"><link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/b5ca6e582a7a45e6fde46e616eeb68e.png"><link rel="canonical" href="http://totorocatcat.top/2024/12/05/ch35/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta/><link rel="stylesheet" href="/css/index.css?v=4.12.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  noticeOutdate: {"limitDay":765,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体中文","cht_to_chs":"你已切换为简体中文","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"top-right"},
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Chapter 3 Basic Input/Output(5)',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: true,
+  isToc: true,
+  postUpdate: '2024-12-05 19:29:28'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const now = new Date()
+          const hour = now.getHours()
+          const isNight = hour <= 6 || hour >= 18
+          if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/universe.css"><link rel="stylesheet" href="/css/scrollbar.css"><link rel="stylesheet" href="/css/cat.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-double-row-display@1.00/cardlistpost.min.css"/>
+<style>#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags:before {content:"\A";
+  white-space: pre;}#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags > .article-meta__separator{display:none}</style>
+<link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-categories-card@1.0.0/lib/categorybar.css"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiperstyle.css" media="print" onload="this.media='all'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load',() => { preloader.endLoading() })
+
+  if (true) {
+    document.addEventListener('pjax:send', () => { preloader.initLoading() })
+    document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+  }
+})()</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/px3.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">793</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">32</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home-alt"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-envelope-open"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 趣味</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/project/"><i class="fa-fw fas fas fa-folder"></i><span> 项目</span></a></div><div class="menus_item"><a class="site-page" href="/stars/"><i class="fa-fw fas fa-bookmark"></i><span> 收藏</span></a></div><div class="menus_item"><a class="site-page" href="/bilibili/"><i class="fa-fw fas fa-tv"></i><span> 追番</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/0260fb5ce221f85d68460aabab231d7.bmp')"><nav id="nav"><span id="blog-info"><a href="/" title="Totoroの旅"><span class="site-name">Totoroの旅</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home-alt"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-envelope-open"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 趣味</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/project/"><i class="fa-fw fas fas fa-folder"></i><span> 项目</span></a></div><div class="menus_item"><a class="site-page" href="/stars/"><i class="fa-fw fas fa-bookmark"></i><span> 收藏</span></a></div><div class="menus_item"><a class="site-page" href="/bilibili/"><i class="fa-fw fas fa-tv"></i><span> 追番</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Chapter 3 Basic Input/Output(5)</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-12-05T11:25:36.000Z" title="发表于 2024-12-05 19:25:36">2024-12-05</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-12-05T11:29:28.220Z" title="更新于 2024-12-05 19:29:28">2024-12-05</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">计算机组成原理</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">4.5k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>14分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Chapter 3 Basic Input/Output(5)"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2024/12/05/ch35/#post-comment" itemprop="discussionUrl"><span class="valine-comment-count" data-xid="/2024/12/05/ch35/" itemprop="commentCount"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="Chapter-3-Basic-Input-Output-5"><a href="#Chapter-3-Basic-Input-Output-5" class="headerlink" title="Chapter 3 Basic Input/Output(5)"></a>Chapter 3 Basic Input/Output(5)</h1><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>中文内容</th>
+<th>英文内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>与CPU的通信方法</td>
+<td>Communication Methods with CPU</td>
+</tr>
+<tr>
+<td>程序控制I/O（轮询）</td>
+<td>Program controlled I/O (Polling)</td>
+</tr>
+<tr>
+<td>中断驱动I/O</td>
+<td>Interrupt driven I/O</td>
+</tr>
+<tr>
+<td>直接内存访问（DMA）</td>
+<td>Direct Memory Access (DMA)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="直接内存访问"><a href="#直接内存访问" class="headerlink" title="直接内存访问"></a>直接内存访问</h2><ul>
+<li><strong>中断驱动I/O和程序控制I/O的不足</strong>：<ul>
+<li><strong>传输速率受限</strong>：中断驱动I/O以及程序控制I/O都需要CPU积极介入，这就导致传输速率会受到限制。</li>
+<li><strong>占用CPU资源</strong>：CPU会被束缚在管理I/O传输的事务上，无法去处理其他工作。</li>
+</ul>
+</li>
+<li><strong>直接内存访问（DMA）解决方案</strong>：<ul>
+<li><strong>适用场景</strong>：用于外部设备和主存之间直接进行高速的块传输。例如在需要快速大量传输数据的情况下，DMA就能发挥作用。</li>
+<li><strong>核心部件</strong>：配备一个DMA控制器，它可以从CPU那里接管系统的控制权，使得数据传输过程能够独立于CPU运行。</li>
+<li><strong>对CPU的影响</strong>：在数据传输期间，CPU并不参与其中，这样CPU就可以解放出来去执行其他任务，提高了整个系统的运行效率。 </li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<ol>
+<li><strong>初始化阶段</strong><ul>
+<li>首先，CPU对DMA控制器进行初始化。这包括设置要传输的数据的源地址（通常是外部设备的缓冲区地址）、目的地址（主存中的存储位置）、传输数据的长度（字节数或字长等）以及传输的方向（是从外部设备到主存，还是从主存到外部设备）等参数。</li>
+<li>例如，假设要从硬盘读取一个大型文件到内存中，CPU会告诉DMA控制器硬盘上数据的起始位置（源地址），内存中用来存储这些数据的起始位置（目的地址），以及文件的大小（数据长度）。</li>
+</ul>
+</li>
+<li><strong>请求阶段</strong><ul>
+<li>当外部设备准备好进行数据传输时，它会向DMA控制器发送一个DMA请求信号（DREQ）。这个信号类似于外部设备在告诉DMA控制器“我已经准备好数据，可以开始传输啦”。</li>
+<li>以磁盘驱动器为例，当磁盘寻道和旋转操作完成，数据已经可以读取时，磁盘控制器就会发出DREQ信号。</li>
+</ul>
+</li>
+<li><strong>仲裁阶段</strong><ul>
+<li>DMA控制器收到多个设备的DREQ信号时，可能需要进行仲裁。它会根据预先设定的优先级规则来确定先处理哪个设备的请求。这就像交通指挥员，要决定哪辆车（设备）先通过路口（进行数据传输）。</li>
+<li>比如，在一个系统中有磁盘和网卡同时发出DREQ信号，而磁盘的DMA请求被设置为更高优先级，那么DMA控制器会先处理磁盘的数据传输请求。</li>
+</ul>
+</li>
+<li><strong>接管总线阶段</strong><ul>
+<li>一旦确定要处理某个设备的请求，DMA控制器会向CPU发送一个总线请求信号（HOLD），请求接管系统总线的控制权。CPU在完成当前总线周期后，会发出总线应答信号（HLDA），将总线控制权交给DMA控制器。</li>
+<li>此时，就好像CPU把数据传输的“指挥棒”交给了DMA控制器，让它来主导接下来的数据传输工作。</li>
+</ul>
+</li>
+<li><strong>数据传输阶段</strong><ul>
+<li>DMA控制器开始控制数据在外部设备和主存之间的传输。它会按照初始化阶段设置的参数，通过系统总线将数据从源地址逐块地传输到目的地址。在这个过程中，不需要CPU的干预，数据可以以很高的速度进行传输。</li>
+<li>例如，在从外部设备向内存传输数据时，DMA控制器会通过系统总线读取外部设备中的数据，并将其写入内存的指定位置，这个过程是自动进行的，而且传输速度通常比中断驱动I/O和程序控制I/O要快得多。</li>
+</ul>
+</li>
+<li><strong>传输完成阶段</strong><ul>
+<li>当数据传输完成后，DMA控制器会释放系统总线的控制权，将控制权交还给CPU。同时，它还会向CPU发送一个中断信号（通常称为DMA中断），通知CPU数据传输已经完成。</li>
+<li>CPU收到这个中断信号后，就知道数据传输已经结束，可以进行后续的处理，比如对传输到内存中的数据进行进一步的运算或者存储操作。</li>
+</ul>
+</li>
+</ol>
+</blockquote>
+<h2 id="DMA操作"><a href="#DMA操作" class="headerlink" title="DMA操作"></a>DMA操作</h2><h3 id="（1）"><a href="#（1）" class="headerlink" title="（1）"></a>（1）</h3><ul>
+<li><strong>DMA中的程序控制I/O</strong>：<ul>
+<li>CPU通过向DMA控制器（DMAC）传输信息来“准备”DMA操作。</li>
+<li><strong>设备上数据的位置</strong>：明确数据在外部设备中的具体存放位置。</li>
+<li><strong>内存中数据的位置</strong>：确定数据要传输到内存中的具体存储位置。</li>
+<li><strong>要传输的数据块大小</strong>：设定此次需要传输的数据量大小，例如以字节数等为单位来衡量。</li>
+<li><strong>传输方向</strong>：指明是从外部设备传输到内存，还是从内存传输到外部设备。</li>
+<li><strong>传输模式（突发模式、周期窃取模式）</strong>：确定采用哪种具体的数据传输模式进行数据传输。</li>
+</ul>
+</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/image-20241205191035525.png" alt="image-20241205191035525"></p>
+<h3 id="（2）"><a href="#（2）" class="headerlink" title="（2）"></a>（2）</h3><ul>
+<li><strong>DMAC控制数据传输</strong>：<ul>
+<li>当设备准备好进行数据传输时，DMAC会接管系统总线的控制权（由DMAC负责处理传输事宜），而CPU则可以继续执行其他工作。</li>
+</ul>
+</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/image-20241205191154565.png" alt="image-20241205191154565"></p>
+<h3 id="（3）"><a href="#（3）" class="headerlink" title="（3）"></a>（3）</h3><ul>
+<li><strong>DMA中的I/O中断</strong>：<ul>
+<li>DMAC在完成数据传输后会发送中断信号。 </li>
+</ul>
+</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/image-20241205191235749.png" alt="image-20241205191235749"></p>
+<h2 id="DMA控制器"><a href="#DMA控制器" class="headerlink" title="DMA控制器"></a>DMA控制器</h2><h3 id="（1）-1"><a href="#（1）-1" class="headerlink" title="（1）"></a>（1）</h3><ul>
+<li><strong>带有DMA控制器的计算机系统</strong>：<br>介绍了相关的信号标识，如BR表示总线请求，BG表示总线应答（准许）。</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/image-20241205191354331.png" alt="image-20241205191354331"></p>
+<h3 id="（2）-1"><a href="#（2）-1" class="headerlink" title="（2）"></a>（2）</h3><ul>
+<li><strong>DMA控制器的功能</strong>：<ul>
+<li><strong>接管内存与I/O设备间的数据传输控制</strong>：在数据传输过程中，替代CPU来主导内存和外部I/O设备之间的数据交互工作。</li>
+<li><strong>对于传输的字（数据单元）而言，DMA控制器会进行以下操作</strong>：<ul>
+<li><strong>提供内存地址</strong>：确定数据在内存中读写的具体位置，确保数据准确地在内存和设备之间传输。</li>
+<li><strong>提供控制数据传输的所有总线信号</strong>：通过发出相应的总线信号来保障数据传输能按要求顺利进行，比如控制数据传输的开始、停止以及传输方向等。</li>
+<li><strong>对连续传输的字递增内存地址</strong>：每传输完一个字的数据后，会自动将内存地址按照一定规则增加，以便后续数据能正确地存储到内存的下一个合适位置或者从内存的下一个位置读取，确保数据传输的连续性。</li>
+<li><strong>记录传输的次数</strong>：跟踪已完成的数据传输次数，方便知晓整个传输任务的进展情况以及判断是否完成全部的数据传输工作。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="（3）-1"><a href="#（3）-1" class="headerlink" title="（3）"></a>（3）</h3><ul>
+<li><p><strong>DMA接口中的寄存器</strong>：</p>
+<ul>
+<li><p><strong>起始地址寄存器</strong>：存放着数据传输的起始内存地址，用于确定最开始从哪里读取数据或者向哪里写入数据。</p>
+</li>
+<li><p><strong>字计数寄存器</strong>：记录需要传输的数据字（数据单元）的数量，随着传输的进行，依据传输情况相应变化，当计数归零时意味着数据传输任务完成。</p>
+</li>
+<li><p><strong>完成（Done）寄存器</strong>：用于标识数据传输是否已经结束，系统可以通过查看该寄存器的状态来确认传输情况。</p>
+</li>
+<li><p><strong>中断使能（IE）寄存器</strong>：可以用来设置是否允许在特定情况下（比如传输完成等）产生中断信号，控制中断功能的开启或关闭。</p>
+</li>
+<li><p><strong>中断请求（IRQ）寄存器</strong>：当满足一定中断触发条件（比如传输完成且中断使能开启时），会在该寄存器体现相应的中断请求状态，便于系统知晓并处理。</p>
+</li>
+<li><p><strong>状态和控制寄存器</strong>：综合反映DMA控制器当前的工作状态，同时也能用于对DMA控制器进行一些控制操作，比如设置传输模式等。</p>
+</li>
+<li><p><strong>读（R）/写（W）</strong>：用于指示数据传输的读写方向，是从设备读入数据到内存（读操作），还是从内存写出数据到设备（写操作），通过对这两个信号的设置来明确具体的数据流向。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/image-20241205191541549.png" alt="image-20241205191541549"></p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="DMA传输模式"><a href="#DMA传输模式" class="headerlink" title="DMA传输模式"></a>DMA传输模式</h2><h3 id="（1）-2"><a href="#（1）-2" class="headerlink" title="（1）"></a>（1）</h3><ul>
+<li><strong>突发模式（块模式）</strong><ul>
+<li><strong>工作原理</strong>：一旦处理器准许DMA控制器访问系统总线，它就会将数据块中的所有字节数据传输完，之后才会把系统总线的控制权交还给处理器。</li>
+<li><strong>应用场景</strong>：对于将程序或者数据文件加载到内存中这种情况很有用。</li>
+<li><strong>缺点</strong>：<ul>
+<li>会使处理器在相对较长的时间内处于不工作状态。</li>
+<li>CPU效率较低。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/image-20241205191714134.png" alt="image-20241205191714134"></p>
+<h3 id="（2）-2"><a href="#（2）-2" class="headerlink" title="（2）"></a>（2）</h3><ul>
+<li><strong>周期窃取模式</strong><ul>
+<li><strong>工作原理</strong>：DMA控制器一旦获得系统总线的访问权限，就传输一个字节的数据，然后将系统总线的控制权交还给处理器。</li>
+<li><strong>工作过程</strong>：它会持续发出请求，每次请求传输一个字节的数据，直到将整个数据块传输完毕。</li>
+</ul>
+</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/image-20241205191745457.png" alt="image-20241205191745457"></p>
+<h3 id="（3）-2"><a href="#（3）-2" class="headerlink" title="（3）"></a>（3）</h3><ul>
+<li><strong>透明模式</strong><ul>
+<li><strong>工作原理</strong>：DMA控制器只在CPU执行不使用系统总线的操作时才进行数据传输。</li>
+<li><strong>注意点</strong>：DMA控制器不需要请求系统总线的控制权。</li>
+<li><strong>优点</strong>：处理器从不停下它的程序执行。</li>
+<li><strong>缺点</strong>：用于确定处理器何时不使用系统总线的硬件可能会非常复杂，并且相对昂贵。</li>
+</ul>
+</li>
+</ul>
+<h2 id="DMA配置"><a href="#DMA配置" class="headerlink" title="DMA配置"></a>DMA配置</h2><h3 id="（1）-3"><a href="#（1）-3" class="headerlink" title="（1）"></a>（1）</h3><ul>
+<li><strong>单总线、独立DMA控制器</strong><ul>
+<li><strong>总线使用情况</strong>：每次数据传输需要使用两次总线，先是从I/O设备传输到DMA控制器，然后再从DMA控制器传输到内存。</li>
+<li><strong>对CPU的影响</strong>：CPU会被暂停两次，也就是在上述两个传输阶段都会暂停，等待相应传输完成。</li>
+</ul>
+</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/image-20241205191933113.png" alt="image-20241205191933113"></p>
+<h3 id="（2）-3"><a href="#（2）-3" class="headerlink" title="（2）"></a>（2）</h3><ul>
+<li><strong>单总线、集成DMA控制器</strong><ul>
+<li><strong>控制器特点</strong>：该控制器可能支持多个设备进行数据传输操作。</li>
+<li><strong>总线使用情况</strong>：每次传输只使用一次总线，是直接从DMA控制器传输到内存。</li>
+<li><strong>对CPU的影响</strong>：CPU仅会被暂停一次，即当数据从DMA控制器往内存传输时暂停。</li>
+</ul>
+</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/image-20241205192028896.png" alt="image-20241205192028896"></p>
+<h3 id="（3）-3"><a href="#（3）-3" class="headerlink" title="（3）"></a>（3）</h3><ul>
+<li><strong>独立I/O总线</strong><ul>
+<li><strong>总线功能</strong>：这条总线能够支持所有启用了DMA功能的设备进行数据传输操作。</li>
+<li><strong>总线使用情况</strong>：每次传输只使用一次总线，同样是进行从DMA控制器到内存的传输。</li>
+<li><strong>对CPU的影响</strong>：CPU也只会被暂停一次，发生在数据从DMA控制器传输到内存的过程中。 </li>
+</ul>
+</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/image-20241205192216795.png" alt="image-20241205192216795"></p>
+<h2 id="Quiz-1"><a href="#Quiz-1" class="headerlink" title="Quiz (1)"></a>Quiz (1)</h2><p><strong>问题</strong>：</p>
+<p>Which method bypasses the CPU for certain types of data transfer?</p>
+<p>A. Software interrupts<br>B. Polled I/O<br>C. Interrupt - driven I/O<br>D. Direct Memory Access (DMA)</p>
+<p><strong>答案</strong>：D. Direct Memory Access (DMA)</p>
+<p><strong>解释</strong>：</p>
+<ul>
+<li><strong>A. Software interrupts（软件中断）</strong>：软件中断是一种由软件指令触发的中断机制。当软件中断发生时，CPU会暂停当前执行的程序，转而执行中断服务程序。在这个过程中，CPU仍然深度参与数据的处理和传输控制。例如，当一个程序需要处理一些异步事件（如用户输入或系统错误）时，通过软件中断来通知CPU，CPU需要花费时间去确定中断源并处理相关事务，并没有绕过CPU进行数据传输。</li>
+<li><strong>B. Polled I/O（轮询I/O）</strong>：在轮询I/O方式中，CPU会不断地询问I/O设备是否需要进行数据传输或者是否有数据准备好。这意味着CPU需要频繁地检查设备状态，数据传输完全是在CPU的控制下进行的。比如，CPU可能会每隔一段时间读取设备的状态寄存器来查看是否有新的数据到来，这种方式下CPU高度介入数据传输过程，没有绕过CPU。</li>
+<li><strong>C. Interrupt - driven I/O（中断驱动I/O）</strong>：当I/O设备准备好数据或者完成一个操作时，会向CPU发送中断请求。CPU收到中断请求后，会暂停当前任务，去处理与该设备相关的I/O操作。虽然相比于轮询I/O，中断驱动I/O在一定程度上提高了CPU的利用率，但CPU仍然需要参与每一次中断的处理，包括保存当前程序状态、确定中断源、执行中断服务程序来完成数据传输等，没有绕过CPU进行数据传输。</li>
+<li><strong>D. Direct Memory Access (DMA)</strong>：DMA的主要目的就是让外部设备和主存之间能够直接进行数据传输，而无需CPU的过多参与。在DMA操作过程中，CPU只需要在开始时对DMA控制器进行初始化（设置数据的源地址、目的地址、传输长度等参数），之后的数据传输过程由DMA控制器接管系统总线来完成。例如，在硬盘和内存之间进行大量数据传输时，DMA控制器可以独立地将硬盘中的数据块直接传输到内存中，CPU在这个过程中可以去执行其他任务，真正实现了在某些类型的数据传输过程中绕过CPU。</li>
+</ul>
+<p><strong>问题</strong>：</p>
+<p><strong>_</strong> is used for high - speed block transfers directly between an external device and the main memory.</p>
+<p>A. Program - controlled I/O<br>B. Interrupt - driven I/O<br>C. DMA approach<br>D. Event - driven</p>
+<p><strong>答案</strong>：C. DMA approach</p>
+<p><strong>解释</strong>：</p>
+<ul>
+<li><strong>A. Program - controlled I/O（程序控制I/O）</strong>：在程序控制I/O方式中，数据的传输完全由CPU控制。CPU需要执行一系列的指令来实现数据从外部设备到内存或者从内存到外部设备的传输。这种方式传输速度较慢，因为每一步传输都需要CPU参与，不能实现外部设备和主内存之间的高速块传输。例如，要从一个外部设备读取数据，CPU需要不断地发送指令来读取设备的数据寄存器，然后将数据存储到内存中，这是一个逐字节或逐字的操作过程，效率较低。</li>
+<li><strong>B. Interrupt - driven I/O（中断驱动I/O）</strong>：中断驱动I/O是当外部设备准备好数据或者完成一个操作时，向CPU发送中断请求，CPU响应中断后进行数据传输。虽然这种方式比程序控制I/O在一定程度上提高了CPU的利用率，但由于每次数据传输都需要CPU响应中断并处理，对于高速块传输来说，仍然会因为CPU的频繁介入而受到限制。例如，在网络数据接收过程中，每收到一个数据包就产生一个中断，CPU需要暂停当前任务来处理这个数据包，无法满足高速块传输的要求。</li>
+<li><strong>C. DMA approach（直接内存访问）</strong>：DMA专门用于外部设备和主存之间的高速块传输。它通过DMA控制器来接管系统总线的控制权，在外部设备和主存之间直接传输数据块，而CPU在这个过程中可以去执行其他任务。例如，在从硬盘读取大型文件到内存的过程中，DMA控制器可以独立地控制数据传输，按照预先设置好的源地址（硬盘上的数据位置）、目的地址（内存中的存储位置）和数据块大小等参数，快速地将数据从硬盘传输到内存，无需CPU逐字节或逐字地参与传输过程，非常适合高速块传输。</li>
+<li><strong>D. Event - driven（事件驱动）</strong>：事件驱动是一种编程模式，它不是一种专门用于外部设备和主存之间数据传输的机制。事件驱动主要关注的是事件的产生和处理，在数据传输方面并没有像DMA那样针对外部设备和主存之间高速块传输的特定功能。例如，在图形用户界面（GUI）编程中，事件驱动用于处理用户的操作事件，如鼠标点击、键盘输入等，与外部设备和主存之间的高速数据传输关联不大。</li>
+</ul>
+<h2 id="Quiz-2"><a href="#Quiz-2" class="headerlink" title="Quiz (2)"></a>Quiz (2)</h2><p><strong>问题</strong>：</p>
+<p>Once the DMA controller obtains access to the system bus, it transfers one byte of data and then returns the control of system bus to the processor. This is <strong>___</strong>.</p>
+<p>A. burst mode<br>B. block mode<br>C. cycle stealing mode<br>D. transparent mode</p>
+<p><strong>答案</strong>：C. cycle stealing mode</p>
+<p><strong>解释</strong>：</p>
+<ul>
+<li><strong>A. burst mode（突发模式）/B. block mode（块模式）</strong>：在突发模式（块模式）下，一旦DMA控制器获得系统总线的访问权，它会将整个数据块的所有字节全部传输完，然后才把系统总线的控制权交还给处理器。而不是像题目中描述的只传输一个字节就归还控制权，所以A和B选项不符合题意。</li>
+<li><strong>C. cycle stealing mode（周期窃取模式）</strong>：此模式的特点是，DMA控制器获得系统总线访问权限后，只传输一个字节的数据就将系统总线的控制权交还给处理器。之后它会持续发出请求，每次请求传输一个字节的数据，直到完成整个数据块的传输，这与题目中的描述完全相符。</li>
+<li><strong>D. transparent mode（透明模式）</strong>：透明模式是指DMA控制器只在CPU执行不使用系统总线的操作时才进行数据传输，并且不需要请求系统总线的控制权。与题目中所描述的传输一个字节就归还控制权的方式不同，所以D选项也不符合。</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a target="_blank" rel="noopener" href="https://www.totorocatcat.top/">Totoro</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://totorocatcat.top/2024/12/05/ch35/">http://totorocatcat.top/2024/12/05/ch35/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://totorocatcat.top" target="_blank">Totoroの旅</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%9F%BA%E7%A1%80/">基础</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/0260fb5ce221f85d68460aabab231d7.bmp" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2024/12/05/ch34/" title="Chapter 3 Basic Input/Output(4)"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/d24100c3588bfc6c9d67f231e77b9c3.bmp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Chapter 3 Basic Input/Output(4)</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2024/10/04/2009%E5%B9%B4%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%9F%E8%80%83-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E9%83%A8%E5%88%86/" title="2009年计算机统考-数据结构部分"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/e345af5b515d2f76bb44fdaa6eff3db4d6f598d3.jpg@1256w_908h_!web-article-pic.avif" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-10-04</div><div class="title">2009年计算机统考-数据结构部分</div></div></a></div><div><a href="/2024/10/05/2011%E5%B9%B4%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%9F%E8%80%83-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E9%83%A8%E5%88%86/" title="2011年计算机统考-数据结构部分"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/e345af5b515d2f76bb44fdaa6eff3db4d6f598d3.jpg@1256w_908h_!web-article-pic.avif" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-10-05</div><div class="title">2011年计算机统考-数据结构部分</div></div></a></div><div><a href="/2024/10/05/2012%E5%B9%B4%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%9F%E8%80%83-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E9%83%A8%E5%88%86/" title="2012年计算机统考-数据结构部分"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/e345af5b515d2f76bb44fdaa6eff3db4d6f598d3.jpg@1256w_908h_!web-article-pic.avif" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-10-05</div><div class="title">2012年计算机统考-数据结构部分</div></div></a></div><div><a href="/2024/10/04/2010%E5%B9%B4%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%9F%E8%80%83-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" title="2010年计算机统考-数据结构"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/e345af5b515d2f76bb44fdaa6eff3db4d6f598d3.jpg@1256w_908h_!web-article-pic.avif" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-10-04</div><div class="title">2010年计算机统考-数据结构</div></div></a></div><div><a href="/2024/05/16/2022%E5%B9%B4C-%E8%AF%95%E5%8D%B7%E8%BD%AF%E4%BB%B6%E5%AD%A6%E9%99%A2/" title="2022年C++试卷软件学院"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://source.fomal.cc/img/default_cover_80.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-05-16</div><div class="title">2022年C++试卷软件学院</div></div></a></div><div><a href="/2024/05/16/2022C-%E8%AF%95%E5%8D%B7/" title="2022C++试卷"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://source.fomal.cc/img/default_cover_80.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-05-16</div><div class="title">2022C++试卷</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/px3.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Totoro</div><div class="author-info__description">热爱文学的SCUT软件学院学生</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">793</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">32</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/4512abc"><i class="fab fa-github"></i><span>🛴前往小窝......</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/4512abc" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:4512abc@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到龙猫の小窝</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Chapter-3-Basic-Input-Output-5"><span class="toc-text">Chapter 3 Basic Input&#x2F;Output(5)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B4%E6%8E%A5%E5%86%85%E5%AD%98%E8%AE%BF%E9%97%AE"><span class="toc-text">直接内存访问</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DMA%E6%93%8D%E4%BD%9C"><span class="toc-text">DMA操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%881%EF%BC%89"><span class="toc-text">（1）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%882%EF%BC%89"><span class="toc-text">（2）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%883%EF%BC%89"><span class="toc-text">（3）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DMA%E6%8E%A7%E5%88%B6%E5%99%A8"><span class="toc-text">DMA控制器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%881%EF%BC%89-1"><span class="toc-text">（1）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%882%EF%BC%89-1"><span class="toc-text">（2）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%883%EF%BC%89-1"><span class="toc-text">（3）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DMA%E4%BC%A0%E8%BE%93%E6%A8%A1%E5%BC%8F"><span class="toc-text">DMA传输模式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%881%EF%BC%89-2"><span class="toc-text">（1）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%882%EF%BC%89-2"><span class="toc-text">（2）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%883%EF%BC%89-2"><span class="toc-text">（3）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DMA%E9%85%8D%E7%BD%AE"><span class="toc-text">DMA配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%881%EF%BC%89-3"><span class="toc-text">（1）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%882%EF%BC%89-3"><span class="toc-text">（2）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%883%EF%BC%89-3"><span class="toc-text">（3）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Quiz-1"><span class="toc-text">Quiz (1)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Quiz-2"><span class="toc-text">Quiz (2)</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/12/05/ch35/" title="Chapter 3 Basic Input/Output(5)"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/0260fb5ce221f85d68460aabab231d7.bmp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Chapter 3 Basic Input/Output(5)"/></a><div class="content"><a class="title" href="/2024/12/05/ch35/" title="Chapter 3 Basic Input/Output(5)">Chapter 3 Basic Input/Output(5)</a><time datetime="2024-12-05T11:25:36.000Z" title="发表于 2024-12-05 19:25:36">2024-12-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/12/05/ch34/" title="Chapter 3 Basic Input/Output(4)"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/d24100c3588bfc6c9d67f231e77b9c3.bmp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Chapter 3 Basic Input/Output(4)"/></a><div class="content"><a class="title" href="/2024/12/05/ch34/" title="Chapter 3 Basic Input/Output(4)">Chapter 3 Basic Input/Output(4)</a><time datetime="2024-12-05T11:03:09.000Z" title="发表于 2024-12-05 19:03:09">2024-12-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/12/05/ch33/" title="Chapter 3 Basic Input/Output(3)"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/86180ba3f42f2ac9a9611430ead1ae5.bmp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Chapter 3 Basic Input/Output(3)"/></a><div class="content"><a class="title" href="/2024/12/05/ch33/" title="Chapter 3 Basic Input/Output(3)">Chapter 3 Basic Input/Output(3)</a><time datetime="2024-12-05T10:15:31.000Z" title="发表于 2024-12-05 18:15:31">2024-12-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/12/05/ch32/" title="Chapter 3 Basic Input/Output(2)"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/c3109345507e0c37599952b7d00eac6.bmp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Chapter 3 Basic Input/Output(2)"/></a><div class="content"><a class="title" href="/2024/12/05/ch32/" title="Chapter 3 Basic Input/Output(2)">Chapter 3 Basic Input/Output(2)</a><time datetime="2024-12-05T09:16:44.000Z" title="发表于 2024-12-05 17:16:44">2024-12-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/12/05/ch3/" title="Chapter 3 Basic Input/Output(1)"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/dab8ca39a0883520f2abf2970de0d11.bmp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Chapter 3 Basic Input/Output(1)"/></a><div class="content"><a class="title" href="/2024/12/05/ch3/" title="Chapter 3 Basic Input/Output(1)">Chapter 3 Basic Input/Output(1)</a><time datetime="2024-12-05T08:51:06.000Z" title="发表于 2024-12-05 16:51:06">2024-12-05</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 By Totoro</div><div class="footer_custom_text">I wish you to become your own sun, no need to rely on who's light.<p><a target="_blank" href="https://hexo.io/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&logo=hexo" title="博客框架为Hexo"></a>&nbsp;<a target="_blank" href="https://butterfly.js.org/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&logo=bitdefender" title="主题采用butterfly"></a>&nbsp;<a target="_blank" href="https://www.jsdelivr.com/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&logo=jsDelivr" title="本站使用JsDelivr为静态资源提供CDN加速"></a> &nbsp;<a target="_blank" href="https://vercel.com/ "><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Hosted-Vervel-brightgreen?style=flat&logo=Vercel" title="本站采用双线部署，默认线路托管于Vercel"></a>&nbsp;<a target="_blank" href="https://vercel.com/ "><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Hosted-Coding-0cedbe?style=flat&logo=Codio" title="本站采用双线部署，联通线路托管于Coding"></a>&nbsp;<a target="_blank" href="https://github.com/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&logo=GitHub" title="本站项目由Gtihub托管"></a>&nbsp;<a target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&logo=Claris" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"></a></p></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat-btn" type="button" title="聊天"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="/js/tw_cn.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@5.2.0/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'HT1PalaKkPaG1UqAXBhJXIu8-gzGzoHsz',
+      appKey: 'iT0TnVVAwf9zuZ7NqwclQItY',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://cdn.jsdelivr.net/npm/valine@1.5.1/dist/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><script defer src="/js/light.js"></script><canvas id="universe"></canvas><script defer src="/js/universe.js"></script><script async src="/js/title.js"></script><script defer src="https://npm.elemecdn.com/jquery@latest/dist/jquery.min.js"></script><script defer data-pjax src="/js/cat.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="1" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/click-show-text.min.js" data-mobile="true" data-text="只此无为身，且前行,忘记过去的人注定重蹈覆辙,我是我，我靠自己站立，我会做好自身,如果我睡大觉，谁给我摘月亮呢,假期和朋友，是人生中顶好的两样东西啊。,去爱，去失去，要不负相遇,没什么想不想通的，只是固执而已,我们深爱星辰，乃至不惧夜的黑,吃，喝，享受幸福，接受奇迹,浊水若长流，自清澄,雅俗共赏,总会有什么也不想的幸福时刻吧,时间顺流而下，生活逆流而上,悟已往之不谏，知来者之可追,希望你的小世界里,山花烂漫,茶酒俱全,安宁清淡,明朗欢愉" data-fontsize="20px" data-random="false" async="async"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener
+  btf.removeGlobalFnEvent('pjax')
+  btf.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.12.0"></script></div></div><!-- hexo injector body_end start --><script data-pjax>
+    function butterfly_categories_card_injector_config(){
+      var parent_div_git = document.getElementById('recent-posts');
+      var item_html = '<style>li.categoryBar-list-item{width:32.3%;}.categoryBar-list{max-height: 380px;overflow:auto;}.categoryBar-list::-webkit-scrollbar{width:0!important}@media screen and (max-width: 650px){.categoryBar-list{max-height: 320px;}}</style><div class="recent-post-item" style="height:auto;width:100%;padding:0px;"><div id="categoryBar"><ul class="categoryBar-list"><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_12.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS70の旅/&quot;);" href="javascript:void(0);">CS70の旅</a><span class="categoryBar-list-count">25</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_13.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS61B/&quot;);" href="javascript:void(0);">CS61B</a><span class="categoryBar-list-count">76</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_14.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/期末の旅/&quot;);" href="javascript:void(0);">期末の旅</a><span class="categoryBar-list-count">99</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_17.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/ACMの旅/&quot;);" href="javascript:void(0);">ACMの旅</a><span class="categoryBar-list-count">68</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_18.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/区域赛の旅/&quot;);" href="javascript:void(0);">区域赛の旅</a><span class="categoryBar-list-count">7</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_19.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/数学建模/&quot;);" href="javascript:void(0);">数学建模</a><span class="categoryBar-list-count">31</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_20.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/Codeforcesの旅/&quot;);" href="javascript:void(0);">Codeforcesの旅</a><span class="categoryBar-list-count">24</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_21.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/刷题计划/&quot;);" href="javascript:void(0);">刷题计划</a><span class="categoryBar-list-count">40</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_22.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/牛客の旅/&quot;);" href="javascript:void(0);">牛客の旅</a><span class="categoryBar-list-count">65</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_22.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/前端の旅/&quot;);" href="javascript:void(0);">前端の旅</a><span class="categoryBar-list-count">17</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_23.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/数据结构/&quot;);" href="javascript:void(0);">数据结构</a><span class="categoryBar-list-count">47</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_24.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/Atcoderの旅/&quot;);" href="javascript:void(0);">Atcoderの旅</a><span class="categoryBar-list-count">53</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_25.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/C-の旅/&quot;);" href="javascript:void(0);">C++の旅</a><span class="categoryBar-list-count">17</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_26.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CSAPPの旅/&quot;);" href="javascript:void(0);">CSAPPの旅</a><span class="categoryBar-list-count">2</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_27.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS知识/&quot;);" href="javascript:void(0);">CS知识</a><span class="categoryBar-list-count">3</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_28.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/编程基础/&quot;);" href="javascript:void(0);">编程基础</a><span class="categoryBar-list-count">22</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_29.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/离散数学/&quot;);" href="javascript:void(0);">离散数学</a><span class="categoryBar-list-count">29</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_30.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/JAVAの旅/&quot;);" href="javascript:void(0);">JAVAの旅</a><span class="categoryBar-list-count">10</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_31.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/MIT-6-031-Software-Construction/&quot;);" href="javascript:void(0);">MIT 6.031:Software Construction</a><span class="categoryBar-list-count">16</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_32.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS-110L/&quot;);" href="javascript:void(0);">CS 110L</a><span class="categoryBar-list-count">3</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_33.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/个人安排/&quot;);" href="javascript:void(0);">个人安排</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_34.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/灵魂の旅/&quot;);" href="javascript:void(0);">灵魂の旅</a><span class="categoryBar-list-count">2</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_35.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/杂项/&quot;);" href="javascript:void(0);">杂项</a><span class="categoryBar-list-count">12</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_36.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/计算机组成原理/&quot;);" href="javascript:void(0);">计算机组成原理</a><span class="categoryBar-list-count">39</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_37.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/文学/&quot;);" href="javascript:void(0);">文学</a><span class="categoryBar-list-count">49</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_38.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/力扣の旅/&quot;);" href="javascript:void(0);">力扣の旅</a><span class="categoryBar-list-count">20</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_39.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/千里十二行/&quot;);" href="javascript:void(0);">千里十二行</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_40.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/🗡指offer/&quot;);" href="javascript:void(0);">🗡指offer</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_41.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/少年游/&quot;);" href="javascript:void(0);">少年游</a><span class="categoryBar-list-count">2</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_42.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/算法提高课/&quot;);" href="javascript:void(0);">算法提高课</a><span class="categoryBar-list-count">3</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_43.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/汇编の旅/&quot;);" href="javascript:void(0);">汇编の旅</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_44.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/C-实训/&quot;);" href="javascript:void(0);">C++实训</a><span class="categoryBar-list-count">8</span><span class="categoryBar-list-descr"></span></li></ul></div></div>';
+      console.log('已挂载butterfly_categories_card')
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+      }
+    if( document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+    butterfly_categories_card_injector_config()
+    }
+  </script><script data-pjax>
+  function butterfly_swiper_injector_config(){
+    var parent_div_git = document.getElementById('recent-posts');
+    var item_html = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms;"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;2024/10/01/诗录/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/4b31456c6f0f4489f99177f89e936de7286431045.png@1256w_708h_!web-article-pic.avif" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-10-01</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;2024/10/01/诗录/&quot;);" href="javascript:void(0);" alt="">诗录</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;2024/10/01/诗录/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;2024/01/29/诗兴大发/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://source.fomal.cc/img/default_cover_69.webp" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-01-29</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;2024/01/29/诗兴大发/&quot;);" href="javascript:void(0);" alt="">诗兴大发</a><div class="blog-slider__text">未觉，却是中二少年的诗仙梦</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;2024/01/29/诗兴大发/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;2024/10/05/TotoroのPlan/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/51d37eba99d243607ddedfff6e91568f617436609.jpg@1256w_1884h_!web-article-pic.avif" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-10-05</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;2024/10/05/TotoroのPlan/&quot;);" href="javascript:void(0);" alt="">TotoroのPlan</a><div class="blog-slider__text">方便大二看（）</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;2024/10/05/TotoroのPlan/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;2024/03/03/Markdown格式/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/ushio-api-img-moe@5.0.48/img_482_1920x1080_96_null_normal.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-03-03</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;2024/03/03/Markdown格式/&quot;);" href="javascript:void(0);" alt="">Markdown格式</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;2024/03/03/Markdown格式/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载butterfly_swiper')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_swiper_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_swiper_injector_config();
+  }
+  </script><script defer src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.js"></script><script defer data-pjax src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper_init.js"></script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>
