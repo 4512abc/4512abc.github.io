@@ -1,0 +1,726 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>计组习题的那些事（6） | Totoroの旅</title><meta name="author" content="Totoro"><meta name="copyright" content="Totoro"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="计组习题的那些事（6） 今天起床，感觉十分通透啊，是个不错的日子！！！ 流水线其实还是有点意思的，出现问题了，不断的去寻找方案解决，要么调整做的方式，要么做一些其他的事情，想的都是怎么更有效率的达到最后的目标。 这一章节我很不擅长，还是需要专注一些，重点在于缓存，RAM和页表那里。  问题考虑由SDRAM芯片构造的主存，数据以脉冲串的形式传输（脉冲长度为8），并行传输32位数据，时钟频率为400M">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计组习题的那些事（6）">
+<meta property="og:url" content="http://totorocatcat.top/%E8%AE%A1%E7%BB%84%E4%B9%A0%E9%A2%98%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B%EF%BC%886%EF%BC%89/index.html">
+<meta property="og:site_name" content="Totoroの旅">
+<meta property="og:description" content="计组习题的那些事（6） 今天起床，感觉十分通透啊，是个不错的日子！！！ 流水线其实还是有点意思的，出现问题了，不断的去寻找方案解决，要么调整做的方式，要么做一些其他的事情，想的都是怎么更有效率的达到最后的目标。 这一章节我很不擅长，还是需要专注一些，重点在于缓存，RAM和页表那里。  问题考虑由SDRAM芯片构造的主存，数据以脉冲串的形式传输（脉冲长度为8），并行传输32位数据，时钟频率为400M">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/porco026.jpg">
+<meta property="article:published_time" content="2024-12-07T15:06:12.000Z">
+<meta property="article:modified_time" content="2024-12-07T15:55:30.176Z">
+<meta property="article:author" content="Totoro">
+<meta property="article:tag" content="基础">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/porco026.jpg"><link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/b5ca6e582a7a45e6fde46e616eeb68e.png"><link rel="canonical" href="http://totorocatcat.top/%E8%AE%A1%E7%BB%84%E4%B9%A0%E9%A2%98%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B%EF%BC%886%EF%BC%89/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta/><link rel="stylesheet" href="/css/index.css?v=4.12.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  noticeOutdate: {"limitDay":765,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体中文","cht_to_chs":"你已切换为简体中文","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"top-right"},
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '计组习题的那些事（6）',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: true,
+  isToc: true,
+  postUpdate: '2024-12-07 23:55:30'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const now = new Date()
+          const hour = now.getHours()
+          const isNight = hour <= 6 || hour >= 18
+          if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/universe.css"><link rel="stylesheet" href="/css/scrollbar.css"><link rel="stylesheet" href="/css/cat.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-double-row-display@1.00/cardlistpost.min.css"/>
+<style>#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags:before {content:"\A";
+  white-space: pre;}#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags > .article-meta__separator{display:none}</style>
+<link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-categories-card@1.0.0/lib/categorybar.css"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiperstyle.css" media="print" onload="this.media='all'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body><script>window.paceOptions = {
+  restartOnPushState: false
+}
+
+document.addEventListener('pjax:send', () => {
+  Pace.restart()
+})
+</script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/themes/orange/pace-theme-flash.min.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/px3.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">802</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">32</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home-alt"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-envelope-open"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 趣味</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/project/"><i class="fa-fw fas fas fa-folder"></i><span> 项目</span></a></div><div class="menus_item"><a class="site-page" href="/stars/"><i class="fa-fw fas fa-bookmark"></i><span> 收藏</span></a></div><div class="menus_item"><a class="site-page" href="/bilibili/"><i class="fa-fw fas fa-tv"></i><span> 追番</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/porco026.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="Totoroの旅"><span class="site-name">Totoroの旅</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home-alt"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-envelope-open"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 趣味</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/project/"><i class="fa-fw fas fas fa-folder"></i><span> 项目</span></a></div><div class="menus_item"><a class="site-page" href="/stars/"><i class="fa-fw fas fa-bookmark"></i><span> 收藏</span></a></div><div class="menus_item"><a class="site-page" href="/bilibili/"><i class="fa-fw fas fa-tv"></i><span> 追番</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">计组习题的那些事（6）</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-12-07T15:06:12.000Z" title="发表于 2024-12-07 23:06:12">2024-12-07</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-12-07T15:55:30.176Z" title="更新于 2024-12-07 23:55:30">2024-12-07</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">计算机组成原理</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">19.4k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>63分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="计组习题的那些事（6）"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/%E8%AE%A1%E7%BB%84%E4%B9%A0%E9%A2%98%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B%EF%BC%886%EF%BC%89/#post-comment" itemprop="discussionUrl"><span class="valine-comment-count" data-xid="/%E8%AE%A1%E7%BB%84%E4%B9%A0%E9%A2%98%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B%EF%BC%886%EF%BC%89/" itemprop="commentCount"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="计组习题的那些事（6）"><a href="#计组习题的那些事（6）" class="headerlink" title="计组习题的那些事（6）"></a>计组习题的那些事（6）</h1><blockquote>
+<p>今天起床，感觉十分通透啊，是个不错的日子！！！</p>
+<p>流水线其实还是有点意思的，出现问题了，不断的去寻找方案解决，要么调整做的方式，要么做一些其他的事情，想的都是怎么更有效率的达到最后的目标。</p>
+<p>这一章节我很不擅长，还是需要专注一些，重点在于缓存，RAM和页表那里。</p>
+</blockquote>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>考虑由SDRAM芯片构造的主存，数据以脉冲串的形式传输（脉冲长度为8），并行传输32位数据，时钟频率为400MHz，要求计算传输以下数据量分别需要的时间以及对应的延迟：<br>(a) 32字节数据；<br>(b) 64字节数据。</p>
+<h3 id="答案"><a href="#答案" class="headerlink" title="答案"></a>答案</h3><p>(a) </p>
+<ul>
+<li><strong>传输时间</strong>：13个时钟周期，换算成时间为32.5ns。</li>
+<li><strong>延迟</strong>：5个时钟周期，换算成时间为12.5ns。<br>(b)</li>
+<li><strong>传输时间</strong>：23个时钟周期，换算成时间为57.5ns。</li>
+<li><strong>延迟</strong>：5个时钟周期，换算成时间为12.5ns。</li>
+</ul>
+<hr>
+<h2 id="问题-1"><a href="#问题-1" class="headerlink" title="问题"></a>问题</h2><p>对于一个使用512K×8存储器芯片的8M×32存储器，要求描述一种类似于图8-10的结构。</p>
+<h3 id="答案-1"><a href="#答案-1" class="headerlink" title="答案"></a>答案</h3><p>所需的结构本质上与图8-10中的一样，只是需要16行、每行有4个512K×8的芯片。地址线A₀需要连接到所有的芯片上，地址线A₁连接到一个4位的译码器上，以选择16行中的一行。</p>
+<h3 id="解释"><a href="#解释" class="headerlink" title="解释"></a>解释</h3><ul>
+<li><strong>关于芯片数量及行数的确定</strong>：<br>首先分析存储器容量相关情况，已知要构建的是8M×32的存储器，而使用的是512K×8的存储器芯片。计算可得，总存储单元数量上，8M（8×1024×1024）除以512K（512×1024）等于16，说明在地址维度上需要16个这样的芯片组合来达到8M的地址范围要求；在数据宽度维度上，目标存储器是32位，而芯片是8位，32÷8 = 4，意味着每行需要4个芯片并行才能实现32位的数据宽度。所以综合起来就是需要16行，每行有4个512K×8的芯片来构建这个8M×32的存储器。</li>
+<li><strong>关于地址线连接方式的解释</strong>：<br>地址线的连接对于芯片的正确寻址非常关键。地址线A₀需要连接到所有的芯片上，这是因为A₀这根地址线用于在每个芯片内部进行更细粒度的单元选择，不管是哪一行的芯片，其内部存储单元的选择都需要用到这根地址线，所以要全部连接。而地址线A₁连接到一个4位的译码器上，是因为要从16行芯片中选择其中一行来进行操作，通过4位译码器（2⁴ = 16种状态）可以刚好实现对16行芯片的准确选择，使得根据不同的地址输入能够准确地定位到具体某一行的芯片，进而配合其他地址线以及芯片内部的地址译码等机制来准确读写相应存储单元的数据。 </li>
+</ul>
+<hr>
+<h2 id="问题-2"><a href="#问题-2" class="headerlink" title="问题"></a>问题</h2><p>(a) 一个计算机系统使用32位的存储器地址，主存有1G字节，有一个4K字节的高速缓存，按组相联的形式组织，每组4个块，每块64个字节，需要计算主存地址中的Tag、Set和Word字段的位数。<br>(b) 假设高速缓存初始为空，处理器从位置0开始的连续字单元中取1088个字（每个字4个字节），然后再重复这个取操作序列9次。已知高速缓存比主存快10倍，使用LRU算法进行块替换，估算使用高速缓存后性能提高的倍数。</p>
+<h3 id="答案-2"><a href="#答案-2" class="headerlink" title="答案"></a>答案</h3><p>(a) Tag字段为22位，Set字段为4位，Word字段为6位。<br>(b) 使用高速缓存后性能提高的倍数约为2.15。</p>
+<h3 id="解释-1"><a href="#解释-1" class="headerlink" title="解释"></a>解释</h3><h4 id="a-各字段位数计算解释"><a href="#a-各字段位数计算解释" class="headerlink" title="(a) 各字段位数计算解释"></a>(a) 各字段位数计算解释</h4><ul>
+<li><strong>Word字段位数计算</strong>：<br>因为一个块有64个字节，按照字节编址，要确定块内具体的字节位置（也就是字单元位置，这里每个字4个字节，但计算字节位置思路相同），需要的位数就是$log_2{64}$$ = 6$位，所以Word字段为6位。</li>
+<li><strong>Set字段位数计算</strong>：<br>每组包含的字节数为$4×64 = 256$字节，而高速缓存总共有$4K$（$4×1024$）字节，那么高速缓存总共的组数为$4×1024÷256 = 16$组，要对这16组进行区分选择，所需要的位数就是$log_2{16}$$ = 4$位，所以Set字段需要4位。</li>
+<li><strong>Tag字段位数计算</strong>：<br>已知存储器地址是32位，已经确定了Set字段占4位，Word字段占6位，那么剩下的位数就是Tag字段的位数，即$32 - 4 - 6 = 22$位，所以Tag字段为22位。</li>
+</ul>
+<h4 id="b-性能提高倍数计算解释"><a href="#b-性能提高倍数计算解释" class="headerlink" title="(b) 性能提高倍数计算解释"></a>(b) 性能提高倍数计算解释</h4><ul>
+<li><p><strong>分析取操作及缓存块替换情况</strong>：<br>首先，$1088$个字，每个字$4$个字节，换算成块的数量就是$1088×4÷64 = 68$个块，这些块在主存中占用块$0$到块$67$。高速缓存一共有$64$块空间（每组$4$个块，共$16$组），在第一遍取操作时，把块$0$到块$63$读入高速缓存后缓存就满了。后续编号为$64$到$67$的这$4$块会映射到第$0$、$1$、$2$和$3$组中，并且会按照LRU算法替换所在组中最近最少使用的块（例如在第$0$组就替换块$0$）。<br>随着后续重复取操作，会出现类似块不断相互替换的情况，比如主存块$0$、$16$、$32$、$48$和$64$等会竞争高速缓存中第$0$组的$4$个块位置，不断彼此替换。最后$12$个组（第$4$组到第$15$组）中的主存块在第一遍被取出一次后，在接下来的$9$遍中能一直保持在高速缓存中。</p>
+</li>
+<li><p><strong>计算无缓存和有缓存时的时间</strong>：<br>设高速缓存的访问时间为$T$，无高速缓存时，每次访问主存，总共要进行$1088×10$次访问（取$1088$个字，重复$10$次），那么总时间就是$10×68×10T$（$68$个块，每个块访问时间是$10T$，重复$10$次操作）。<br>有高速缓存时，第一遍取操作需要从主存取$68$个块，时间为$68×11T$（每个块从主存取到缓存再访问，算$11T$，$10T$是主存访问时间，$T$是缓存访问时间），后面$9$遍操作中，每遍有$20$个块要从主存取（前面分析得出），$48$个块能从缓存取，所以时间为$9(20×11T + 48T)$，那么有高速缓存时总的时间就是$1×68×11T + 9(20×11T + 48T)$。</p>
+</li>
+<li><p><strong>计算性能提高倍数</strong>：<br>根据性能提高倍数的计算公式，用无高速缓存时的时间除以有高速缓存时的时间，即$\frac{10×68×10T}{1×68×11T + 9(20×11T + 48T)}$，经过计算得出结果约为$2.15$，这就表明使用高速缓存后性能相比没有高速缓存时有了一定程度的提升，同时也体现出在这种特定取操作及LRU算法下的缓存使用效果以及LRU算法存在的一些在程序循环执行场景下的缺点（导致部分块频繁替换，影响性能提升幅度等）。 </p>
+</li>
+</ul>
+<hr>
+<h2 id="问题-3"><a href="#问题-3" class="headerlink" title="问题"></a>问题</h2><p>(a) 假设一台计算机的处理器有两个一级高速缓存（一个用于指令，一个用于数据）和一个二级高速缓存，已知一级高速缓存和二级高速缓存的命中率分别为0.96和0.80，求在一级和二级高速缓存中访问都失效，因而需要访问主存的比例是多少？<br>(b) 基于上述命中率等条件，求处理器所看到的平均访问时间是多少？<br>(c) 假设二级高速缓存的理想命中率为1，求处理器所看到的平均存储器访问时间将被减少多少倍？<br>(d) 考虑二级高速缓存被移走，两个一级高速缓存的容量被增加，使其失效率减少一半的情况，求此时处理器所看到的平均存储器访问时间是多少？</p>
+<h3 id="答案-3"><a href="#答案-3" class="headerlink" title="答案"></a>答案</h3><p>(a) 在一级和二级高速缓存中访问都失效，需要访问主存的比例是0.008。<br>(b) 处理器所看到的平均访问时间是2.24r。<br>(c) 处理器所看到的平均存储器访问时间将被减少1.44倍（以实际情况与理想情况对比而言）。<br>(d) 此时处理器所看到的平均存储器访问时间是2.98r。</p>
+<h3 id="解释-2"><a href="#解释-2" class="headerlink" title="解释"></a>解释</h3><h4 id="a-计算两级缓存都失效的访问主存比例解释"><a href="#a-计算两级缓存都失效的访问主存比例解释" class="headerlink" title="(a) 计算两级缓存都失效的访问主存比例解释"></a>(a) 计算两级缓存都失效的访问主存比例解释</h4><p>根据条件，一级高速缓存命中率为0.96，那么一级高速缓存失效的概率就是$1 - 0.96$；二级高速缓存命中率为0.80，其失效概率就是$1 - 0.80$。要求一级和二级高速缓存都失效的情况，根据概率的乘法原理，将两者失效概率相乘，即$(1 - 0.96)×(1 - 0.80)$$ = 0.008$，所以这个比例就是0.008。</p>
+<h4 id="b-计算平均访问时间解释"><a href="#b-计算平均访问时间解释" class="headerlink" title="(b) 计算平均访问时间解释"></a>(b) 计算平均访问时间解释</h4><p>已知具有一级和二级高速缓存的平均存储器访问时间公式为$t_{ax}=h_{1}t_{1}+(1 - h_{1})(h_{2}t_{2}+(1 - h_{2})M)$（这里$h_{1}$是一级缓存命中率，$t_{1}$是一级缓存访问时间，$h_{2}$是二级缓存命中率，$t_{2}$是从二级缓存传输到一级缓存的失效开销对应的时间，$M$是从主存传输到二级缓存对应的时间）。<br>把相应数值代入，$h_{1}=0.96$，$t_{1}=r$，$h_{2}=0.80$，$t_{2}=15r$，$M = 100r$，可得：<br>$<br>\begin{align<em>}<br>t_{ax}&amp;=0.96r + 0.04×(0.80×15r + 0.20×100r)\\<br>&amp;=0.96r + 0.04×(12r + 20r)\\<br>&amp;=0.96r + 0.04×32r\\<br>&amp;=0.96r + 1.28r\\<br>&amp;=2.24r<br>\end{align</em>}<br>$<br>所以处理器所看到的平均访问时间是2.24r。</p>
+<h4 id="c-计算平均存储器访问时间减少倍数解释"><a href="#c-计算平均存储器访问时间减少倍数解释" class="headerlink" title="(c) 计算平均存储器访问时间减少倍数解释"></a>(c) 计算平均存储器访问时间减少倍数解释</h4><p>如果二级高速缓存理想命中率为1（即不会失效），此时平均访问时间$t_{ax}(理想)=0.96r + 0.04×15r$<br>$<br>\begin{align<em>}<br>t_{ax}(理想)&amp;=0.96r + 0.6r\\<br>&amp;=1.56r<br>\end{align</em>}<br>$<br>用实际的平均访问时间$t_{ax}(实际)=2.24r$除以理想的平均访问时间$t_{ax}(理想)=1.56r$，可得倍数关系：<br>$<br>\frac{t_{ax}(实际)}{t_{ax}(理想)}=\frac{2.24r}{1.56r}\approx1.44<br>$<br>这意味着实际情况相对理想情况，平均存储器访问时间是其1.44倍，也就是从减少倍数角度来说，减少了1.44倍。</p>
+<h4 id="d-计算移除二级缓存并改变一级缓存后的平均访问时间解释"><a href="#d-计算移除二级缓存并改变一级缓存后的平均访问时间解释" class="headerlink" title="(d) 计算移除二级缓存并改变一级缓存后的平均访问时间解释"></a>(d) 计算移除二级缓存并改变一级缓存后的平均访问时间解释</h4><p>当二级缓存被移走，两个一级高速缓存容量增加使失效率减少一半，此时一级缓存新的命中率变为$0.98$（原来是0.96），失效概率就是$1 - 0.98 = 0.02$，而从主存直接访问对应的时间还是$100r$，新的平均访问时间$t_{ax}=h_{1}t_{1}+(1 - h_{1})M$（这里$h_{1}=0.98$，$t_{1}=r$，$M = 100r$），代入可得：<br>$<br>\begin{align<em>}<br>t_{ax}&amp;=0.98r + 0.02×100r\\<br>&amp;=0.98r + 2r\\<br>&amp;=2.98r<br>\end{align</em>}<br>$<br>所以此时处理器所看到的平均存储器访问时间是2.98r。 </p>
+<hr>
+<h2 id="问题-4"><a href="#问题-4" class="headerlink" title="问题"></a>问题</h2><p>(a) 已知一个由32位的数组成的1024×1024数组，虚拟存储器中每页包含4K字节，主存的1M字节被分配用来存储数组数据，假定发生页故障时从磁盘装载一个页到主存需要10毫秒，假设一次处理该数组的一列，且数组元素按列顺序存储在虚拟存储器中，求会发生多少次页故障以及需要多长时间才能完成这个标准化过程。<br>(b) 假设元素按行顺序存储，重复(a)中求页故障次数以及完成标准化过程所需时间的问题。<br>(c) 当数组按行顺序存储在存储器中时，提出另一种处理这个数组的方法，估算页故障的次数以及该解决方案所需要的时间。</p>
+<h3 id="答案-4"><a href="#答案-4" class="headerlink" title="答案"></a>答案</h3><p>(a) 会发生1024次页故障，完成标准化过程需要10.24秒。<br>(b) 会发生1024×1024×2次页故障，处理时间为20972秒（约5.8小时）。<br>(c) 采用新方法会发生2048次页故障，处理时间为20.48秒。</p>
+<h3 id="解释-3"><a href="#解释-3" class="headerlink" title="解释"></a>解释</h3><h4 id="a-按列顺序存储情况解释"><a href="#a-按列顺序存储情况解释" class="headerlink" title="(a) 按列顺序存储情况解释"></a>(a) 按列顺序存储情况解释</h4><ul>
+<li><strong>计算每页可容纳元素个数及主存可容纳页数</strong>：<br>因为每个32位的数是4字节，而每页包含4K字节（4×1024字节），所以每页能容纳的元素个数为$4×1024÷4 = 1024$个。主存用于存储数组数据的1M字节（1×1024×1024字节）空间，其包含的页数为$(1×1024×1024)÷(4×1024) = 256$页。</li>
+<li><strong>分析页故障次数及处理时间</strong>：<br>由于每一列存储在一页中，每次将一列放到主存中就会产生一次页故障，而数组一共有1024列，所以总共会发生1024次页故障。又已知处理一次页故障需要10毫秒，那么完成这个标准化过程所需时间就是页故障次数乘以每次处理的时间，即$1024×10$毫秒 = 10.24秒。</li>
+</ul>
+<h4 id="b-按行顺序存储情况解释"><a href="#b-按行顺序存储情况解释" class="headerlink" title="(b) 按行顺序存储情况解释"></a>(b) 按行顺序存储情况解释</h4><ul>
+<li><strong>分析处理过程中的页故障情况</strong>：<br>每一列的处理需要两遍，第一遍找最大元素，第二遍执行标准化。当处理第一列时，访问每个元素都会导致一次页故障，并且每访问一个元素会将相应行的所有元素都装入主存中。因为主存只有256页空间，当检查完256个元素后，主存就满了，后续再访问元素就会导致页故障并替换主存中已有的数据，如此重复。这意味着数组中每一个元素的每一次访问都会发生一次页故障，而数组元素总共有$1024×1024$个，处理两遍，所以总的页故障次数就是$2×1024×1024$次。</li>
+<li><strong>计算处理时间</strong>：<br>每次页故障处理时间是10毫秒，那么总的处理时间就是页故障次数乘以每次处理时间，即$2×1024×1024×10$毫秒 = 20972秒，换算后约为5.8小时。</li>
+</ul>
+<h4 id="c-新处理方法情况解释"><a href="#c-新处理方法情况解释" class="headerlink" title="(c) 新处理方法情况解释"></a>(c) 新处理方法情况解释</h4><ul>
+<li><strong>阐述新方法及原理</strong>：<br>提出的新方法是在第一遍中先完成每一列的1/4，然后再处理第二个1/4，以此类推，第二遍同样采用这样的方式处理。这样做的好处是可以相对更合理地利用主存空间，减少不必要的页替换导致的频繁页故障。</li>
+<li><strong>分析页故障次数及处理时间</strong>：<br>通过数组的每一遍会导致1024次页故障，一共处理两遍，所以总共的页故障次数就是$2×1024 = 2048$次。每次页故障处理时间是10毫秒，那么处理时间就是$2048×10$毫秒 = 20.48秒。<br>最后通过这个例子整体说明了在主存容量不足以存放应用程序的情况下，页故障次数会显著增加，这种现象被称为系统颠簸（thrashing），体现了存储布局及处理方式对系统性能（这里体现为页故障次数和处理时间）的重要影响。 </li>
+</ul>
+<hr>
+<h3 id="问题-5"><a href="#问题-5" class="headerlink" title="问题"></a>问题</h3><p>(a) 已知磁盘的平均寻道时间为6毫秒，平均旋转延迟为3毫秒，所访问块的平均大小为8K字节，从磁盘传输数据的速率为34M字节/秒，假设这些数据块随机分布在磁盘上，需要估算寻道操作和旋转延迟所占总时间的平均百分比。<br>(b) 重新排列磁盘访问，使得在90%的情况中下一次访问的数据块与这次访问的数据块在同一个柱面上，在此情况下重复(a)中估算百分比的问题。</p>
+<h3 id="答案-5"><a href="#答案-5" class="headerlink" title="答案"></a>答案</h3><p>(a) 寻道操作和旋转延迟所占总时间的平均百分比为97%。<br>(b) 寻道操作和旋转延迟所占总时间的平均百分比为92%。</p>
+<h3 id="解释-4"><a href="#解释-4" class="headerlink" title="解释"></a>解释</h3><h4 id="a-部分解释"><a href="#a-部分解释" class="headerlink" title="(a) 部分解释"></a>(a) 部分解释</h4><ul>
+<li><strong>计算传输数据块时间</strong>：<br>首先，根据所给的从磁盘传输数据的速率以及数据块大小来计算传输一个数据块需要花费的时间。已知所访问块的平均大小是8K字节（8×1024字节），从磁盘传输数据的速率为34M字节/秒（34×1024×1024字节/秒），根据时间 = 数据量÷传输速率，可得传输一个数据块的时间为$8×1024÷(34×1024×1024)$秒，换算成毫秒就是$8×1024÷(34×1024×1024)×1000$≈0.23毫秒。</li>
+<li><strong>计算访问数据块总时间及百分比</strong>：<br>访问每个数据块所需的总时间是由寻道时间、旋转延迟时间以及传输数据块的时间这三部分组成的。已知平均寻道时间为6毫秒，平均旋转延迟为3毫秒，传输一个数据块时间约为0.23毫秒，那么总时间就是$6 + 3 + 0.23 = 9.23$毫秒。寻道和旋转延迟这两部分的时间总和是$6 + 3 = 9$毫秒，所以它们所占总时间的比例就是$9÷9.23$≈0.97，也就是97%。</li>
+</ul>
+<h4 id="b-部分解释"><a href="#b-部分解释" class="headerlink" title="(b) 部分解释"></a>(b) 部分解释</h4><ul>
+<li><strong>分析重新排列后的访问时间情况</strong>：<br>当重新排列磁盘访问，使得90%的情况中下一次访问的数据块与这次访问的数据块在同一个柱面上时，意味着在这90%的情况里，就不需要进行寻道操作了（因为在同一个柱面，磁头不用移动去寻找磁道了），只需要考虑旋转延迟就行。而还有10%的情况是按照常规的寻道、旋转延迟以及传输数据块的完整流程来的。</li>
+<li><strong>计算访问一个数据块的平均时间</strong>：<br>根据上述分析，访问一个数据块的平均时间计算如下：90%的情况只需要旋转延迟3毫秒，这部分时间就是$0.9×3$毫秒；10%的情况需要完整的寻道、旋转延迟以及传输数据块的时间，也就是$0.1×(6 + 3 )毫秒，把这两部分相加，可得平均时间为$0.9×3 + 0.1×(6 + 3 )+ 0.23 = 3.89$毫秒。</li>
+<li><strong>计算寻道和旋转延迟所占时间比例</strong>：<br>在这种情况下，寻道和旋转延迟所占的时间情况要分开来看，90%情况里的旋转延迟时间是$0.9×3 = 2.7$毫秒，10%情况里寻道和旋转延迟时间总和是$0.1×(6 + 3) = 0.9$毫秒，那么这两部分时间总和就是$2.7 + 0.9 = 3.6$毫秒。所以寻道和旋转延迟所占总时间的比例就是$3.6÷3.89$≈0.92，也就是92%。</li>
+</ul>
+<hr>
+<h2 id="问题-6"><a href="#问题-6" class="headerlink" title="问题"></a>问题</h2><p>考虑图8-6中的动态存储器单元，已知电容$C = 30$飞法（$10^{-15}$法），通过晶体管的泄漏电流大约是$0.25$皮安（$10^{-12}$安），当电容充满电荷时，它两端的电压为$1.5$伏，且该单元必须在电压降到$0.9$伏之前进行刷新，要求估算最小刷新率。</p>
+<h3 id="答案-6"><a href="#答案-6" class="headerlink" title="答案"></a>答案</h3><p>最小刷新率是每$72$毫秒或更短时间就要对每一行进行刷新一次。</p>
+<h3 id="解释-5"><a href="#解释-5" class="headerlink" title="解释"></a>解释</h3><ol>
+<li><strong>关于计算电压下降时间的原理</strong>：<br>在这个动态存储器单元中，电容会通过晶体管有泄漏电流，这就导致电容上存储的电荷会慢慢流失，进而使电容两端的电压下降。我们可以根据电容的电荷量变化与电流、时间的关系来计算电压从初始值下降到规定下限值所需要的时间。<br>电荷量$Q$、电容$C$和电压$U$之间的关系是$Q = CU$，那么电荷量的变化量$\Delta Q$就等于$C\Delta U$（这里$\Delta U$是电压的变化量）。而电流$I$的定义是单位时间内通过导体横截面的电荷量，即$I=\frac{\Delta Q}{\Delta t}$（$\Delta t$是时间变化量，也就是我们要求的电压下降所经历的时间），通过变形可得$\Delta t=\frac{C\Delta U}{I}$。</li>
+<li><strong>具体计算过程解释</strong>：<br>已知电容$C = 30×10^{-15}$法，电压从充满电荷时的$1.5$伏降到$0.9$伏，那么电压变化量$\Delta U = 1.5 - 0.9 = 0.6$伏，泄漏电流$I = 0.25×10^{-12}$安。<br>将这些数值代入上述时间计算公式$\Delta t=\frac{C\Delta U}{I}$，可得：<br>$<br>\begin{align<em>}<br>\Delta t&amp;=\frac{30×10^{-15}×(1.5 - 0.9)}{0.25×10^{-12}}\\<br>&amp;=\frac{30×10^{-15}×0.6}{0.25×10^{-12}}\\<br>&amp;=\frac{18×10^{-15}}{0.25×10^{-12}}\\<br>&amp;=(18÷0.25)×(10^{-15}÷10^{-12})\\<br>&amp;=72×10^{-3} \text{秒}\\<br>&amp;=72 \text{毫秒}<br>\end{align</em>}<br>$<br>这意味着电压从$1.5$伏下降到$0.9$伏所需要的时间是$72$毫秒，为了保证在电压降到$0.9$伏之前进行刷新，所以每一行必须在这个时间（$72$毫秒）或者更短的时间内就进行刷新一次，这样就得出了最小刷新率的要求。 </li>
+</ol>
+<hr>
+<h2 id="问题-7"><a href="#问题-7" class="headerlink" title="问题"></a>问题</h2><p>对于一个使用1M×4存储器芯片的16M×32存储器，要求描述它类似图8 - 10的结构。</p>
+<h3 id="答案-7"><a href="#答案-7" class="headerlink" title="答案"></a>答案</h3><p>一个16M的存储模块可以构建成16行，每行包含8个1M×4的芯片。需要24位地址，地址线A₁₉₋₀应当连接到所有芯片上，地址线A₂₃₋₂₀应当连接到一个4位译码器上，以便从16行中选择其中一行。</p>
+<h3 id="解释-6"><a href="#解释-6" class="headerlink" title="解释"></a>解释</h3><h4 id="关于芯片数量及行数确定的解释"><a href="#关于芯片数量及行数确定的解释" class="headerlink" title="关于芯片数量及行数确定的解释"></a>关于芯片数量及行数确定的解释</h4><ul>
+<li><strong>从存储容量角度分析</strong>：<br>要构建的目标存储器是16M×32的，也就是存储单元数量是16M（16×1024×1024个），数据宽度是32位；而使用的芯片是1M×4的，意味着每个芯片的存储单元数量是1M（1×1024×1024个），数据宽度是4位。</li>
+<li><strong>计算行数及每行芯片数</strong>：<br>在地址维度上，为了达到16M的存储容量，16M（16×1024×1024）除以1M（1×1024×1024）等于16，所以需要16个芯片组合（也就是16行）来覆盖整个地址范围；在数据宽度维度上，目标存储器数据宽度是32位，芯片的数据宽度是4位，32÷4 = 8，这就表明每行需要8个芯片并行工作，才能实现32位的数据宽度，所以整体结构就是16行，每行有8个1M×4的芯片。</li>
+</ul>
+<h4 id="关于地址线连接方式的解释"><a href="#关于地址线连接方式的解释" class="headerlink" title="关于地址线连接方式的解释"></a>关于地址线连接方式的解释</h4><ul>
+<li><strong>地址线A₁₉₋₀连接所有芯片的原因</strong>：<br>地址线A₁₉₋₀用于在芯片内部进行更细粒度的存储单元选择，不管是16行中的哪一行芯片，其内部众多存储单元的具体寻址都需要用到这些低位地址线，所以要把它们连接到所有的芯片上，使得每个芯片都能根据这些地址信息准确找到对应的存储单元进行读写操作。</li>
+<li><strong>地址线A₂₃₋₂₀连接4位译码器的作用</strong>：<br>地址线A₂₃₋₂₀这4位地址线主要用于从16行芯片中选择具体的某一行来进行操作。因为一共有16行芯片，通过一个4位译码器（4位二进制数可以表示2⁴ = 16种不同的状态），刚好可以根据这4位地址线上不同的电平组合（也就是不同的二进制数值）来准确地选中16行中的某一行，进而配合低位地址线（A₁₉₋₀）以及芯片内部的地址译码等机制，实现对整个16M×32存储器中任意存储单元的准确读写访问。 </li>
+</ul>
+<hr>
+<h2 id="问题-8"><a href="#问题-8" class="headerlink" title="问题"></a>问题</h2><p>分析下面这句话为什么不对：“使用更快的处理器芯片可以相应地提高计算机的性能，尽管主存的速度保持不变。”</p>
+<h3 id="答案-8"><a href="#答案-8" class="headerlink" title="答案"></a>答案</h3><p>更快的处理器芯片确实会使性能有所提升，但提升的幅度不会与处理器速度的提升成正比，因为如果主存速度没有改进，高速缓存缺失（cache miss）时的惩罚（也就是需要从相对较慢的主存获取数据所花费的额外时间成本）将保持不变，会限制整体性能提升的程度，所以原句那种简单认为使用更快处理器芯片就能相应提高计算机性能的表述是不对的。</p>
+<h3 id="解释-7"><a href="#解释-7" class="headerlink" title="解释"></a>解释</h3><p>在计算机系统中，处理器、高速缓存以及主存等部件协同工作来执行程序指令。当处理器速度变快时，在理想情况下，如果数据和指令都能快速地被处理器获取并处理，那计算机性能确实会相应提升。然而，实际情况中存在高速缓存这一层级，高速缓存用于存储处理器近期可能会用到的数据和指令，其目的是加快处理器的访问速度，减少对相对较慢的主存的访问。</p>
+<p>但当出现高速缓存缺失的情况时，也就是处理器需要的数据或指令不在高速缓存中，此时就需要从主存去获取，而主存速度相对较慢，如果主存速度保持不变，那么每次遇到高速缓存缺失，处理器就得花费较长时间等待从主存获取所需内容，这个等待时间就是所谓的高速缓存缺失惩罚。</p>
+<p>即便处理器芯片本身速度加快了，可一旦频繁遇到高速缓存缺失情况，处理器还是要受限于主存较慢的速度，导致整体性能提升的幅度没办法和处理器速度提升的幅度成正比，被高速缓存缺失惩罚这一因素制约了，所以不能简单地认为只要处理器芯片速度变快，计算机性能就能相应地按比例提高，原句这种表述忽略了高速缓存与主存对整体性能的影响，因而是不对的。 </p>
+<hr>
+<h2 id="问题-9"><a href="#问题-9" class="headerlink" title="问题"></a>问题</h2><p>一台计算机主存按字节编址，字长32位，有一个包含两个嵌套循环（内部小循环和外部大循环）的程序，该程序在按直接映射方法组织指令高速缓存的计算机上运行，已知高速缓存大小为1K字节，块大小为128字节，指令高速缓存的失效开销是80τ（τ是高速缓存的访问时间），要求计算图P8 - 1中程序执行期间取指令需要的总时间。</p>
+<blockquote>
+<p>这道题的计算会有一些复杂，需要仔细的观察并分析。</p>
+</blockquote>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/image-20241207201144612.png" alt="image-20241207201144612"></p>
+<h3 id="答案-9"><a href="#答案-9" class="headerlink" title="答案"></a>答案</h3><p>程序执行期间取指令的总时间为35,432τ。</p>
+<h3 id="解释-8"><a href="#解释-8" class="headerlink" title="解释"></a>解释</h3><h4 id="地址字段位数计算相关解释"><a href="#地址字段位数计算相关解释" class="headerlink" title="地址字段位数计算相关解释"></a>地址字段位数计算相关解释</h4><ul>
+<li><strong>各字段位数确定</strong>：<br>已知主存地址长度是32位。对于直接映射的高速缓存，因为块大小是128字节，根据$2^n = 块大小（字节数）$来计算确定块内地址（即WORD字段）的位数，可得$n = \log_2{128} = 7$位，所以WORD字段是7位；高速缓存大小为1K字节（即1024字节），包含的块数为$1024÷128 = 8$块，那么用于区分不同块（即BLOCK字段）的位数就是$\log_2{8} = 3$位；剩下的位数就是TAG字段的位数，即$32 - 7 - 3 = 22$位，所以TAG字段为22位。</li>
+</ul>
+<h4 id="程序各部分映射到缓存块情况及分析"><a href="#程序各部分映射到缓存块情况及分析" class="headerlink" title="程序各部分映射到缓存块情况及分析"></a>程序各部分映射到缓存块情况及分析</h4><ul>
+<li><strong>各程序段对应的缓存块情况</strong>：<ul>
+<li>程序段8 - 52映射到缓存块0，这意味着这段程序指令在内存中的地址范围对应的内容会被放到缓存块0中。</li>
+<li>程序段56 - 136映射到缓存块0、1，说明这个范围内的指令会分布在这两个缓存块中。</li>
+<li>程序段140 - 240完全在缓存块1内，也就是该段程序指令所在内存区域对应的数据都存放在缓存块1里，而且由于是内部循环，这部分在循环执行过程中相对稳定地处于缓存块1中。</li>
+<li>程序段244 - 1200映射到缓存块1 - 7、0、1，表明随着程序执行，这个范围的指令会占用多个缓存块，并且由于缓存大小有限以及映射规则，会出现覆盖等情况，比如后面提到的外层循环执行过程中对缓存块的使用情况。</li>
+<li>程序段1204 - 1504映射到缓存块1、2、3，同样在这个外层循环后续部分会涉及到这些缓存块的使用以及相应数据的调入调出等情况。</li>
+</ul>
+</li>
+<li><strong>缓存块替换及读取序列分析</strong>：<br>从主存块读入缓存块的序列情况来看，外层循环开始会依次填充缓存块0到7等，像外层循环第一次执行（Pass 1）时会按顺序读入块0、1、2、3、4、5、6、7、0、1等，后续每次外层循环执行都会重复类似的过程，而且由于外层循环的开始和结束部分都使用缓存块0和1，所以每次循环经过时它们之间会相互覆盖，而缓存块2到7在整个外层循环没完成之前会一直保留在缓存中（直到外层循环结束后可能才会根据后续程序执行情况有变化）。</li>
+</ul>
+<h4 id="计算不同部分的时间开销解释"><a href="#计算不同部分的时间开销解释" class="headerlink" title="计算不同部分的时间开销解释"></a>计算不同部分的时间开销解释</h4><ul>
+<li><strong>计算失效惩罚时间（Miss penalties）</strong>：<br>根据缓存块的读取和替换情况来分析失效次数，进而计算失效惩罚时间。这里计算得出失效惩罚时间为$(1 + 9 + 9×4 + 2)×80τ = 3,840τ$。具体来看，括号里各项代表不同阶段的失效次数，比如第一次出现失效（可能是程序开始执行等情况）计1次，后续循环过程中不同阶段按规律出现的失效次数分别累计，然后乘以失效开销80τ就得到总的失效惩罚时间，这个时间体现了因为缓存未命中（需要从主存获取指令）而额外花费的时间成本。</li>
+<li><strong>计算不在缓存中的执行时间（Execution time out of the cache）</strong>：<ul>
+<li><strong>程序开始部分</strong>：<br>计算方式是$(56 - 8)τ = 48τ$，这是根据程序开始部分对应的内存地址范围（56 - 8），每个地址对应的指令访问时间假设为τ，所以这部分总的执行时间就是这个范围对应的时长，也就是从程序起始地址到开始进入外层循环前这一段执行指令花费的时间。</li>
+<li><strong>内部循环部分</strong>：<br>计算为$200 (244 - 140)τ = 20,800τ$，这里200是内部循环执行的次数（根据程序逻辑或者题目隐含设定等确定循环次数），$(244 - 140)$是内部循环对应的内存地址范围的长度，也就是涉及的指令数量，乘以每次指令访问时间τ，就得到内部循环整体执行所花费的时间，这部分时间主要是在缓存块1中反复读取指令执行的时间开销（因为内部循环指令都在缓存块1里）。</li>
+<li><strong>外层循环减去内部循环部分</strong>：<br>计算式子是$10 ((1204 - 56) - (244 - 140))τ = 10,440τ$，其中10是外层循环执行的次数，$(1204 - 56)$是外层循环对应的整个内存地址范围长度，$(244 - 140)$是内部循环对应的内存地址范围长度，相减得到外层循环除去内部循环部分对应的指令数量，再乘以每次指令访问时间τ以及外层循环次数，就得出这部分的执行时间，也就是外层循环中除了内部循环部分在缓存及主存交互执行指令所花费的时间。</li>
+<li><strong>程序结束部分</strong>：<br>计算为$1508 - 1204 = 304τ$，就是根据程序结束部分对应的内存地址范围（1508 - 1204），按照每个指令访问时间τ来计算得出这部分执行花费的时间，也就是程序最后收尾阶段执行指令的时间开销。</li>
+</ul>
+</li>
+</ul>
+<p>最后，将所有这些不同部分的时间相加，即失效惩罚时间加上不在缓存中的各部分执行时间，可得总的执行时间$3,840τ + 48τ + 20,800τ + 10,440τ + 304τ = 35,432τ$，这就是程序执行期间取指令需要的总时间，综合反映了程序在这种缓存组织及程序结构情况下，执行取指令操作所花费的总时长，体现了缓存命中、失效以及不同程序段执行等多方面因素对整体时间的影响。 </p>
+<hr>
+<h2 id="问题-10"><a href="#问题-10" class="headerlink" title="问题"></a>问题</h2><p>一个组相联高速缓存共包含64个块，每组4块。主存有4096个块，每块有32个字。在每个Tag、Set和Word字段中各有多少位？已知是32位字节编址的地址空间。</p>
+<h3 id="答案-10"><a href="#答案-10" class="headerlink" title="答案"></a>答案</h3><p>Word字段有7位，Set字段有4位，Tag字段有21位。</p>
+<h3 id="解释-9"><a href="#解释-9" class="headerlink" title="解释"></a>解释</h3><h4 id="Word字段位数计算解释"><a href="#Word字段位数计算解释" class="headerlink" title="Word字段位数计算解释"></a>Word字段位数计算解释</h4><p>因为每块有32个字，按照字节编址，要确定块内具体是哪个字，需要的位数可以通过计算$2^n = 32$（$n$就是Word字段的位数），可得$n = \log_2{32} = 5$位来确定字的位置，但这里要注意每个字是由字节组成的，题目没明确字的字节大小，不过我们可以从常规角度考虑，一般一个字是4个字节（当然如果有特殊说明按特殊规定来），32个字对应的字节数就是$32×4 = 128$字节，此时要确定块内具体字节位置就需要$2^n = 128$，解得$n = \log_2{128} = 7$位，所以Word字段为7位，用于在块内定位具体的字节或者字（取决于具体以什么为最小访问单元，这里按字节编址角度算就是定位字节）。</p>
+<h4 id="Set字段位数计算解释"><a href="#Set字段位数计算解释" class="headerlink" title="Set字段位数计算解释"></a>Set字段位数计算解释</h4><p>已知高速缓存共包含64个块，每组4块，那么高速缓存总共的组数可以通过计算$64÷4 = 16$组得到。要对这16组进行区分选择，所需要的位数就是根据$2^n = 16$（$n$为Set字段位数）来确定，可得$n = \log_2{16} = 4$位，所以Set字段需要4位，用于在高速缓存中定位到具体的组。</p>
+<h4 id="Tag字段位数计算解释"><a href="#Tag字段位数计算解释" class="headerlink" title="Tag字段位数计算解释"></a>Tag字段位数计算解释</h4><p>已知整个地址空间是32位字节编址的，已经确定了Word字段占7位，Set字段占4位，那么剩下的位数就是Tag字段的位数，即$32 - 7 - 4 = 21$位，所以Tag字段为21位，Tag字段主要用于区分不同的存储块（在主存角度看，当映射到高速缓存时帮助判断是否命中以及是哪个块等情况），通过它和Set字段、Word字段共同作用，就能准确地在整个存储体系中定位到具体的存储单元了。 </p>
+<hr>
+<h2 id="问题-11"><a href="#问题-11" class="headerlink" title="问题"></a>问题</h2><p>考虑例8.3中的高速缓存（计算机系统使用32位存储器地址，主存有1G字节，有4K字节的高速缓存，按组相联形式组织，每组4个块，每块64个字节），假设每当从主存中读出一个新块，且它在高速缓存中对应的组已满时，新块就替换这个组中最近使用的块（即采用MRU替换算法），推算出之前第二问（处理器从位置0开始取1088个字，每个字4个字节，重复取操作序列9次，高速缓存比主存快10倍，估算使用高速缓存后性能提高的倍数）在这种情况下的解决方案。</p>
+<h3 id="答案-11"><a href="#答案-11" class="headerlink" title="答案"></a>答案</h3><p>使用高速缓存后性能提高的倍数约为3.8。</p>
+<h3 id="解释-10"><a href="#解释-10" class="headerlink" title="解释"></a>解释</h3><h4 id="缓存块替换及组内情况分析"><a href="#缓存块替换及组内情况分析" class="headerlink" title="缓存块替换及组内情况分析"></a>缓存块替换及组内情况分析</h4><ul>
+<li><strong>首次填充及首次替换情况</strong>：<br>在第一遍取操作时，主存块0到63被读入高速缓存，填满了高速缓存（因为高速缓存共64块空间，每组4块，共16组，刚好填满）。此时每个组里最近使用（MRU）的块在块位置3处（这是根据这种特定的替换规则和程序执行顺序等因素导致的结果）。所以当后续要读入块64到67时，它们会分别替换掉组0、1、2和3中的块48到51（按照MRU替换规则，替换每组里最近使用的块）。</li>
+<li><strong>以组0为例详细分析后续各遍操作中的替换情况</strong>：<br>在第一遍结束时，组0包含块0、16、32和48。到第二遍时，块0、16和32能在缓存中找到，但块48需要从主存读取，并且它会替换当时组0里的MRU块，也就是块32。而块64仍然在缓存中，不需要重新加载。接着在后面的第三遍和第四遍操作中，块32会替换块16，然后块16又会替换块0，这样在第二、三、四遍中，每组（这里以组0为例）每次只有一个块替换发生。<br>到第五遍时，会有两个替换发生，先是块0替换64，然后64替换48。之后这个替换模式会重复，在第六、七、八遍中每组每次又只有一个块替换，第九遍时有两个替换，第十遍时有一个替换。类似的活动情况也同样发生在组1、2和3中。而组4到15在整个过程中没有竞争（因为前面分析的主要是前面几组对特定块的替换操作影响，这几组相对稳定），也就没有替换情况发生。</li>
+</ul>
+<h4 id="计算性能提高倍数"><a href="#计算性能提高倍数" class="headerlink" title="计算性能提高倍数"></a>计算性能提高倍数</h4><ul>
+<li><strong>计算无缓存时的时间</strong>：<br>假设高速缓存的访问时间为$\tau$，无高速缓存时，每次访问主存，总共要进行$1088×10$次访问（取$1088$个字，重复$10$次），那么总时间就是$10×68×10\tau$（$68$个块，每个块访问时间是$10\tau$，重复$10$次操作）。</li>
+<li><p><strong>计算有缓存时的时间</strong>：<br>有高速缓存时，第一遍取操作需要从主存取$68$个块，时间为$68×11\tau$（每个块从主存取到缓存再访问，算$11\tau$，$10\tau$是主存访问时间，$\tau$是缓存访问时间）。<br>后面9遍操作中，因为前面分析得出每组0到3有相应的块替换情况，每组有11次替换（前面详细分析了各遍中每组的替换次数总和为11次），共4组（组0到3），所以这部分因为替换产生的额外从主存取块的时间是$4×11×11\tau$；而剩下的块（$9×68 - 44$，$9$遍操作，每遍原本$68$个块，但前面分析每组有替换情况，4组一共替换了$44$次，所以减去这部分替换涉及的块数，就是能直接从缓存取的块数）可以直接从缓存取，时间就是$(9×68 - 44)×1\tau$。<br>那么有高速缓存时总的时间就是$1×68×11\tau + 4×11×11\tau + (9×68 - 44)×1\tau$。</p>
+</li>
+<li><p><strong>计算性能提高倍数</strong>：<br>根据性能提高倍数的计算公式，用无高速缓存时的时间除以有高速缓存时的时间，即$\frac{10×68×10\tau}{1×68×11\tau + 4×11×11\tau + (9×68 - 44)×1\tau}$，经过计算得出结果约为3.8。</p>
+</li>
+</ul>
+<p>最后通过对比可以看出，在这种特定的取操作以及采用MRU替换算法的情况下，相对之前例8.3中采用LRU算法的情况（性能提高倍数为2.15），MRU替换算法在这个例子里（循环大小比缓存大的这种情况）表现更好，能让性能提高的倍数更大一些，说明不同的缓存替换算法在不同场景下对系统性能有着不同的影响。 </p>
+<hr>
+<h3 id="问题-12"><a href="#问题-12" class="headerlink" title="问题"></a>问题</h3><p>8.6.3节用图8-20中的程序描述了不同高速缓存映射技术的效果，现假设该程序的第二个循环中元素处理的顺序改成与第一个循环相同（使用“for i := 0 to 9 do”语句控制第二个循环），要求推算出图8-21到图8-23针对这个程序的等价形式，并说明从这个习题可以得出什么结论。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/image-20241207205018178.png" alt="image-20241207205018178"><br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/image-20241207205041500.png" alt="image-20241207205041500"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/image-20241207205052521.png" alt="image-20241207205052521"></p>
+<p>在所有这三种情况下，所有元素在第二次循环中被使用之前就都被覆盖了。这表明，如果对那些无法装入缓存的数组使用最近最少使用（LRU）算法，可能无法带来良好的性能。通过在替换算法中引入一定的随机性，性能可以得到提升。</p>
+<hr>
+<h3 id="问题-13"><a href="#问题-13" class="headerlink" title="问题"></a>问题</h3><p>一台按字节编址的计算机有一个能容纳8个32位字的小数据高速缓存，每个高速缓存块有1个32位的字。处理器按给定的十六进制地址顺序读取数据，这个模式重复四遍。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">200</span>,<span class="number">204.208</span>,<span class="number">20</span>C<span class="number">.2F</span>4<span class="number">.2F</span>0<span class="number">.200</span><span class="number">.204</span><span class="number">.218</span><span class="number">.21</span>C<span class="number">.24</span>C<span class="number">.2F</span>4</span><br></pre></td></tr></table></figure>
+<p>(a) 假设高速缓存初始为空，使用直接映射方式，写出每次循环结束时高速缓存中的内容并计算命中率。<br>(b) 如果换成采用LRU替换算法的相联映射高速缓存，重复(a)中的操作。<br>(c) 如果是4路组相联高速缓存，重复(a)中的操作。</p>
+<h3 id="答案-12"><a href="#答案-12" class="headerlink" title="答案"></a>答案</h3><p>地址的最低两位，即A1和A0，用于指定一个32位字内的字节。对于直接映射高速缓存，地址位A4到A2用于指定高速缓存中的块位置。对于组相联映射高速缓存，地址位A2用于指定组。 </p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/image-20241207205437992.png" alt="image-20241207205437992"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/image-20241207210501842.png" alt="image-20241207210501842"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/image-20241207210508316.png" alt="image-20241207210508316"></p>
+<h2 id="问题-14"><a href="#问题-14" class="headerlink" title="问题"></a>问题</h2><p>本题答案有误。</p>
+<p>假设每个高速缓存块包含两个32位的字，重复习题8.11的操作，即：<br>(a) 假设高速缓存初始为空，使用直接映射方式，写出每次循环结束时高速缓存中的内容并计算命中率。<br>(b) 如果换成采用LRU替换算法的相联映射高速缓存，重复(a)中的操作。<br>(c) 如果是2路组相联高速缓存（采用LRU替换算法），重复(a)中的操作。</p>
+<h3 id="答案-13"><a href="#答案-13" class="headerlink" title="答案"></a>答案</h3><p>地址的最低两位，即A1和A0，用于指定一个32位字内的字节。对于直接映射高速缓存，地址位A4和A3用于指定块的位置。对于组相联映射高速缓存，地址位A3用于指定组。 </p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">200</span>,<span class="number">204.208</span>,<span class="number">20</span>C<span class="number">.2F</span>4<span class="number">.2F</span>0<span class="number">.200</span><span class="number">.204</span><span class="number">.218</span><span class="number">.21</span>C<span class="number">.24</span>C<span class="number">.2F</span>4</span><br></pre></td></tr></table></figure>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/image-20241207215652954.png" alt="image-20241207215652954"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/image-20241207215700888.png" alt="image-20241207215700888"></p>
+<p><strong><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/image-20241207215710782.png" alt="image-20241207215710782"></strong></p>
+<hr>
+<h2 id="问题-15"><a href="#问题-15" class="headerlink" title="问题"></a>问题</h2><p>在很多计算机中，高速缓存块的大小在32字节到128字节之间的范围内，询问使用更大或更小的高速缓存块的主要优点和缺点。</p>
+<h3 id="答案-14"><a href="#答案-14" class="headerlink" title="答案"></a>答案</h3><ul>
+<li><strong>更大缓存块的情况</strong>：<ul>
+<li><strong>优点</strong>：如果块内大部分数据在被替换出缓存之前能被实际使用，缓存缺失（miss）的情况会减少。</li>
+<li><strong>缺点</strong>：如果在缓存块被替换出缓存之前，块内大部分数据没有被使用，就会造成资源浪费；并且缓存缺失惩罚（miss penalty）更大。</li>
+</ul>
+</li>
+<li><strong>更小缓存块的情况</strong>：<ul>
+<li><strong>优点</strong>：缓存缺失惩罚较小。</li>
+<li><strong>缺点</strong>：会产生更多的缓存缺失情况。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="问题-16"><a href="#问题-16" class="headerlink" title="问题"></a>问题</h2><p>一台计算机有L1和L2两级高速缓存，已知L1和L2高速缓存的失效开销分别是15τ和100τ（τ是L1高速缓存的访问时间），对于$h_2 = 0.75$和$h_2 = 0.85$这两个值，要求绘制两张平均存储器访问时间（$y$轴）相对于命中率$h_1$（$x$轴）的图，$h_1$使用值0.90，0.92，0.94和0.96。</p>
+<h3 id="答案-15"><a href="#答案-15" class="headerlink" title="答案"></a>答案</h3><p>答案以表格形式给出了不同$h_1$值对应的平均访问时间，具体如下：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>$h_1$</th>
+<th>$h_2 = 0.75$时平均访问时间</th>
+<th>$h_2 = 0.85$时平均访问时间</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.90</td>
+<td>$4.53\tau$</td>
+<td>$3.68\tau$</td>
+</tr>
+<tr>
+<td>0.92</td>
+<td>$3.82\tau$</td>
+<td>$3.14\tau$</td>
+</tr>
+<tr>
+<td>0.94</td>
+<td>$3.12\tau$</td>
+<td>$2.61\tau$</td>
+</tr>
+<tr>
+<td>0.96</td>
+<td>$2.41\tau$</td>
+<td>$2.07\tau$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="解释-11"><a href="#解释-11" class="headerlink" title="解释"></a>解释</h3><h4 id="平均访问时间计算公式解释"><a href="#平均访问时间计算公式解释" class="headerlink" title="平均访问时间计算公式解释"></a>平均访问时间计算公式解释</h4><p>两级高速缓存的平均访问时间计算公式为$t_{avg} = h_1C_1 + (1 - h_1)(h_2C_2 + (1 - h_2)M)$。</p>
+<p>在这个公式中：</p>
+<ul>
+<li>$h_1$表示L1高速缓存的命中率，$C_1$是L1高速缓存的访问时间（题目中给定$C_1 = \tau$）。</li>
+<li>$h_2$表示L2高速缓存的命中率，$C_2$是L2高速缓存的访问时间（题目中给定$C_2 = 15\tau$）。</li>
+<li>$M$表示当L2高速缓存也未命中时（也就是要从主存获取数据）的失效开销（题目中给定$M = 100\tau$）。</li>
+</ul>
+<p>这个公式的含义是，平均访问时间由两部分组成：一部分是L1高速缓存命中时的时间（即$h_1C_1$，命中概率乘以L1缓存访问时间）；另一部分是L1高速缓存未命中时的情况，此时需要考虑L2高速缓存，L2高速缓存命中的时间开销是$(1 - h_1)(h_2C_2)$（L1未命中概率乘以L2命中概率再乘以L2访问时间），L2高速缓存也未命中时的时间开销是$(1 - h_1)(1 - h_2)M$（L1未命中概率乘以L2未命中概率再乘以主存访问的失效开销），将这几部分相加就得到了总的平均访问时间。</p>
+<h4 id="不同-h-1-、-h-2-值下计算平均访问时间过程解释"><a href="#不同-h-1-、-h-2-值下计算平均访问时间过程解释" class="headerlink" title="不同$h_1$、$h_2$值下计算平均访问时间过程解释"></a>不同$h_1$、$h_2$值下计算平均访问时间过程解释</h4><ul>
+<li><p><strong>当$h_2 = 0.75$时</strong>：</p>
+<ul>
+<li>若$h_1 = 0.90$：<br>将$h_1 = 0.90$，$h_2 = 0.75$，$C_1 = \tau$，$C_2 = 15\tau$，$M = 100\tau$代入上述平均访问时间计算公式可得：<br>$<br>\begin{align<em>}<br>t_{avg} &amp;= 0.90\times\tau + (1 - 0.90)(0.75\times15\tau + (1 - 0.75)\times100\tau)\\<br>&amp;= 0.90\tau + 0.10\times(11.25\tau + 25\tau)\\<br>&amp;= 0.90\tau + 0.10\times36.25\tau\\<br>&amp;= 0.90\tau + 3.625\tau\\<br>&amp;= 4.525\tau \approx 4.53\tau<br>\end{align</em>}<br>$</li>
+<li>同理，当$h_1 = 0.92$时：<br>$<br>\begin{align<em>}<br>t_{avg} &amp;= 0.92\times\tau + (1 - 0.92)(0.75\times15\tau + (1 - 0.75)\times100\tau)\\<br>&amp;= 0.92\tau + 0.08\times(11.25\tau + 25\tau)\\<br>&amp;= 0.92\tau + 0.08\times36.25\tau\\<br>&amp;= 0.92\tau + 2.9\tau\\<br>&amp;= 3.82\tau<br>\end{align</em>}<br>$</li>
+<li>当$h_1 = 0.94$时：<br>$<br>\begin{align<em>}<br>t_{avg} &amp;= 0.94\times\tau + (1 - 0.94)(0.75\times15\tau + (1 - 0.75)\times100\tau)\\<br>&amp;= 0.94\tau + 0.06\times(11.25\tau + 25\tau)\\<br>&amp;= 0.94\tau + 0.06\times36.25\tau\\<br>&amp;= 0.94\tau + 2.175\tau\\<br>&amp;= 3.115\tau \approx 3.12\tau<br>\end{align</em>}<br>$</li>
+<li>当$h_1 = 0.96$时：<br>$<br>\begin{align<em>}<br>t_{avg} &amp;= 0.96\times\tau + (1 - 0.96)(0.75\times15\tau + (1 - 0.75)\times100\tau)\\<br>&amp;= 0.96\tau + 0.04\times(11.25\tau + 25\tau)\\<br>&amp;= 0.96\tau + 0.04\times36.25\tau\\<br>&amp;= 0.96\tau + 1.45\tau\\<br>&amp;= 2.41\tau<br>\end{align</em>}<br>$</li>
+</ul>
+</li>
+<li><p><strong>当$h_2 = 0.85$时</strong>：</p>
+<ul>
+<li>若$h_1 = 0.90$：<br>$<br>\begin{align<em>}<br>t_{avg} &amp;= 0.90\times\tau + (1 - 0.90)(0.85\times15\tau + (1 - 0.85)\times100\tau)\\<br>&amp;= 0.90\tau + 0.10\times(12.75\tau + 15\tau)\\<br>&amp;= 0.90\tau + 0.10\times27.75\tau\\<br>&amp;= 0.90\tau + 2.775\tau\\<br>&amp;= 3.675\tau \approx 3.68\tau<br>\end{align</em>}<br>$</li>
+<li>当$h_1 = 0.92$时：<br>$<br>\begin{align<em>}<br>t_{avg} &amp;= 0.92\times\tau + (1 - 0.92)(0.85\times15\tau + (1 - 0.85)\times100\tau)\\<br>&amp;= 0.92\tau + 0.08\times(12.75\tau + 15\tau)\\<br>&amp;= 0.92\tau + 0.08\times27.75\tau\\<br>&amp;= 0.92\tau + 2.22\tau\\<br>&amp;= 3.14\tau<br>\end{align</em>}<br>$</li>
+<li>当$h_1 = 0.94$时：<br>$<br>\begin{align<em>}<br>t_{avg} &amp;= 0.94\times\tau + (1 - 0.94)(0.85\times15\tau + (1 - 0.85)\times100\tau)\\<br>&amp;= 0.94\tau + 0.06\times(12.75\tau + 15\tau)\\<br>&amp;= 0.94\tau + 0.06\times27.75\tau\\<br>&amp;= 0.94\tau + 1.665\tau\\<br>&amp;= 2.605\tau \approx 2.61\tau<br>\end{align</em>}<br>$</li>
+<li>当$h_1 = 0.96$时：<br>$<br>\begin{align<em>}<br>t_{avg} &amp;= 0.96\times\tau + (1 - 0.96)(0.85\times15\tau + (1 - 0.85)\times100\tau)\\<br>&amp;= 0.96\tau + 0.04\times(12.75\tau + 15\tau)\\<br>&amp;= 0.96\tau + 0.04\times27.75\tau\\<br>&amp;= 0.96\tau + 1.11\tau\\<br>&amp;= 2.07\tau<br>\end{align</em>}<br>$</li>
+</ul>
+</li>
+</ul>
+<p>通过这些计算可以看出，随着L1高速缓存命中率$h_1$以及L2高速缓存命中率$h_2$的提高，平均存储器访问时间在不断降低，体现了高速缓存命中率对整体访问效率的重要影响。要绘制图表的话，就以$h_1$为横坐标（分别取0.90，0.92，0.94，0.96这几个值），以对应的平均访问时间为纵坐标（分别对应不同$h_2$值下计算出的平均访问时间数值），画出两条折线图来直观展示它们之间的关系就可以。 </p>
+<hr>
+<h2 id="问题-17"><a href="#问题-17" class="headerlink" title="问题"></a>问题</h2><p>考虑例8.4中描述的两级高速缓存，已知原例子第二问的平均访问时间是2.24τ，现要将其减少为1.5τ，在其他参数都跟该例子相同的情况下：</p>
+<ol>
+<li>求需要的$h_1$值是多少；</li>
+<li>通过提高二级（L2）高速缓存的命中率能否达到相同的结果，即求相应需要的$h_2$值并分析其合理性。</li>
+</ol>
+<h3 id="答案-16"><a href="#答案-16" class="headerlink" title="答案"></a>答案</h3><ol>
+<li>要使平均访问时间减少为1.5τ，$h_1$的值需要达到0.984。</li>
+<li>按照相应计算得出若要达到相同结果，$h_2$的值需要为1.018，但由于命中率不能大于1，所以通过提高二级（L2）高速缓存的命中率无法达到将平均访问时间减少为1.5τ这个结果。</li>
+</ol>
+<h3 id="解释-12"><a href="#解释-12" class="headerlink" title="解释"></a>解释</h3><h4 id="计算-h-1-值的解释"><a href="#计算-h-1-值的解释" class="headerlink" title="计算$h_1$值的解释"></a>计算$h_1$值的解释</h4><ul>
+<li><strong>依据平均访问时间公式</strong>：<br>两级高速缓存的平均访问时间计算公式为$t_{avg} = h_1C_1 + (1 - h_1)(h_2C_2 + (1 - h_2)M)$，在本题中$C_1$是一级（L1）高速缓存的访问时间（这里就是$\tau$），$h_2$是二级（L2）高速缓存的命中率（题目给定为0.8），$C_2$是二级（L2）高速缓存的访问时间（给定为15τ），$M$是二级（L2）高速缓存未命中时从主存获取数据的失效开销（给定为100τ）。</li>
+<li><strong>具体计算过程</strong>：<br>已知要达到的平均访问时间为1.5τ，将各参数值代入上述公式可得：<br>$<br>\begin{align<em>}<br>1.5\tau &amp;= h_1\tau + (1 - h_1)(0.8\times 15\tau + 0.2\times 100\tau)\\<br>1.5\tau &amp;= h_1\tau + (1 - h_1)(12\tau + 20\tau)\\<br>1.5\tau &amp;= h_1\tau + (1 - h_1)(32\tau)\\<br>1.5\tau &amp;= h_1\tau + 32\tau - 32h_1\tau\\<br>32h_1\tau - h_1\tau &amp;= 32\tau - 1.5\tau\\<br>31h_1\tau &amp;= 30.5\tau\\<br>h_1 &amp;= \frac{30.5\tau}{31\tau}\\<br>h_1 &amp;= 0.984<br>\end{align</em>}<br>$<br>这意味着一级（L1）高速缓存的命中率$h_1$需要达到0.984这个较高的值，才能使平均访问时间降低到1.5τ，因为一级缓存命中率越高，直接从一级缓存获取数据的概率越大，整体平均访问时间就越容易降低。</li>
+</ul>
+<h4 id="计算-h-2-值及分析能否通过提高-h-2-达到结果的解释"><a href="#计算-h-2-值及分析能否通过提高-h-2-达到结果的解释" class="headerlink" title="计算$h_2$值及分析能否通过提高$h_2$达到结果的解释"></a>计算$h_2$值及分析能否通过提高$h_2$达到结果的解释</h4><ul>
+<li><p><strong>计算$h_2$值的过程</strong>：<br>同样根据平均访问时间公式，现在假设一级（L1）高速缓存命中率$h_1$保持原例中的0.96（题目说其他参数跟例子中相同），要使平均访问时间达到1.5τ（这里计算式中写为1.56τ可能是书写有误，按照前面目标应该是1.5τ，我们按正确目标值来分析计算），来反推需要的$h_2$值，代入公式可得：<br>$<br>\begin{align<em>}<br>1.5\tau &amp;= 0.96\tau + 0.04(15h_2\tau + 100(1 - h_2)\tau)\\<br>1.5\tau - 0.96\tau &amp;= 0.04(15h_2\tau + 100\tau - 100h_2\tau)\\<br>0.54\tau &amp;= 0.04(100\tau - 85h_2\tau)\\<br>0.54\tau &amp;= 4\tau - 3.4h_2\tau\\<br>3.4h_2\tau &amp;= 4\tau - 0.54\tau\\<br>3.4h_2\tau &amp;= 3.46\tau\\<br>h_2 &amp;= \frac{3.46\tau}{3.4\tau}\\<br>h_2 &amp;= 1.018<br>\end{align</em>}<br>$</p>
+</li>
+<li><p><strong>分析合理性</strong>：<br>命中率$h_2$表示的是二级（L2）高速缓存的命中概率，其取值范围是在0到1之间，而计算得出的$h_2 = 1.018$超出了这个合理范围，这显然是不符合实际情况的，所以通过提高二级（L2）高速缓存的命中率是没办法达到将平均访问时间减少为1.5τ这个结果的。也就是说，在给定的这种缓存体系和其他参数条件下，想要实现平均访问时间降低到1.5τ这个目标，主要得依靠提高一级（L1）高速缓存的命中率，而单纯靠提升二级（L2）高速缓存命中率这条路是走不通的。 </p>
+</li>
+</ul>
+<hr>
+<h2 id="问题-18"><a href="#问题-18" class="headerlink" title="问题"></a>问题</h2><p>考虑将修理员带的工具箱、屋外的卡车和店铺分别对应成一级（L1）高速缓存、二级（L2）高速缓存和计算机主存这样的类比，讨论这个类比恰当与不恰当的地方，也就是分析其正确和不正确的方面。</p>
+<h3 id="答案-17"><a href="#答案-17" class="headerlink" title="答案"></a>答案</h3><ul>
+<li><strong>恰当（正确）的方面</strong>：<ul>
+<li><strong>相对大小方面</strong>：工具箱相对较小，类比于L1高速缓存，其容量通常是几级缓存中最小的；卡车的空间比工具箱大，类似L2高速缓存，容量比L1缓存大一些；店铺空间最大，对应计算机主存，有着更大的存储空间，这和计算机存储体系中各级存储部件的大小关系相符。</li>
+<li><strong>相对访问时间方面</strong>：修理员从工具箱中拿工具是最方便快捷的，如同从L1高速缓存访问数据速度最快；从卡车上找工具相对慢一点，类似从L2高速缓存获取数据的时间会长一些；而回店铺去拿工具花费的时间最多，就好比从主存读取数据是最慢的，在访问时间的相对快慢关系上是相似的。</li>
+<li><strong>相对使用频率方面</strong>：修理员会反复使用工具箱里的工具，直到需要别的工具，就像处理器会优先频繁访问L1高速缓存中的数据；当工具箱里没有所需工具时，才会去卡车找，对应着L1高速缓存未命中时再去访问L2高速缓存；而如果卡车也没有，才去店铺拿，类似L2高速缓存未命中时从主存获取数据，这种使用频率的高低关系与各级缓存和主存中数据的访问率情况相契合。</li>
+</ul>
+</li>
+<li><strong>不恰当（不正确）的方面</strong>：<ul>
+<li><strong>初始数据装载方面</strong>：在一天工作开始时，修理员放在卡车和工具箱里的工具是基于之前工作经验预先选好的，但是在计算机系统里，当操作系统选择一个新程序执行时，在程序开始执行前并不会预先把相关数据加载到各级缓存中，而是在程序运行过程中根据数据访问情况动态地将数据调入缓存。</li>
+<li><strong>数据复用性方面</strong>：工具箱和卡车里的大多数工具在后续工作中往往是有用的，也就是具有一定的通用性和复用性；然而在计算机中，一个程序留在缓存里的数据对于后续执行的其他程序来说通常是没什么用的，因为不同程序的数据访问模式和需求不同，缓存数据往往具有很强的程序相关性，新程序运行时原缓存数据可能很快就会被替换掉。</li>
+<li><strong>数据替换处理方面</strong>：对于修理工具来说，即便因为需要使用其他工具而把原来的工具替换出来，这些工具也不会被扔掉；但在缓存的情况中，当新的数据块要进入缓存，而缓存已满时，新块会直接覆盖现有的块，如果被替换的块被标记为“脏”（即数据被修改过），其内容才会写回内存，否则就直接被替换掉了，这和工具的处理方式是不同的。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="问题-19"><a href="#问题-19" class="headerlink" title="问题"></a>问题</h2><p>使用增加一级（L1）高速缓存容量的方法来提高它的命中率，进而限制该方法效用的因素是什么？</p>
+<h3 id="答案-18"><a href="#答案-18" class="headerlink" title="答案"></a>答案</h3><p>限制增加一级（L1）高速缓存容量这一方法效用的因素主要是：随着缓存容量增大，虽然命中率会提高，意味着出现缓存缺失（即遭受缺失惩罚）的内存访问次数会减少；但与此同时，更大的缓存其访问时间会变长，这就导致所有对该缓存的访问服务都要花费更长时间。所以，一开始随着缓存容量增加，处理器所看到的有效存储器访问时间可能会改善，但到某个程度后，访问时间变长这个因素会占据主导，此时再进一步增加缓存容量就会对性能产生不利影响了。</p>
+<hr>
+<h2 id="问题-20"><a href="#问题-20" class="headerlink" title="问题"></a>问题</h2><p>分析8.7.1节的例8.1中给出的假设“失效开销对读访问和写访问都是相同的”为什么不对，阐述答案时需考虑8.6节所描述的直接写（write-through）和写回（write-back）这两种情况。</p>
+<h3 id="答案-19"><a href="#答案-19" class="headerlink" title="答案"></a>答案</h3><p>该假设不对，原因如下：</p>
+<p>在写回（write-back）策略下，对于读缺失和写缺失来说，失效开销确实是相同的。因为当出现缺失时，无论是读操作还是写操作，都需要从主存调入新的块到缓存中，然后再进行相应的数据读取或者写入操作，这个过程产生的开销基本一致。</p>
+<p>然而，在直接写（write-through）策略下情况则不同。对于写操作而言，不管是否发生缺失，新的数据都会直接写入主存，不会再有其他额外操作（如果使用了写缓冲，写入主存的时间开销还能有所降低），所以写缺失的开销就是将一个字写入主存所花费的时间。而对于读缺失，一旦发生读缺失，需要将被访问地址所在的块加载到缓存中，其涉及的数据传输量和操作相对更复杂，所以读缺失的开销要比写缺失的开销高。</p>
+<p>虽然直接写策略下写缺失的开销相比写回策略下的写缺失开销可能更低，但这并不意味着直接写策略就一定性能更好。因为直接写策略下被访问的块不会加载到缓存中，后续如果对同一个块有写操作，每次都会产生相应开销；而两种策略的相对性能取决于写操作的频率以及数据访问的局部性程度等因素。</p>
+<p>综上，由于不同的写策略（直接写和写回）下，读访问和写访问在出现缓存缺失时产生的开销存在差异，所以“失效开销对读访问和写访问都是相同的”这一假设是不对的。</p>
+<h3 id="解释-13"><a href="#解释-13" class="headerlink" title="解释"></a>解释</h3><h4 id="写回策略下的解释"><a href="#写回策略下的解释" class="headerlink" title="写回策略下的解释"></a>写回策略下的解释</h4><p>在写回策略中，缓存块被修改后并不会立即更新到主存，而是等该块要被替换出缓存时，如果这个块是“脏”块（即被修改过），才会把修改后的内容写回主存。当发生读缺失或者写缺失时，处理流程是类似的，都要先从主存把对应的块调入缓存，比如读操作是为了后续能从缓存读取到需要的数据，写操作也是要先把块调入缓存才能在缓存里对相应数据进行修改（后续按写回规则再处理何时写回主存的问题），所以在这种情况下，读访问和写访问出现缺失时的失效开销基本是一样的，都是完成从主存调块进缓存这一操作带来的时间等成本。</p>
+<h4 id="直接写策略下的解释"><a href="#直接写策略下的解释" class="headerlink" title="直接写策略下的解释"></a>直接写策略下的解释</h4><p>直接写策略规定，只要有写操作，不管缓存是否命中，都会直接把数据写入主存，这就使得写缺失时的开销相对简单，就是把一个字写入主存的时间成本（若有写缓冲协助还能降低这个时间）。但读缺失时，计算机系统要把包含所读数据的整个块从主存加载到缓存中，这个过程涉及的数据量通常比写一个字要大得多（因为一个块包含多个数据单元），传输和处理这些数据的操作更复杂，也就导致读缺失的失效开销比写缺失的失效开销要高了。</p>
+<hr>
+<h2 id="问题-21"><a href="#问题-21" class="headerlink" title="问题"></a>问题</h2><p>考虑一个计算机系统，物理内存的可用页在几个应用程序中分配，操作系统能监视页的传送活动，要求给出一个操作系统用来最小化总体页传送率的合适策略。</p>
+<h3 id="答案-20"><a href="#答案-20" class="headerlink" title="答案"></a>答案</h3><p>周期性地将页传送活动最低的程序所使用的一些内存页重新分配给页传送活动最高的程序，但不能过于频繁地进行这种重新分配。因为如果过于频繁，重新分配所花费的时间成本将超过潜在的性能收益。一个合理的策略是只有当页传送率的差异超过某个阈值时才重新分配页面。</p>
+<hr>
+<h2 id="问题-22"><a href="#问题-22" class="headerlink" title="问题"></a>问题</h2><p>在一台有虚拟存储器系统的计算机中，一条指令的执行可能被页故障中断，需要回答以下几个问题：</p>
+<ol>
+<li>为了能使这条指令在以后能继续执行，需要保存哪些状态信息？</li>
+<li>放弃被中断的指令，以后再把它完全重新执行一遍是否更简单？</li>
+<li>重新执行一遍能实现吗？</li>
+</ol>
+<h3 id="答案-21"><a href="#答案-21" class="headerlink" title="答案"></a>答案</h3><ol>
+<li>为使被页故障中断的指令以后能继续执行，需要保存处理器的整个状态，包括所有可能受该指令影响的寄存器内容以及表明该指令执行进展到何种程度的控制信息。</li>
+<li>放弃被中断的指令，以后再把它完全重新执行一遍是更简单的做法。</li>
+<li>重新执行一遍是可以实现的，在指令执行过程中若有部分结果产生，需将其存储在临时位置，这样当指令执行被中断时，这些临时结果可以被安全舍弃，在RISC风格的处理器中这种做法尤其容易实现，因为如第5章所述，指令的结果仅在最后执行步骤才记录，并且不存在副作用。</li>
+</ol>
+<hr>
+<h2 id="问题-23"><a href="#问题-23" class="headerlink" title="问题"></a>问题</h2><p>当一个程序产生一个对不在物理主存中的页引用时，程序执行会被挂起直至相应页从硬盘装载到主存，若一个页中一条指令的操作数在另一个页中时，会出现什么困难？为处理这种情况，处理器必须具备何种能力？</p>
+<h3 id="答案-22"><a href="#答案-22" class="headerlink" title="答案"></a>答案</h3><ul>
+<li><strong>困难</strong>：当一条指令的操作数在另一个不在主存的页中时，会出现页故障，且此时该指令已经部分执行了，这就产生了困难。操作系统需要挂起包含此指令的程序，启动DMA操作传输所需页面（可能还会进行上下文切换），在所需页面从磁盘读入后恢复程序执行，但要处理指令已部分执行的情况比较复杂。</li>
+<li><strong>处理器需具备的能力</strong>：有两种处理方式对应处理器需具备的不同能力。一是在程序被挂起时，处理器能够丢弃导致页故障的指令以及可能已经产生的部分结果，并且调整程序计数器，使得程序恢复执行时能重新执行该指令；二是处理器要能保存发生页故障时自身的完整状态，包括导致页故障的指令已经完成了多少执行步骤以及它正在使用的临时寄存器的内容等信息，以便后续能从挂起的点继续执行该指令。</li>
+</ul>
+<hr>
+<h2 id="问题-24"><a href="#问题-24" class="headerlink" title="问题"></a>问题</h2><p>一个磁盘部件有24个记录面，14000个柱面，平均每个磁道有400个扇区，每个扇区包含512字节的数据，要求回答以下问题：<br>(a) 这个磁盘部件最多能存储多少字节？<br>(b) 以7200rpm（转每分钟）的速度旋转时，数据传输率是每秒多少字节？<br>(c) 如果使用32位的字，给出一个指定磁盘地址的合理方案。</p>
+<h3 id="答案-23"><a href="#答案-23" class="headerlink" title="答案"></a>答案</h3><p>(a) 这个磁盘最多能存储$68.8×10^9$字节。<br>(b) 数据传输率是$24.58×10^6$字节/秒。<br>(c) 可以使用9位来标识扇区，14位标识磁道，5位标识记录面。对于32位字$b_{31}…b_0$，一种可能的方案是用$b_{8 - 0}$表示扇区，$b_{22 - 9}$表示磁道，$b_{27 - 23}$表示记录面标识，$b_{31 - 28}$不使用。</p>
+<h3 id="解释-14"><a href="#解释-14" class="headerlink" title="解释"></a>解释</h3><h4 id="a-磁盘存储容量计算"><a href="#a-磁盘存储容量计算" class="headerlink" title="(a) 磁盘存储容量计算"></a>(a) 磁盘存储容量计算</h4><ul>
+<li>磁盘存储容量的计算公式是：存储容量 = 记录面数×柱面数×每个磁道的扇区数×每个扇区的字节数。</li>
+<li>已知记录面有24个，柱面数是14000个，每个磁道扇区数为400个，每个扇区包含512字节的数据。将这些数据代入公式可得：<br>$24×14000×400×512$<br>$= 24×14000×(400×512)$<br>$= 24×14000×204800$<br>$= 336000×204800$<br>$= 68812800000$字节，写成科学计数法就是$68.8×10^9$字节。</li>
+</ul>
+<h4 id="b-数据传输率计算"><a href="#b-数据传输率计算" class="headerlink" title="(b) 数据传输率计算"></a>(b) 数据传输率计算</h4><ul>
+<li>数据传输率的计算公式是：传输率 = 每转的字节数×每秒的转数。</li>
+<li>首先计算每转的字节数，已知每个磁道有400个扇区，每个扇区512字节，所以每转的字节数为$400×512$字节。</li>
+<li>又已知磁盘转速是$7200rpm$，将其转换为每秒的转数，即$7200÷60 = 120$转/秒。</li>
+<li>则数据传输率为$(400×512)×(7200÷60)$<br>$=(400×512)×120$<br>$= 204800×120$<br>$= 24576000$字节/秒，写成科学计数法就是$24.58×10^6$字节/秒。</li>
+</ul>
+<h4 id="c-磁盘地址指定方案"><a href="#c-磁盘地址指定方案" class="headerlink" title="(c) 磁盘地址指定方案"></a>(c) 磁盘地址指定方案</h4><ul>
+<li>首先计算每个维度需要的位数。<ul>
+<li>对于扇区，总共有$400$个扇区，因为$2^9 = 512 &gt; 400$，所以需要9位来标识扇区。</li>
+<li>对于磁道，总共有$14000$个磁道，因为$2^{14} = 16384 &gt; 14000$，所以需要14位来标识磁道。</li>
+<li>对于记录面，总共有$24$个记录面，因为$2^5 = 32 &gt; 24$，所以需要5位来标识记录面。</li>
+</ul>
+</li>
+<li>然后考虑32位字的分配。<ul>
+<li>从低位开始分配，$b_{8 - 0}$这9位可以用来表示扇区，因为扇区数量相对较少，用较少的位数可以满足标识需求。</li>
+<li>$b_{22 - 9}$这14位用来表示磁道，磁道数量较多，需要较多的位数来准确标识。</li>
+<li>$b_{27 - 23}$这5位用来表示记录面。</li>
+<li>剩下的$b_{31 - 28}$这4位在这个方案中暂时不使用，这样就可以用32位字来合理地指定磁盘地址了。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="问题-25"><a href="#问题-25" class="headerlink" title="问题"></a>问题</h2><p>考虑一个磁盘访问的长序列，已知磁盘的平均寻道时间是8毫秒，平均旋转延迟是3毫秒，数据传输率是60M字节/秒，所访问块的平均大小是64K字节，且每个数据块存储在连续的扇区中，要求回答以下问题：<br>(a) 假设这些块随机分布在磁盘上，估算寻道操作和旋转延迟所占总时间的平均百分比。<br>(b) 假设从邻近的柱面按顺序传输20个块，寻道时间减少为1毫秒。如果这些块随机分布在这些柱面上，那么总的传输时间是多少？</p>
+<h3 id="答案-24"><a href="#答案-24" class="headerlink" title="答案"></a>答案</h3><p>(a) 寻道操作和旋转延迟所占总时间的平均百分比为91%。<br>(b) 总的传输时间是89.4毫秒。</p>
+<h3 id="解释-15"><a href="#解释-15" class="headerlink" title="解释"></a>解释</h3><h4 id="a-部分解释-1"><a href="#a-部分解释-1" class="headerlink" title="(a) 部分解释"></a>(a) 部分解释</h4><ul>
+<li><strong>计算访问和传输每个数据块的总时间</strong>：<br>要访问并传输一个数据块，总时间由寻道时间、旋转延迟时间以及数据传输时间三部分组成。<br>已知平均寻道时间是8毫秒，平均旋转延迟是3毫秒。对于数据传输时间，根据公式$时间 = 数据量÷数据传输率$，已知数据块平均大小是64K字节（$64×1024$字节），数据传输率是60M字节/秒（$60×1024×1024$字节/秒），则数据传输时间为$(64×1024)÷(60×1024×1024)$秒，将其换算为毫秒（$1$秒 = $1000$毫秒）可得$(64×1024)÷(60×1024×1024)×1000≈1.07$毫秒。<br>那么访问和传输每个块的总时间就是$8 + 3 + 1.07 = 12.07$毫秒。</li>
+<li><strong>计算寻道操作和旋转延迟所占百分比</strong>：<br>寻道时间与旋转延迟时间之和为$8 + 3 = 11$毫秒，总时间是12.07毫秒，所以寻道操作和旋转延迟所占总时间的平均百分比为$11÷12.07×100\%≈91\%$。</li>
+</ul>
+<h4 id="b-部分解释-1"><a href="#b-部分解释-1" class="headerlink" title="(b) 部分解释"></a>(b) 部分解释</h4><ul>
+<li><strong>分析传输20个块的时间构成</strong>：<br>首先到达第一个块需要花费一定时间，这里寻道时间减少为1毫秒，再加上平均旋转延迟3毫秒，所以到达第一个块需要$1 + 3 = 4$毫秒，题目中答案写的是11毫秒可能有误，按当前条件分析应为4毫秒。<br>之后每访问一个后续块，因为是从邻近柱面按顺序传输，寻道时间可忽略不计（题目已说明寻道时间减少为1毫秒，这里理解为后续块寻道时间相对很小可不计入每次访问时间），但每次都需要等待平均旋转延迟3毫秒，从第二个块到第20个块一共是$19$个块，这部分旋转延迟时间就是$19×3$毫秒。<br>同时，传输20个块每个块都需要数据传输时间，前面已算出传输一个块的数据传输时间约为1.07毫秒，那么20个块的数据传输时间就是$20×1.07$毫秒。</li>
+<li><strong>计算总的传输时间</strong>：<br>总的传输时间就是到达第一个块的时间加上后续块的旋转延迟时间以及20个块的数据传输时间，即$4 + 19×3 + 20×1.07 = 82.4$毫秒。</li>
+</ul>
+<p>综上所述，(a)部分通过分别计算各部分时间并按比例得出寻道和旋转延迟所占百分比；(b)部分根据块的顺序传输及给定的寻道时间变化等条件，分析每个阶段时间构成从而计算出总的传输时间。 </p>
+<hr>
+<h2 id="问题-26"><a href="#问题-26" class="headerlink" title="问题"></a>问题</h2><p>磁盘系统的平均寻道时间和旋转延迟分别是6ms和3ms，向或从磁盘传输数据的速率是30M字节/秒，所有磁盘访问都是对存储在连续扇区上的8K字节数据的访问，磁盘控制器有8K字节的缓冲区，磁盘控制器、处理器和主存连到单一总线，总线数据宽度为32位，向或从主存的一次总线传输花费10纳秒，要求回答以下问题：<br>(a) 能同时向或从主存传输数据的磁盘部件的最大数目是多少？<br>(b) 在一个长时间段内要传输一系列独立的8K字节，在这段时间内平均有百分之几的主存访问被磁盘部件使用？</p>
+<h3 id="答案-25"><a href="#答案-25" class="headerlink" title="答案"></a>答案</h3><p>(a) 能同时向或从主存传输数据的磁盘部件的最大数目是13个。<br>(b) 在长时间段内，平均有0.22%的主存访问被磁盘部件使用。</p>
+<h3 id="解释-16"><a href="#解释-16" class="headerlink" title="解释"></a>解释</h3><h4 id="a-部分解释-2"><a href="#a-部分解释-2" class="headerlink" title="(a) 部分解释"></a>(a) 部分解释</h4><ul>
+<li><strong>确定相关速率</strong>：<ul>
+<li>首先，数据从磁盘数据缓冲区传输到内存是按照总线的最大数据速率进行的。已知总线数据宽度为32位，一次总线传输花费10纳秒，根据数据传输率计算公式（数据传输率 = 总线宽度÷传输时间），这里总线宽度换算成字节为4字节（32位 = 4字节），那么每秒钟可以传输的次数为$1÷(10×10^{-9})$次，所以总线的最大数据传输率就是$4÷(10×10^{-9}) = 400$M字节/秒，这是主存的最大数据传输能力。</li>
+<li>对于单个磁盘来说，在数据存储在同一磁道连续扇区这种最理想情况下，其从磁盘传输数据的速率是30M字节/秒，这是单个磁盘能向主存传输数据的速率。</li>
+</ul>
+</li>
+<li><strong>计算磁盘部件最大数目</strong>：<br>因为是看同时能有多少磁盘部件向或从主存传输数据，也就是用主存的最大数据传输率除以单个磁盘的传输率，得到的就是理论上能同时传输的磁盘部件最大数量，即$400÷30≈13.33$，由于磁盘个数必须是整数，所以最多能有13个磁盘部件同时向或从主存传输数据。</li>
+</ul>
+<h4 id="b-部分解释-2"><a href="#b-部分解释-2" class="headerlink" title="(b) 部分解释"></a>(b) 部分解释</h4><ul>
+<li><strong>计算传输一个数据块的平均时间及对应数据率</strong>：<br>要传输一个8K字节的数据块，需要考虑寻道时间、旋转延迟时间以及数据传输时间这三部分。已知平均寻道时间是6ms，平均旋转延迟是3ms，对于数据传输时间，根据公式$时间 = 数据量÷数据传输率$，数据量是8K字节（$8×1024$字节），磁盘的数据传输率是30M字节/秒（$30×1024×1024$字节/秒），则数据传输时间为$(8×1024)÷(30×1024×1024)$秒，换算成毫秒（$1$秒 = $1000$毫秒）约为$0.27$毫秒。所以传输一个块的平均时间就是$6 + 3 + 0.27 = 9.27$毫秒，在这个时间内传输了8K字节的数据，根据数据率计算公式（数据率 = 数据量÷时间），可得数据率为$(8×1024)÷(9.27×10^{-3})≈863$K字节/秒。</li>
+<li><strong>计算磁盘部件占用主存访问的百分比</strong>：<br>已知主存的最大数据传输率是400M字节/秒，换算成字节/秒为$400×1024×1024$字节/秒，而单个磁盘的数据率是863K字节/秒（$863×1024$字节/秒），那么在长时间来看，一个磁盘占用主存访问的比例就是用磁盘的数据率除以主存的最大数据传输率，即$(863×1024)÷(400×1024×1024)×100\% = 0.22\%$，所以任何一个磁盘在长时间内使用了0.22%的可用主存周期。</li>
+</ul>
+<p>综上所述，(a)部分通过对比主存和单个磁盘的数据传输率来确定能同时传输的磁盘部件最大数量；(b)部分先算出传输一个数据块的平均时间及对应数据率，再据此算出磁盘部件占用主存访问的百分比。 </p>
+<hr>
+<h2 id="问题-27"><a href="#问题-27" class="headerlink" title="问题"></a>问题</h2><p>在大多数虚拟存储器系统中使用磁盘作为辅助存储设备来存储程序和数据文件，询问哪些磁盘参数将对页大小的选择产生影响。</p>
+<h3 id="答案-26"><a href="#答案-26" class="headerlink" title="答案"></a>答案</h3><p>磁盘的扇区大小会对页大小的选择产生影响。因为扇区是磁盘上能直接寻址且作为读写基本单位的最小数据块，所以页大小应该是扇区大小的某个较小整数倍。</p>
+<h3 id="解释-17"><a href="#解释-17" class="headerlink" title="解释"></a>解释</h3><p>在虚拟存储器系统中，涉及到磁盘与内存之间的数据交换是以页为单位进行的。磁盘在进行读写操作时，有着自身的存储结构特点，其中扇区就是其最基本的读写单元，每次读写操作都是按扇区来进行的，磁盘的硬件读写机制决定了它只能以扇区为基础去访问数据。</p>
+<p>当考虑选择页大小的时候，如果页大小比扇区还小，那从磁盘往内存调入或者从内存调出到磁盘的数据操作就很难与磁盘本身的基本读写单元（扇区）对应起来，会使得操作变得复杂且效率低下，因为可能出现一次页交换操作需要涉及对部分扇区的操作，不符合磁盘按扇区读写的特性。</p>
+<p>而如果页大小是扇区大小的整数倍，比如是扇区大小的2倍、3倍等较小的整数倍时，就能很好地与磁盘的基本读写单元（扇区）相适配。这样在进行页调入调出操作时，正好可以对应若干完整的扇区进行读写，能充分利用磁盘的读写特性，提高数据交换的效率，所以磁盘的扇区大小这个参数对虚拟存储器系统中页大小的选择有着重要影响，页大小往往会基于扇区大小按照合适的整数倍关系来确定。 </p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a target="_blank" rel="noopener" href="https://www.totorocatcat.top/">Totoro</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://totorocatcat.top/%E8%AE%A1%E7%BB%84%E4%B9%A0%E9%A2%98%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B%EF%BC%886%EF%BC%89/">http://totorocatcat.top/%E8%AE%A1%E7%BB%84%E4%B9%A0%E9%A2%98%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B%EF%BC%886%EF%BC%89/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://totorocatcat.top" target="_blank">Totoroの旅</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%9F%BA%E7%A1%80/">基础</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/porco026.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/%E8%AE%A1%E7%BB%84%E4%B9%A0%E9%A2%98%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B%EF%BC%887%EF%BC%89/" title="计组习题的那些事（7）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/omoide004.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">计组习题的那些事（7）</div></div></a></div><div class="next-post pull-right"><a href="/%E8%AE%A1%E7%BB%84%E4%B9%A0%E9%A2%98%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B%EF%BC%885%EF%BC%89/" title="计组习题的那些事（5）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/porco026.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">计组习题的那些事（5）</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2009%E5%B9%B4%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%9F%E8%80%83-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E9%83%A8%E5%88%86/" title="2009年计算机统考-数据结构部分"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/e345af5b515d2f76bb44fdaa6eff3db4d6f598d3.jpg@1256w_908h_!web-article-pic.avif" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-10-04</div><div class="title">2009年计算机统考-数据结构部分</div></div></a></div><div><a href="/2010%E5%B9%B4%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%9F%E8%80%83-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" title="2010年计算机统考-数据结构"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/e345af5b515d2f76bb44fdaa6eff3db4d6f598d3.jpg@1256w_908h_!web-article-pic.avif" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-10-04</div><div class="title">2010年计算机统考-数据结构</div></div></a></div><div><a href="/2011%E5%B9%B4%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%9F%E8%80%83-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E9%83%A8%E5%88%86/" title="2011年计算机统考-数据结构部分"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/e345af5b515d2f76bb44fdaa6eff3db4d6f598d3.jpg@1256w_908h_!web-article-pic.avif" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-10-05</div><div class="title">2011年计算机统考-数据结构部分</div></div></a></div><div><a href="/2012%E5%B9%B4%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%9F%E8%80%83-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E9%83%A8%E5%88%86/" title="2012年计算机统考-数据结构部分"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/e345af5b515d2f76bb44fdaa6eff3db4d6f598d3.jpg@1256w_908h_!web-article-pic.avif" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-10-05</div><div class="title">2012年计算机统考-数据结构部分</div></div></a></div><div><a href="/2022C-%E8%AF%95%E5%8D%B7/" title="2022C++试卷"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://source.fomal.cc/img/default_cover_80.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-05-16</div><div class="title">2022C++试卷</div></div></a></div><div><a href="/2022%E5%B9%B4C-%E8%AF%95%E5%8D%B7%E8%BD%AF%E4%BB%B6%E5%AD%A6%E9%99%A2/" title="2022年C++试卷软件学院"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://source.fomal.cc/img/default_cover_80.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-05-16</div><div class="title">2022年C++试卷软件学院</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/px3.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Totoro</div><div class="author-info__description">热爱文学的SCUT软件学院学生</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">802</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">32</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/4512abc"><i class="fab fa-github"></i><span>🛴前往小窝......</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/4512abc" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:4512abc@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到龙猫の小窝</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AE%A1%E7%BB%84%E4%B9%A0%E9%A2%98%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B%EF%BC%886%EF%BC%89"><span class="toc-text">计组习题的那些事（6）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98"><span class="toc-text">问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AD%94%E6%A1%88"><span class="toc-text">答案</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98-1"><span class="toc-text">问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AD%94%E6%A1%88-1"><span class="toc-text">答案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E9%87%8A"><span class="toc-text">解释</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98-2"><span class="toc-text">问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AD%94%E6%A1%88-2"><span class="toc-text">答案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E9%87%8A-1"><span class="toc-text">解释</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#a-%E5%90%84%E5%AD%97%E6%AE%B5%E4%BD%8D%E6%95%B0%E8%AE%A1%E7%AE%97%E8%A7%A3%E9%87%8A"><span class="toc-text">(a) 各字段位数计算解释</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#b-%E6%80%A7%E8%83%BD%E6%8F%90%E9%AB%98%E5%80%8D%E6%95%B0%E8%AE%A1%E7%AE%97%E8%A7%A3%E9%87%8A"><span class="toc-text">(b) 性能提高倍数计算解释</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98-3"><span class="toc-text">问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AD%94%E6%A1%88-3"><span class="toc-text">答案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E9%87%8A-2"><span class="toc-text">解释</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#a-%E8%AE%A1%E7%AE%97%E4%B8%A4%E7%BA%A7%E7%BC%93%E5%AD%98%E9%83%BD%E5%A4%B1%E6%95%88%E7%9A%84%E8%AE%BF%E9%97%AE%E4%B8%BB%E5%AD%98%E6%AF%94%E4%BE%8B%E8%A7%A3%E9%87%8A"><span class="toc-text">(a) 计算两级缓存都失效的访问主存比例解释</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#b-%E8%AE%A1%E7%AE%97%E5%B9%B3%E5%9D%87%E8%AE%BF%E9%97%AE%E6%97%B6%E9%97%B4%E8%A7%A3%E9%87%8A"><span class="toc-text">(b) 计算平均访问时间解释</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#c-%E8%AE%A1%E7%AE%97%E5%B9%B3%E5%9D%87%E5%AD%98%E5%82%A8%E5%99%A8%E8%AE%BF%E9%97%AE%E6%97%B6%E9%97%B4%E5%87%8F%E5%B0%91%E5%80%8D%E6%95%B0%E8%A7%A3%E9%87%8A"><span class="toc-text">(c) 计算平均存储器访问时间减少倍数解释</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#d-%E8%AE%A1%E7%AE%97%E7%A7%BB%E9%99%A4%E4%BA%8C%E7%BA%A7%E7%BC%93%E5%AD%98%E5%B9%B6%E6%94%B9%E5%8F%98%E4%B8%80%E7%BA%A7%E7%BC%93%E5%AD%98%E5%90%8E%E7%9A%84%E5%B9%B3%E5%9D%87%E8%AE%BF%E9%97%AE%E6%97%B6%E9%97%B4%E8%A7%A3%E9%87%8A"><span class="toc-text">(d) 计算移除二级缓存并改变一级缓存后的平均访问时间解释</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98-4"><span class="toc-text">问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AD%94%E6%A1%88-4"><span class="toc-text">答案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E9%87%8A-3"><span class="toc-text">解释</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#a-%E6%8C%89%E5%88%97%E9%A1%BA%E5%BA%8F%E5%AD%98%E5%82%A8%E6%83%85%E5%86%B5%E8%A7%A3%E9%87%8A"><span class="toc-text">(a) 按列顺序存储情况解释</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#b-%E6%8C%89%E8%A1%8C%E9%A1%BA%E5%BA%8F%E5%AD%98%E5%82%A8%E6%83%85%E5%86%B5%E8%A7%A3%E9%87%8A"><span class="toc-text">(b) 按行顺序存储情况解释</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#c-%E6%96%B0%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95%E6%83%85%E5%86%B5%E8%A7%A3%E9%87%8A"><span class="toc-text">(c) 新处理方法情况解释</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E9%A2%98-5"><span class="toc-text">问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AD%94%E6%A1%88-5"><span class="toc-text">答案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E9%87%8A-4"><span class="toc-text">解释</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#a-%E9%83%A8%E5%88%86%E8%A7%A3%E9%87%8A"><span class="toc-text">(a) 部分解释</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#b-%E9%83%A8%E5%88%86%E8%A7%A3%E9%87%8A"><span class="toc-text">(b) 部分解释</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98-6"><span class="toc-text">问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AD%94%E6%A1%88-6"><span class="toc-text">答案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E9%87%8A-5"><span class="toc-text">解释</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98-7"><span class="toc-text">问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AD%94%E6%A1%88-7"><span class="toc-text">答案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E9%87%8A-6"><span class="toc-text">解释</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E8%8A%AF%E7%89%87%E6%95%B0%E9%87%8F%E5%8F%8A%E8%A1%8C%E6%95%B0%E7%A1%AE%E5%AE%9A%E7%9A%84%E8%A7%A3%E9%87%8A"><span class="toc-text">关于芯片数量及行数确定的解释</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E5%9C%B0%E5%9D%80%E7%BA%BF%E8%BF%9E%E6%8E%A5%E6%96%B9%E5%BC%8F%E7%9A%84%E8%A7%A3%E9%87%8A"><span class="toc-text">关于地址线连接方式的解释</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98-8"><span class="toc-text">问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AD%94%E6%A1%88-8"><span class="toc-text">答案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E9%87%8A-7"><span class="toc-text">解释</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98-9"><span class="toc-text">问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AD%94%E6%A1%88-9"><span class="toc-text">答案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E9%87%8A-8"><span class="toc-text">解释</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9C%B0%E5%9D%80%E5%AD%97%E6%AE%B5%E4%BD%8D%E6%95%B0%E8%AE%A1%E7%AE%97%E7%9B%B8%E5%85%B3%E8%A7%A3%E9%87%8A"><span class="toc-text">地址字段位数计算相关解释</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F%E5%90%84%E9%83%A8%E5%88%86%E6%98%A0%E5%B0%84%E5%88%B0%E7%BC%93%E5%AD%98%E5%9D%97%E6%83%85%E5%86%B5%E5%8F%8A%E5%88%86%E6%9E%90"><span class="toc-text">程序各部分映射到缓存块情况及分析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E4%B8%8D%E5%90%8C%E9%83%A8%E5%88%86%E7%9A%84%E6%97%B6%E9%97%B4%E5%BC%80%E9%94%80%E8%A7%A3%E9%87%8A"><span class="toc-text">计算不同部分的时间开销解释</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98-10"><span class="toc-text">问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AD%94%E6%A1%88-10"><span class="toc-text">答案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E9%87%8A-9"><span class="toc-text">解释</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Word%E5%AD%97%E6%AE%B5%E4%BD%8D%E6%95%B0%E8%AE%A1%E7%AE%97%E8%A7%A3%E9%87%8A"><span class="toc-text">Word字段位数计算解释</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Set%E5%AD%97%E6%AE%B5%E4%BD%8D%E6%95%B0%E8%AE%A1%E7%AE%97%E8%A7%A3%E9%87%8A"><span class="toc-text">Set字段位数计算解释</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Tag%E5%AD%97%E6%AE%B5%E4%BD%8D%E6%95%B0%E8%AE%A1%E7%AE%97%E8%A7%A3%E9%87%8A"><span class="toc-text">Tag字段位数计算解释</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98-11"><span class="toc-text">问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AD%94%E6%A1%88-11"><span class="toc-text">答案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E9%87%8A-10"><span class="toc-text">解释</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%93%E5%AD%98%E5%9D%97%E6%9B%BF%E6%8D%A2%E5%8F%8A%E7%BB%84%E5%86%85%E6%83%85%E5%86%B5%E5%88%86%E6%9E%90"><span class="toc-text">缓存块替换及组内情况分析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%80%A7%E8%83%BD%E6%8F%90%E9%AB%98%E5%80%8D%E6%95%B0"><span class="toc-text">计算性能提高倍数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E9%A2%98-12"><span class="toc-text">问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E9%A2%98-13"><span class="toc-text">问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AD%94%E6%A1%88-12"><span class="toc-text">答案</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98-14"><span class="toc-text">问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AD%94%E6%A1%88-13"><span class="toc-text">答案</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98-15"><span class="toc-text">问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AD%94%E6%A1%88-14"><span class="toc-text">答案</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98-16"><span class="toc-text">问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AD%94%E6%A1%88-15"><span class="toc-text">答案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E9%87%8A-11"><span class="toc-text">解释</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B9%B3%E5%9D%87%E8%AE%BF%E9%97%AE%E6%97%B6%E9%97%B4%E8%AE%A1%E7%AE%97%E5%85%AC%E5%BC%8F%E8%A7%A3%E9%87%8A"><span class="toc-text">平均访问时间计算公式解释</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8D%E5%90%8C-h-1-%E3%80%81-h-2-%E5%80%BC%E4%B8%8B%E8%AE%A1%E7%AE%97%E5%B9%B3%E5%9D%87%E8%AE%BF%E9%97%AE%E6%97%B6%E9%97%B4%E8%BF%87%E7%A8%8B%E8%A7%A3%E9%87%8A"><span class="toc-text">不同$h_1$、$h_2$值下计算平均访问时间过程解释</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98-17"><span class="toc-text">问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AD%94%E6%A1%88-16"><span class="toc-text">答案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E9%87%8A-12"><span class="toc-text">解释</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97-h-1-%E5%80%BC%E7%9A%84%E8%A7%A3%E9%87%8A"><span class="toc-text">计算$h_1$值的解释</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97-h-2-%E5%80%BC%E5%8F%8A%E5%88%86%E6%9E%90%E8%83%BD%E5%90%A6%E9%80%9A%E8%BF%87%E6%8F%90%E9%AB%98-h-2-%E8%BE%BE%E5%88%B0%E7%BB%93%E6%9E%9C%E7%9A%84%E8%A7%A3%E9%87%8A"><span class="toc-text">计算$h_2$值及分析能否通过提高$h_2$达到结果的解释</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98-18"><span class="toc-text">问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AD%94%E6%A1%88-17"><span class="toc-text">答案</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98-19"><span class="toc-text">问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AD%94%E6%A1%88-18"><span class="toc-text">答案</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98-20"><span class="toc-text">问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AD%94%E6%A1%88-19"><span class="toc-text">答案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E9%87%8A-13"><span class="toc-text">解释</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%86%99%E5%9B%9E%E7%AD%96%E7%95%A5%E4%B8%8B%E7%9A%84%E8%A7%A3%E9%87%8A"><span class="toc-text">写回策略下的解释</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%9B%B4%E6%8E%A5%E5%86%99%E7%AD%96%E7%95%A5%E4%B8%8B%E7%9A%84%E8%A7%A3%E9%87%8A"><span class="toc-text">直接写策略下的解释</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98-21"><span class="toc-text">问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AD%94%E6%A1%88-20"><span class="toc-text">答案</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98-22"><span class="toc-text">问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AD%94%E6%A1%88-21"><span class="toc-text">答案</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98-23"><span class="toc-text">问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AD%94%E6%A1%88-22"><span class="toc-text">答案</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98-24"><span class="toc-text">问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AD%94%E6%A1%88-23"><span class="toc-text">答案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E9%87%8A-14"><span class="toc-text">解释</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#a-%E7%A3%81%E7%9B%98%E5%AD%98%E5%82%A8%E5%AE%B9%E9%87%8F%E8%AE%A1%E7%AE%97"><span class="toc-text">(a) 磁盘存储容量计算</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#b-%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E7%8E%87%E8%AE%A1%E7%AE%97"><span class="toc-text">(b) 数据传输率计算</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#c-%E7%A3%81%E7%9B%98%E5%9C%B0%E5%9D%80%E6%8C%87%E5%AE%9A%E6%96%B9%E6%A1%88"><span class="toc-text">(c) 磁盘地址指定方案</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98-25"><span class="toc-text">问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AD%94%E6%A1%88-24"><span class="toc-text">答案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E9%87%8A-15"><span class="toc-text">解释</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#a-%E9%83%A8%E5%88%86%E8%A7%A3%E9%87%8A-1"><span class="toc-text">(a) 部分解释</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#b-%E9%83%A8%E5%88%86%E8%A7%A3%E9%87%8A-1"><span class="toc-text">(b) 部分解释</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98-26"><span class="toc-text">问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AD%94%E6%A1%88-25"><span class="toc-text">答案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E9%87%8A-16"><span class="toc-text">解释</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#a-%E9%83%A8%E5%88%86%E8%A7%A3%E9%87%8A-2"><span class="toc-text">(a) 部分解释</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#b-%E9%83%A8%E5%88%86%E8%A7%A3%E9%87%8A-2"><span class="toc-text">(b) 部分解释</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98-27"><span class="toc-text">问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AD%94%E6%A1%88-26"><span class="toc-text">答案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E9%87%8A-17"><span class="toc-text">解释</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/%E8%AE%A1%E7%BB%84%E4%B9%A0%E9%A2%98%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B%EF%BC%887%EF%BC%89/" title="计组习题的那些事（7）"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/omoide004.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="计组习题的那些事（7）"/></a><div class="content"><a class="title" href="/%E8%AE%A1%E7%BB%84%E4%B9%A0%E9%A2%98%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B%EF%BC%887%EF%BC%89/" title="计组习题的那些事（7）">计组习题的那些事（7）</a><time datetime="2024-12-07T15:50:36.000Z" title="发表于 2024-12-07 23:50:36">2024-12-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E8%AE%A1%E7%BB%84%E4%B9%A0%E9%A2%98%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B%EF%BC%886%EF%BC%89/" title="计组习题的那些事（6）"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/porco026.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="计组习题的那些事（6）"/></a><div class="content"><a class="title" href="/%E8%AE%A1%E7%BB%84%E4%B9%A0%E9%A2%98%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B%EF%BC%886%EF%BC%89/" title="计组习题的那些事（6）">计组习题的那些事（6）</a><time datetime="2024-12-07T15:06:12.000Z" title="发表于 2024-12-07 23:06:12">2024-12-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E8%AE%A1%E7%BB%84%E4%B9%A0%E9%A2%98%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B%EF%BC%885%EF%BC%89/" title="计组习题的那些事（5）"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/porco026.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="计组习题的那些事（5）"/></a><div class="content"><a class="title" href="/%E8%AE%A1%E7%BB%84%E4%B9%A0%E9%A2%98%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B%EF%BC%885%EF%BC%89/" title="计组习题的那些事（5）">计组习题的那些事（5）</a><time datetime="2024-12-07T09:25:25.000Z" title="发表于 2024-12-07 17:25:25">2024-12-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E8%AE%A1%E7%BB%84%E4%B9%A0%E9%A2%98%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B%EF%BC%884%EF%BC%89/" title="计组习题的那些事（4）"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/howl032.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="计组习题的那些事（4）"/></a><div class="content"><a class="title" href="/%E8%AE%A1%E7%BB%84%E4%B9%A0%E9%A2%98%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B%EF%BC%884%EF%BC%89/" title="计组习题的那些事（4）">计组习题的那些事（4）</a><time datetime="2024-12-07T07:53:21.000Z" title="发表于 2024-12-07 15:53:21">2024-12-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E8%AE%A1%E7%BB%84%E4%B9%A0%E9%A2%98%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B%EF%BC%883%EF%BC%89/" title="计组习题的那些事（3）"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/howl005.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="计组习题的那些事（3）"/></a><div class="content"><a class="title" href="/%E8%AE%A1%E7%BB%84%E4%B9%A0%E9%A2%98%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B%EF%BC%883%EF%BC%89/" title="计组习题的那些事（3）">计组习题的那些事（3）</a><time datetime="2024-12-07T05:13:23.000Z" title="发表于 2024-12-07 13:13:23">2024-12-07</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 By Totoro</div><div class="footer_custom_text">I wish you to become your own sun, no need to rely on who's light.<p><a target="_blank" href="https://hexo.io/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&logo=hexo" title="博客框架为Hexo"></a>&nbsp;<a target="_blank" href="https://butterfly.js.org/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&logo=bitdefender" title="主题采用butterfly"></a>&nbsp;<a target="_blank" href="https://www.jsdelivr.com/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&logo=jsDelivr" title="本站使用JsDelivr为静态资源提供CDN加速"></a> &nbsp;<a target="_blank" href="https://vercel.com/ "><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Hosted-Vervel-brightgreen?style=flat&logo=Vercel" title="本站采用双线部署，默认线路托管于Vercel"></a>&nbsp;<a target="_blank" href="https://vercel.com/ "><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Hosted-Coding-0cedbe?style=flat&logo=Codio" title="本站采用双线部署，联通线路托管于Coding"></a>&nbsp;<a target="_blank" href="https://github.com/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&logo=GitHub" title="本站项目由Gtihub托管"></a>&nbsp;<a target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&logo=Claris" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"></a></p></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat-btn" type="button" title="聊天"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="/js/tw_cn.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@5.2.0/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'HT1PalaKkPaG1UqAXBhJXIu8-gzGzoHsz',
+      appKey: 'iT0TnVVAwf9zuZ7NqwclQItY',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://cdn.jsdelivr.net/npm/valine@1.5.1/dist/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><script defer src="/js/light.js"></script><canvas id="universe"></canvas><script defer src="/js/universe.js"></script><script async src="/js/title.js"></script><script defer src="https://npm.elemecdn.com/jquery@latest/dist/jquery.min.js"></script><script defer data-pjax src="/js/cat.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="1" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener
+  btf.removeGlobalFnEvent('pjax')
+  btf.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.12.0"></script></div></div><!-- hexo injector body_end start --><script data-pjax>
+    function butterfly_categories_card_injector_config(){
+      var parent_div_git = document.getElementById('recent-posts');
+      var item_html = '<style>li.categoryBar-list-item{width:32.3%;}.categoryBar-list{max-height: 380px;overflow:auto;}.categoryBar-list::-webkit-scrollbar{width:0!important}@media screen and (max-width: 650px){.categoryBar-list{max-height: 320px;}}</style><div class="recent-post-item" style="height:auto;width:100%;padding:0px;"><div id="categoryBar"><ul class="categoryBar-list"><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_12.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS70の旅/&quot;);" href="javascript:void(0);">CS70の旅</a><span class="categoryBar-list-count">25</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_13.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS61B/&quot;);" href="javascript:void(0);">CS61B</a><span class="categoryBar-list-count">76</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_14.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/期末の旅/&quot;);" href="javascript:void(0);">期末の旅</a><span class="categoryBar-list-count">99</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_17.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/区域赛の旅/&quot;);" href="javascript:void(0);">区域赛の旅</a><span class="categoryBar-list-count">7</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_18.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/ACMの旅/&quot;);" href="javascript:void(0);">ACMの旅</a><span class="categoryBar-list-count">68</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_19.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/数学建模/&quot;);" href="javascript:void(0);">数学建模</a><span class="categoryBar-list-count">31</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_20.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/Codeforcesの旅/&quot;);" href="javascript:void(0);">Codeforcesの旅</a><span class="categoryBar-list-count">24</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_21.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/刷题计划/&quot;);" href="javascript:void(0);">刷题计划</a><span class="categoryBar-list-count">40</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_22.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/牛客の旅/&quot;);" href="javascript:void(0);">牛客の旅</a><span class="categoryBar-list-count">65</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_22.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/前端の旅/&quot;);" href="javascript:void(0);">前端の旅</a><span class="categoryBar-list-count">17</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_23.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/数据结构/&quot;);" href="javascript:void(0);">数据结构</a><span class="categoryBar-list-count">47</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_24.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/Atcoderの旅/&quot;);" href="javascript:void(0);">Atcoderの旅</a><span class="categoryBar-list-count">53</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_25.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/C-の旅/&quot;);" href="javascript:void(0);">C++の旅</a><span class="categoryBar-list-count">17</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_26.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CSAPPの旅/&quot;);" href="javascript:void(0);">CSAPPの旅</a><span class="categoryBar-list-count">2</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_27.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS知识/&quot;);" href="javascript:void(0);">CS知识</a><span class="categoryBar-list-count">3</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_28.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/编程基础/&quot;);" href="javascript:void(0);">编程基础</a><span class="categoryBar-list-count">22</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_29.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/离散数学/&quot;);" href="javascript:void(0);">离散数学</a><span class="categoryBar-list-count">29</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_30.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/JAVAの旅/&quot;);" href="javascript:void(0);">JAVAの旅</a><span class="categoryBar-list-count">10</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_31.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/MIT-6-031-Software-Construction/&quot;);" href="javascript:void(0);">MIT 6.031:Software Construction</a><span class="categoryBar-list-count">16</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_32.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS-110L/&quot;);" href="javascript:void(0);">CS 110L</a><span class="categoryBar-list-count">3</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_33.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/灵魂の旅/&quot;);" href="javascript:void(0);">灵魂の旅</a><span class="categoryBar-list-count">2</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_34.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/个人安排/&quot;);" href="javascript:void(0);">个人安排</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_35.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/杂项/&quot;);" href="javascript:void(0);">杂项</a><span class="categoryBar-list-count">12</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_36.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/计算机组成原理/&quot;);" href="javascript:void(0);">计算机组成原理</a><span class="categoryBar-list-count">48</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_37.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/文学/&quot;);" href="javascript:void(0);">文学</a><span class="categoryBar-list-count">49</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_38.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/力扣の旅/&quot;);" href="javascript:void(0);">力扣の旅</a><span class="categoryBar-list-count">20</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_39.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/千里十二行/&quot;);" href="javascript:void(0);">千里十二行</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_40.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/🗡指offer/&quot;);" href="javascript:void(0);">🗡指offer</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_41.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/少年游/&quot;);" href="javascript:void(0);">少年游</a><span class="categoryBar-list-count">2</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_42.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/算法提高课/&quot;);" href="javascript:void(0);">算法提高课</a><span class="categoryBar-list-count">3</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_43.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/汇编の旅/&quot;);" href="javascript:void(0);">汇编の旅</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_44.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/C-实训/&quot;);" href="javascript:void(0);">C++实训</a><span class="categoryBar-list-count">8</span><span class="categoryBar-list-descr"></span></li></ul></div></div>';
+      console.log('已挂载butterfly_categories_card')
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+      }
+    if( document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+    butterfly_categories_card_injector_config()
+    }
+  </script><script data-pjax>
+  function butterfly_swiper_injector_config(){
+    var parent_div_git = document.getElementById('recent-posts');
+    var item_html = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms;"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;诗录/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/4b31456c6f0f4489f99177f89e936de7286431045.png@1256w_708h_!web-article-pic.avif" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-10-01</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;诗录/&quot;);" href="javascript:void(0);" alt="">诗录</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;诗录/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;诗兴大发/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://source.fomal.cc/img/default_cover_69.webp" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-01-29</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;诗兴大发/&quot;);" href="javascript:void(0);" alt="">诗兴大发</a><div class="blog-slider__text">未觉，却是中二少年的诗仙梦</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;诗兴大发/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;TotoroのPlan/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/51d37eba99d243607ddedfff6e91568f617436609.jpg@1256w_1884h_!web-article-pic.avif" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-10-05</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;TotoroのPlan/&quot;);" href="javascript:void(0);" alt="">TotoroのPlan</a><div class="blog-slider__text">方便大二看（）</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;TotoroのPlan/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;Markdown格式/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/ushio-api-img-moe@5.0.48/img_482_1920x1080_96_null_normal.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-03-03</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;Markdown格式/&quot;);" href="javascript:void(0);" alt="">Markdown格式</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;Markdown格式/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载butterfly_swiper')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_swiper_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_swiper_injector_config();
+  }
+  </script><script defer src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.js"></script><script defer data-pjax src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper_init.js"></script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>

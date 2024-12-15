@@ -1,0 +1,1594 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>数据结构考试复习一览 | Totoroの旅</title><meta name="author" content="Totoro"><meta name="copyright" content="Totoro"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="数据结构考试复习范围一览 一个简单的中英知识点预览表，祝数据结构考试大捷😎！  Chapter 1 Programming: A General Overview 理解concept of Data Structure and algorithm, ADT   1. Data Structure 概念 Definition:A data structure is a particular way">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据结构考试复习一览">
+<meta property="og:url" content="http://totorocatcat.top/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%80%83%E8%AF%95%E5%A4%8D%E4%B9%A0%E4%B8%80%E8%A7%88/index.html">
+<meta property="og:site_name" content="Totoroの旅">
+<meta property="og:description" content="数据结构考试复习范围一览 一个简单的中英知识点预览表，祝数据结构考试大捷😎！  Chapter 1 Programming: A General Overview 理解concept of Data Structure and algorithm, ADT   1. Data Structure 概念 Definition:A data structure is a particular way">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/9db9e07b4478edd4d69f7655fffcfc8.jpg">
+<meta property="article:published_time" content="2024-11-21T11:34:11.000Z">
+<meta property="article:modified_time" content="2024-11-21T11:35:08.968Z">
+<meta property="article:author" content="Totoro">
+<meta property="article:tag" content="有趣">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/9db9e07b4478edd4d69f7655fffcfc8.jpg"><link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/b5ca6e582a7a45e6fde46e616eeb68e.png"><link rel="canonical" href="http://totorocatcat.top/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%80%83%E8%AF%95%E5%A4%8D%E4%B9%A0%E4%B8%80%E8%A7%88/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta/><link rel="stylesheet" href="/css/index.css?v=4.12.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  noticeOutdate: {"limitDay":765,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体中文","cht_to_chs":"你已切换为简体中文","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"top-right"},
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '数据结构考试复习一览',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: true,
+  isToc: true,
+  postUpdate: '2024-11-21 19:35:08'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const now = new Date()
+          const hour = now.getHours()
+          const isNight = hour <= 6 || hour >= 18
+          if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/universe.css"><link rel="stylesheet" href="/css/scrollbar.css"><link rel="stylesheet" href="/css/cat.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-double-row-display@1.00/cardlistpost.min.css"/>
+<style>#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags:before {content:"\A";
+  white-space: pre;}#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags > .article-meta__separator{display:none}</style>
+<link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-categories-card@1.0.0/lib/categorybar.css"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiperstyle.css" media="print" onload="this.media='all'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body><script>window.paceOptions = {
+  restartOnPushState: false
+}
+
+document.addEventListener('pjax:send', () => {
+  Pace.restart()
+})
+</script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/themes/orange/pace-theme-flash.min.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/px3.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">802</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">32</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home-alt"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-envelope-open"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 趣味</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/project/"><i class="fa-fw fas fas fa-folder"></i><span> 项目</span></a></div><div class="menus_item"><a class="site-page" href="/stars/"><i class="fa-fw fas fa-bookmark"></i><span> 收藏</span></a></div><div class="menus_item"><a class="site-page" href="/bilibili/"><i class="fa-fw fas fa-tv"></i><span> 追番</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/9db9e07b4478edd4d69f7655fffcfc8.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="Totoroの旅"><span class="site-name">Totoroの旅</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home-alt"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-envelope-open"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 趣味</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/project/"><i class="fa-fw fas fas fa-folder"></i><span> 项目</span></a></div><div class="menus_item"><a class="site-page" href="/stars/"><i class="fa-fw fas fa-bookmark"></i><span> 收藏</span></a></div><div class="menus_item"><a class="site-page" href="/bilibili/"><i class="fa-fw fas fa-tv"></i><span> 追番</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">数据结构考试复习一览</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-11-21T11:34:11.000Z" title="发表于 2024-11-21 19:34:11">2024-11-21</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-11-21T11:35:08.968Z" title="更新于 2024-11-21 19:35:08">2024-11-21</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%9C%9F%E6%9C%AB%E3%81%AE%E6%97%85/">期末の旅</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">8.7k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>39分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="数据结构考试复习一览"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%80%83%E8%AF%95%E5%A4%8D%E4%B9%A0%E4%B8%80%E8%A7%88/#post-comment" itemprop="discussionUrl"><span class="valine-comment-count" data-xid="/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%80%83%E8%AF%95%E5%A4%8D%E4%B9%A0%E4%B8%80%E8%A7%88/" itemprop="commentCount"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="数据结构考试复习范围一览"><a href="#数据结构考试复习范围一览" class="headerlink" title="数据结构考试复习范围一览"></a>数据结构考试复习范围一览</h1><blockquote>
+<p>一个简单的中英知识点预览表，祝数据结构考试大捷😎！</p>
+</blockquote>
+<h1 id="Chapter-1-Programming-A-General-Overview"><a href="#Chapter-1-Programming-A-General-Overview" class="headerlink" title="Chapter 1 Programming: A General Overview"></a>Chapter 1 Programming: A General Overview</h1><blockquote>
+<p>理解concept of Data Structure and algorithm, ADT</p>
+</blockquote>
+<hr>
+<h3 id="1-Data-Structure-概念"><a href="#1-Data-Structure-概念" class="headerlink" title="1. Data Structure 概念"></a>1. <strong>Data Structure 概念</strong></h3><ul>
+<li><strong>Definition</strong>:<br>A data structure is a particular way of organizing, managing, and storing data for efficient access and modification.<br>数据结构是一种特定的组织、管理和存储数据的方式，用于高效地访问和修改数据。</li>
+<li><strong>Examples</strong>:  <ul>
+<li>Arrays (数组)  </li>
+<li>Linked Lists (链表)  </li>
+<li>Stacks (栈)  </li>
+<li>Queues (队列)  </li>
+<li>Trees (树)  </li>
+<li>Graphs (图)  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="2-Algorithm-概念"><a href="#2-Algorithm-概念" class="headerlink" title="2. Algorithm 概念"></a>2. <strong>Algorithm 概念</strong></h3><ul>
+<li><strong>Definition</strong>:<br>An algorithm is a step-by-step procedure or formula for solving a problem.<br>算法是一种解决问题的逐步方法或公式。  </li>
+<li><strong>Characteristics (算法的特点)</strong>:  <ul>
+<li><strong>Finiteness (有限性)</strong>: The algorithm must terminate after a finite number of steps.<br>算法在有限步骤后必须终止。  </li>
+<li><strong>Definiteness (确切性)</strong>: Each step must be precisely defined.<br>每一步都必须明确定义。  </li>
+<li><strong>Input (输入)</strong>: The algorithm accepts zero or more inputs.<br>算法可以接受零个或多个输入。  </li>
+<li><strong>Output (输出)</strong>: Produces at least one output.<br>至少产生一个输出结果。  </li>
+<li><strong>Effectiveness (有效性)</strong>: All steps must be basic enough to be executed.<br>每个步骤都必须足够简单，以确保可执行。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="3-Abstract-Data-Type-ADT-抽象数据类型"><a href="#3-Abstract-Data-Type-ADT-抽象数据类型" class="headerlink" title="3. Abstract Data Type (ADT) 抽象数据类型"></a>3. <strong>Abstract Data Type (ADT) 抽象数据类型</strong></h3><ul>
+<li><strong>Definition</strong>:<br>An ADT is a model for data types where data and operations are defined without specifying how the operations will be implemented.<br>抽象数据类型是一种数据模型，其中数据和操作的定义不依赖于具体实现方式。  </li>
+<li><strong>Components (组成部分)</strong>:  <ul>
+<li><strong>Data (数据)</strong>: The information stored in the ADT.<br>ADT 中存储的信息。  </li>
+<li><strong>Operations (操作)</strong>: Functions that can be performed on the data.<br>在数据上可以执行的操作。  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="4-Relationship-between-Data-Structures-and-Algorithms-数据结构与算法的关系"><a href="#4-Relationship-between-Data-Structures-and-Algorithms-数据结构与算法的关系" class="headerlink" title="4. Relationship between Data Structures and Algorithms 数据结构与算法的关系"></a>4. <strong>Relationship between Data Structures and Algorithms 数据结构与算法的关系</strong></h3><ul>
+<li>Data structures focus on the efficient storage and organization of data.<br>数据结构关注数据的高效存储和组织。  </li>
+<li>Algorithms define the steps to solve computational problems using data structures.<br>算法定义了解决计算问题的步骤，通常依赖于数据结构。  </li>
+<li>Choosing the right data structure directly affects algorithm performance.<br>选择合适的数据结构会直接影响算法性能。  </li>
+</ul>
+<hr>
+<h3 id="5-Common-Data-Structures-and-Their-Applications-常见数据结构及其应用"><a href="#5-Common-Data-Structures-and-Their-Applications-常见数据结构及其应用" class="headerlink" title="5. Common Data Structures and Their Applications 常见数据结构及其应用"></a>5. <strong>Common Data Structures and Their Applications 常见数据结构及其应用</strong></h3><ul>
+<li><strong>Array (数组)</strong>:  <ul>
+<li>Static and random access data structure.<br>静态、随机访问的数据结构。  </li>
+<li>Example: Storing a list of elements.<br>示例：存储元素列表。  </li>
+</ul>
+</li>
+<li><strong>Linked List (链表)</strong>:  <ul>
+<li>Dynamic and sequential access.<br>动态、顺序访问。  </li>
+<li>Example: Efficient insertion and deletion.<br>示例：高效的插入与删除。  </li>
+</ul>
+</li>
+<li><strong>Stack (栈)</strong>:  <ul>
+<li>LIFO (Last In, First Out) structure.<br>后进先出的数据结构。  </li>
+<li>Example: Function call management.<br>示例：函数调用管理。  </li>
+</ul>
+</li>
+<li><strong>Queue (队列)</strong>:  <ul>
+<li>FIFO (First In, First Out) structure.<br>先进先出的数据结构。  </li>
+<li>Example: Task scheduling.<br>示例：任务调度。  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="6-Algorithm-Complexity-算法复杂度"><a href="#6-Algorithm-Complexity-算法复杂度" class="headerlink" title="6. Algorithm Complexity 算法复杂度"></a>6. <strong>Algorithm Complexity 算法复杂度</strong></h3><ul>
+<li><strong>Time Complexity (时间复杂度)</strong>:<br>Measures the amount of time an algorithm takes to run as a function of the input size.<br>衡量算法随输入规模增长的运行时间。  </li>
+<li><strong>Space Complexity (空间复杂度)</strong>:<br>Measures the amount of memory an algorithm uses during execution.<br>衡量算法在运行期间使用的内存量。  </li>
+<li><strong>Common Notations (常见表示法)</strong>:  <ul>
+<li><strong>O(1)</strong>: Constant time. 常数时间。  </li>
+<li><strong>O(log n)</strong>: Logarithmic time. 对数时间。  </li>
+<li><strong>O(n)</strong>: Linear time. 线性时间。  </li>
+<li><strong>O(n²)</strong>: Quadratic time. 平方时间。  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1 id="Chapter-2-Algorithm-Analysis"><a href="#Chapter-2-Algorithm-Analysis" class="headerlink" title="Chapter 2 Algorithm Analysis"></a>Chapter 2 Algorithm Analysis</h1><blockquote>
+<p>理解：growth rate, typical growth rate equation(n!, 2n, nlogn, n2,n, etc.); upper &amp; lower bounds and relative rules; Best, worst and Average cases, Amortized Analysis</p>
+<p>掌握：Asymptotic analysis</p>
+</blockquote>
+<h3 id="1-Growth-Rate-增长率"><a href="#1-Growth-Rate-增长率" class="headerlink" title="1. Growth Rate (增长率)"></a>1. <strong>Growth Rate (增长率)</strong></h3><ul>
+<li><p><strong>Definition (定义)</strong>:<br>Growth rate describes how the running time or space requirements of an algorithm increase as the input size grows.<br>增长率描述了算法的运行时间或空间需求随输入规模增长的变化情况。  </p>
+</li>
+<li><p><strong>Typical Growth Rate Equations (典型增长率方程)</strong>:  </p>
+<ul>
+<li><strong>Constant (常数)</strong>: $ O(1) $<br>示例：访问数组的单个元素。  </li>
+<li><strong>Logarithmic (对数)</strong>: $ O(\log n) $<br>示例：二分查找（Binary Search）。  </li>
+<li><strong>Linear (线性)</strong>: $ O(n) $<br>示例：简单遍历数组。  </li>
+<li><strong>Linearithmic (线性对数)</strong>: $ O(n \log n) $<br>示例：高效排序算法（如快速排序、归并排序）。  </li>
+<li><strong>Quadratic (平方)</strong>: $ O(n^2) $<br>示例：冒泡排序（Bubble Sort）。  </li>
+<li><strong>Exponential (指数)</strong>: $ O(2^n) $<br>示例：求解递归组合问题。  </li>
+<li><strong>Factorial (阶乘)</strong>: $ O(n!) $<br>示例：全排列（Permutation）问题。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="2-Upper-amp-Lower-Bounds-上界与下界"><a href="#2-Upper-amp-Lower-Bounds-上界与下界" class="headerlink" title="2. Upper &amp; Lower Bounds (上界与下界)"></a>2. <strong>Upper &amp; Lower Bounds (上界与下界)</strong></h3><ul>
+<li><strong>Upper Bound (上界)</strong>:  <ul>
+<li>An upper bound describes the worst-case scenario for the running time of an algorithm.<br>上界描述了算法运行时间的最坏情况。  </li>
+<li>表示法：$ O(f(n)) $。  </li>
+</ul>
+</li>
+<li><strong>Lower Bound (下界)</strong>:  <ul>
+<li>A lower bound describes the best-case scenario or the minimum resources required.<br>下界描述了算法运行时间的最优情况或最低资源需求。  </li>
+<li>表示法：$ \Omega(f(n)) $。  </li>
+</ul>
+</li>
+<li><strong>Tight Bound (紧确界)</strong>:  <ul>
+<li>When both the upper and lower bounds match, we describe the complexity as $ \Theta(f(n)) $.<br>当上界和下界相等时，称算法的复杂度为 $ \Theta(f(n)) $。  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="3-Best-Worst-and-Average-Cases-最优、最坏和平均情况"><a href="#3-Best-Worst-and-Average-Cases-最优、最坏和平均情况" class="headerlink" title="3. Best, Worst, and Average Cases (最优、最坏和平均情况)"></a>3. <strong>Best, Worst, and Average Cases (最优、最坏和平均情况)</strong></h3><ul>
+<li><strong>Best Case (最优情况)</strong>:  <ul>
+<li>The scenario where the algorithm performs the minimum number of operations.<br>算法执行最少操作次数的情况。  </li>
+<li>示例：查找元素在数组开头。  </li>
+</ul>
+</li>
+<li><strong>Worst Case (最坏情况)</strong>:  <ul>
+<li>The scenario where the algorithm performs the maximum number of operations.<br>算法执行最多操作次数的情况。  </li>
+<li>示例：查找元素在数组末尾或不存在。  </li>
+</ul>
+</li>
+<li><strong>Average Case (平均情况)</strong>:  <ul>
+<li>The expected running time over all possible inputs of a given size.<br>针对所有可能输入的平均运行时间。  </li>
+<li>平均情况通常通过概率分析计算。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="4-Amortized-Analysis-均摊分析"><a href="#4-Amortized-Analysis-均摊分析" class="headerlink" title="4. Amortized Analysis (均摊分析)"></a>4. <strong>Amortized Analysis (均摊分析)</strong></h3><ul>
+<li><strong>Definition (定义)</strong>:<br>Analyzing the average time per operation over a sequence of operations, even if a single operation might be costly.<br>通过分析一系列操作的平均时间，得出单个操作的均摊成本，即使某些操作可能较为耗时。  </li>
+<li><strong>Example (示例)</strong>:<br>动态数组的扩展：  <ul>
+<li>扩展操作的单次代价很高，但均摊后每次插入的代价为 $ O(1) $。  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="5-Asymptotic-Analysis-渐进分析"><a href="#5-Asymptotic-Analysis-渐进分析" class="headerlink" title="5. Asymptotic Analysis (渐进分析)"></a>5. <strong>Asymptotic Analysis (渐进分析)</strong></h3><ul>
+<li><strong>Definition (定义)</strong>:<br>Asymptotic analysis evaluates an algorithm’s performance by describing its running time or space usage as a function of input size $ n $, ignoring constant factors.<br>渐进分析评估算法性能，通过描述其运行时间或空间随输入规模 $ n $ 的变化情况，忽略常数因子。  </li>
+<li><strong>Key Notations (关键表示法)</strong>:  <ul>
+<li>$ O(f(n)) $: Big-O, upper bound (上界)。  </li>
+<li>$ \Omega(f(n)) $: Omega, lower bound (下界)。  </li>
+<li>$ \Theta(f(n)) $: Theta, tight bound (紧确界)。  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="6-Rules-for-Asymptotic-Analysis-渐进分析规则"><a href="#6-Rules-for-Asymptotic-Analysis-渐进分析规则" class="headerlink" title="6. Rules for Asymptotic Analysis (渐进分析规则)"></a>6. <strong>Rules for Asymptotic Analysis (渐进分析规则)</strong></h3><ul>
+<li><strong>Simplify Constants (忽略常数)</strong>:<br>$ O(2n) \equiv O(n) $。  </li>
+<li><strong>Keep Dominant Terms (保留主项)</strong>:<br>$ O(n^2 + n) \equiv O(n^2) $。  </li>
+<li><strong>Nested Loops (嵌套循环)</strong>:  <ul>
+<li>外层与内层循环次数相乘得到复杂度。  </li>
+<li>示例：双重循环 $ O(n^2) $。  </li>
+</ul>
+</li>
+<li><strong>Divide and Conquer (分治法)</strong>:  <ul>
+<li>使用递归公式计算复杂度，例如 $ T(n) = 2T(n/2) + O(n) $。  </li>
+<li>示例：归并排序 $ O(n \log n) $。  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="7-Practical-Example-实际示例"><a href="#7-Practical-Example-实际示例" class="headerlink" title="7. Practical Example (实际示例)"></a>7. <strong>Practical Example (实际示例)</strong></h3><ul>
+<li><strong>Binary Search (二分查找)</strong>:  <ul>
+<li>Best Case: $ O(1) $（目标在中间）。  </li>
+<li>Worst Case: $ O(\log n) $（递归或迭代到边界）。  </li>
+<li>Average Case: $ O(\log n) $。  </li>
+</ul>
+</li>
+<li><strong>Bubble Sort (插入排序)</strong>:  <ul>
+<li>Best Case: $ O(n) $（数组已排序）。  </li>
+<li>Worst Case: $ O(n^2) $。  </li>
+<li>Average Case: $ O(n^2) $。  </li>
+</ul>
+</li>
+</ul>
+<h1 id="Chapter-3-Lists-stacks-and-Queues"><a href="#Chapter-3-Lists-stacks-and-Queues" class="headerlink" title="Chapter 3 Lists, stacks and Queues"></a>Chapter 3 Lists, stacks and Queues</h1><blockquote>
+<p>掌握: Lists, stacks and Queues (logical and storage structures, implementations, and algorithm complexity) </p>
+</blockquote>
+<h3 id="1-Lists-线性表"><a href="#1-Lists-线性表" class="headerlink" title="1. Lists (线性表)"></a>1. <strong>Lists (线性表)</strong></h3><h4 id="1-1-Logical-Structure-逻辑结构"><a href="#1-1-Logical-Structure-逻辑结构" class="headerlink" title="1.1 Logical Structure (逻辑结构)"></a><strong>1.1 Logical Structure (逻辑结构)</strong></h4><ul>
+<li><strong>Definition (定义)</strong>:<br>A list is a sequence of elements where order matters, and elements may repeat.<br>线性表是一组有序元素的集合，元素可以重复。  </li>
+<li><strong>Types (类型)</strong>:  <ul>
+<li><strong>Singly Linked List (单向链表)</strong>: Each node points to the next node.<br>每个节点指向下一个节点。  </li>
+<li><strong>Doubly Linked List (双向链表)</strong>: Each node points to both the next and previous nodes.<br>每个节点同时指向下一个和上一个节点。  </li>
+<li><strong>Array List (数组实现的线性表)</strong>: Elements are stored in contiguous memory locations.<br>元素存储在连续的内存位置中。  </li>
+</ul>
+</li>
+</ul>
+<h4 id="1-2-Storage-Structures-存储结构"><a href="#1-2-Storage-Structures-存储结构" class="headerlink" title="1.2 Storage Structures (存储结构)"></a><strong>1.2 Storage Structures (存储结构)</strong></h4><ul>
+<li><strong>Array-based List (基于数组的实现)</strong>:  <ul>
+<li>Sequential allocation of memory.<br>内存顺序分配。  </li>
+<li>Suitable for random access but expensive for insertions and deletions.<br>适合随机访问，但插入和删除操作代价较高。  </li>
+</ul>
+</li>
+<li><strong>Linked List (基于链表的实现)</strong>:  <ul>
+<li>Dynamic memory allocation with nodes containing data and pointers.<br>动态分配内存，每个节点包含数据和指针。  </li>
+<li>Efficient for insertions and deletions but slower for random access.<br>插入和删除操作高效，但随机访问较慢。</li>
+</ul>
+</li>
+</ul>
+<h4 id="1-3-Algorithm-Complexity-算法复杂度"><a href="#1-3-Algorithm-Complexity-算法复杂度" class="headerlink" title="1.3 Algorithm Complexity (算法复杂度)"></a><strong>1.3 Algorithm Complexity (算法复杂度)</strong></h4><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Array List $ O $</th>
+<th>Linked List $ O $</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Access (访问)</td>
+<td>$ O(1) $</td>
+<td>$ O(n) $</td>
+</tr>
+<tr>
+<td>Search (查找)</td>
+<td>$ O(n) $</td>
+<td>$ O(n) $</td>
+</tr>
+<tr>
+<td>Insert (插入)</td>
+<td>$ O(n) $</td>
+<td>$ O(1) $ (at head)</td>
+</tr>
+<tr>
+<td>Delete (删除)</td>
+<td>$ O(n) $</td>
+<td>$ O(1) $ (at head)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h3 id="2-Stacks-栈"><a href="#2-Stacks-栈" class="headerlink" title="2. Stacks (栈)"></a>2. <strong>Stacks (栈)</strong></h3><h4 id="2-1-Logical-Structure-逻辑结构"><a href="#2-1-Logical-Structure-逻辑结构" class="headerlink" title="2.1 Logical Structure (逻辑结构)"></a><strong>2.1 Logical Structure (逻辑结构)</strong></h4><ul>
+<li><strong>Definition (定义)</strong>:<br>A stack is a linear data structure that follows the <strong>LIFO (Last In, First Out)</strong> principle.<br>栈是一种遵循后进先出原则的线性数据结构。  </li>
+<li><strong>Common Operations (常见操作)</strong>:  <ul>
+<li><strong>Push (入栈)</strong>: Add an element to the top of the stack.<br>将元素添加到栈顶。  </li>
+<li><strong>Pop (出栈)</strong>: Remove the top element from the stack.<br>移除栈顶元素。  </li>
+<li><strong>Peek (查看栈顶)</strong>: View the top element without removing it.<br>查看但不移除栈顶元素。  </li>
+</ul>
+</li>
+</ul>
+<h4 id="2-2-Storage-Structures-存储结构"><a href="#2-2-Storage-Structures-存储结构" class="headerlink" title="2.2 Storage Structures (存储结构)"></a><strong>2.2 Storage Structures (存储结构)</strong></h4><ul>
+<li><strong>Array-based Stack (基于数组的栈)</strong>:  <ul>
+<li>Fixed size, efficient memory usage, but limited capacity.<br>固定大小，内存使用高效，但容量有限。  </li>
+</ul>
+</li>
+<li><strong>Linked List-based Stack (基于链表的栈)</strong>:  <ul>
+<li>Dynamic size, supports efficient operations, but uses extra memory for pointers.<br>动态大小，支持高效操作，但需额外内存存储指针。  </li>
+</ul>
+</li>
+</ul>
+<h4 id="2-3-Algorithm-Complexity-算法复杂度"><a href="#2-3-Algorithm-Complexity-算法复杂度" class="headerlink" title="2.3 Algorithm Complexity (算法复杂度)"></a><strong>2.3 Algorithm Complexity (算法复杂度)</strong></h4><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Complexity $ O $</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Push (入栈)</td>
+<td>$ O(1) $</td>
+</tr>
+<tr>
+<td>Pop (出栈)</td>
+<td>$ O(1) $</td>
+</tr>
+<tr>
+<td>Peek (栈顶查看)</td>
+<td>$ O(1) $</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h3 id="3-Queues-队列"><a href="#3-Queues-队列" class="headerlink" title="3. Queues (队列)"></a>3. <strong>Queues (队列)</strong></h3><h4 id="3-1-Logical-Structure-逻辑结构"><a href="#3-1-Logical-Structure-逻辑结构" class="headerlink" title="3.1 Logical Structure (逻辑结构)"></a><strong>3.1 Logical Structure (逻辑结构)</strong></h4><ul>
+<li><strong>Definition (定义)</strong>:<br>A queue is a linear data structure that follows the <strong>FIFO (First In, First Out)</strong> principle.<br>队列是一种遵循先进先出原则的线性数据结构。  </li>
+<li><strong>Variants (变体)</strong>:  <ul>
+<li><strong>Simple Queue (普通队列)</strong>: Standard FIFO behavior.<br>标准先进先出队列。  </li>
+<li><strong>Circular Queue (循环队列)</strong>: The last position connects back to the first, making efficient use of memory.<br>最后一个位置与第一个位置相连，提高内存利用率。  </li>
+<li><strong>Priority Queue (优先队列)</strong>: Elements are dequeued based on priority instead of arrival time.<br>元素根据优先级出队，而非到达时间。  </li>
+</ul>
+</li>
+</ul>
+<h4 id="3-2-Storage-Structures-存储结构"><a href="#3-2-Storage-Structures-存储结构" class="headerlink" title="3.2 Storage Structures (存储结构)"></a><strong>3.2 Storage Structures (存储结构)</strong></h4><ul>
+<li><strong>Array-based Queue (基于数组的队列)</strong>:  <ul>
+<li>Fixed size, efficient for random access but limited by capacity.<br>固定大小，随机访问高效，但容量有限。  </li>
+</ul>
+</li>
+<li><strong>Linked List-based Queue (基于链表的队列)</strong>:  <ul>
+<li>Dynamic size, allows efficient insertions and deletions.<br>动态大小，支持高效插入和删除。  </li>
+</ul>
+</li>
+</ul>
+<h4 id="3-3-Algorithm-Complexity-算法复杂度"><a href="#3-3-Algorithm-Complexity-算法复杂度" class="headerlink" title="3.3 Algorithm Complexity (算法复杂度)"></a><strong>3.3 Algorithm Complexity (算法复杂度)</strong></h4><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Complexity $ O $</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Enqueue (入队)</td>
+<td>$ O(1) $</td>
+</tr>
+<tr>
+<td>Dequeue (出队)</td>
+<td>$ O(1) $</td>
+</tr>
+<tr>
+<td>Peek (队头查看)</td>
+<td>$ O(1) $</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h3 id="4-Comparison-Summary-对比总结"><a href="#4-Comparison-Summary-对比总结" class="headerlink" title="4. Comparison Summary (对比总结)"></a>4. <strong>Comparison Summary (对比总结)</strong></h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Feature (特性)</th>
+<th>List (线性表)</th>
+<th>Stack (栈)</th>
+<th>Queue (队列)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Access Order (访问顺序)</td>
+<td>Random (随机)</td>
+<td>LIFO (后进先出)</td>
+<td>FIFO (先进先出)</td>
+</tr>
+<tr>
+<td>Insert/Delete Position</td>
+<td>Anywhere (任意位置)</td>
+<td>Top (栈顶)</td>
+<td>Front/Back (队首/队尾)</td>
+</tr>
+<tr>
+<td>Common Uses (常见用途)</td>
+<td>Data storage, traversal</td>
+<td>Undo operations (撤销操作)</td>
+<td>Task scheduling (任务调度)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h1 id="Chapter-4-Trees"><a href="#Chapter-4-Trees" class="headerlink" title="Chapter 4 Trees"></a>Chapter 4 Trees</h1><blockquote>
+<p>理解 definition and properties of tree, Implementation of Trees, Balance trees, complete binary trees, full binary trees, B-trees, and up-tree(parent-point based Implementation)</p>
+<p>掌握Binary tree: Binary tree Traversals (preorder, postorder, inorder), implementations and their space requirements; BST(construction, search, insert, delete, and algorithm complexity); AVL Trees(AVL property, re-balancing operations); Splay Trees(Splay property, splaying operations)</p>
+</blockquote>
+<h2 id="1-Definition-and-Properties-of-Tree-树的定义与性质"><a href="#1-Definition-and-Properties-of-Tree-树的定义与性质" class="headerlink" title="1. Definition and Properties of Tree (树的定义与性质)"></a>1. <strong>Definition and Properties of Tree (树的定义与性质)</strong></h2><h3 id="1-1-Definition-定义"><a href="#1-1-Definition-定义" class="headerlink" title="1.1 Definition (定义)"></a>1.1 <strong>Definition (定义)</strong></h3><ul>
+<li><strong>Tree (树)</strong>:<br>A tree is a hierarchical data structure consisting of nodes, with one node designated as the root and other nodes forming subtrees connected by edges.<br>树是一种分层数据结构，由节点组成，其中一个节点为根节点，其余节点形成子树，通过边连接。  </li>
+</ul>
+<h3 id="1-2-Properties-性质"><a href="#1-2-Properties-性质" class="headerlink" title="1.2 Properties (性质)"></a>1.2 <strong>Properties (性质)</strong></h3><ul>
+<li><strong>Hierarchy (层级性)</strong>: A tree is an acyclic connected graph.<br>树是无环连通图。  </li>
+<li><strong>Root (根节点)</strong>: The topmost node in the tree.<br>树的最顶端节点。  </li>
+<li><strong>Parent &amp; Child (父节点与子节点)</strong>: A node connected above another is the parent, while the one below is the child.<br>上层连接的节点为父节点，下层的为子节点。  </li>
+<li><strong>Leaf (叶节点)</strong>: Nodes without children.<br>没有子节点的节点称为叶节点。  </li>
+<li><strong>Depth (深度)</strong>: The number of edges from the root to a node.<br>从根节点到某节点的边数。  </li>
+<li><strong>Height (高度)</strong>: The maximum depth of any node in the tree.<br>树中任意节点的最大深度。  </li>
+<li><strong>Degree (度)</strong>: The number of children a node has.<br>一个节点的子节点数量。  </li>
+</ul>
+<hr>
+<h2 id="2-Tree-Types-and-Implementations-树的类型与实现"><a href="#2-Tree-Types-and-Implementations-树的类型与实现" class="headerlink" title="2. Tree Types and Implementations (树的类型与实现)"></a>2. <strong>Tree Types and Implementations (树的类型与实现)</strong></h2><h3 id="2-1-Balanced-Tree-平衡树"><a href="#2-1-Balanced-Tree-平衡树" class="headerlink" title="2.1 Balanced Tree (平衡树)"></a>2.1 <strong>Balanced Tree (平衡树)</strong></h3><ul>
+<li>A tree where the height difference between left and right subtrees is minimized for all nodes.<br>平衡树是指所有节点的左右子树高度差最小。  </li>
+<li>Example: AVL Tree, Red-Black Tree.<br>示例：AVL 树，红黑树。  </li>
+</ul>
+<h3 id="2-2-Complete-Binary-Tree-完全二叉树"><a href="#2-2-Complete-Binary-Tree-完全二叉树" class="headerlink" title="2.2 Complete Binary Tree (完全二叉树)"></a>2.2 <strong>Complete Binary Tree (完全二叉树)</strong></h3><ul>
+<li>A binary tree where all levels are fully filled except possibly the last, which is filled from left to right.<br>所有层次的节点都被填满，最后一层从左到右排列。  </li>
+</ul>
+<h3 id="2-3-Full-Binary-Tree-满二叉树"><a href="#2-3-Full-Binary-Tree-满二叉树" class="headerlink" title="2.3 Full Binary Tree (满二叉树)"></a>2.3 <strong>Full Binary Tree (满二叉树)</strong></h3><ul>
+<li>A binary tree where every node has 0 or 2 children.<br>每个节点要么没有子节点，要么有两个子节点。  </li>
+</ul>
+<h3 id="2-4-B-Trees-B-树"><a href="#2-4-B-Trees-B-树" class="headerlink" title="2.4 B-Trees (B 树)"></a>2.4 <strong>B-Trees (B 树)</strong></h3><ul>
+<li>A self-balancing search tree where nodes can have more than two children, widely used in databases and file systems.<br>一种自平衡的搜索树，节点可以有多个子节点，广泛用于数据库和文件系统。  </li>
+</ul>
+<h3 id="2-5-Up-Tree-基于父指针的实现"><a href="#2-5-Up-Tree-基于父指针的实现" class="headerlink" title="2.5 Up-Tree (基于父指针的实现)"></a>2.5 <strong>Up-Tree (基于父指针的实现)</strong></h3><ul>
+<li>Nodes store pointers to their parent nodes, typically used in union-find operations.<br>节点存储指向父节点的指针，常用于并查集操作。  </li>
+</ul>
+<hr>
+<h2 id="3-Binary-Tree-二叉树"><a href="#3-Binary-Tree-二叉树" class="headerlink" title="3. Binary Tree (二叉树)"></a>3. <strong>Binary Tree (二叉树)</strong></h2><h3 id="3-1-Binary-Tree-Traversals-二叉树遍历"><a href="#3-1-Binary-Tree-Traversals-二叉树遍历" class="headerlink" title="3.1 Binary Tree Traversals (二叉树遍历)"></a>3.1 <strong>Binary Tree Traversals (二叉树遍历)</strong></h3><ul>
+<li><strong>Preorder (先序遍历)</strong>: Visit root, then left subtree, and right subtree.<br>访问顺序：根 -&gt; 左子树 -&gt; 右子树。  </li>
+<li><strong>Inorder (中序遍历)</strong>: Visit left subtree, root, then right subtree.<br>访问顺序：左子树 -&gt; 根 -&gt; 右子树。  </li>
+<li><strong>Postorder (后序遍历)</strong>: Visit left subtree, right subtree, then root.<br>访问顺序：左子树 -&gt; 右子树 -&gt; 根。  </li>
+<li><strong>Space Requirements (空间需求)</strong>: $ O(h) $, where $ h $ is the height of the tree.  </li>
+</ul>
+<hr>
+<h3 id="3-2-Binary-Search-Tree-BST-二叉搜索树"><a href="#3-2-Binary-Search-Tree-BST-二叉搜索树" class="headerlink" title="3.2 Binary Search Tree (BST, 二叉搜索树)"></a>3.2 <strong>Binary Search Tree (BST, 二叉搜索树)</strong></h3><h4 id="Properties-性质"><a href="#Properties-性质" class="headerlink" title="Properties (性质)"></a><strong>Properties (性质)</strong></h4><ul>
+<li>Left subtree contains values smaller than the root.<br>左子树包含的值小于根节点。  </li>
+<li>Right subtree contains values greater than the root.<br>右子树包含的值大于根节点。  </li>
+</ul>
+<h4 id="Operations-and-Algorithm-Complexity-操作与算法复杂度"><a href="#Operations-and-Algorithm-Complexity-操作与算法复杂度" class="headerlink" title="Operations and Algorithm Complexity (操作与算法复杂度)"></a><strong>Operations and Algorithm Complexity (操作与算法复杂度)</strong></h4><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Complexity $ O $</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Search (查找)</td>
+<td>$ O(h) $</td>
+</tr>
+<tr>
+<td>Insert (插入)</td>
+<td>$ O(h) $</td>
+</tr>
+<tr>
+<td>Delete (删除)</td>
+<td>$ O(h) $</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li><strong>Construction (构造)</strong>: Insert nodes iteratively or recursively.<br>通过迭代或递归插入节点。  </li>
+<li><strong>Search (查找)</strong>: Traverse left or right subtree based on the target value.<br>根据目标值遍历左或右子树。  </li>
+<li><strong>Insert (插入)</strong>: Place the value in the correct position based on BST rules.<br>根据二叉搜索树规则将值插入正确位置。  </li>
+<li><strong>Delete (删除)</strong>:  <ul>
+<li>No child: Remove the node.<br>无子节点：直接移除节点。  </li>
+<li>One child: Replace the node with its child.<br>一个子节点：用其子节点替代。  </li>
+<li>Two children: Replace the node with its inorder successor or predecessor.<br>两个子节点：用中序后继或前驱替代节点。  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="3-3-AVL-Trees-AVL-树"><a href="#3-3-AVL-Trees-AVL-树" class="headerlink" title="3.3 AVL Trees (AVL 树)"></a>3.3 <strong>AVL Trees (AVL 树)</strong></h3><h4 id="AVL-Property-AVL-性质"><a href="#AVL-Property-AVL-性质" class="headerlink" title="AVL Property (AVL 性质)"></a><strong>AVL Property (AVL 性质)</strong></h4><ul>
+<li>For every node, the height difference between left and right subtrees is at most 1.<br>每个节点的左右子树高度差不超过 1。  </li>
+</ul>
+<h4 id="Rebalancing-Operations-重新平衡操作"><a href="#Rebalancing-Operations-重新平衡操作" class="headerlink" title="Rebalancing Operations (重新平衡操作)"></a><strong>Rebalancing Operations (重新平衡操作)</strong></h4><ul>
+<li><strong>Rotations (旋转操作)</strong>:  <ul>
+<li><strong>Single Rotation (单旋转)</strong>: Left or right rotation to balance the tree.<br>左旋或右旋以平衡树结构。  </li>
+<li><strong>Double Rotation (双旋转)</strong>: A combination of left and right rotations.<br>左旋和右旋的组合。  </li>
+</ul>
+</li>
+</ul>
+<h4 id="Algorithm-Complexity-算法复杂度"><a href="#Algorithm-Complexity-算法复杂度" class="headerlink" title="Algorithm Complexity (算法复杂度)"></a><strong>Algorithm Complexity (算法复杂度)</strong></h4><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Complexity $ O $</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Search (查找)</td>
+<td>$ O(\log n) $</td>
+</tr>
+<tr>
+<td>Insert (插入)</td>
+<td>$ O(\log n) $</td>
+</tr>
+<tr>
+<td>Delete (删除)</td>
+<td>$ O(\log n) $</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h3 id="3-4-Splay-Trees-伸展树"><a href="#3-4-Splay-Trees-伸展树" class="headerlink" title="3.4 Splay Trees (伸展树)"></a>3.4 <strong>Splay Trees (伸展树)</strong></h3><h4 id="Splay-Property-伸展性质"><a href="#Splay-Property-伸展性质" class="headerlink" title="Splay Property (伸展性质)"></a><strong>Splay Property (伸展性质)</strong></h4><ul>
+<li>Frequently accessed elements are moved closer to the root for faster future access.<br>经常访问的元素被移动到根节点附近以提高后续访问效率。  </li>
+</ul>
+<h4 id="Splaying-Operations-伸展操作"><a href="#Splaying-Operations-伸展操作" class="headerlink" title="Splaying Operations (伸展操作)"></a><strong>Splaying Operations (伸展操作)</strong></h4><ul>
+<li><strong>Zig (单旋)</strong>: For a node with no grandparent, rotate once.<br>对于没有祖父节点的节点，单次旋转。  </li>
+<li><strong>Zig-Zig (双旋同方向)</strong>: Rotate twice in the same direction.<br>同一方向旋转两次。  </li>
+<li><strong>Zig-Zag (双旋相反方向)</strong>: Rotate twice in opposite directions.<br>不同方向旋转两次。  </li>
+</ul>
+<h4 id="Algorithm-Complexity-算法复杂度-1"><a href="#Algorithm-Complexity-算法复杂度-1" class="headerlink" title="Algorithm Complexity (算法复杂度)"></a><strong>Algorithm Complexity (算法复杂度)</strong></h4><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Amortized Complexity $ O $</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Search (查找)</td>
+<td>$ O(\log n) $</td>
+</tr>
+<tr>
+<td>Insert (插入)</td>
+<td>$ O(\log n) $</td>
+</tr>
+<tr>
+<td>Delete (删除)</td>
+<td>$ O(\log n) $</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h1 id="Chapter-5-Hashing"><a href="#Chapter-5-Hashing" class="headerlink" title="Chapter 5 Hashing"></a>Chapter 5 Hashing</h1><blockquote>
+<p>理解: Concepts of searching, Binary search</p>
+<p>掌握: Hash table, hash function, collision and collision resolution policy(opening hashing- separate chaining and closed hashing),  probe function (linear probing, pseudo random probing, quadratic  probing, double hashing)</p>
+</blockquote>
+<hr>
+<h2 id="1-Concepts-of-Searching-搜索的概念"><a href="#1-Concepts-of-Searching-搜索的概念" class="headerlink" title="1. Concepts of Searching (搜索的概念)"></a>1. <strong>Concepts of Searching (搜索的概念)</strong></h2><h3 id="Definition-定义"><a href="#Definition-定义" class="headerlink" title="Definition (定义)"></a><strong>Definition (定义)</strong></h3><ul>
+<li><strong>Searching</strong> is the process of locating a specific element in a collection of data.<br>搜索是指在数据集合中查找特定元素的过程。  </li>
+</ul>
+<h3 id="Types-of-Searching-Methods-搜索方法类型"><a href="#Types-of-Searching-Methods-搜索方法类型" class="headerlink" title="Types of Searching Methods (搜索方法类型)"></a><strong>Types of Searching Methods (搜索方法类型)</strong></h3><ul>
+<li><strong>Linear Search (线性搜索)</strong>:<br>Sequentially checks each element until the target is found.<br>按顺序逐个检查每个元素，直到找到目标元素。  <ul>
+<li>Time Complexity (时间复杂度): $ O(n) $  </li>
+</ul>
+</li>
+<li><strong>Binary Search (二分搜索)</strong>:<br>Efficiently searches a sorted array by repeatedly dividing the search interval in half.<br>在排序数组中，通过反复将搜索区间减半进行高效查找。  <ul>
+<li>Time Complexity: $ O(\log n) $  </li>
+<li>Requires the data to be sorted.<br>需要数据已排序。  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="2-Hash-Table-哈希表"><a href="#2-Hash-Table-哈希表" class="headerlink" title="2. Hash Table (哈希表)"></a>2. <strong>Hash Table (哈希表)</strong></h2><h3 id="Definition-定义-1"><a href="#Definition-定义-1" class="headerlink" title="Definition (定义)"></a><strong>Definition (定义)</strong></h3><ul>
+<li>A hash table is a data structure that maps keys to values for efficient lookups, insertions, and deletions.<br>哈希表是一种将键映射到值的数据结构，支持高效的查找、插入和删除操作。  </li>
+</ul>
+<h3 id="Key-Components-关键组成部分"><a href="#Key-Components-关键组成部分" class="headerlink" title="Key Components (关键组成部分)"></a><strong>Key Components (关键组成部分)</strong></h3><ul>
+<li><strong>Hash Function (哈希函数)</strong>:<br>A function that converts a key into an index within the hash table.<br>将键转换为哈希表中索引的函数。  </li>
+<li><strong>Bucket (桶)</strong>:<br>A storage location in the hash table where elements are stored.<br>哈希表中存储元素的位置。  </li>
+</ul>
+<hr>
+<h2 id="3-Hash-Function-哈希函数"><a href="#3-Hash-Function-哈希函数" class="headerlink" title="3. Hash Function (哈希函数)"></a>3. <strong>Hash Function (哈希函数)</strong></h2><h3 id="Definition-定义-2"><a href="#Definition-定义-2" class="headerlink" title="Definition (定义)"></a><strong>Definition (定义)</strong></h3><ul>
+<li>A function that takes input (key) and returns an integer (hash value) corresponding to an index in the hash table.<br>哈希函数接收输入（键），返回一个整数（哈希值），作为哈希表的索引。  </li>
+</ul>
+<h3 id="Desirable-Properties-理想性质"><a href="#Desirable-Properties-理想性质" class="headerlink" title="Desirable Properties (理想性质)"></a><strong>Desirable Properties (理想性质)</strong></h3><ul>
+<li><strong>Uniformity (均匀性)</strong>: Distribute keys uniformly across the hash table.<br>将键均匀分布在哈希表中。  </li>
+<li><strong>Determinism (确定性)</strong>: The same key always maps to the same hash value.<br>相同的键总是映射到相同的哈希值。  </li>
+<li><strong>Efficiency (高效性)</strong>: Compute hash values quickly.<br>快速计算哈希值。  </li>
+</ul>
+<hr>
+<h2 id="4-Collisions-and-Collision-Resolution-冲突及其解决方法"><a href="#4-Collisions-and-Collision-Resolution-冲突及其解决方法" class="headerlink" title="4. Collisions and Collision Resolution (冲突及其解决方法)"></a>4. <strong>Collisions and Collision Resolution (冲突及其解决方法)</strong></h2><h3 id="Definition-定义-3"><a href="#Definition-定义-3" class="headerlink" title="Definition (定义)"></a><strong>Definition (定义)</strong></h3><ul>
+<li>A collision occurs when two different keys produce the same hash value.<br>冲突是指两个不同的键生成相同的哈希值的情况。  </li>
+</ul>
+<h3 id="Collision-Resolution-Policies-冲突解决策略"><a href="#Collision-Resolution-Policies-冲突解决策略" class="headerlink" title="Collision Resolution Policies (冲突解决策略)"></a><strong>Collision Resolution Policies (冲突解决策略)</strong></h3><h4 id="4-1-Open-Hashing-开放哈希法-Separate-Chaining-分离链接法"><a href="#4-1-Open-Hashing-开放哈希法-Separate-Chaining-分离链接法" class="headerlink" title="4.1 Open Hashing (开放哈希法) - Separate Chaining (分离链接法)"></a>4.1 <strong>Open Hashing (开放哈希法) - Separate Chaining (分离链接法)</strong></h4><ul>
+<li>Use a linked list or similar structure at each bucket to store all keys with the same hash value.<br>每个桶使用链表或类似结构存储具有相同哈希值的所有键。  </li>
+<li>Advantages (优点):  <ul>
+<li>Handles high load factors gracefully.<br>可较好处理较高负载因子。  </li>
+</ul>
+</li>
+<li><p>Disadvantages (缺点):  </p>
+<ul>
+<li>Requires extra memory for linked structures.<br>需要额外的内存存储链表。  </li>
+</ul>
+<h4 id="4-2-Closed-Hashing-封闭哈希法-Probing-探测法"><a href="#4-2-Closed-Hashing-封闭哈希法-Probing-探测法" class="headerlink" title="4.2 Closed Hashing (封闭哈希法) - Probing (探测法)"></a>4.2 <strong>Closed Hashing (封闭哈希法) - Probing (探测法)</strong></h4></li>
+<li>Store all elements directly in the hash table using probing techniques.<br>通过探测技术将所有元素直接存储在哈希表中。  </li>
+<li>Probing Techniques (探测方法):  <ul>
+<li><strong>Linear Probing (线性探测)</strong>:<br>Increment index sequentially until an empty slot is found.<br>逐个递增索引直到找到空槽。  <ul>
+<li>Advantage: Simple to implement.<br>优点：实现简单。  </li>
+<li>Disadvantage: May lead to clustering.<br>缺点：可能导致“堆积”。  </li>
+</ul>
+</li>
+<li><strong>Quadratic Probing (二次探测)</strong>:<br>Probe slots at quadratic intervals ($ i^2 $, $ 2^2 $, etc.).<br>以二次间隔（如 $ i^2, 2^2 $ 等）探测槽位。  <ul>
+<li>Reduces clustering compared to linear probing.<br>与线性探测相比减少堆积。  </li>
+</ul>
+</li>
+<li><strong>Pseudo Random Probing (伪随机探测)</strong>:<br>Use a random function to determine the next probe location.<br>使用随机函数确定下一个探测位置。  <ul>
+<li>Advantage: Reduces clustering further.<br>优点：进一步减少堆积。  </li>
+</ul>
+</li>
+<li><strong>Double Hashing (双重哈希)</strong>:<br>Use a second hash function to calculate the probe step size.<br>使用第二个哈希函数计算探测步长。  <ul>
+<li>Advantage: Minimizes clustering and improves performance.<br>优点：最小化堆积，提升性能。  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="5-Algorithm-Complexity-算法复杂度"><a href="#5-Algorithm-Complexity-算法复杂度" class="headerlink" title="5. Algorithm Complexity (算法复杂度)"></a>5. <strong>Algorithm Complexity (算法复杂度)</strong></h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Best Case $ O $</th>
+<th>Worst Case $ O $</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Search (查找)</td>
+<td>$ O(1) $</td>
+<td>$ O(n) $</td>
+</tr>
+<tr>
+<td>Insert (插入)</td>
+<td>$ O(1) $</td>
+<td>$ O(n) $</td>
+</tr>
+<tr>
+<td>Delete (删除)</td>
+<td>$ O(1) $</td>
+<td>$ O(n) $</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li><strong>Best Case</strong>: Minimal collisions and efficient probing.<br>最优情况：冲突最少，探测高效。  </li>
+<li><strong>Worst Case</strong>: High load factor and poor hash function lead to many collisions.<br>最差情况：高负载因子与低效哈希函数导致大量冲突。  </li>
+</ul>
+<hr>
+<h2 id="6-Comparison-of-Open-and-Closed-Hashing-开放与封闭哈希法对比"><a href="#6-Comparison-of-Open-and-Closed-Hashing-开放与封闭哈希法对比" class="headerlink" title="6. Comparison of Open and Closed Hashing (开放与封闭哈希法对比)"></a>6. <strong>Comparison of Open and Closed Hashing (开放与封闭哈希法对比)</strong></h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Feature (特性)</th>
+<th>Open Hashing (开放哈希)</th>
+<th>Closed Hashing (封闭哈希)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Memory Usage (内存使用)</td>
+<td>Requires extra memory</td>
+<td>Compact memory usage</td>
+</tr>
+<tr>
+<td>Collision Handling (冲突处理)</td>
+<td>Linked structures</td>
+<td>Probing techniques</td>
+</tr>
+<tr>
+<td>Load Factor (负载因子)</td>
+<td>Handles high load well</td>
+<td>Performance degrades under high load</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h1 id="Chapter-6-Priority-Queues-Heaps"><a href="#Chapter-6-Priority-Queues-Heaps" class="headerlink" title="Chapter 6 Priority Queues (Heaps)"></a>Chapter 6 Priority Queues (Heaps)</h1><blockquote>
+<p>理解: Concepts of priority queues, Complete binary tree</p>
+<p>掌握 Binary heaps(insertion, delete and buildHeap operations and their algorithm complexity)</p>
+</blockquote>
+<h2 id="1-Concepts-of-Priority-Queues-优先队列的概念"><a href="#1-Concepts-of-Priority-Queues-优先队列的概念" class="headerlink" title="1. Concepts of Priority Queues (优先队列的概念)"></a>1. <strong>Concepts of Priority Queues (优先队列的概念)</strong></h2><h3 id="Definition-定义-4"><a href="#Definition-定义-4" class="headerlink" title="Definition (定义)"></a><strong>Definition (定义)</strong></h3><ul>
+<li>A priority queue is an abstract data type where each element is associated with a priority, and elements with higher priority are served before those with lower priority.<br>优先队列是一种抽象数据类型，每个元素都与一个优先级相关联，优先级高的元素会先被处理。  </li>
+</ul>
+<h3 id="Key-Properties-关键特性"><a href="#Key-Properties-关键特性" class="headerlink" title="Key Properties (关键特性)"></a><strong>Key Properties (关键特性)</strong></h3><ul>
+<li><strong>Access Rule (访问规则)</strong>: The element with the highest (or lowest, depending on implementation) priority is dequeued first.<br>按照优先级顺序，优先级最高（或最低）的元素最先出队。  </li>
+<li><strong>Typical Implementations (常见实现方式)</strong>:  <ul>
+<li><strong>Binary Heap (二叉堆)</strong>  </li>
+<li>Fibonacci Heap (斐波那契堆)  </li>
+<li>Pairing Heap (配对堆)  </li>
+</ul>
+</li>
+</ul>
+<h3 id="Applications-应用"><a href="#Applications-应用" class="headerlink" title="Applications (应用)"></a><strong>Applications (应用)</strong></h3><ul>
+<li>Scheduling tasks (任务调度)  </li>
+<li>Dijkstra’s algorithm for shortest paths (迪杰斯特拉算法)  </li>
+<li>Event-driven simulation (事件驱动模拟)  </li>
+</ul>
+<hr>
+<h2 id="2-Concepts-of-Complete-Binary-Tree-完全二叉树的概念"><a href="#2-Concepts-of-Complete-Binary-Tree-完全二叉树的概念" class="headerlink" title="2. Concepts of Complete Binary Tree (完全二叉树的概念)"></a>2. <strong>Concepts of Complete Binary Tree (完全二叉树的概念)</strong></h2><h3 id="Definition-定义-5"><a href="#Definition-定义-5" class="headerlink" title="Definition (定义)"></a><strong>Definition (定义)</strong></h3><ul>
+<li>A <strong>complete binary tree</strong> is a binary tree in which every level, except possibly the last, is fully filled, and all nodes are as far left as possible.<br>完全二叉树是一种二叉树，除最后一层外的所有层次都被完全填充，最后一层的节点尽可能靠左排列。  </li>
+</ul>
+<h3 id="Properties-性质-1"><a href="#Properties-性质-1" class="headerlink" title="Properties (性质)"></a><strong>Properties (性质)</strong></h3><ul>
+<li><strong>Node Count (节点数量)</strong>: A complete binary tree with height $ h $ has between $ 2^h $ and $ 2^{h+1} - 1 $ nodes.<br>高度为 $ h $ 的完全二叉树的节点数量介于 $ 2^h $ 和 $ 2^{h+1} - 1 $ 之间。  </li>
+<li><strong>Height (高度)</strong>: For $ n $ nodes, the height is $ \lfloor \log_2 n \rfloor $.<br>对于 $ n $ 个节点，树的高度为 $ \lfloor \log_2 n \rfloor $。  </li>
+<li><strong>Efficient Storage (高效存储)</strong>: Can be efficiently stored in arrays, with the following relationships for node indices:  <ul>
+<li>Parent Index: $ \text{Parent}(i) = \lfloor (i-1)/2 \rfloor $  </li>
+<li>Left Child Index: $ \text{Left}(i) = 2i + 1 $  </li>
+<li>Right Child Index: $ \text{Right}(i) = 2i + 2 $  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="3-Binary-Heap-二叉堆"><a href="#3-Binary-Heap-二叉堆" class="headerlink" title="3. Binary Heap (二叉堆)"></a>3. <strong>Binary Heap (二叉堆)</strong></h2><h3 id="Definition-定义-6"><a href="#Definition-定义-6" class="headerlink" title="Definition (定义)"></a><strong>Definition (定义)</strong></h3><ul>
+<li>A binary heap is a complete binary tree that satisfies the <strong>heap property</strong>:  <ul>
+<li><strong>Max-Heap (最大堆)</strong>: The value of each parent node is greater than or equal to its children.<br>每个父节点的值大于等于其子节点的值。  </li>
+<li><strong>Min-Heap (最小堆)</strong>: The value of each parent node is less than or equal to its children.<br>每个父节点的值小于等于其子节点的值。  </li>
+</ul>
+</li>
+</ul>
+<h3 id="Key-Operations-关键操作"><a href="#Key-Operations-关键操作" class="headerlink" title="Key Operations (关键操作)"></a><strong>Key Operations (关键操作)</strong></h3><h4 id="3-1-Insertion-插入"><a href="#3-1-Insertion-插入" class="headerlink" title="3.1 Insertion (插入)"></a>3.1 <strong>Insertion (插入)</strong></h4><ul>
+<li><strong>Steps (步骤)</strong>:  <ol>
+<li>Add the new element to the next available position in the heap (maintaining the complete binary tree property).<br>将新元素插入到堆的下一个可用位置（保持完全二叉树性质）。  </li>
+<li>“Bubble up” (or heapify-up) to restore the heap property by swapping with its parent until the property is satisfied.<br>通过与父节点交换进行“上浮”，以恢复堆性质。  </li>
+</ol>
+</li>
+<li><strong>Time Complexity (时间复杂度)</strong>: $ O(\log n) $, where $ n $ is the number of elements in the heap.  </li>
+</ul>
+<h4 id="3-2-Deletion-删除"><a href="#3-2-Deletion-删除" class="headerlink" title="3.2 Deletion (删除)"></a>3.2 <strong>Deletion (删除)</strong></h4><ul>
+<li>Typically, deletion refers to removing the root element (highest priority).<br>通常删除操作指移除根节点（优先级最高）。  </li>
+<li><strong>Steps (步骤)</strong>:  <ol>
+<li>Replace the root with the last element in the heap.<br>用堆中的最后一个元素替换根节点。  </li>
+<li>Remove the last element.<br>移除最后一个元素。  </li>
+<li>“Bubble down” (or heapify-down) the new root to restore the heap property by swapping with its larger (or smaller for a min-heap) child.<br>通过与较大（或对于最小堆为较小）子节点交换进行“下沉”，以恢复堆性质。  </li>
+</ol>
+</li>
+<li><strong>Time Complexity (时间复杂度)</strong>: $ O(\log n) $.  </li>
+</ul>
+<h4 id="3-3-BuildHeap-构建堆"><a href="#3-3-BuildHeap-构建堆" class="headerlink" title="3.3 BuildHeap (构建堆)"></a>3.3 <strong>BuildHeap (构建堆)</strong></h4><ul>
+<li>Constructs a heap from an unsorted array.<br>从无序数组构建堆。  </li>
+<li><strong>Steps (步骤)</strong>:  <ol>
+<li>Start from the last non-leaf node and perform heapify-down on each node moving toward the root.<br>从最后一个非叶子节点开始，对每个节点执行下沉操作，逐步向根节点移动。  </li>
+</ol>
+</li>
+<li><strong>Time Complexity (时间复杂度)</strong>: $ O(n) $ due to the efficient bottom-up approach.<br>由于采用自底向上的方法，复杂度为 $ O(n) $。  </li>
+</ul>
+<hr>
+<h2 id="4-Algorithm-Complexity-算法复杂度"><a href="#4-Algorithm-Complexity-算法复杂度" class="headerlink" title="4. Algorithm Complexity (算法复杂度)"></a>4. <strong>Algorithm Complexity (算法复杂度)</strong></h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Time Complexity $ O $</th>
+<th>Explanation (说明)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Insert (插入)</td>
+<td>$ O(\log n) $</td>
+<td>Depends on the height of the heap.</td>
+</tr>
+<tr>
+<td>Delete (删除)</td>
+<td>$ O(\log n) $</td>
+<td>Bubble down operation determines cost.</td>
+</tr>
+<tr>
+<td>BuildHeap (构建堆)</td>
+<td>$ O(n) $</td>
+<td>Bottom-up approach reduces complexity.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h2 id="5-Applications-of-Binary-Heaps-二叉堆的应用"><a href="#5-Applications-of-Binary-Heaps-二叉堆的应用" class="headerlink" title="5. Applications of Binary Heaps (二叉堆的应用)"></a>5. <strong>Applications of Binary Heaps (二叉堆的应用)</strong></h2><ul>
+<li><strong>Priority Queue Implementation (优先队列的实现)</strong>  </li>
+<li><strong>Heap Sort (堆排序)</strong>  </li>
+<li><strong>Graph Algorithms (图算法)</strong>:  <ul>
+<li>Dijkstra’s Shortest Path Algorithm (迪杰斯特拉最短路径算法)  </li>
+<li>Prim’s Minimum Spanning Tree Algorithm (普里姆最小生成树算法)  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1 id="Chapter-7-Sorting"><a href="#Chapter-7-Sorting" class="headerlink" title="Chapter 7 Sorting"></a>Chapter 7 Sorting</h1><blockquote>
+<p>理解 internal sorting and external sorting, a general Lower Bound for Sorting</p>
+<p>掌握 All sort algorithms learned (Ideas, properties, processes, implementations and their complexity)\</p>
+</blockquote>
+<hr>
+<h2 id="1-Internal-Sorting-and-External-Sorting-内部排序与外部排序"><a href="#1-Internal-Sorting-and-External-Sorting-内部排序与外部排序" class="headerlink" title="1. Internal Sorting and External Sorting (内部排序与外部排序)"></a>1. <strong>Internal Sorting and External Sorting (内部排序与外部排序)</strong></h2><h3 id="Internal-Sorting-内部排序"><a href="#Internal-Sorting-内部排序" class="headerlink" title="Internal Sorting (内部排序)"></a><strong>Internal Sorting (内部排序)</strong></h3><ul>
+<li><strong>Definition (定义)</strong>:<br>Sorting performed entirely within the main memory.<br>数据完全存储在内存中并进行排序的操作。  </li>
+<li><strong>When to Use (适用场景)</strong>:  <ul>
+<li>The dataset is small enough to fit into the main memory.<br>数据集足够小，可以放入主存储器。  </li>
+</ul>
+</li>
+<li><strong>Examples (例子)</strong>:  <ul>
+<li>Bubble Sort, Quick Sort, Merge Sort, Heap Sort, etc.  </li>
+</ul>
+</li>
+</ul>
+<h3 id="External-Sorting-外部排序"><a href="#External-Sorting-外部排序" class="headerlink" title="External Sorting (外部排序)"></a><strong>External Sorting (外部排序)</strong></h3><ul>
+<li><strong>Definition (定义)</strong>:<br>Sorting performed on data stored in external storage devices (e.g., disk) because the dataset is too large for main memory.<br>针对存储在外部存储设备（如磁盘）上的大规模数据的排序。  </li>
+<li><strong>When to Use (适用场景)</strong>:  <ul>
+<li>The dataset exceeds the size of the available main memory.<br>数据集超出内存容量。  </li>
+</ul>
+</li>
+<li><strong>Examples (例子)</strong>:  <ul>
+<li>External Merge Sort, Multi-way Merge Sort.  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="2-General-Lower-Bound-for-Sorting-排序的通用下界"><a href="#2-General-Lower-Bound-for-Sorting-排序的通用下界" class="headerlink" title="2. General Lower Bound for Sorting (排序的通用下界)"></a>2. <strong>General Lower Bound for Sorting (排序的通用下界)</strong></h2><h3 id="Key-Concepts-核心概念"><a href="#Key-Concepts-核心概念" class="headerlink" title="Key Concepts (核心概念)"></a><strong>Key Concepts (核心概念)</strong></h3><ul>
+<li><strong>Comparison-Based Sorting (基于比较的排序)</strong>:<br>Sorting algorithms that decide the order of elements by comparing pairs of elements.<br>通过比较元素对来决定顺序的排序算法。  </li>
+<li><strong>Decision Tree Model (决策树模型)</strong>:  <ul>
+<li>Sorting can be represented as a binary decision tree.<br>排序可以表示为二叉决策树。  </li>
+<li>Each comparison corresponds to a binary decision.<br>每次比较对应于一次二元决策。  </li>
+<li>Height of the tree gives the number of comparisons in the worst case.<br>决策树的高度表示最坏情况下的比较次数。  </li>
+</ul>
+</li>
+</ul>
+<h3 id="Lower-Bound-下界"><a href="#Lower-Bound-下界" class="headerlink" title="Lower Bound (下界)"></a><strong>Lower Bound (下界)</strong></h3><ul>
+<li><strong>Theorem (定理)</strong>: Any comparison-based sorting algorithm has a worst-case time complexity of at least $ O(n \log n) $.<br>任意基于比较的排序算法的最坏情况时间复杂度至少为 $ O(n \log n) $。  </li>
+<li><strong>Explanation (解释)</strong>:  <ul>
+<li>There are $ n! $ possible permutations of $ n $ elements.<br>$ n $ 个元素共有 $ n! $ 种排列方式。  </li>
+<li>The height of a decision tree with $ n! $ leaves is $ \log_2 (n!) $, which is $ \Theta(n \log n) $.  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="3-Sorting-Algorithms-排序算法"><a href="#3-Sorting-Algorithms-排序算法" class="headerlink" title="3. Sorting Algorithms (排序算法)"></a>3. <strong>Sorting Algorithms (排序算法)</strong></h2><p>以下总结了常见排序算法的<strong>思想</strong>、<strong>性质</strong>、<strong>过程</strong>、<strong>实现</strong>及<strong>复杂度</strong>：  </p>
+<hr>
+<h3 id="3-1-Bubble-Sort-冒泡排序"><a href="#3-1-Bubble-Sort-冒泡排序" class="headerlink" title="3.1 Bubble Sort (冒泡排序)"></a><strong>3.1 Bubble Sort (冒泡排序)</strong></h3><ul>
+<li><strong>Idea (思想)</strong>:<br>Repeatedly swap adjacent elements if they are in the wrong order.<br>通过不断交换相邻的逆序元素实现排序。  </li>
+<li><strong>Properties (性质)</strong>:  <ul>
+<li>In-place (原地排序)  </li>
+<li>Stable (稳定排序)  </li>
+</ul>
+</li>
+<li><strong>Complexity (复杂度)</strong>:  <ul>
+<li>Best: $ O(n) $, Worst: $ O(n^2) $, Average: $ O(n^2) $  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="3-2-Selection-Sort-选择排序"><a href="#3-2-Selection-Sort-选择排序" class="headerlink" title="3.2 Selection Sort (选择排序)"></a><strong>3.2 Selection Sort (选择排序)</strong></h3><ul>
+<li><strong>Idea (思想)</strong>:<br>Repeatedly find the minimum element and place it in the correct position.<br>每次找到最小的元素，并将其放置到正确位置。  </li>
+<li><strong>Properties (性质)</strong>:  <ul>
+<li>In-place (原地排序)  </li>
+<li>Not stable (不稳定)  </li>
+</ul>
+</li>
+<li><strong>Complexity (复杂度)</strong>:  <ul>
+<li>Best, Worst, Average: $ O(n^2) $  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="3-3-Insertion-Sort-插入排序"><a href="#3-3-Insertion-Sort-插入排序" class="headerlink" title="3.3 Insertion Sort (插入排序)"></a><strong>3.3 Insertion Sort (插入排序)</strong></h3><ul>
+<li><strong>Idea (思想)</strong>:<br>Build the sorted part one element at a time by inserting new elements into their correct positions.<br>每次将一个新元素插入到已排序部分的正确位置。  </li>
+<li><strong>Properties (性质)</strong>:  <ul>
+<li>In-place (原地排序)  </li>
+<li>Stable (稳定排序)  </li>
+</ul>
+</li>
+<li><strong>Complexity (复杂度)</strong>:  <ul>
+<li>Best: $ O(n) $, Worst: $ O(n^2) $, Average: $ O(n^2) $  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="3-4-Merge-Sort-归并排序"><a href="#3-4-Merge-Sort-归并排序" class="headerlink" title="3.4 Merge Sort (归并排序)"></a><strong>3.4 Merge Sort (归并排序)</strong></h3><ul>
+<li><strong>Idea (思想)</strong>:<br>Divide the array into halves, sort each half, and merge the sorted halves.<br>将数组划分为两半，分别排序，然后合并。  </li>
+<li><strong>Properties (性质)</strong>:  <ul>
+<li>Not in-place (非原地排序)  </li>
+<li>Stable (稳定排序)  </li>
+</ul>
+</li>
+<li><strong>Complexity (复杂度)</strong>:  <ul>
+<li>Best, Worst, Average: $ O(n \log n) $  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="3-5-Quick-Sort-快速排序"><a href="#3-5-Quick-Sort-快速排序" class="headerlink" title="3.5 Quick Sort (快速排序)"></a><strong>3.5 Quick Sort (快速排序)</strong></h3><ul>
+<li><strong>Idea (思想)</strong>:<br>Select a pivot, partition the array around the pivot, and recursively sort the partitions.<br>选择一个轴点，将数组按轴点划分，然后递归排序子部分。  </li>
+<li><strong>Properties (性质)</strong>:  <ul>
+<li>In-place (原地排序)  </li>
+<li>Not stable (不稳定)  </li>
+</ul>
+</li>
+<li><strong>Complexity (复杂度)</strong>:  <ul>
+<li>Best, Average: $ O(n \log n) $, Worst: $ O(n^2) $  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="3-6-Heap-Sort-堆排序"><a href="#3-6-Heap-Sort-堆排序" class="headerlink" title="3.6 Heap Sort (堆排序)"></a><strong>3.6 Heap Sort (堆排序)</strong></h3><ul>
+<li><strong>Idea (思想)</strong>:<br>Build a binary heap, and repeatedly extract the maximum element to sort.<br>构建二叉堆，每次提取堆顶元素以完成排序。  </li>
+<li><strong>Properties (性质)</strong>:  <ul>
+<li>In-place (原地排序)  </li>
+<li>Not stable (不稳定)  </li>
+</ul>
+</li>
+<li><strong>Complexity (复杂度)</strong>:  <ul>
+<li>Best, Worst, Average: $ O(n \log n) $  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="3-7-Counting-Sort-计数排序"><a href="#3-7-Counting-Sort-计数排序" class="headerlink" title="3.7 Counting Sort (计数排序)"></a><strong>3.7 Counting Sort (计数排序)</strong></h3><ul>
+<li><strong>Idea (思想)</strong>:<br>Count the occurrences of each element and use this information to place elements in the sorted order.<br>统计每个元素出现的次数，并利用这些信息排序。  </li>
+<li><strong>Properties (性质)</strong>:  <ul>
+<li>Not comparison-based (非比较排序)  </li>
+<li>Stable (稳定排序)  </li>
+</ul>
+</li>
+<li><strong>Complexity (复杂度)</strong>:  <ul>
+<li>Best, Worst, Average: $ O(n + k) $, where $ k $ is the range of input values.  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="3-8-Radix-Sort-基数排序"><a href="#3-8-Radix-Sort-基数排序" class="headerlink" title="3.8 Radix Sort (基数排序)"></a><strong>3.8 Radix Sort (基数排序)</strong></h3><ul>
+<li><strong>Idea (思想)</strong>:<br>Sort elements by processing individual digits from least significant to most significant.<br>按照从低位到高位处理各位数字进行排序。  </li>
+<li><strong>Properties (性质)</strong>:  <ul>
+<li>Not comparison-based (非比较排序)  </li>
+<li>Stable (稳定排序)  </li>
+</ul>
+</li>
+<li><strong>Complexity (复杂度)</strong>:  <ul>
+<li>Best, Worst, Average: $ O(n \cdot k) $, where $ k $ is the number of digits.  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="3-9-Bucket-Sort-桶排序"><a href="#3-9-Bucket-Sort-桶排序" class="headerlink" title="3.9 Bucket Sort (桶排序)"></a><strong>3.9 Bucket Sort (桶排序)</strong></h3><ul>
+<li><strong>Idea (思想)</strong>:<br>Divide the array into buckets, sort each bucket, and concatenate the results.<br>将数组划分到多个桶中，分别排序每个桶，然后合并结果。  </li>
+<li><strong>Properties (性质)</strong>:  <ul>
+<li>Not comparison-based (非比较排序)  </li>
+<li>Stable (稳定排序)  </li>
+</ul>
+</li>
+<li><strong>Complexity (复杂度)</strong>:  <ul>
+<li>Best: $ O(n + k) $, Worst: $ O(n^2) $, Average: $ O(n + k) $  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1 id="Chapter-8-The-Disjoint-Sets-Class"><a href="#Chapter-8-The-Disjoint-Sets-Class" class="headerlink" title="Chapter 8 The Disjoint Sets Class"></a>Chapter 8 The Disjoint Sets Class</h1><blockquote>
+<p>理解 Equivalence class and the dynamic equivalence problem</p>
+<h2 id="掌握-union-find-algorithm-Smart-union-algorithms-union-by-size-amp-union-by-height-path-compression"><a href="#掌握-union-find-algorithm-Smart-union-algorithms-union-by-size-amp-union-by-height-path-compression" class="headerlink" title="掌握 union/find algorithm(Smart union algorithms-union by-size &amp; union by-height, path compression) "></a>掌握 union/find algorithm(Smart union algorithms-union by-size &amp; union by-height, path compression) </h2></blockquote>
+<h2 id="1-Equivalence-Class-and-Dynamic-Equivalence-Problem-等价类与动态等价问题"><a href="#1-Equivalence-Class-and-Dynamic-Equivalence-Problem-等价类与动态等价问题" class="headerlink" title="1. Equivalence Class and Dynamic Equivalence Problem (等价类与动态等价问题)"></a>1. <strong>Equivalence Class and Dynamic Equivalence Problem (等价类与动态等价问题)</strong></h2><h3 id="Equivalence-Class-等价类"><a href="#Equivalence-Class-等价类" class="headerlink" title="Equivalence Class (等价类)"></a><strong>Equivalence Class (等价类)</strong></h3><h4 id="Definition-定义-7"><a href="#Definition-定义-7" class="headerlink" title="Definition (定义)"></a><strong>Definition (定义)</strong></h4><ul>
+<li>An equivalence class is a subset of a set, where all elements are equivalent under a given equivalence relation.<br>等价类是集合的一个子集，其中的所有元素在某种等价关系下是等价的。  </li>
+</ul>
+<h4 id="Properties-性质-2"><a href="#Properties-性质-2" class="headerlink" title="Properties (性质)"></a><strong>Properties (性质)</strong></h4><ul>
+<li><strong>Reflexive (自反性)</strong>: $ a \sim a $  </li>
+<li><strong>Symmetric (对称性)</strong>: If $ a \sim b $, then $ b \sim a $.  </li>
+<li><strong>Transitive (传递性)</strong>: If $ a \sim b $ and $ b \sim c $, then $ a \sim c $.  </li>
+</ul>
+<h4 id="Examples-例子"><a href="#Examples-例子" class="headerlink" title="Examples (例子)"></a><strong>Examples (例子)</strong></h4><ul>
+<li>Congruence modulo $ n $: $ a \equiv b \pmod{n} $.<br>模 $ n $ 的同余关系：$ a \equiv b \pmod{n} $。  </li>
+<li>Connected components in a graph.<br>图的连通分量。  </li>
+</ul>
+<hr>
+<h3 id="Dynamic-Equivalence-Problem-动态等价问题"><a href="#Dynamic-Equivalence-Problem-动态等价问题" class="headerlink" title="Dynamic Equivalence Problem (动态等价问题)"></a><strong>Dynamic Equivalence Problem (动态等价问题)</strong></h3><h4 id="Definition-定义-8"><a href="#Definition-定义-8" class="headerlink" title="Definition (定义)"></a><strong>Definition (定义)</strong></h4><ul>
+<li>A dynamic equivalence problem involves determining whether two elements are in the same equivalence class and allowing for the union of equivalence classes over time.<br>动态等价问题是确定两个元素是否属于同一个等价类，并允许随着时间合并等价类的问题。  </li>
+</ul>
+<h4 id="Operations-操作"><a href="#Operations-操作" class="headerlink" title="Operations (操作)"></a><strong>Operations (操作)</strong></h4><ul>
+<li><strong>Find (查询)</strong>: Determine which equivalence class an element belongs to.<br>确定一个元素所属的等价类。  </li>
+<li><strong>Union (合并)</strong>: Merge two equivalence classes into one.<br>将两个等价类合并为一个。  </li>
+</ul>
+<h4 id="Applications-应用-1"><a href="#Applications-应用-1" class="headerlink" title="Applications (应用)"></a><strong>Applications (应用)</strong></h4><ul>
+<li>Network connectivity (网络连通性)  </li>
+<li>Kruskal’s algorithm for Minimum Spanning Tree (Kruskal算法求最小生成树)  </li>
+<li>Image processing for connected components (图像处理中连通分量的识别)  </li>
+</ul>
+<hr>
+<h2 id="2-Union-Find-Algorithm-并查集算法"><a href="#2-Union-Find-Algorithm-并查集算法" class="headerlink" title="2. Union-Find Algorithm (并查集算法)"></a>2. <strong>Union-Find Algorithm (并查集算法)</strong></h2><h3 id="Definition-定义-9"><a href="#Definition-定义-9" class="headerlink" title="Definition (定义)"></a><strong>Definition (定义)</strong></h3><ul>
+<li>The union-find algorithm is a data structure that efficiently supports union and find operations.<br>并查集算法是一种高效支持合并和查询操作的数据结构。  </li>
+</ul>
+<hr>
+<h3 id="Key-Concepts-核心概念-1"><a href="#Key-Concepts-核心概念-1" class="headerlink" title="Key Concepts (核心概念)"></a><strong>Key Concepts (核心概念)</strong></h3><h4 id="2-1-Smart-Union-Algorithms-优化的合并算法"><a href="#2-1-Smart-Union-Algorithms-优化的合并算法" class="headerlink" title="2.1 Smart Union Algorithms (优化的合并算法)"></a>2.1 <strong>Smart Union Algorithms (优化的合并算法)</strong></h4><ul>
+<li><p><strong>Union by Size (按大小合并)</strong>:<br>Attach the smaller tree as a subtree of the larger tree to minimize height growth.<br>将节点数较少的树作为子树连接到节点数较多的树上，以最小化树的高度增长。  </p>
+<ul>
+<li><strong>Complexity (复杂度)</strong>: $ O(\log n) $ per operation.  </li>
+</ul>
+</li>
+<li><p><strong>Union by Height (按高度合并)</strong>:<br>Attach the shorter tree as a subtree of the taller tree to avoid increasing the tree height unnecessarily.<br>将高度较小的树作为子树连接到高度较大的树上，以避免不必要的高度增长。  </p>
+<ul>
+<li><strong>Complexity (复杂度)</strong>: $ O(\log n) $ per operation.  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="2-2-Path-Compression-路径压缩"><a href="#2-2-Path-Compression-路径压缩" class="headerlink" title="2.2 Path Compression (路径压缩)"></a>2.2 <strong>Path Compression (路径压缩)</strong></h4><ul>
+<li><strong>Idea (思想)</strong>:<br>During a <strong>Find</strong> operation, flatten the structure by making every node point directly to the root.<br>在查询操作中，将路径上的每个节点直接指向根节点，从而压平结构。  </li>
+<li><strong>Effect (效果)</strong>:<br>Significantly reduces the depth of the tree over time, improving efficiency for subsequent operations.<br>随着时间的推移显著减少树的深度，提高后续操作的效率。  </li>
+<li><strong>Complexity (复杂度)</strong>: Nearly $ O(1) $ amortized per operation when combined with smart union techniques.  </li>
+</ul>
+<hr>
+<h3 id="Algorithm-Implementation-算法实现"><a href="#Algorithm-Implementation-算法实现" class="headerlink" title="Algorithm Implementation (算法实现)"></a><strong>Algorithm Implementation (算法实现)</strong></h3><h4 id="Find-Operation-查询操作"><a href="#Find-Operation-查询操作" class="headerlink" title="Find Operation (查询操作)"></a><strong>Find Operation (查询操作)</strong></h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">find</span>(<span class="params">x, parent</span>):</span><br><span class="line">    <span class="keyword">if</span> parent[x] != x:  <span class="comment"># Not the root</span></span><br><span class="line">        parent[x] = find(parent[x], parent)  <span class="comment"># Path compression</span></span><br><span class="line">    <span class="keyword">return</span> parent[x]</span><br></pre></td></tr></table></figure>
+<h4 id="Union-Operation-合并操作"><a href="#Union-Operation-合并操作" class="headerlink" title="Union Operation (合并操作)"></a><strong>Union Operation (合并操作)</strong></h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">union</span>(<span class="params">x, y, parent, rank</span>):</span><br><span class="line">    rootX = find(x, parent)</span><br><span class="line">    rootY = find(y, parent)</span><br><span class="line">    <span class="keyword">if</span> rootX != rootY:</span><br><span class="line">        <span class="keyword">if</span> rank[rootX] &gt; rank[rootY]:  <span class="comment"># Union by rank</span></span><br><span class="line">            parent[rootY] = rootX</span><br><span class="line">        <span class="keyword">elif</span> rank[rootX] &lt; rank[rootY]:</span><br><span class="line">            parent[rootX] = rootY</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            parent[rootY] = rootX</span><br><span class="line">            rank[rootX] += <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="Complexity-Analysis-复杂度分析"><a href="#Complexity-Analysis-复杂度分析" class="headerlink" title="Complexity Analysis (复杂度分析)"></a><strong>Complexity Analysis (复杂度分析)</strong></h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Complexity (时间复杂度)</th>
+<th>Explanation (说明)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Find</td>
+<td>$ O(\alpha(n)) $</td>
+<td>$ \alpha(n) $ 是反Ackermann函数，极小。</td>
+</tr>
+<tr>
+<td>Union</td>
+<td>$ O(\alpha(n)) $</td>
+<td>路径压缩与按秩合并使操作接近常数时间。</td>
+</tr>
+<tr>
+<td>Total for $ m $ operations</td>
+<td>$ O(m \cdot \alpha(n)) $</td>
+<td>对 $ m $ 次操作，几乎线性时间。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h3 id="Applications-of-Union-Find-Algorithm-并查集算法的应用"><a href="#Applications-of-Union-Find-Algorithm-并查集算法的应用" class="headerlink" title="Applications of Union-Find Algorithm (并查集算法的应用)"></a><strong>Applications of Union-Find Algorithm (并查集算法的应用)</strong></h3><ol>
+<li><strong>Connected Components in Graphs (图的连通分量)</strong>: Determine the number of connected components in an undirected graph.<br>判断无向图中连通分量的数量。  </li>
+<li><strong>Kruskal’s Algorithm (Kruskal算法)</strong>: Used in finding the Minimum Spanning Tree (MST).<br>用于求最小生成树。  </li>
+<li><strong>Dynamic Connectivity (动态连通性)</strong>: Solve problems where connections between elements change over time.<br>解决元素间连通性随时间变化的问题。  </li>
+<li><strong>Image Segmentation (图像分割)</strong>: Identify connected regions in binary images.<br>识别二值图像中的连通区域。  </li>
+</ol>
+<hr>
+<h1 id="Chapter-9-Graph-Algorithms"><a href="#Chapter-9-Graph-Algorithms" class="headerlink" title="Chapter 9 Graph Algorithms"></a>Chapter 9 Graph Algorithms</h1><blockquote>
+<p>理解 concept of graph(vertex, edge, degree, path, cyclic vs. acyclic, directed vs. undirected, weighted vs. unweighted, connected component, spanning tree), two representations, </p>
+<p>掌握 graph searching: BFS and DFS, Topological sort and their applications; shortest-path problem-Dijkstra‘s algorithm;  Minimum-cost spanning trees：Prim and Kruskal. ( ideas, processes, implementations)</p>
+</blockquote>
+<hr>
+<h2 id="1-Graph-Concepts-图的基本概念"><a href="#1-Graph-Concepts-图的基本概念" class="headerlink" title="1. Graph Concepts (图的基本概念)"></a>1. <strong>Graph Concepts (图的基本概念)</strong></h2><h3 id="Key-Terms-关键术语"><a href="#Key-Terms-关键术语" class="headerlink" title="Key Terms (关键术语)"></a><strong>Key Terms (关键术语)</strong></h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Term (术语)</th>
+<th>Definition (定义)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Vertex (顶点)</strong></td>
+<td>A fundamental unit of a graph, representing a point or object.</td>
+</tr>
+<tr>
+<td><strong>Edge (边)</strong></td>
+<td>A connection between two vertices, representing a relationship or link.</td>
+</tr>
+<tr>
+<td><strong>Degree (度)</strong></td>
+<td>The number of edges connected to a vertex.</td>
+</tr>
+<tr>
+<td><strong>Path (路径)</strong></td>
+<td>A sequence of vertices connected by edges.</td>
+</tr>
+<tr>
+<td><strong>Cycle (环)</strong></td>
+<td>A path that starts and ends at the same vertex without reusing any edge.</td>
+</tr>
+<tr>
+<td><strong>Cyclic (有环)</strong></td>
+<td>A graph containing at least one cycle.</td>
+</tr>
+<tr>
+<td><strong>Acyclic (无环)</strong></td>
+<td>A graph with no cycles.</td>
+</tr>
+<tr>
+<td><strong>Directed Graph (有向图)</strong></td>
+<td>A graph where edges have a direction (e.g., $ A \to B $).</td>
+</tr>
+<tr>
+<td><strong>Undirected Graph (无向图)</strong></td>
+<td>A graph where edges have no direction (e.g., $ A \leftrightarrow B $).</td>
+</tr>
+<tr>
+<td><strong>Weighted Graph (加权图)</strong></td>
+<td>A graph where edges have associated weights (e.g., cost, distance, time).</td>
+</tr>
+<tr>
+<td><strong>Unweighted Graph (无权图)</strong></td>
+<td>A graph where all edges are considered equal.</td>
+</tr>
+<tr>
+<td><strong>Connected Component (连通分量)</strong></td>
+<td>A subgraph where any two vertices are connected by a path, and no additional vertex can be added while preserving connectivity.</td>
+</tr>
+<tr>
+<td><strong>Spanning Tree (生成树)</strong></td>
+<td>A subgraph that includes all the vertices of the original graph and forms a tree (connected and acyclic).</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h2 id="2-Graph-Representations-图的表示方法"><a href="#2-Graph-Representations-图的表示方法" class="headerlink" title="2. Graph Representations (图的表示方法)"></a>2. <strong>Graph Representations (图的表示方法)</strong></h2><h3 id="1-Adjacency-Matrix-邻接矩阵"><a href="#1-Adjacency-Matrix-邻接矩阵" class="headerlink" title="1. Adjacency Matrix (邻接矩阵)"></a><strong>1. Adjacency Matrix (邻接矩阵)</strong></h3><ul>
+<li><strong>Definition (定义)</strong>: A 2D array where element $ A[i][j] $ represents the presence (or weight) of an edge between vertex $ i $ and $ j $.  </li>
+<li><strong>Advantages (优点)</strong>:  <ul>
+<li>Easy to implement and understand.  </li>
+<li>Fast edge lookup ($ O(1) $).  </li>
+</ul>
+</li>
+<li><strong>Disadvantages (缺点)</strong>:  <ul>
+<li>Requires $ O(V^2) $ space, even for sparse graphs.  </li>
+<li>Inefficient for iterating over neighbors.  </li>
+</ul>
+</li>
+</ul>
+<h3 id="2-Adjacency-List-邻接表"><a href="#2-Adjacency-List-邻接表" class="headerlink" title="2. Adjacency List (邻接表)"></a><strong>2. Adjacency List (邻接表)</strong></h3><ul>
+<li><strong>Definition (定义)</strong>: An array (or map) of lists where each vertex points to a list of its adjacent vertices.  </li>
+<li><strong>Advantages (优点)</strong>:  <ul>
+<li>Space-efficient for sparse graphs ($ O(V + E) $).  </li>
+<li>Fast neighbor iteration.  </li>
+</ul>
+</li>
+<li><strong>Disadvantages (缺点)</strong>:  <ul>
+<li>Edge lookup takes $ O(V) $ in the worst case.  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="3-Graph-Searching-Algorithms-图搜索算法"><a href="#3-Graph-Searching-Algorithms-图搜索算法" class="headerlink" title="3. Graph Searching Algorithms (图搜索算法)"></a>3. <strong>Graph Searching Algorithms (图搜索算法)</strong></h2><h3 id="1-Breadth-First-Search-BFS-广度优先搜索"><a href="#1-Breadth-First-Search-BFS-广度优先搜索" class="headerlink" title="1. Breadth-First Search (BFS, 广度优先搜索)"></a><strong>1. Breadth-First Search (BFS, 广度优先搜索)</strong></h3><ul>
+<li><strong>Idea (思想)</strong>: Explore all neighbors of a vertex before moving to the next level of neighbors.  </li>
+<li><strong>Process (过程)</strong>:  <ol>
+<li>Start from a source vertex.  </li>
+<li>Use a queue to track the vertices to be visited.  </li>
+<li>Mark visited vertices to avoid revisiting.  </li>
+</ol>
+</li>
+<li><strong>Time Complexity (时间复杂度)</strong>: $ O(V + E) $  </li>
+<li><strong>Applications (应用)</strong>:  <ul>
+<li>Shortest path in an unweighted graph.  </li>
+<li>Connected component detection.  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="2-Depth-First-Search-DFS-深度优先搜索"><a href="#2-Depth-First-Search-DFS-深度优先搜索" class="headerlink" title="2. Depth-First Search (DFS, 深度优先搜索)"></a><strong>2. Depth-First Search (DFS, 深度优先搜索)</strong></h3><ul>
+<li><strong>Idea (思想)</strong>: Explore as far as possible along each branch before backtracking.  </li>
+<li><strong>Process (过程)</strong>:  <ol>
+<li>Start from a source vertex.  </li>
+<li>Use recursion or a stack to track the vertices being visited.  </li>
+<li>Mark visited vertices to avoid revisiting.  </li>
+</ol>
+</li>
+<li><strong>Time Complexity (时间复杂度)</strong>: $ O(V + E) $  </li>
+<li><strong>Applications (应用)</strong>:  <ul>
+<li>Detecting cycles.  </li>
+<li>Topological sorting.  </li>
+<li>Connected component detection.  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="3-Topological-Sort-拓扑排序"><a href="#3-Topological-Sort-拓扑排序" class="headerlink" title="3. Topological Sort (拓扑排序)"></a><strong>3. Topological Sort (拓扑排序)</strong></h3><ul>
+<li><strong>Idea (思想)</strong>: A linear ordering of vertices such that for every directed edge $ u \to v $, $ u $ appears before $ v $ in the ordering.  </li>
+<li><strong>Process (过程)</strong>:  <ol>
+<li>Use DFS and record the finishing times of vertices.  </li>
+<li>Reverse the order of finishing times.  </li>
+</ol>
+</li>
+<li><strong>Time Complexity (时间复杂度)</strong>: $ O(V + E) $  </li>
+<li><strong>Applications (应用)</strong>:  <ul>
+<li>Scheduling tasks with dependencies.  </li>
+<li>Resolving symbol dependencies in compilers.  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="4-Shortest-Path-Problem-最短路径问题"><a href="#4-Shortest-Path-Problem-最短路径问题" class="headerlink" title="4. Shortest-Path Problem (最短路径问题)"></a>4. <strong>Shortest-Path Problem (最短路径问题)</strong></h2><h3 id="Dijkstra’s-Algorithm-迪杰斯特拉算法"><a href="#Dijkstra’s-Algorithm-迪杰斯特拉算法" class="headerlink" title="Dijkstra’s Algorithm (迪杰斯特拉算法)"></a><strong>Dijkstra’s Algorithm (迪杰斯特拉算法)</strong></h3><ul>
+<li><strong>Idea (思想)</strong>: Use a priority queue to greedily select the vertex with the smallest tentative distance.  </li>
+<li><strong>Process (过程)</strong>:  <ol>
+<li>Initialize distances to all vertices as infinity, except the source vertex (set to 0).  </li>
+<li>Use a priority queue to repeatedly extract the vertex with the smallest distance.  </li>
+<li>Relax all outgoing edges of the extracted vertex.  </li>
+</ol>
+</li>
+<li><strong>Time Complexity (时间复杂度)</strong>: $ O((V + E) \log V) $ with a priority queue.  </li>
+<li><strong>Applications (应用)</strong>:  <ul>
+<li>Finding shortest paths in weighted graphs with non-negative weights.  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="5-Minimum-Cost-Spanning-Trees-最小生成树"><a href="#5-Minimum-Cost-Spanning-Trees-最小生成树" class="headerlink" title="5. Minimum-Cost Spanning Trees (最小生成树)"></a>5. <strong>Minimum-Cost Spanning Trees (最小生成树)</strong></h2><h3 id="1-Prim’s-Algorithm-普里姆算法"><a href="#1-Prim’s-Algorithm-普里姆算法" class="headerlink" title="1. Prim’s Algorithm (普里姆算法)"></a><strong>1. Prim’s Algorithm (普里姆算法)</strong></h3><ul>
+<li><strong>Idea (思想)</strong>: Grow the spanning tree from an arbitrary vertex by greedily selecting the smallest edge that connects the tree to a new vertex.  </li>
+<li><strong>Process (过程)</strong>:  <ol>
+<li>Start with an arbitrary vertex.  </li>
+<li>Use a priority queue to track the minimum-cost edges.  </li>
+<li>Add the smallest edge to the spanning tree, marking the newly connected vertex.  </li>
+</ol>
+</li>
+<li><strong>Time Complexity (时间复杂度)</strong>: $ O((V + E) \log V) $ with a priority queue.  </li>
+<li><strong>Applications (应用)</strong>:  <ul>
+<li>Constructing network infrastructure with minimum cost.  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="2-Kruskal’s-Algorithm-克鲁斯卡尔算法"><a href="#2-Kruskal’s-Algorithm-克鲁斯卡尔算法" class="headerlink" title="2. Kruskal’s Algorithm (克鲁斯卡尔算法)"></a><strong>2. Kruskal’s Algorithm (克鲁斯卡尔算法)</strong></h3><ul>
+<li><strong>Idea (思想)</strong>: Sort all edges by weight and greedily add edges to the spanning tree, ensuring no cycles are formed.  </li>
+<li><strong>Process (过程)</strong>:  <ol>
+<li>Sort all edges by weight.  </li>
+<li>Use the union-find algorithm to add edges without forming cycles.  </li>
+</ol>
+</li>
+<li><strong>Time Complexity (时间复杂度)</strong>: $ O(E \log E + E \alpha(V)) $, where $ \alpha(V) $ is the inverse Ackermann function from the union-find algorithm.  </li>
+<li><strong>Applications (应用)</strong>:  <ul>
+<li>Building cost-efficient networks.  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1 id="题型"><a href="#题型" class="headerlink" title="题型"></a>题型</h1><div class="table-container">
+<table>
+<thead>
+<tr>
+<th><strong>题型</strong></th>
+<th><strong>题数</strong></th>
+<th><strong>分值占比</strong></th>
+<th><strong>分值</strong></th>
+<th><strong>备注</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>选择题</strong></td>
+<td>10题</td>
+<td>20%</td>
+<td>20分</td>
+<td>每题2分</td>
+</tr>
+<tr>
+<td><strong>编程题</strong></td>
+<td>10空</td>
+<td>20%</td>
+<td>20分</td>
+<td>每空2分</td>
+</tr>
+<tr>
+<td><strong>解答题</strong></td>
+<td>3题</td>
+<td>30%</td>
+<td>30分</td>
+<td>每题10分</td>
+</tr>
+<tr>
+<td><strong>综合题</strong></td>
+<td>2题</td>
+<td>30%</td>
+<td>30分</td>
+<td>每题15分</td>
+</tr>
+</tbody>
+</table>
+</div>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a target="_blank" rel="noopener" href="https://www.totorocatcat.top/">Totoro</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://totorocatcat.top/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%80%83%E8%AF%95%E5%A4%8D%E4%B9%A0%E4%B8%80%E8%A7%88/">http://totorocatcat.top/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%80%83%E8%AF%95%E5%A4%8D%E4%B9%A0%E4%B8%80%E8%A7%88/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://totorocatcat.top" target="_blank">Totoroの旅</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%9C%89%E8%B6%A3/">有趣</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/9db9e07b4478edd4d69f7655fffcfc8.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/Java%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/" title="Java期末复习"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/c3c64e8cd49d8d1027d4adbdf41ef23.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Java期末复习</div></div></a></div><div class="next-post pull-right"><a href="/lec56/" title="Lec5 Relations(6)"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/74937a5856a95914953e23e589d2e5d.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Lec5 Relations(6)</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/C-%E6%9C%9F%E6%9C%AB%E8%80%83%E8%AF%95-1/" title="C++期末考试"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://api.r10086.com/%E5%9B%BE%E5%8C%85webp/%E5%8A%A8%E6%BC%AB%E7%BB%BC%E5%90%881/86815-106.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-05-31</div><div class="title">C++期末考试</div></div></a></div><div><a href="/C-%E5%85%AB%E8%82%A1/" title="C++八股"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.likepoems.com/resource/pc/b702fcf4480034312d58d6f56e30d7624.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-06-01</div><div class="title">C++八股</div></div></a></div><div><a href="/C-%E6%9C%9F%E6%9C%AB%E8%80%83%E8%AF%95/" title="C++期末考试"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.likepoems.com/resource/pc/68e21cc80a435c28fdf4c47e4652ebc17.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-05-31</div><div class="title">C++期末考试</div></div></a></div><div><a href="/C-%E7%BB%83%E4%B9%A0%E9%A2%983/" title="C++练习题3"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://api.r10086.com/%E5%9B%BE%E5%8C%85webp/%E5%8A%A8%E6%BC%AB%E7%BB%BC%E5%90%881/73207-106.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-06-03</div><div class="title">C++练习题3</div></div></a></div><div><a href="/C-%E7%BB%83%E4%B9%A0%E9%A2%98%EF%BC%882%EF%BC%89/" title="C++练习题2"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/ushio-api-img-moe@5.0.51/img_513_1920x1080_72_null_normal.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-06-03</div><div class="title">C++练习题2</div></div></a></div><div><a href="/C-%E9%80%89%E6%8B%A9%E9%A2%98%E5%8A%A0%E8%AE%AD/" title="C++选择题加训"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/ushio-api-img-moe@5.0.37/img_371_3840x2160_72_null_normal.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-06-02</div><div class="title">C++选择题加训</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/px3.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Totoro</div><div class="author-info__description">热爱文学的SCUT软件学院学生</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">802</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">32</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/4512abc"><i class="fab fa-github"></i><span>🛴前往小窝......</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/4512abc" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:4512abc@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到龙猫の小窝</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%80%83%E8%AF%95%E5%A4%8D%E4%B9%A0%E8%8C%83%E5%9B%B4%E4%B8%80%E8%A7%88"><span class="toc-text">数据结构考试复习范围一览</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Chapter-1-Programming-A-General-Overview"><span class="toc-text">Chapter 1 Programming: A General Overview</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Data-Structure-%E6%A6%82%E5%BF%B5"><span class="toc-text">1. Data Structure 概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Algorithm-%E6%A6%82%E5%BF%B5"><span class="toc-text">2. Algorithm 概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Abstract-Data-Type-ADT-%E6%8A%BD%E8%B1%A1%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-text">3. Abstract Data Type (ADT) 抽象数据类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-Relationship-between-Data-Structures-and-Algorithms-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-text">4. Relationship between Data Structures and Algorithms 数据结构与算法的关系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-Common-Data-Structures-and-Their-Applications-%E5%B8%B8%E8%A7%81%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%8F%8A%E5%85%B6%E5%BA%94%E7%94%A8"><span class="toc-text">5. Common Data Structures and Their Applications 常见数据结构及其应用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-Algorithm-Complexity-%E7%AE%97%E6%B3%95%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="toc-text">6. Algorithm Complexity 算法复杂度</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Chapter-2-Algorithm-Analysis"><span class="toc-text">Chapter 2 Algorithm Analysis</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Growth-Rate-%E5%A2%9E%E9%95%BF%E7%8E%87"><span class="toc-text">1. Growth Rate (增长率)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Upper-amp-Lower-Bounds-%E4%B8%8A%E7%95%8C%E4%B8%8E%E4%B8%8B%E7%95%8C"><span class="toc-text">2. Upper &amp; Lower Bounds (上界与下界)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Best-Worst-and-Average-Cases-%E6%9C%80%E4%BC%98%E3%80%81%E6%9C%80%E5%9D%8F%E5%92%8C%E5%B9%B3%E5%9D%87%E6%83%85%E5%86%B5"><span class="toc-text">3. Best, Worst, and Average Cases (最优、最坏和平均情况)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-Amortized-Analysis-%E5%9D%87%E6%91%8A%E5%88%86%E6%9E%90"><span class="toc-text">4. Amortized Analysis (均摊分析)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-Asymptotic-Analysis-%E6%B8%90%E8%BF%9B%E5%88%86%E6%9E%90"><span class="toc-text">5. Asymptotic Analysis (渐进分析)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-Rules-for-Asymptotic-Analysis-%E6%B8%90%E8%BF%9B%E5%88%86%E6%9E%90%E8%A7%84%E5%88%99"><span class="toc-text">6. Rules for Asymptotic Analysis (渐进分析规则)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-Practical-Example-%E5%AE%9E%E9%99%85%E7%A4%BA%E4%BE%8B"><span class="toc-text">7. Practical Example (实际示例)</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Chapter-3-Lists-stacks-and-Queues"><span class="toc-text">Chapter 3 Lists, stacks and Queues</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Lists-%E7%BA%BF%E6%80%A7%E8%A1%A8"><span class="toc-text">1. Lists (线性表)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-Logical-Structure-%E9%80%BB%E8%BE%91%E7%BB%93%E6%9E%84"><span class="toc-text">1.1 Logical Structure (逻辑结构)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-Storage-Structures-%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84"><span class="toc-text">1.2 Storage Structures (存储结构)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-Algorithm-Complexity-%E7%AE%97%E6%B3%95%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="toc-text">1.3 Algorithm Complexity (算法复杂度)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Stacks-%E6%A0%88"><span class="toc-text">2. Stacks (栈)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-Logical-Structure-%E9%80%BB%E8%BE%91%E7%BB%93%E6%9E%84"><span class="toc-text">2.1 Logical Structure (逻辑结构)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-Storage-Structures-%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84"><span class="toc-text">2.2 Storage Structures (存储结构)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-Algorithm-Complexity-%E7%AE%97%E6%B3%95%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="toc-text">2.3 Algorithm Complexity (算法复杂度)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Queues-%E9%98%9F%E5%88%97"><span class="toc-text">3. Queues (队列)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-Logical-Structure-%E9%80%BB%E8%BE%91%E7%BB%93%E6%9E%84"><span class="toc-text">3.1 Logical Structure (逻辑结构)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-Storage-Structures-%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84"><span class="toc-text">3.2 Storage Structures (存储结构)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-Algorithm-Complexity-%E7%AE%97%E6%B3%95%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="toc-text">3.3 Algorithm Complexity (算法复杂度)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-Comparison-Summary-%E5%AF%B9%E6%AF%94%E6%80%BB%E7%BB%93"><span class="toc-text">4. Comparison Summary (对比总结)</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Chapter-4-Trees"><span class="toc-text">Chapter 4 Trees</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Definition-and-Properties-of-Tree-%E6%A0%91%E7%9A%84%E5%AE%9A%E4%B9%89%E4%B8%8E%E6%80%A7%E8%B4%A8"><span class="toc-text">1. Definition and Properties of Tree (树的定义与性质)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-Definition-%E5%AE%9A%E4%B9%89"><span class="toc-text">1.1 Definition (定义)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-Properties-%E6%80%A7%E8%B4%A8"><span class="toc-text">1.2 Properties (性质)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Tree-Types-and-Implementations-%E6%A0%91%E7%9A%84%E7%B1%BB%E5%9E%8B%E4%B8%8E%E5%AE%9E%E7%8E%B0"><span class="toc-text">2. Tree Types and Implementations (树的类型与实现)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-Balanced-Tree-%E5%B9%B3%E8%A1%A1%E6%A0%91"><span class="toc-text">2.1 Balanced Tree (平衡树)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-Complete-Binary-Tree-%E5%AE%8C%E5%85%A8%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="toc-text">2.2 Complete Binary Tree (完全二叉树)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-Full-Binary-Tree-%E6%BB%A1%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="toc-text">2.3 Full Binary Tree (满二叉树)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-B-Trees-B-%E6%A0%91"><span class="toc-text">2.4 B-Trees (B 树)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-Up-Tree-%E5%9F%BA%E4%BA%8E%E7%88%B6%E6%8C%87%E9%92%88%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-text">2.5 Up-Tree (基于父指针的实现)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Binary-Tree-%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="toc-text">3. Binary Tree (二叉树)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-Binary-Tree-Traversals-%E4%BA%8C%E5%8F%89%E6%A0%91%E9%81%8D%E5%8E%86"><span class="toc-text">3.1 Binary Tree Traversals (二叉树遍历)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-Binary-Search-Tree-BST-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91"><span class="toc-text">3.2 Binary Search Tree (BST, 二叉搜索树)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Properties-%E6%80%A7%E8%B4%A8"><span class="toc-text">Properties (性质)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Operations-and-Algorithm-Complexity-%E6%93%8D%E4%BD%9C%E4%B8%8E%E7%AE%97%E6%B3%95%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="toc-text">Operations and Algorithm Complexity (操作与算法复杂度)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-AVL-Trees-AVL-%E6%A0%91"><span class="toc-text">3.3 AVL Trees (AVL 树)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#AVL-Property-AVL-%E6%80%A7%E8%B4%A8"><span class="toc-text">AVL Property (AVL 性质)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Rebalancing-Operations-%E9%87%8D%E6%96%B0%E5%B9%B3%E8%A1%A1%E6%93%8D%E4%BD%9C"><span class="toc-text">Rebalancing Operations (重新平衡操作)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Algorithm-Complexity-%E7%AE%97%E6%B3%95%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="toc-text">Algorithm Complexity (算法复杂度)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-Splay-Trees-%E4%BC%B8%E5%B1%95%E6%A0%91"><span class="toc-text">3.4 Splay Trees (伸展树)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Splay-Property-%E4%BC%B8%E5%B1%95%E6%80%A7%E8%B4%A8"><span class="toc-text">Splay Property (伸展性质)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Splaying-Operations-%E4%BC%B8%E5%B1%95%E6%93%8D%E4%BD%9C"><span class="toc-text">Splaying Operations (伸展操作)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Algorithm-Complexity-%E7%AE%97%E6%B3%95%E5%A4%8D%E6%9D%82%E5%BA%A6-1"><span class="toc-text">Algorithm Complexity (算法复杂度)</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Chapter-5-Hashing"><span class="toc-text">Chapter 5 Hashing</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Concepts-of-Searching-%E6%90%9C%E7%B4%A2%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-text">1. Concepts of Searching (搜索的概念)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Definition-%E5%AE%9A%E4%B9%89"><span class="toc-text">Definition (定义)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Types-of-Searching-Methods-%E6%90%9C%E7%B4%A2%E6%96%B9%E6%B3%95%E7%B1%BB%E5%9E%8B"><span class="toc-text">Types of Searching Methods (搜索方法类型)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Hash-Table-%E5%93%88%E5%B8%8C%E8%A1%A8"><span class="toc-text">2. Hash Table (哈希表)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Definition-%E5%AE%9A%E4%B9%89-1"><span class="toc-text">Definition (定义)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Key-Components-%E5%85%B3%E9%94%AE%E7%BB%84%E6%88%90%E9%83%A8%E5%88%86"><span class="toc-text">Key Components (关键组成部分)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Hash-Function-%E5%93%88%E5%B8%8C%E5%87%BD%E6%95%B0"><span class="toc-text">3. Hash Function (哈希函数)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Definition-%E5%AE%9A%E4%B9%89-2"><span class="toc-text">Definition (定义)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Desirable-Properties-%E7%90%86%E6%83%B3%E6%80%A7%E8%B4%A8"><span class="toc-text">Desirable Properties (理想性质)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-Collisions-and-Collision-Resolution-%E5%86%B2%E7%AA%81%E5%8F%8A%E5%85%B6%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="toc-text">4. Collisions and Collision Resolution (冲突及其解决方法)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Definition-%E5%AE%9A%E4%B9%89-3"><span class="toc-text">Definition (定义)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Collision-Resolution-Policies-%E5%86%B2%E7%AA%81%E8%A7%A3%E5%86%B3%E7%AD%96%E7%95%A5"><span class="toc-text">Collision Resolution Policies (冲突解决策略)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-Open-Hashing-%E5%BC%80%E6%94%BE%E5%93%88%E5%B8%8C%E6%B3%95-Separate-Chaining-%E5%88%86%E7%A6%BB%E9%93%BE%E6%8E%A5%E6%B3%95"><span class="toc-text">4.1 Open Hashing (开放哈希法) - Separate Chaining (分离链接法)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-Closed-Hashing-%E5%B0%81%E9%97%AD%E5%93%88%E5%B8%8C%E6%B3%95-Probing-%E6%8E%A2%E6%B5%8B%E6%B3%95"><span class="toc-text">4.2 Closed Hashing (封闭哈希法) - Probing (探测法)</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-Algorithm-Complexity-%E7%AE%97%E6%B3%95%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="toc-text">5. Algorithm Complexity (算法复杂度)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-Comparison-of-Open-and-Closed-Hashing-%E5%BC%80%E6%94%BE%E4%B8%8E%E5%B0%81%E9%97%AD%E5%93%88%E5%B8%8C%E6%B3%95%E5%AF%B9%E6%AF%94"><span class="toc-text">6. Comparison of Open and Closed Hashing (开放与封闭哈希法对比)</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Chapter-6-Priority-Queues-Heaps"><span class="toc-text">Chapter 6 Priority Queues (Heaps)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Concepts-of-Priority-Queues-%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-text">1. Concepts of Priority Queues (优先队列的概念)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Definition-%E5%AE%9A%E4%B9%89-4"><span class="toc-text">Definition (定义)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Key-Properties-%E5%85%B3%E9%94%AE%E7%89%B9%E6%80%A7"><span class="toc-text">Key Properties (关键特性)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Applications-%E5%BA%94%E7%94%A8"><span class="toc-text">Applications (应用)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Concepts-of-Complete-Binary-Tree-%E5%AE%8C%E5%85%A8%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-text">2. Concepts of Complete Binary Tree (完全二叉树的概念)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Definition-%E5%AE%9A%E4%B9%89-5"><span class="toc-text">Definition (定义)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Properties-%E6%80%A7%E8%B4%A8-1"><span class="toc-text">Properties (性质)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Binary-Heap-%E4%BA%8C%E5%8F%89%E5%A0%86"><span class="toc-text">3. Binary Heap (二叉堆)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Definition-%E5%AE%9A%E4%B9%89-6"><span class="toc-text">Definition (定义)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Key-Operations-%E5%85%B3%E9%94%AE%E6%93%8D%E4%BD%9C"><span class="toc-text">Key Operations (关键操作)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-Insertion-%E6%8F%92%E5%85%A5"><span class="toc-text">3.1 Insertion (插入)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-Deletion-%E5%88%A0%E9%99%A4"><span class="toc-text">3.2 Deletion (删除)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-BuildHeap-%E6%9E%84%E5%BB%BA%E5%A0%86"><span class="toc-text">3.3 BuildHeap (构建堆)</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-Algorithm-Complexity-%E7%AE%97%E6%B3%95%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="toc-text">4. Algorithm Complexity (算法复杂度)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-Applications-of-Binary-Heaps-%E4%BA%8C%E5%8F%89%E5%A0%86%E7%9A%84%E5%BA%94%E7%94%A8"><span class="toc-text">5. Applications of Binary Heaps (二叉堆的应用)</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Chapter-7-Sorting"><span class="toc-text">Chapter 7 Sorting</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Internal-Sorting-and-External-Sorting-%E5%86%85%E9%83%A8%E6%8E%92%E5%BA%8F%E4%B8%8E%E5%A4%96%E9%83%A8%E6%8E%92%E5%BA%8F"><span class="toc-text">1. Internal Sorting and External Sorting (内部排序与外部排序)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Internal-Sorting-%E5%86%85%E9%83%A8%E6%8E%92%E5%BA%8F"><span class="toc-text">Internal Sorting (内部排序)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#External-Sorting-%E5%A4%96%E9%83%A8%E6%8E%92%E5%BA%8F"><span class="toc-text">External Sorting (外部排序)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-General-Lower-Bound-for-Sorting-%E6%8E%92%E5%BA%8F%E7%9A%84%E9%80%9A%E7%94%A8%E4%B8%8B%E7%95%8C"><span class="toc-text">2. General Lower Bound for Sorting (排序的通用下界)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Key-Concepts-%E6%A0%B8%E5%BF%83%E6%A6%82%E5%BF%B5"><span class="toc-text">Key Concepts (核心概念)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Lower-Bound-%E4%B8%8B%E7%95%8C"><span class="toc-text">Lower Bound (下界)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Sorting-Algorithms-%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95"><span class="toc-text">3. Sorting Algorithms (排序算法)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-Bubble-Sort-%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F"><span class="toc-text">3.1 Bubble Sort (冒泡排序)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-Selection-Sort-%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F"><span class="toc-text">3.2 Selection Sort (选择排序)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-Insertion-Sort-%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F"><span class="toc-text">3.3 Insertion Sort (插入排序)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-Merge-Sort-%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F"><span class="toc-text">3.4 Merge Sort (归并排序)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-5-Quick-Sort-%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F"><span class="toc-text">3.5 Quick Sort (快速排序)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-6-Heap-Sort-%E5%A0%86%E6%8E%92%E5%BA%8F"><span class="toc-text">3.6 Heap Sort (堆排序)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-7-Counting-Sort-%E8%AE%A1%E6%95%B0%E6%8E%92%E5%BA%8F"><span class="toc-text">3.7 Counting Sort (计数排序)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-8-Radix-Sort-%E5%9F%BA%E6%95%B0%E6%8E%92%E5%BA%8F"><span class="toc-text">3.8 Radix Sort (基数排序)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-9-Bucket-Sort-%E6%A1%B6%E6%8E%92%E5%BA%8F"><span class="toc-text">3.9 Bucket Sort (桶排序)</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Chapter-8-The-Disjoint-Sets-Class"><span class="toc-text">Chapter 8 The Disjoint Sets Class</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%8C%E6%8F%A1-union-find-algorithm-Smart-union-algorithms-union-by-size-amp-union-by-height-path-compression"><span class="toc-text">掌握 union&#x2F;find algorithm(Smart union algorithms-union by-size &amp; union by-height, path compression) </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Equivalence-Class-and-Dynamic-Equivalence-Problem-%E7%AD%89%E4%BB%B7%E7%B1%BB%E4%B8%8E%E5%8A%A8%E6%80%81%E7%AD%89%E4%BB%B7%E9%97%AE%E9%A2%98"><span class="toc-text">1. Equivalence Class and Dynamic Equivalence Problem (等价类与动态等价问题)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Equivalence-Class-%E7%AD%89%E4%BB%B7%E7%B1%BB"><span class="toc-text">Equivalence Class (等价类)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Definition-%E5%AE%9A%E4%B9%89-7"><span class="toc-text">Definition (定义)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Properties-%E6%80%A7%E8%B4%A8-2"><span class="toc-text">Properties (性质)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Examples-%E4%BE%8B%E5%AD%90"><span class="toc-text">Examples (例子)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Dynamic-Equivalence-Problem-%E5%8A%A8%E6%80%81%E7%AD%89%E4%BB%B7%E9%97%AE%E9%A2%98"><span class="toc-text">Dynamic Equivalence Problem (动态等价问题)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Definition-%E5%AE%9A%E4%B9%89-8"><span class="toc-text">Definition (定义)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Operations-%E6%93%8D%E4%BD%9C"><span class="toc-text">Operations (操作)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Applications-%E5%BA%94%E7%94%A8-1"><span class="toc-text">Applications (应用)</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Union-Find-Algorithm-%E5%B9%B6%E6%9F%A5%E9%9B%86%E7%AE%97%E6%B3%95"><span class="toc-text">2. Union-Find Algorithm (并查集算法)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Definition-%E5%AE%9A%E4%B9%89-9"><span class="toc-text">Definition (定义)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Key-Concepts-%E6%A0%B8%E5%BF%83%E6%A6%82%E5%BF%B5-1"><span class="toc-text">Key Concepts (核心概念)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-Smart-Union-Algorithms-%E4%BC%98%E5%8C%96%E7%9A%84%E5%90%88%E5%B9%B6%E7%AE%97%E6%B3%95"><span class="toc-text">2.1 Smart Union Algorithms (优化的合并算法)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-Path-Compression-%E8%B7%AF%E5%BE%84%E5%8E%8B%E7%BC%A9"><span class="toc-text">2.2 Path Compression (路径压缩)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Algorithm-Implementation-%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0"><span class="toc-text">Algorithm Implementation (算法实现)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Find-Operation-%E6%9F%A5%E8%AF%A2%E6%93%8D%E4%BD%9C"><span class="toc-text">Find Operation (查询操作)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Union-Operation-%E5%90%88%E5%B9%B6%E6%93%8D%E4%BD%9C"><span class="toc-text">Union Operation (合并操作)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Complexity-Analysis-%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90"><span class="toc-text">Complexity Analysis (复杂度分析)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Applications-of-Union-Find-Algorithm-%E5%B9%B6%E6%9F%A5%E9%9B%86%E7%AE%97%E6%B3%95%E7%9A%84%E5%BA%94%E7%94%A8"><span class="toc-text">Applications of Union-Find Algorithm (并查集算法的应用)</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Chapter-9-Graph-Algorithms"><span class="toc-text">Chapter 9 Graph Algorithms</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Graph-Concepts-%E5%9B%BE%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-text">1. Graph Concepts (图的基本概念)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Key-Terms-%E5%85%B3%E9%94%AE%E6%9C%AF%E8%AF%AD"><span class="toc-text">Key Terms (关键术语)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Graph-Representations-%E5%9B%BE%E7%9A%84%E8%A1%A8%E7%A4%BA%E6%96%B9%E6%B3%95"><span class="toc-text">2. Graph Representations (图的表示方法)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Adjacency-Matrix-%E9%82%BB%E6%8E%A5%E7%9F%A9%E9%98%B5"><span class="toc-text">1. Adjacency Matrix (邻接矩阵)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Adjacency-List-%E9%82%BB%E6%8E%A5%E8%A1%A8"><span class="toc-text">2. Adjacency List (邻接表)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Graph-Searching-Algorithms-%E5%9B%BE%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95"><span class="toc-text">3. Graph Searching Algorithms (图搜索算法)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Breadth-First-Search-BFS-%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2"><span class="toc-text">1. Breadth-First Search (BFS, 广度优先搜索)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Depth-First-Search-DFS-%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2"><span class="toc-text">2. Depth-First Search (DFS, 深度优先搜索)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Topological-Sort-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F"><span class="toc-text">3. Topological Sort (拓扑排序)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-Shortest-Path-Problem-%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98"><span class="toc-text">4. Shortest-Path Problem (最短路径问题)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Dijkstra%E2%80%99s-Algorithm-%E8%BF%AA%E6%9D%B0%E6%96%AF%E7%89%B9%E6%8B%89%E7%AE%97%E6%B3%95"><span class="toc-text">Dijkstra’s Algorithm (迪杰斯特拉算法)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-Minimum-Cost-Spanning-Trees-%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91"><span class="toc-text">5. Minimum-Cost Spanning Trees (最小生成树)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Prim%E2%80%99s-Algorithm-%E6%99%AE%E9%87%8C%E5%A7%86%E7%AE%97%E6%B3%95"><span class="toc-text">1. Prim’s Algorithm (普里姆算法)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Kruskal%E2%80%99s-Algorithm-%E5%85%8B%E9%B2%81%E6%96%AF%E5%8D%A1%E5%B0%94%E7%AE%97%E6%B3%95"><span class="toc-text">2. Kruskal’s Algorithm (克鲁斯卡尔算法)</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%A2%98%E5%9E%8B"><span class="toc-text">题型</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/%E8%AE%A1%E7%BB%84%E4%B9%A0%E9%A2%98%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B%EF%BC%887%EF%BC%89/" title="计组习题的那些事（7）"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/omoide004.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="计组习题的那些事（7）"/></a><div class="content"><a class="title" href="/%E8%AE%A1%E7%BB%84%E4%B9%A0%E9%A2%98%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B%EF%BC%887%EF%BC%89/" title="计组习题的那些事（7）">计组习题的那些事（7）</a><time datetime="2024-12-07T15:50:36.000Z" title="发表于 2024-12-07 23:50:36">2024-12-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E8%AE%A1%E7%BB%84%E4%B9%A0%E9%A2%98%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B%EF%BC%886%EF%BC%89/" title="计组习题的那些事（6）"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/porco026.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="计组习题的那些事（6）"/></a><div class="content"><a class="title" href="/%E8%AE%A1%E7%BB%84%E4%B9%A0%E9%A2%98%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B%EF%BC%886%EF%BC%89/" title="计组习题的那些事（6）">计组习题的那些事（6）</a><time datetime="2024-12-07T15:06:12.000Z" title="发表于 2024-12-07 23:06:12">2024-12-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E8%AE%A1%E7%BB%84%E4%B9%A0%E9%A2%98%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B%EF%BC%885%EF%BC%89/" title="计组习题的那些事（5）"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/porco026.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="计组习题的那些事（5）"/></a><div class="content"><a class="title" href="/%E8%AE%A1%E7%BB%84%E4%B9%A0%E9%A2%98%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B%EF%BC%885%EF%BC%89/" title="计组习题的那些事（5）">计组习题的那些事（5）</a><time datetime="2024-12-07T09:25:25.000Z" title="发表于 2024-12-07 17:25:25">2024-12-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E8%AE%A1%E7%BB%84%E4%B9%A0%E9%A2%98%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B%EF%BC%884%EF%BC%89/" title="计组习题的那些事（4）"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/howl032.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="计组习题的那些事（4）"/></a><div class="content"><a class="title" href="/%E8%AE%A1%E7%BB%84%E4%B9%A0%E9%A2%98%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B%EF%BC%884%EF%BC%89/" title="计组习题的那些事（4）">计组习题的那些事（4）</a><time datetime="2024-12-07T07:53:21.000Z" title="发表于 2024-12-07 15:53:21">2024-12-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E8%AE%A1%E7%BB%84%E4%B9%A0%E9%A2%98%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B%EF%BC%883%EF%BC%89/" title="计组习题的那些事（3）"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/howl005.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="计组习题的那些事（3）"/></a><div class="content"><a class="title" href="/%E8%AE%A1%E7%BB%84%E4%B9%A0%E9%A2%98%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B%EF%BC%883%EF%BC%89/" title="计组习题的那些事（3）">计组习题的那些事（3）</a><time datetime="2024-12-07T05:13:23.000Z" title="发表于 2024-12-07 13:13:23">2024-12-07</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 By Totoro</div><div class="footer_custom_text">I wish you to become your own sun, no need to rely on who's light.<p><a target="_blank" href="https://hexo.io/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&logo=hexo" title="博客框架为Hexo"></a>&nbsp;<a target="_blank" href="https://butterfly.js.org/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&logo=bitdefender" title="主题采用butterfly"></a>&nbsp;<a target="_blank" href="https://www.jsdelivr.com/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&logo=jsDelivr" title="本站使用JsDelivr为静态资源提供CDN加速"></a> &nbsp;<a target="_blank" href="https://vercel.com/ "><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Hosted-Vervel-brightgreen?style=flat&logo=Vercel" title="本站采用双线部署，默认线路托管于Vercel"></a>&nbsp;<a target="_blank" href="https://vercel.com/ "><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Hosted-Coding-0cedbe?style=flat&logo=Codio" title="本站采用双线部署，联通线路托管于Coding"></a>&nbsp;<a target="_blank" href="https://github.com/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&logo=GitHub" title="本站项目由Gtihub托管"></a>&nbsp;<a target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&logo=Claris" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"></a></p></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat-btn" type="button" title="聊天"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="/js/tw_cn.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@5.2.0/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'HT1PalaKkPaG1UqAXBhJXIu8-gzGzoHsz',
+      appKey: 'iT0TnVVAwf9zuZ7NqwclQItY',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://cdn.jsdelivr.net/npm/valine@1.5.1/dist/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><script defer src="/js/light.js"></script><canvas id="universe"></canvas><script defer src="/js/universe.js"></script><script async src="/js/title.js"></script><script defer src="https://npm.elemecdn.com/jquery@latest/dist/jquery.min.js"></script><script defer data-pjax src="/js/cat.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="1" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener
+  btf.removeGlobalFnEvent('pjax')
+  btf.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.12.0"></script></div></div><!-- hexo injector body_end start --><script data-pjax>
+    function butterfly_categories_card_injector_config(){
+      var parent_div_git = document.getElementById('recent-posts');
+      var item_html = '<style>li.categoryBar-list-item{width:32.3%;}.categoryBar-list{max-height: 380px;overflow:auto;}.categoryBar-list::-webkit-scrollbar{width:0!important}@media screen and (max-width: 650px){.categoryBar-list{max-height: 320px;}}</style><div class="recent-post-item" style="height:auto;width:100%;padding:0px;"><div id="categoryBar"><ul class="categoryBar-list"><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_12.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS70の旅/&quot;);" href="javascript:void(0);">CS70の旅</a><span class="categoryBar-list-count">25</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_13.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS61B/&quot;);" href="javascript:void(0);">CS61B</a><span class="categoryBar-list-count">76</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_14.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/期末の旅/&quot;);" href="javascript:void(0);">期末の旅</a><span class="categoryBar-list-count">99</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_17.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/区域赛の旅/&quot;);" href="javascript:void(0);">区域赛の旅</a><span class="categoryBar-list-count">7</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_18.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/ACMの旅/&quot;);" href="javascript:void(0);">ACMの旅</a><span class="categoryBar-list-count">68</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_19.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/数学建模/&quot;);" href="javascript:void(0);">数学建模</a><span class="categoryBar-list-count">31</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_20.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/Codeforcesの旅/&quot;);" href="javascript:void(0);">Codeforcesの旅</a><span class="categoryBar-list-count">24</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_21.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/刷题计划/&quot;);" href="javascript:void(0);">刷题计划</a><span class="categoryBar-list-count">40</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_22.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/牛客の旅/&quot;);" href="javascript:void(0);">牛客の旅</a><span class="categoryBar-list-count">65</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_22.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/前端の旅/&quot;);" href="javascript:void(0);">前端の旅</a><span class="categoryBar-list-count">17</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_23.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/数据结构/&quot;);" href="javascript:void(0);">数据结构</a><span class="categoryBar-list-count">47</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_24.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/Atcoderの旅/&quot;);" href="javascript:void(0);">Atcoderの旅</a><span class="categoryBar-list-count">53</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_25.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/C-の旅/&quot;);" href="javascript:void(0);">C++の旅</a><span class="categoryBar-list-count">17</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_26.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CSAPPの旅/&quot;);" href="javascript:void(0);">CSAPPの旅</a><span class="categoryBar-list-count">2</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_27.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS知识/&quot;);" href="javascript:void(0);">CS知识</a><span class="categoryBar-list-count">3</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_28.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/编程基础/&quot;);" href="javascript:void(0);">编程基础</a><span class="categoryBar-list-count">22</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_29.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/离散数学/&quot;);" href="javascript:void(0);">离散数学</a><span class="categoryBar-list-count">29</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_30.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/JAVAの旅/&quot;);" href="javascript:void(0);">JAVAの旅</a><span class="categoryBar-list-count">10</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_31.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/MIT-6-031-Software-Construction/&quot;);" href="javascript:void(0);">MIT 6.031:Software Construction</a><span class="categoryBar-list-count">16</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_32.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS-110L/&quot;);" href="javascript:void(0);">CS 110L</a><span class="categoryBar-list-count">3</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_33.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/灵魂の旅/&quot;);" href="javascript:void(0);">灵魂の旅</a><span class="categoryBar-list-count">2</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_34.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/个人安排/&quot;);" href="javascript:void(0);">个人安排</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_35.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/杂项/&quot;);" href="javascript:void(0);">杂项</a><span class="categoryBar-list-count">12</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_36.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/计算机组成原理/&quot;);" href="javascript:void(0);">计算机组成原理</a><span class="categoryBar-list-count">48</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_37.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/文学/&quot;);" href="javascript:void(0);">文学</a><span class="categoryBar-list-count">49</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_38.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/力扣の旅/&quot;);" href="javascript:void(0);">力扣の旅</a><span class="categoryBar-list-count">20</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_39.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/千里十二行/&quot;);" href="javascript:void(0);">千里十二行</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_40.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/🗡指offer/&quot;);" href="javascript:void(0);">🗡指offer</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_41.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/少年游/&quot;);" href="javascript:void(0);">少年游</a><span class="categoryBar-list-count">2</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_42.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/算法提高课/&quot;);" href="javascript:void(0);">算法提高课</a><span class="categoryBar-list-count">3</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_43.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/汇编の旅/&quot;);" href="javascript:void(0);">汇编の旅</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_44.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/C-实训/&quot;);" href="javascript:void(0);">C++实训</a><span class="categoryBar-list-count">8</span><span class="categoryBar-list-descr"></span></li></ul></div></div>';
+      console.log('已挂载butterfly_categories_card')
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+      }
+    if( document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+    butterfly_categories_card_injector_config()
+    }
+  </script><script data-pjax>
+  function butterfly_swiper_injector_config(){
+    var parent_div_git = document.getElementById('recent-posts');
+    var item_html = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms;"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;诗录/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/4b31456c6f0f4489f99177f89e936de7286431045.png@1256w_708h_!web-article-pic.avif" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-10-01</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;诗录/&quot;);" href="javascript:void(0);" alt="">诗录</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;诗录/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;诗兴大发/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://source.fomal.cc/img/default_cover_69.webp" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-01-29</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;诗兴大发/&quot;);" href="javascript:void(0);" alt="">诗兴大发</a><div class="blog-slider__text">未觉，却是中二少年的诗仙梦</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;诗兴大发/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;TotoroのPlan/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/51d37eba99d243607ddedfff6e91568f617436609.jpg@1256w_1884h_!web-article-pic.avif" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-10-05</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;TotoroのPlan/&quot;);" href="javascript:void(0);" alt="">TotoroのPlan</a><div class="blog-slider__text">方便大二看（）</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;TotoroのPlan/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;Markdown格式/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/ushio-api-img-moe@5.0.48/img_482_1920x1080_96_null_normal.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-03-03</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;Markdown格式/&quot;);" href="javascript:void(0);" alt="">Markdown格式</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;Markdown格式/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载butterfly_swiper')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_swiper_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_swiper_injector_config();
+  }
+  </script><script defer src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.js"></script><script defer data-pjax src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper_init.js"></script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>
