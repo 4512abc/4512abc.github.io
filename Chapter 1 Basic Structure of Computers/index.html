@@ -1,0 +1,1145 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Chapter 1 Basic Structure of Computers | Totoroの旅</title><meta name="author" content="Totoro"><meta name="copyright" content="Totoro"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Chapter 1 Basic Structure of Computers1.1 计算机类型（Computer Types） 1. 计算机类型分类（Computer Types） 嵌入式计算机（Embedded Computers）   特性： 集成到更大的设备或系统中。 自动监测并控制物理过程或环境。 为特定用途设计。   典型应用（Typical Applications）： 工业与家庭自动">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Chapter 1 Basic Structure of Computers">
+<meta property="og:url" content="http://totorocatcat.top/Chapter%201%20Basic%20Structure%20of%20Computers/index.html">
+<meta property="og:site_name" content="Totoroの旅">
+<meta property="og:description" content="Chapter 1 Basic Structure of Computers1.1 计算机类型（Computer Types） 1. 计算机类型分类（Computer Types） 嵌入式计算机（Embedded Computers）   特性： 集成到更大的设备或系统中。 自动监测并控制物理过程或环境。 为特定用途设计。   典型应用（Typical Applications）： 工业与家庭自动">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/a6c9fa852d8ee222e5545dd5a1ec5f7.jpg">
+<meta property="article:published_time" content="2024-11-22T02:54:21.000Z">
+<meta property="article:modified_time" content="2024-12-15T16:42:33.626Z">
+<meta property="article:author" content="Totoro">
+<meta property="article:tag" content="基础">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/a6c9fa852d8ee222e5545dd5a1ec5f7.jpg"><link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/b5ca6e582a7a45e6fde46e616eeb68e.png"><link rel="canonical" href="http://totorocatcat.top/Chapter%201%20Basic%20Structure%20of%20Computers/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta/><link rel="stylesheet" href="/css/index.css?v=4.12.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  noticeOutdate: {"limitDay":765,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体中文","cht_to_chs":"你已切换为简体中文","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"top-right"},
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Chapter 1 Basic Structure of Computers',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: true,
+  isToc: true,
+  postUpdate: '2024-12-16 00:42:33'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const now = new Date()
+          const hour = now.getHours()
+          const isNight = hour <= 6 || hour >= 18
+          if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/universe.css"><link rel="stylesheet" href="/css/scrollbar.css"><link rel="stylesheet" href="/css/cat.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-categories-card@1.0.0/lib/categorybar.css"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiperstyle.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-double-row-display@1.00/cardlistpost.min.css"/>
+<style>#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags:before {content:"\A";
+  white-space: pre;}#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags > .article-meta__separator{display:none}</style>
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body><script>window.paceOptions = {
+  restartOnPushState: false
+}
+
+document.addEventListener('pjax:send', () => {
+  Pace.restart()
+})
+</script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/themes/orange/pace-theme-flash.min.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/px3.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">802</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">32</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home-alt"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-envelope-open"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 趣味</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/project/"><i class="fa-fw fas fas fa-folder"></i><span> 项目</span></a></div><div class="menus_item"><a class="site-page" href="/stars/"><i class="fa-fw fas fa-bookmark"></i><span> 收藏</span></a></div><div class="menus_item"><a class="site-page" href="/bilibili/"><i class="fa-fw fas fa-tv"></i><span> 追番</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/a6c9fa852d8ee222e5545dd5a1ec5f7.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="Totoroの旅"><span class="site-name">Totoroの旅</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home-alt"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-envelope-open"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 趣味</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/project/"><i class="fa-fw fas fas fa-folder"></i><span> 项目</span></a></div><div class="menus_item"><a class="site-page" href="/stars/"><i class="fa-fw fas fa-bookmark"></i><span> 收藏</span></a></div><div class="menus_item"><a class="site-page" href="/bilibili/"><i class="fa-fw fas fa-tv"></i><span> 追番</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Chapter 1 Basic Structure of Computers</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-11-22T02:54:21.000Z" title="发表于 2024-11-22 10:54:21">2024-11-22</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-12-15T16:42:33.626Z" title="更新于 2024-12-16 00:42:33">2024-12-16</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">计算机组成原理</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">4.6k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>15分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Chapter 1 Basic Structure of Computers"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/Chapter%201%20Basic%20Structure%20of%20Computers/#post-comment" itemprop="discussionUrl"><span class="valine-comment-count" data-xid="/Chapter%201%20Basic%20Structure%20of%20Computers/" itemprop="commentCount"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="Chapter-1-Basic-Structure-of-Computers"><a href="#Chapter-1-Basic-Structure-of-Computers" class="headerlink" title="Chapter 1 Basic Structure of Computers"></a>Chapter 1 Basic Structure of Computers</h1><h2 id="1-1-计算机类型（Computer-Types）"><a href="#1-1-计算机类型（Computer-Types）" class="headerlink" title="1.1 计算机类型（Computer Types）"></a><strong>1.1 计算机类型（Computer Types）</strong></h2><hr>
+<h3 id="1-计算机类型分类（Computer-Types）"><a href="#1-计算机类型分类（Computer-Types）" class="headerlink" title="1. 计算机类型分类（Computer Types）"></a><strong>1. 计算机类型分类（Computer Types）</strong></h3><ol>
+<li><strong>嵌入式计算机（Embedded Computers）</strong>  <ul>
+<li><strong>特性</strong>：<ul>
+<li>集成到更大的设备或系统中。</li>
+<li>自动监测并控制物理过程或环境。</li>
+<li>为特定用途设计。</li>
+</ul>
+</li>
+<li><strong>典型应用（Typical Applications）</strong>：<ul>
+<li><strong>工业与家庭自动化</strong>（Industrial and home automation）。</li>
+<li><strong>家电与电信产品</strong>（Appliances, telecommunication products）。</li>
+<li><strong>车辆</strong>（Vehicles）。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<hr>
+<ol>
+<li><strong>个人计算机（Personal Computers）</strong>  <ul>
+<li><strong>特性</strong>：<ul>
+<li>主要供个人专用。</li>
+<li>支持多种应用程序。</li>
+</ul>
+</li>
+<li><strong>常见用途</strong>：<ul>
+<li><strong>通用计算</strong>（General computation）。  </li>
+<li><strong>文档准备</strong>（Document preparation）。  </li>
+<li><strong>计算机辅助设计</strong>（Computer-aided design）。  </li>
+<li><strong>视听娱乐</strong>（Audiovisual entertainment）。  </li>
+</ul>
+</li>
+<li><strong>种类</strong>：<ul>
+<li>台式电脑（Desktop computers）。</li>
+<li>工作站电脑（Workstation computers）。</li>
+<li>便携式电脑/笔记本电脑（Portable and notebook computers）。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<hr>
+<ol>
+<li><strong>服务器与企业系统（Server &amp; Enterprise Systems）</strong>  <ul>
+<li><strong>特性</strong>：<ul>
+<li>大型计算机，支持大量用户通过公共或私有网络共享使用。</li>
+<li>包含大量数据库存储单元。</li>
+<li>能够处理大量访问数据的请求。</li>
+</ul>
+</li>
+<li><strong>典型用途</strong>：<ul>
+<li>中型到大型企业的业务数据处理（Business data processing in medium to large corporations）。</li>
+<li>政府机构的信息处理（Information processing for a government agency）。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<hr>
+<ol>
+<li><strong>超级计算机与网格计算机（Supercomputers &amp; Grid Computers）</strong>  <ul>
+<li><strong>特性</strong>：<ul>
+<li>提供最高性能的计算能力。</li>
+</ul>
+</li>
+<li><strong>超级计算机（Supercomputers）</strong>：<ul>
+<li>用于要求极高计算能力的工作，例如：<ul>
+<li>天气预报（Weather forecasting）。</li>
+<li>工程设计（Engineering design）。</li>
+<li>科学研究（Scientific work）。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>网格计算机（Grid Computers）</strong>：<ul>
+<li>将大量个人计算机和磁盘存储单元通过物理分布的高速网络连接起来。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<hr>
+<ol>
+<li><strong>云计算（Cloud Computing）</strong>  <ul>
+<li><strong>定义</strong>：<ul>
+<li>云计算是基于互联网的计算模式。</li>
+<li>提供按需分配的共享资源、软件和信息。</li>
+</ul>
+</li>
+<li><strong>特性</strong>：<ul>
+<li>动态按需资源分配（Dynamic on-demand resource allocation）。</li>
+<li>灵活性和可扩展性（Flexibility and scalability）。</li>
+</ul>
+</li>
+<li><strong>典型应用</strong>：<ul>
+<li>数据存储与共享（Data storage and sharing）。</li>
+<li>软件即服务（SaaS, Software as a Service）。</li>
+<li>在线协作工具（Online collaboration tools）。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="总结表格"><a href="#总结表格" class="headerlink" title="总结表格"></a><strong>总结表格</strong></h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th><strong>类别</strong></th>
+<th><strong>英文定义</strong></th>
+<th><strong>中文定义</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>嵌入式计算机</td>
+<td>Integrated into larger systems, task-specific use.</td>
+<td>集成于更大的系统中，执行特定任务。</td>
+</tr>
+<tr>
+<td>个人计算机</td>
+<td>Computers for individual use, supports general tasks.</td>
+<td>面向个人用途的计算机，支持通用任务。</td>
+</tr>
+<tr>
+<td>服务器与企业系统</td>
+<td>Large systems for multi-user data processing and storage.</td>
+<td>面向多用户数据处理和存储的大型系统。</td>
+</tr>
+<tr>
+<td>超级计算机与网格计算机</td>
+<td>High-performance computers for demanding computations or distributed network-based systems.</td>
+<td>用于高性能计算或基于分布式网络的系统。</td>
+</tr>
+<tr>
+<td>云计算</td>
+<td>Internet-based computing for shared resources, software, and information on demand.</td>
+<td>基于互联网的计算模式，提供共享资源、软件和信息的按需服务。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="1-2-功能单元（Functional-Units）"><a href="#1-2-功能单元（Functional-Units）" class="headerlink" title="1.2 功能单元（Functional Units）"></a><strong>1.2 功能单元（Functional Units）</strong></h2><hr>
+<h3 id="1-计算机的基本功能（Basic-Functions-of-a-Computer）"><a href="#1-计算机的基本功能（Basic-Functions-of-a-Computer）" class="headerlink" title="1. 计算机的基本功能（Basic Functions of a Computer）"></a><strong>1. 计算机的基本功能（Basic Functions of a Computer）</strong></h3><ol>
+<li><p><strong>数据处理（Data Processing）</strong>  </p>
+<ul>
+<li><strong>数据定义</strong>：任何数字化信息，包括：  <ul>
+<li><strong>机器指令</strong>（Machine Instructions）。  </li>
+<li><strong>数字和字符</strong>（Numbers and Characters）。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>数据存储（Data Storage）</strong>  </p>
+<ul>
+<li>存储程序和数据以备后续处理。</li>
+</ul>
+</li>
+<li><p><strong>数据传输（Data Movement）</strong>  </p>
+<ul>
+<li>在输入、处理、存储和输出之间移动数据。</li>
+</ul>
+</li>
+<li><p><strong>控制功能（Control）</strong>  </p>
+<ul>
+<li>协调和控制其他功能单元的操作。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="2-计算机的基本功能单元（Basic-Functional-Units-of-a-Computer）"><a href="#2-计算机的基本功能单元（Basic-Functional-Units-of-a-Computer）" class="headerlink" title="2. 计算机的基本功能单元（Basic Functional Units of a Computer）"></a><strong>2. 计算机的基本功能单元（Basic Functional Units of a Computer）</strong></h3><ol>
+<li><p><strong>输入单元（Input Unit）</strong>  </p>
+<ul>
+<li><strong>功能</strong>：使计算机能够接受编码信息。  </li>
+<li><strong>输入设备</strong>：  <ul>
+<li>键盘（Keyboard）。  </li>
+<li>图形输入设备：触控板（Touchpad）、鼠标（Mouse）、操纵杆（Joystick）和轨迹球（Trackball）。  </li>
+<li>数码相机（Digital Camera）。  </li>
+<li>麦克风（Microphone）。  </li>
+<li>数字通信设备，例如互联网（Digital communication facilities, such as the Internet）。  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>输出单元（Output Unit）</strong>  </p>
+<ul>
+<li><strong>功能</strong>：将处理结果发送到外部世界。  </li>
+<li><strong>输出设备</strong>：  <ul>
+<li>打印机（Printer）。  </li>
+<li>图形显示器（Graphic Display）。  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>存储器（Memory）</strong>  </p>
+<ul>
+<li><strong>功能</strong>：存储程序和数据。  </li>
+<li><p><strong>存储分类</strong>：  </p>
+<ol>
+<li><p><strong>主存储器（Primary Storage）</strong>：  </p>
+<ul>
+<li>执行程序时存储程序。  </li>
+<li>术语：  <ul>
+<li>字（Word）：存储单位。  </li>
+<li>字长（Word Length）：通常为16、32或64位。  </li>
+<li>地址（Address）：存储位置的标识。  </li>
+<li>随机访问存储器（RAM）：临时存储。  </li>
+<li>存储访问时间（Memory Access Time）：存取速度。  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>高速缓存存储器（Cache Memory）</strong>：  </p>
+<ul>
+<li>更小更快的RAM单元。  </li>
+<li>存储当前执行程序的部分内容以加快处理速度。  </li>
+</ul>
+</li>
+<li><p><strong>辅助存储器（Secondary Storage）</strong>：  </p>
+<ul>
+<li>存储大量程序和不常访问的数据。  </li>
+<li>辅助存储设备：  <ul>
+<li>磁盘和磁带（Magnetic Disks and Tapes）。  </li>
+<li>光盘（DVD 和 CD）。  </li>
+<li>闪存设备（Flash Memory Devices）。  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p><strong>算术与逻辑单元（Arithmetic and Logic Unit, ALU）</strong>  </p>
+<ul>
+<li><strong>功能</strong>：执行算术或逻辑运算。  </li>
+<li><strong>操作流程</strong>：  <ul>
+<li>将操作数从内存加载到处理器。  </li>
+<li>在ALU中执行操作。  </li>
+<li>将结果存回内存或保留在处理器中。</li>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/image-20241122101836165.png" alt="image-20241122101836165"></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>控制单元（Control Unit）</strong>  </p>
+<ul>
+<li><strong>功能</strong>：  <ul>
+<li>协调其他单元的操作。  </li>
+<li>发送控制信号并感知其他单元的状态。  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>输入/输出单元（I/O Unit）</strong>  </p>
+<ul>
+<li><strong>功能</strong>：处理数据的输入和输出。  </li>
+</ul>
+</li>
+<li><p><strong>处理器（Processor）</strong>  </p>
+<ul>
+<li><p>包含ALU和控制单元。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/image-20241122101927621.png" alt="image-20241122101927621"></p>
+</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="3-计算机的操作流程（Operations-of-a-Computer）"><a href="#3-计算机的操作流程（Operations-of-a-Computer）" class="headerlink" title="3. 计算机的操作流程（Operations of a Computer）"></a><strong>3. 计算机的操作流程（Operations of a Computer）</strong></h3><ol>
+<li><p><strong>输入信息</strong>：  </p>
+<ul>
+<li>通过输入单元接收程序和数据，将其存储在存储器中。  </li>
+</ul>
+</li>
+<li><p><strong>处理信息</strong>：  </p>
+<ul>
+<li>根据程序控制，从存储器中提取信息，在算术与逻辑单元中处理。  </li>
+</ul>
+</li>
+<li><p><strong>输出信息</strong>：  </p>
+<ul>
+<li>将处理后的信息通过输出单元传递给外部世界。  </li>
+</ul>
+</li>
+<li><p><strong>活动协调</strong>：  </p>
+<ul>
+<li>所有活动由控制单元指挥和协调。  </li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="中英对照表"><a href="#中英对照表" class="headerlink" title="中英对照表"></a><strong>中英对照表</strong></h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th><strong>功能单元</strong></th>
+<th><strong>英文定义</strong></th>
+<th><strong>中文定义</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>输入单元</td>
+<td>Accepts coded information into the computer.</td>
+<td>接受编码信息进入计算机。</td>
+</tr>
+<tr>
+<td>输出单元</td>
+<td>Sends processed results to the outside world.</td>
+<td>将处理结果发送到外部世界。</td>
+</tr>
+<tr>
+<td>存储器</td>
+<td>Stores programs and data.</td>
+<td>存储程序和数据。</td>
+</tr>
+<tr>
+<td>算术与逻辑单元（ALU）</td>
+<td>Performs arithmetic and logic operations.</td>
+<td>执行算术和逻辑运算。</td>
+</tr>
+<tr>
+<td>控制单元</td>
+<td>Coordinates and controls operations of other units.</td>
+<td>协调和控制其他功能单元的操作。</td>
+</tr>
+<tr>
+<td>处理器</td>
+<td>Consists of ALU and Control Unit.</td>
+<td>包含ALU和控制单元。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="1-3-基本操作概念（Basic-Operational-Concepts）"><a href="#1-3-基本操作概念（Basic-Operational-Concepts）" class="headerlink" title="1.3 基本操作概念（Basic Operational Concepts）"></a><strong>1.3 基本操作概念（Basic Operational Concepts）</strong></h2><hr>
+<h3 id="1-程序执行（Program-Execution）"><a href="#1-程序执行（Program-Execution）" class="headerlink" title="1. 程序执行（Program Execution）"></a><strong>1. 程序执行（Program Execution）</strong></h3><h4 id="1-1-程序执行的基本流程"><a href="#1-1-程序执行的基本流程" class="headerlink" title="1.1 程序执行的基本流程"></a><strong>1.1 程序执行的基本流程</strong></h4><ol>
+<li><strong>功能</strong>：执行程序中指定的指令。  </li>
+<li><strong>步骤</strong>：<ul>
+<li><strong>指令提取（Fetch）</strong>：处理器从内存中逐条读取指令。  </li>
+<li><strong>指令执行（Execute）</strong>：处理器执行每条指令的操作。  </li>
+</ul>
+</li>
+<li><strong>重复执行循环</strong>：<ul>
+<li>程序执行由<strong>指令提取</strong>和<strong>指令执行</strong>的循环过程组成。  </li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="2-程序执行示例（Program-Execution-Example）"><a href="#2-程序执行示例（Program-Execution-Example）" class="headerlink" title="2. 程序执行示例（Program Execution Example）"></a><strong>2. 程序执行示例（Program Execution Example）</strong></h3><h4 id="2-1-示例指令："><a href="#2-1-示例指令：" class="headerlink" title="2.1 示例指令："></a><strong>2.1 示例指令</strong>：</h4><ol>
+<li><p><strong>加载指令</strong> (<code>Load R2, LOC</code>)：  </p>
+<ul>
+<li><strong>步骤</strong>：  <ol>
+<li>从内存中提取指令到处理器寄存器（IR）。  </li>
+<li>从内存地址 <code>LOC</code> 读取操作数，并将其加载到寄存器 <code>R2</code>。  </li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p><strong>存储指令</strong> (<code>Store R4, LOC</code>)：  </p>
+<ul>
+<li><strong>步骤</strong>：  <ol>
+<li>将寄存器 <code>R4</code> 中的操作数复制到内存地址 <code>LOC</code>。  </li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p><strong>加法指令</strong> (<code>Add R4, R2, R3</code>)：  </p>
+<ul>
+<li><strong>步骤</strong>：  <ol>
+<li>将寄存器 <code>R2</code> 和 <code>R3</code> 的内容相加。  </li>
+<li>将结果存放在寄存器 <code>R4</code> 中。  </li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/image-20241122102348567.png" alt="image-20241122102348567"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/image-20241122102415230.png" alt="image-20241122102415230"></p>
+<hr>
+<h3 id="3-重要寄存器（Important-Registers）"><a href="#3-重要寄存器（Important-Registers）" class="headerlink" title="3. 重要寄存器（Important Registers）"></a><strong>3. 重要寄存器（Important Registers）</strong></h3><ol>
+<li><p><strong>程序计数器（Program Counter, PC）</strong>：</p>
+<ul>
+<li><strong>功能</strong>：指向即将执行的下一条指令的内存地址。  </li>
+<li>每次指令提取后，<code>PC</code> 自动递增，以指向下一条指令。</li>
+</ul>
+</li>
+<li><p><strong>指令寄存器（Instruction Register, IR）</strong>：</p>
+<ul>
+<li><strong>功能</strong>：保存当前正在执行的指令内容。  </li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="4-中断（Interrupt）"><a href="#4-中断（Interrupt）" class="headerlink" title="4. 中断（Interrupt）"></a><strong>4. 中断（Interrupt）</strong></h3><h4 id="4-1-什么是中断："><a href="#4-1-什么是中断：" class="headerlink" title="4.1 什么是中断："></a><strong>4.1 什么是中断</strong>：</h4><ul>
+<li>中断是由<strong>I/O设备</strong>发出的请求，要求处理器提供服务。  </li>
+<li>中断的作用是打断当前程序的执行，优先处理紧急任务或事件。  </li>
+</ul>
+<h4 id="4-2-中断的处理流程："><a href="#4-2-中断的处理流程：" class="headerlink" title="4.2 中断的处理流程："></a><strong>4.2 中断的处理流程</strong>：</h4><ol>
+<li><strong>检查中断请求</strong>：程序执行时，处理器定期检查是否有中断请求。  </li>
+<li><strong>保存当前状态</strong>：保存当前指令的执行状态和数据，确保处理完成后可以恢复。  </li>
+<li><strong>处理中断</strong>：跳转到中断服务程序（Interrupt Service Routine, ISR）。  </li>
+<li><strong>恢复状态</strong>：完成中断任务后，恢复先前保存的状态并继续执行原程序。</li>
+</ol>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/image-20241122102443494.png" alt="image-20241122102443494"></p>
+<hr>
+<h3 id="5-指令周期（Instruction-Cycle）"><a href="#5-指令周期（Instruction-Cycle）" class="headerlink" title="5. 指令周期（Instruction Cycle）"></a><strong>5. 指令周期（Instruction Cycle）</strong></h3><p>程序的执行由以下三个周期组成：</p>
+<ol>
+<li><p><strong>提取周期（Fetch Cycle）</strong>：</p>
+<ul>
+<li>处理器从存储器读取下一条指令到指令寄存器（IR）。  </li>
+</ul>
+</li>
+<li><p><strong>执行周期（Execute Cycle）</strong>：</p>
+<ul>
+<li>执行指令寄存器中指定的操作。  </li>
+</ul>
+</li>
+<li><p><strong>中断周期（Interrupt Cycle）</strong>：</p>
+<ul>
+<li>检查是否有中断请求，并处理中断任务。  </li>
+</ul>
+</li>
+</ol>
+<h4 id="流程图："><a href="#流程图：" class="headerlink" title="流程图："></a><strong>流程图</strong>：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">开始（Start）</span><br><span class="line">  ↓</span><br><span class="line">提取下一条指令（Fetch Next Instruction）</span><br><span class="line">  ↓</span><br><span class="line">执行指令（Execute Instruction）</span><br><span class="line">  ↓</span><br><span class="line">检查中断请求（Check for Interrupt）</span><br><span class="line">  ↓</span><br><span class="line">如果有中断 → 处理中断（Process Interrupt）</span><br><span class="line">  ↓</span><br><span class="line">完成后 → 停止或继续（Halt/Continue）</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="中英对照表-1"><a href="#中英对照表-1" class="headerlink" title="中英对照表"></a><strong>中英对照表</strong></h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th><strong>功能</strong></th>
+<th><strong>英文</strong></th>
+<th><strong>中文</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>程序计数器（PC）</td>
+<td>Program Counter</td>
+<td>指向下一条指令的内存地址。</td>
+</tr>
+<tr>
+<td>指令寄存器（IR）</td>
+<td>Instruction Register</td>
+<td>保存当前正在执行的指令内容。</td>
+</tr>
+<tr>
+<td>提取指令周期</td>
+<td>Fetch Cycle</td>
+<td>读取下一条指令到指令寄存器。</td>
+</tr>
+<tr>
+<td>执行指令周期</td>
+<td>Execute Cycle</td>
+<td>执行指令寄存器中指定的操作。</td>
+</tr>
+<tr>
+<td>中断处理</td>
+<td>Interrupt Processing</td>
+<td>优先处理紧急任务或事件。</td>
+</tr>
+<tr>
+<td>加载指令</td>
+<td>Load Instruction</td>
+<td>将数据从内存加载到寄存器。</td>
+</tr>
+<tr>
+<td>存储指令</td>
+<td>Store Instruction</td>
+<td>将寄存器中的数据存储到内存中。</td>
+</tr>
+<tr>
+<td>中断请求</td>
+<td>Interrupt Request</td>
+<td>I/O设备要求处理器提供服务。</td>
+</tr>
+<tr>
+<td>中断服务程序（ISR）</td>
+<td>Interrupt Service Routine</td>
+<td>专门处理中断的程序。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="1-6-性能（Performance）"><a href="#1-6-性能（Performance）" class="headerlink" title="1.6 性能（Performance）"></a><strong>1.6 性能（Performance）</strong></h2><hr>
+<h3 id="1-性能的定义与重要性"><a href="#1-性能的定义与重要性" class="headerlink" title="1. 性能的定义与重要性"></a><strong>1. 性能的定义与重要性</strong></h3><ul>
+<li><p><strong>性能的衡量标准</strong>：<br>计算机性能最重要的指标是其<strong>执行程序的速度</strong>。性能越高，计算机完成任务的时间越短。  </p>
+</li>
+<li><p><strong>性能的影响因素</strong>：<br>性能受以下因素影响：  </p>
+<ol>
+<li><strong>指令集设计</strong>（Instruction Set Design）：指令集的复杂度和优化程度直接影响执行效率。  </li>
+<li><strong>硬件设计</strong>（Hardware Design）：硬件结构和实现方式决定了计算能力。  </li>
+<li><strong>软件优化</strong>（Software Optimization）：软件代码的编写和编译优化也会影响性能。  </li>
+</ol>
+</li>
+</ul>
+<hr>
+<h3 id="2-提升性能的关键技术"><a href="#2-提升性能的关键技术" class="headerlink" title="2. 提升性能的关键技术"></a><strong>2. 提升性能的关键技术</strong></h3><h4 id="2-1-VLSI-技术（Very-Large-Scale-Integration）"><a href="#2-1-VLSI-技术（Very-Large-Scale-Integration）" class="headerlink" title="2.1 VLSI 技术（Very Large Scale Integration）"></a><strong>2.1 VLSI 技术（Very Large Scale Integration）</strong></h4><ul>
+<li><strong>定义</strong>：  <ul>
+<li>超大规模集成电路技术，通过在单个芯片上集成更多晶体管。  </li>
+</ul>
+</li>
+<li><strong>优点</strong>：  <ol>
+<li><strong>更小的晶体管</strong>：晶体管越小，开关切换速度越快，处理速度越高。  </li>
+<li><strong>能耗降低</strong>：小型化晶体管的功耗更低，提高了计算效率。</li>
+</ol>
+</li>
+</ul>
+<hr>
+<h4 id="2-2-并行化技术（Parallelism）"><a href="#2-2-并行化技术（Parallelism）" class="headerlink" title="2.2 并行化技术（Parallelism）"></a><strong>2.2 并行化技术（Parallelism）</strong></h4><ol>
+<li><p><strong>并行执行（Parallel Execution）</strong>：  </p>
+<ul>
+<li>并行化技术允许多个操作同时进行，显著提高处理速度。  </li>
+<li>应用场景：图像处理、科学计算等需要高吞吐量的任务。</li>
+</ul>
+</li>
+<li><p><strong>指令级并行（Instruction-Level Parallelism, ILP）</strong>：</p>
+<ul>
+<li><strong>定义</strong>：通过流水线（Pipelining）技术实现指令的并行执行。  </li>
+<li><strong>工作原理</strong>：<ul>
+<li>将一条指令的执行拆分为多个阶段（如取指、解码、执行、写回）。  </li>
+<li>多条指令同时在不同阶段运行，从而提高指令执行的吞吐量。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h4 id="2-3-多核处理器（Multicore-Processors）"><a href="#2-3-多核处理器（Multicore-Processors）" class="headerlink" title="2.3 多核处理器（Multicore Processors）"></a><strong>2.3 多核处理器（Multicore Processors）</strong></h4><ul>
+<li><strong>定义</strong>：<br>在一个物理芯片上集成多个处理核心（Cores），每个核心独立处理任务。  </li>
+<li><strong>优点</strong>：  <ol>
+<li><strong>并行执行任务</strong>：多个核心可以同时运行不同的线程，提高程序的整体执行效率。  </li>
+<li><strong>节能高效</strong>：相比单核高频率运行，多核设计在性能提升的同时降低功耗。</li>
+</ol>
+</li>
+</ul>
+<hr>
+<h4 id="2-4-多处理器系统（Multiprocessors）"><a href="#2-4-多处理器系统（Multiprocessors）" class="headerlink" title="2.4 多处理器系统（Multiprocessors）"></a><strong>2.4 多处理器系统（Multiprocessors）</strong></h4><ul>
+<li><strong>定义</strong>：<br>多个物理处理器通过共享内存或消息传递共同完成计算任务。  </li>
+<li><strong>特性</strong>：<ol>
+<li>适合高性能计算（High Performance Computing）。  </li>
+<li>提供良好的扩展性，可增加处理器数量以提升性能。  </li>
+</ol>
+</li>
+</ul>
+<hr>
+<h4 id="2-5-多计算机系统（Multicomputers）"><a href="#2-5-多计算机系统（Multicomputers）" class="headerlink" title="2.5 多计算机系统（Multicomputers）"></a><strong>2.5 多计算机系统（Multicomputers）</strong></h4><ul>
+<li><strong>定义</strong>：<br>多台独立计算机通过高速网络协作处理任务。  </li>
+<li><strong>特点</strong>：  <ol>
+<li>每台计算机拥有自己的内存和处理器，分布式系统特性明显。  </li>
+<li>适合处理大规模分布式计算任务，如大数据分析。  </li>
+</ol>
+</li>
+</ul>
+<hr>
+<h3 id="中英对照"><a href="#中英对照" class="headerlink" title="中英对照"></a><strong>中英对照</strong></h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th><strong>术语</strong></th>
+<th><strong>英文</strong></th>
+<th><strong>中文</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>性能</td>
+<td>Performance</td>
+<td>衡量计算机执行任务的效率。</td>
+</tr>
+<tr>
+<td>指令集设计</td>
+<td>Instruction Set Design</td>
+<td>指令集的设计和优化。</td>
+</tr>
+<tr>
+<td>超大规模集成电路（VLSI）</td>
+<td>Very Large Scale Integration</td>
+<td>将大量晶体管集成到单一芯片上。</td>
+</tr>
+<tr>
+<td>并行执行</td>
+<td>Parallel Execution</td>
+<td>同时执行多个操作以提高效率。</td>
+</tr>
+<tr>
+<td>指令级并行</td>
+<td>Instruction-Level Parallelism</td>
+<td>通过流水线技术实现指令的并行处理。</td>
+</tr>
+<tr>
+<td>流水线</td>
+<td>Pipelining</td>
+<td>将指令的执行分解为多个阶段，并行运行。</td>
+</tr>
+<tr>
+<td>多核处理器</td>
+<td>Multicore Processors</td>
+<td>单个芯片包含多个独立处理核心。</td>
+</tr>
+<tr>
+<td>多处理器系统</td>
+<td>Multiprocessors</td>
+<td>多个处理器通过共享资源共同工作。</td>
+</tr>
+<tr>
+<td>多计算机系统</td>
+<td>Multicomputers</td>
+<td>通过高速网络协作的独立计算机系统。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="1-7-历史视角（Historical-Perspective）"><a href="#1-7-历史视角（Historical-Perspective）" class="headerlink" title="1.7 历史视角（Historical Perspective）"></a><strong>1.7 历史视角（Historical Perspective）</strong></h2><hr>
+<h3 id="1-计算机的发展历程"><a href="#1-计算机的发展历程" class="headerlink" title="1. 计算机的发展历程"></a><strong>1. 计算机的发展历程</strong></h3><h4 id="1-1-零代：机械计算机（1642-1945）"><a href="#1-1-零代：机械计算机（1642-1945）" class="headerlink" title="1.1 零代：机械计算机（1642-1945）"></a><strong>1.1 零代：机械计算机（1642-1945）</strong></h4><ul>
+<li><strong>特点</strong>：基于机械原理完成基本运算，未使用电子元件。  </li>
+<li><strong>重要里程碑</strong>：  <ul>
+<li><strong>1642年，Blaise Pascal</strong>：发明了第一台可执行加减运算的机械计算器。  </li>
+<li><strong>1672年，Leibniz</strong>：设计了可以进行乘除运算的计算机。  </li>
+<li><strong>1834年，Charles Babbage</strong>：设计了<strong>差分机（Difference Engine）</strong>和<strong>分析机（Analytical Engine）</strong>，被称为“现代计算机之父”。  </li>
+<li><strong>1930年代后期，Konrad Zuse</strong>：发明了Z1，是第一台工作中的电磁继电计算机。  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="1-2-第一代：真空管计算机（1945-1955）"><a href="#1-2-第一代：真空管计算机（1945-1955）" class="headerlink" title="1.2 第一代：真空管计算机（1945-1955）"></a><strong>1.2 第一代：真空管计算机（1945-1955）</strong></h4><ul>
+<li><strong>特点</strong>：使用真空管作为电子元件，体积大、能耗高。  </li>
+<li><strong>代表性成就</strong>：  <ul>
+<li><strong>ENIAC（电子数值积分计算机）</strong>：世界上第一台通用电子数字计算机。  <ul>
+<li>由宾夕法尼亚大学的Moore学校开发。  </li>
+<li>包含<strong>18,000个真空管</strong>和<strong>1,500个继电器</strong>。  </li>
+</ul>
+</li>
+<li><strong>存储程序概念（Stored-program concept）</strong>：  <ul>
+<li>提出者：<strong>John von Neumann</strong>。  </li>
+<li>数据和指令存储在单一的读写内存中，通过地址访问，无需考虑数据类型。  </li>
+<li>执行按顺序进行，除非显式修改。  </li>
+</ul>
+</li>
+<li><strong>技术特性</strong>：  <ul>
+<li>使用汇编语言（Assembly Language）编程。  </li>
+<li>初期使用汞延迟线存储器，后来发展为磁芯存储器和磁鼓存储设备。  </li>
+<li>I/O设备类似打字机。  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="1-3-第二代：晶体管计算机（1955-1965）"><a href="#1-3-第二代：晶体管计算机（1955-1965）" class="headerlink" title="1.3 第二代：晶体管计算机（1955-1965）"></a><strong>1.3 第二代：晶体管计算机（1955-1965）</strong></h4><ul>
+<li><strong>特点</strong>：使用晶体管代替真空管，体积更小、功耗更低、速度更快。  </li>
+<li><strong>重要里程碑</strong>：  <ul>
+<li>晶体管由<strong>AT&amp;T贝尔实验室</strong>在1940年代末发明。  </li>
+<li>使用磁芯存储器和磁鼓存储设备，磁盘存储设备得以开发。  </li>
+<li>开发了早期高级编程语言，如<strong>Fortran</strong>。  </li>
+<li>编译器开始使用，简化了编程流程。  </li>
+<li><strong>IBM</strong>在这一时期成为主要的计算机制造商。  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="1-4-第三代：集成电路计算机（1965-1975）"><a href="#1-4-第三代：集成电路计算机（1965-1975）" class="headerlink" title="1.4 第三代：集成电路计算机（1965-1975）"></a><strong>1.4 第三代：集成电路计算机（1965-1975）</strong></h4><ul>
+<li><strong>特点</strong>：使用集成电路（IC）技术，将多个晶体管集成在单一硅芯片上。  </li>
+<li><strong>技术创新</strong>：  <ul>
+<li><strong>集成电路技术</strong>：由<strong>德州仪器（Texas Instruments）</strong>和<strong>仙童半导体（Fairchild Semiconductor）</strong>开发。  </li>
+<li>集成电路存储器取代磁芯存储器。  </li>
+<li>引入<strong>微程序设计</strong>、<strong>并行化</strong>、<strong>流水线</strong>等概念。  </li>
+<li>开发了<strong>高速缓存</strong>和<strong>虚拟存储器</strong>技术。  </li>
+</ul>
+</li>
+<li><strong>代表性计算机</strong>：IBM360系列计算机，PDP-11等。  </li>
+</ul>
+<hr>
+<h4 id="1-5-第四代：LSI-amp-VLSI（1975-至今）"><a href="#1-5-第四代：LSI-amp-VLSI（1975-至今）" class="headerlink" title="1.5 第四代：LSI &amp; VLSI（1975-至今）"></a><strong>1.5 第四代：LSI &amp; VLSI（1975-至今）</strong></h4><ul>
+<li><strong>特点</strong>：超大规模集成电路（VLSI）技术可以在单个芯片上实现完整的处理器和大容量主存储器。  </li>
+<li><strong>发展方向</strong>：  <ul>
+<li>开发了<strong>个人电脑（PC）</strong>、嵌入式计算机、笔记本电脑和多功能移动电话等设备。  </li>
+<li>代表产品：<strong>Intel 8088</strong>。  </li>
+<li>特殊VLSI技术：<strong>现场可编程门阵列（FPGA）</strong>。  </li>
+</ul>
+</li>
+<li><strong>组织结构创新</strong>：并行计算、分层存储器体系等概念的演进。  </li>
+</ul>
+<hr>
+<h3 id="2-性能的演变"><a href="#2-性能的演变" class="headerlink" title="2. 性能的演变"></a><strong>2. 性能的演变</strong></h3><h4 id="2-1-技术改进的速度："><a href="#2-1-技术改进的速度：" class="headerlink" title="2.1 技术改进的速度："></a><strong>2.1 技术改进的速度</strong>：</h4><ul>
+<li><strong>真空管</strong>：性能提升约<strong>100到1000倍</strong>。  </li>
+<li><strong>晶体管</strong>：性能提升约<strong>1000倍</strong>。  </li>
+<li><strong>LSI和VLSI</strong>：性能提升约<strong>1000倍</strong>。</li>
+</ul>
+<h4 id="2-2-体系结构创新："><a href="#2-2-体系结构创新：" class="headerlink" title="2.2 体系结构创新："></a><strong>2.2 体系结构创新</strong>：</h4><ul>
+<li>使用技术如高速缓存（Cache）、流水线（Pipelining）等进一步提升计算机性能。  </li>
+</ul>
+<hr>
+<h3 id="中英对照-1"><a href="#中英对照-1" class="headerlink" title="中英对照"></a><strong>中英对照</strong></h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th><strong>术语</strong></th>
+<th><strong>英文</strong></th>
+<th><strong>中文</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>机械计算机</td>
+<td>Mechanical Computers</td>
+<td>零代计算机，基于机械原理。</td>
+</tr>
+<tr>
+<td>真空管</td>
+<td>Vacuum Tubes</td>
+<td>第一代计算机使用的电子元件。</td>
+</tr>
+<tr>
+<td>ENIAC</td>
+<td>Electronic Numerical Integrator And Computer</td>
+<td>世界上第一台通用电子数字计算机。</td>
+</tr>
+<tr>
+<td>存储程序概念</td>
+<td>Stored-program Concept</td>
+<td>数据和指令存储在单一内存中。</td>
+</tr>
+<tr>
+<td>晶体管</td>
+<td>Transistors</td>
+<td>第二代计算机使用的电子元件。</td>
+</tr>
+<tr>
+<td>集成电路</td>
+<td>Integrated Circuits</td>
+<td>第三代计算机的核心技术。</td>
+</tr>
+<tr>
+<td>超大规模集成电路</td>
+<td>Very Large Scale Integration (VLSI)</td>
+<td>第四代计算机的核心技术。</td>
+</tr>
+<tr>
+<td>现场可编程门阵列</td>
+<td>Field Programmable Gate Array (FPGA)</td>
+<td>特殊形式的VLSI技术。</td>
+</tr>
+<tr>
+<td>高速缓存</td>
+<td>Cache</td>
+<td>提高数据访问速度的小型存储器。</td>
+</tr>
+<tr>
+<td>流水线</td>
+<td>Pipelining</td>
+<td>提高指令执行效率的技术。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="测验"><a href="#测验" class="headerlink" title="测验"></a>测验</h2><hr>
+<h4 id="1-示例题：输入和输出设备"><a href="#1-示例题：输入和输出设备" class="headerlink" title="1. 示例题：输入和输出设备"></a><strong>1. 示例题：输入和输出设备</strong></h4><p><strong>Question:</strong> Which of the following is an example of both input and output device?<br> <strong>选项：</strong></p>
+<ul>
+<li>A. Touchpad</li>
+<li>B. Display</li>
+<li>C. Printer</li>
+<li>D. Keyboard</li>
+</ul>
+<p>首先分析每个选项：</p>
+<ul>
+<li><strong>A. Touchpad（触摸板）</strong>：<ul>
+<li>触摸板主要用于输入信息，用户通过在触摸板上的手势操作（如移动光标、点击等）向计算机输入指令，它本身不是用于输出信息给用户的设备。</li>
+</ul>
+</li>
+<li><strong>B. Display（显示器）</strong>：<ul>
+<li>显示器是典型的输出设备，它将计算机处理后的信息（如文字、图像、视频等）以可视化的方式呈现给用户，它没有输入功能。</li>
+</ul>
+</li>
+<li><strong>C. Printer（打印机）</strong>：<ul>
+<li>打印机也是输出设备，它将计算机中的文档、图像等内容打印到纸张等介质上，没有用于接收用户输入的功能。</li>
+</ul>
+</li>
+<li><strong>D. Keyboard（键盘）</strong>：<ul>
+<li>键盘主要用于输入信息，用户通过按键向计算机输入字符、命令等数据，它不是输出设备。<br>然后看既可以输入又可以输出的设备：</li>
+</ul>
+</li>
+<li>有一些设备可以同时具备输入和输出功能。例如，触摸屏（Touch - screen），它既可以接收用户的触摸输入（类似于触摸板的输入功能），又可以显示信息（类似于显示器的输出功能）。</li>
+<li>但是在给定的选项中没有触摸屏这样的设备。严格来说，在这四个选项中没有符合既是输入又是输出设备的选项。</li>
+</ul>
+<hr>
+<h4 id="2-计算机的五大功能单元"><a href="#2-计算机的五大功能单元" class="headerlink" title="2. 计算机的五大功能单元"></a><strong>2. 计算机的五大功能单元</strong></h4><p><strong>Question:</strong> List the names of five functional units of a computer.<br> <strong>列出计算机的五大功能单元：</strong></p>
+<ol>
+<li><strong>Arithmetic and Logic Unit（ALU）</strong> - <strong>算术逻辑单元</strong></li>
+<li><strong>Control Unit</strong> - <strong>控制单元</strong></li>
+<li><strong>Memory</strong> - <strong>存储单元</strong></li>
+<li><strong>Input Unit</strong> - <strong>输入单元</strong></li>
+<li><strong>Output Unit</strong> - <strong>输出单元</strong></li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a target="_blank" rel="noopener" href="https://www.totorocatcat.top/">Totoro</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://totorocatcat.top/Chapter%201%20Basic%20Structure%20of%20Computers/">http://totorocatcat.top/Chapter%201%20Basic%20Structure%20of%20Computers/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://totorocatcat.top" target="_blank">Totoroの旅</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%9F%BA%E7%A1%80/">基础</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/a6c9fa852d8ee222e5545dd5a1ec5f7.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/Chapter%209%20Arithmetic(1)/" title="Chapter 9 Arithmetic(1)"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/c9abf07975ce40c76679c96e0f2cc2c.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Chapter 9 Arithmetic(1)</div></div></a></div><div class="next-post pull-right"><a href="/Java%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/" title="Java期末复习"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/c3c64e8cd49d8d1027d4adbdf41ef23.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Java期末复习</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2009%E5%B9%B4%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%9F%E8%80%83-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E9%83%A8%E5%88%86/" title="2009年计算机统考-数据结构部分"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/e345af5b515d2f76bb44fdaa6eff3db4d6f598d3.jpg@1256w_908h_!web-article-pic.avif" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-10-04</div><div class="title">2009年计算机统考-数据结构部分</div></div></a></div><div><a href="/2012%E5%B9%B4%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%9F%E8%80%83-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E9%83%A8%E5%88%86/" title="2012年计算机统考-数据结构部分"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/e345af5b515d2f76bb44fdaa6eff3db4d6f598d3.jpg@1256w_908h_!web-article-pic.avif" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-10-05</div><div class="title">2012年计算机统考-数据结构部分</div></div></a></div><div><a href="/2011%E5%B9%B4%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%9F%E8%80%83-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E9%83%A8%E5%88%86/" title="2011年计算机统考-数据结构部分"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/e345af5b515d2f76bb44fdaa6eff3db4d6f598d3.jpg@1256w_908h_!web-article-pic.avif" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-10-05</div><div class="title">2011年计算机统考-数据结构部分</div></div></a></div><div><a href="/2010%E5%B9%B4%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%9F%E8%80%83-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" title="2010年计算机统考-数据结构"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/e345af5b515d2f76bb44fdaa6eff3db4d6f598d3.jpg@1256w_908h_!web-article-pic.avif" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-10-04</div><div class="title">2010年计算机统考-数据结构</div></div></a></div><div><a href="/2022C-%E8%AF%95%E5%8D%B7/" title="2022C++试卷"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://source.fomal.cc/img/default_cover_80.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-05-16</div><div class="title">2022C++试卷</div></div></a></div><div><a href="/2022%E5%B9%B4C-%E8%AF%95%E5%8D%B7%E8%BD%AF%E4%BB%B6%E5%AD%A6%E9%99%A2/" title="2022年C++试卷软件学院"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://source.fomal.cc/img/default_cover_80.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-05-16</div><div class="title">2022年C++试卷软件学院</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/px3.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Totoro</div><div class="author-info__description">热爱文学的SCUT软件学院学生</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">802</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">32</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/4512abc"><i class="fab fa-github"></i><span>🛴前往小窝......</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/4512abc" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:4512abc@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到龙猫の小窝</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Chapter-1-Basic-Structure-of-Computers"><span class="toc-text">Chapter 1 Basic Structure of Computers</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B1%BB%E5%9E%8B%EF%BC%88Computer-Types%EF%BC%89"><span class="toc-text">1.1 计算机类型（Computer Types）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B1%BB%E5%9E%8B%E5%88%86%E7%B1%BB%EF%BC%88Computer-Types%EF%BC%89"><span class="toc-text">1. 计算机类型分类（Computer Types）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93%E8%A1%A8%E6%A0%BC"><span class="toc-text">总结表格</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-%E5%8A%9F%E8%83%BD%E5%8D%95%E5%85%83%EF%BC%88Functional-Units%EF%BC%89"><span class="toc-text">1.2 功能单元（Functional Units）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD%EF%BC%88Basic-Functions-of-a-Computer%EF%BC%89"><span class="toc-text">1. 计算机的基本功能（Basic Functions of a Computer）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD%E5%8D%95%E5%85%83%EF%BC%88Basic-Functional-Units-of-a-Computer%EF%BC%89"><span class="toc-text">2. 计算机的基本功能单元（Basic Functional Units of a Computer）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9A%84%E6%93%8D%E4%BD%9C%E6%B5%81%E7%A8%8B%EF%BC%88Operations-of-a-Computer%EF%BC%89"><span class="toc-text">3. 计算机的操作流程（Operations of a Computer）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%AD%E8%8B%B1%E5%AF%B9%E7%85%A7%E8%A1%A8"><span class="toc-text">中英对照表</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%E6%A6%82%E5%BF%B5%EF%BC%88Basic-Operational-Concepts%EF%BC%89"><span class="toc-text">1.3 基本操作概念（Basic Operational Concepts）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%A8%8B%E5%BA%8F%E6%89%A7%E8%A1%8C%EF%BC%88Program-Execution%EF%BC%89"><span class="toc-text">1. 程序执行（Program Execution）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-%E7%A8%8B%E5%BA%8F%E6%89%A7%E8%A1%8C%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%B5%81%E7%A8%8B"><span class="toc-text">1.1 程序执行的基本流程</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E7%A8%8B%E5%BA%8F%E6%89%A7%E8%A1%8C%E7%A4%BA%E4%BE%8B%EF%BC%88Program-Execution-Example%EF%BC%89"><span class="toc-text">2. 程序执行示例（Program Execution Example）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-%E7%A4%BA%E4%BE%8B%E6%8C%87%E4%BB%A4%EF%BC%9A"><span class="toc-text">2.1 示例指令：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E9%87%8D%E8%A6%81%E5%AF%84%E5%AD%98%E5%99%A8%EF%BC%88Important-Registers%EF%BC%89"><span class="toc-text">3. 重要寄存器（Important Registers）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E4%B8%AD%E6%96%AD%EF%BC%88Interrupt%EF%BC%89"><span class="toc-text">4. 中断（Interrupt）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-%E4%BB%80%E4%B9%88%E6%98%AF%E4%B8%AD%E6%96%AD%EF%BC%9A"><span class="toc-text">4.1 什么是中断：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-%E4%B8%AD%E6%96%AD%E7%9A%84%E5%A4%84%E7%90%86%E6%B5%81%E7%A8%8B%EF%BC%9A"><span class="toc-text">4.2 中断的处理流程：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E6%8C%87%E4%BB%A4%E5%91%A8%E6%9C%9F%EF%BC%88Instruction-Cycle%EF%BC%89"><span class="toc-text">5. 指令周期（Instruction Cycle）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B5%81%E7%A8%8B%E5%9B%BE%EF%BC%9A"><span class="toc-text">流程图：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%AD%E8%8B%B1%E5%AF%B9%E7%85%A7%E8%A1%A8-1"><span class="toc-text">中英对照表</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-6-%E6%80%A7%E8%83%BD%EF%BC%88Performance%EF%BC%89"><span class="toc-text">1.6 性能（Performance）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%80%A7%E8%83%BD%E7%9A%84%E5%AE%9A%E4%B9%89%E4%B8%8E%E9%87%8D%E8%A6%81%E6%80%A7"><span class="toc-text">1. 性能的定义与重要性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%8F%90%E5%8D%87%E6%80%A7%E8%83%BD%E7%9A%84%E5%85%B3%E9%94%AE%E6%8A%80%E6%9C%AF"><span class="toc-text">2. 提升性能的关键技术</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-VLSI-%E6%8A%80%E6%9C%AF%EF%BC%88Very-Large-Scale-Integration%EF%BC%89"><span class="toc-text">2.1 VLSI 技术（Very Large Scale Integration）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-%E5%B9%B6%E8%A1%8C%E5%8C%96%E6%8A%80%E6%9C%AF%EF%BC%88Parallelism%EF%BC%89"><span class="toc-text">2.2 并行化技术（Parallelism）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-%E5%A4%9A%E6%A0%B8%E5%A4%84%E7%90%86%E5%99%A8%EF%BC%88Multicore-Processors%EF%BC%89"><span class="toc-text">2.3 多核处理器（Multicore Processors）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-%E5%A4%9A%E5%A4%84%E7%90%86%E5%99%A8%E7%B3%BB%E7%BB%9F%EF%BC%88Multiprocessors%EF%BC%89"><span class="toc-text">2.4 多处理器系统（Multiprocessors）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-5-%E5%A4%9A%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%EF%BC%88Multicomputers%EF%BC%89"><span class="toc-text">2.5 多计算机系统（Multicomputers）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%AD%E8%8B%B1%E5%AF%B9%E7%85%A7"><span class="toc-text">中英对照</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-7-%E5%8E%86%E5%8F%B2%E8%A7%86%E8%A7%92%EF%BC%88Historical-Perspective%EF%BC%89"><span class="toc-text">1.7 历史视角（Historical Perspective）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9A%84%E5%8F%91%E5%B1%95%E5%8E%86%E7%A8%8B"><span class="toc-text">1. 计算机的发展历程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-%E9%9B%B6%E4%BB%A3%EF%BC%9A%E6%9C%BA%E6%A2%B0%E8%AE%A1%E7%AE%97%E6%9C%BA%EF%BC%881642-1945%EF%BC%89"><span class="toc-text">1.1 零代：机械计算机（1642-1945）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-%E7%AC%AC%E4%B8%80%E4%BB%A3%EF%BC%9A%E7%9C%9F%E7%A9%BA%E7%AE%A1%E8%AE%A1%E7%AE%97%E6%9C%BA%EF%BC%881945-1955%EF%BC%89"><span class="toc-text">1.2 第一代：真空管计算机（1945-1955）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-%E7%AC%AC%E4%BA%8C%E4%BB%A3%EF%BC%9A%E6%99%B6%E4%BD%93%E7%AE%A1%E8%AE%A1%E7%AE%97%E6%9C%BA%EF%BC%881955-1965%EF%BC%89"><span class="toc-text">1.3 第二代：晶体管计算机（1955-1965）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-4-%E7%AC%AC%E4%B8%89%E4%BB%A3%EF%BC%9A%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%A1%E7%AE%97%E6%9C%BA%EF%BC%881965-1975%EF%BC%89"><span class="toc-text">1.4 第三代：集成电路计算机（1965-1975）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-5-%E7%AC%AC%E5%9B%9B%E4%BB%A3%EF%BC%9ALSI-amp-VLSI%EF%BC%881975-%E8%87%B3%E4%BB%8A%EF%BC%89"><span class="toc-text">1.5 第四代：LSI &amp; VLSI（1975-至今）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%80%A7%E8%83%BD%E7%9A%84%E6%BC%94%E5%8F%98"><span class="toc-text">2. 性能的演变</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-%E6%8A%80%E6%9C%AF%E6%94%B9%E8%BF%9B%E7%9A%84%E9%80%9F%E5%BA%A6%EF%BC%9A"><span class="toc-text">2.1 技术改进的速度：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E5%88%9B%E6%96%B0%EF%BC%9A"><span class="toc-text">2.2 体系结构创新：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%AD%E8%8B%B1%E5%AF%B9%E7%85%A7-1"><span class="toc-text">中英对照</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8B%E9%AA%8C"><span class="toc-text">测验</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E7%A4%BA%E4%BE%8B%E9%A2%98%EF%BC%9A%E8%BE%93%E5%85%A5%E5%92%8C%E8%BE%93%E5%87%BA%E8%AE%BE%E5%A4%87"><span class="toc-text">1. 示例题：输入和输出设备</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9A%84%E4%BA%94%E5%A4%A7%E5%8A%9F%E8%83%BD%E5%8D%95%E5%85%83"><span class="toc-text">2. 计算机的五大功能单元</span></a></li></ol></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/%E8%AE%A1%E7%BB%84%E4%B9%A0%E9%A2%98%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B%EF%BC%887%EF%BC%89/" title="计组习题的那些事（7）"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/omoide004.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="计组习题的那些事（7）"/></a><div class="content"><a class="title" href="/%E8%AE%A1%E7%BB%84%E4%B9%A0%E9%A2%98%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B%EF%BC%887%EF%BC%89/" title="计组习题的那些事（7）">计组习题的那些事（7）</a><time datetime="2024-12-07T15:50:36.000Z" title="发表于 2024-12-07 23:50:36">2024-12-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E8%AE%A1%E7%BB%84%E4%B9%A0%E9%A2%98%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B%EF%BC%886%EF%BC%89/" title="计组习题的那些事（6）"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/porco026.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="计组习题的那些事（6）"/></a><div class="content"><a class="title" href="/%E8%AE%A1%E7%BB%84%E4%B9%A0%E9%A2%98%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B%EF%BC%886%EF%BC%89/" title="计组习题的那些事（6）">计组习题的那些事（6）</a><time datetime="2024-12-07T15:06:12.000Z" title="发表于 2024-12-07 23:06:12">2024-12-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E8%AE%A1%E7%BB%84%E4%B9%A0%E9%A2%98%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B%EF%BC%885%EF%BC%89/" title="计组习题的那些事（5）"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/porco026.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="计组习题的那些事（5）"/></a><div class="content"><a class="title" href="/%E8%AE%A1%E7%BB%84%E4%B9%A0%E9%A2%98%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B%EF%BC%885%EF%BC%89/" title="计组习题的那些事（5）">计组习题的那些事（5）</a><time datetime="2024-12-07T09:25:25.000Z" title="发表于 2024-12-07 17:25:25">2024-12-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E8%AE%A1%E7%BB%84%E4%B9%A0%E9%A2%98%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B%EF%BC%884%EF%BC%89/" title="计组习题的那些事（4）"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/howl032.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="计组习题的那些事（4）"/></a><div class="content"><a class="title" href="/%E8%AE%A1%E7%BB%84%E4%B9%A0%E9%A2%98%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B%EF%BC%884%EF%BC%89/" title="计组习题的那些事（4）">计组习题的那些事（4）</a><time datetime="2024-12-07T07:53:21.000Z" title="发表于 2024-12-07 15:53:21">2024-12-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E8%AE%A1%E7%BB%84%E4%B9%A0%E9%A2%98%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B%EF%BC%883%EF%BC%89/" title="计组习题的那些事（3）"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/howl005.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="计组习题的那些事（3）"/></a><div class="content"><a class="title" href="/%E8%AE%A1%E7%BB%84%E4%B9%A0%E9%A2%98%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B%EF%BC%883%EF%BC%89/" title="计组习题的那些事（3）">计组习题的那些事（3）</a><time datetime="2024-12-07T05:13:23.000Z" title="发表于 2024-12-07 13:13:23">2024-12-07</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 By Totoro</div><div class="footer_custom_text">I wish you to become your own sun, no need to rely on who's light.<p><a target="_blank" href="https://hexo.io/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&logo=hexo" title="博客框架为Hexo"></a>&nbsp;<a target="_blank" href="https://butterfly.js.org/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&logo=bitdefender" title="主题采用butterfly"></a>&nbsp;<a target="_blank" href="https://www.jsdelivr.com/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&logo=jsDelivr" title="本站使用JsDelivr为静态资源提供CDN加速"></a> &nbsp;<a target="_blank" href="https://vercel.com/ "><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Hosted-Vervel-brightgreen?style=flat&logo=Vercel" title="本站采用双线部署，默认线路托管于Vercel"></a>&nbsp;<a target="_blank" href="https://vercel.com/ "><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Hosted-Coding-0cedbe?style=flat&logo=Codio" title="本站采用双线部署，联通线路托管于Coding"></a>&nbsp;<a target="_blank" href="https://github.com/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&logo=GitHub" title="本站项目由Gtihub托管"></a>&nbsp;<a target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&logo=Claris" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"></a></p></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat-btn" type="button" title="聊天"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="/js/tw_cn.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@5.2.0/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'HT1PalaKkPaG1UqAXBhJXIu8-gzGzoHsz',
+      appKey: 'iT0TnVVAwf9zuZ7NqwclQItY',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://cdn.jsdelivr.net/npm/valine@1.5.1/dist/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><script defer src="/js/light.js"></script><canvas id="universe"></canvas><script defer src="/js/universe.js"></script><script async src="/js/title.js"></script><script defer src="https://npm.elemecdn.com/jquery@latest/dist/jquery.min.js"></script><script defer data-pjax src="/js/cat.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="1" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener
+  btf.removeGlobalFnEvent('pjax')
+  btf.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.12.0"></script></div></div><!-- hexo injector body_end start --><script data-pjax>
+    function butterfly_categories_card_injector_config(){
+      var parent_div_git = document.getElementById('recent-posts');
+      var item_html = '<style>li.categoryBar-list-item{width:32.3%;}.categoryBar-list{max-height: 380px;overflow:auto;}.categoryBar-list::-webkit-scrollbar{width:0!important}@media screen and (max-width: 650px){.categoryBar-list{max-height: 320px;}}</style><div class="recent-post-item" style="height:auto;width:100%;padding:0px;"><div id="categoryBar"><ul class="categoryBar-list"><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_12.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/离散数学/&quot;);" href="javascript:void(0);">离散数学</a><span class="categoryBar-list-count">29</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_13.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS61B/&quot;);" href="javascript:void(0);">CS61B</a><span class="categoryBar-list-count">76</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_14.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/期末の旅/&quot;);" href="javascript:void(0);">期末の旅</a><span class="categoryBar-list-count">99</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_17.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/区域赛の旅/&quot;);" href="javascript:void(0);">区域赛の旅</a><span class="categoryBar-list-count">7</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_18.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/ACMの旅/&quot;);" href="javascript:void(0);">ACMの旅</a><span class="categoryBar-list-count">68</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_19.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/数学建模/&quot;);" href="javascript:void(0);">数学建模</a><span class="categoryBar-list-count">31</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_20.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/Codeforcesの旅/&quot;);" href="javascript:void(0);">Codeforcesの旅</a><span class="categoryBar-list-count">24</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_21.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/刷题计划/&quot;);" href="javascript:void(0);">刷题计划</a><span class="categoryBar-list-count">40</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_22.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/牛客の旅/&quot;);" href="javascript:void(0);">牛客の旅</a><span class="categoryBar-list-count">65</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_22.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/数据结构/&quot;);" href="javascript:void(0);">数据结构</a><span class="categoryBar-list-count">47</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_23.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/前端の旅/&quot;);" href="javascript:void(0);">前端の旅</a><span class="categoryBar-list-count">17</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_24.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/Atcoderの旅/&quot;);" href="javascript:void(0);">Atcoderの旅</a><span class="categoryBar-list-count">53</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_25.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/C-の旅/&quot;);" href="javascript:void(0);">C++の旅</a><span class="categoryBar-list-count">17</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_26.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS70の旅/&quot;);" href="javascript:void(0);">CS70の旅</a><span class="categoryBar-list-count">25</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_27.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CSAPPの旅/&quot;);" href="javascript:void(0);">CSAPPの旅</a><span class="categoryBar-list-count">2</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_28.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS知识/&quot;);" href="javascript:void(0);">CS知识</a><span class="categoryBar-list-count">3</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_29.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/计算机组成原理/&quot;);" href="javascript:void(0);">计算机组成原理</a><span class="categoryBar-list-count">48</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_30.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/编程基础/&quot;);" href="javascript:void(0);">编程基础</a><span class="categoryBar-list-count">22</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_31.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/JAVAの旅/&quot;);" href="javascript:void(0);">JAVAの旅</a><span class="categoryBar-list-count">10</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_32.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/MIT-6-031-Software-Construction/&quot;);" href="javascript:void(0);">MIT 6.031:Software Construction</a><span class="categoryBar-list-count">16</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_33.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS-110L/&quot;);" href="javascript:void(0);">CS 110L</a><span class="categoryBar-list-count">3</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_34.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/灵魂の旅/&quot;);" href="javascript:void(0);">灵魂の旅</a><span class="categoryBar-list-count">2</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_35.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/个人安排/&quot;);" href="javascript:void(0);">个人安排</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_36.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/杂项/&quot;);" href="javascript:void(0);">杂项</a><span class="categoryBar-list-count">12</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_37.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/文学/&quot;);" href="javascript:void(0);">文学</a><span class="categoryBar-list-count">49</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_38.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/力扣の旅/&quot;);" href="javascript:void(0);">力扣の旅</a><span class="categoryBar-list-count">20</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_39.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/千里十二行/&quot;);" href="javascript:void(0);">千里十二行</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_40.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/🗡指offer/&quot;);" href="javascript:void(0);">🗡指offer</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_41.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/少年游/&quot;);" href="javascript:void(0);">少年游</a><span class="categoryBar-list-count">2</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_42.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/算法提高课/&quot;);" href="javascript:void(0);">算法提高课</a><span class="categoryBar-list-count">3</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_43.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/汇编の旅/&quot;);" href="javascript:void(0);">汇编の旅</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_44.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/C-实训/&quot;);" href="javascript:void(0);">C++实训</a><span class="categoryBar-list-count">8</span><span class="categoryBar-list-descr"></span></li></ul></div></div>';
+      console.log('已挂载butterfly_categories_card')
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+      }
+    if( document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+    butterfly_categories_card_injector_config()
+    }
+  </script><script data-pjax>
+  function butterfly_swiper_injector_config(){
+    var parent_div_git = document.getElementById('recent-posts');
+    var item_html = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms;"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;诗录/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/4b31456c6f0f4489f99177f89e936de7286431045.png@1256w_708h_!web-article-pic.avif" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-10-01</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;诗录/&quot;);" href="javascript:void(0);" alt="">诗录</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;诗录/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;诗兴大发/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://source.fomal.cc/img/default_cover_69.webp" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-01-29</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;诗兴大发/&quot;);" href="javascript:void(0);" alt="">诗兴大发</a><div class="blog-slider__text">未觉，却是中二少年的诗仙梦</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;诗兴大发/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;TotoroのPlan/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/51d37eba99d243607ddedfff6e91568f617436609.jpg@1256w_1884h_!web-article-pic.avif" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-10-05</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;TotoroのPlan/&quot;);" href="javascript:void(0);" alt="">TotoroのPlan</a><div class="blog-slider__text">方便大二看（）</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;TotoroのPlan/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;Markdown格式/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/ushio-api-img-moe@5.0.48/img_482_1920x1080_96_null_normal.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-03-03</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;Markdown格式/&quot;);" href="javascript:void(0);" alt="">Markdown格式</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;Markdown格式/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载butterfly_swiper')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_swiper_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_swiper_injector_config();
+  }
+  </script><script defer src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.js"></script><script defer data-pjax src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper_init.js"></script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>
