@@ -1,9 +1,9 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Lec5 Relations(1) | Totoroの旅</title><meta name="author" content="Totoro"><meta name="copyright" content="Totoro"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Lec5 Relations(1) 我认为这一章是最难的，图论和树论那里都很简单，一开始的逻辑那里其实感觉比较多。 就把你放到最后解决好了，关系！😎  反射性 (Reflexive) 关系的定义与判定 1. 反射性定义在集合 $ A $ 上，一个关系 $ R $ 被称为 反射性关系，当且仅当：$(a, a) \in R \quad \text{对于每一个 } a \in A。$即，集合中的每个元">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Lec5 Relations(1) | Totoroの旅</title><meta name="author" content="Totoro"><meta name="copyright" content="Totoro"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Lec5 Relations(1)  我认为这一章是最难的，图论和树论那里都很简单，一开始的逻辑那里其实感觉比较多。 就把你放到最后解决好了，关系！😎  反射性 (Reflexive) 关系的定义与判定  1. 反射性定义 在集合 $ A $ 上，一个关系 $ R $ 被称为 反射性关系，当且仅当： $ (a, a) R a A。 $ 即，集合中的每个元素都与自身成对出现在">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Lec5 Relations(1)">
 <meta property="og:url" content="http://totorocatcat.top/lec51/index.html">
 <meta property="og:site_name" content="Totoroの旅">
-<meta property="og:description" content="Lec5 Relations(1) 我认为这一章是最难的，图论和树论那里都很简单，一开始的逻辑那里其实感觉比较多。 就把你放到最后解决好了，关系！😎  反射性 (Reflexive) 关系的定义与判定 1. 反射性定义在集合 $ A $ 上，一个关系 $ R $ 被称为 反射性关系，当且仅当：$(a, a) \in R \quad \text{对于每一个 } a \in A。$即，集合中的每个元">
+<meta property="og:description" content="Lec5 Relations(1)  我认为这一章是最难的，图论和树论那里都很简单，一开始的逻辑那里其实感觉比较多。 就把你放到最后解决好了，关系！😎  反射性 (Reflexive) 关系的定义与判定  1. 反射性定义 在集合 $ A $ 上，一个关系 $ R $ 被称为 反射性关系，当且仅当： $ (a, a) R a A。 $ 即，集合中的每个元素都与自身成对出现在">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/fafa2eaa8cf91b2109b6ee6b0cb61e7.jpg">
 <meta property="article:published_time" content="2024-11-21T06:59:42.000Z">
@@ -160,7 +160,7 @@
     })(window)</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/universe.css"><link rel="stylesheet" href="/css/scrollbar.css"><link rel="stylesheet" href="/css/cat.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-double-row-display@1.00/cardlistpost.min.css"/>
 <style>#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags:before {content:"\A";
   white-space: pre;}#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags > .article-meta__separator{display:none}</style>
-<link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-categories-card@1.0.0/lib/categorybar.css"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiperstyle.css" media="print" onload="this.media='all'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><div class="loading-img"></div><div class="loading-image-dot"></div></div></div><script>const preloader = {
+<link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiperstyle.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-categories-card@1.0.0/lib/categorybar.css"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><div class="loading-img"></div><div class="loading-image-dot"></div></div></div><script>const preloader = {
   endLoading: () => {
     document.body.style.overflow = 'auto';
     document.getElementById('loading-box').classList.add("loaded")
@@ -183,77 +183,98 @@ if (true) {
 document.addEventListener('pjax:send', () => {
   Pace.restart()
 })
-</script><link rel="stylesheet" href="/css/progress_bar.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/px3.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">782</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">33</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home-alt"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-envelope-open"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 趣味</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/project/"><i class="fa-fw fas fas fa-folder"></i><span> 项目</span></a></div><div class="menus_item"><a class="site-page" href="/stars/"><i class="fa-fw fas fa-bookmark"></i><span> 收藏</span></a></div><div class="menus_item"><a class="site-page" href="/bilibili/"><i class="fa-fw fas fa-tv"></i><span> 追番</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/fafa2eaa8cf91b2109b6ee6b0cb61e7.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="Totoroの旅"><span class="site-name">Totoroの旅</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home-alt"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-envelope-open"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 趣味</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/project/"><i class="fa-fw fas fas fa-folder"></i><span> 项目</span></a></div><div class="menus_item"><a class="site-page" href="/stars/"><i class="fa-fw fas fa-bookmark"></i><span> 收藏</span></a></div><div class="menus_item"><a class="site-page" href="/bilibili/"><i class="fa-fw fas fa-tv"></i><span> 追番</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Lec5 Relations(1)</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-11-21T06:59:42.000Z" title="发表于 2024-11-21 14:59:42">2024-11-21</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-12-02T17:05:36.474Z" title="更新于 2024-12-03 01:05:36">2024-12-03</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6/">离散数学</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">3.4k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>14分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Lec5 Relations(1)"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/lec51/#post-comment" itemprop="discussionUrl"><span class="valine-comment-count" data-xid="/lec51/" itemprop="commentCount"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="Lec5-Relations-1"><a href="#Lec5-Relations-1" class="headerlink" title="Lec5 Relations(1)"></a>Lec5 Relations(1)</h1><blockquote>
+</script><link rel="stylesheet" href="/css/progress_bar.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/px3.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">784</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">34</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home-alt"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-envelope-open"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 趣味</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/project/"><i class="fa-fw fas fas fa-folder"></i><span> 项目</span></a></div><div class="menus_item"><a class="site-page" href="/stars/"><i class="fa-fw fas fa-bookmark"></i><span> 收藏</span></a></div><div class="menus_item"><a class="site-page" href="/bilibili/"><i class="fa-fw fas fa-tv"></i><span> 追番</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/fafa2eaa8cf91b2109b6ee6b0cb61e7.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="Totoroの旅"><span class="site-name">Totoroの旅</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home-alt"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-envelope-open"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 趣味</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/project/"><i class="fa-fw fas fas fa-folder"></i><span> 项目</span></a></div><div class="menus_item"><a class="site-page" href="/stars/"><i class="fa-fw fas fa-bookmark"></i><span> 收藏</span></a></div><div class="menus_item"><a class="site-page" href="/bilibili/"><i class="fa-fw fas fa-tv"></i><span> 追番</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Lec5 Relations(1)</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-11-21T06:59:42.000Z" title="发表于 2024-11-21 14:59:42">2024-11-21</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-12-02T17:05:36.474Z" title="更新于 2024-12-03 01:05:36">2024-12-03</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6/">离散数学</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">3.1k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>12分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Lec5 Relations(1)"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/lec51/#post-comment" itemprop="discussionUrl"><span class="valine-comment-count" data-xid="/lec51/" itemprop="commentCount"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="lec5-relations1">Lec5 Relations(1)</h1>
+<blockquote>
 <p>我认为这一章是最难的，图论和树论那里都很简单，一开始的逻辑那里其实感觉比较多。</p>
 <p>就把你放到最后解决好了，关系！😎</p>
 </blockquote>
-<h2 id="反射性-Reflexive-关系的定义与判定"><a href="#反射性-Reflexive-关系的定义与判定" class="headerlink" title="反射性 (Reflexive) 关系的定义与判定"></a><strong>反射性 (Reflexive) 关系的定义与判定</strong></h2><hr>
-<h3 id="1-反射性定义"><a href="#1-反射性定义" class="headerlink" title="1. 反射性定义"></a><strong>1. 反射性定义</strong></h3><p>在集合 $ A $ 上，一个关系 $ R $ 被称为 <strong>反射性关系</strong>，当且仅当：<br>$<br>(a, a) \in R \quad \text{对于每一个 } a \in A。<br>$<br>即，集合中的每个元素都与自身成对出现在关系中。</p>
+<h2 id="反射性-reflexive-关系的定义与判定"><strong>反射性 (Reflexive)
+关系的定义与判定</strong></h2>
 <hr>
-<h3 id="2-示例分析"><a href="#2-示例分析" class="headerlink" title="2. 示例分析"></a><strong>2. 示例分析</strong></h3><p>设集合 $ A = \{1, 2, 3, 4\} $，我们逐一分析给定的关系 $ R1, R2, R3 $ 是否具有反射性：</p>
-<h4 id="2-1-R1"><a href="#2-1-R1" class="headerlink" title="2.1 $ R1 $"></a><strong>2.1 $ R1 $</strong></h4><p>$<br>R1 = \{(1,1), (1,2), (2,1), (2,2), (3,4), (4,1), (4,4)\}<br>$</p>
+<h3 id="反射性定义"><strong>1. 反射性定义</strong></h3>
+<p>在集合 $ A $ 上，一个关系 $ R $ 被称为
+<strong>反射性关系</strong>，当且仅当： $ (a, a) R a A。 $
+即，集合中的每个元素都与自身成对出现在关系中。</p>
+<hr>
+<h3 id="示例分析"><strong>2. 示例分析</strong></h3>
+<p>设集合 $ A = {1, 2, 3, 4} $，我们逐一分析给定的关系 $ R1, R2, R3 $
+是否具有反射性：</p>
+<h4 id="r1"><strong>2.1 $ R1 $</strong></h4>
+<p>$ R1 = {(1,1), (1,2), (2,1), (2,2), (3,4), (4,1), (4,4)} $</p>
 <ul>
-<li><strong>分析</strong>：集合 $ A $ 中每个元素 $ a $ 的 $ (a, a) $ 是否都在 $ R1 $ 中：<ul>
-<li>$ (1,1) \in R1 $, $ (2,2) \in R1 $, $ (4,4) \in R1 $</li>
-<li>但 $ (3,3) \notin R1 $，因此 $ R1 $ <strong>不具备反射性</strong>。</li>
-</ul>
-</li>
+<li><strong>分析</strong>：集合 $ A $ 中每个元素 $ a $ 的 $ (a, a) $
+是否都在 $ R1 $ 中：
+<ul>
+<li>$ (1,1) R1 $, $ (2,2) R1 $, $ (4,4) R1 $</li>
+<li>但 $ (3,3) R1 $，因此 $ R1 $ <strong>不具备反射性</strong>。</li>
+</ul></li>
 </ul>
 <hr>
-<h4 id="2-2-R2"><a href="#2-2-R2" class="headerlink" title="2.2 $ R2 $"></a><strong>2.2 $ R2 $</strong></h4><p>$<br>R2 = \{(1,1), (1,2), (2,1)\}<br>$</p>
+<h4 id="r2"><strong>2.2 $ R2 $</strong></h4>
+<p>$ R2 = {(1,1), (1,2), (2,1)} $</p>
 <ul>
-<li><strong>分析</strong>：检查 $ (a, a) $ 是否都在 $ R2 $ 中：<ul>
-<li>$ (1,1) \in R2 $，但 $ (2,2) \notin R2, (3,3) \notin R2, (4,4) \notin R2 $。</li>
+<li><strong>分析</strong>：检查 $ (a, a) $ 是否都在 $ R2 $ 中：
+<ul>
+<li>$ (1,1) R2 $，但 $ (2,2) R2, (3,3) R2, (4,4) R2 $。</li>
 <li>因此 $ R2 $ <strong>不具备反射性</strong>。</li>
-</ul>
-</li>
+</ul></li>
 </ul>
 <hr>
-<h4 id="2-3-R3"><a href="#2-3-R3" class="headerlink" title="2.3 $ R3 $"></a><strong>2.3 $ R3 $</strong></h4><p>$<br>R3 = \{(1,1), (1,2), (1,4), (2,1), (2,2), (3,3), (4,1), (4,4)\}<br>$</p>
+<h4 id="r3"><strong>2.3 $ R3 $</strong></h4>
+<p>$ R3 = {(1,1), (1,2), (1,4), (2,1), (2,2), (3,3), (4,1), (4,4)} $</p>
 <ul>
-<li><strong>分析</strong>：检查 $ (a, a) $ 是否都在 $ R3 $ 中：<ul>
-<li>$ (1,1) \in R3, (2,2) \in R3, (3,3) \in R3, (4,4) \in R3 $。</li>
+<li><strong>分析</strong>：检查 $ (a, a) $ 是否都在 $ R3 $ 中：
+<ul>
+<li>$ (1,1) R3, (2,2) R3, (3,3) R3, (4,4) R3 $。</li>
 <li>因此 $ R3 $ <strong>具备反射性</strong>。</li>
-</ul>
-</li>
+</ul></li>
 </ul>
 <hr>
-<h3 id="3-另一组关系判定"><a href="#3-另一组关系判定" class="headerlink" title="3. 另一组关系判定"></a><strong>3. 另一组关系判定</strong></h3><h4 id="关系定义："><a href="#关系定义：" class="headerlink" title="关系定义："></a><strong>关系定义：</strong></h4><ol>
-<li>$ R1 = \{(a, b) \mid a \leq b\} $</li>
-<li>$ R2 = \{(a, b) \mid a &gt; b\} $</li>
-<li>$ R3 = \{(a, b) \mid a = b \text{ 或 } a = -b\} $</li>
-<li>$ R4 = \{(a, b) \mid a = b\} $</li>
-<li>$ R5 = \{(a, b) \mid a = b + 1\} $</li>
-<li>$ R6 = \{(a, b) \mid a + b \leq 3\} $</li>
+<h3 id="另一组关系判定"><strong>3. 另一组关系判定</strong></h3>
+<h4 id="关系定义"><strong>关系定义：</strong></h4>
+<ol type="1">
+<li>$ R1 = {(a, b) a b} $</li>
+<li>$ R2 = {(a, b) a &gt; b} $</li>
+<li>$ R3 = {(a, b) a = b a = -b} $</li>
+<li>$ R4 = {(a, b) a = b} $</li>
+<li>$ R5 = {(a, b) a = b + 1} $</li>
+<li>$ R6 = {(a, b) a + b } $</li>
 </ol>
-<h4 id="分析："><a href="#分析：" class="headerlink" title="分析："></a><strong>分析：</strong></h4><ol>
-<li>$ R1 $：<ul>
-<li>$ a \leq a $ 对任意 $ a $ 都成立，因此 $ R1 $ <strong>具备反射性</strong>。</li>
-</ul>
-</li>
-<li>$ R2 $：<ul>
-<li>$ a &gt; a $ 不可能成立，因此 $ R2 $ <strong>不具备反射性</strong>。</li>
-</ul>
-</li>
-<li>$ R3 $：<ul>
-<li>$ a = a $ 成立，且 $ a = -a $ 对部分 $ a = 0 $ 成立，因此 $ R3 $ <strong>具备反射性</strong>。</li>
-</ul>
-</li>
-<li>$ R4 $：<ul>
-<li>$ a = a $ 对任意 $ a $ 都成立，因此 $ R4 $ <strong>具备反射性</strong>。</li>
-</ul>
-</li>
-<li>$ R5 $：<ul>
-<li>$ a = b + 1 $ 不可能对 $ a = b $ 成立，因此 $ R5 $ <strong>不具备反射性</strong>。</li>
-</ul>
-</li>
-<li>$ R6 $：<ul>
-<li>$ a + a \leq 3 $ 并非对所有 $ a $ 成立（如 $ a = 2 $ 时 $ 4 &gt; 3 $），因此 $ R6 $ <strong>不具备反射性</strong>。</li>
-</ul>
-</li>
+<h4 id="分析"><strong>分析：</strong></h4>
+<ol type="1">
+<li>$ R1 $：
+<ul>
+<li>$ a a $ 对任意 $ a $ 都成立，因此 $ R1 $
+<strong>具备反射性</strong>。</li>
+</ul></li>
+<li>$ R2 $：
+<ul>
+<li>$ a &gt; a $ 不可能成立，因此 $ R2 $
+<strong>不具备反射性</strong>。</li>
+</ul></li>
+<li>$ R3 $：
+<ul>
+<li>$ a = a $ 成立，且 $ a = -a $ 对部分 $ a = 0 $ 成立，因此 $ R3 $
+<strong>具备反射性</strong>。</li>
+</ul></li>
+<li>$ R4 $：
+<ul>
+<li>$ a = a $ 对任意 $ a $ 都成立，因此 $ R4 $
+<strong>具备反射性</strong>。</li>
+</ul></li>
+<li>$ R5 $：
+<ul>
+<li>$ a = b + 1 $ 不可能对 $ a = b $ 成立，因此 $ R5 $
+<strong>不具备反射性</strong>。</li>
+</ul></li>
+<li>$ R6 $：
+<ul>
+<li>$ a + a $ 并非对所有 $ a $ 成立（如 $ a = 2 $ 时 $ 4 &gt; 3
+$），因此 $ R6 $ <strong>不具备反射性</strong>。</li>
+</ul></li>
 </ol>
 <hr>
-<h3 id="4-总结"><a href="#4-总结" class="headerlink" title="4. 总结"></a><strong>4. 总结</strong></h3><div class="table-container">
+<h3 id="总结"><strong>4. 总结</strong></h3>
 <table>
 <thead>
 <tr>
@@ -266,7 +287,7 @@ document.addEventListener('pjax:send', () => {
 <tr>
 <td>$ R1 $</td>
 <td>是</td>
-<td>$ a \leq a $ 恒成立</td>
+<td>$ a a $ 恒成立</td>
 </tr>
 <tr>
 <td>$ R2 $</td>
@@ -291,65 +312,91 @@ document.addEventListener('pjax:send', () => {
 <tr>
 <td>$ R6 $</td>
 <td>否</td>
-<td>$ a + a \leq 3 $ 不对所有 $ a $ 成立</td>
+<td>$ a + a $ 不对所有 $ a $ 成立</td>
 </tr>
 </tbody>
 </table>
-</div>
-<h3 id="反射性-Reflexive-与非反射性-Irreflexive-对比"><a href="#反射性-Reflexive-与非反射性-Irreflexive-对比" class="headerlink" title="反射性 (Reflexive) 与非反射性 (Irreflexive)对比"></a><strong>反射性 (Reflexive) 与非反射性 (Irreflexive)对比</strong></h3><hr>
-<h4 id="1-反射性-Reflexive"><a href="#1-反射性-Reflexive" class="headerlink" title="1. 反射性 (Reflexive)"></a><strong>1. 反射性 (Reflexive)</strong></h4><h5 id="定义："><a href="#定义：" class="headerlink" title="定义："></a><strong>定义：</strong></h5><p>对于一个集合 $ A $ 上的关系 $ R $，如果对于 $ A $ 中的每一个元素 $ a $，都有：<br>$<br>a R a \quad (\forall a \in A, (a, a) \in R)<br>$<br>那么称 $ R $ 是 <strong>反射性关系</strong>。</p>
-<h5 id="举例："><a href="#举例：" class="headerlink" title="举例："></a><strong>举例：</strong></h5><ol>
-<li><strong>大于等于 (≥)</strong>：<ul>
-<li>$ \{(a, b) \mid a \geq b\} $ 是反射性的，因为 $ a \geq a $ 对所有 $ a $ 成立。</li>
-</ul>
-</li>
-<li><strong>整除 (divides)</strong>：<ul>
-<li>$ \{(a, b) \mid a \text{ divides } b\} $ 是反射性的，因为 $ a \mid a $ 对所有 $ a $ 成立。</li>
-</ul>
-</li>
-<li><strong>等价关系 (=)</strong>：<ul>
-<li>$ \{(a, b) \mid a = b\} $ 是反射性的，因为 $ a = a $ 对所有 $ a $ 成立。</li>
-</ul>
-</li>
-</ol>
+<h3 id="反射性-reflexive-与非反射性-irreflexive对比"><strong>反射性
+(Reflexive) 与非反射性 (Irreflexive)对比</strong></h3>
 <hr>
-<h4 id="2-非反射性-Irreflexive"><a href="#2-非反射性-Irreflexive" class="headerlink" title="2. 非反射性 (Irreflexive)"></a><strong>2. 非反射性 (Irreflexive)</strong></h4><h5 id="定义：-1"><a href="#定义：-1" class="headerlink" title="定义："></a><strong>定义：</strong></h5><p>对于一个集合 $ A $ 上的关系 $ R $，如果对于 $ A $ 中的每一个元素 $ a $，都有：<br>$<br>\neg(a R a) \quad (\forall a \in A, (a, a) \notin R)<br>$<br>那么称 $ R $ 是 <strong>非反射性关系</strong>。</p>
-<h5 id="注意："><a href="#注意：" class="headerlink" title="注意："></a><strong>注意：</strong></h5><ul>
-<li><strong>非反射性 (Irreflexive)</strong> ≠ <strong>非反射的 (Not Reflexive)</strong>：<ul>
-<li>非反射的：表示 $ R $ 并不满足 $ \forall a \in A, (a, a) \in R $ 的条件，但可能某些元素满足。</li>
-<li>非反射性：表示 $ R $ 对所有元素 $ a $ 都不满足 $ a R a $。</li>
-</ul>
-</li>
-</ul>
-<h5 id="举例：-1"><a href="#举例：-1" class="headerlink" title="举例："></a><strong>举例：</strong></h5><ol>
-<li><strong>小于 (&lt;)</strong>：<ul>
-<li>$ \{(a, b) \mid a &lt; b\} $ 是非反射性的，因为 $ a &lt; a $ 永远不成立。</li>
-</ul>
-</li>
-<li><strong>大于 (&gt;)</strong>：<ul>
-<li>$ \{(a, b) \mid a &gt; b\} $ 是非反射性的，因为 $ a &gt; a $ 永远不成立。</li>
-</ul>
-</li>
-<li><strong>真包含 ($ \subset $)</strong>：<ul>
-<li>$ \{(A, B) \mid A \subset B\} $ 是非反射性的，因为 $ A \subset A $ 不成立。</li>
-</ul>
-</li>
-</ol>
-<hr>
-<h4 id="3-反射性与非反射性互补关系"><a href="#3-反射性与非反射性互补关系" class="headerlink" title="3. 反射性与非反射性互补关系"></a><strong>3. 反射性与非反射性互补关系</strong></h4><h5 id="定理："><a href="#定理：" class="headerlink" title="定理："></a><strong>定理：</strong></h5><p>如果关系 $ R $ 是非反射性的，那么其补关系 $ \overline{R} $ 是反射性的。</p>
+<h4 id="反射性-reflexive"><strong>1. 反射性 (Reflexive)</strong></h4>
+<h5 id="定义"><strong>定义：</strong></h5>
+<p>对于一个集合 $ A $ 上的关系 $ R $，如果对于 $ A $ 中的每一个元素 $ a
+<span class="math inline">\(，都有：\)</span> a R a (a A, (a, a) R) $
+那么称 $ R $ 是 <strong>反射性关系</strong>。</p>
+<h5 id="举例"><strong>举例：</strong></h5>
+<ol type="1">
+<li><strong>大于等于 (≥)</strong>：
 <ul>
-<li><strong>补关系定义</strong>：对于集合 $ A $ 上的关系 $ R $，其补关系 $ \overline{R} $ 定义为：<br>$<br>\overline{R} = \{(a, b) \mid (a, b) \notin R\}<br>$</li>
-</ul>
-<h5 id="例子："><a href="#例子：" class="headerlink" title="例子："></a><strong>例子：</strong></h5><ul>
-<li>小于 (&lt;) 是非反射性的，其补关系大于等于 (≥) 是反射性的。</li>
-<li>真包含 ($ \subset $) 是非反射性的，其补关系包含 ($ \subseteq $) 是反射性的。</li>
-</ul>
-<h5 id="证明："><a href="#证明：" class="headerlink" title="证明："></a><strong>证明：</strong></h5><ol>
-<li>如果 $ R $ 是非反射性的，则 $ (a, a) \notin R $ 对所有 $ a \in A $ 成立。</li>
-<li>因此 $ (a, a) \in \overline{R} $，即 $ \overline{R} $ 是反射性的。</li>
+<li>$ {(a, b) a b} $ 是反射性的，因为 $ a a $ 对所有 $ a $ 成立。</li>
+</ul></li>
+<li><strong>整除 (divides)</strong>：
+<ul>
+<li>$ {(a, b) a b} $ 是反射性的，因为 $ a a $ 对所有 $ a $ 成立。</li>
+</ul></li>
+<li><strong>等价关系 (=)</strong>：
+<ul>
+<li>$ {(a, b) a = b} $ 是反射性的，因为 $ a = a $ 对所有 $ a $
+成立。</li>
+</ul></li>
 </ol>
 <hr>
-<h4 id="4-示例：反射性与非反射性关系"><a href="#4-示例：反射性与非反射性关系" class="headerlink" title="4. 示例：反射性与非反射性关系"></a><strong>4. 示例：反射性与非反射性关系</strong></h4><div class="table-container">
+<h4 id="非反射性-irreflexive"><strong>2. 非反射性
+(Irreflexive)</strong></h4>
+<h5 id="定义-1"><strong>定义：</strong></h5>
+<p>对于一个集合 $ A $ 上的关系 $ R $，如果对于 $ A $ 中的每一个元素 $ a
+<span class="math inline">\(，都有：\)</span> (a R a) (a A, (a, a) R) $
+那么称 $ R $ 是 <strong>非反射性关系</strong>。</p>
+<h5 id="注意"><strong>注意：</strong></h5>
+<ul>
+<li><strong>非反射性 (Irreflexive)</strong> ≠ <strong>非反射的 (Not
+Reflexive)</strong>：
+<ul>
+<li>非反射的：表示 $ R $ 并不满足 $ a A, (a, a) R $
+的条件，但可能某些元素满足。</li>
+<li>非反射性：表示 $ R $ 对所有元素 $ a $ 都不满足 $ a R a $。</li>
+</ul></li>
+</ul>
+<h5 id="举例-1"><strong>举例：</strong></h5>
+<ol type="1">
+<li><strong>小于 (&lt;)</strong>：
+<ul>
+<li>$ {(a, b) a &lt; b} $ 是非反射性的，因为 $ a &lt; a $
+永远不成立。</li>
+</ul></li>
+<li><strong>大于 (&gt;)</strong>：
+<ul>
+<li>$ {(a, b) a &gt; b} $ 是非反射性的，因为 $ a &gt; a $
+永远不成立。</li>
+</ul></li>
+<li><strong>真包含 ($ $)</strong>：
+<ul>
+<li>$ {(A, B) A B} $ 是非反射性的，因为 $ A A $ 不成立。</li>
+</ul></li>
+</ol>
+<hr>
+<h4 id="反射性与非反射性互补关系"><strong>3.
+反射性与非反射性互补关系</strong></h4>
+<h5 id="定理"><strong>定理：</strong></h5>
+<p>如果关系 $ R $ 是非反射性的，那么其补关系 $ $ 是反射性的。</p>
+<ul>
+<li><strong>补关系定义</strong>：对于集合 $ A $ 上的关系 $ R $，其补关系
+$ $ 定义为： $ = {(a, b) (a, b) R} $</li>
+</ul>
+<h5 id="例子"><strong>例子：</strong></h5>
+<ul>
+<li>小于 (&lt;) 是非反射性的，其补关系大于等于 (≥) 是反射性的。</li>
+<li>真包含 ($ <span class="math inline">\() 是非反射性的，其补关系包含
+(\)</span> $) 是反射性的。</li>
+</ul>
+<h5 id="证明"><strong>证明：</strong></h5>
+<ol type="1">
+<li>如果 $ R $ 是非反射性的，则 $ (a, a) R $ 对所有 $ a A $ 成立。</li>
+<li>因此 $ (a, a) $，即 $ $ 是反射性的。</li>
+</ol>
+<hr>
+<h4 id="示例反射性与非反射性关系"><strong>4.
+示例：反射性与非反射性关系</strong></h4>
 <table>
 <thead>
 <tr>
@@ -360,108 +407,150 @@ document.addEventListener('pjax:send', () => {
 <tbody>
 <tr>
 <td><strong>反射性关系</strong></td>
-<td>$ =, \leq, \geq, \subseteq, \iff $</td>
+<td>$ =, , , , $</td>
 </tr>
 <tr>
 <td><strong>非反射性关系</strong></td>
-<td>$ &lt;, &gt;, \neq, \subset $</td>
+<td>$ &lt;, &gt;, , $</td>
 </tr>
 </tbody>
 </table>
-</div>
 <hr>
-<h4 id="5-应用场景举例"><a href="#5-应用场景举例" class="headerlink" title="5. 应用场景举例"></a><strong>5. 应用场景举例</strong></h4><ol>
-<li><p><strong>数字上的关系</strong>：</p>
+<h4 id="应用场景举例"><strong>5. 应用场景举例</strong></h4>
+<ol type="1">
+<li><strong>数字上的关系</strong>：
 <ul>
 <li>反射性：等于 (=)，大于等于 (≥)，小于等于 (≤)。</li>
 <li>非反射性：大于 (&gt;)，小于 (&lt;)。</li>
-</ul>
-</li>
-<li><p><strong>集合上的关系</strong>：</p>
+</ul></li>
+<li><strong>集合上的关系</strong>：
 <ul>
-<li>反射性：包含 ($ \subseteq $)。</li>
-<li>非反射性：真包含 ($ \subset $)。</li>
-</ul>
-</li>
-<li><p><strong>逻辑关系</strong>：</p>
+<li>反射性：包含 ($ $)。</li>
+<li>非反射性：真包含 ($ $)。</li>
+</ul></li>
+<li><strong>逻辑关系</strong>：
 <ul>
-<li>反射性：逻辑等价 ($ \iff $)。</li>
-<li>非反射性：逻辑不等价 ($ \not\iff $)。</li>
-</ul>
-</li>
+<li>反射性：逻辑等价 ($ $)。</li>
+<li>非反射性：逻辑不等价 ($ $)。</li>
+</ul></li>
 </ol>
-<h2 id="对称性-Symmetric-、反对称性-Antisymmetric-、传递性-Transitivity-关系"><a href="#对称性-Symmetric-、反对称性-Antisymmetric-、传递性-Transitivity-关系" class="headerlink" title="对称性 (Symmetric)、反对称性 (Antisymmetric)、传递性 (Transitivity) 关系"></a><strong>对称性 (Symmetric)、反对称性 (Antisymmetric)、传递性 (Transitivity) 关系</strong></h2><hr>
-<h3 id="1-对称性-Symmetric"><a href="#1-对称性-Symmetric" class="headerlink" title="1. 对称性 (Symmetric)"></a><strong>1. 对称性 (Symmetric)</strong></h3><h4 id="定义：-2"><a href="#定义：-2" class="headerlink" title="定义："></a><strong>定义：</strong></h4><p>对于一个集合 $ A $ 上的关系 $ R $，如果对于所有 $ a, b \in A $，当 $ (a, b) \in R $ 时，必有 $ (b, a) \in R $，则称 $ R $ 是 <strong>对称性关系</strong>。<br>$<br>\forall a, b \in A, (a, b) \in R \implies (b, a) \in R<br>$</p>
-<h4 id="举例：-2"><a href="#举例：-2" class="headerlink" title="举例："></a><strong>举例：</strong></h4><ol>
-<li><strong>等价关系 (=)</strong>：<ul>
-<li>$ (a, b) \in R $ 意味着 $ a = b $，显然对称。</li>
-</ul>
-</li>
-<li><strong>相反数关系</strong>：<ul>
-<li>$ R = \{(a, b) \mid a = -b\} $ 是对称的，因为如果 $ a = -b $，则 $ b = -a $。</li>
-</ul>
-</li>
-<li><strong>R2 和 R3</strong>：<ul>
-<li>$ R2 = \{(1,1), (1,2), (2,1)\} $，因为 $ (1,2) \in R2 \implies (2,1) \in R2 $。</li>
-<li>$ R3 = \{(1,1), (1,2), (1,4), (2,1), (2,2), (3,3), (4,1), (4,4)\} $，对称性同样成立。</li>
-</ul>
-</li>
+<h2 id="对称性-symmetric反对称性-antisymmetric传递性-transitivity-关系"><strong>对称性
+(Symmetric)、反对称性 (Antisymmetric)、传递性 (Transitivity)
+关系</strong></h2>
+<hr>
+<h3 id="对称性-symmetric"><strong>1. 对称性 (Symmetric)</strong></h3>
+<h4 id="定义-2"><strong>定义：</strong></h4>
+<p>对于一个集合 $ A $ 上的关系 $ R $，如果对于所有 $ a, b A $，当 $ (a,
+b) R $ 时，必有 $ (b, a) R $，则称 $ R $ 是
+<strong>对称性关系</strong>。 $ a, b A, (a, b) R (b, a) R $</p>
+<h4 id="举例-2"><strong>举例：</strong></h4>
+<ol type="1">
+<li><strong>等价关系 (=)</strong>：
+<ul>
+<li>$ (a, b) R $ 意味着 $ a = b $，显然对称。</li>
+</ul></li>
+<li><strong>相反数关系</strong>：
+<ul>
+<li>$ R = {(a, b) a = -b} $ 是对称的，因为如果 $ a = -b $，则 $ b = -a
+$。</li>
+</ul></li>
+<li><strong>R2 和 R3</strong>：
+<ul>
+<li>$ R2 = {(1,1), (1,2), (2,1)} $，因为 $ (1,2) R2 (2,1) R2 $。</li>
+<li>$ R3 = {(1,1), (1,2), (1,4), (2,1), (2,2), (3,3), (4,1), (4,4)}
+$，对称性同样成立。</li>
+</ul></li>
 </ol>
-<h4 id="非对称性示例："><a href="#非对称性示例：" class="headerlink" title="非对称性示例："></a><strong>非对称性示例：</strong></h4><ol>
-<li><strong>小于关系 (&lt;)</strong>：<ul>
-<li>$ R = \{(a, b) \mid a &lt; b\} $ 不对称，因为 $ a &lt; b $ 不意味着 $ b &lt; a $。</li>
-</ul>
-</li>
+<h4 id="非对称性示例"><strong>非对称性示例：</strong></h4>
+<ol type="1">
+<li><strong>小于关系 (&lt;)</strong>：
+<ul>
+<li>$ R = {(a, b) a &lt; b} $ 不对称，因为 $ a &lt; b $ 不意味着 $ b
+&lt; a $。</li>
+</ul></li>
 </ol>
 <hr>
-<h3 id="2-反对称性-Antisymmetric"><a href="#2-反对称性-Antisymmetric" class="headerlink" title="2. 反对称性 (Antisymmetric)"></a><strong>2. 反对称性 (Antisymmetric)</strong></h3><h4 id="定义：-3"><a href="#定义：-3" class="headerlink" title="定义："></a><strong>定义：</strong></h4><p>对于一个集合 $ A $ 上的关系 $ R $，如果对于所有 $ a, b \in A $，当 $ (a, b) \in R $ 且 $ (b, a) \in R $ 时，必有 $ a = b $，则称 $ R $ 是 <strong>反对称性关系</strong>。<br>$<br>\forall a, b \in A, (a, b) \in R \land (b, a) \in R \implies a = b<br>$</p>
-<h4 id="常见关系："><a href="#常见关系：" class="headerlink" title="常见关系："></a><strong>常见关系：</strong></h4><ul>
-<li><strong>$ \leq, \geq, \subseteq $</strong> 都是反对称的。<ul>
-<li>如果 $ a \leq b $ 且 $ b \leq a $，则 $ a = b $。</li>
-<li>如果 $ A \subseteq B $ 且 $ B \subseteq A $，则 $ A = B $。</li>
+<h3 id="反对称性-antisymmetric"><strong>2. 反对称性
+(Antisymmetric)</strong></h3>
+<h4 id="定义-3"><strong>定义：</strong></h4>
+<p>对于一个集合 $ A $ 上的关系 $ R $，如果对于所有 $ a, b A $，当 $ (a,
+b) R $ 且 $ (b, a) R $ 时，必有 $ a = b $，则称 $ R $ 是
+<strong>反对称性关系</strong>。 $ a, b A, (a, b) R (b, a) R a = b $</p>
+<h4 id="常见关系"><strong>常见关系：</strong></h4>
+<ul>
+<li><strong>$ , , $</strong> 都是反对称的。
+<ul>
+<li>如果 $ a b $ 且 $ b a $，则 $ a = b $。</li>
+<li>如果 $ A B $ 且 $ B A $，则 $ A = B $。</li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<h4 id="举例：-3"><a href="#举例：-3" class="headerlink" title="举例："></a><strong>举例：</strong></h4><ol>
-<li><strong>R4</strong>：<ul>
-<li>$ R4 = \{(2,1), (3,1), (3,2), (4,1), (4,2), (4,3)\} $ 是反对称的，因为不存在 $ (a, b) \in R4 $ 且 $ (b, a) \in R4 $ 的情况。</li>
-</ul>
-</li>
-<li><strong>整除关系 (divides)</strong>：<ul>
-<li>$ R = \{(a, b) \mid a \mid b\} $ 是反对称的，因为如果 $ a \mid b $ 且 $ b \mid a $，则 $ a = b $。</li>
-</ul>
-</li>
+<h4 id="举例-3"><strong>举例：</strong></h4>
+<ol type="1">
+<li><strong>R4</strong>：
+<ul>
+<li>$ R4 = {(2,1), (3,1), (3,2), (4,1), (4,2), (4,3)} $
+是反对称的，因为不存在 $ (a, b) R4 $ 且 $ (b, a) R4 $ 的情况。</li>
+</ul></li>
+<li><strong>整除关系 (divides)</strong>：
+<ul>
+<li>$ R = {(a, b) a b} $ 是反对称的，因为如果 $ a b $ 且 $ b a $，则 $ a
+= b $。</li>
+</ul></li>
 </ol>
 <hr>
-<h3 id="3-对称性与反对称性的关系"><a href="#3-对称性与反对称性的关系" class="headerlink" title="3. 对称性与反对称性的关系"></a><strong>3. 对称性与反对称性的关系</strong></h3><ul>
-<li><strong>对称性</strong>和<strong>反对称性</strong>可以同时存在，例如 $ R = \{(a, b) \mid a = b\} $，即等于关系 $ = $。</li>
-<li><strong>对称性</strong>和<strong>反对称性</strong>可以互斥，例如小于关系 $ &lt; $ 是反对称但不是对称的。</li>
+<h3 id="对称性与反对称性的关系"><strong>3.
+对称性与反对称性的关系</strong></h3>
+<ul>
+<li><strong>对称性</strong>和<strong>反对称性</strong>可以同时存在，例如
+$ R = {(a, b) a = b} $，即等于关系 $ = $。</li>
+<li><strong>对称性</strong>和<strong>反对称性</strong>可以互斥，例如小于关系
+$ &lt; $ 是反对称但不是对称的。</li>
 </ul>
 <hr>
-<h3 id="4-传递性-Transitivity"><a href="#4-传递性-Transitivity" class="headerlink" title="4. 传递性 (Transitivity)"></a><strong>4. 传递性 (Transitivity)</strong></h3><h4 id="定义：-4"><a href="#定义：-4" class="headerlink" title="定义："></a><strong>定义：</strong></h4><p>对于一个集合 $ A $ 上的关系 $ R $，如果对于所有 $ a, b, c \in A $，当 $ (a, b) \in R $ 且 $ (b, c) \in R $ 时，必有 $ (a, c) \in R $，则称 $ R $ 是 <strong>传递性关系</strong>。<br>$<br>\forall a, b, c \in A, (a, b) \in R \land (b, c) \in R \implies (a, c) \in R<br>$</p>
-<h4 id="常见传递性关系："><a href="#常见传递性关系：" class="headerlink" title="常见传递性关系："></a><strong>常见传递性关系：</strong></h4><ol>
-<li><strong>小于关系 (&lt;)</strong>：<ul>
+<h3 id="传递性-transitivity"><strong>4. 传递性
+(Transitivity)</strong></h3>
+<h4 id="定义-4"><strong>定义：</strong></h4>
+<p>对于一个集合 $ A $ 上的关系 $ R $，如果对于所有 $ a, b, c A $，当 $
+(a, b) R $ 且 $ (b, c) R $ 时，必有 $ (a, c) R $，则称 $ R $ 是
+<strong>传递性关系</strong>。 $ a, b, c A, (a, b) R (b, c) R (a, c) R
+$</p>
+<h4 id="常见传递性关系"><strong>常见传递性关系：</strong></h4>
+<ol type="1">
+<li><strong>小于关系 (&lt;)</strong>：
+<ul>
 <li>如果 $ a &lt; b $ 且 $ b &lt; c $，则 $ a &lt; c $。</li>
-</ul>
-</li>
-<li><strong>包含关系 ($ \subseteq $)</strong>：<ul>
-<li>如果 $ A \subseteq B $ 且 $ B \subseteq C $，则 $ A \subseteq C $。</li>
-</ul>
-</li>
+</ul></li>
+<li><strong>包含关系 ($ $)</strong>：
+<ul>
+<li>如果 $ A B $ 且 $ B C $，则 $ A C $。</li>
+</ul></li>
 </ol>
-<h4 id="非传递性示例："><a href="#非传递性示例：" class="headerlink" title="非传递性示例："></a><strong>非传递性示例：</strong></h4><ol>
-<li><strong>“朋友”关系</strong>：<ul>
-<li>如果 $ A $ 和 $ B $ 是朋友，且 $ B $ 和 $ C $ 是朋友，不能推断 $ A $ 和 $ C $ 是朋友。</li>
-</ul>
-</li>
+<h4 id="非传递性示例"><strong>非传递性示例：</strong></h4>
+<ol type="1">
+<li><strong>“朋友”关系</strong>：
+<ul>
+<li>如果 $ A $ 和 $ B $ 是朋友，且 $ B $ 和 $ C $ 是朋友，不能推断 $ A $
+和 $ C $ 是朋友。</li>
+</ul></li>
 </ol>
 <hr>
-<h3 id="5-谓词逻辑表达"><a href="#5-谓词逻辑表达" class="headerlink" title="5. 谓词逻辑表达"></a><strong>5. 谓词逻辑表达</strong></h3><h4 id="对称性："><a href="#对称性：" class="headerlink" title="对称性："></a><strong>对称性：</strong></h4><p>$<br>\forall a, b \in A, (a, b) \in R \implies (b, a) \in R<br>$</p>
-<h4 id="反对称性："><a href="#反对称性：" class="headerlink" title="反对称性："></a><strong>反对称性：</strong></h4><p>$<br>\forall a, b \in A, (a, b) \in R \land (b, a) \in R \implies a = b<br>$</p>
-<h4 id="传递性："><a href="#传递性：" class="headerlink" title="传递性："></a><strong>传递性：</strong></h4><p>$<br>\forall a, b, c \in A, (a, b) \in R \land (b, c) \in R \implies (a, c) \in R<br>$</p>
+<h3 id="谓词逻辑表达"><strong>5. 谓词逻辑表达</strong></h3>
+<h4 id="对称性"><strong>对称性：</strong></h4>
+<p>$ a, b A, (a, b) R (b, a) R $</p>
+<h4 id="反对称性"><strong>反对称性：</strong></h4>
+<p>$ a, b A, (a, b) R (b, a) R a = b $</p>
+<h4 id="传递性"><strong>传递性：</strong></h4>
+<p>$ a, b, c A, (a, b) R (b, c) R (a, c) R $</p>
 <hr>
-<h3 id="6-示例比较"><a href="#6-示例比较" class="headerlink" title="6. 示例比较"></a><strong>6. 示例比较</strong></h3><div class="table-container">
+<h3 id="示例比较"><strong>6. 示例比较</strong></h3>
 <table>
+<colgroup>
+<col style="width: 19%">
+<col style="width: 51%">
+<col style="width: 8%">
+<col style="width: 10%">
+<col style="width: 8%">
+</colgroup>
 <thead>
 <tr>
 <th>关系类型</th>
@@ -474,71 +563,100 @@ document.addEventListener('pjax:send', () => {
 <tbody>
 <tr>
 <td>等于 $ = $</td>
-<td>$ \{(a, b) \mid a = b\} $</td>
+<td>$ {(a, b) a = b} $</td>
 <td>是</td>
 <td>是</td>
 <td>是</td>
 </tr>
 <tr>
 <td>小于 $ &lt; $</td>
-<td>$ \{(a, b) \mid a &lt; b\} $</td>
+<td>$ {(a, b) a &lt; b} $</td>
 <td>否</td>
 <td>是</td>
 <td>是</td>
 </tr>
 <tr>
-<td>包含 $ \subseteq $</td>
-<td>$ \{(A, B) \mid A \subseteq B\} $</td>
+<td>包含 $ $</td>
+<td>$ {(A, B) A B} $</td>
 <td>否</td>
 <td>是</td>
 <td>是</td>
 </tr>
 <tr>
 <td>朋友关系</td>
-<td>$ \{(A, B) \mid A \text{是} B \text{的朋友}\} $</td>
+<td>$ {(A, B) A B } $</td>
 <td>是</td>
 <td>否</td>
 <td>否</td>
 </tr>
 </tbody>
 </table>
-</div>
 <hr>
-<h3 id="关系的传递性（Transitivity）、非传递性（Nontransitivity）、非传递性严格形式（Intransitivity）"><a href="#关系的传递性（Transitivity）、非传递性（Nontransitivity）、非传递性严格形式（Intransitivity）" class="headerlink" title="关系的传递性（Transitivity）、非传递性（Nontransitivity）、非传递性严格形式（Intransitivity）"></a><strong>关系的传递性（Transitivity）、非传递性（Nontransitivity）、非传递性严格形式（Intransitivity）</strong></h3><hr>
-<h4 id="1-传递性-Transitivity"><a href="#1-传递性-Transitivity" class="headerlink" title="1. 传递性 (Transitivity)"></a><strong>1. 传递性 (Transitivity)</strong></h4><h5 id="定义：-5"><a href="#定义：-5" class="headerlink" title="定义："></a><strong>定义：</strong></h5><p>一个关系 $ R $ 是 <strong>传递的</strong>，如果对于任意的 $ a, b, c $，当 $ (a, b) \in R $ 且 $ (b, c) \in R $ 时，必有 $ (a, c) \in R $：<br>$<br>\forall a, b, c, \ ((a, b) \in R \land (b, c) \in R) \implies (a, c) \in R<br>$</p>
-<h5 id="举例：-4"><a href="#举例：-4" class="headerlink" title="举例："></a><strong>举例：</strong></h5><ul>
-<li><strong>祖先关系 (“x is an ancestor of y”)</strong>：<ul>
-<li>如果 $ A $ 是 $ B $ 的祖先，且 $ B $ 是 $ C $ 的祖先，则 $ A $ 必定是 $ C $ 的祖先，传递性成立。</li>
-</ul>
-</li>
-<li><strong>强于关系 (“x is stronger than y”)</strong>：<ul>
-<li>如果 $ A $ 比 $ B $ 强，且 $ B $ 比 $ C $ 强，则 $ A $ 必定比 $ C $ 强，传递性成立。</li>
-</ul>
-</li>
-</ul>
+<h3 id="关系的传递性transitivity非传递性nontransitivity非传递性严格形式intransitivity"><strong>关系的传递性（Transitivity）、非传递性（Nontransitivity）、非传递性严格形式（Intransitivity）</strong></h3>
 <hr>
-<h4 id="2-非传递性-Nontransitivity"><a href="#2-非传递性-Nontransitivity" class="headerlink" title="2. 非传递性 (Nontransitivity)"></a><strong>2. 非传递性 (Nontransitivity)</strong></h4><h5 id="定义：-6"><a href="#定义：-6" class="headerlink" title="定义："></a><strong>定义：</strong></h5><p>一个关系 $ R $ 是 <strong>非传递的</strong>，如果它不满足传递性。换句话说，对于 $ R $ 存在 $ a, b, c $，使得 $ (a, b) \in R $ 和 $ (b, c) \in R $，但 $ (a, c) \notin R $。</p>
-<h5 id="举例：-5"><a href="#举例：-5" class="headerlink" title="举例："></a><strong>举例：</strong></h5><ul>
-<li><strong>喜欢关系 (“x likes y”)</strong>：<ul>
-<li>如果 $ A $ 喜欢 $ B $，且 $ B $ 喜欢 $ C $，并不能推出 $ A $ 喜欢 $ C $，非传递性成立。</li>
-</ul>
-</li>
-<li><strong>在1英里范围内 (“x is located within 1 mile of y”)</strong>：<ul>
-<li>如果 $ A $ 在 $ B $ 1英里范围内，且 $ B $ 在 $ C $ 1英里范围内，并不能保证 $ A $ 在 $ C $ 1英里范围内，非传递性成立。</li>
-</ul>
-</li>
+<h4 id="传递性-transitivity-1"><strong>1. 传递性
+(Transitivity)</strong></h4>
+<h5 id="定义-5"><strong>定义：</strong></h5>
+<p>一个关系 $ R $ 是 <strong>传递的</strong>，如果对于任意的 $ a, b, c
+$，当 $ (a, b) R $ 且 $ (b, c) R $ 时，必有 $ (a, c) R <span class="math inline">\(：\)</span> a, b, c,  ((a, b) R (b, c) R) (a, c) R
+$</p>
+<h5 id="举例-4"><strong>举例：</strong></h5>
+<ul>
+<li><strong>祖先关系 ("x is an ancestor of y")</strong>：
+<ul>
+<li>如果 $ A $ 是 $ B $ 的祖先，且 $ B $ 是 $ C $ 的祖先，则 $ A $
+必定是 $ C $ 的祖先，传递性成立。</li>
+</ul></li>
+<li><strong>强于关系 ("x is stronger than y")</strong>：
+<ul>
+<li>如果 $ A $ 比 $ B $ 强，且 $ B $ 比 $ C $ 强，则 $ A $ 必定比 $ C $
+强，传递性成立。</li>
+</ul></li>
 </ul>
 <hr>
-<h4 id="3-严格非传递性-Intransitivity"><a href="#3-严格非传递性-Intransitivity" class="headerlink" title="3. 严格非传递性 (Intransitivity)"></a><strong>3. 严格非传递性 (Intransitivity)</strong></h4><h5 id="定义：-7"><a href="#定义：-7" class="headerlink" title="定义："></a><strong>定义：</strong></h5><p>一个关系 $ R $ 是 <strong>严格非传递的</strong>，如果对于任意的 $ a, b, c $，当 $ (a, b) \in R $ 且 $ (b, c) \in R $ 时，$ (a, c) \notin R $：<br>$<br>\forall a, b, c, \ ((a, b) \in R \land (b, c) \in R) \implies \neg(a, c) \in R<br>$</p>
-<h5 id="举例：-6"><a href="#举例：-6" class="headerlink" title="举例："></a><strong>举例：</strong></h5><ul>
-<li><strong>递增关系 (“x + 1 = y”)</strong>：<ul>
-<li>如果 $ A + 1 = B $，且 $ B + 1 = C $，则 $ A + 1 \neq C $，严格非传递性成立。</li>
-</ul>
-</li>
+<h4 id="非传递性-nontransitivity"><strong>2. 非传递性
+(Nontransitivity)</strong></h4>
+<h5 id="定义-6"><strong>定义：</strong></h5>
+<p>一个关系 $ R $ 是
+<strong>非传递的</strong>，如果它不满足传递性。换句话说，对于 $ R $ 存在
+$ a, b, c $，使得 $ (a, b) R $ 和 $ (b, c) R $，但 $ (a, c) R $。</p>
+<h5 id="举例-5"><strong>举例：</strong></h5>
+<ul>
+<li><strong>喜欢关系 ("x likes y")</strong>：
+<ul>
+<li>如果 $ A $ 喜欢 $ B $，且 $ B $ 喜欢 $ C $，并不能推出 $ A $ 喜欢 $
+C $，非传递性成立。</li>
+</ul></li>
+<li><strong>在1英里范围内 ("x is located within 1 mile of y")</strong>：
+<ul>
+<li>如果 $ A $ 在 $ B $ 1英里范围内，且 $ B $ 在 $ C $
+1英里范围内，并不能保证 $ A $ 在 $ C $ 1英里范围内，非传递性成立。</li>
+</ul></li>
 </ul>
 <hr>
-<h4 id="4-示例分类与分析"><a href="#4-示例分类与分析" class="headerlink" title="4. 示例分类与分析"></a><strong>4. 示例分类与分析</strong></h4><div class="table-container">
+<h4 id="严格非传递性-intransitivity"><strong>3. 严格非传递性
+(Intransitivity)</strong></h4>
+<h5 id="定义-7"><strong>定义：</strong></h5>
+<p>一个关系 $ R $ 是 <strong>严格非传递的</strong>，如果对于任意的 $ a,
+b, c $，当 $ (a, b) R $ 且 $ (b, c) R $ 时，$ (a, c) R <span class="math inline">\(：\)</span> a, b, c,  ((a, b) R (b, c) R) (a, c) R
+$</p>
+<h5 id="举例-6"><strong>举例：</strong></h5>
+<ul>
+<li><strong>递增关系 ("x + 1 = y")</strong>：
+<ul>
+<li>如果 $ A + 1 = B $，且 $ B + 1 = C $，则 $ A + 1 C
+$，严格非传递性成立。</li>
+</ul></li>
+</ul>
+<hr>
+<h4 id="示例分类与分析"><strong>4. 示例分类与分析</strong></h4>
 <table>
+<colgroup>
+<col style="width: 56%">
+<col style="width: 11%">
+<col style="width: 13%">
+<col style="width: 18%">
+</colgroup>
 <thead>
 <tr>
 <th><strong>关系</strong></th>
@@ -549,148 +667,195 @@ document.addEventListener('pjax:send', () => {
 </thead>
 <tbody>
 <tr>
-<td><strong>祖先关系 (“x is an ancestor of y”)</strong></td>
+<td><strong>祖先关系 ("x is an ancestor of y")</strong></td>
 <td>是</td>
 <td>否</td>
 <td>否</td>
 </tr>
 <tr>
-<td><strong>喜欢关系 (“x likes y”)</strong></td>
+<td><strong>喜欢关系 ("x likes y")</strong></td>
 <td>否</td>
 <td>是</td>
 <td>否</td>
 </tr>
 <tr>
-<td><strong>1英里范围 (“x is located within 1 mile of y”)</strong></td>
+<td><strong>1英里范围 ("x is located within 1 mile of y")</strong></td>
 <td>否</td>
 <td>是</td>
 <td>否</td>
 </tr>
 <tr>
-<td><strong>递增关系 (“x + 1 = y”)</strong></td>
+<td><strong>递增关系 ("x + 1 = y")</strong></td>
 <td>否</td>
 <td>否</td>
 <td>是</td>
 </tr>
 <tr>
-<td><strong>比赛胜利 (“x beat y in the tournament”)</strong></td>
+<td><strong>比赛胜利 ("x beat y in the tournament")</strong></td>
 <td>否</td>
 <td>是</td>
 <td>否</td>
 </tr>
 <tr>
-<td><strong>强于关系 (“x is stronger than y”)</strong></td>
+<td><strong>强于关系 ("x is stronger than y")</strong></td>
 <td>是</td>
 <td>否</td>
 <td>否</td>
 </tr>
 </tbody>
 </table>
-</div>
 <hr>
-<h4 id="5-谓词逻辑表示"><a href="#5-谓词逻辑表示" class="headerlink" title="5. 谓词逻辑表示"></a><strong>5. 谓词逻辑表示</strong></h4><ol>
-<li><p><strong>传递性：</strong><br>$<br>\forall a, b, c, \ ((a, b) \in R \land (b, c) \in R) \implies (a, c) \in R<br>$</p>
-</li>
-<li><p><strong>非传递性：</strong><br>$<br>\exists a, b, c, \ ((a, b) \in R \land (b, c) \in R \land (a, c) \notin R)<br>$</p>
-</li>
-<li><p><strong>严格非传递性：</strong><br>$<br>\forall a, b, c, \ ((a, b) \in R \land (b, c) \in R) \implies \neg(a, c) \in R<br>$</p>
-</li>
+<h4 id="谓词逻辑表示"><strong>5. 谓词逻辑表示</strong></h4>
+<ol type="1">
+<li><p><strong>传递性：</strong> $ a, b, c,  ((a, b) R (b, c) R) (a, c)
+R $</p></li>
+<li><p><strong>非传递性：</strong> $ a, b, c,  ((a, b) R (b, c) R (a, c)
+R) $</p></li>
+<li><p><strong>严格非传递性：</strong> $ a, b, c,  ((a, b) R (b, c) R)
+(a, c) R $</p></li>
 </ol>
-<h2 id="关系的复合（Composition-of-Relations）"><a href="#关系的复合（Composition-of-Relations）" class="headerlink" title="关系的复合（Composition of Relations）"></a><strong>关系的复合（Composition of Relations）</strong></h2><hr>
-<h3 id="1-关系的复合定义"><a href="#1-关系的复合定义" class="headerlink" title="1. 关系的复合定义"></a><strong>1. 关系的复合定义</strong></h3><p>给定两个关系 $ R \subseteq A \times B $ 和 $ S \subseteq B \times C $，定义关系 $ S \circ R $（读作“$ S $ 与 $ R $ 的复合”）为：</p>
-<p>$<br>S \circ R = \{ (a, c) \mid \exists b \in B, \ (a, b) \in R \land (b, c) \in S \}<br>$</p>
+<h2 id="关系的复合composition-of-relations"><strong>关系的复合（Composition
+of Relations）</strong></h2>
 <hr>
-<h3 id="2-关系复合与函数复合的关系"><a href="#2-关系复合与函数复合的关系" class="headerlink" title="2. 关系复合与函数复合的关系"></a><strong>2. 关系复合与函数复合的关系</strong></h3><ul>
+<h3 id="关系的复合定义"><strong>1. 关系的复合定义</strong></h3>
+<p>给定两个关系 $ R A B $ 和 $ S B C $，定义关系 $ S R <span class="math inline">\(（读作“\)</span> S $ 与 $ R $ 的复合”）为：</p>
+<p>$ S R = { (a, c) b B,  (a, b) R (b, c) S } $</p>
+<hr>
+<h3 id="关系复合与函数复合的关系"><strong>2.
+关系复合与函数复合的关系</strong></h3>
+<ul>
 <li>关系复合是函数复合的推广。</li>
-<li>如果 $ R $ 和 $ S $ 是函数（即对于任意输入有唯一输出），则关系复合 $ S \circ R $ 退化为函数复合：<br>$<br>S \circ R(a, c) \iff \exists b, \ aRb \land bSc<br>$<br>可以表示为：<br>$<br>c = S(R(a))<br>$</li>
+<li>如果 $ R $ 和 $ S $ 是函数（即对于任意输入有唯一输出），则关系复合 $
+S R $ 退化为函数复合： $ S R(a, c) b,  aRb bSc $ 可以表示为： $ c =
+S(R(a)) $</li>
 </ul>
-<h4 id="示例："><a href="#示例：" class="headerlink" title="示例："></a><strong>示例：</strong></h4><ol>
-<li><p><strong>函数复合：</strong></p>
+<h4 id="示例"><strong>示例：</strong></h4>
+<ol type="1">
+<li><strong>函数复合：</strong>
 <ul>
-<li>假设 $ R(a) = b $，$ S(b) = c $，则 $ S \circ R(a) = c $。</li>
-<li>等价于函数形式的逐步计算：先通过 $ R $ 找到中间值 $ b $，再用 $ S $ 计算最终结果 $ c $。</li>
-</ul>
-</li>
-<li><p><strong>关系复合：</strong></p>
+<li>假设 $ R(a) = b <span class="math inline">\(，\)</span> S(b) = c
+$，则 $ S R(a) = c $。</li>
+<li>等价于函数形式的逐步计算：先通过 $ R $ 找到中间值 $ b $，再用 $ S $
+计算最终结果 $ c $。</li>
+</ul></li>
+<li><strong>关系复合：</strong>
 <ul>
-<li>如果 $ R $ 和 $ S $ 并非函数，可能存在多个 $ b $ 满足条件，因此 $ (a, c) $ 可以对应多个值。</li>
-</ul>
-</li>
+<li>如果 $ R $ 和 $ S $ 并非函数，可能存在多个 $ b $ 满足条件，因此 $
+(a, c) $ 可以对应多个值。</li>
+</ul></li>
 </ol>
 <hr>
-<h3 id="3-关系复合的运算示例"><a href="#3-关系复合的运算示例" class="headerlink" title="3. 关系复合的运算示例"></a><strong>3. 关系复合的运算示例</strong></h3><h4 id="输入关系："><a href="#输入关系：" class="headerlink" title="输入关系："></a><strong>输入关系：</strong></h4><ol>
-<li><p><strong>关系 $ R $：</strong><br>$<br>R = \{ (1,1), (1,4), (2,3), (3,1), (3,4) \}<br>$</p>
-</li>
-<li><p><strong>关系 $ S $：</strong><br>$<br>S = \{ (1,0), (2,0), (3,1), (3,2), (4,1) \}<br>$</p>
-</li>
+<h3 id="关系复合的运算示例"><strong>3. 关系复合的运算示例</strong></h3>
+<h4 id="输入关系"><strong>输入关系：</strong></h4>
+<ol type="1">
+<li><p>**关系 $ R <span class="math inline">\(：**\)</span> R = { (1,1),
+(1,4), (2,3), (3,1), (3,4) } $</p></li>
+<li><p>**关系 $ S <span class="math inline">\(：**\)</span> S = { (1,0),
+(2,0), (3,1), (3,2), (4,1) } $</p></li>
 </ol>
-<h4 id="计算复合关系-S-circ-R-："><a href="#计算复合关系-S-circ-R-：" class="headerlink" title="计算复合关系 $ S \circ R $："></a><strong>计算复合关系 $ S \circ R $：</strong></h4><p>根据定义：<br>$<br>S \circ R = \{ (a, c) \mid \exists b, (a, b) \in R \land (b, c) \in S \}<br>$</p>
+<h4 id="计算复合关系-s-r"><strong>计算复合关系 $ S R $：</strong></h4>
+<p>根据定义： $ S R = { (a, c) b, (a, b) R (b, c) S } $</p>
 <p>逐步分析：</p>
 <ul>
-<li>$ (1,1) \in R $，且 $ (1,0) \in S $，因此 $ (1,0) \in S \circ R $。</li>
-<li>$ (1,4) \in R $，且 $ (4,1) \in S $，因此 $ (1,1) \in S \circ R $。</li>
-<li>$ (2,3) \in R $，且 $ (3,1) \in S $，因此 $ (2,1) \in S \circ R $。</li>
-<li>继续此过程，得到：<br>$<br>S \circ R = \{ (1,0), (1,1), (2,1), (2,2), (3,0), (3,1) \}<br>$</li>
+<li>$ (1,1) R $，且 $ (1,0) S $，因此 $ (1,0) S R $。</li>
+<li>$ (1,4) R $，且 $ (4,1) S $，因此 $ (1,1) S R $。</li>
+<li>$ (2,3) R $，且 $ (3,1) S $，因此 $ (2,1) S R $。</li>
+<li>继续此过程，得到： $ S R = { (1,0), (1,1), (2,1), (2,2), (3,0),
+(3,1) } $</li>
 </ul>
 <hr>
-<h3 id="4-关系的幂运算"><a href="#4-关系的幂运算" class="headerlink" title="4. 关系的幂运算"></a><strong>4. 关系的幂运算</strong></h3><h4 id="定义：-8"><a href="#定义：-8" class="headerlink" title="定义："></a><strong>定义：</strong></h4><p>对于关系 $ R \subseteq A \times A $，其幂 $ R^n $ 表示 $ R $ 自身与自身复合 $ n $ 次：<br>$<br>R^n = R \circ R \circ \cdots \circ R \ (\text{共 } n \text{ 次})<br>$</p>
-<h4 id="示例：-1"><a href="#示例：-1" class="headerlink" title="示例："></a><strong>示例：</strong></h4><ol>
-<li><p><strong>输入关系 $ R $：</strong><br>$<br>R = \{ (1,1), (2,1), (3,2), (4,3) \}<br>$</p>
-</li>
-<li><p><strong>计算 $ R^2 $：</strong><br>$<br>R^2 = R \circ R = \{ (a, c) \mid \exists b, (a, b) \in R \land (b, c) \in R \}<br>$<br>得到：<br>$<br>R^2 = \{ (1,1), (2,1), (3,1), (4,2) \}<br>$</p>
-</li>
-<li><p><strong>计算 $ R^3 $：</strong><br>$<br>R^3 = R^2 \circ R<br>$<br>结果为：<br>$<br>R^3 = \{ (1,1), (2,1), (3,1), (4,1) \}<br>$</p>
-</li>
-<li><p><strong>计算 $ R^n $（$ n \geq 3 $）：</strong></p>
+<h3 id="关系的幂运算"><strong>4. 关系的幂运算</strong></h3>
+<h4 id="定义-8"><strong>定义：</strong></h4>
+<p>对于关系 $ R A A $，其幂 $ R^n $ 表示 $ R $ 自身与自身复合 $ n $ 次：
+$ R^n = R R R  ( n ) $</p>
+<h4 id="示例-1"><strong>示例：</strong></h4>
+<ol type="1">
+<li><p>**输入关系 $ R <span class="math inline">\(：**\)</span> R = {
+(1,1), (2,1), (3,2), (4,3) } $</p></li>
+<li><p>**计算 $ R^2 <span class="math inline">\(：**\)</span> R^2 = R R
+= { (a, c) b, (a, b) R (b, c) R } $ 得到： $ R^2 = { (1,1), (2,1),
+(3,1), (4,2) } $</p></li>
+<li><p>**计算 $ R^3 <span class="math inline">\(：**\)</span> R^3 = R^2
+R $ 结果为： $ R^3 = { (1,1), (2,1), (3,1), (4,1) } $</p></li>
+<li><p><strong>计算 $ R^n <span class="math inline">\(（\)</span> n
+$）：</strong></p>
 <ul>
-<li>由于 $ R^3 = R^4 = R^n = \{ (1,1), (2,1), (3,1), (4,1) \} $，从 $ n \geq 3 $ 开始，结果稳定。</li>
-</ul>
-</li>
+<li>由于 $ R^3 = R^4 = R^n = { (1,1), (2,1), (3,1), (4,1) } $，从 $ n $
+开始，结果稳定。</li>
+</ul></li>
 </ol>
 <hr>
-<h3 id="5-总结与关键点"><a href="#5-总结与关键点" class="headerlink" title="5. 总结与关键点"></a><strong>5. 总结与关键点</strong></h3><ol>
-<li><p><strong>关系复合的核心：</strong></p>
+<h3 id="总结与关键点"><strong>5. 总结与关键点</strong></h3>
+<ol type="1">
+<li><strong>关系复合的核心：</strong>
 <ul>
 <li>通过中间集合 $ B $ 将集合 $ A $ 和 $ C $ 关联起来。</li>
-<li>存在中间值 $ b $，满足 $ aRb $ 且 $ bSc $，则 $ (a, c) \in S \circ R $。</li>
-</ul>
-</li>
-<li><p><strong>关系复合的幂：</strong></p>
+<li>存在中间值 $ b $，满足 $ aRb $ 且 $ bSc $，则 $ (a, c) S R $。</li>
+</ul></li>
+<li><strong>关系复合的幂：</strong>
 <ul>
 <li>关系自身的复合可逐步迭代，最终可能收敛到一个稳定集合。</li>
-</ul>
-</li>
-<li><p><strong>函数复合的特殊性：</strong></p>
+</ul></li>
+<li><strong>函数复合的特殊性：</strong>
 <ul>
 <li>函数是关系的特例，具有确定性和唯一性。</li>
 <li>函数复合是关系复合的一个限制形式。</li>
-</ul>
-</li>
+</ul></li>
 </ol>
-<h2 id="一些习题"><a href="#一些习题" class="headerlink" title="一些习题"></a>一些习题</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/image-20241121145232765.png" alt="image-20241121145232765"></p>
-<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/image-20241121145258698.png" alt="image-20241121145258698"></p>
-<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/image-20241121145310455.png" alt="image-20241121145310455"></p>
-<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/image-20241121145652213.png" alt="image-20241121145652213"><br>两个具有传递性的二元关系的复合<strong>不一定</strong>具有传递性。</p>
-<h3 id="反例："><a href="#反例：" class="headerlink" title="反例："></a><strong>反例</strong>：</h3><p>设 $ R_1 $ 和 $ R_2 $ 为两个传递的二元关系：</p>
+<h2 id="一些习题">一些习题</h2>
+<figure>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/image-20241121145232765.png" alt="image-20241121145232765">
+<figcaption aria-hidden="true">image-20241121145232765</figcaption>
+</figure>
+<figure>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/image-20241121145258698.png" alt="image-20241121145258698">
+<figcaption aria-hidden="true">image-20241121145258698</figcaption>
+</figure>
+<figure>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/image-20241121145310455.png" alt="image-20241121145310455">
+<figcaption aria-hidden="true">image-20241121145310455</figcaption>
+</figure>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/image-20241121145652213.png" alt="image-20241121145652213">
+两个具有传递性的二元关系的复合<strong>不一定</strong>具有传递性。</p>
+<h3 id="反例"><strong>反例</strong>：</h3>
+<p>设 $ R_1 $ 和 $ R_2 $ 为两个传递的二元关系：</p>
 <ul>
-<li>$ R_1 = \{(1, 2), (3, 4)\} $</li>
-<li>$ R_2 = \{(2, 3), (4, 5)\} $</li>
+<li>$ R_1 = {(1, 2), (3, 4)} $</li>
+<li>$ R_2 = {(2, 3), (4, 5)} $</li>
 </ul>
-<p><strong>求复合关系 $ R = R_1 \circ R_2 $</strong>：</p>
-<p>关系复合的定义是：$ (a, c) \in R_1 \circ R_2 $ 当且仅当存在一个元素 $ b $，使得 $ (a, b) \in R_1 $ 且 $ (b, c) \in R_2 $。</p>
-<p>我们可以通过分析来得到 $ R = R_1 \circ R_2 $：</p>
-<ol>
-<li>对于 $ (1, 2) \in R_1 $ 和 $ (2, 3) \in R_2 $，有 $ (1, 3) \in R $。</li>
-<li>对于 $ (3, 4) \in R_1 $ 和 $ (4, 5) \in R_2 $，有 $ (3, 5) \in R $。</li>
+<p><strong>求复合关系 $ R = R_1 R_2 $</strong>：</p>
+<p>关系复合的定义是：$ (a, c) R_1 R_2 $ 当且仅当存在一个元素 $ b $，使得
+$ (a, b) R_1 $ 且 $ (b, c) R_2 $。</p>
+<p>我们可以通过分析来得到 $ R = R_1 R_2 $：</p>
+<ol type="1">
+<li>对于 $ (1, 2) R_1 $ 和 $ (2, 3) R_2 $，有 $ (1, 3) R $。</li>
+<li>对于 $ (3, 4) R_1 $ 和 $ (4, 5) R_2 $，有 $ (3, 5) R $。</li>
 </ol>
-<p>因此，复合关系 $ R $ 为：<br>$<br>R = R_1 \circ R_2 = \{(1, 3), (3, 5)\}<br>$</p>
+<p>因此，复合关系 $ R $ 为： $ R = R_1 R_2 = {(1, 3), (3, 5)} $</p>
 <p><strong>检查传递性</strong>：</p>
-<p>我们检查是否满足传递性：对于任意 $ (a, b) $ 和 $ (b, c) $ 在 $ R $ 中，是否存在 $ (a, c) $ 也在 $ R $ 中。</p>
+<p>我们检查是否满足传递性：对于任意 $ (a, b) $ 和 $ (b, c) $ 在 $ R $
+中，是否存在 $ (a, c) $ 也在 $ R $ 中。</p>
 <ul>
-<li>$ (1, 3) \in R $ 和 $ (3, 5) \in R $，根据传递性，应当有 $ (1, 5) \in R $，但 $ (1, 5) $ 并不在 $ R $ 中。</li>
+<li>$ (1, 3) R $ 和 $ (3, 5) R $，根据传递性，应当有 $ (1, 5) R $，但 $
+(1, 5) $ 并不在 $ R $ 中。</li>
 </ul>
 <p>因此，复合关系 $ R $ 并不具有传递性。</p>
-</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a target="_blank" rel="noopener" href="https://www.totorocatcat.top/">Totoro</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://totorocatcat.top/lec51/">http://totorocatcat.top/lec51/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://totorocatcat.top" target="_blank">Totoroの旅</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%8F%90%E9%AB%98/">提高</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/fafa2eaa8cf91b2109b6ee6b0cb61e7.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/lec52/" title="Lec5 Relations(2)"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/85dc11f6e5ee6391b3e625d6f83bea6.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Lec5 Relations(2)</div></div></a></div><div class="next-post pull-right"><a href="/lec73/" title="lec7 Trees（3）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/443221e7e0b6cf9b5d18f4e70b4b11d.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">lec7 Trees（3）</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/'Lec2%20Logic%20and%20Proof,%20Sets,%20and%20Function'/" title="Lec2 Logic and Proof, Sets, and Function"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/1fe6130ca86bb9e7e6a37c9187a32c8.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-11-20</div><div class="title">Lec2 Logic and Proof, Sets, and Function</div></div></a></div><div><a href="/02%EF%BC%89/" title="CS61B 课程笔记（Lecture 02）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/v2-2ed7f4c9e1a7a699a3ef300a6f761abe_720w.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-11</div><div class="title">CS61B 课程笔记（Lecture 02）</div></div></a></div><div><a href="/03%EF%BC%89/" title="CS61B 课程笔记（Lecture 03）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/v2-2ed7f4c9e1a7a699a3ef300a6f761abe_720w.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-12</div><div class="title">CS61B 课程笔记（Lecture 03）</div></div></a></div><div><a href="/04%EF%BC%89/" title="CS61B 课程笔记（Lecture 04）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/2749a496aabc7d650b2912e256582e390a0a636b.jpg@1256w_1246h_!web-article-pic.avif" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-13</div><div class="title">CS61B 课程笔记（Lecture 04）</div></div></a></div><div><a href="/05%EF%BC%89/" title="CS61B 课程笔记（Lecture 05）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/4ccebbc43a0ca31a719afadee2f86b4902402baf.jpg@1256w_786h_!web-article-pic.avif" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-14</div><div class="title">CS61B 课程笔记（Lecture 05）</div></div></a></div><div><a href="/06%EF%BC%89/" title="CS61B 课程笔记（Lecture 06）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/f00af0d55cc81c18403ccbb4957ae6bc298252208.jpg@1256w_1374h_!web-article-pic.avif" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-15</div><div class="title">CS61B 课程笔记（Lecture 06）</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/px3.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Totoro</div><div class="author-info__description">热爱文学的SCUT软件学院学生</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">782</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">33</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/4512abc"><i class="fab fa-github"></i><span>🛴前往小窝......</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/4512abc" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:4512abc@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到龙猫の小窝</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Lec5-Relations-1"><span class="toc-text">Lec5 Relations(1)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%8D%E5%B0%84%E6%80%A7-Reflexive-%E5%85%B3%E7%B3%BB%E7%9A%84%E5%AE%9A%E4%B9%89%E4%B8%8E%E5%88%A4%E5%AE%9A"><span class="toc-text">反射性 (Reflexive) 关系的定义与判定</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%8F%8D%E5%B0%84%E6%80%A7%E5%AE%9A%E4%B9%89"><span class="toc-text">1. 反射性定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E7%A4%BA%E4%BE%8B%E5%88%86%E6%9E%90"><span class="toc-text">2. 示例分析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-R1"><span class="toc-text">2.1 $ R1 $</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-R2"><span class="toc-text">2.2 $ R2 $</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-R3"><span class="toc-text">2.3 $ R3 $</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%8F%A6%E4%B8%80%E7%BB%84%E5%85%B3%E7%B3%BB%E5%88%A4%E5%AE%9A"><span class="toc-text">3. 另一组关系判定</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B3%E7%B3%BB%E5%AE%9A%E4%B9%89%EF%BC%9A"><span class="toc-text">关系定义：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E6%9E%90%EF%BC%9A"><span class="toc-text">分析：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%80%BB%E7%BB%93"><span class="toc-text">4. 总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8D%E5%B0%84%E6%80%A7-Reflexive-%E4%B8%8E%E9%9D%9E%E5%8F%8D%E5%B0%84%E6%80%A7-Irreflexive-%E5%AF%B9%E6%AF%94"><span class="toc-text">反射性 (Reflexive) 与非反射性 (Irreflexive)对比</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%8F%8D%E5%B0%84%E6%80%A7-Reflexive"><span class="toc-text">1. 反射性 (Reflexive)</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%EF%BC%9A"><span class="toc-text">定义：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%BE%E4%BE%8B%EF%BC%9A"><span class="toc-text">举例：</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E9%9D%9E%E5%8F%8D%E5%B0%84%E6%80%A7-Irreflexive"><span class="toc-text">2. 非反射性 (Irreflexive)</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%EF%BC%9A-1"><span class="toc-text">定义：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%EF%BC%9A"><span class="toc-text">注意：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%BE%E4%BE%8B%EF%BC%9A-1"><span class="toc-text">举例：</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E5%8F%8D%E5%B0%84%E6%80%A7%E4%B8%8E%E9%9D%9E%E5%8F%8D%E5%B0%84%E6%80%A7%E4%BA%92%E8%A1%A5%E5%85%B3%E7%B3%BB"><span class="toc-text">3. 反射性与非反射性互补关系</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AE%9A%E7%90%86%EF%BC%9A"><span class="toc-text">定理：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BE%8B%E5%AD%90%EF%BC%9A"><span class="toc-text">例子：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%AF%81%E6%98%8E%EF%BC%9A"><span class="toc-text">证明：</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E7%A4%BA%E4%BE%8B%EF%BC%9A%E5%8F%8D%E5%B0%84%E6%80%A7%E4%B8%8E%E9%9D%9E%E5%8F%8D%E5%B0%84%E6%80%A7%E5%85%B3%E7%B3%BB"><span class="toc-text">4. 示例：反射性与非反射性关系</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF%E4%B8%BE%E4%BE%8B"><span class="toc-text">5. 应用场景举例</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%B9%E7%A7%B0%E6%80%A7-Symmetric-%E3%80%81%E5%8F%8D%E5%AF%B9%E7%A7%B0%E6%80%A7-Antisymmetric-%E3%80%81%E4%BC%A0%E9%80%92%E6%80%A7-Transitivity-%E5%85%B3%E7%B3%BB"><span class="toc-text">对称性 (Symmetric)、反对称性 (Antisymmetric)、传递性 (Transitivity) 关系</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%AF%B9%E7%A7%B0%E6%80%A7-Symmetric"><span class="toc-text">1. 对称性 (Symmetric)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%EF%BC%9A-2"><span class="toc-text">定义：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BE%E4%BE%8B%EF%BC%9A-2"><span class="toc-text">举例：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9D%9E%E5%AF%B9%E7%A7%B0%E6%80%A7%E7%A4%BA%E4%BE%8B%EF%BC%9A"><span class="toc-text">非对称性示例：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%8F%8D%E5%AF%B9%E7%A7%B0%E6%80%A7-Antisymmetric"><span class="toc-text">2. 反对称性 (Antisymmetric)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%EF%BC%9A-3"><span class="toc-text">定义：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E5%85%B3%E7%B3%BB%EF%BC%9A"><span class="toc-text">常见关系：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BE%E4%BE%8B%EF%BC%9A-3"><span class="toc-text">举例：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%AF%B9%E7%A7%B0%E6%80%A7%E4%B8%8E%E5%8F%8D%E5%AF%B9%E7%A7%B0%E6%80%A7%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-text">3. 对称性与反对称性的关系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E4%BC%A0%E9%80%92%E6%80%A7-Transitivity"><span class="toc-text">4. 传递性 (Transitivity)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%EF%BC%9A-4"><span class="toc-text">定义：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E4%BC%A0%E9%80%92%E6%80%A7%E5%85%B3%E7%B3%BB%EF%BC%9A"><span class="toc-text">常见传递性关系：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9D%9E%E4%BC%A0%E9%80%92%E6%80%A7%E7%A4%BA%E4%BE%8B%EF%BC%9A"><span class="toc-text">非传递性示例：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E8%B0%93%E8%AF%8D%E9%80%BB%E8%BE%91%E8%A1%A8%E8%BE%BE"><span class="toc-text">5. 谓词逻辑表达</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%B9%E7%A7%B0%E6%80%A7%EF%BC%9A"><span class="toc-text">对称性：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%8D%E5%AF%B9%E7%A7%B0%E6%80%A7%EF%BC%9A"><span class="toc-text">反对称性：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%A0%E9%80%92%E6%80%A7%EF%BC%9A"><span class="toc-text">传递性：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E7%A4%BA%E4%BE%8B%E6%AF%94%E8%BE%83"><span class="toc-text">6. 示例比较</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E7%B3%BB%E7%9A%84%E4%BC%A0%E9%80%92%E6%80%A7%EF%BC%88Transitivity%EF%BC%89%E3%80%81%E9%9D%9E%E4%BC%A0%E9%80%92%E6%80%A7%EF%BC%88Nontransitivity%EF%BC%89%E3%80%81%E9%9D%9E%E4%BC%A0%E9%80%92%E6%80%A7%E4%B8%A5%E6%A0%BC%E5%BD%A2%E5%BC%8F%EF%BC%88Intransitivity%EF%BC%89"><span class="toc-text">关系的传递性（Transitivity）、非传递性（Nontransitivity）、非传递性严格形式（Intransitivity）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E4%BC%A0%E9%80%92%E6%80%A7-Transitivity"><span class="toc-text">1. 传递性 (Transitivity)</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%EF%BC%9A-5"><span class="toc-text">定义：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%BE%E4%BE%8B%EF%BC%9A-4"><span class="toc-text">举例：</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E9%9D%9E%E4%BC%A0%E9%80%92%E6%80%A7-Nontransitivity"><span class="toc-text">2. 非传递性 (Nontransitivity)</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%EF%BC%9A-6"><span class="toc-text">定义：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%BE%E4%BE%8B%EF%BC%9A-5"><span class="toc-text">举例：</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E4%B8%A5%E6%A0%BC%E9%9D%9E%E4%BC%A0%E9%80%92%E6%80%A7-Intransitivity"><span class="toc-text">3. 严格非传递性 (Intransitivity)</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%EF%BC%9A-7"><span class="toc-text">定义：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%BE%E4%BE%8B%EF%BC%9A-6"><span class="toc-text">举例：</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E7%A4%BA%E4%BE%8B%E5%88%86%E7%B1%BB%E4%B8%8E%E5%88%86%E6%9E%90"><span class="toc-text">4. 示例分类与分析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E8%B0%93%E8%AF%8D%E9%80%BB%E8%BE%91%E8%A1%A8%E7%A4%BA"><span class="toc-text">5. 谓词逻辑表示</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E7%B3%BB%E7%9A%84%E5%A4%8D%E5%90%88%EF%BC%88Composition-of-Relations%EF%BC%89"><span class="toc-text">关系的复合（Composition of Relations）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%85%B3%E7%B3%BB%E7%9A%84%E5%A4%8D%E5%90%88%E5%AE%9A%E4%B9%89"><span class="toc-text">1. 关系的复合定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%85%B3%E7%B3%BB%E5%A4%8D%E5%90%88%E4%B8%8E%E5%87%BD%E6%95%B0%E5%A4%8D%E5%90%88%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-text">2. 关系复合与函数复合的关系</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B%EF%BC%9A"><span class="toc-text">示例：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%85%B3%E7%B3%BB%E5%A4%8D%E5%90%88%E7%9A%84%E8%BF%90%E7%AE%97%E7%A4%BA%E4%BE%8B"><span class="toc-text">3. 关系复合的运算示例</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E5%85%B3%E7%B3%BB%EF%BC%9A"><span class="toc-text">输入关系：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E5%A4%8D%E5%90%88%E5%85%B3%E7%B3%BB-S-circ-R-%EF%BC%9A"><span class="toc-text">计算复合关系 $ S \circ R $：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E5%85%B3%E7%B3%BB%E7%9A%84%E5%B9%82%E8%BF%90%E7%AE%97"><span class="toc-text">4. 关系的幂运算</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%EF%BC%9A-8"><span class="toc-text">定义：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B%EF%BC%9A-1"><span class="toc-text">示例：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E6%80%BB%E7%BB%93%E4%B8%8E%E5%85%B3%E9%94%AE%E7%82%B9"><span class="toc-text">5. 总结与关键点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E4%B9%A0%E9%A2%98"><span class="toc-text">一些习题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8D%E4%BE%8B%EF%BC%9A"><span class="toc-text">反例：</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/%E3%80%8AJAVA%E8%AF%AD%E8%A8%80%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E3%80%8B%E6%9C%9F%E6%9C%AB%E8%80%83%E8%AF%95%E8%AF%95%E9%A2%98%E5%8F%8A%E7%AD%94%E6%A1%883%EF%BC%88%E5%BA%94%E8%80%83%E5%BF%85%E5%A4%87%E9%A2%98%E5%BA%93%EF%BC%89/" title="《JAVA语言程序设计》期末考试试题及答案3（应考必备题库）"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://source.fomal.cc/img/default_cover_80.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="《JAVA语言程序设计》期末考试试题及答案3（应考必备题库）"/></a><div class="content"><a class="title" href="/%E3%80%8AJAVA%E8%AF%AD%E8%A8%80%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E3%80%8B%E6%9C%9F%E6%9C%AB%E8%80%83%E8%AF%95%E8%AF%95%E9%A2%98%E5%8F%8A%E7%AD%94%E6%A1%883%EF%BC%88%E5%BA%94%E8%80%83%E5%BF%85%E5%A4%87%E9%A2%98%E5%BA%93%EF%BC%89/" title="《JAVA语言程序设计》期末考试试题及答案3（应考必备题库）">《JAVA语言程序设计》期末考试试题及答案3（应考必备题库）</a><time datetime="2024-12-24T14:59:06.000Z" title="发表于 2024-12-24 22:59:06">2024-12-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E3%80%8AJAVA%E8%AF%AD%E8%A8%80%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E3%80%8B%E6%9C%9F%E6%9C%AB%E8%80%83%E8%AF%95%E8%AF%95%E9%A2%98%E5%8F%8A%E7%AD%94%E6%A1%882/" title="《JAVA语言程序设计》期末考试试题及答案2"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://source.fomal.cc/img/default_cover_80.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="《JAVA语言程序设计》期末考试试题及答案2"/></a><div class="content"><a class="title" href="/%E3%80%8AJAVA%E8%AF%AD%E8%A8%80%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E3%80%8B%E6%9C%9F%E6%9C%AB%E8%80%83%E8%AF%95%E8%AF%95%E9%A2%98%E5%8F%8A%E7%AD%94%E6%A1%882/" title="《JAVA语言程序设计》期末考试试题及答案2">《JAVA语言程序设计》期末考试试题及答案2</a><time datetime="2024-12-24T13:51:43.000Z" title="发表于 2024-12-24 21:51:43">2024-12-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E3%80%8AJAVA%E8%AF%AD%E8%A8%80%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E3%80%8B%E6%9C%9F%E6%9C%AB%E8%80%83%E8%AF%95%E8%AF%95%E9%A2%98%E5%8F%8A%E7%AD%94%E6%A1%881/" title="《JAVA语言程序设计》期末考试试题及答案1"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://source.fomal.cc/img/default_cover_80.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="《JAVA语言程序设计》期末考试试题及答案1"/></a><div class="content"><a class="title" href="/%E3%80%8AJAVA%E8%AF%AD%E8%A8%80%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E3%80%8B%E6%9C%9F%E6%9C%AB%E8%80%83%E8%AF%95%E8%AF%95%E9%A2%98%E5%8F%8A%E7%AD%94%E6%A1%881/" title="《JAVA语言程序设计》期末考试试题及答案1">《JAVA语言程序设计》期末考试试题及答案1</a><time datetime="2024-12-24T13:36:21.000Z" title="发表于 2024-12-24 21:36:21">2024-12-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E3%80%8AJava%E8%AF%AD%E8%A8%80%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E3%80%8B%EF%BC%88%E4%B8%80%E5%8D%B7%EF%BC%89/" title="2022-2023学年华南理工大学第1学期期末考试 《Java语言程序设计》（一卷）"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://source.fomal.cc/img/default_cover_80.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="2022-2023学年华南理工大学第1学期期末考试 《Java语言程序设计》（一卷）"/></a><div class="content"><a class="title" href="/%E3%80%8AJava%E8%AF%AD%E8%A8%80%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E3%80%8B%EF%BC%88%E4%B8%80%E5%8D%B7%EF%BC%89/" title="2022-2023学年华南理工大学第1学期期末考试 《Java语言程序设计》（一卷）">2022-2023学年华南理工大学第1学期期末考试 《Java语言程序设计》（一卷）</a><time datetime="2024-12-24T13:16:20.000Z" title="发表于 2024-12-24 21:16:20">2024-12-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E4%B8%8E%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%842010%E5%B9%B4%E8%AF%95%E5%8D%B7B/" title="计算机组成与体系结构2010年试卷B"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/howl004.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="计算机组成与体系结构2010年试卷B"/></a><div class="content"><a class="title" href="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E4%B8%8E%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%842010%E5%B9%B4%E8%AF%95%E5%8D%B7B/" title="计算机组成与体系结构2010年试卷B">计算机组成与体系结构2010年试卷B</a><time datetime="2024-12-18T04:44:22.000Z" title="发表于 2024-12-18 12:44:22">2024-12-18</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 - 2025 By Totoro</div><div class="footer_custom_text">I wish you to become your own sun, no need to rely on who's light.<p><a target="_blank" href="https://hexo.io/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&logo=hexo" title="博客框架为Hexo"></a>&nbsp;<a target="_blank" href="https://butterfly.js.org/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&logo=bitdefender" title="主题采用butterfly"></a>&nbsp;<a target="_blank" href="https://www.jsdelivr.com/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&logo=jsDelivr" title="本站使用JsDelivr为静态资源提供CDN加速"></a> &nbsp;<a target="_blank" href="https://vercel.com/ "><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Hosted-Vervel-brightgreen?style=flat&logo=Vercel" title="本站采用双线部署，默认线路托管于Vercel"></a>&nbsp;<a target="_blank" href="https://vercel.com/ "><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Hosted-Coding-0cedbe?style=flat&logo=Codio" title="本站采用双线部署，联通线路托管于Coding"></a>&nbsp;<a target="_blank" href="https://github.com/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&logo=GitHub" title="本站项目由Gtihub托管"></a>&nbsp;<a target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&logo=Claris" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"></a></p></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat-btn" type="button" title="聊天"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="/js/tw_cn.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@5.2.0/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.js"></script><script>function panguFn () {
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://www.totorocatcat.top/">Totoro</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://totorocatcat.top/lec51/">http://totorocatcat.top/lec51/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://totorocatcat.top" target="_blank">Totoroの旅</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%8F%90%E9%AB%98/">提高</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/fafa2eaa8cf91b2109b6ee6b0cb61e7.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/lec52/" title="Lec5 Relations(2)"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/85dc11f6e5ee6391b3e625d6f83bea6.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Lec5 Relations(2)</div></div></a></div><div class="next-post pull-right"><a href="/lec73/" title="lec7 Trees（3）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/443221e7e0b6cf9b5d18f4e70b4b11d.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">lec7 Trees（3）</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/'Lec2%20Logic%20and%20Proof,%20Sets,%20and%20Function'/" title="Lec2 Logic and Proof, Sets, and Function"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/1fe6130ca86bb9e7e6a37c9187a32c8.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-11-20</div><div class="title">Lec2 Logic and Proof, Sets, and Function</div></div></a></div><div><a href="/02%EF%BC%89/" title="CS61B 课程笔记（Lecture 02）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/v2-2ed7f4c9e1a7a699a3ef300a6f761abe_720w.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-11</div><div class="title">CS61B 课程笔记（Lecture 02）</div></div></a></div><div><a href="/04%EF%BC%89/" title="CS61B 课程笔记（Lecture 04）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/2749a496aabc7d650b2912e256582e390a0a636b.jpg@1256w_1246h_!web-article-pic.avif" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-13</div><div class="title">CS61B 课程笔记（Lecture 04）</div></div></a></div><div><a href="/06%EF%BC%89/" title="CS61B 课程笔记（Lecture 06）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/f00af0d55cc81c18403ccbb4957ae6bc298252208.jpg@1256w_1374h_!web-article-pic.avif" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-15</div><div class="title">CS61B 课程笔记（Lecture 06）</div></div></a></div><div><a href="/03%EF%BC%89/" title="CS61B 课程笔记（Lecture 03）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/v2-2ed7f4c9e1a7a699a3ef300a6f761abe_720w.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-12</div><div class="title">CS61B 课程笔记（Lecture 03）</div></div></a></div><div><a href="/07%EF%BC%89/" title="CS61B 课程笔记（Lecture 07）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/ef0c9dc1434371965c925677e389b329298252208.png@1256w_1702h_!web-article-pic.avif" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-16</div><div class="title">CS61B 课程笔记（Lecture 07）</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/px3.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Totoro</div><div class="author-info__description">热爱文学的SCUT软件学院学生</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">784</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">34</div></a></div><a id="card-info-btn" href="https://github.com/4512abc"><i class="fab fa-github"></i><span>🛴前往小窝......</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/4512abc" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:4512abc@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到龙猫の小窝</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#lec5-relations1"><span class="toc-text">Lec5 Relations(1)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%8D%E5%B0%84%E6%80%A7-reflexive-%E5%85%B3%E7%B3%BB%E7%9A%84%E5%AE%9A%E4%B9%89%E4%B8%8E%E5%88%A4%E5%AE%9A"><span class="toc-text">反射性 (Reflexive)
+关系的定义与判定</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8D%E5%B0%84%E6%80%A7%E5%AE%9A%E4%B9%89"><span class="toc-text">1. 反射性定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B%E5%88%86%E6%9E%90"><span class="toc-text">2. 示例分析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#r1"><span class="toc-text">2.1 $ R1 $</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#r2"><span class="toc-text">2.2 $ R2 $</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#r3"><span class="toc-text">2.3 $ R3 $</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%A6%E4%B8%80%E7%BB%84%E5%85%B3%E7%B3%BB%E5%88%A4%E5%AE%9A"><span class="toc-text">3. 另一组关系判定</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B3%E7%B3%BB%E5%AE%9A%E4%B9%89"><span class="toc-text">关系定义：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E6%9E%90"><span class="toc-text">分析：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">4. 总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8D%E5%B0%84%E6%80%A7-reflexive-%E4%B8%8E%E9%9D%9E%E5%8F%8D%E5%B0%84%E6%80%A7-irreflexive%E5%AF%B9%E6%AF%94"><span class="toc-text">反射性
+(Reflexive) 与非反射性 (Irreflexive)对比</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%8D%E5%B0%84%E6%80%A7-reflexive"><span class="toc-text">1. 反射性 (Reflexive)</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89"><span class="toc-text">定义：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%BE%E4%BE%8B"><span class="toc-text">举例：</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9D%9E%E5%8F%8D%E5%B0%84%E6%80%A7-irreflexive"><span class="toc-text">2. 非反射性
+(Irreflexive)</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89-1"><span class="toc-text">定义：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F"><span class="toc-text">注意：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%BE%E4%BE%8B-1"><span class="toc-text">举例：</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%8D%E5%B0%84%E6%80%A7%E4%B8%8E%E9%9D%9E%E5%8F%8D%E5%B0%84%E6%80%A7%E4%BA%92%E8%A1%A5%E5%85%B3%E7%B3%BB"><span class="toc-text">3.
+反射性与非反射性互补关系</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AE%9A%E7%90%86"><span class="toc-text">定理：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BE%8B%E5%AD%90"><span class="toc-text">例子：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%AF%81%E6%98%8E"><span class="toc-text">证明：</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B%E5%8F%8D%E5%B0%84%E6%80%A7%E4%B8%8E%E9%9D%9E%E5%8F%8D%E5%B0%84%E6%80%A7%E5%85%B3%E7%B3%BB"><span class="toc-text">4.
+示例：反射性与非反射性关系</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF%E4%B8%BE%E4%BE%8B"><span class="toc-text">5. 应用场景举例</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%B9%E7%A7%B0%E6%80%A7-symmetric%E5%8F%8D%E5%AF%B9%E7%A7%B0%E6%80%A7-antisymmetric%E4%BC%A0%E9%80%92%E6%80%A7-transitivity-%E5%85%B3%E7%B3%BB"><span class="toc-text">对称性
+(Symmetric)、反对称性 (Antisymmetric)、传递性 (Transitivity)
+关系</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E7%A7%B0%E6%80%A7-symmetric"><span class="toc-text">1. 对称性 (Symmetric)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89-2"><span class="toc-text">定义：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BE%E4%BE%8B-2"><span class="toc-text">举例：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9D%9E%E5%AF%B9%E7%A7%B0%E6%80%A7%E7%A4%BA%E4%BE%8B"><span class="toc-text">非对称性示例：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8D%E5%AF%B9%E7%A7%B0%E6%80%A7-antisymmetric"><span class="toc-text">2. 反对称性
+(Antisymmetric)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89-3"><span class="toc-text">定义：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E5%85%B3%E7%B3%BB"><span class="toc-text">常见关系：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BE%E4%BE%8B-3"><span class="toc-text">举例：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E7%A7%B0%E6%80%A7%E4%B8%8E%E5%8F%8D%E5%AF%B9%E7%A7%B0%E6%80%A7%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-text">3.
+对称性与反对称性的关系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%A0%E9%80%92%E6%80%A7-transitivity"><span class="toc-text">4. 传递性
+(Transitivity)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89-4"><span class="toc-text">定义：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E4%BC%A0%E9%80%92%E6%80%A7%E5%85%B3%E7%B3%BB"><span class="toc-text">常见传递性关系：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9D%9E%E4%BC%A0%E9%80%92%E6%80%A7%E7%A4%BA%E4%BE%8B"><span class="toc-text">非传递性示例：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B0%93%E8%AF%8D%E9%80%BB%E8%BE%91%E8%A1%A8%E8%BE%BE"><span class="toc-text">5. 谓词逻辑表达</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%B9%E7%A7%B0%E6%80%A7"><span class="toc-text">对称性：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%8D%E5%AF%B9%E7%A7%B0%E6%80%A7"><span class="toc-text">反对称性：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%A0%E9%80%92%E6%80%A7"><span class="toc-text">传递性：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B%E6%AF%94%E8%BE%83"><span class="toc-text">6. 示例比较</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E7%B3%BB%E7%9A%84%E4%BC%A0%E9%80%92%E6%80%A7transitivity%E9%9D%9E%E4%BC%A0%E9%80%92%E6%80%A7nontransitivity%E9%9D%9E%E4%BC%A0%E9%80%92%E6%80%A7%E4%B8%A5%E6%A0%BC%E5%BD%A2%E5%BC%8Fintransitivity"><span class="toc-text">关系的传递性（Transitivity）、非传递性（Nontransitivity）、非传递性严格形式（Intransitivity）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%A0%E9%80%92%E6%80%A7-transitivity-1"><span class="toc-text">1. 传递性
+(Transitivity)</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89-5"><span class="toc-text">定义：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%BE%E4%BE%8B-4"><span class="toc-text">举例：</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9D%9E%E4%BC%A0%E9%80%92%E6%80%A7-nontransitivity"><span class="toc-text">2. 非传递性
+(Nontransitivity)</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89-6"><span class="toc-text">定义：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%BE%E4%BE%8B-5"><span class="toc-text">举例：</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%A5%E6%A0%BC%E9%9D%9E%E4%BC%A0%E9%80%92%E6%80%A7-intransitivity"><span class="toc-text">3. 严格非传递性
+(Intransitivity)</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89-7"><span class="toc-text">定义：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%BE%E4%BE%8B-6"><span class="toc-text">举例：</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B%E5%88%86%E7%B1%BB%E4%B8%8E%E5%88%86%E6%9E%90"><span class="toc-text">4. 示例分类与分析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B0%93%E8%AF%8D%E9%80%BB%E8%BE%91%E8%A1%A8%E7%A4%BA"><span class="toc-text">5. 谓词逻辑表示</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E7%B3%BB%E7%9A%84%E5%A4%8D%E5%90%88composition-of-relations"><span class="toc-text">关系的复合（Composition
+of Relations）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E7%B3%BB%E7%9A%84%E5%A4%8D%E5%90%88%E5%AE%9A%E4%B9%89"><span class="toc-text">1. 关系的复合定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E7%B3%BB%E5%A4%8D%E5%90%88%E4%B8%8E%E5%87%BD%E6%95%B0%E5%A4%8D%E5%90%88%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-text">2.
+关系复合与函数复合的关系</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B"><span class="toc-text">示例：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E7%B3%BB%E5%A4%8D%E5%90%88%E7%9A%84%E8%BF%90%E7%AE%97%E7%A4%BA%E4%BE%8B"><span class="toc-text">3. 关系复合的运算示例</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E5%85%B3%E7%B3%BB"><span class="toc-text">输入关系：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E5%A4%8D%E5%90%88%E5%85%B3%E7%B3%BB-s-r"><span class="toc-text">计算复合关系 $ S R $：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E7%B3%BB%E7%9A%84%E5%B9%82%E8%BF%90%E7%AE%97"><span class="toc-text">4. 关系的幂运算</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89-8"><span class="toc-text">定义：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-1"><span class="toc-text">示例：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93%E4%B8%8E%E5%85%B3%E9%94%AE%E7%82%B9"><span class="toc-text">5. 总结与关键点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E4%B9%A0%E9%A2%98"><span class="toc-text">一些习题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8D%E4%BE%8B"><span class="toc-text">反例：</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%A4%8D%E4%B9%A0/" title="计算机网络复习"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/f1e7bd3259972022ef5860e626348bb.bmp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="计算机网络复习"/></a><div class="content"><a class="title" href="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%A4%8D%E4%B9%A0/" title="计算机网络复习">计算机网络复习</a><time datetime="2025-04-28T02:31:33.000Z" title="发表于 2025-04-28 10:31:33">2025-04-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E8%B5%B7%E6%AD%A5/" title="微信小程序起步"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://source.fomal.cc/img/default_cover_229.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="微信小程序起步"/></a><div class="content"><a class="title" href="/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E8%B5%B7%E6%AD%A5/" title="微信小程序起步">微信小程序起步</a><time datetime="2024-12-27T17:34:24.000Z" title="发表于 2024-12-28 01:34:24">2024-12-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E3%80%8AJAVA%E8%AF%AD%E8%A8%80%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E3%80%8B%E6%9C%9F%E6%9C%AB%E8%80%83%E8%AF%95%E8%AF%95%E9%A2%98%E5%8F%8A%E7%AD%94%E6%A1%883%EF%BC%88%E5%BA%94%E8%80%83%E5%BF%85%E5%A4%87%E9%A2%98%E5%BA%93%EF%BC%89/" title="《JAVA语言程序设计》期末考试试题及答案3（应考必备题库）"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://source.fomal.cc/img/default_cover_80.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="《JAVA语言程序设计》期末考试试题及答案3（应考必备题库）"/></a><div class="content"><a class="title" href="/%E3%80%8AJAVA%E8%AF%AD%E8%A8%80%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E3%80%8B%E6%9C%9F%E6%9C%AB%E8%80%83%E8%AF%95%E8%AF%95%E9%A2%98%E5%8F%8A%E7%AD%94%E6%A1%883%EF%BC%88%E5%BA%94%E8%80%83%E5%BF%85%E5%A4%87%E9%A2%98%E5%BA%93%EF%BC%89/" title="《JAVA语言程序设计》期末考试试题及答案3（应考必备题库）">《JAVA语言程序设计》期末考试试题及答案3（应考必备题库）</a><time datetime="2024-12-24T14:59:06.000Z" title="发表于 2024-12-24 22:59:06">2024-12-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E3%80%8AJAVA%E8%AF%AD%E8%A8%80%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E3%80%8B%E6%9C%9F%E6%9C%AB%E8%80%83%E8%AF%95%E8%AF%95%E9%A2%98%E5%8F%8A%E7%AD%94%E6%A1%882/" title="《JAVA语言程序设计》期末考试试题及答案2"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://source.fomal.cc/img/default_cover_80.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="《JAVA语言程序设计》期末考试试题及答案2"/></a><div class="content"><a class="title" href="/%E3%80%8AJAVA%E8%AF%AD%E8%A8%80%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E3%80%8B%E6%9C%9F%E6%9C%AB%E8%80%83%E8%AF%95%E8%AF%95%E9%A2%98%E5%8F%8A%E7%AD%94%E6%A1%882/" title="《JAVA语言程序设计》期末考试试题及答案2">《JAVA语言程序设计》期末考试试题及答案2</a><time datetime="2024-12-24T13:51:43.000Z" title="发表于 2024-12-24 21:51:43">2024-12-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E3%80%8AJAVA%E8%AF%AD%E8%A8%80%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E3%80%8B%E6%9C%9F%E6%9C%AB%E8%80%83%E8%AF%95%E8%AF%95%E9%A2%98%E5%8F%8A%E7%AD%94%E6%A1%881/" title="《JAVA语言程序设计》期末考试试题及答案1"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://source.fomal.cc/img/default_cover_80.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="《JAVA语言程序设计》期末考试试题及答案1"/></a><div class="content"><a class="title" href="/%E3%80%8AJAVA%E8%AF%AD%E8%A8%80%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E3%80%8B%E6%9C%9F%E6%9C%AB%E8%80%83%E8%AF%95%E8%AF%95%E9%A2%98%E5%8F%8A%E7%AD%94%E6%A1%881/" title="《JAVA语言程序设计》期末考试试题及答案1">《JAVA语言程序设计》期末考试试题及答案1</a><time datetime="2024-12-24T13:36:21.000Z" title="发表于 2024-12-24 21:36:21">2024-12-24</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 - 2025 By Totoro</div><div class="footer_custom_text">I wish you to become your own sun, no need to rely on who's light.<p><a target="_blank" href="https://hexo.io/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&logo=hexo" title="博客框架为Hexo"></a>&nbsp;<a target="_blank" href="https://butterfly.js.org/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&logo=bitdefender" title="主题采用butterfly"></a>&nbsp;<a target="_blank" href="https://www.jsdelivr.com/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&logo=jsDelivr" title="本站使用JsDelivr为静态资源提供CDN加速"></a> &nbsp;<a target="_blank" href="https://vercel.com/ "><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Hosted-Vervel-brightgreen?style=flat&logo=Vercel" title="本站采用双线部署，默认线路托管于Vercel"></a>&nbsp;<a target="_blank" href="https://vercel.com/ "><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Hosted-Coding-0cedbe?style=flat&logo=Codio" title="本站采用双线部署，联通线路托管于Coding"></a>&nbsp;<a target="_blank" href="https://github.com/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&logo=GitHub" title="本站项目由Gtihub托管"></a>&nbsp;<a target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&logo=Claris" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"></a></p></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat-btn" type="button" title="聊天"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="/js/tw_cn.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@5.2.0/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.js"></script><script>function panguFn () {
   if (typeof pangu === 'object') pangu.autoSpacingPage()
   else {
     getScript('https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js')
@@ -838,16 +1003,6 @@ document.addEventListener('pjax:error', e => {
     pjax.loadUrl('/404.html')
   }
 })</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.12.0"></script></div></div><!-- hexo injector body_end start --><script data-pjax>
-    function butterfly_categories_card_injector_config(){
-      var parent_div_git = document.getElementById('recent-posts');
-      var item_html = '<style>li.categoryBar-list-item{width:32.3%;}.categoryBar-list{max-height: 380px;overflow:auto;}.categoryBar-list::-webkit-scrollbar{width:0!important}@media screen and (max-width: 650px){.categoryBar-list{max-height: 320px;}}</style><div class="recent-post-item" style="height:auto;width:100%;padding:0px;"><div id="categoryBar"><ul class="categoryBar-list"><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_12.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/离散数学/&quot;);" href="javascript:void(0);">离散数学</a><span class="categoryBar-list-count">32</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_13.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS61B/&quot;);" href="javascript:void(0);">CS61B</a><span class="categoryBar-list-count">76</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_14.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/期末の旅/&quot;);" href="javascript:void(0);">期末の旅</a><span class="categoryBar-list-count">99</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_17.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/ACMの旅/&quot;);" href="javascript:void(0);">ACMの旅</a><span class="categoryBar-list-count">42</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_18.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/区域赛の旅/&quot;);" href="javascript:void(0);">区域赛の旅</a><span class="categoryBar-list-count">7</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_19.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/Codeforcesの旅/&quot;);" href="javascript:void(0);">Codeforcesの旅</a><span class="categoryBar-list-count">24</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_20.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/刷题计划/&quot;);" href="javascript:void(0);">刷题计划</a><span class="categoryBar-list-count">60</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_21.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/牛客の旅/&quot;);" href="javascript:void(0);">牛客の旅</a><span class="categoryBar-list-count">65</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_22.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/数学建模/&quot;);" href="javascript:void(0);">数学建模</a><span class="categoryBar-list-count">26</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_22.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/数据结构/&quot;);" href="javascript:void(0);">数据结构</a><span class="categoryBar-list-count">47</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_23.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/前端の旅/&quot;);" href="javascript:void(0);">前端の旅</a><span class="categoryBar-list-count">17</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_24.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/Atcoderの旅/&quot;);" href="javascript:void(0);">Atcoderの旅</a><span class="categoryBar-list-count">53</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_25.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/C-の旅/&quot;);" href="javascript:void(0);">C++の旅</a><span class="categoryBar-list-count">17</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_26.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS70の旅/&quot;);" href="javascript:void(0);">CS70の旅</a><span class="categoryBar-list-count">24</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_27.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/计算机组成原理/&quot;);" href="javascript:void(0);">计算机组成原理</a><span class="categoryBar-list-count">47</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_28.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CSAPPの旅/&quot;);" href="javascript:void(0);">CSAPPの旅</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_29.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/编程基础/&quot;);" href="javascript:void(0);">编程基础</a><span class="categoryBar-list-count">14</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_30.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/JAVAの旅/&quot;);" href="javascript:void(0);">JAVAの旅</a><span class="categoryBar-list-count">10</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_31.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/MIT-6-031-Software-Construction/&quot;);" href="javascript:void(0);">MIT 6.031:Software Construction</a><span class="categoryBar-list-count">16</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_32.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/数据库の旅/&quot;);" href="javascript:void(0);">数据库の旅</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_33.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS-110L/&quot;);" href="javascript:void(0);">CS 110L</a><span class="categoryBar-list-count">3</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_34.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/灵魂の旅/&quot;);" href="javascript:void(0);">灵魂の旅</a><span class="categoryBar-list-count">2</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_35.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/个人安排/&quot;);" href="javascript:void(0);">个人安排</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_36.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/杂项/&quot;);" href="javascript:void(0);">杂项</a><span class="categoryBar-list-count">12</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_37.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/文学/&quot;);" href="javascript:void(0);">文学</a><span class="categoryBar-list-count">49</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_38.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/力扣の旅/&quot;);" href="javascript:void(0);">力扣の旅</a><span class="categoryBar-list-count">20</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_39.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/千里十二行/&quot;);" href="javascript:void(0);">千里十二行</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_40.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/🗡指offer/&quot;);" href="javascript:void(0);">🗡指offer</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_41.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/少年游/&quot;);" href="javascript:void(0);">少年游</a><span class="categoryBar-list-count">2</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_42.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/算法提高课/&quot;);" href="javascript:void(0);">算法提高课</a><span class="categoryBar-list-count">3</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_43.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/汇编の旅/&quot;);" href="javascript:void(0);">汇编の旅</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_44.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/C-实训/&quot;);" href="javascript:void(0);">C++实训</a><span class="categoryBar-list-count">8</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_44.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS知识/&quot;);" href="javascript:void(0);">CS知识</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li></ul></div></div>';
-      console.log('已挂载butterfly_categories_card')
-      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
-      }
-    if( document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
-    butterfly_categories_card_injector_config()
-    }
-  </script><script data-pjax>
   function butterfly_swiper_injector_config(){
     var parent_div_git = document.getElementById('recent-posts');
     var item_html = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms;"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;诗兴大发/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://source.fomal.cc/img/default_cover_69.webp" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-01-29</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;诗兴大发/&quot;);" href="javascript:void(0);" alt="">诗兴大发</a><div class="blog-slider__text">未觉，却是中二少年的诗仙梦</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;诗兴大发/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;诗录/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/4b31456c6f0f4489f99177f89e936de7286431045.png@1256w_708h_!web-article-pic.avif" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-10-01</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;诗录/&quot;);" href="javascript:void(0);" alt="">诗录</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;诗录/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;TotoroのPlan/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/51d37eba99d243607ddedfff6e91568f617436609.jpg@1256w_1884h_!web-article-pic.avif" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-10-05</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;TotoroのPlan/&quot;);" href="javascript:void(0);" alt="">TotoroのPlan</a><div class="blog-slider__text">方便大二看（）</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;TotoroのPlan/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;Markdown格式/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/ushio-api-img-moe@5.0.48/img_482_1920x1080_96_null_normal.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-03-03</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;Markdown格式/&quot;);" href="javascript:void(0);" alt="">Markdown格式</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;Markdown格式/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
@@ -871,4 +1026,14 @@ document.addEventListener('pjax:error', e => {
   else if (epage === cpage){
     butterfly_swiper_injector_config();
   }
-  </script><script defer src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.js"></script><script defer data-pjax src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper_init.js"></script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>
+  </script><script defer src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.js"></script><script defer data-pjax src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper_init.js"></script><script data-pjax>
+    function butterfly_categories_card_injector_config(){
+      var parent_div_git = document.getElementById('recent-posts');
+      var item_html = '<style>li.categoryBar-list-item{width:32.3%;}.categoryBar-list{max-height: 380px;overflow:auto;}.categoryBar-list::-webkit-scrollbar{width:0!important}@media screen and (max-width: 650px){.categoryBar-list{max-height: 320px;}}</style><div class="recent-post-item" style="height:auto;width:100%;padding:0px;"><div id="categoryBar"><ul class="categoryBar-list"><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_12.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/离散数学/&quot;);" href="javascript:void(0);">离散数学</a><span class="categoryBar-list-count">32</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_13.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS61B/&quot;);" href="javascript:void(0);">CS61B</a><span class="categoryBar-list-count">76</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_14.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/期末の旅/&quot;);" href="javascript:void(0);">期末の旅</a><span class="categoryBar-list-count">99</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_17.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/刷题计划/&quot;);" href="javascript:void(0);">刷题计划</a><span class="categoryBar-list-count">60</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_18.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/区域赛の旅/&quot;);" href="javascript:void(0);">区域赛の旅</a><span class="categoryBar-list-count">7</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_19.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/Codeforcesの旅/&quot;);" href="javascript:void(0);">Codeforcesの旅</a><span class="categoryBar-list-count">24</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_20.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/牛客の旅/&quot;);" href="javascript:void(0);">牛客の旅</a><span class="categoryBar-list-count">65</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_21.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/ACMの旅/&quot;);" href="javascript:void(0);">ACMの旅</a><span class="categoryBar-list-count">42</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_22.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/前端の旅/&quot;);" href="javascript:void(0);">前端の旅</a><span class="categoryBar-list-count">17</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_22.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/数学建模/&quot;);" href="javascript:void(0);">数学建模</a><span class="categoryBar-list-count">26</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_23.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/数据结构/&quot;);" href="javascript:void(0);">数据结构</a><span class="categoryBar-list-count">47</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_24.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/Atcoderの旅/&quot;);" href="javascript:void(0);">Atcoderの旅</a><span class="categoryBar-list-count">53</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_25.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/C-の旅/&quot;);" href="javascript:void(0);">C++の旅</a><span class="categoryBar-list-count">17</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_26.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS70の旅/&quot;);" href="javascript:void(0);">CS70の旅</a><span class="categoryBar-list-count">24</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_27.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CSAPPの旅/&quot;);" href="javascript:void(0);">CSAPPの旅</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_28.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/计算机组成原理/&quot;);" href="javascript:void(0);">计算机组成原理</a><span class="categoryBar-list-count">47</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_29.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/编程基础/&quot;);" href="javascript:void(0);">编程基础</a><span class="categoryBar-list-count">14</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_30.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/JAVAの旅/&quot;);" href="javascript:void(0);">JAVAの旅</a><span class="categoryBar-list-count">10</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_31.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/MIT-6-031-Software-Construction/&quot;);" href="javascript:void(0);">MIT 6.031:Software Construction</a><span class="categoryBar-list-count">16</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_32.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS-110L/&quot;);" href="javascript:void(0);">CS 110L</a><span class="categoryBar-list-count">3</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_33.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/数据库の旅/&quot;);" href="javascript:void(0);">数据库の旅</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_34.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/灵魂の旅/&quot;);" href="javascript:void(0);">灵魂の旅</a><span class="categoryBar-list-count">2</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_35.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/个人安排/&quot;);" href="javascript:void(0);">个人安排</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_36.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/杂项/&quot;);" href="javascript:void(0);">杂项</a><span class="categoryBar-list-count">13</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_37.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/文学/&quot;);" href="javascript:void(0);">文学</a><span class="categoryBar-list-count">49</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_38.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/力扣の旅/&quot;);" href="javascript:void(0);">力扣の旅</a><span class="categoryBar-list-count">20</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_39.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/千里十二行/&quot;);" href="javascript:void(0);">千里十二行</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_40.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/🗡指offer/&quot;);" href="javascript:void(0);">🗡指offer</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_41.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/少年游/&quot;);" href="javascript:void(0);">少年游</a><span class="categoryBar-list-count">2</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_42.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/算法提高课/&quot;);" href="javascript:void(0);">算法提高课</a><span class="categoryBar-list-count">3</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_43.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/汇编の旅/&quot;);" href="javascript:void(0);">汇编の旅</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_44.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/C-实训/&quot;);" href="javascript:void(0);">C++实训</a><span class="categoryBar-list-count">8</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_44.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS知识/&quot;);" href="javascript:void(0);">CS知识</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_45.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/计算机网络/&quot;);" href="javascript:void(0);">计算机网络</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li></ul></div></div>';
+      console.log('已挂载butterfly_categories_card')
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+      }
+    if( document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+    butterfly_categories_card_injector_config()
+    }
+  </script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>

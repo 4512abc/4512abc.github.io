@@ -1,9 +1,9 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Lec1 The Foundations Logic and Proofs | Totoroの旅</title><meta name="author" content="Totoro"><meta name="copyright" content="Totoro"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Lec1 The Foundations: Logic and Proofs 由于离散数学PPT过于杂乱，这里只取重点的进行记录，如果是比较细枝末节的，本篇不会记录。  命题与非命题的区分定义命题是一个陈述句，它具有确定的真假值（要么为真，要么为假）。以下总结了常见命题与非命题的区分标准及例子。  命题（Propositions） 特征：    表达一个明确的事实，且能够判断真假。 命题可以是简单">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Lec1 The Foundations Logic and Proofs | Totoroの旅</title><meta name="author" content="Totoro"><meta name="copyright" content="Totoro"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Lec1 The Foundations: Logic and Proofs  由于离散数学PPT过于杂乱，这里只取重点的进行记录，如果是比较细枝末节的，本篇不会记录。  命题与非命题的区分 定义 命题是一个陈述句，它具有确定的真假值（要么为真，要么为假）。以下总结了常见命题与非命题的区分标准及例子。  命题（Propositions）  特征：  表达一个明确的事实，且">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Lec1 The Foundations Logic and Proofs">
 <meta property="og:url" content="http://totorocatcat.top/Lec1%20The%20Foundations%20Logic%20and%20Proofs/index.html">
 <meta property="og:site_name" content="Totoroの旅">
-<meta property="og:description" content="Lec1 The Foundations: Logic and Proofs 由于离散数学PPT过于杂乱，这里只取重点的进行记录，如果是比较细枝末节的，本篇不会记录。  命题与非命题的区分定义命题是一个陈述句，它具有确定的真假值（要么为真，要么为假）。以下总结了常见命题与非命题的区分标准及例子。  命题（Propositions） 特征：    表达一个明确的事实，且能够判断真假。 命题可以是简单">
+<meta property="og:description" content="Lec1 The Foundations: Logic and Proofs  由于离散数学PPT过于杂乱，这里只取重点的进行记录，如果是比较细枝末节的，本篇不会记录。  命题与非命题的区分 定义 命题是一个陈述句，它具有确定的真假值（要么为真，要么为假）。以下总结了常见命题与非命题的区分标准及例子。  命题（Propositions）  特征：  表达一个明确的事实，且">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/24a2009ee30a4eee503ebe07ce0bd8a.jpg">
 <meta property="article:published_time" content="2024-11-20T14:36:37.000Z">
@@ -160,7 +160,7 @@
     })(window)</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/universe.css"><link rel="stylesheet" href="/css/scrollbar.css"><link rel="stylesheet" href="/css/cat.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-double-row-display@1.00/cardlistpost.min.css"/>
 <style>#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags:before {content:"\A";
   white-space: pre;}#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags > .article-meta__separator{display:none}</style>
-<link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-categories-card@1.0.0/lib/categorybar.css"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiperstyle.css" media="print" onload="this.media='all'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><div class="loading-img"></div><div class="loading-image-dot"></div></div></div><script>const preloader = {
+<link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiperstyle.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-categories-card@1.0.0/lib/categorybar.css"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><div class="loading-img"></div><div class="loading-image-dot"></div></div></div><script>const preloader = {
   endLoading: () => {
     document.body.style.overflow = 'auto';
     document.getElementById('loading-box').classList.add("loaded")
@@ -183,63 +183,78 @@ if (true) {
 document.addEventListener('pjax:send', () => {
   Pace.restart()
 })
-</script><link rel="stylesheet" href="/css/progress_bar.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/px3.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">782</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">33</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home-alt"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-envelope-open"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 趣味</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/project/"><i class="fa-fw fas fas fa-folder"></i><span> 项目</span></a></div><div class="menus_item"><a class="site-page" href="/stars/"><i class="fa-fw fas fa-bookmark"></i><span> 收藏</span></a></div><div class="menus_item"><a class="site-page" href="/bilibili/"><i class="fa-fw fas fa-tv"></i><span> 追番</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/24a2009ee30a4eee503ebe07ce0bd8a.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="Totoroの旅"><span class="site-name">Totoroの旅</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home-alt"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-envelope-open"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 趣味</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/project/"><i class="fa-fw fas fas fa-folder"></i><span> 项目</span></a></div><div class="menus_item"><a class="site-page" href="/stars/"><i class="fa-fw fas fa-bookmark"></i><span> 收藏</span></a></div><div class="menus_item"><a class="site-page" href="/bilibili/"><i class="fa-fw fas fa-tv"></i><span> 追番</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Lec1 The Foundations Logic and Proofs</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-11-20T14:36:37.000Z" title="发表于 2024-11-20 22:36:37">2024-11-20</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-12-30T17:17:44.127Z" title="更新于 2024-12-31 01:17:44">2024-12-31</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6/">离散数学</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">4.1k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>15分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Lec1 The Foundations Logic and Proofs"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/Lec1%20The%20Foundations%20Logic%20and%20Proofs/#post-comment" itemprop="discussionUrl"><span class="valine-comment-count" data-xid="/Lec1%20The%20Foundations%20Logic%20and%20Proofs/" itemprop="commentCount"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="Lec1-The-Foundations-Logic-and-Proofs"><a href="#Lec1-The-Foundations-Logic-and-Proofs" class="headerlink" title="Lec1 The Foundations: Logic and Proofs"></a>Lec1 The Foundations: Logic and Proofs</h1><blockquote>
+</script><link rel="stylesheet" href="/css/progress_bar.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/px3.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">784</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">34</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home-alt"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-envelope-open"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 趣味</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/project/"><i class="fa-fw fas fas fa-folder"></i><span> 项目</span></a></div><div class="menus_item"><a class="site-page" href="/stars/"><i class="fa-fw fas fa-bookmark"></i><span> 收藏</span></a></div><div class="menus_item"><a class="site-page" href="/bilibili/"><i class="fa-fw fas fa-tv"></i><span> 追番</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/24a2009ee30a4eee503ebe07ce0bd8a.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="Totoroの旅"><span class="site-name">Totoroの旅</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home-alt"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-envelope-open"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 趣味</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/project/"><i class="fa-fw fas fas fa-folder"></i><span> 项目</span></a></div><div class="menus_item"><a class="site-page" href="/stars/"><i class="fa-fw fas fa-bookmark"></i><span> 收藏</span></a></div><div class="menus_item"><a class="site-page" href="/bilibili/"><i class="fa-fw fas fa-tv"></i><span> 追番</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Lec1 The Foundations Logic and Proofs</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-11-20T14:36:37.000Z" title="发表于 2024-11-20 22:36:37">2024-11-20</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-12-30T17:17:44.127Z" title="更新于 2024-12-31 01:17:44">2024-12-31</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6/">离散数学</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">3.7k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>13分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Lec1 The Foundations Logic and Proofs"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/Lec1%20The%20Foundations%20Logic%20and%20Proofs/#post-comment" itemprop="discussionUrl"><span class="valine-comment-count" data-xid="/Lec1%20The%20Foundations%20Logic%20and%20Proofs/" itemprop="commentCount"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="lec1-the-foundations-logic-and-proofs">Lec1 The Foundations:
+Logic and Proofs</h1>
+<blockquote>
 <p>由于离散数学PPT过于杂乱，这里只取重点的进行记录，如果是比较细枝末节的，本篇不会记录。</p>
 </blockquote>
-<h2 id="命题与非命题的区分"><a href="#命题与非命题的区分" class="headerlink" title="命题与非命题的区分"></a>命题与非命题的区分</h2><p><strong>定义</strong><br>命题是一个<strong>陈述句</strong>，它具有确定的<strong>真假值</strong>（要么为真，要么为假）。以下总结了常见命题与非命题的区分标准及例子。</p>
+<h2 id="命题与非命题的区分">命题与非命题的区分</h2>
+<p><strong>定义</strong><br>
+命题是一个<strong>陈述句</strong>，它具有确定的<strong>真假值</strong>（要么为真，要么为假）。以下总结了常见命题与非命题的区分标准及例子。</p>
 <hr>
-<h3 id="命题（Propositions）"><a href="#命题（Propositions）" class="headerlink" title="命题（Propositions）"></a><strong>命题（Propositions）</strong></h3><ul>
-<li><p><strong>特征</strong>：  </p>
+<h3 id="命题propositions"><strong>命题（Propositions）</strong></h3>
+<ul>
+<li><strong>特征</strong>：
 <ul>
 <li>表达一个明确的事实，且能够判断<strong>真假</strong>。</li>
-<li>命题可以是简单的（单一事实）或复合的（由逻辑连接词连接）。  </li>
-</ul>
-</li>
-<li><p><strong>例子</strong>：</p>
-<ol>
-<li>“正在下雨。”（这句话在特定情况下可以判断为真或假。）  <ul>
-<li>如果外面确实在下雨，则为真；否则为假。</li>
-</ul>
-</li>
-<li>“北京是中国的首都，并且 $1 + 2 = 3$。”  <ul>
-<li>这是一个复合命题，由两个子命题组成：  <ul>
-<li>“北京是中国的首都”是真命题。  </li>
-<li>“$1 + 2 = 3$”是真命题。  </li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-</li>
-</ul>
-<hr>
-<h3 id="非命题（Not-Propositions）"><a href="#非命题（Not-Propositions）" class="headerlink" title="非命题（Not Propositions）"></a><strong>非命题（Not Propositions）</strong></h3><ul>
-<li><p><strong>特征</strong>：  </p>
+<li>命题可以是简单的（单一事实）或复合的（由逻辑连接词连接）。</li>
+</ul></li>
+<li><strong>例子</strong>：
+<ol type="1">
+<li>“正在下雨。”（这句话在特定情况下可以判断为真或假。）
 <ul>
-<li>不具有明确的<strong>真假值</strong>，因此不属于命题。  </li>
-<li>包括疑问句、规则或方程、表达式、命令等。</li>
-</ul>
+<li>如果外面确实在下雨，则为真；否则为假。</li>
+</ul></li>
+<li>“北京是中国的首都，并且 <span class="math inline">\(1 + 2 =
+3\)</span>。”
+<ul>
+<li>这是一个复合命题，由两个子命题组成：
+<ul>
+<li>“北京是中国的首都”是真命题。<br>
 </li>
-<li><p><strong>例子</strong>：</p>
-<ol>
-<li><strong>疑问句</strong>：<br>“谁在那里？”  <ul>
-<li>这是一个提问，无法判定真假。</li>
-</ul>
-</li>
-<li><strong>规则或方程</strong>：<br>“$x = y + 1$”  <ul>
-<li>它描述的是一个关系或规则，但其中变量未被具体化，因此没有真假值。</li>
-</ul>
-</li>
-<li><strong>表达式</strong>：<br>“$1 + 2$”  <ul>
-<li>这是一个数学项（term），仅表示一个值，没有真假性。</li>
-</ul>
-</li>
-</ol>
-</li>
+<li>“<span class="math inline">\(1 + 2 = 3\)</span>”是真命题。</li>
+</ul></li>
+</ul></li>
+</ol></li>
 </ul>
 <hr>
-<h3 id="总结对比"><a href="#总结对比" class="headerlink" title="总结对比"></a><strong>总结对比</strong></h3><div class="table-container">
+<h3 id="非命题not-propositions"><strong>非命题（Not
+Propositions）</strong></h3>
+<ul>
+<li><strong>特征</strong>：
+<ul>
+<li>不具有明确的<strong>真假值</strong>，因此不属于命题。<br>
+</li>
+<li>包括疑问句、规则或方程、表达式、命令等。</li>
+</ul></li>
+<li><strong>例子</strong>：
+<ol type="1">
+<li><strong>疑问句</strong>：<br>
+“谁在那里？”
+<ul>
+<li>这是一个提问，无法判定真假。</li>
+</ul></li>
+<li><strong>规则或方程</strong>：<br>
+“<span class="math inline">\(x = y + 1\)</span>”
+<ul>
+<li>它描述的是一个关系或规则，但其中变量未被具体化，因此没有真假值。</li>
+</ul></li>
+<li><strong>表达式</strong>：<br>
+“<span class="math inline">\(1 + 2\)</span>”
+<ul>
+<li>这是一个数学项（term），仅表示一个值，没有真假性。</li>
+</ul></li>
+</ol></li>
+</ul>
+<hr>
+<h3 id="总结对比"><strong>总结对比</strong></h3>
 <table>
+<colgroup>
+<col style="width: 24%">
+<col style="width: 27%">
+<col style="width: 16%">
+<col style="width: 32%">
+</colgroup>
 <thead>
 <tr>
 <th><strong>类型</strong></th>
@@ -257,7 +272,7 @@ document.addEventListener('pjax:send', () => {
 </tr>
 <tr>
 <td>数学真理</td>
-<td>“$1 + 2 = 3$”</td>
+<td>“<span class="math inline">\(1 + 2 = 3\)</span>”</td>
 <td>是</td>
 <td>可以判断为真。</td>
 </tr>
@@ -269,41 +284,46 @@ document.addEventListener('pjax:send', () => {
 </tr>
 <tr>
 <td>方程（变量未指定）</td>
-<td>“$x = y + 1$”</td>
+<td>“<span class="math inline">\(x = y + 1\)</span>”</td>
 <td>否</td>
 <td>无具体值，无法判断真假。</td>
 </tr>
 <tr>
 <td>表达式</td>
-<td>“$1 + 2$”</td>
+<td>“<span class="math inline">\(1 + 2\)</span>”</td>
 <td>否</td>
 <td>表达一个值，不是陈述句。</td>
 </tr>
 </tbody>
 </table>
-</div>
-<h4 id="思考小结"><a href="#思考小结" class="headerlink" title="思考小结"></a><strong>思考小结</strong></h4><ul>
-<li>命题是逻辑推理的基础。  </li>
+<h4 id="思考小结"><strong>思考小结</strong></h4>
+<ul>
+<li>命题是逻辑推理的基础。<br>
+</li>
 <li>判断某一句话是否为命题时，关键在于其能否明确判定为真或假。</li>
 </ul>
-<h2 id="条件命题-p-rightarrow-q-的逻辑性质"><a href="#条件命题-p-rightarrow-q-的逻辑性质" class="headerlink" title="条件命题 $ p \rightarrow q $ 的逻辑性质"></a>条件命题 $ p \rightarrow q $ 的逻辑性质</h2><h3 id="定义与符号"><a href="#定义与符号" class="headerlink" title="定义与符号"></a><strong>定义与符号</strong></h3><ul>
-<li><strong>条件命题</strong>：$ p \rightarrow q $ 表示<strong>“如果 $ p $，那么 $ q $”</strong>。  <ul>
-<li><strong>前件 $ p $</strong>：条件（if）。  </li>
-<li><strong>后件 $ q $</strong>：结论（then）。  </li>
-</ul>
+<h2 id="条件命题-p-q-的逻辑性质">条件命题 $ p q $ 的逻辑性质</h2>
+<h3 id="定义与符号"><strong>定义与符号</strong></h3>
+<ul>
+<li><strong>条件命题</strong>：$ p q $ 表示<strong>“如果 $ p $，那么 $ q
+$”</strong>。
+<ul>
+<li><strong>前件 $ p $</strong>：条件（if）。<br>
 </li>
+<li><strong>后件 $ q $</strong>：结论（then）。</li>
+</ul></li>
 </ul>
-<h3 id="真假判定规则"><a href="#真假判定规则" class="headerlink" title="真假判定规则"></a><strong>真假判定规则</strong></h3><p>条件命题 $ p \rightarrow q $ 的真假取决于 $ p $ 和 $ q $ 的真假值。  </p>
+<h3 id="真假判定规则"><strong>真假判定规则</strong></h3>
+<p>条件命题 $ p q $ 的真假取决于 $ p $ 和 $ q $ 的真假值。</p>
 <ul>
 <li><strong>真值表</strong>：</li>
 </ul>
-<div class="table-container">
 <table>
 <thead>
 <tr>
-<th><strong>$ p $</strong></th>
-<th><strong>$ q $</strong></th>
-<th><strong>$ p \rightarrow q $</strong></th>
+<th><strong>$ p <span class="math inline">\(** | **\)</span> q <span class="math inline">\(** | **\)</span> p q $</strong></th>
+<th></th>
+<th></th>
 </tr>
 </thead>
 <tbody>
@@ -329,140 +349,186 @@ document.addEventListener('pjax:send', () => {
 </tr>
 </tbody>
 </table>
-</div>
 <ul>
-<li>条件命题<strong>唯一为假</strong>的情况：<br>当<strong>$ p $ 为真</strong>，但<strong>$ q $ 为假</strong>时，$ p \rightarrow q $ 为假。<br>（即：前件成立但后件不成立时违背逻辑。）</li>
+<li>条件命题<strong>唯一为假</strong>的情况：<br>
+当<strong>$ p $ 为真</strong>，但<strong>$ q $ 为假</strong>时，$ p q $
+为假。<br>
+（即：前件成立但后件不成立时违背逻辑。）</li>
 </ul>
 <hr>
-<h3 id="常见误解澄清"><a href="#常见误解澄清" class="headerlink" title="常见误解澄清"></a><strong>常见误解澄清</strong></h3><ol>
-<li><p><strong>$ p \rightarrow q $ 并不意味着 $ p $ 导致 $ q $</strong>：</p>
+<h3 id="常见误解澄清"><strong>常见误解澄清</strong></h3>
+<ol type="1">
+<li><strong>$ p q $ 并不意味着 $ p $ 导致 $ q $</strong>：
 <ul>
-<li>条件命题只表明一种逻辑关系，而非因果关系。  </li>
-<li>例子：  <ul>
-<li>“如果今天下雨，那么我会带伞。”  </li>
+<li>条件命题只表明一种逻辑关系，而非因果关系。<br>
+</li>
+<li>例子：
+<ul>
+<li>“如果今天下雨，那么我会带伞。”<br>
+</li>
 <li>并不能说明“下雨”是“带伞”的原因，而是条件与结果的逻辑关系。</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><strong>$ p \rightarrow q $ 不要求 $ p $ 或 $ q $ 必须为真</strong>：</p>
+</ul></li>
+</ul></li>
+<li><strong>$ p q $ 不要求 $ p $ 或 $ q $ 必须为真</strong>：
 <ul>
-<li>只要满足真值表中的规则，$ p $ 和 $ q $ 可以是任何真假组合。  </li>
-<li>例子：  <ul>
-<li>“如果天是绿色的，那么猪会飞。”  </li>
-<li>$ p $（天是绿色的）为假，$ q $（猪会飞）为假，但 $ p \rightarrow q $ 仍为真。</li>
-</ul>
+<li>只要满足真值表中的规则，$ p $ 和 $ q $ 可以是任何真假组合。<br>
 </li>
-</ul>
+<li>例子：
+<ul>
+<li>“如果天是绿色的，那么猪会飞。”<br>
 </li>
+<li>$ p <span class="math inline">\(（天是绿色的）为假，\)</span> q
+$（猪会飞）为假，但 $ p q $ 仍为真。</li>
+</ul></li>
+</ul></li>
 </ol>
 <hr>
-<h3 id="思考示例"><a href="#思考示例" class="headerlink" title="思考示例"></a><strong>思考示例</strong></h3><ul>
-<li>假设 $ p $: “我是学生”，$ q $: “我会学习”。  <ol>
-<li>如果我真的是学生（$ p $ 为真），但我不学习（$ q $ 为假），则 $ p \rightarrow q $ 为假。  </li>
-<li>如果我不是学生（$ p $ 为假），无论我是否学习（$ q $ 为真或假），$ p \rightarrow q $ 都为真。</li>
-</ol>
-</li>
+<h3 id="思考示例"><strong>思考示例</strong></h3>
+<ul>
+<li>假设 $ p <span class="math inline">\(: “我是学生”，\)</span> q <span class="math inline">\(: “我会学习”。
+1. 如果我真的是学生（\)</span> p $ 为真），但我不学习（$ q $ 为假），则
+$ p q $ 为假。
+<ol start="2" type="1">
+<li>如果我不是学生（$ p $ 为假），无论我是否学习（$ q $ 为真或假），$ p
+q $ 都为真。</li>
+</ol></li>
 </ul>
-<h2 id="条件命题-p-rightarrow-q-的相关术语及等价性证明"><a href="#条件命题-p-rightarrow-q-的相关术语及等价性证明" class="headerlink" title="条件命题 $ p \rightarrow q $ 的相关术语及等价性证明"></a>条件命题 $ p \rightarrow q $ 的相关术语及等价性证明</h2><h3 id="条件命题的相关术语"><a href="#条件命题的相关术语" class="headerlink" title="条件命题的相关术语"></a><strong>条件命题的相关术语</strong></h3><ol>
-<li><p><strong>原命题（Implication）</strong>：<br>$ p \rightarrow q $<br>含义：<strong>如果 $ p $，那么 $ q $</strong>。</p>
-</li>
-<li><p><strong>逆命题（Converse）</strong>：<br>$ q \rightarrow p $<br>含义：<strong>如果 $ q $，那么 $ p $</strong>。  </p>
-</li>
-<li><p><strong>反命题（Inverse）</strong>：<br>$ \neg p \rightarrow \neg q $<br>含义：<strong>如果 $ p $ 不成立，那么 $ q $ 也不成立</strong>。</p>
-</li>
-<li><p><strong>逆反命题（Contrapositive）</strong>：<br>$ \neg q \rightarrow \neg p $<br>含义：<strong>如果 $ q $ 不成立，那么 $ p $ 也不成立</strong>。</p>
-</li>
+<h2 id="条件命题-p-q-的相关术语及等价性证明">条件命题 $ p q $
+的相关术语及等价性证明</h2>
+<h3 id="条件命题的相关术语"><strong>条件命题的相关术语</strong></h3>
+<ol type="1">
+<li><p><strong>原命题（Implication）</strong>：<br>
+$ p q $<br>
+含义：<strong>如果 $ p $，那么 $ q $</strong>。</p></li>
+<li><p><strong>逆命题（Converse）</strong>：<br>
+$ q p $<br>
+含义：<strong>如果 $ q $，那么 $ p $</strong>。</p></li>
+<li><p><strong>反命题（Inverse）</strong>：<br>
+$ p q $<br>
+含义：<strong>如果 $ p $ 不成立，那么 $ q $ 也不成立</strong>。</p></li>
+<li><p><strong>逆反命题（Contrapositive）</strong>：<br>
+$ q p $<br>
+含义：<strong>如果 $ q $ 不成立，那么 $ p $ 也不成立</strong>。</p></li>
 </ol>
 <hr>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a><strong>总结</strong></h3><div class="table-container">
+<h3 id="总结"><strong>总结</strong></h3>
 <table>
+<colgroup>
+<col style="width: 22%">
+<col style="width: 25%">
+<col style="width: 29%">
+<col style="width: 22%">
+</colgroup>
 <thead>
 <tr>
 <th><strong>命题类型</strong></th>
 <th><strong>符号</strong></th>
-<th><strong>是否等价于 $ p \rightarrow q $</strong></th>
+<th><strong>是否等价于 $ p q $</strong></th>
 <th><strong>说明</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>原命题（Implication）</td>
-<td>$ p \rightarrow q $</td>
+<td>$ p q $</td>
 <td>是</td>
 <td>本身定义。</td>
 </tr>
 <tr>
 <td>逆命题（Converse）</td>
-<td>$ q \rightarrow p $</td>
+<td>$ q p $</td>
 <td>否</td>
 <td>真值可能不同。</td>
 </tr>
 <tr>
 <td>反命题（Inverse）</td>
-<td>$ \neg p \rightarrow \neg q $</td>
+<td>$ p q $</td>
 <td>否</td>
 <td>真值可能不同。</td>
 </tr>
 <tr>
 <td>逆反命题（Contrapositive）</td>
-<td>$ \neg q \rightarrow \neg p $</td>
+<td>$ q p $</td>
 <td>是</td>
 <td>真值总是相同（逻辑等价）。</td>
 </tr>
 </tbody>
 </table>
-</div>
-<h4 id="关键结论："><a href="#关键结论：" class="headerlink" title="关键结论："></a><strong>关键结论</strong>：</h4><ul>
-<li>$ p \rightarrow q $ 等价于 $ \neg q \rightarrow \neg p $。  </li>
+<h4 id="关键结论"><strong>关键结论</strong>：</h4>
+<ul>
+<li>$ p q $ 等价于 $ q p $。<br>
+</li>
 <li>逆命题和反命题通常不等价于原命题，但可以在推理中帮助理解逻辑关系。</li>
 </ul>
-<h2 id="双向条件命题及其等价性"><a href="#双向条件命题及其等价性" class="headerlink" title="双向条件命题及其等价性"></a>双向条件命题及其等价性</h2><h3 id="双向条件命题-p-leftrightarrow-q-的定义"><a href="#双向条件命题-p-leftrightarrow-q-的定义" class="headerlink" title="双向条件命题 $ p \leftrightarrow q $ 的定义"></a><strong>双向条件命题 $ p \leftrightarrow q $ 的定义</strong></h3><ul>
-<li><strong>双向条件命题</strong> $ p \leftrightarrow q $ 表示“<strong>$ p $ 当且仅当 $ q $</strong>”，即 $ p $ 和 $ q $ 互为真或互为假。<ul>
-<li>公式表示为：<br>$<br>p \leftrightarrow q \iff (p \rightarrow q) \land (q \rightarrow p)<br>$</li>
-<li>也可以理解为：$ p $ 与 $ q $ 同时为真或同时为假，二者之间是相互依赖的。</li>
-</ul>
-</li>
-</ul>
-<h3 id="推理详细步骤"><a href="#推理详细步骤" class="headerlink" title="推理详细步骤"></a><strong>推理详细步骤</strong></h3><h4 id="第一步：转换为条件命题"><a href="#第一步：转换为条件命题" class="headerlink" title="第一步：转换为条件命题"></a><strong>第一步：转换为条件命题</strong></h4><ul>
-<li><p>双向条件命题 $ p \leftrightarrow q $ 可以分解为两个条件命题：<br>$<br>p \leftrightarrow q \iff (p \rightarrow q) \land (q \rightarrow p)<br>$<br>这里，$ p \rightarrow q $ 和 $ q \rightarrow p $ 分别表示：</p>
+<h2 id="双向条件命题及其等价性">双向条件命题及其等价性</h2>
+<h3 id="双向条件命题-p-q-的定义"><strong>双向条件命题 $ p q $
+的定义</strong></h3>
 <ul>
-<li><strong>$ p \rightarrow q $</strong>：如果 $ p $ 为真，则 $ q $ 必须为真。</li>
-<li><strong>$ q \rightarrow p $</strong>：如果 $ q $ 为真，则 $ p $ 必须为真。</li>
-</ul>
-<p>这意味着双向条件命题要求 $ p $ 和 $ q $ 在逻辑上是等价的，它们要么都为真，要么都为假。</p>
-</li>
-</ul>
-<h4 id="第二步：转换为析取形式"><a href="#第二步：转换为析取形式" class="headerlink" title="第二步：转换为析取形式"></a><strong>第二步：转换为析取形式</strong></h4><ul>
-<li><p>我们可以将条件命题 $ p \rightarrow q $ 和 $ q \rightarrow p $ 进一步转换为析取形式：</p>
+<li><strong>双向条件命题</strong> $ p q $ 表示“<strong>$ p $ 当且仅当 $
+q $</strong>”，即 $ p $ 和 $ q $ 互为真或互为假。
 <ul>
-<li>$ p \rightarrow q $ 等价于 $ \neg p \lor q $，即“<strong>如果 $ p $ 为假，或者 $ q $ 为真</strong>”。</li>
-<li>$ q \rightarrow p $ 等价于 $ \neg q \lor p $，即“<strong>如果 $ q $ 为假，或者 $ p $ 为真</strong>”。</li>
+<li>公式表示为：<br>
+$ p q (p q) (q p) $</li>
+<li>也可以理解为：$ p $ 与 $ q $
+同时为真或同时为假，二者之间是相互依赖的。</li>
+</ul></li>
 </ul>
-<p>因此，双向条件命题 $ (p \rightarrow q) \land (q \rightarrow p) $ 可以写成：<br>$<br>(p \rightarrow q) \land (q \rightarrow p) \iff (\neg p \lor q) \land (\neg q \lor p)<br>$</p>
-</li>
-</ul>
-<h4 id="第三步：分析真值"><a href="#第三步：分析真值" class="headerlink" title="第三步：分析真值"></a><strong>第三步：分析真值</strong></h4><ul>
-<li><p>对于表达式 $ (\neg p \lor q) \land (\neg q \lor p) $，我们来分析它的真值：</p>
+<h3 id="推理详细步骤"><strong>推理详细步骤</strong></h3>
+<h4 id="第一步转换为条件命题"><strong>第一步：转换为条件命题</strong></h4>
 <ul>
-<li>如果 $ p = q $（即 $ p $ 和 $ q $ 同时为真或同时为假）：<ul>
-<li>如果 $ p $ 和 $ q $ 都为真，则 $ \neg p \lor q $ 和 $ \neg q \lor p $ 都为真，因此整个表达式为真。</li>
-<li>如果 $ p $ 和 $ q $ 都为假，则 $ \neg p \lor q $ 和 $ \neg q \lor p $ 都为真，因此整个表达式也为真。</li>
+<li><p>双向条件命题 $ p q $ 可以分解为两个条件命题： $ p q (p q) (q p) $
+这里，$ p q $ 和 $ q p $ 分别表示：</p>
+<ul>
+<li><strong>$ p q $</strong>：如果 $ p $ 为真，则 $ q $ 必须为真。</li>
+<li><strong>$ q p $</strong>：如果 $ q $ 为真，则 $ p $ 必须为真。</li>
 </ul>
-</li>
-<li>如果 $ p \neq q $（即 $ p $ 和 $ q $ 的真假不同）：<ul>
-<li>如果 $ p = \text{真}, q = \text{假} $，则 $ \neg p \lor q $ 为假，$ \neg q \lor p $ 为真，所以整个表达式为假。</li>
-<li>如果 $ p = \text{假}, q = \text{真} $，则 $ \neg p \lor q $ 为真，$ \neg q \lor p $ 为假，所以整个表达式为假。</li>
+<p>这意味着双向条件命题要求 $ p $ 和 $ q $
+在逻辑上是等价的，它们要么都为真，要么都为假。</p></li>
 </ul>
-</li>
+<h4 id="第二步转换为析取形式"><strong>第二步：转换为析取形式</strong></h4>
+<ul>
+<li><p>我们可以将条件命题 $ p q $ 和 $ q p $ 进一步转换为析取形式：</p>
+<ul>
+<li>$ p q $ 等价于 $ p q $，即“<strong>如果 $ p $ 为假，或者 $ q $
+为真</strong>”。</li>
+<li>$ q p $ 等价于 $ q p $，即“<strong>如果 $ q $ 为假，或者 $ p $
+为真</strong>”。</li>
 </ul>
-<p>因此，$ (\neg p \lor q) \land (\neg q \lor p) $ 的真值与 $ p \leftrightarrow q $ 相同，只有当 $ p $ 和 $ q $ 相等时，整个表达式为真；当 $ p $ 和 $ q $ 不相等时，整个表达式为假。</p>
-</li>
+<p>因此，双向条件命题 $ (p q) (q p) $ 可以写成： $ (p q) (q p) (p q) (q
+p) $</p></li>
 </ul>
-<h4 id="第四步：结论"><a href="#第四步：结论" class="headerlink" title="第四步：结论"></a><strong>第四步：结论</strong></h4><ul>
-<li>所以，表达式 $ (\neg p \lor q) \land (\neg q \lor p) $ 与双向条件命题 $ p \leftrightarrow q $ 是<strong>等价的</strong>。<br>这意味着我们可以用 $ (\neg p \lor q) \land (\neg q \lor p) $ 来表示 $ p \leftrightarrow q $。</li>
+<h4 id="第三步分析真值"><strong>第三步：分析真值</strong></h4>
+<ul>
+<li><p>对于表达式 $ (p q) (q p) $，我们来分析它的真值：</p>
+<ul>
+<li>如果 $ p = q $（即 $ p $ 和 $ q $ 同时为真或同时为假）：
+<ul>
+<li>如果 $ p $ 和 $ q $ 都为真，则 $ p q $ 和 $ q p $
+都为真，因此整个表达式为真。</li>
+<li>如果 $ p $ 和 $ q $ 都为假，则 $ p q $ 和 $ q p $
+都为真，因此整个表达式也为真。</li>
+</ul></li>
+<li>如果 $ p q $（即 $ p $ 和 $ q $ 的真假不同）：
+<ul>
+<li>如果 $ p = , q = $，则 $ p q $ 为假，$ q p $
+为真，所以整个表达式为假。</li>
+<li>如果 $ p = , q = $，则 $ p q $ 为真，$ q p $
+为假，所以整个表达式为假。</li>
+</ul></li>
 </ul>
-<h2 id="命题逻辑推理过程1："><a href="#命题逻辑推理过程1：" class="headerlink" title="命题逻辑推理过程1："></a>命题逻辑推理过程1：</h2><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a><strong>题目描述</strong></h3><p>给定以下命题：</p>
+<p>因此，$ (p q) (q p) $ 的真值与 $ p q $ 相同，只有当 $ p $ 和 $ q $
+相等时，整个表达式为真；当 $ p $ 和 $ q $
+不相等时，整个表达式为假。</p></li>
+</ul>
+<h4 id="第四步结论"><strong>第四步：结论</strong></h4>
+<ul>
+<li>所以，表达式 $ (p q) (q p) $ 与双向条件命题 $ p q $
+是<strong>等价的</strong>。<br>
+这意味着我们可以用 $ (p q) (q p) $ 来表示 $ p q $。</li>
+</ul>
+<h2 id="命题逻辑推理过程1">命题逻辑推理过程1：</h2>
+<h3 id="题目描述"><strong>题目描述</strong></h3>
+<p>给定以下命题：</p>
 <ul>
 <li>$ p $：他是计算机系本科生</li>
 <li>$ q $：他是计算机系研究生</li>
@@ -471,186 +537,267 @@ document.addEventListener('pjax:send', () => {
 <li>$ t $：他会编程序</li>
 </ul>
 <p><strong>前提：</strong></p>
-<ol>
-<li>$(p \lor q) \rightarrow (r \land s)$：如果他是计算机系本科生或研究生，那么他一定学过DELPHI语言并且学过C++语言。</li>
-<li>$(r \lor s) \rightarrow t$：如果他学过DELPHI语言或者学过C++语言，那么他会编程序。</li>
+<ol type="1">
+<li><span class="math inline">\((p \lor q) \rightarrow (r \land
+s)\)</span>：如果他是计算机系本科生或研究生，那么他一定学过DELPHI语言并且学过C++语言。</li>
+<li><span class="math inline">\((r \lor s) \rightarrow
+t\)</span>：如果他学过DELPHI语言或者学过C++语言，那么他会编程序。</li>
 </ol>
-<p><strong>结论：</strong><br>$ p \rightarrow t $：如果他是计算机系本科生，那么他会编程序。</p>
-<h3 id="推理过程（详细步骤）"><a href="#推理过程（详细步骤）" class="headerlink" title="推理过程（详细步骤）"></a><strong>推理过程（详细步骤）</strong></h3><p><strong>目标：</strong> 证明 $ p \rightarrow t $ 这一结论。</p>
-<p><strong>步骤一：</strong><br>假设 $ p $ 为真（即他是计算机系本科生），我们需要证明 $ t $ 为真（即他会编程序）。</p>
-<p><strong>步骤二：</strong><br>根据 $ p $ 为真，得出 $ p \lor q $ 也为真。即：<br>$<br>p \lor q \quad \text{（前提 1）}<br>$</p>
-<p><strong>步骤三：</strong><br>根据前提 1 $(p \lor q) \rightarrow (r \land s)$，由 $ p \lor q $ 为真，推得：<br>$<br>r \land s<br>$<br>即：他学过DELPHI语言并且学过C++语言。</p>
-<p><strong>步骤四：</strong><br>从 $ r \land s $ 中可以得出 $ r $ 为真，表示他学过DELPHI语言。进一步，得到：<br>$<br>r \quad \text{（从 } r \land s \text{ 中得到）}<br>$</p>
-<p><strong>步骤五：</strong><br>根据 $ r $ 为真，得出 $ r \lor s $ 也为真，因为 $ r $ 为真，$\lor$ 连接式中的任意一部分为真即可。<br>$<br>r \lor s<br>$<br>即：他学过DELPHI语言或者学过C++语言。</p>
-<p><strong>步骤六：</strong><br>根据前提 2 $(r \lor s) \rightarrow t$，由 $ r \lor s $ 为真，推得：<br>$<br>t<br>$<br>即：他会编程序。</p>
-<p><strong>结论：</strong><br>由上述推理步骤，我们可以得出 $ p \rightarrow t $，即如果他是计算机系本科生，那么他会编程序。</p>
-<h3 id="命题逻辑推理过程"><a href="#命题逻辑推理过程" class="headerlink" title="命题逻辑推理过程"></a>命题逻辑推理过程</h3><p>我们要证明以下等式：</p>
-<p>$<br>p \leftrightarrow q \iff \neg p \leftrightarrow \neg q<br>$</p>
-<h3 id="推理步骤"><a href="#推理步骤" class="headerlink" title="推理步骤"></a><strong>推理步骤</strong></h3><ol>
-<li><p><strong>双向条件命题的对称性</strong>：<br>$<br>p \leftrightarrow q \iff \neg p \leftrightarrow \neg q<br>$</p>
-</li>
-<li><p><strong>逆命题表示</strong>：<br>$<br>\neg p \leftrightarrow \neg q \iff (\neg p \rightarrow \neg q) \land (\neg q \rightarrow \neg p)<br>$</p>
-</li>
-<li><p><strong>条件命题转换为析取形式</strong>：<br>$<br>(\neg p \rightarrow \neg q) \land (\neg q \rightarrow \neg p) \iff (\neg \neg p \lor \neg q) \land (\neg \neg q \lor \neg p)<br>$<br>$<br>\iff (p \lor \neg q) \land (q \lor \neg p)<br>$</p>
-</li>
-<li><p><strong>析取形式等价于条件命题</strong>：<br>$<br>(p \lor \neg q) \land (q \lor \neg p) \iff (q \rightarrow p) \land (p \rightarrow q)<br>$</p>
-</li>
-<li><p><strong>条件命题等价于双向条件命题</strong>：<br>$<br>(q \rightarrow p) \land (p \rightarrow q) \iff p \leftrightarrow q<br>$</p>
-</li>
+<p><strong>结论：</strong> $ p t
+$：如果他是计算机系本科生，那么他会编程序。</p>
+<h3 id="推理过程详细步骤"><strong>推理过程（详细步骤）</strong></h3>
+<p><strong>目标：</strong> 证明 $ p t $ 这一结论。</p>
+<p><strong>步骤一：</strong><br>
+假设 $ p $ 为真（即他是计算机系本科生），我们需要证明 $ t $
+为真（即他会编程序）。</p>
+<p><strong>步骤二：</strong><br>
+根据 $ p $ 为真，得出 $ p q $ 也为真。即： $ p q $</p>
+<p><strong>步骤三：</strong><br>
+根据前提 1 <span class="math inline">\((p \lor q) \rightarrow (r \land
+s)\)</span>，由 $ p q $ 为真，推得： $ r s $
+即：他学过DELPHI语言并且学过C++语言。</p>
+<p><strong>步骤四：</strong><br>
+从 $ r s $ 中可以得出 $ r $ 为真，表示他学过DELPHI语言。进一步，得到： $
+r r s $</p>
+<p><strong>步骤五：</strong><br>
+根据 $ r $ 为真，得出 $ r s $ 也为真，因为 $ r $ 为真，<span class="math inline">\(\lor\)</span> 连接式中的任意一部分为真即可。 $ r s
+$ 即：他学过DELPHI语言或者学过C++语言。</p>
+<p><strong>步骤六：</strong><br>
+根据前提 2 <span class="math inline">\((r \lor s) \rightarrow
+t\)</span>，由 $ r s $ 为真，推得： $ t $ 即：他会编程序。</p>
+<p><strong>结论：</strong><br>
+由上述推理步骤，我们可以得出 $ p t
+$，即如果他是计算机系本科生，那么他会编程序。</p>
+<h3 id="命题逻辑推理过程">命题逻辑推理过程</h3>
+<p>我们要证明以下等式：</p>
+<p>$ p q p q $</p>
+<h3 id="推理步骤"><strong>推理步骤</strong></h3>
+<ol type="1">
+<li><p><strong>双向条件命题的对称性</strong>： $ p q p q $</p></li>
+<li><p><strong>逆命题表示</strong>： $ p q (p q) (q p) $</p></li>
+<li><p><strong>条件命题转换为析取形式</strong>： $ (p q) (q p) (p q) (q
+p) $ $ (p q) (q p) $</p></li>
+<li><p><strong>析取形式等价于条件命题</strong>： $ (p q) (q p) (q p) (p
+q) $</p></li>
+<li><p><strong>条件命题等价于双向条件命题</strong>： $ (q p) (p q) p q
+$</p></li>
 </ol>
-<h3 id="总结："><a href="#总结：" class="headerlink" title="总结："></a><strong>总结</strong>：</h3><p>通过逐步推理，得出了以下等式的等价性：<br>$<br>p \leftrightarrow q \iff \neg p \leftrightarrow \neg q<br>$</p>
-<h2 id="命题逻辑推理过程2："><a href="#命题逻辑推理过程2：" class="headerlink" title="命题逻辑推理过程2："></a>命题逻辑推理过程2：</h2><ol>
-<li><p><strong>命题等式的等价性</strong>：<br>$<br>p \leftrightarrow q \iff (p \land q) \lor (\neg p \land \neg q)<br>$</p>
-</li>
-<li><p><strong>双向条件命题转换</strong>：<br>$<br>p \leftrightarrow q \iff (p \rightarrow q) \land (q \rightarrow p)<br>$</p>
-</li>
-<li><p><strong>条件命题转换为析取形式</strong>：<br>$<br>(p \rightarrow q) \land (q \rightarrow p) \iff (\neg p \lor q) \land (\neg q \lor p)<br>$</p>
-</li>
-<li><p><strong>展开形式</strong>：<br>$<br>(\neg p \lor q) \land (\neg q \lor p) \iff ((\neg p \lor q) \land \neg q) \lor ((\neg p \lor q) \land p)<br>$</p>
-</li>
-<li><p><strong>进一步化简</strong>：<br>$<br>((\neg p \lor q) \land \neg q) \lor ((\neg p \lor q) \land p) \iff (\neg p \land \neg q) \lor (q \land \neg q) \lor (\neg p \land p) \lor (q \land p)<br>$</p>
-</li>
-<li><p><strong>去除恒假命题</strong>：<br>$<br>(\neg p \land \neg q) \lor F \lor F \lor (q \land p) \iff (q \land p) \lor (\neg p \land \neg q)<br>$</p>
-</li>
+<h3 id="总结-1"><strong>总结</strong>：</h3>
+<p>通过逐步推理，得出了以下等式的等价性： $ p q p q $</p>
+<h2 id="命题逻辑推理过程2">命题逻辑推理过程2：</h2>
+<ol type="1">
+<li><p><strong>命题等式的等价性</strong>： $ p q (p q) (p q) $</p></li>
+<li><p><strong>双向条件命题转换</strong>： $ p q (p q) (q p) $</p></li>
+<li><p><strong>条件命题转换为析取形式</strong>： $ (p q) (q p) (p q) (q
+p) $</p></li>
+<li><p><strong>展开形式</strong>： $ (p q) (q p) ((p q) q) ((p q) p)
+$</p></li>
+<li><p><strong>进一步化简</strong>： $ ((p q) q) ((p q) p) (p q) (q q)
+(p p) (q p) $</p></li>
+<li><p><strong>去除恒假命题</strong>： $ (p q) F F (q p) (q p) (p q)
+$</p></li>
 </ol>
-<h3 id="结论："><a href="#结论：" class="headerlink" title="结论："></a><strong>结论</strong>：</h3><p>$<br>p \leftrightarrow q \iff (q \land p) \lor (\neg p \land \neg q)<br>$</p>
-<h2 id="命题逻辑的理解1："><a href="#命题逻辑的理解1：" class="headerlink" title="命题逻辑的理解1："></a>命题逻辑的理解1：</h2><p>我们有以下命题：</p>
-<p>$<br>\forall x \forall y \forall z \left( (F(x, y) \land F(x, z) \land (y \neq z)) \rightarrow \neg F(y, z) \right)<br>$</p>
+<h3 id="结论"><strong>结论</strong>：</h3>
+<p>$ p q (q p) (p q) $</p>
+<h2 id="命题逻辑的理解1">命题逻辑的理解1：</h2>
+<p>我们有以下命题：</p>
+<p>$ x y z ( (F(x, y) F(x, z) (y z)) F(y, z) ) $</p>
 <p>其中：</p>
 <ul>
-<li>$ F(a, b) $ 表示 “a 和 b 是朋友”。</li>
+<li>$ F(a, b) $ 表示 "a 和 b 是朋友"。</li>
 <li>$ x, y, z $ 是学校中的学生。</li>
 </ul>
-<h3 id="逻辑表达式解释："><a href="#逻辑表达式解释：" class="headerlink" title="逻辑表达式解释："></a>逻辑表达式解释：</h3><ol>
-<li><p>对于任意的学生 $ x $，如果 $ x $ 是 $ y $ 的朋友，并且 $ x $ 也是 $ z $ 的朋友，并且 $ y \neq z $，那么 $ y $ 和 $ z $ 不能是朋友，即 $ \neg F(y, z) $。</p>
-<p>这意味着，如果有一个学生 $ x $ 同时和两个不同的学生 $ y $ 和 $ z $ 是朋友，那么 $ y $ 和 $ z $ 之间不能是朋友。</p>
-</li>
-<li><p><strong>结论</strong>：有一个学生，其所有朋友之间都不是彼此的朋友。</p>
-</li>
+<h3 id="逻辑表达式解释">逻辑表达式解释：</h3>
+<ol type="1">
+<li><p>对于任意的学生 $ x $，如果 $ x $ 是 $ y $ 的朋友，并且 $ x $ 也是
+$ z $ 的朋友，并且 $ y z $，那么 $ y $ 和 $ z $ 不能是朋友，即 $ F(y, z)
+$。</p>
+<p>这意味着，如果有一个学生 $ x $ 同时和两个不同的学生 $ y $ 和 $ z $
+是朋友，那么 $ y $ 和 $ z $ 之间不能是朋友。</p></li>
+<li><p><strong>结论</strong>：有一个学生，其所有朋友之间都不是彼此的朋友。</p></li>
 </ol>
-<h3 id="简化理解："><a href="#简化理解：" class="headerlink" title="简化理解："></a><strong>简化理解</strong>：</h3><ul>
+<h3 id="简化理解"><strong>简化理解</strong>：</h3>
+<ul>
 <li>这个命题表示在某些条件下，存在一位学生，这个学生的朋友们彼此之间没有朋友关系。换句话说，任何两个与该学生是朋友的学生彼此并不是朋友。</li>
 </ul>
-<h2 id="命题逻辑的理解2："><a href="#命题逻辑的理解2：" class="headerlink" title="命题逻辑的理解2："></a>命题逻辑的理解2：</h2><p>命题表达式：</p>
-<p>$<br>\forall x \left( (F(x) \land P(x)) \rightarrow \exists y M(x, y) \right)<br>$</p>
+<h2 id="命题逻辑的理解2">命题逻辑的理解2：</h2>
+<p>命题表达式：</p>
+<p>$ x ( (F(x) P(x)) y M(x, y) ) $</p>
 <p>其中：</p>
 <ul>
-<li>$ F(x) $：表示 “x 是女性”。</li>
-<li>$ P(x) $：表示 “x 是父母”。</li>
-<li>$ M(x, y) $：表示 “x 是 y 的母亲”。</li>
+<li>$ F(x) $：表示 "x 是女性"。</li>
+<li>$ P(x) $：表示 "x 是父母"。</li>
+<li>$ M(x, y) $：表示 "x 是 y 的母亲"。</li>
 </ul>
-<h3 id="逻辑含义："><a href="#逻辑含义：" class="headerlink" title="逻辑含义："></a>逻辑含义：</h3><ul>
+<h3 id="逻辑含义">逻辑含义：</h3>
+<ul>
 <li>如果一个人是女性且是父母，那么她一定是某个人的母亲。</li>
 </ul>
-<p>这表示：对于所有人 $x$，如果她是女性并且是父母，那么存在一个人 $y$，使得她是 $y$ 的母亲。</p>
-<h3 id="简化理解：-1"><a href="#简化理解：-1" class="headerlink" title="简化理解："></a><strong>简化理解</strong>：</h3><ul>
+<p>这表示：对于所有人 <span class="math inline">\(x\)</span>，如果她是女性并且是父母，那么存在一个人
+<span class="math inline">\(y\)</span>，使得她是 <span class="math inline">\(y\)</span> 的母亲。</p>
+<h3 id="简化理解-1"><strong>简化理解</strong>：</h3>
+<ul>
 <li>这个命题表达的是：每个女性父母都有一个孩子，并且她是该孩子的母亲。</li>
 </ul>
-<h2 id="命题逻辑中的否定"><a href="#命题逻辑中的否定" class="headerlink" title="命题逻辑中的否定"></a>命题逻辑中的否定</h2><p>给定命题表达式：</p>
-<p>$<br>\exists w \forall a \exists f (P(w, f) \land Q(f, a))<br>$</p>
+<h2 id="命题逻辑中的否定">命题逻辑中的否定</h2>
+<p>给定命题表达式：</p>
+<p>$ w a f (P(w, f) Q(f, a)) $</p>
 <p>我们要计算其否定，并展示推导过程。</p>
-<h4 id="1-否定表达式："><a href="#1-否定表达式：" class="headerlink" title="1. 否定表达式："></a>1. 否定表达式：</h4><p>首先对整个命题取否定：</p>
-<p>$<br>\neg \exists w \forall a \exists f (P(w, f) \land Q(f, a))<br>$</p>
-<h4 id="2-应用否定量词规则："><a href="#2-应用否定量词规则：" class="headerlink" title="2. 应用否定量词规则："></a>2. 应用否定量词规则：</h4><p>使用量词的否定规则：</p>
+<h4 id="否定表达式">1. 否定表达式：</h4>
+<p>首先对整个命题取否定：</p>
+<p>$ w a f (P(w, f) Q(f, a)) $</p>
+<h4 id="应用否定量词规则">2. 应用否定量词规则：</h4>
+<p>使用量词的否定规则：</p>
 <ul>
-<li>$ \neg \exists x $ 变为 $ \forall x \neg $</li>
-<li>$ \neg \forall x $ 变为 $ \exists x \neg $</li>
+<li>$ x $ 变为 $ x $</li>
+<li>$ x $ 变为 $ x $</li>
 </ul>
 <p>得到：</p>
-<p>$<br>\forall w \neg \forall a \exists f (P(w, f) \land Q(f, a))<br>$</p>
-<h4 id="3-继续应用否定规则："><a href="#3-继续应用否定规则：" class="headerlink" title="3. 继续应用否定规则："></a>3. 继续应用否定规则：</h4><p>对 $ \forall a $ 取否定，变为 $ \exists a \neg $，然后对 $ \exists f $ 取否定，变为 $ \forall f \neg $，得到：</p>
-<p>$<br>\forall w \exists a \forall f \neg (P(w, f) \land Q(f, a))<br>$</p>
-<h4 id="4-使用德摩根定律："><a href="#4-使用德摩根定律：" class="headerlink" title="4. 使用德摩根定律："></a>4. 使用德摩根定律：</h4><p>应用德摩根定律 $ \neg (P \land Q) \equiv \neg P \lor \neg Q $：</p>
-<p>$<br>\forall w \exists a \forall f (\neg P(w, f) \lor \neg Q(f, a))<br>$</p>
-<h4 id="总结：-1"><a href="#总结：-1" class="headerlink" title="总结："></a><strong>总结</strong>：</h4><p>因此，原始命题的否定是：</p>
-<p>$<br>\forall w \exists a \forall f (\neg P(w, f) \lor \neg Q(f, a))<br>$</p>
-<h4 id="简化理解：-2"><a href="#简化理解：-2" class="headerlink" title="简化理解："></a><strong>简化理解</strong>：</h4><ul>
-<li>这个命题表示：对于每个 $w$，存在一个 $a$，使得对于所有 $f$，$P(w, f)$ 或 $Q(f, a)$ 都不成立。</li>
-</ul>
-<h2 id="命题逻辑的逻辑3："><a href="#命题逻辑的逻辑3：" class="headerlink" title="命题逻辑的逻辑3："></a>命题逻辑的逻辑3：</h2><p>给定命题：</p>
+<p>$ w a f (P(w, f) Q(f, a)) $</p>
+<h4 id="继续应用否定规则">3. 继续应用否定规则：</h4>
+<p>对 $ a $ 取否定，变为 $ a $，然后对 $ f $ 取否定，变为 $ f
+$，得到：</p>
+<p>$ w a f (P(w, f) Q(f, a)) $</p>
+<h4 id="使用德摩根定律">4. 使用德摩根定律：</h4>
+<p>应用德摩根定律 $ (P Q) P Q $：</p>
+<p>$ w a f (P(w, f) Q(f, a)) $</p>
+<h4 id="总结-2"><strong>总结</strong>：</h4>
+<p>因此，原始命题的否定是：</p>
+<p>$ w a f (P(w, f) Q(f, a)) $</p>
+<h4 id="简化理解-2"><strong>简化理解</strong>：</h4>
 <ul>
-<li>$ Q(x, y, z) $ 表示 “x + y = z”。</li>
+<li>这个命题表示：对于每个 <span class="math inline">\(w\)</span>，存在一个 <span class="math inline">\(a\)</span>，使得对于所有 <span class="math inline">\(f\)</span>，<span class="math inline">\(P(w,
+f)\)</span> 或 <span class="math inline">\(Q(f, a)\)</span>
+都不成立。</li>
 </ul>
-<h4 id="第一个命题："><a href="#第一个命题：" class="headerlink" title="第一个命题："></a>第一个命题：</h4><p>$<br>\forall x \forall y \exists z \, Q(x, y, z)<br>$</p>
+<h2 id="命题逻辑的逻辑3">命题逻辑的逻辑3：</h2>
+<p>给定命题：</p>
+<ul>
+<li>$ Q(x, y, z) $ 表示 "x + y = z"。</li>
+</ul>
+<h4 id="第一个命题">第一个命题：</h4>
+<p>$ x y z , Q(x, y, z) $</p>
 <p>这表示：</p>
 <ul>
-<li>对于所有实数 $ x $ 和 $ y $，存在一个实数 $ z $ 使得 $ x + y = z $。</li>
+<li>对于所有实数 $ x $ 和 $ y $，存在一个实数 $ z $ 使得 $ x + y = z
+$。</li>
 </ul>
-<h4 id="解释："><a href="#解释：" class="headerlink" title="解释："></a>解释：</h4><ul>
-<li>这个命题是 <strong>正确的</strong>，因为对于任何两个实数 $ x $ 和 $ y $，我们总是能够找到一个实数 $ z $ 使得 $ x + y = z $（实际上，$ z = x + y $ 就满足这个关系）。这是加法的基本性质。</li>
+<h4 id="解释">解释：</h4>
+<ul>
+<li>这个命题是 <strong>正确的</strong>，因为对于任何两个实数 $ x $ 和 $
+y $，我们总是能够找到一个实数 $ z $ 使得 $ x + y = z <span class="math inline">\(（实际上，\)</span> z = x + y $
+就满足这个关系）。这是加法的基本性质。</li>
 </ul>
-<h4 id="第二个命题："><a href="#第二个命题：" class="headerlink" title="第二个命题："></a>第二个命题：</h4><p>$<br>\exists z \forall x \forall y \, Q(x, y, z)<br>$</p>
+<h4 id="第二个命题">第二个命题：</h4>
+<p>$ z x y , Q(x, y, z) $</p>
 <p>这表示：</p>
 <ul>
-<li>存在一个实数 $ z $，使得对于所有实数 $ x $ 和 $ y $，都有 $ x + y = z $。</li>
+<li>存在一个实数 $ z $，使得对于所有实数 $ x $ 和 $ y $，都有 $ x + y =
+z $。</li>
 </ul>
-<h4 id="解释：-1"><a href="#解释：-1" class="headerlink" title="解释："></a>解释：</h4><ul>
-<li>这个命题是 <strong>错误的</strong>，因为没有一个固定的实数 $ z $ 能满足对于所有 $ x $ 和 $ y $，$ x + y $ 始终等于 $ z $。对于不同的 $ x $ 和 $ y $，$ x + y $ 的值会变化，无法找到一个固定的 $ z $ 满足所有的加法结果。</li>
-</ul>
-<h2 id="命题逻辑推理过程3："><a href="#命题逻辑推理过程3：" class="headerlink" title="命题逻辑推理过程3："></a>命题逻辑推理过程3：</h2><p><strong>问题描述</strong>：</p>
+<h4 id="解释-1">解释：</h4>
 <ul>
-<li>给定以下命题：<ol>
-<li>如果很冷，那么会下雪。（$c \rightarrow s$）</li>
-<li>如果下雪，那么会发生事故。（$s \rightarrow a$）</li>
-<li>没有事故。（$\neg a$）</li>
-</ol>
-</li>
+<li>这个命题是 <strong>错误的</strong>，因为没有一个固定的实数 $ z $
+能满足对于所有 $ x $ 和 $ y <span class="math inline">\(，\)</span> x +
+y $ 始终等于 $ z $。对于不同的 $ x $ 和 $ y <span class="math inline">\(，\)</span> x + y $ 的值会变化，无法找到一个固定的
+$ z $ 满足所有的加法结果。</li>
+</ul>
+<h2 id="命题逻辑推理过程3">命题逻辑推理过程3：</h2>
+<p><strong>问题描述</strong>：</p>
+<ul>
+<li>给定以下命题：
+<ol type="1">
+<li>如果很冷，那么会下雪。（<span class="math inline">\(c \rightarrow
+s\)</span>）</li>
+<li>如果下雪，那么会发生事故。（<span class="math inline">\(s
+\rightarrow a\)</span>）</li>
+<li>没有事故。（<span class="math inline">\(\neg a\)</span>）</li>
+</ol></li>
 </ul>
 <p><strong>推论</strong>：</p>
 <ul>
-<li>因此，得出结论：它不冷。（$\neg c$）</li>
+<li>因此，得出结论：它不冷。（<span class="math inline">\(\neg
+c\)</span>）</li>
 </ul>
-<h3 id="1-命题表示："><a href="#1-命题表示：" class="headerlink" title="1. 命题表示："></a>1. 命题表示：</h3><p>我们可以将上述推理用命题逻辑表达为：</p>
-<p>$<br>(c \rightarrow s \land s \rightarrow a \land \neg a) \rightarrow \neg c<br>$</p>
+<h3 id="命题表示">1. 命题表示：</h3>
+<p>我们可以将上述推理用命题逻辑表达为：</p>
+<p>$ (c s s a a) c $</p>
 <p>该命题表示：如果“很冷→下雪”，“下雪→事故”，并且“没有事故”，那么得出结论“它不冷”。</p>
-<h3 id="2-证明该命题是重言式（Tautology）："><a href="#2-证明该命题是重言式（Tautology）：" class="headerlink" title="2. 证明该命题是重言式（Tautology）："></a>2. 证明该命题是<strong>重言式</strong>（Tautology）：</h3><p>一个命题是重言式（Tautology），当它在所有情况下都为真。要证明该命题是重言式，我们可以使用真值表或逻辑推理来检验其有效性。</p>
+<h3 id="证明该命题是重言式tautology">2.
+证明该命题是<strong>重言式</strong>（Tautology）：</h3>
+<p>一个命题是重言式（Tautology），当它在所有情况下都为真。要证明该命题是重言式，我们可以使用真值表或逻辑推理来检验其有效性。</p>
 <p><strong>逻辑推理：</strong></p>
 <ul>
-<li>$c \rightarrow s$ 表示如果它冷，那么下雪。</li>
-<li>$s \rightarrow a$ 表示如果下雪，那么会有事故。</li>
-<li>$\neg a$ 表示没有事故。</li>
+<li><span class="math inline">\(c \rightarrow s\)</span>
+表示如果它冷，那么下雪。</li>
+<li><span class="math inline">\(s \rightarrow a\)</span>
+表示如果下雪，那么会有事故。</li>
+<li><span class="math inline">\(\neg a\)</span> 表示没有事故。</li>
 </ul>
-<p>结合这些信息，如果没有事故（$\neg a$），根据 $s \rightarrow a$，可以得出结论：不下雪（$\neg s$）。 </p>
+<p>结合这些信息，如果没有事故（<span class="math inline">\(\neg
+a\)</span>），根据 <span class="math inline">\(s \rightarrow
+a\)</span>，可以得出结论：不下雪（<span class="math inline">\(\neg
+s\)</span>）。</p>
 <ul>
-<li>接着，根据 $c \rightarrow s$，如果不下雪（$\neg s$），那么也不冷（$\neg c$）。</li>
+<li>接着，根据 <span class="math inline">\(c \rightarrow
+s\)</span>，如果不下雪（<span class="math inline">\(\neg
+s\)</span>），那么也不冷（<span class="math inline">\(\neg
+c\)</span>）。</li>
 </ul>
-<p>因此，如果没有事故（$\neg a$），就可以得出结论：它不冷（$\neg c$）。</p>
-<h3 id="3-结论："><a href="#3-结论：" class="headerlink" title="3. 结论："></a>3. 结论：</h3><p>这个命题在所有情况下都成立，因此它是一个<strong>重言式</strong>（Tautology）。</p>
-<h2 id="证明1："><a href="#证明1：" class="headerlink" title="证明1："></a>证明1：</h2><ul>
-<li>整数 $ n $ 被称为<strong>奇数</strong>，当且仅当 $ n = 2k + 1 $，其中 $ k $ 是某个整数。</li>
-<li>整数 $ n $ 被称为<strong>偶数</strong>，当且仅当 $ n = 2k $，其中 $ k $ 是某个整数。</li>
+<p>因此，如果没有事故（<span class="math inline">\(\neg
+a\)</span>），就可以得出结论：它不冷（<span class="math inline">\(\neg
+c\)</span>）。</p>
+<h3 id="结论-1">3. 结论：</h3>
+<p>这个命题在所有情况下都成立，因此它是一个<strong>重言式</strong>（Tautology）。</p>
+<h2 id="证明1">证明1：</h2>
+<ul>
+<li>整数 $ n $ 被称为<strong>奇数</strong>，当且仅当 $ n = 2k + 1
+$，其中 $ k $ 是某个整数。</li>
+<li>整数 $ n $ 被称为<strong>偶数</strong>，当且仅当 $ n = 2k $，其中 $
+k $ 是某个整数。</li>
 </ul>
-<h3 id="定理："><a href="#定理：" class="headerlink" title="定理："></a>定理：</h3><p><strong>对于所有的整数 $ n $，如果 $ n $ 是奇数，那么 $ n^2 $ 是奇数。</strong></p>
-<h3 id="证明："><a href="#证明：" class="headerlink" title="证明："></a>证明：</h3><ol>
-<li><p><strong>假设 $ n $ 是奇数</strong>：根据定义，$ n = 2k + 1 $，其中 $ k $ 是某个整数。</p>
-</li>
-<li><p><strong>计算 $ n^2 $</strong>：<br>$<br>n^2 = (2k + 1)^2 = 4k^2 + 4k + 1<br>$</p>
-</li>
-<li><p><strong>重写 $ n^2 $</strong>：<br>$<br>n^2 = 2(2k^2 + 2k) + 1<br>$</p>
-</li>
-<li><p>观察到 $ 2(2k^2 + 2k) $ 是一个偶数，因此 $ n^2 $ 的形式是 $ 2m + 1 $，其中 $ m = 2k^2 + 2k $ 是某个整数。</p>
-</li>
-<li><p><strong>结论</strong>：由于 $ n^2 $ 具有形式 $ 2m + 1 $，因此 $ n^2 $ 是奇数。</p>
-</li>
+<h3 id="定理">定理：</h3>
+<p><strong>对于所有的整数 $ n $，如果 $ n $ 是奇数，那么 $ n^2 $
+是奇数。</strong></p>
+<h3 id="证明">证明：</h3>
+<ol type="1">
+<li><p><strong>假设 $ n $ 是奇数</strong>：根据定义，$ n = 2k + 1
+$，其中 $ k $ 是某个整数。</p></li>
+<li><p>**计算 $ n^2 <span class="math inline">\(**：\)</span> n^2 = (2k
++ 1)^2 = 4k^2 + 4k + 1 $</p></li>
+<li><p>**重写 $ n^2 <span class="math inline">\(**：\)</span> n^2 =
+2(2k^2 + 2k) + 1 $</p></li>
+<li><p>观察到 $ 2(2k^2 + 2k) $ 是一个偶数，因此 $ n^2 $ 的形式是 $ 2m +
+1 $，其中 $ m = 2k^2 + 2k $ 是某个整数。</p></li>
+<li><p><strong>结论</strong>：由于 $ n^2 $ 具有形式 $ 2m + 1 $，因此 $
+n^2 $ 是奇数。</p></li>
 </ol>
-<p>$<br>\boxed{\text{证明完成}}<br>$</p>
-<h2 id="证明2："><a href="#证明2：" class="headerlink" title="证明2："></a>证明2：</h2><p><strong>如果 $ 3n + 2 $ 是奇数，那么 $ n $ 是奇数。</strong></p>
-<h3 id="证明（反证法）："><a href="#证明（反证法）：" class="headerlink" title="证明（反证法）："></a>证明（反证法）：</h3><ol>
-<li><p><strong>假设结论不成立</strong>：假设 $ 3n + 2 $ 是奇数，但 $ n $ 不是奇数，即 $ n $ 是偶数。</p>
-</li>
-<li><p><strong>假设 $ n $ 是偶数</strong>：如果 $ n $ 是偶数，那么可以表示为 $ n = 2k $，其中 $ k $ 是某个整数。</p>
-</li>
-<li><p><strong>计算 $ 3n + 2 $</strong>：<br>$<br>3n + 2 = 3(2k) + 2 = 6k + 2<br>$</p>
-</li>
-<li><p>观察 $ 6k + 2 $ 的形式：我们可以把它写成 $ 2(3k + 1) $，这是一个偶数。</p>
-</li>
-<li><p><strong>得出矛盾</strong>：根据假设，$ 3n + 2 $ 应该是奇数，但根据计算，我们得出 $ 3n + 2 $ 是偶数。这与假设矛盾。</p>
-</li>
-<li><p><strong>结论</strong>：由于假设 $ n $ 是偶数导致矛盾，所以 $ n $ 必须是奇数。</p>
-</li>
+<p>$ $</p>
+<h2 id="证明2">证明2：</h2>
+<p><strong>如果 $ 3n + 2 $ 是奇数，那么 $ n $ 是奇数。</strong></p>
+<h3 id="证明反证法">证明（反证法）：</h3>
+<ol type="1">
+<li><p><strong>假设结论不成立</strong>：假设 $ 3n + 2 $ 是奇数，但 $ n $
+不是奇数，即 $ n $ 是偶数。</p></li>
+<li><p><strong>假设 $ n $ 是偶数</strong>：如果 $ n $
+是偶数，那么可以表示为 $ n = 2k $，其中 $ k $ 是某个整数。</p></li>
+<li><p>**计算 $ 3n + 2 <span class="math inline">\(**：\)</span> 3n + 2
+= 3(2k) + 2 = 6k + 2 $</p></li>
+<li><p>观察 $ 6k + 2 $ 的形式：我们可以把它写成 $ 2(3k + 1)
+$，这是一个偶数。</p></li>
+<li><p><strong>得出矛盾</strong>：根据假设，$ 3n + 2 $
+应该是奇数，但根据计算，我们得出 $ 3n + 2 $
+是偶数。这与假设矛盾。</p></li>
+<li><p><strong>结论</strong>：由于假设 $ n $ 是偶数导致矛盾，所以 $ n $
+必须是奇数。</p></li>
 </ol>
-<p>$<br>\boxed{\text{证明完成}}<br>$</p>
-</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a target="_blank" rel="noopener" href="https://www.totorocatcat.top/">Totoro</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://totorocatcat.top/Lec1%20The%20Foundations%20Logic%20and%20Proofs/">http://totorocatcat.top/Lec1%20The%20Foundations%20Logic%20and%20Proofs/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://totorocatcat.top" target="_blank">Totoroの旅</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%8F%90%E9%AB%98/">提高</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/24a2009ee30a4eee503ebe07ce0bd8a.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/'Lec2%20Logic%20and%20Proof,%20Sets,%20and%20Function'/" title="Lec2 Logic and Proof, Sets, and Function"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/1fe6130ca86bb9e7e6a37c9187a32c8.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Lec2 Logic and Proof, Sets, and Function</div></div></a></div><div class="next-post pull-right"><a href="/lec94/" title="Lec9 Graph Algorithms(4)"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/d4f507db4948b6927219f40a357b26b.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Lec9 Graph Algorithms(4)</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/'Lec2%20Logic%20and%20Proof,%20Sets,%20and%20Function'/" title="Lec2 Logic and Proof, Sets, and Function"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/1fe6130ca86bb9e7e6a37c9187a32c8.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-11-20</div><div class="title">Lec2 Logic and Proof, Sets, and Function</div></div></a></div><div><a href="/02%EF%BC%89/" title="CS61B 课程笔记（Lecture 02）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/v2-2ed7f4c9e1a7a699a3ef300a6f761abe_720w.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-11</div><div class="title">CS61B 课程笔记（Lecture 02）</div></div></a></div><div><a href="/03%EF%BC%89/" title="CS61B 课程笔记（Lecture 03）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/v2-2ed7f4c9e1a7a699a3ef300a6f761abe_720w.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-12</div><div class="title">CS61B 课程笔记（Lecture 03）</div></div></a></div><div><a href="/04%EF%BC%89/" title="CS61B 课程笔记（Lecture 04）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/2749a496aabc7d650b2912e256582e390a0a636b.jpg@1256w_1246h_!web-article-pic.avif" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-13</div><div class="title">CS61B 课程笔记（Lecture 04）</div></div></a></div><div><a href="/05%EF%BC%89/" title="CS61B 课程笔记（Lecture 05）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/4ccebbc43a0ca31a719afadee2f86b4902402baf.jpg@1256w_786h_!web-article-pic.avif" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-14</div><div class="title">CS61B 课程笔记（Lecture 05）</div></div></a></div><div><a href="/06%EF%BC%89/" title="CS61B 课程笔记（Lecture 06）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/f00af0d55cc81c18403ccbb4957ae6bc298252208.jpg@1256w_1374h_!web-article-pic.avif" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-15</div><div class="title">CS61B 课程笔记（Lecture 06）</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/px3.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Totoro</div><div class="author-info__description">热爱文学的SCUT软件学院学生</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">782</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">33</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/4512abc"><i class="fab fa-github"></i><span>🛴前往小窝......</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/4512abc" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:4512abc@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到龙猫の小窝</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Lec1-The-Foundations-Logic-and-Proofs"><span class="toc-text">Lec1 The Foundations: Logic and Proofs</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%91%BD%E9%A2%98%E4%B8%8E%E9%9D%9E%E5%91%BD%E9%A2%98%E7%9A%84%E5%8C%BA%E5%88%86"><span class="toc-text">命题与非命题的区分</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%91%BD%E9%A2%98%EF%BC%88Propositions%EF%BC%89"><span class="toc-text">命题（Propositions）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%9E%E5%91%BD%E9%A2%98%EF%BC%88Not-Propositions%EF%BC%89"><span class="toc-text">非命题（Not Propositions）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93%E5%AF%B9%E6%AF%94"><span class="toc-text">总结对比</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%9D%E8%80%83%E5%B0%8F%E7%BB%93"><span class="toc-text">思考小结</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9D%A1%E4%BB%B6%E5%91%BD%E9%A2%98-p-rightarrow-q-%E7%9A%84%E9%80%BB%E8%BE%91%E6%80%A7%E8%B4%A8"><span class="toc-text">条件命题 $ p \rightarrow q $ 的逻辑性质</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%E4%B8%8E%E7%AC%A6%E5%8F%B7"><span class="toc-text">定义与符号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9C%9F%E5%81%87%E5%88%A4%E5%AE%9A%E8%A7%84%E5%88%99"><span class="toc-text">真假判定规则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E8%AF%AF%E8%A7%A3%E6%BE%84%E6%B8%85"><span class="toc-text">常见误解澄清</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%9D%E8%80%83%E7%A4%BA%E4%BE%8B"><span class="toc-text">思考示例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9D%A1%E4%BB%B6%E5%91%BD%E9%A2%98-p-rightarrow-q-%E7%9A%84%E7%9B%B8%E5%85%B3%E6%9C%AF%E8%AF%AD%E5%8F%8A%E7%AD%89%E4%BB%B7%E6%80%A7%E8%AF%81%E6%98%8E"><span class="toc-text">条件命题 $ p \rightarrow q $ 的相关术语及等价性证明</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9D%A1%E4%BB%B6%E5%91%BD%E9%A2%98%E7%9A%84%E7%9B%B8%E5%85%B3%E6%9C%AF%E8%AF%AD"><span class="toc-text">条件命题的相关术语</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B3%E9%94%AE%E7%BB%93%E8%AE%BA%EF%BC%9A"><span class="toc-text">关键结论：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%8C%E5%90%91%E6%9D%A1%E4%BB%B6%E5%91%BD%E9%A2%98%E5%8F%8A%E5%85%B6%E7%AD%89%E4%BB%B7%E6%80%A7"><span class="toc-text">双向条件命题及其等价性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8C%E5%90%91%E6%9D%A1%E4%BB%B6%E5%91%BD%E9%A2%98-p-leftrightarrow-q-%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-text">双向条件命题 $ p \leftrightarrow q $ 的定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A8%E7%90%86%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4"><span class="toc-text">推理详细步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5%EF%BC%9A%E8%BD%AC%E6%8D%A2%E4%B8%BA%E6%9D%A1%E4%BB%B6%E5%91%BD%E9%A2%98"><span class="toc-text">第一步：转换为条件命题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5%EF%BC%9A%E8%BD%AC%E6%8D%A2%E4%B8%BA%E6%9E%90%E5%8F%96%E5%BD%A2%E5%BC%8F"><span class="toc-text">第二步：转换为析取形式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E6%AD%A5%EF%BC%9A%E5%88%86%E6%9E%90%E7%9C%9F%E5%80%BC"><span class="toc-text">第三步：分析真值</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E6%AD%A5%EF%BC%9A%E7%BB%93%E8%AE%BA"><span class="toc-text">第四步：结论</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%91%BD%E9%A2%98%E9%80%BB%E8%BE%91%E6%8E%A8%E7%90%86%E8%BF%87%E7%A8%8B1%EF%BC%9A"><span class="toc-text">命题逻辑推理过程1：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="toc-text">题目描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A8%E7%90%86%E8%BF%87%E7%A8%8B%EF%BC%88%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4%EF%BC%89"><span class="toc-text">推理过程（详细步骤）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%91%BD%E9%A2%98%E9%80%BB%E8%BE%91%E6%8E%A8%E7%90%86%E8%BF%87%E7%A8%8B"><span class="toc-text">命题逻辑推理过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A8%E7%90%86%E6%AD%A5%E9%AA%A4"><span class="toc-text">推理步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93%EF%BC%9A"><span class="toc-text">总结：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%91%BD%E9%A2%98%E9%80%BB%E8%BE%91%E6%8E%A8%E7%90%86%E8%BF%87%E7%A8%8B2%EF%BC%9A"><span class="toc-text">命题逻辑推理过程2：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%93%E8%AE%BA%EF%BC%9A"><span class="toc-text">结论：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%91%BD%E9%A2%98%E9%80%BB%E8%BE%91%E7%9A%84%E7%90%86%E8%A7%A31%EF%BC%9A"><span class="toc-text">命题逻辑的理解1：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%BB%E8%BE%91%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E9%87%8A%EF%BC%9A"><span class="toc-text">逻辑表达式解释：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E5%8C%96%E7%90%86%E8%A7%A3%EF%BC%9A"><span class="toc-text">简化理解：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%91%BD%E9%A2%98%E9%80%BB%E8%BE%91%E7%9A%84%E7%90%86%E8%A7%A32%EF%BC%9A"><span class="toc-text">命题逻辑的理解2：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%BB%E8%BE%91%E5%90%AB%E4%B9%89%EF%BC%9A"><span class="toc-text">逻辑含义：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E5%8C%96%E7%90%86%E8%A7%A3%EF%BC%9A-1"><span class="toc-text">简化理解：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%91%BD%E9%A2%98%E9%80%BB%E8%BE%91%E4%B8%AD%E7%9A%84%E5%90%A6%E5%AE%9A"><span class="toc-text">命题逻辑中的否定</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%90%A6%E5%AE%9A%E8%A1%A8%E8%BE%BE%E5%BC%8F%EF%BC%9A"><span class="toc-text">1. 否定表达式：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%BA%94%E7%94%A8%E5%90%A6%E5%AE%9A%E9%87%8F%E8%AF%8D%E8%A7%84%E5%88%99%EF%BC%9A"><span class="toc-text">2. 应用否定量词规则：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E7%BB%A7%E7%BB%AD%E5%BA%94%E7%94%A8%E5%90%A6%E5%AE%9A%E8%A7%84%E5%88%99%EF%BC%9A"><span class="toc-text">3. 继续应用否定规则：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E4%BD%BF%E7%94%A8%E5%BE%B7%E6%91%A9%E6%A0%B9%E5%AE%9A%E5%BE%8B%EF%BC%9A"><span class="toc-text">4. 使用德摩根定律：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%BB%E7%BB%93%EF%BC%9A-1"><span class="toc-text">总结：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AE%80%E5%8C%96%E7%90%86%E8%A7%A3%EF%BC%9A-2"><span class="toc-text">简化理解：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%91%BD%E9%A2%98%E9%80%BB%E8%BE%91%E7%9A%84%E9%80%BB%E8%BE%913%EF%BC%9A"><span class="toc-text">命题逻辑的逻辑3：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%91%BD%E9%A2%98%EF%BC%9A"><span class="toc-text">第一个命题：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A3%E9%87%8A%EF%BC%9A"><span class="toc-text">解释：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E4%B8%AA%E5%91%BD%E9%A2%98%EF%BC%9A"><span class="toc-text">第二个命题：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A3%E9%87%8A%EF%BC%9A-1"><span class="toc-text">解释：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%91%BD%E9%A2%98%E9%80%BB%E8%BE%91%E6%8E%A8%E7%90%86%E8%BF%87%E7%A8%8B3%EF%BC%9A"><span class="toc-text">命题逻辑推理过程3：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%91%BD%E9%A2%98%E8%A1%A8%E7%A4%BA%EF%BC%9A"><span class="toc-text">1. 命题表示：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%AF%81%E6%98%8E%E8%AF%A5%E5%91%BD%E9%A2%98%E6%98%AF%E9%87%8D%E8%A8%80%E5%BC%8F%EF%BC%88Tautology%EF%BC%89%EF%BC%9A"><span class="toc-text">2. 证明该命题是重言式（Tautology）：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E7%BB%93%E8%AE%BA%EF%BC%9A"><span class="toc-text">3. 结论：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%81%E6%98%8E1%EF%BC%9A"><span class="toc-text">证明1：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E7%90%86%EF%BC%9A"><span class="toc-text">定理：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%81%E6%98%8E%EF%BC%9A"><span class="toc-text">证明：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%81%E6%98%8E2%EF%BC%9A"><span class="toc-text">证明2：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%81%E6%98%8E%EF%BC%88%E5%8F%8D%E8%AF%81%E6%B3%95%EF%BC%89%EF%BC%9A"><span class="toc-text">证明（反证法）：</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/%E3%80%8AJAVA%E8%AF%AD%E8%A8%80%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E3%80%8B%E6%9C%9F%E6%9C%AB%E8%80%83%E8%AF%95%E8%AF%95%E9%A2%98%E5%8F%8A%E7%AD%94%E6%A1%883%EF%BC%88%E5%BA%94%E8%80%83%E5%BF%85%E5%A4%87%E9%A2%98%E5%BA%93%EF%BC%89/" title="《JAVA语言程序设计》期末考试试题及答案3（应考必备题库）"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://source.fomal.cc/img/default_cover_80.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="《JAVA语言程序设计》期末考试试题及答案3（应考必备题库）"/></a><div class="content"><a class="title" href="/%E3%80%8AJAVA%E8%AF%AD%E8%A8%80%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E3%80%8B%E6%9C%9F%E6%9C%AB%E8%80%83%E8%AF%95%E8%AF%95%E9%A2%98%E5%8F%8A%E7%AD%94%E6%A1%883%EF%BC%88%E5%BA%94%E8%80%83%E5%BF%85%E5%A4%87%E9%A2%98%E5%BA%93%EF%BC%89/" title="《JAVA语言程序设计》期末考试试题及答案3（应考必备题库）">《JAVA语言程序设计》期末考试试题及答案3（应考必备题库）</a><time datetime="2024-12-24T14:59:06.000Z" title="发表于 2024-12-24 22:59:06">2024-12-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E3%80%8AJAVA%E8%AF%AD%E8%A8%80%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E3%80%8B%E6%9C%9F%E6%9C%AB%E8%80%83%E8%AF%95%E8%AF%95%E9%A2%98%E5%8F%8A%E7%AD%94%E6%A1%882/" title="《JAVA语言程序设计》期末考试试题及答案2"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://source.fomal.cc/img/default_cover_80.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="《JAVA语言程序设计》期末考试试题及答案2"/></a><div class="content"><a class="title" href="/%E3%80%8AJAVA%E8%AF%AD%E8%A8%80%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E3%80%8B%E6%9C%9F%E6%9C%AB%E8%80%83%E8%AF%95%E8%AF%95%E9%A2%98%E5%8F%8A%E7%AD%94%E6%A1%882/" title="《JAVA语言程序设计》期末考试试题及答案2">《JAVA语言程序设计》期末考试试题及答案2</a><time datetime="2024-12-24T13:51:43.000Z" title="发表于 2024-12-24 21:51:43">2024-12-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E3%80%8AJAVA%E8%AF%AD%E8%A8%80%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E3%80%8B%E6%9C%9F%E6%9C%AB%E8%80%83%E8%AF%95%E8%AF%95%E9%A2%98%E5%8F%8A%E7%AD%94%E6%A1%881/" title="《JAVA语言程序设计》期末考试试题及答案1"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://source.fomal.cc/img/default_cover_80.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="《JAVA语言程序设计》期末考试试题及答案1"/></a><div class="content"><a class="title" href="/%E3%80%8AJAVA%E8%AF%AD%E8%A8%80%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E3%80%8B%E6%9C%9F%E6%9C%AB%E8%80%83%E8%AF%95%E8%AF%95%E9%A2%98%E5%8F%8A%E7%AD%94%E6%A1%881/" title="《JAVA语言程序设计》期末考试试题及答案1">《JAVA语言程序设计》期末考试试题及答案1</a><time datetime="2024-12-24T13:36:21.000Z" title="发表于 2024-12-24 21:36:21">2024-12-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E3%80%8AJava%E8%AF%AD%E8%A8%80%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E3%80%8B%EF%BC%88%E4%B8%80%E5%8D%B7%EF%BC%89/" title="2022-2023学年华南理工大学第1学期期末考试 《Java语言程序设计》（一卷）"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://source.fomal.cc/img/default_cover_80.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="2022-2023学年华南理工大学第1学期期末考试 《Java语言程序设计》（一卷）"/></a><div class="content"><a class="title" href="/%E3%80%8AJava%E8%AF%AD%E8%A8%80%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E3%80%8B%EF%BC%88%E4%B8%80%E5%8D%B7%EF%BC%89/" title="2022-2023学年华南理工大学第1学期期末考试 《Java语言程序设计》（一卷）">2022-2023学年华南理工大学第1学期期末考试 《Java语言程序设计》（一卷）</a><time datetime="2024-12-24T13:16:20.000Z" title="发表于 2024-12-24 21:16:20">2024-12-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E4%B8%8E%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%842010%E5%B9%B4%E8%AF%95%E5%8D%B7B/" title="计算机组成与体系结构2010年试卷B"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/howl004.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="计算机组成与体系结构2010年试卷B"/></a><div class="content"><a class="title" href="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E4%B8%8E%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%842010%E5%B9%B4%E8%AF%95%E5%8D%B7B/" title="计算机组成与体系结构2010年试卷B">计算机组成与体系结构2010年试卷B</a><time datetime="2024-12-18T04:44:22.000Z" title="发表于 2024-12-18 12:44:22">2024-12-18</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 - 2025 By Totoro</div><div class="footer_custom_text">I wish you to become your own sun, no need to rely on who's light.<p><a target="_blank" href="https://hexo.io/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&logo=hexo" title="博客框架为Hexo"></a>&nbsp;<a target="_blank" href="https://butterfly.js.org/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&logo=bitdefender" title="主题采用butterfly"></a>&nbsp;<a target="_blank" href="https://www.jsdelivr.com/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&logo=jsDelivr" title="本站使用JsDelivr为静态资源提供CDN加速"></a> &nbsp;<a target="_blank" href="https://vercel.com/ "><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Hosted-Vervel-brightgreen?style=flat&logo=Vercel" title="本站采用双线部署，默认线路托管于Vercel"></a>&nbsp;<a target="_blank" href="https://vercel.com/ "><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Hosted-Coding-0cedbe?style=flat&logo=Codio" title="本站采用双线部署，联通线路托管于Coding"></a>&nbsp;<a target="_blank" href="https://github.com/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&logo=GitHub" title="本站项目由Gtihub托管"></a>&nbsp;<a target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&logo=Claris" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"></a></p></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat-btn" type="button" title="聊天"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="/js/tw_cn.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@5.2.0/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.js"></script><script>function panguFn () {
+<p>$ $</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://www.totorocatcat.top/">Totoro</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://totorocatcat.top/Lec1%20The%20Foundations%20Logic%20and%20Proofs/">http://totorocatcat.top/Lec1%20The%20Foundations%20Logic%20and%20Proofs/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://totorocatcat.top" target="_blank">Totoroの旅</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%8F%90%E9%AB%98/">提高</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/24a2009ee30a4eee503ebe07ce0bd8a.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/'Lec2%20Logic%20and%20Proof,%20Sets,%20and%20Function'/" title="Lec2 Logic and Proof, Sets, and Function"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/1fe6130ca86bb9e7e6a37c9187a32c8.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Lec2 Logic and Proof, Sets, and Function</div></div></a></div><div class="next-post pull-right"><a href="/lec94/" title="Lec9 Graph Algorithms(4)"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/d4f507db4948b6927219f40a357b26b.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Lec9 Graph Algorithms(4)</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/'Lec2%20Logic%20and%20Proof,%20Sets,%20and%20Function'/" title="Lec2 Logic and Proof, Sets, and Function"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/1fe6130ca86bb9e7e6a37c9187a32c8.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-11-20</div><div class="title">Lec2 Logic and Proof, Sets, and Function</div></div></a></div><div><a href="/02%EF%BC%89/" title="CS61B 课程笔记（Lecture 02）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/v2-2ed7f4c9e1a7a699a3ef300a6f761abe_720w.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-11</div><div class="title">CS61B 课程笔记（Lecture 02）</div></div></a></div><div><a href="/04%EF%BC%89/" title="CS61B 课程笔记（Lecture 04）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/2749a496aabc7d650b2912e256582e390a0a636b.jpg@1256w_1246h_!web-article-pic.avif" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-13</div><div class="title">CS61B 课程笔记（Lecture 04）</div></div></a></div><div><a href="/06%EF%BC%89/" title="CS61B 课程笔记（Lecture 06）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/f00af0d55cc81c18403ccbb4957ae6bc298252208.jpg@1256w_1374h_!web-article-pic.avif" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-15</div><div class="title">CS61B 课程笔记（Lecture 06）</div></div></a></div><div><a href="/03%EF%BC%89/" title="CS61B 课程笔记（Lecture 03）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/v2-2ed7f4c9e1a7a699a3ef300a6f761abe_720w.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-12</div><div class="title">CS61B 课程笔记（Lecture 03）</div></div></a></div><div><a href="/07%EF%BC%89/" title="CS61B 课程笔记（Lecture 07）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/ef0c9dc1434371965c925677e389b329298252208.png@1256w_1702h_!web-article-pic.avif" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-16</div><div class="title">CS61B 课程笔记（Lecture 07）</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/px3.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Totoro</div><div class="author-info__description">热爱文学的SCUT软件学院学生</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">784</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">34</div></a></div><a id="card-info-btn" href="https://github.com/4512abc"><i class="fab fa-github"></i><span>🛴前往小窝......</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/4512abc" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:4512abc@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到龙猫の小窝</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#lec1-the-foundations-logic-and-proofs"><span class="toc-text">Lec1 The Foundations:
+Logic and Proofs</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%91%BD%E9%A2%98%E4%B8%8E%E9%9D%9E%E5%91%BD%E9%A2%98%E7%9A%84%E5%8C%BA%E5%88%86"><span class="toc-text">命题与非命题的区分</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%91%BD%E9%A2%98propositions"><span class="toc-text">命题（Propositions）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%9E%E5%91%BD%E9%A2%98not-propositions"><span class="toc-text">非命题（Not
+Propositions）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93%E5%AF%B9%E6%AF%94"><span class="toc-text">总结对比</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%9D%E8%80%83%E5%B0%8F%E7%BB%93"><span class="toc-text">思考小结</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9D%A1%E4%BB%B6%E5%91%BD%E9%A2%98-p-q-%E7%9A%84%E9%80%BB%E8%BE%91%E6%80%A7%E8%B4%A8"><span class="toc-text">条件命题 $ p q $ 的逻辑性质</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%E4%B8%8E%E7%AC%A6%E5%8F%B7"><span class="toc-text">定义与符号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9C%9F%E5%81%87%E5%88%A4%E5%AE%9A%E8%A7%84%E5%88%99"><span class="toc-text">真假判定规则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E8%AF%AF%E8%A7%A3%E6%BE%84%E6%B8%85"><span class="toc-text">常见误解澄清</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%9D%E8%80%83%E7%A4%BA%E4%BE%8B"><span class="toc-text">思考示例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9D%A1%E4%BB%B6%E5%91%BD%E9%A2%98-p-q-%E7%9A%84%E7%9B%B8%E5%85%B3%E6%9C%AF%E8%AF%AD%E5%8F%8A%E7%AD%89%E4%BB%B7%E6%80%A7%E8%AF%81%E6%98%8E"><span class="toc-text">条件命题 $ p q $
+的相关术语及等价性证明</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9D%A1%E4%BB%B6%E5%91%BD%E9%A2%98%E7%9A%84%E7%9B%B8%E5%85%B3%E6%9C%AF%E8%AF%AD"><span class="toc-text">条件命题的相关术语</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B3%E9%94%AE%E7%BB%93%E8%AE%BA"><span class="toc-text">关键结论：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%8C%E5%90%91%E6%9D%A1%E4%BB%B6%E5%91%BD%E9%A2%98%E5%8F%8A%E5%85%B6%E7%AD%89%E4%BB%B7%E6%80%A7"><span class="toc-text">双向条件命题及其等价性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8C%E5%90%91%E6%9D%A1%E4%BB%B6%E5%91%BD%E9%A2%98-p-q-%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-text">双向条件命题 $ p q $
+的定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A8%E7%90%86%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4"><span class="toc-text">推理详细步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5%E8%BD%AC%E6%8D%A2%E4%B8%BA%E6%9D%A1%E4%BB%B6%E5%91%BD%E9%A2%98"><span class="toc-text">第一步：转换为条件命题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5%E8%BD%AC%E6%8D%A2%E4%B8%BA%E6%9E%90%E5%8F%96%E5%BD%A2%E5%BC%8F"><span class="toc-text">第二步：转换为析取形式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E6%AD%A5%E5%88%86%E6%9E%90%E7%9C%9F%E5%80%BC"><span class="toc-text">第三步：分析真值</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E6%AD%A5%E7%BB%93%E8%AE%BA"><span class="toc-text">第四步：结论</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%91%BD%E9%A2%98%E9%80%BB%E8%BE%91%E6%8E%A8%E7%90%86%E8%BF%87%E7%A8%8B1"><span class="toc-text">命题逻辑推理过程1：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="toc-text">题目描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A8%E7%90%86%E8%BF%87%E7%A8%8B%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4"><span class="toc-text">推理过程（详细步骤）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%91%BD%E9%A2%98%E9%80%BB%E8%BE%91%E6%8E%A8%E7%90%86%E8%BF%87%E7%A8%8B"><span class="toc-text">命题逻辑推理过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A8%E7%90%86%E6%AD%A5%E9%AA%A4"><span class="toc-text">推理步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-1"><span class="toc-text">总结：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%91%BD%E9%A2%98%E9%80%BB%E8%BE%91%E6%8E%A8%E7%90%86%E8%BF%87%E7%A8%8B2"><span class="toc-text">命题逻辑推理过程2：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%93%E8%AE%BA"><span class="toc-text">结论：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%91%BD%E9%A2%98%E9%80%BB%E8%BE%91%E7%9A%84%E7%90%86%E8%A7%A31"><span class="toc-text">命题逻辑的理解1：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%BB%E8%BE%91%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E9%87%8A"><span class="toc-text">逻辑表达式解释：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E5%8C%96%E7%90%86%E8%A7%A3"><span class="toc-text">简化理解：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%91%BD%E9%A2%98%E9%80%BB%E8%BE%91%E7%9A%84%E7%90%86%E8%A7%A32"><span class="toc-text">命题逻辑的理解2：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%BB%E8%BE%91%E5%90%AB%E4%B9%89"><span class="toc-text">逻辑含义：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E5%8C%96%E7%90%86%E8%A7%A3-1"><span class="toc-text">简化理解：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%91%BD%E9%A2%98%E9%80%BB%E8%BE%91%E4%B8%AD%E7%9A%84%E5%90%A6%E5%AE%9A"><span class="toc-text">命题逻辑中的否定</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%A6%E5%AE%9A%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-text">1. 否定表达式：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E5%90%A6%E5%AE%9A%E9%87%8F%E8%AF%8D%E8%A7%84%E5%88%99"><span class="toc-text">2. 应用否定量词规则：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%A7%E7%BB%AD%E5%BA%94%E7%94%A8%E5%90%A6%E5%AE%9A%E8%A7%84%E5%88%99"><span class="toc-text">3. 继续应用否定规则：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E5%BE%B7%E6%91%A9%E6%A0%B9%E5%AE%9A%E5%BE%8B"><span class="toc-text">4. 使用德摩根定律：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-2"><span class="toc-text">总结：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AE%80%E5%8C%96%E7%90%86%E8%A7%A3-2"><span class="toc-text">简化理解：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%91%BD%E9%A2%98%E9%80%BB%E8%BE%91%E7%9A%84%E9%80%BB%E8%BE%913"><span class="toc-text">命题逻辑的逻辑3：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%91%BD%E9%A2%98"><span class="toc-text">第一个命题：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A3%E9%87%8A"><span class="toc-text">解释：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E4%B8%AA%E5%91%BD%E9%A2%98"><span class="toc-text">第二个命题：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A3%E9%87%8A-1"><span class="toc-text">解释：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%91%BD%E9%A2%98%E9%80%BB%E8%BE%91%E6%8E%A8%E7%90%86%E8%BF%87%E7%A8%8B3"><span class="toc-text">命题逻辑推理过程3：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%91%BD%E9%A2%98%E8%A1%A8%E7%A4%BA"><span class="toc-text">1. 命题表示：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%81%E6%98%8E%E8%AF%A5%E5%91%BD%E9%A2%98%E6%98%AF%E9%87%8D%E8%A8%80%E5%BC%8Ftautology"><span class="toc-text">2.
+证明该命题是重言式（Tautology）：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%93%E8%AE%BA-1"><span class="toc-text">3. 结论：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%81%E6%98%8E1"><span class="toc-text">证明1：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E7%90%86"><span class="toc-text">定理：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%81%E6%98%8E"><span class="toc-text">证明：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%81%E6%98%8E2"><span class="toc-text">证明2：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%81%E6%98%8E%E5%8F%8D%E8%AF%81%E6%B3%95"><span class="toc-text">证明（反证法）：</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%A4%8D%E4%B9%A0/" title="计算机网络复习"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/f1e7bd3259972022ef5860e626348bb.bmp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="计算机网络复习"/></a><div class="content"><a class="title" href="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%A4%8D%E4%B9%A0/" title="计算机网络复习">计算机网络复习</a><time datetime="2025-04-28T02:31:33.000Z" title="发表于 2025-04-28 10:31:33">2025-04-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E8%B5%B7%E6%AD%A5/" title="微信小程序起步"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://source.fomal.cc/img/default_cover_229.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="微信小程序起步"/></a><div class="content"><a class="title" href="/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E8%B5%B7%E6%AD%A5/" title="微信小程序起步">微信小程序起步</a><time datetime="2024-12-27T17:34:24.000Z" title="发表于 2024-12-28 01:34:24">2024-12-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E3%80%8AJAVA%E8%AF%AD%E8%A8%80%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E3%80%8B%E6%9C%9F%E6%9C%AB%E8%80%83%E8%AF%95%E8%AF%95%E9%A2%98%E5%8F%8A%E7%AD%94%E6%A1%883%EF%BC%88%E5%BA%94%E8%80%83%E5%BF%85%E5%A4%87%E9%A2%98%E5%BA%93%EF%BC%89/" title="《JAVA语言程序设计》期末考试试题及答案3（应考必备题库）"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://source.fomal.cc/img/default_cover_80.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="《JAVA语言程序设计》期末考试试题及答案3（应考必备题库）"/></a><div class="content"><a class="title" href="/%E3%80%8AJAVA%E8%AF%AD%E8%A8%80%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E3%80%8B%E6%9C%9F%E6%9C%AB%E8%80%83%E8%AF%95%E8%AF%95%E9%A2%98%E5%8F%8A%E7%AD%94%E6%A1%883%EF%BC%88%E5%BA%94%E8%80%83%E5%BF%85%E5%A4%87%E9%A2%98%E5%BA%93%EF%BC%89/" title="《JAVA语言程序设计》期末考试试题及答案3（应考必备题库）">《JAVA语言程序设计》期末考试试题及答案3（应考必备题库）</a><time datetime="2024-12-24T14:59:06.000Z" title="发表于 2024-12-24 22:59:06">2024-12-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E3%80%8AJAVA%E8%AF%AD%E8%A8%80%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E3%80%8B%E6%9C%9F%E6%9C%AB%E8%80%83%E8%AF%95%E8%AF%95%E9%A2%98%E5%8F%8A%E7%AD%94%E6%A1%882/" title="《JAVA语言程序设计》期末考试试题及答案2"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://source.fomal.cc/img/default_cover_80.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="《JAVA语言程序设计》期末考试试题及答案2"/></a><div class="content"><a class="title" href="/%E3%80%8AJAVA%E8%AF%AD%E8%A8%80%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E3%80%8B%E6%9C%9F%E6%9C%AB%E8%80%83%E8%AF%95%E8%AF%95%E9%A2%98%E5%8F%8A%E7%AD%94%E6%A1%882/" title="《JAVA语言程序设计》期末考试试题及答案2">《JAVA语言程序设计》期末考试试题及答案2</a><time datetime="2024-12-24T13:51:43.000Z" title="发表于 2024-12-24 21:51:43">2024-12-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E3%80%8AJAVA%E8%AF%AD%E8%A8%80%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E3%80%8B%E6%9C%9F%E6%9C%AB%E8%80%83%E8%AF%95%E8%AF%95%E9%A2%98%E5%8F%8A%E7%AD%94%E6%A1%881/" title="《JAVA语言程序设计》期末考试试题及答案1"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://source.fomal.cc/img/default_cover_80.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="《JAVA语言程序设计》期末考试试题及答案1"/></a><div class="content"><a class="title" href="/%E3%80%8AJAVA%E8%AF%AD%E8%A8%80%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E3%80%8B%E6%9C%9F%E6%9C%AB%E8%80%83%E8%AF%95%E8%AF%95%E9%A2%98%E5%8F%8A%E7%AD%94%E6%A1%881/" title="《JAVA语言程序设计》期末考试试题及答案1">《JAVA语言程序设计》期末考试试题及答案1</a><time datetime="2024-12-24T13:36:21.000Z" title="发表于 2024-12-24 21:36:21">2024-12-24</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 - 2025 By Totoro</div><div class="footer_custom_text">I wish you to become your own sun, no need to rely on who's light.<p><a target="_blank" href="https://hexo.io/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&logo=hexo" title="博客框架为Hexo"></a>&nbsp;<a target="_blank" href="https://butterfly.js.org/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&logo=bitdefender" title="主题采用butterfly"></a>&nbsp;<a target="_blank" href="https://www.jsdelivr.com/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&logo=jsDelivr" title="本站使用JsDelivr为静态资源提供CDN加速"></a> &nbsp;<a target="_blank" href="https://vercel.com/ "><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Hosted-Vervel-brightgreen?style=flat&logo=Vercel" title="本站采用双线部署，默认线路托管于Vercel"></a>&nbsp;<a target="_blank" href="https://vercel.com/ "><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Hosted-Coding-0cedbe?style=flat&logo=Codio" title="本站采用双线部署，联通线路托管于Coding"></a>&nbsp;<a target="_blank" href="https://github.com/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&logo=GitHub" title="本站项目由Gtihub托管"></a>&nbsp;<a target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&logo=Claris" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"></a></p></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat-btn" type="button" title="聊天"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="/js/tw_cn.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@5.2.0/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.js"></script><script>function panguFn () {
   if (typeof pangu === 'object') pangu.autoSpacingPage()
   else {
     getScript('https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js')
@@ -798,16 +945,6 @@ document.addEventListener('pjax:error', e => {
     pjax.loadUrl('/404.html')
   }
 })</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.12.0"></script></div></div><!-- hexo injector body_end start --><script data-pjax>
-    function butterfly_categories_card_injector_config(){
-      var parent_div_git = document.getElementById('recent-posts');
-      var item_html = '<style>li.categoryBar-list-item{width:32.3%;}.categoryBar-list{max-height: 380px;overflow:auto;}.categoryBar-list::-webkit-scrollbar{width:0!important}@media screen and (max-width: 650px){.categoryBar-list{max-height: 320px;}}</style><div class="recent-post-item" style="height:auto;width:100%;padding:0px;"><div id="categoryBar"><ul class="categoryBar-list"><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_12.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/离散数学/&quot;);" href="javascript:void(0);">离散数学</a><span class="categoryBar-list-count">32</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_13.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS61B/&quot;);" href="javascript:void(0);">CS61B</a><span class="categoryBar-list-count">76</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_14.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/期末の旅/&quot;);" href="javascript:void(0);">期末の旅</a><span class="categoryBar-list-count">99</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_17.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/ACMの旅/&quot;);" href="javascript:void(0);">ACMの旅</a><span class="categoryBar-list-count">42</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_18.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/区域赛の旅/&quot;);" href="javascript:void(0);">区域赛の旅</a><span class="categoryBar-list-count">7</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_19.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/Codeforcesの旅/&quot;);" href="javascript:void(0);">Codeforcesの旅</a><span class="categoryBar-list-count">24</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_20.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/刷题计划/&quot;);" href="javascript:void(0);">刷题计划</a><span class="categoryBar-list-count">60</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_21.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/牛客の旅/&quot;);" href="javascript:void(0);">牛客の旅</a><span class="categoryBar-list-count">65</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_22.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/数学建模/&quot;);" href="javascript:void(0);">数学建模</a><span class="categoryBar-list-count">26</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_22.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/数据结构/&quot;);" href="javascript:void(0);">数据结构</a><span class="categoryBar-list-count">47</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_23.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/前端の旅/&quot;);" href="javascript:void(0);">前端の旅</a><span class="categoryBar-list-count">17</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_24.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/Atcoderの旅/&quot;);" href="javascript:void(0);">Atcoderの旅</a><span class="categoryBar-list-count">53</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_25.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/C-の旅/&quot;);" href="javascript:void(0);">C++の旅</a><span class="categoryBar-list-count">17</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_26.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS70の旅/&quot;);" href="javascript:void(0);">CS70の旅</a><span class="categoryBar-list-count">24</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_27.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/计算机组成原理/&quot;);" href="javascript:void(0);">计算机组成原理</a><span class="categoryBar-list-count">47</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_28.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CSAPPの旅/&quot;);" href="javascript:void(0);">CSAPPの旅</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_29.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/编程基础/&quot;);" href="javascript:void(0);">编程基础</a><span class="categoryBar-list-count">14</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_30.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/JAVAの旅/&quot;);" href="javascript:void(0);">JAVAの旅</a><span class="categoryBar-list-count">10</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_31.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/MIT-6-031-Software-Construction/&quot;);" href="javascript:void(0);">MIT 6.031:Software Construction</a><span class="categoryBar-list-count">16</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_32.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/数据库の旅/&quot;);" href="javascript:void(0);">数据库の旅</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_33.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS-110L/&quot;);" href="javascript:void(0);">CS 110L</a><span class="categoryBar-list-count">3</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_34.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/灵魂の旅/&quot;);" href="javascript:void(0);">灵魂の旅</a><span class="categoryBar-list-count">2</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_35.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/个人安排/&quot;);" href="javascript:void(0);">个人安排</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_36.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/杂项/&quot;);" href="javascript:void(0);">杂项</a><span class="categoryBar-list-count">12</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_37.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/文学/&quot;);" href="javascript:void(0);">文学</a><span class="categoryBar-list-count">49</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_38.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/力扣の旅/&quot;);" href="javascript:void(0);">力扣の旅</a><span class="categoryBar-list-count">20</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_39.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/千里十二行/&quot;);" href="javascript:void(0);">千里十二行</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_40.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/🗡指offer/&quot;);" href="javascript:void(0);">🗡指offer</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_41.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/少年游/&quot;);" href="javascript:void(0);">少年游</a><span class="categoryBar-list-count">2</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_42.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/算法提高课/&quot;);" href="javascript:void(0);">算法提高课</a><span class="categoryBar-list-count">3</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_43.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/汇编の旅/&quot;);" href="javascript:void(0);">汇编の旅</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_44.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/C-实训/&quot;);" href="javascript:void(0);">C++实训</a><span class="categoryBar-list-count">8</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_44.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS知识/&quot;);" href="javascript:void(0);">CS知识</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li></ul></div></div>';
-      console.log('已挂载butterfly_categories_card')
-      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
-      }
-    if( document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
-    butterfly_categories_card_injector_config()
-    }
-  </script><script data-pjax>
   function butterfly_swiper_injector_config(){
     var parent_div_git = document.getElementById('recent-posts');
     var item_html = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms;"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;诗兴大发/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://source.fomal.cc/img/default_cover_69.webp" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-01-29</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;诗兴大发/&quot;);" href="javascript:void(0);" alt="">诗兴大发</a><div class="blog-slider__text">未觉，却是中二少年的诗仙梦</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;诗兴大发/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;诗录/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/4b31456c6f0f4489f99177f89e936de7286431045.png@1256w_708h_!web-article-pic.avif" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-10-01</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;诗录/&quot;);" href="javascript:void(0);" alt="">诗录</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;诗录/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;TotoroのPlan/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/51d37eba99d243607ddedfff6e91568f617436609.jpg@1256w_1884h_!web-article-pic.avif" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-10-05</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;TotoroのPlan/&quot;);" href="javascript:void(0);" alt="">TotoroのPlan</a><div class="blog-slider__text">方便大二看（）</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;TotoroのPlan/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;Markdown格式/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/ushio-api-img-moe@5.0.48/img_482_1920x1080_96_null_normal.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-03-03</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;Markdown格式/&quot;);" href="javascript:void(0);" alt="">Markdown格式</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;Markdown格式/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
@@ -831,4 +968,14 @@ document.addEventListener('pjax:error', e => {
   else if (epage === cpage){
     butterfly_swiper_injector_config();
   }
-  </script><script defer src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.js"></script><script defer data-pjax src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper_init.js"></script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>
+  </script><script defer src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.js"></script><script defer data-pjax src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper_init.js"></script><script data-pjax>
+    function butterfly_categories_card_injector_config(){
+      var parent_div_git = document.getElementById('recent-posts');
+      var item_html = '<style>li.categoryBar-list-item{width:32.3%;}.categoryBar-list{max-height: 380px;overflow:auto;}.categoryBar-list::-webkit-scrollbar{width:0!important}@media screen and (max-width: 650px){.categoryBar-list{max-height: 320px;}}</style><div class="recent-post-item" style="height:auto;width:100%;padding:0px;"><div id="categoryBar"><ul class="categoryBar-list"><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_12.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/离散数学/&quot;);" href="javascript:void(0);">离散数学</a><span class="categoryBar-list-count">32</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_13.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS61B/&quot;);" href="javascript:void(0);">CS61B</a><span class="categoryBar-list-count">76</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_14.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/期末の旅/&quot;);" href="javascript:void(0);">期末の旅</a><span class="categoryBar-list-count">99</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_17.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/刷题计划/&quot;);" href="javascript:void(0);">刷题计划</a><span class="categoryBar-list-count">60</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_18.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/区域赛の旅/&quot;);" href="javascript:void(0);">区域赛の旅</a><span class="categoryBar-list-count">7</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_19.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/Codeforcesの旅/&quot;);" href="javascript:void(0);">Codeforcesの旅</a><span class="categoryBar-list-count">24</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_20.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/牛客の旅/&quot;);" href="javascript:void(0);">牛客の旅</a><span class="categoryBar-list-count">65</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_21.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/ACMの旅/&quot;);" href="javascript:void(0);">ACMの旅</a><span class="categoryBar-list-count">42</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_22.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/前端の旅/&quot;);" href="javascript:void(0);">前端の旅</a><span class="categoryBar-list-count">17</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_22.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/数学建模/&quot;);" href="javascript:void(0);">数学建模</a><span class="categoryBar-list-count">26</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_23.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/数据结构/&quot;);" href="javascript:void(0);">数据结构</a><span class="categoryBar-list-count">47</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_24.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/Atcoderの旅/&quot;);" href="javascript:void(0);">Atcoderの旅</a><span class="categoryBar-list-count">53</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_25.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/C-の旅/&quot;);" href="javascript:void(0);">C++の旅</a><span class="categoryBar-list-count">17</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_26.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS70の旅/&quot;);" href="javascript:void(0);">CS70の旅</a><span class="categoryBar-list-count">24</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_27.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CSAPPの旅/&quot;);" href="javascript:void(0);">CSAPPの旅</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_28.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/计算机组成原理/&quot;);" href="javascript:void(0);">计算机组成原理</a><span class="categoryBar-list-count">47</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_29.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/编程基础/&quot;);" href="javascript:void(0);">编程基础</a><span class="categoryBar-list-count">14</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_30.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/JAVAの旅/&quot;);" href="javascript:void(0);">JAVAの旅</a><span class="categoryBar-list-count">10</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_31.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/MIT-6-031-Software-Construction/&quot;);" href="javascript:void(0);">MIT 6.031:Software Construction</a><span class="categoryBar-list-count">16</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_32.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS-110L/&quot;);" href="javascript:void(0);">CS 110L</a><span class="categoryBar-list-count">3</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_33.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/数据库の旅/&quot;);" href="javascript:void(0);">数据库の旅</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_34.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/灵魂の旅/&quot;);" href="javascript:void(0);">灵魂の旅</a><span class="categoryBar-list-count">2</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_35.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/个人安排/&quot;);" href="javascript:void(0);">个人安排</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_36.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/杂项/&quot;);" href="javascript:void(0);">杂项</a><span class="categoryBar-list-count">13</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_37.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/文学/&quot;);" href="javascript:void(0);">文学</a><span class="categoryBar-list-count">49</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_38.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/力扣の旅/&quot;);" href="javascript:void(0);">力扣の旅</a><span class="categoryBar-list-count">20</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_39.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/千里十二行/&quot;);" href="javascript:void(0);">千里十二行</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_40.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/🗡指offer/&quot;);" href="javascript:void(0);">🗡指offer</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_41.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/少年游/&quot;);" href="javascript:void(0);">少年游</a><span class="categoryBar-list-count">2</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_42.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/算法提高课/&quot;);" href="javascript:void(0);">算法提高课</a><span class="categoryBar-list-count">3</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_43.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/汇编の旅/&quot;);" href="javascript:void(0);">汇编の旅</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_44.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/C-实训/&quot;);" href="javascript:void(0);">C++实训</a><span class="categoryBar-list-count">8</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_44.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS知识/&quot;);" href="javascript:void(0);">CS知识</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_45.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/计算机网络/&quot;);" href="javascript:void(0);">计算机网络</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li></ul></div></div>';
+      console.log('已挂载butterfly_categories_card')
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+      }
+    if( document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+    butterfly_categories_card_injector_config()
+    }
+  </script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>
