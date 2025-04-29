@@ -1,0 +1,911 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>计算机网络精华卷——2 | Totoroの旅</title><meta name="author" content="Totoro"><meta name="copyright" content="Totoro"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="计算机网络精华卷——2计算机网络选择题解析 (Computer Networking Multiple-Choice Questions Analysis) (1) 文件传输的吞吐量计算问题：主机A向主机B发送文件，路径包含5条链路，速率分别为R1&#x3D;10 Mbps、R2&#x3D;5 Mbps、R3&#x3D;2 Mbps、R4&#x3D;5 Mbps、R5&#x3D;10 Mbps。若无其他流量，文件传输的吞吐量是多少？答案：B. 2">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机网络精华卷——2">
+<meta property="og:url" content="http://totorocatcat.top/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%B2%BE%E5%8D%8E%E5%8D%B7%E2%80%94%E2%80%942/index.html">
+<meta property="og:site_name" content="Totoroの旅">
+<meta property="og:description" content="计算机网络精华卷——2计算机网络选择题解析 (Computer Networking Multiple-Choice Questions Analysis) (1) 文件传输的吞吐量计算问题：主机A向主机B发送文件，路径包含5条链路，速率分别为R1&#x3D;10 Mbps、R2&#x3D;5 Mbps、R3&#x3D;2 Mbps、R4&#x3D;5 Mbps、R5&#x3D;10 Mbps。若无其他流量，文件传输的吞吐量是多少？答案：B. 2">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/eebd9ef7694eae52480e45e63632786.png">
+<meta property="article:published_time" content="2025-04-29T12:55:20.000Z">
+<meta property="article:modified_time" content="2025-04-29T12:56:31.092Z">
+<meta property="article:author" content="Totoro">
+<meta property="article:tag" content="基础">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/eebd9ef7694eae52480e45e63632786.png"><link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/b5ca6e582a7a45e6fde46e616eeb68e.png"><link rel="canonical" href="http://totorocatcat.top/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%B2%BE%E5%8D%8E%E5%8D%B7%E2%80%94%E2%80%942/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta/><link rel="stylesheet" href="/css/index.css?v=4.12.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  noticeOutdate: {"limitDay":765,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体中文","cht_to_chs":"你已切换为简体中文","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"top-right"},
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '计算机网络精华卷——2',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: true,
+  isToc: true,
+  postUpdate: '2025-04-29 20:56:31'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const now = new Date()
+          const hour = now.getHours()
+          const isNight = hour <= 6 || hour >= 18
+          if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/universe.css"><link rel="stylesheet" href="/css/scrollbar.css"><link rel="stylesheet" href="/css/cat.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-double-row-display@1.00/cardlistpost.min.css"/>
+<style>#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags:before {content:"\A";
+  white-space: pre;}#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags > .article-meta__separator{display:none}</style>
+<link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiperstyle.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-categories-card@1.0.0/lib/categorybar.css"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><div class="loading-img"></div><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><script>window.paceOptions = {
+  restartOnPushState: false
+}
+
+document.addEventListener('pjax:send', () => {
+  Pace.restart()
+})
+</script><link rel="stylesheet" href="/css/progress_bar.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/px3.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">805</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">34</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home-alt"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-envelope-open"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 趣味</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/project/"><i class="fa-fw fas fas fa-folder"></i><span> 项目</span></a></div><div class="menus_item"><a class="site-page" href="/stars/"><i class="fa-fw fas fa-bookmark"></i><span> 收藏</span></a></div><div class="menus_item"><a class="site-page" href="/bilibili/"><i class="fa-fw fas fa-tv"></i><span> 追番</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/eebd9ef7694eae52480e45e63632786.png')"><nav id="nav"><span id="blog-info"><a href="/" title="Totoroの旅"><span class="site-name">Totoroの旅</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home-alt"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-envelope-open"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 趣味</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/project/"><i class="fa-fw fas fas fa-folder"></i><span> 项目</span></a></div><div class="menus_item"><a class="site-page" href="/stars/"><i class="fa-fw fas fa-bookmark"></i><span> 收藏</span></a></div><div class="menus_item"><a class="site-page" href="/bilibili/"><i class="fa-fw fas fa-tv"></i><span> 追番</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">计算机网络精华卷——2</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-04-29T12:55:20.000Z" title="发表于 2025-04-29 20:55:20">2025-04-29</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-04-29T12:56:31.092Z" title="更新于 2025-04-29 20:56:31">2025-04-29</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">8k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>32分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="计算机网络精华卷——2"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%B2%BE%E5%8D%8E%E5%8D%B7%E2%80%94%E2%80%942/#post-comment" itemprop="discussionUrl"><span class="valine-comment-count" data-xid="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%B2%BE%E5%8D%8E%E5%8D%B7%E2%80%94%E2%80%942/" itemprop="commentCount"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="计算机网络精华卷——2"><a href="#计算机网络精华卷——2" class="headerlink" title="计算机网络精华卷——2"></a>计算机网络精华卷——2</h1><h2 id="计算机网络选择题解析-Computer-Networking-Multiple-Choice-Questions-Analysis"><a href="#计算机网络选择题解析-Computer-Networking-Multiple-Choice-Questions-Analysis" class="headerlink" title="计算机网络选择题解析 (Computer Networking Multiple-Choice Questions Analysis)"></a><strong>计算机网络选择题解析 (Computer Networking Multiple-Choice Questions Analysis)</strong></h2><hr>
+<p><strong>(1) 文件传输的吞吐量计算</strong><br>问题：主机A向主机B发送文件，路径包含5条链路，速率分别为R1=10 Mbps、R2=5 Mbps、R3=2 Mbps、R4=5 Mbps、R5=10 Mbps。若无其他流量，文件传输的吞吐量是多少？<br>答案：B. 2 Mbps  </p>
+<p>解释：<br>• 吞吐量由最慢链路决定（瓶颈链路）。  </p>
+<p>• 最慢链路速率：min(10, 5, 2, 5, 10) = 2 Mbps。  </p>
+<p>Key Point:<br>Throughput = min(R1, R2, …, Rn).  </p>
+<hr>
+<p><strong>(2) 抗电磁干扰的高速传输介质</strong><br>问题：以下哪种介质具有高速传输且抗电磁干扰的特性？<br>答案：C. 光纤（Fiber optic）  </p>
+<p>解释：<br>• 光纤：  </p>
+<p>  • 高速（可达100 Gbps以上）。  </p>
+<p>  • 通过光信号传输，完全免疫电磁干扰。  </p>
+<p>• 其他选项：  </p>
+<p>  • 同轴电缆（A）：易受干扰。  </p>
+<p>  • 无线电（B）：易受干扰。  </p>
+<p>  • 双绞线（D）：需屏蔽层抗干扰。  </p>
+<p>Key Point:<br>Fiber optics: High speed + immune to EMI.  </p>
+<hr>
+<p><strong>(3) 端到端延迟中的可变延迟</strong><br>问题：在固定路由中，哪种端到端延迟是可变（非固定）的？<br>答案：C. 排队延迟（Queuing delays）  </p>
+<p>解释：<br>• 排队延迟：取决于网络拥塞程度（缓冲区队列长度）。  </p>
+<p>• 其他延迟：  </p>
+<p>  • 处理延迟（A）：路由器硬件性能决定，基本固定。  </p>
+<p>  • 传播延迟（B）：距离/光速，固定。  </p>
+<p>  • 传输延迟（D）：数据大小/带宽，固定。  </p>
+<p>Key Point:<br>Queuing delay varies with network traffic.  </p>
+<hr>
+<p><strong>(4) 网络层协议识别</strong><br>问题：以下哪个协议属于TCP/IP协议栈的网络层？<br>答案：A. ICMP  </p>
+<p>解释：<br>• ICMP（Internet Control Message Protocol）：网络层协议，用于错误报告（如<code>ping</code>）。  </p>
+<p>• 其他选项：  </p>
+<p>  • ARP（B）：链路层协议（IP→MAC映射）。  </p>
+<p>  • CSMA（C）：MAC层协议（信道访问控制）。  </p>
+<p>  • SMTP（D）：应用层协议（邮件传输）。  </p>
+<p>Key Point:<br>ICMP operates at the network layer (like IP).  </p>
+<hr>
+<p><strong>(5) IP数据报的头部开销比例</strong><br>问题：应用消息（20字节头部+180字节数据）封装为TCP段（无选项），再封装为IP数据报（无选项），求IP数据报的头部开销比例。<br>答案：D. 25%  </p>
+<p>计算步骤：  </p>
+<ol>
+<li>TCP段：20（应用头部） + 180（数据） + 20（TCP头） = 220字节。  </li>
+<li>IP数据报：220（TCP段） + 20（IP头） = 240字节。  </li>
+<li>开销比例：(TCP头 + IP头) / 总大小 = (20 + 20) / 240 = 40/240 ≈ 16.67%（注：原选项可能有误，最接近的是D）。  </li>
+</ol>
+<p>Key Point:<br>Overhead = (Transport + Network headers) / Total size.  </p>
+<hr>
+<p><strong>(6) 传输层的分用功能</strong><br>问题：将传输层段中的数据交付到正确套接字的过程称为？<br>答案：C. 分用（Demultiplexing）  </p>
+<p>解释：<br>• 分用：通过目标端口号将数据定向到正确的应用进程。  </p>
+<p>• 复用（A）：多个应用共享同一传输层连接。  </p>
+<p>• FDM/TDM（B/D）：物理层多路复用技术。  </p>
+<p>Key Point:<br>Demultiplexing = Deliver data to correct socket via port number.  </p>
+<hr>
+<p><strong>总结 (Summary)</strong>  </p>
+<ol>
+<li>吞吐量：由最慢链路决定。  </li>
+<li>介质特性：光纤高速且抗干扰。  </li>
+<li>延迟类型：排队延迟随拥塞变化。  </li>
+<li>协议分层：ICMP属网络层。  </li>
+<li>头部开销：TCP+IP头部占比计算。  </li>
+<li>分用：端口号定位目标应用。  </li>
+</ol>
+<p>考试重点 (Exam Focus):<br>• 吞吐量计算、协议层级区分、延迟特性分析。  </p>
+<p><strong>中英术语对照</strong><br>| 中文术语 | 英文术语        |<br>| ———— | ———————- |<br>| 吞吐量   | Throughput      |<br>| 光纤     | Fiber optic     |<br>| 排队延迟 | Queuing delay   |<br>| 网络层   | Network layer   |<br>| 头部开销 | Header overhead |<br>| 分用     | Demultiplexing  |</p>
+<hr>
+<p><strong>(7) IP数据报分片问题</strong><br>问题：将4000字节的数据报发送到MTU为1500字节的链路中，会产生多少个分片？偏移量字段值是多少？<br>答案：B. 3 fragments are created with offset field value 0, 185, 370  </p>
+<p>解释：  </p>
+<ol>
+<li><p>MTU限制：<br>• 每个分片最大数据量 = MTU - IP头 = 1500 - 20 = 1480字节。  </p>
+</li>
+<li><p>分片数量：<br>• 4000字节数据 → 需要3个分片（1480 + 1480 + 1040）。  </p>
+</li>
+<li><p>偏移量计算：<br>• 偏移量 = 数据位置 / 8（单位：8字节块）。  </p>
+<p>• 分片1：0-1479 → 偏移量=0。  </p>
+<p>• 分片2：1480-2959 → 偏移量=1480/8=185。  </p>
+<p>• 分片3：2960-3999 → 偏移量=2960/8=370。  </p>
+</li>
+</ol>
+<p>Key Point:<br>Offset = Fragment Start Position / 8.  </p>
+<hr>
+<p><strong>(8) 用于Echo请求/响应和错误报告的协议</strong><br>问题：以下哪个协议用于Echo请求/响应和错误报告？<br>答案：B. ICMP  </p>
+<p>解释：<br>• ICMP（Internet Control Message Protocol）：  </p>
+<p>  • Echo请求/响应：<code>ping</code>命令使用ICMP Echo Request/Reply。  </p>
+<p>  • 错误报告：如<code>Destination Unreachable</code>、<code>Time Exceeded</code>。  </p>
+<p>• 其他选项：  </p>
+<p>  • IGMP（A）：组播管理。  </p>
+<p>  • SMTP（C）：邮件传输。  </p>
+<p>  • CSMA（D）：MAC层协议。  </p>
+<p>Key Point:<br>ICMP is for diagnostics and error reporting.  </p>
+<hr>
+<p><strong>(9) 回退N帧协议（GBN）的发送窗口最大大小</strong><br>问题：若序列号用n比特编码，GBN协议的最大发送窗口是多少？<br>答案：C. 2ⁿ⁻¹  </p>
+<p>解释：<br>• GBN窗口限制：为避免序列号混淆，窗口大小 ≤ 2ⁿ⁻¹（如n=3时，窗口最大=4）。  </p>
+<p>• 原因：确保发送窗口不超过序列号空间的一半，防止ACK混淆。  </p>
+<p>Key Point:<br>GBN window ≤ 2ⁿ⁻¹ to prevent ambiguity.  </p>
+<hr>
+<p><strong>(10) 以太网交换机的转发表建立方式</strong><br>问题：以太网交换机如何建立转发表？<br>答案：C. Self-learning  </p>
+<p>解释：<br>• 自学习机制：交换机通过记录接收帧的源MAC地址和输入端口动态更新转发表。  </p>
+<p>• 无需配置：与路由器不同，交换机无需手动配置或路由算法。  </p>
+<p>Key Point:<br>Switches learn MAC-port mappings autonomously.  </p>
+<hr>
+<p><strong>(11) 多路访问控制协议分类</strong><br>问题：多路访问控制协议包括哪些类型？<br>答案：D. All of the above  </p>
+<p>解释：  </p>
+<ol>
+<li>信道划分（Channel Partitioning）：如TDMA、FDMA。  </li>
+<li>随机接入（Random Access）：如ALOHA、CSMA/CD。  </li>
+<li>轮询（Taking Turns）：如令牌环。  </li>
+</ol>
+<p>Key Point:<br>MAC protocols: Partitioning, Random access, Taking turns.  </p>
+<hr>
+<p><strong>(12) BGP路由选择的关键因素</strong><br>问题：在BGP协议中，决定“好路由”的因素是什么？<br>答案：C. A and B  </p>
+<p>解释：<br>• 路由策略（Routing Policy）：商业合约（如避免特定AS）。  </p>
+<p>• 可达性信息（Reachability）：AS-PATH属性（路径长度）。  </p>
+<p>• BGP特性：策略优先于技术指标（如跳数）。  </p>
+<p>Key Point:<br>BGP selects routes based on policy + reachability.  </p>
+<hr>
+<p><strong>总结 (Summary)</strong>  </p>
+<ol>
+<li>分片计算：偏移量=数据位置/8，分片数由MTU决定。  </li>
+<li>协议功能：ICMP用于诊断和错误报告。  </li>
+<li>窗口限制：GBN窗口≤2ⁿ⁻¹。  </li>
+<li>交换机自学习：无需配置，动态更新转发表。  </li>
+<li>BGP路由：策略和可达性共同决定。  </li>
+</ol>
+<p>考试重点 (Exam Focus):<br>• IP分片规则、ICMP应用、GBN协议限制、BGP路由策略。  </p>
+<p><strong>中英术语对照</strong><br>| 中文术语 | 英文术语        |<br>| ———— | ———————- |<br>| 偏移量   | Offset          |<br>| 自学习   | Self-learning   |<br>| 多路访问 | Multiple Access |<br>| 路由策略 | Routing Policy  |<br>| 回退N帧  | Go-Back-N (GBN) |</p>
+<hr>
+<p><strong>(13) 互联网分层路由的两大原因</strong><br>问题：互联网采用分层路由的两个重要原因是？<br>答案：D. Scale and administrative autonomy（可扩展性和管理自治）  </p>
+<p>解释：  </p>
+<ol>
+<li><p>可扩展性（Scale）：<br>• 分层设计（如自治系统AS）减少路由表大小，避免全网路由信息爆炸。  </p>
+<p>• 例如：ISP只需存储其他AS的聚合路由，而非所有子网细节。  </p>
+</li>
+<li><p>管理自治（Administrative Autonomy）：<br>• 每个AS可独立管理内部路由（如企业自主选择OSPF或RIP）。  </p>
+<p>• 跨AS路由（BGP）允许基于商业策略的灵活控制。  </p>
+</li>
+</ol>
+<p>其他选项错误原因：<br>• A（消息复杂性和收敛速度）：是路由算法的技术问题，非分层主因。  </p>
+<p>• B（最低成本和电路可用性）：与分层无关。  </p>
+<p>• C（链路成本变化和故障）：是路由协议需解决的问题。  </p>
+<p>Key Point:<br>Hierarchy enables scalability (reduced routing tables) + autonomy (independent management).  </p>
+<hr>
+<p><strong>(14) 关于链路层交换机的错误说法</strong><br>问题：以下关于链路层交换机的描述，哪项是错误的？<br>答案：C. All nodes connected to Switch can collide with one another（连接交换机的所有节点可能互相冲突）  </p>
+<p>解释：<br>• 交换机特性：  </p>
+<p>  • 无冲突：交换机为全双工设备，每个端口是独立冲突域（冲突仅发生在HUB环境中）。  </p>
+<p>  • 自学习与即插即用（A正确）：自动学习MAC地址与端口映射。  </p>
+<p>  • 选择性转发（B正确）：基于目标MAC定向转发帧。  </p>
+<p>  • 不使用CSMA/CD（D错误）：CSMA/CD是以太网HUB的半双工机制，交换机无需此协议。  </p>
+<p>Key Point:<br>Switches eliminate collisions (full-duplex per port), unlike hubs.  </p>
+<hr>
+<p><strong>总结 (Summary)</strong>  </p>
+<ol>
+<li>分层路由优势：可扩展性（减少路由表） + 管理自治（AS自主决策）。  </li>
+<li><p>交换机核心特性：<br>• 无冲突（全双工）、自学习、选择性转发。  </p>
+<p>• 冲突仅存在于共享式HUB（CSMA/CD）。  </p>
+</li>
+</ol>
+<p>考试重点 (Exam Focus):<br>• 分层设计的意义（如AS划分）。  </p>
+<p>• 交换机与HUB的本质区别（冲突域隔离）。  </p>
+<p><strong>中英术语对照</strong><br>| 中文术语 | 英文术语                |<br>| ———— | ———————————- |<br>| 可扩展性 | Scalability             |<br>| 管理自治 | Administrative Autonomy |<br>| 冲突域   | Collision Domain        |<br>| 全双工   | Full-Duplex             |<br>| 自学习   | Self-Learning           |</p>
+<h2 id="计算机网络填空题解析-Computer-Networking-Fill-in-the-Blank-Questions-Analysis"><a href="#计算机网络填空题解析-Computer-Networking-Fill-in-the-Blank-Questions-Analysis" class="headerlink" title="计算机网络填空题解析 (Computer Networking Fill-in-the-Blank Questions Analysis)"></a><strong>计算机网络填空题解析 (Computer Networking Fill-in-the-Blank Questions Analysis)</strong></h2><hr>
+<p><strong>(1) 互联网与ATM网络层的服务模型</strong><br>题目：<br>The network layer of Internet adopts datagram subnet which provides network-layer connectionless services, and the network layer of ATM adopts virtual circuit subnet which provides network-layer connection-oriented services.  </p>
+<p>答案：<br>• Internet：数据报子网（Datagram Subnet），提供无连接服务（Connectionless）。  </p>
+<p>• ATM：虚电路子网（Virtual Circuit Subnet），提供面向连接服务（Connection-oriented）。  </p>
+<p>解释：<br>• 数据报（Internet）：  </p>
+<p>  • 每个IP数据报独立路由，无需预先建立连接。  </p>
+<p>  • 优点：灵活，适应动态网络；缺点：乱序、丢包可能。  </p>
+<p>• 虚电路（ATM）：  </p>
+<p>  • 通信前需建立虚电路（如电话拨号），数据沿固定路径传输。  </p>
+<p>  • 优点：可靠、有序；缺点：建立开销大。  </p>
+<p>Key Point:<br>Internet: Connectionless (datagram). ATM: Connection-oriented (virtual circuit).  </p>
+<hr>
+<p><strong>(2) 各层的数据传输服务任务</strong><br>题目：<br>The task of the data link layer is providing data transmission services between adjacent nodes; The task of the network layer is providing data transmission services between end-to-end hosts; and the task of transport layer is providing data transmission services between application processes.  </p>
+<p>答案：<br>• 数据链路层：相邻节点（Adjacent Nodes）。  </p>
+<p>• 网络层：端到端主机（End-to-End Hosts）。  </p>
+<p>• 传输层：应用进程（Application Processes）。  </p>
+<p>解释：<br>• 数据链路层：确保同一物理链路上相邻节点的可靠帧传输（如交换机-主机）。  </p>
+<p>• 网络层：通过IP地址实现跨网络的主机到主机通信。  </p>
+<p>• 传输层：通过端口号区分同一主机上的不同应用进程（如HTTP=80端口）。  </p>
+<p>Key Point:<br>Link layer: Node-to-node. Network layer: Host-to-host. Transport layer: Process-to-process.  </p>
+<hr>
+<p><strong>(3) IP数据报的TTL字段</strong><br>题目：<br>The header of IP datagram has a TTL field, when the value of the field is zero, the datagram transmitted will be discarded by router.  </p>
+<p>答案：TTL（Time To Live）。  </p>
+<p>解释：<br>• TTL作用：  </p>
+<ol>
+<li>初始值通常为64或128，每经过一个路由器减1。  </li>
+<li>当TTL=0时，路由器丢弃数据包并发送ICMP超时消息（防止环路）。  </li>
+</ol>
+<p>Key Point:<br>TTL prevents infinite loops by discarding packets when TTL=0.  </p>
+<hr>
+<p><strong>(4) 网络层的两大核心功能</strong><br>题目：<br>The two key functions of network layer are forwarding and routing.  </p>
+<p>答案：转发（Forwarding） 和 路由（Routing）。  </p>
+<p>解释：<br>• 转发：根据转发表将数据包从输入接口移动到输出接口（数据平面）。  </p>
+<p>• 路由：通过算法（如OSPF、BGP）生成转发表（控制平面）。  </p>
+<p>Key Point:<br>Forwarding: Move packets. Routing: Build forwarding tables.  </p>
+<hr>
+<p><strong>(5) 自治系统内部路由协议</strong><br>题目：<br>Two routing protocols have been used extensively for routing within an autonomous system in the Internet: RIP protocol which is based on Distance Vector routing algorithm and OSPF protocol which is based on Link State routing algorithm.  </p>
+<p>答案：<br>• RIP：距离向量算法（Distance Vector）。  </p>
+<p>• OSPF：链路状态算法（Link State）。  </p>
+<p>解释：<br>• RIP：  </p>
+<p>  • 通过邻居交换路由表，跳数限制为15。  </p>
+<p>  • 缺点：收敛慢，易产生路由环路。  </p>
+<p>• OSPF：  </p>
+<p>  • 洪泛链路状态信息，构建全网拓扑图（Dijkstra算法）。  </p>
+<p>  • 优点：快速收敛，支持大规模网络。  </p>
+<p>Key Point:<br>Intra-AS: RIP (DV) for small nets, OSPF (LS) for large nets.  </p>
+<hr>
+<p><strong>(6) ARP协议的功能</strong><br>题目：<br>The function of ARP protocol is converting IP address into MAC address.  </p>
+<p>答案：IP地址 → MAC地址。  </p>
+<p>解释：<br>• ARP：通过广播查询目标IP对应的MAC地址（如<code>192.168.1.1</code> → <code>00-1A-2B-3C-4D-5E</code>）。  </p>
+<p>• ARP缓存：本地存储IP-MAC映射，减少重复查询。  </p>
+<p>Key Point:<br>ARP resolves IP to MAC for LAN communication.  </p>
+<hr>
+<p><strong>(7) TCP连接建立的机制</strong><br>题目：<br>In the TCP, connection establishment of transport layer uses method of three-way handshaking.  </p>
+<p>答案：三次握手（Three-Way Handshaking）。  </p>
+<p>解释：  </p>
+<ol>
+<li>SYN：客户端发送SYN=1, seq=x。  </li>
+<li>SYN+ACK：服务端回复SYN=1, ACK=1, seq=y, ack=x+1。  </li>
+<li>ACK：客户端确认ACK=1, seq=x+1, ack=y+1。  </li>
+</ol>
+<p>Key Point:<br>TCP uses 3-way handshake to synchronize sequence numbers.  </p>
+<hr>
+<p><strong>(8) TCP段中的接收窗口字段</strong><br>题目：<br>When a TCP connection is established, the value of Rev Window in the segment header is set by the receiver.  </p>
+<p>答案：接收方（Receiver）。  </p>
+<p>解释：<br>• 接收窗口（Receive Window）：  </p>
+<p>  • 由接收方根据缓冲区空间动态设置，用于流量控制。  </p>
+<p>  • 发送方据此调整发送速率（避免淹没接收方）。  </p>
+<p>Key Point:<br>Receiver advertises window size to control sender’s rate.  </p>
+<hr>
+<p><strong>(9) DNS系统的分布式数据库</strong><br>题目：<br>DNS system is a distributed database in which resource records are stored.  </p>
+<p>答案：分布式数据库（Distributed Database） 和 资源记录（Resource Records）。  </p>
+<p>解释：<br>• DNS：  </p>
+<p>  • 分布式存储域名与IP的映射（如<code>example.com</code> → <code>93.184.216.34</code>）。  </p>
+<p>  • 资源记录类型：A（IPv4）、AAAA（IPv6）、MX（邮件服务器）等。  </p>
+<p>Key Point:<br>DNS: Hierarchical and distributed (no single point of failure).  </p>
+<hr>
+<p><strong>总结 (Summary)</strong>  </p>
+<ol>
+<li>服务模型：Internet（无连接） vs ATM（面向连接）。  </li>
+<li>分层任务：链路层（节点间）、网络层（主机间）、传输层（进程间）。  </li>
+<li><p>关键协议：<br>• ARP（IP→MAC）、TCP（三次握手）、DNS（域名解析）。  </p>
+</li>
+<li><p>网络层功能：转发（数据平面） + 路由（控制平面）。  </p>
+</li>
+</ol>
+<p>考试重点 (Exam Focus):<br>• 协议功能对比（如RIP vs OSPF）。  </p>
+<p>• 字段作用（如TTL、接收窗口）。  </p>
+<p>• 分层架构与封装过程。  </p>
+<p><strong>中英术语对照</strong><br>| 中文术语 | 英文术语               |<br>| ———— | ——————————— |<br>| 数据报   | Datagram               |<br>| 虚电路   | Virtual Circuit        |<br>| 三次握手 | Three-Way Handshake    |<br>| 资源记录 | Resource Record (RR)   |<br>| 接收窗口 | Receive Window         |<br>| 自治系统 | Autonomous System (AS) |</p>
+<h2 id="计算机网络判断题解析-Computer-Networking-True-False-Questions-Analysis"><a href="#计算机网络判断题解析-Computer-Networking-True-False-Questions-Analysis" class="headerlink" title="计算机网络判断题解析 (Computer Networking True/False Questions Analysis)"></a><strong>计算机网络判断题解析 (Computer Networking True/False Questions Analysis)</strong></h2><hr>
+<p><strong>(10) HTTP、FTP、SMTP使用TCP而非UDP的原因</strong><br>题目：HTTP、FTP和SMTP使用TCP而非UDP是为了安全性。<br>答案：False (F)  </p>
+<p>解释：<br>• 真实原因：TCP提供可靠传输（确认、重传、按序交付），而UDP不保证可靠性。  </p>
+<p>• 安全性：这些协议的安全性通常由TLS/SSL（如HTTPS、FTPS）实现，与传输层协议无关。  </p>
+<p>Key Point:<br>TCP is chosen for reliability, not security (handled by encryption like TLS).  </p>
+<hr>
+<p><strong>(11) 窗口大小=1时协议的等效性</strong><br>题目：当窗口大小为1时，SR（选择性重传）、GBN（回退N帧）和交替位协议功能等效。<br>答案：True (T)  </p>
+<p>解释：<br>• 窗口=1：三者均退化为停等协议（发送一帧后必须等待ACK）。  </p>
+<p>• 行为一致：无并行传输，无选择性重传或累积确认。  </p>
+<p>Key Point:<br>All reduce to stop-and-wait when window size=1.  </p>
+<hr>
+<p><strong>(12) P2P与TCP/IP都是网络架构</strong><br>题目：P2P和TCP/IP都是网络架构。<br>答案：False (F)  </p>
+<p>解释：<br>• TCP/IP：是具体的协议栈（如四层模型）。  </p>
+<p>• P2P：是一种网络应用模式（去中心化通信），而非架构。  </p>
+<p>Key Point:<br>P2P is an application model, not a network architecture.  </p>
+<hr>
+<p><strong>(13) TCP流量控制与拥塞控制的目标</strong><br>题目：TCP流量控制和拥塞控制的目标相同。<br>答案：False (F)  </p>
+<p>解释：<br>| 控制类型 | 目标                 | 机制                           |<br>| ———— | —————————— | ——————————————— |<br>| 流量控制 | 防止接收方缓冲区溢出 | 接收方通过窗口大小限制发送速率 |<br>| 拥塞控制 | 防止网络过载         | 动态调整拥塞窗口（如慢启动）   |</p>
+<p>Key Point:<br>Flow control: Receiver-centric. Congestion control: Network-centric.  </p>
+<hr>
+<p><strong>(14) 电子邮件系统中的协议分工</strong><br>题目：在电子邮件系统中，SMTP用于发送邮件，POP3用于接收邮件。<br>答案：True (T)  </p>
+<p>解释：<br>• SMTP（Push Model）：将邮件从发送方推送到接收方服务器。  </p>
+<p>• POP3/IMAP（Pull Model）：从服务器下载邮件到本地。  </p>
+<p>Key Point:<br>SMTP sends; POP3/IMAP retrieves.  </p>
+<hr>
+<p><strong>(15) 持久HTTP的网页传输</strong><br>题目：通过持久HTTP传输包含文本和3张图片的网页时，每个对象需单独建立连接。<br>答案：False (F)  </p>
+<p>解释：<br>• 持久HTTP：单个TCP连接传输所有对象（文本+图片），减少握手开销。  </p>
+<p>• 非持久HTTP：每个对象需独立连接（已淘汰）。  </p>
+<p>Key Point:<br>Persistent HTTP reuses the same connection for multiple objects.  </p>
+<hr>
+<p><strong>(16) 距离向量算法的依赖信息</strong><br>题目：距离向量路由算法依赖完整的网络拓扑信息。<br>答案：False (F)  </p>
+<p>解释：<br>• 距离向量（DV）：路由器仅与邻居交换路由表，无需全局拓扑（如RIP）。  </p>
+<p>• 链路状态（LS）：需要全局拓扑（如OSPF）。  </p>
+<p>Key Point:<br>DV uses local info; LS requires global topology.  </p>
+<hr>
+<p><strong>(17) ARP查询包的封装方式</strong><br>题目：ARP查询包封装在链路层广播帧中。<br>答案：True (T)  </p>
+<p>解释：<br>• ARP查询：目标MAC = <code>FF:FF:FF:FF:FF:FF</code>（广播地址），目标IP = 待解析的IP。  </p>
+<p>• 关键点：ARP是链路层协议，不依赖IP。  </p>
+<p>Key Point:<br>ARP queries use broadcast MAC to resolve IP → MAC.  </p>
+<hr>
+<p><strong>(18) TCP段的目标套接字依赖因素</strong><br>题目：TCP段到达主机时，其目标套接字由目标端口号和目标IP地址决定。<br>答案：False (F)  </p>
+<p>解释：<br>• 五元组：套接字由源IP、源端口、目标IP、目标端口、协议共同标识。  </p>
+<p>• 示例：同一主机的不同客户端可能使用相同目标IP和端口（如多个浏览器访问同一网站）。  </p>
+<p>Key Point:<br>Socket = (Source IP, Source Port, Dest IP, Dest Port, Protocol).  </p>
+<hr>
+<p><strong>总结 (Summary)</strong>  </p>
+<ol>
+<li>协议选择：TCP用于可靠性，UDP用于低延迟。  </li>
+<li>窗口机制：窗口=1时所有协议等效于停等。  </li>
+<li><p>核心区别：<br>• 流量控制（接收方） vs 拥塞控制（网络）。  </p>
+<p>• 距离向量（局部信息） vs 链路状态（全局拓扑）。  </p>
+</li>
+<li><p>常见误区：<br>• P2P是应用模式，非架构。  </p>
+<p>• ARP广播仅用于本地链路解析。  </p>
+</li>
+</ol>
+<p>考试重点 (Exam Focus):<br>• 协议机制对比（如TCP vs UDP、DV vs LS）。  </p>
+<p>• 封装与寻址规则（如ARP、套接字）。  </p>
+<p><strong>中英术语对照</strong><br>| 中文术语 | 英文术语               |<br>| ———— | ——————————— |<br>| 停等协议 | Stop-and-Wait Protocol |<br>| 流量控制 | Flow Control           |<br>| 拥塞控制 | Congestion Control     |<br>| 距离向量 | Distance Vector (DV)   |<br>| 链路状态 | Link State (LS)        |<br>| 五元组   | Five-Tuple             |</p>
+<h2 id="问题-1"><a href="#问题-1" class="headerlink" title="问题 (1)"></a>问题 (1)</h2><p>题目描述：<br>假设主机A通过TCP连接向主机B发送四个TCP段。第一个段的序列号为78；第二个段的序列号为138；第三个段的序列号为258；第四个段的序列号为348，其中包含60字节的数据。  </p>
+<p>(a) 第一、第二和第三段分别包含多少数据？（2分）<br>答案： 60字节、120字节、90字节  </p>
+<p>解释：<br>• 第一段：序列号为78，第二段序列号为138。数据量 = 138 - 78 = 60字节。  </p>
+<p>• 第二段：序列号为138，第三段序列号为258。数据量 = 258 - 138 = 120字节。  </p>
+<p>• 第三段：序列号为258，第四段序列号为348。数据量 = 348 - 258 = 90字节。  </p>
+<p>(b) 假设第一段和第四段依次到达B，但第二段和第三段丢失。主机B对每个到达的段发送的确认号分别是什么？（2分）<br>答案： 138、138  </p>
+<p>解释：<br>• 第一段到达：B期望接收序列号为78的数据，确认号为下一个期望的序列号，即78 + 60 = 138。  </p>
+<p>• 第四段到达：由于第二段和第三段丢失，B仍然期望接收序列号为138的数据，因此确认号仍为 138（表示未收到138及之后的数据）。  </p>
+<p>(c) 当主机B依次收到主机A重发的第二段和第三段时，主机B对每个到达的段发送的确认号是什么？（2分）<br>答案： 258、408  </p>
+<p>解释：<br>• 第二段到达：序列号为138，数据量为120字节。B确认号为138 + 120 = 258。  </p>
+<p>• 第三段到达：序列号为258，数据量为90字节。B确认号为258 + 90 = 348。但题目提到第四段（348）已到达，因此确认号为348 + 60 = 408（因为第四段包含60字节数据）。  </p>
+<hr>
+<p>Question (1)<br>Description:<br>Host A sends four TCP segments to Host B over a TCP connection. The first segment has a sequence number of 78; the second has 138; the third has 258; the fourth has 348 with 60 bytes of data.  </p>
+<p>(a) How much data are in the first, second, and third segments, respectively? (2 scores)<br>Answer: 60 bytes, 120 bytes, 90 bytes  </p>
+<p>Explanation:<br>• First segment: Sequence number = 78, next segment = 138. Data size = 138 - 78 = 60 bytes.  </p>
+<p>• Second segment: Sequence number = 138, next segment = 258. Data size = 258 - 138 = 120 bytes.  </p>
+<p>• Third segment: Sequence number = 258, next segment = 348. Data size = 348 - 258 = 90 bytes.  </p>
+<p>(b) Suppose the first and fourth segments arrive at B in order, but the second and third segments are lost. What acknowledgment numbers will Host B send to Host A for each arriving segment? (2 scores)<br>Answer: 138, 138  </p>
+<p>Explanation:<br>• First segment arrives: B expects sequence number 78. Acknowledgment number = 78 + 60 = 138.  </p>
+<p>• Fourth segment arrives: Since segments 2 and 3 are lost, B still expects sequence number 138. Acknowledgment number remains 138 (indicating missing data starting from 138).  </p>
+<p>(c) When Host B receives the retransmitted second and third segments from Host A in order, what acknowledgment numbers will Host B send for each arriving segment? (2 scores)<br>Answer: 258, 408  </p>
+<p>Explanation:<br>• Second segment arrives: Sequence number = 138, data size = 120 bytes. Acknowledgment number = 138 + 120 = 258.  </p>
+<p>• Third segment arrives: Sequence number = 258, data size = 90 bytes. Acknowledgment number = 258 + 90 = 348. However, the fourth segment (348) has already arrived, so the acknowledgment number becomes 348 + 60 = 408 (since the fourth segment contains 60 bytes).</p>
+<h2 id="问题-2"><a href="#问题-2" class="headerlink" title="问题 (2)"></a>问题 (2)</h2><p>题目描述：<br>考虑一个子网，其前缀为 <code>252.219.176/20</code>。  </p>
+<p>(a) 该子网支持的接口数量是多少？子网的广播地址是什么？（使用 <code>a.b.c.d/x</code> 表示法）<br>答案：<br>• 接口数量：4094  </p>
+<p>• 广播地址：<code>252.219.191.255</code>  </p>
+<p>解释：  </p>
+<ol>
+<li>子网掩码：<code>/20</code> 表示前 20 位是网络位，后 12 位是主机位。  </li>
+<li>可用主机数：(2^{12} - 2 = 4096 - 2 = 4094)（减去网络地址和广播地址）。  </li>
+<li><p>广播地址计算：<br>• 网络地址：<code>252.219.176.0/20</code>  </p>
+<p>• 最后一个可用地址：<code>252.219.191.255</code>（<code>176 + 15 = 191</code>，因为 <code>20</code> 位掩码下，第 3 字节变化范围是 <code>176</code> 到 <code>191</code>）。  </p>
+</li>
+</ol>
+<p>(b) 假设一个 ISP 拥有 <code>252.219.176/20</code> 的地址块，并希望将其划分为 4 个大小相同的子网。请给出这 4 个子网的前缀（使用 <code>a.b.c.d/x</code> 表示法）。<br>答案：<br>• <code>252.219.176.0/22</code>  </p>
+<p>• <code>252.219.180.0/22</code>  </p>
+<p>• <code>252.219.184.0/22</code>  </p>
+<p>• <code>252.219.188.0/22</code>  </p>
+<p>解释：  </p>
+<ol>
+<li>原地址块：<code>252.219.176/20</code>（<code>/20</code> 掩码，12 位主机位）。  </li>
+<li>划分 4 个子网：需要借用 2 位（(2^2 = 4)），因此新子网掩码为 <code>/22</code>。  </li>
+<li><p>子网划分：<br>• 第 3 字节的变化步长 = (2^{(22-16)} = 4)（因为 <code>252.219.176/20</code> 的第 3 字节从 <code>176</code> 开始）。  </p>
+<p>• 4 个子网的网络地址：  </p>
+<p>  ◦ <code>252.219.176.0/22</code>  </p>
+<p>  ◦ <code>252.219.180.0/22</code>  </p>
+<p>  ◦ <code>252.219.184.0/22</code>  </p>
+<p>  ◦ <code>252.219.188.0/22</code>  </p>
+</li>
+</ol>
+<hr>
+<p>Question (2)<br>Description:<br>Consider a subnet with the prefix <code>252.219.176/20</code>.  </p>
+<p>(a) How many interfaces does the subnet support? What is the broadcast address of the subnet? (Use <code>a.b.c.d/x</code> notation)<br>Answer:<br>• Number of interfaces: 4094  </p>
+<p>• Broadcast address: <code>252.219.191.255</code>  </p>
+<p>Explanation:  </p>
+<ol>
+<li>Subnet mask: <code>/20</code> means the first 20 bits are network bits, and the remaining 12 bits are host bits.  </li>
+<li>Available hosts: (2^{12} - 2 = 4096 - 2 = 4094) (excluding network and broadcast addresses).  </li>
+<li><p>Broadcast address calculation:<br>• Network address: <code>252.219.176.0/20</code>  </p>
+<p>• Last usable address: <code>252.219.191.255</code> (<code>176 + 15 = 191</code> because the 3rd octet ranges from <code>176</code> to <code>191</code> under <code>/20</code>).  </p>
+</li>
+</ol>
+<p>(b) Suppose an ISP owns the address block <code>252.219.176/20</code> and wants to divide it into 4 subnets of equal size. Provide the prefixes for the 4 subnets (using <code>a.b.c.d/x</code> notation).<br>Answer:<br>• <code>252.219.176.0/22</code>  </p>
+<p>• <code>252.219.180.0/22</code>  </p>
+<p>• <code>252.219.184.0/22</code>  </p>
+<p>• <code>252.219.188.0/22</code>  </p>
+<p>Explanation:  </p>
+<ol>
+<li>Original block: <code>252.219.176/20</code> (<code>/20</code> mask, 12 host bits).  </li>
+<li>Divide into 4 subnets: Requires borrowing 2 bits ((2^2 = 4)), so the new subnet mask is <code>/22</code>.  </li>
+<li><p>Subnet division:<br>• Step size for the 3rd octet = (2^{(22-16)} = 4) (since the 3rd octet starts at <code>176</code>).  </p>
+<p>• Network addresses of the 4 subnets:  </p>
+<p>  ◦ <code>252.219.176.0/22</code>  </p>
+<p>  ◦ <code>252.219.180.0/22</code>  </p>
+<p>  ◦ <code>252.219.184.0/22</code>  </p>
+<p>  ◦ <code>252.219.188.0/22</code></p>
+</li>
+</ol>
+<h2 id="问题-3"><a href="#问题-3" class="headerlink" title="问题 (3)"></a>问题 (3)</h2><p>题目描述：<br>使用标准CRC方法传输比特流 <code>101101001</code>，生成多项式为 (x^3 + x^2 + 1)。  </p>
+<p>(a) 请展示实际传输的比特串，并给出计算过程。<br>答案：<br>• 实际传输的比特串：<code>101101001010</code>  </p>
+<p>• 计算过程：  </p>
+<ol>
+<li>生成多项式 (G(x) = x^3 + x^2 + 1) → <code>1101</code>（3 阶 CRC，补 3 个 <code>0</code>）。  </li>
+<li>原始数据 <code>C(x) = 101101001</code>，补 3 个 <code>0</code> → <code>101101001000</code>。  </li>
+<li>模 2 除法：  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">101101001000 ÷ 1101 = 110010010 余 010  </span><br></pre></td></tr></table></figure></li>
+<li>CRC 码：原始数据 + 余数 = <code>101101001</code> + <code>010</code> → <code>101101001010</code>。  </li>
+</ol>
+<p>(b) 假设传输过程中从左数第 5 位发生反转，证明接收端能检测到该错误。<br>答案：<br>• 错误后的比特串：<code>101111001010</code>（第 5 位 <code>0</code> → <code>1</code>）。  </p>
+<p>• 检测过程：  </p>
+<ol>
+<li>用 <code>1101</code> 对 <code>101111001010</code> 做模 2 除法，余数 ≠ <code>0</code>。  </li>
+<li>结论：余数非零，错误被检测到。  </li>
+</ol>
+<hr>
+<p>Question (3)<br>Description:<br>A bit stream <code>101101001</code> is transmitted using the standard CRC method with the generator polynomial (x^3 + x^2 + 1).  </p>
+<p>(a) Show the actual transmitted bit string and the calculation process.<br>Answer:<br>• Transmitted bit string: <code>101101001010</code>  </p>
+<p>• Calculation steps:  </p>
+<ol>
+<li>Generator polynomial (G(x) = x^3 + x^2 + 1) → <code>1101</code> (3-bit CRC, append 3 <code>0</code>s).  </li>
+<li>Original data <code>C(x) = 101101001</code>, append 3 <code>0</code>s → <code>101101001000</code>.  </li>
+<li>Modulo-2 division:  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">101101001000 ÷ 1101 = 110010010 with remainder 010  </span><br></pre></td></tr></table></figure></li>
+<li>CRC code: Original data + remainder = <code>101101001</code> + <code>010</code> → <code>101101001010</code>.  </li>
+</ol>
+<p>(b) Suppose the 5th bit from the left is inverted during transmission. Show that the receiver detects this error.<br>Answer:<br>• Corrupted bit string: <code>101111001010</code> (5th bit flipped <code>0</code> → <code>1</code>).  </p>
+<p>• Detection process:  </p>
+<ol>
+<li>Divide <code>101111001010</code> by <code>1101</code> using modulo-2 arithmetic; remainder ≠ <code>0</code>.  </li>
+<li>Conclusion: Non-zero remainder proves error detection.  </li>
+</ol>
+<hr>
+<p>关键点总结 (Key Points)  </p>
+<ol>
+<li>CRC 计算：数据补 <code>0</code> 后做模 2 除法，余数附加到原始数据。  </li>
+<li>错误检测：接收端重新计算余数，若非零则判定传输错误。  </li>
+<li>生成多项式：(x^3 + x^2 + 1) 对应二进制 <code>1101</code>。  </li>
+</ol>
+<p>常见误区 (Common Pitfalls)<br>• 补 0 数量：CRC 阶数 = 生成多项式最高次幂（此处为 3）。  </p>
+<p>• 模 2 除法：无借位/进位，逐位异或运算。  </p>
+<p>• 位反转影响：任何单比特错误均能被 3 阶 CRC 检测到（因 (G(x)) 包含 (x+1) 因子）。</p>
+<h2 id="问题-4"><a href="#问题-4" class="headerlink" title="问题 (4)"></a>问题 (4)</h2><p>题目描述：<br>请描述以太网 CSMA/CD 中指数退避（Exponential Backoff）的目标和算法流程。  </p>
+<p><strong>答案：</strong><br>目标（Goal）:<br>• 动态调整重传延迟，以适应网络当前负载。  </p>
+<p>  • 低负载时：快速重试（较短的随机等待时间）。  </p>
+<p>  • 高负载时：延长重试间隔（避免连续碰撞）。  </p>
+<p>算法流程（Algorithm Process）:  </p>
+<ol>
+<li>第 m 次碰撞后，网卡（NIC）从范围 ( \{0, 1, 2, \dots, 2^m - 1\} ) 中随机选择一个整数 ( K )。  </li>
+<li><p>等待时间：( K \times 512 ) 比特时间（即发送 512 比特所需的时间）。<br>• 第一次碰撞：( K \in \{0, 1\} ) → 延迟 ( 0 ) 或 ( 512 ) 比特时间。  </p>
+<p>• 第二次碰撞：( K \in \{0, 1, 2, 3\} ) → 延迟最多 ( 1536 ) 比特时间。  </p>
+<p>• 第十次碰撞：( K \in \{0, 1, \dots, 1023\} ) → 延迟最多 ( 1023 \times 512 ) 比特时间。  </p>
+</li>
+<li><p>十六次碰撞后：放弃传输并报告错误。  </p>
+</li>
+</ol>
+<hr>
+<p>Question (4)<br>Description:<br>Describe the goal and algorithm process of exponential backoff in Ethernet CSMA/CD.  </p>
+<p><strong>Answer:</strong><br>Goal:<br>• Adapt retransmission delays to current network load.  </p>
+<p>  • Light load: Fast retry (shorter random wait).  </p>
+<p>  • Heavy load: Longer backoff (reduce collision probability).  </p>
+<p>Algorithm Process:  </p>
+<ol>
+<li>After the m-th collision, the NIC randomly selects ( K ) from ( \{0, 1, \dots, 2^m - 1\} ).  </li>
+<li><p>Wait time: ( K \times 512 ) bit times (time to transmit 512 bits).<br>• First collision: ( K \in \{0, 1\} ) → delay ( 0 ) or ( 512 ) bit times.  </p>
+<p>• Second collision: ( K \in \{0, 1, 2, 3\} ) → delay up to ( 1536 ) bit times.  </p>
+<p>• Tenth collision: ( K \in \{0, 1, \dots, 1023\} ) → delay up to ( 1023 \times 512 ) bit times.  </p>
+</li>
+<li><p>After 16 collisions: Abort transmission and report failure.  </p>
+</li>
+</ol>
+<hr>
+<p><strong>关键解释（Key Explanations）</strong>  </p>
+<ol>
+<li><p>为什么选择 512 比特时间？<br>• 以太网最小帧长为 64 字节（512 比特），确保发送方能检测到碰撞。  </p>
+</li>
+<li><p>指数增长的意义：<br>• 通过 ( 2^m ) 扩大随机范围，分散冲突节点的重传时间。  </p>
+</li>
+<li><p>放弃阈值（16 次）：<br>• 避免无限重试，维护网络稳定性。  </p>
+</li>
+</ol>
+<p><strong>示例（Example）</strong><br>• 第一次碰撞：可能等待 <code>0</code> 或 <code>512</code> 比特时间。  </p>
+<p>• 第三次碰撞：随机选择 ( K \in \{0, 1, 2, 3, 4, 5, 6, 7\} )，最长等待 ( 7 \times 512 = 3584 ) 比特时间。  </p>
+<p><strong>常见误区（Common Pitfalls）</strong><br>• 混淆比特时间与秒：比特时间取决于传输速率（如 10 Mbps 下，512 比特时间 = 51.2 μs）。  </p>
+<p>• 忽略随机性：退避时间必须随机，否则冲突节点会再次同步碰撞。</p>
+<p><strong>问题 (2)</strong><br>题目描述：<br>假设下图展示了TCP拥塞控制的行为，请回答以下问题，并简要解释你的答案。 </p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/1a1902e5120e9da3bc54d5c87491e19.png" alt="1a1902e5120e9da3bc54d5c87491e19"> </p>
+<p><strong>a) 指出TCP慢启动（Slow Start）运行的时间区间。（2分）</strong><br>答案：<br>TCP慢启动运行在区间 [1,6] 和 [20,23]。  </p>
+<p>解释：<br>• 慢启动阶段：拥塞窗口（cwnd）指数增长（每轮翻倍）。  </p>
+<p>• 在区间 [1,6]，cwnd从1增长到32（1→2→4→8→16→32）。  </p>
+<p>• 在区间 [20,23]，cwnd从1重新开始增长（说明发生了超时或丢包，触发了慢启动重启）。  </p>
+<hr>
+<p><strong>b) 指出TCP拥塞避免（Congestion Avoidance）运行的时间区间。（2分）</strong><br>答案：<br>TCP拥塞避免运行在区间 [6,14] 和 [15,19]。  </p>
+<p>解释：<br>• 拥塞避免阶段：cwnd线性增长（每轮增加1）。  </p>
+<p>• 在 [6,14]，cwnd从32增长到40（32→33→34→…→40）。  </p>
+<p>• 在 [15,19]，cwnd从20增长到24（说明发生了丢包，但未触发慢启动重启，可能是快速恢复）。  </p>
+<hr>
+<p><strong>c) 在第14轮传输后，丢包是通过“三次重复ACK”还是“超时”检测的？基于此信息，使用的是Reno还是Tahoe版本的TCP？（2分）</strong><br>答案：<br>• 丢包检测方式：三次重复ACK（Triple Duplicate ACK）。  </p>
+<p>• TCP版本：Reno。  </p>
+<p>解释：<br>• 在第14轮后，cwnd减半（从40降到20），但没有降到1，说明是快速恢复（Fast Recovery），这是Reno的特性。  </p>
+<p>• Tahoe在检测到任何丢包时都会直接回到慢启动（cwnd=1）。  </p>
+<hr>
+<p><strong>d) 第50个数据段是在哪一轮传输中发送的？（2分）</strong><br>答案：<br>第50个数据段在第6轮传输中发送。  </p>
+<p>解释：<br>• 慢启动阶段的数据段计算：  </p>
+<p>  • 第1轮：发送1个（1）  </p>
+<p>  • 第2轮：发送2个（2-3）  </p>
+<p>  • 第3轮：发送4个（4-7）  </p>
+<p>  • 第4轮：发送8个（8-15）  </p>
+<p>  • 第5轮：发送16个（16-31）  </p>
+<p>  • 第6轮：发送32个（32-63）  </p>
+<p>• 第50个数据段落在第6轮（32-63）。  </p>
+<hr>
+<p><strong>e) 假设在第23轮后通过三次重复ACK检测到丢包，此时拥塞窗口大小（cwnd）和阈值（Threshold）的值是多少？（2分）</strong><br>答案：<br>• 拥塞窗口大小（cwnd）：4段  </p>
+<p>• 阈值（Threshold）：4段  </p>
+<p>解释：<br>• 在第23轮后，cwnd从8降到4（说明发生了快速恢复）。  </p>
+<p>• 由于是三次重复ACK触发的丢包检测，Reno会将阈值设为当前cwnd的一半（即4），并进入拥塞避免阶段。  </p>
+<hr>
+<p><strong>Question (2)</strong><br>Description:<br>Assume the following graph shows the behavior of TCP congestion control. Answer each question with a short discussion justifying your answer.  </p>
+<p><strong>a) Identify the intervals when TCP Slow Start is operating. (2 scores)</strong><br>Answer:<br>TCP Slow Start operates in intervals [1,6] and [20,23].  </p>
+<p>Explanation:<br>• Slow Start Phase: cwnd grows exponentially (doubles every round).  </p>
+<p>• In [1,6], cwnd increases from 1 to 32 (1→2→4→8→16→32).  </p>
+<p>• In [20,23], cwnd restarts from 1 (indicating a timeout or packet loss triggered Slow Start).  </p>
+<hr>
+<p><strong>b) Identify the intervals when TCP Congestion Avoidance is operating. (2 scores)</strong><br>Answer:<br>TCP Congestion Avoidance operates in intervals [6,14] and [15,19].  </p>
+<p>Explanation:<br>• Congestion Avoidance Phase: cwnd grows linearly (increases by 1 per round).  </p>
+<p>• In [6,14], cwnd increases from 32 to 40 (32→33→34→…→40).  </p>
+<p>• In [15,19], cwnd increases from 20 to 24 (indicating packet loss but no Slow Start restart, likely Fast Recovery).  </p>
+<hr>
+<p><strong>c) After the 14th transmission round, is segment loss detected by a Triple Duplicate ACK or Timeout? Based on this, which TCP version (Reno or Tahoe) is used? (2 scores)</strong><br>Answer:<br>• Loss Detection: Triple Duplicate ACK.  </p>
+<p>• TCP Version: Reno.  </p>
+<p>Explanation:<br>• After round 14, cwnd is halved (40→20) but not reset to 1, indicating Fast Recovery, a feature of Reno.  </p>
+<p>• Tahoe resets cwnd to 1 upon any loss detection.  </p>
+<hr>
+<p><strong>d) During which transmission round is the 50th segment sent? (2 scores)</strong><br>Answer:<br>The 50th segment is sent in round 6.  </p>
+<p>Explanation:<br>• Slow Start Segment Calculation:  </p>
+<p>  • Round 1: 1 segment (1)  </p>
+<p>  • Round 2: 2 segments (2-3)  </p>
+<p>  • Round 3: 4 segments (4-7)  </p>
+<p>  • Round 4: 8 segments (8-15)  </p>
+<p>  • Round 5: 16 segments (16-31)  </p>
+<p>  • Round 6: 32 segments (32-63)  </p>
+<p>• The 50th segment falls in round 6 (32-63).  </p>
+<hr>
+<p><strong>e) If a packet loss is detected after the 23rd round by a Triple Duplicate ACK, what are the cwnd and Threshold values? (2 scores)</strong><br>Answer:<br>• cwnd: 4 segments  </p>
+<p>• Threshold: 4 segments  </p>
+<p>Explanation:<br>• After round 23, cwnd drops from 8 to 4 (Fast Recovery).  </p>
+<p>• Since loss is detected by Triple Duplicate ACK, Reno sets Threshold = cwnd/2 = 4 and enters Congestion Avoidance.  </p>
+<hr>
+<p><strong>关键总结（Key Takeaways）</strong>  </p>
+<ol>
+<li>Slow Start：指数增长（cwnd每轮翻倍）。  </li>
+<li>Congestion Avoidance：线性增长（cwnd每轮+1）。  </li>
+<li><p>Reno vs. Tahoe：<br>• Reno使用快速恢复（Fast Recovery），cwnd减半但不重置为1。  </p>
+<p>• Tahoe在任何丢包后都重置cwnd=1。  </p>
+</li>
+<li><p>丢包检测：<br>• 三次重复ACK → 快速恢复（Reno）。  </p>
+<p>• 超时 → 慢启动重启（所有版本）。</p>
+</li>
+</ol>
+<h2 id="问题-（5）"><a href="#问题-（5）" class="headerlink" title="问题 （5）"></a><strong>问题 （5）</strong></h2><p><strong>中文题目：</strong><br>考虑以下网络图，其中各链路的成本已标出。请使用 Dijkstra 最短路径算法 计算从节点 x 到所有其他节点的最短路径。<br>注意：<br>• 在选择下一个节点时，如果有多个节点的当前最小成本相同，则选择 ID 较小 的节点（例如，如果 t 和 v 的最小成本相同，则选择 t）。  </p>
+<p>• 请填写下表，展示算法的计算过程。  </p>
+<p><strong>英文题目 (English Version):</strong><br>Consider the following network with the indicated link costs. Use Dijkstra’s shortest-path algorithm to compute the shortest path from node x to all other nodes.<br>Note:<br>• When selecting the next node, if multiple nodes have the same minimum cost, choose the one with the smallest ID (e.g., if t and v have the same cost, select t).  </p>
+<p>• Show how the algorithm works by completing the given table.  </p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/edc590dae70befc77ffd14693eea955.png" alt="image-20250429205309928"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/8d1d210183c6a78cf5d31b2f6d69781.png" alt="image-20250429205321770"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://www.totorocatcat.top/">Totoro</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://totorocatcat.top/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%B2%BE%E5%8D%8E%E5%8D%B7%E2%80%94%E2%80%942/">http://totorocatcat.top/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%B2%BE%E5%8D%8E%E5%8D%B7%E2%80%94%E2%80%942/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://totorocatcat.top" target="_blank">Totoroの旅</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%9F%BA%E7%A1%80/">基础</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/eebd9ef7694eae52480e45e63632786.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%80%83%E7%82%B9%E6%B1%87%E6%80%BB/" title="计算机网络考点汇总"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/f1e7bd3259972022ef5860e626348bb.bmp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">计算机网络考点汇总</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2010%E5%B9%B4%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%9F%E8%80%83-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" title="2010年计算机统考-数据结构"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/e345af5b515d2f76bb44fdaa6eff3db4d6f598d3.jpg@1256w_908h_!web-article-pic.avif" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-10-04</div><div class="title">2010年计算机统考-数据结构</div></div></a></div><div><a href="/2011%E5%B9%B4%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%9F%E8%80%83-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E9%83%A8%E5%88%86/" title="2011年计算机统考-数据结构部分"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/e345af5b515d2f76bb44fdaa6eff3db4d6f598d3.jpg@1256w_908h_!web-article-pic.avif" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-10-05</div><div class="title">2011年计算机统考-数据结构部分</div></div></a></div><div><a href="/2012%E5%B9%B4%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%9F%E8%80%83-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E9%83%A8%E5%88%86/" title="2012年计算机统考-数据结构部分"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/e345af5b515d2f76bb44fdaa6eff3db4d6f598d3.jpg@1256w_908h_!web-article-pic.avif" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-10-05</div><div class="title">2012年计算机统考-数据结构部分</div></div></a></div><div><a href="/2022%E5%B9%B4C-%E8%AF%95%E5%8D%B7%E8%BD%AF%E4%BB%B6%E5%AD%A6%E9%99%A2/" title="2022年C++试卷软件学院"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://source.fomal.cc/img/default_cover_80.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-05-16</div><div class="title">2022年C++试卷软件学院</div></div></a></div><div><a href="/2022C-%E8%AF%95%E5%8D%B7/" title="2022C++试卷"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://source.fomal.cc/img/default_cover_80.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-05-16</div><div class="title">2022C++试卷</div></div></a></div><div><a href="/AJAX%E5%9F%BA%E7%A1%80/" title="AJAX基础"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/ushio-api-img-moe@5.0.16/img_169_2560x1440_96_null_normal.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-05-16</div><div class="title">AJAX基础</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/px3.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Totoro</div><div class="author-info__description">热爱文学的SCUT软件学院学生</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">805</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">34</div></a></div><a id="card-info-btn" href="https://github.com/4512abc"><i class="fab fa-github"></i><span>🛴前往小窝......</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/4512abc" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:4512abc@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到龙猫の小窝</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%B2%BE%E5%8D%8E%E5%8D%B7%E2%80%94%E2%80%942"><span class="toc-text">计算机网络精华卷——2</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E9%80%89%E6%8B%A9%E9%A2%98%E8%A7%A3%E6%9E%90-Computer-Networking-Multiple-Choice-Questions-Analysis"><span class="toc-text">计算机网络选择题解析 (Computer Networking Multiple-Choice Questions Analysis)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%A1%AB%E7%A9%BA%E9%A2%98%E8%A7%A3%E6%9E%90-Computer-Networking-Fill-in-the-Blank-Questions-Analysis"><span class="toc-text">计算机网络填空题解析 (Computer Networking Fill-in-the-Blank Questions Analysis)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%88%A4%E6%96%AD%E9%A2%98%E8%A7%A3%E6%9E%90-Computer-Networking-True-False-Questions-Analysis"><span class="toc-text">计算机网络判断题解析 (Computer Networking True&#x2F;False Questions Analysis)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98-1"><span class="toc-text">问题 (1)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98-2"><span class="toc-text">问题 (2)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98-3"><span class="toc-text">问题 (3)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98-4"><span class="toc-text">问题 (4)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98-%EF%BC%885%EF%BC%89"><span class="toc-text">问题 （5）</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%B2%BE%E5%8D%8E%E5%8D%B7%E2%80%94%E2%80%942/" title="计算机网络精华卷——2"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/eebd9ef7694eae52480e45e63632786.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="计算机网络精华卷——2"/></a><div class="content"><a class="title" href="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%B2%BE%E5%8D%8E%E5%8D%B7%E2%80%94%E2%80%942/" title="计算机网络精华卷——2">计算机网络精华卷——2</a><time datetime="2025-04-29T12:55:20.000Z" title="发表于 2025-04-29 20:55:20">2025-04-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%80%83%E7%82%B9%E6%B1%87%E6%80%BB/" title="计算机网络考点汇总"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/f1e7bd3259972022ef5860e626348bb.bmp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="计算机网络考点汇总"/></a><div class="content"><a class="title" href="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%80%83%E7%82%B9%E6%B1%87%E6%80%BB/" title="计算机网络考点汇总">计算机网络考点汇总</a><time datetime="2025-04-29T12:13:59.000Z" title="发表于 2025-04-29 20:13:59">2025-04-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CA%E5%8D%B7/" title="计算机网络A卷"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/db7baa72bb74cf1f1d05e0f6e4c9513.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="计算机网络A卷"/></a><div class="content"><a class="title" href="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CA%E5%8D%B7/" title="计算机网络A卷">计算机网络A卷</a><time datetime="2025-04-29T11:46:07.000Z" title="发表于 2025-04-29 19:46:07">2025-04-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C2015%E5%B9%B4B/" title="计算机网络2015年B"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/f1e7bd3259972022ef5860e626348bb.bmp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="计算机网络2015年B"/></a><div class="content"><a class="title" href="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C2015%E5%B9%B4B/" title="计算机网络2015年B">计算机网络2015年B</a><time datetime="2025-04-29T11:11:48.000Z" title="发表于 2025-04-29 19:11:48">2025-04-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%AF%95%E5%8D%B7%E7%B2%BE%E9%80%89%E2%80%94%E2%80%941%EF%BC%88%E9%87%8D%E8%A6%81%EF%BC%89/" title="计算机网络试卷精选——1（重要）"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://source.fomal.cc/img/default_cover_58.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="计算机网络试卷精选——1（重要）"/></a><div class="content"><a class="title" href="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%AF%95%E5%8D%B7%E7%B2%BE%E9%80%89%E2%80%94%E2%80%941%EF%BC%88%E9%87%8D%E8%A6%81%EF%BC%89/" title="计算机网络试卷精选——1（重要）">计算机网络试卷精选——1（重要）</a><time datetime="2025-04-29T10:19:35.000Z" title="发表于 2025-04-29 18:19:35">2025-04-29</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 - 2025 By Totoro</div><div class="footer_custom_text">I wish you to become your own sun, no need to rely on who's light.<p><a target="_blank" href="https://hexo.io/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&logo=hexo" title="博客框架为Hexo"></a>&nbsp;<a target="_blank" href="https://butterfly.js.org/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&logo=bitdefender" title="主题采用butterfly"></a>&nbsp;<a target="_blank" href="https://www.jsdelivr.com/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&logo=jsDelivr" title="本站使用JsDelivr为静态资源提供CDN加速"></a> &nbsp;<a target="_blank" href="https://vercel.com/ "><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Hosted-Vervel-brightgreen?style=flat&logo=Vercel" title="本站采用双线部署，默认线路托管于Vercel"></a>&nbsp;<a target="_blank" href="https://vercel.com/ "><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Hosted-Coding-0cedbe?style=flat&logo=Codio" title="本站采用双线部署，联通线路托管于Coding"></a>&nbsp;<a target="_blank" href="https://github.com/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&logo=GitHub" title="本站项目由Gtihub托管"></a>&nbsp;<a target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&logo=Claris" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"></a></p></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat-btn" type="button" title="聊天"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="/js/tw_cn.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@5.2.0/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'HT1PalaKkPaG1UqAXBhJXIu8-gzGzoHsz',
+      appKey: 'iT0TnVVAwf9zuZ7NqwclQItY',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://cdn.jsdelivr.net/npm/valine@1.5.1/dist/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><script defer src="/js/light.js"></script><canvas id="universe"></canvas><script defer src="/js/universe.js"></script><script async src="/js/title.js"></script><script defer src="https://npm.elemecdn.com/jquery@latest/dist/jquery.min.js"></script><script defer data-pjax src="/js/cat.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="1" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener
+  btf.removeGlobalFnEvent('pjax')
+  btf.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.12.0"></script></div></div><!-- hexo injector body_end start --><script data-pjax>
+  function butterfly_swiper_injector_config(){
+    var parent_div_git = document.getElementById('recent-posts');
+    var item_html = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms;"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;诗录/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/4b31456c6f0f4489f99177f89e936de7286431045.png@1256w_708h_!web-article-pic.avif" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-10-01</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;诗录/&quot;);" href="javascript:void(0);" alt="">诗录</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;诗录/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;诗兴大发/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://source.fomal.cc/img/default_cover_69.webp" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-01-29</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;诗兴大发/&quot;);" href="javascript:void(0);" alt="">诗兴大发</a><div class="blog-slider__text">未觉，却是中二少年的诗仙梦</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;诗兴大发/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;TotoroのPlan/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/51d37eba99d243607ddedfff6e91568f617436609.jpg@1256w_1884h_!web-article-pic.avif" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-10-05</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;TotoroのPlan/&quot;);" href="javascript:void(0);" alt="">TotoroのPlan</a><div class="blog-slider__text">方便大二看（）</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;TotoroのPlan/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;Markdown格式/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/ushio-api-img-moe@5.0.48/img_482_1920x1080_96_null_normal.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-03-03</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;Markdown格式/&quot;);" href="javascript:void(0);" alt="">Markdown格式</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;Markdown格式/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载butterfly_swiper')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_swiper_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_swiper_injector_config();
+  }
+  </script><script defer src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.js"></script><script defer data-pjax src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper_init.js"></script><script data-pjax>
+    function butterfly_categories_card_injector_config(){
+      var parent_div_git = document.getElementById('recent-posts');
+      var item_html = '<style>li.categoryBar-list-item{width:32.3%;}.categoryBar-list{max-height: 380px;overflow:auto;}.categoryBar-list::-webkit-scrollbar{width:0!important}@media screen and (max-width: 650px){.categoryBar-list{max-height: 320px;}}</style><div class="recent-post-item" style="height:auto;width:100%;padding:0px;"><div id="categoryBar"><ul class="categoryBar-list"><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_12.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/离散数学/&quot;);" href="javascript:void(0);">离散数学</a><span class="categoryBar-list-count">33</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_13.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS61B/&quot;);" href="javascript:void(0);">CS61B</a><span class="categoryBar-list-count">76</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_14.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/期末の旅/&quot;);" href="javascript:void(0);">期末の旅</a><span class="categoryBar-list-count">99</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_17.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/刷题计划/&quot;);" href="javascript:void(0);">刷题计划</a><span class="categoryBar-list-count">60</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_18.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/区域赛の旅/&quot;);" href="javascript:void(0);">区域赛の旅</a><span class="categoryBar-list-count">7</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_19.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/Codeforcesの旅/&quot;);" href="javascript:void(0);">Codeforcesの旅</a><span class="categoryBar-list-count">24</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_20.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/牛客の旅/&quot;);" href="javascript:void(0);">牛客の旅</a><span class="categoryBar-list-count">65</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_21.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/ACMの旅/&quot;);" href="javascript:void(0);">ACMの旅</a><span class="categoryBar-list-count">42</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_22.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/数学建模/&quot;);" href="javascript:void(0);">数学建模</a><span class="categoryBar-list-count">26</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_22.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/前端の旅/&quot;);" href="javascript:void(0);">前端の旅</a><span class="categoryBar-list-count">17</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_23.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/数据结构/&quot;);" href="javascript:void(0);">数据结构</a><span class="categoryBar-list-count">47</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_24.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/Atcoderの旅/&quot;);" href="javascript:void(0);">Atcoderの旅</a><span class="categoryBar-list-count">53</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_25.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/C-の旅/&quot;);" href="javascript:void(0);">C++の旅</a><span class="categoryBar-list-count">17</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_26.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS70の旅/&quot;);" href="javascript:void(0);">CS70の旅</a><span class="categoryBar-list-count">24</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_27.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CSAPPの旅/&quot;);" href="javascript:void(0);">CSAPPの旅</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_28.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/计算机组成原理/&quot;);" href="javascript:void(0);">计算机组成原理</a><span class="categoryBar-list-count">47</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_29.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/编程基础/&quot;);" href="javascript:void(0);">编程基础</a><span class="categoryBar-list-count">14</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_30.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/JAVAの旅/&quot;);" href="javascript:void(0);">JAVAの旅</a><span class="categoryBar-list-count">10</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_31.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/MIT-6-031-Software-Construction/&quot;);" href="javascript:void(0);">MIT 6.031:Software Construction</a><span class="categoryBar-list-count">16</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_32.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS-110L/&quot;);" href="javascript:void(0);">CS 110L</a><span class="categoryBar-list-count">3</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_33.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/数据库の旅/&quot;);" href="javascript:void(0);">数据库の旅</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_34.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/灵魂の旅/&quot;);" href="javascript:void(0);">灵魂の旅</a><span class="categoryBar-list-count">2</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_35.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/个人安排/&quot;);" href="javascript:void(0);">个人安排</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_36.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/杂项/&quot;);" href="javascript:void(0);">杂项</a><span class="categoryBar-list-count">13</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_37.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/文学/&quot;);" href="javascript:void(0);">文学</a><span class="categoryBar-list-count">49</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_38.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/力扣の旅/&quot;);" href="javascript:void(0);">力扣の旅</a><span class="categoryBar-list-count">20</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_39.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/计算机网络/&quot;);" href="javascript:void(0);">计算机网络</a><span class="categoryBar-list-count">18</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_40.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/千里十二行/&quot;);" href="javascript:void(0);">千里十二行</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_41.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/🗡指offer/&quot;);" href="javascript:void(0);">🗡指offer</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_42.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/少年游/&quot;);" href="javascript:void(0);">少年游</a><span class="categoryBar-list-count">2</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_43.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/算法提高课/&quot;);" href="javascript:void(0);">算法提高课</a><span class="categoryBar-list-count">3</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_44.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/汇编の旅/&quot;);" href="javascript:void(0);">汇编の旅</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_44.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/C-实训/&quot;);" href="javascript:void(0);">C++实训</a><span class="categoryBar-list-count">8</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_45.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS知识/&quot;);" href="javascript:void(0);">CS知识</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li></ul></div></div>';
+      console.log('已挂载butterfly_categories_card')
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+      }
+    if( document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+    butterfly_categories_card_injector_config()
+    }
+  </script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>
