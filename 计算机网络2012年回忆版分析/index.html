@@ -1,0 +1,1124 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>计算机网络2012年回忆版分析 | Totoroの旅</title><meta name="author" content="Totoro"><meta name="copyright" content="Totoro"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="计算机网络2012年回忆版分析  注重分析和考点分布，明确侧重点！  一、选择题解析 (Multiple-Choice Questions Analysis)  1. 书本原题 题目：题目未具体说明，需参考教材对应章节。 建议：复习课程教材中标记的重点例题。  2. Ethernet Interface Address 分配方式 题目：Ethernet interface">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机网络2012年回忆版分析">
+<meta property="og:url" content="http://totorocatcat.top/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C2012%E5%B9%B4%E5%9B%9E%E5%BF%86%E7%89%88%E5%88%86%E6%9E%90/index.html">
+<meta property="og:site_name" content="Totoroの旅">
+<meta property="og:description" content="计算机网络2012年回忆版分析  注重分析和考点分布，明确侧重点！  一、选择题解析 (Multiple-Choice Questions Analysis)  1. 书本原题 题目：题目未具体说明，需参考教材对应章节。 建议：复习课程教材中标记的重点例题。  2. Ethernet Interface Address 分配方式 题目：Ethernet interface">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/f1e7bd3259972022ef5860e626348bb.bmp">
+<meta property="article:published_time" content="2025-04-29T10:16:59.000Z">
+<meta property="article:modified_time" content="2025-04-29T10:18:41.384Z">
+<meta property="article:author" content="Totoro">
+<meta property="article:tag" content="基础">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/f1e7bd3259972022ef5860e626348bb.bmp"><link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/b5ca6e582a7a45e6fde46e616eeb68e.png"><link rel="canonical" href="http://totorocatcat.top/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C2012%E5%B9%B4%E5%9B%9E%E5%BF%86%E7%89%88%E5%88%86%E6%9E%90/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta/><link rel="stylesheet" href="/css/index.css?v=4.12.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  noticeOutdate: {"limitDay":765,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体中文","cht_to_chs":"你已切换为简体中文","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"top-right"},
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '计算机网络2012年回忆版分析',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: true,
+  isToc: true,
+  postUpdate: '2025-04-29 18:18:41'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const now = new Date()
+          const hour = now.getHours()
+          const isNight = hour <= 6 || hour >= 18
+          if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/universe.css"><link rel="stylesheet" href="/css/scrollbar.css"><link rel="stylesheet" href="/css/cat.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-categories-card@1.0.0/lib/categorybar.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-double-row-display@1.00/cardlistpost.min.css"/>
+<style>#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags:before {content:"\A";
+  white-space: pre;}#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags > .article-meta__separator{display:none}</style>
+<link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiperstyle.css" media="print" onload="this.media='all'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><div class="loading-img"></div><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><script>window.paceOptions = {
+  restartOnPushState: false
+}
+
+document.addEventListener('pjax:send', () => {
+  Pace.restart()
+})
+</script><link rel="stylesheet" href="/css/progress_bar.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/px3.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">801</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">34</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home-alt"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-envelope-open"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 趣味</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/project/"><i class="fa-fw fas fas fa-folder"></i><span> 项目</span></a></div><div class="menus_item"><a class="site-page" href="/stars/"><i class="fa-fw fas fa-bookmark"></i><span> 收藏</span></a></div><div class="menus_item"><a class="site-page" href="/bilibili/"><i class="fa-fw fas fa-tv"></i><span> 追番</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/f1e7bd3259972022ef5860e626348bb.bmp')"><nav id="nav"><span id="blog-info"><a href="/" title="Totoroの旅"><span class="site-name">Totoroの旅</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home-alt"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-envelope-open"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 趣味</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/project/"><i class="fa-fw fas fas fa-folder"></i><span> 项目</span></a></div><div class="menus_item"><a class="site-page" href="/stars/"><i class="fa-fw fas fa-bookmark"></i><span> 收藏</span></a></div><div class="menus_item"><a class="site-page" href="/bilibili/"><i class="fa-fw fas fa-tv"></i><span> 追番</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">计算机网络2012年回忆版分析</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-04-29T10:16:59.000Z" title="发表于 2025-04-29 18:16:59">2025-04-29</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-04-29T10:18:41.384Z" title="更新于 2025-04-29 18:18:41">2025-04-29</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">6.3k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>23分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="计算机网络2012年回忆版分析"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C2012%E5%B9%B4%E5%9B%9E%E5%BF%86%E7%89%88%E5%88%86%E6%9E%90/#post-comment" itemprop="discussionUrl"><span class="valine-comment-count" data-xid="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C2012%E5%B9%B4%E5%9B%9E%E5%BF%86%E7%89%88%E5%88%86%E6%9E%90/" itemprop="commentCount"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="计算机网络2012年回忆版分析">计算机网络2012年回忆版分析</h1>
+<blockquote>
+<p>注重分析和考点分布，明确侧重点！</p>
+</blockquote>
+<h2 id="一选择题解析-multiple-choice-questions-analysis"><strong>一、选择题解析
+(Multiple-Choice Questions Analysis)</strong></h2>
+<hr>
+<p><strong>1. 书本原题</strong><br>
+题目：题目未具体说明，需参考教材对应章节。<br>
+建议：复习课程教材中标记的重点例题。</p>
+<hr>
+<p><strong>2. Ethernet Interface Address 分配方式</strong><br>
+题目：Ethernet interface address 由谁分配？<br>
+选项：<br>
+A. 制造时分配<br>
+B. 手动或通过 DNS 分配<br>
+C. 随机生成并通过广播检查唯一性<br>
+D. 共享高位比特以确定子网<br>
+答案：A. 制造时分配<br>
+解释：<br>
+• MAC 地址由 IEEE 统一分配，前 24 位为厂商 ID，后 24
+位为设备唯一标识，固化在网卡中。</p>
+<p>Key Point: Burned into NIC by manufacturer.</p>
+<hr>
+<p><strong>3. 选择不同协议</strong><br>
+题目：以下哪个协议与其他不同？<br>
+选项：<br>
+A. CSMA/CD<br>
+B. TDMA<br>
+C. ALOHA<br>
+D. CSMA<br>
+答案：B. TDMA<br>
+解释：<br>
+• TDMA 是时分多址（Time Division），属于集中式控制协议。</p>
+<p>• 其他选项（CSMA/CD、ALOHA、CSMA）均为随机接入协议。</p>
+<p>Key Point: TDMA is scheduling-based, others are contention-based.</p>
+<hr>
+<p><strong>4. ARP Query 包的封装</strong><br>
+题目：ARP 查询包封装在什么中？<br>
+选项：<br>
+A. 目标特定的链路层帧<br>
+B. 链路层广播帧<br>
+C. IP 数据报<br>
+D. 以上都不是<br>
+答案：B. 链路层广播帧<br>
+解释：<br>
+• ARP 查询通过广播帧（目标 MAC = FF:FF:FF:FF:FF:FF）发送，以解析 IP
+对应的 MAC 地址。</p>
+<p>Key Point: ARP uses broadcast at link layer.</p>
+<hr>
+<p><strong>5. IP 数据报路径认知</strong><br>
+题目：IP
+数据报经过源主机和路由器时，主机和路由器是否知道完整路径？<br>
+选项：<br>
+A. 两者均知道<br>
+B. 仅源主机知道<br>
+C. 仅路由器知道<br>
+D. 两者均不知道<br>
+答案：D. 两者均不知道<br>
+解释：<br>
+• IP 协议是无连接的，路由决策基于逐跳转发，仅知道下一跳。</p>
+<p>Key Point: Next-hop routing, no end-to-end path knowledge.</p>
+<hr>
+<p><strong>6. 路由器的 IP 地址数量</strong><br>
+题目：一个路由器有几个 IP 地址？<br>
+选项：<br>
+A. 至少两个<br>
+B. 一个<br>
+C. 没有<br>
+答案：A. 至少两个<br>
+解释：<br>
+• 路由器每个接口需要一个 IP 地址（至少两个接口连接不同网络）。</p>
+<p>Key Point: One IP per interface (minimum two for connectivity).</p>
+<hr>
+<p><strong>7. TCP 的特性</strong><br>
+题目：TCP 的特性包括？<br>
+选项：<br>
+A. 流量控制<br>
+B. 连接建立<br>
+C. 拥塞控制<br>
+D. 以上所有<br>
+答案：D. 以上所有<br>
+解释：<br>
+• TCP
+提供可靠传输，涵盖流量控制（滑动窗口）、三次握手（连接建立）、拥塞控制（慢启动/AIMD）。</p>
+<p>Key Point: TCP = Reliability + Flow/Congestion Control.</p>
+<hr>
+<p><strong>8. 数据占比计算</strong><br>
+题目：每秒 120 字节数据封装在无选项字段的 TCP/IP
+数据报中，应用数据占比多少？<br>
+选项：<br>
+A. 80%<br>
+B. 75%<br>
+C. 60%<br>
+D. 25%<br>
+答案：B. 75%<br>
+解释：<br>
+• TCP 头：20 字节，IP 头：20 字节。</p>
+<p>• 总开销 = 40 字节，数据占比 = 120 / (120+40) = 75%。</p>
+<p>Key Point: Overhead = 40 bytes (TCP+IP headers).</p>
+<hr>
+<p><strong>9. 传输层分用</strong><br>
+题目：将传输层段递送到正确套接字的过程称为？<br>
+选项：<br>
+A. 分用 (Demultiplexing)<br>
+B. 复用 (Multiplexing)<br>
+C. TDM<br>
+D. FDM<br>
+答案：A. 分用 (Demultiplexing)<br>
+解释：<br>
+• 分用：通过端口号将数据定向到目标应用进程。</p>
+<p>Key Point: Port numbers → Correct socket.</p>
+<hr>
+<p><strong>10. ICMP 的用途</strong><br>
+题目：ICMP 用于？<br>
+选项：<br>
+A. 错误报告<br>
+B. Ping<br>
+C. 两者<br>
+D. 都不是<br>
+答案：C. 两者<br>
+解释：<br>
+• ICMP 用于错误报告（如目标不可达）和网络诊断（如
+Ping/Traceroute）。</p>
+<p>Key Point: ICMP = Error reporting + Diagnostics.</p>
+<hr>
+<p><strong>11. Internet 分层的原因</strong><br>
+题目：Internet 分层的主要原因是？（选两个）<br>
+可能选项：<br>
+• 模块化设计（便于升级和维护）</p>
+<p>• 明确功能分工（各层独立）</p>
+<p>Key Point: Modularity + Clear responsibility.</p>
+<hr>
+<p><strong>12. 以太网交换机的转发表建立</strong><br>
+题目：以太网交换机的转发表如何建立？<br>
+选项：<br>
+A. 自学习<br>
+B. 手动配置<br>
+C. 通过 DNS<br>
+答案：A. 自学习<br>
+解释：<br>
+• 交换机通过自学习记录源 MAC 地址与端口的映射。</p>
+<p>Key Point: Learn from source MAC in frames.</p>
+<hr>
+<p><strong>13. 数据报分片问题</strong><br>
+题目：将 999 字节数据报分片到 MTU=500
+字节的链路中，分片数量和偏移量？<br>
+选项：<br>
+A. 2 个分片，偏移 0, 500<br>
+B. 3 个分片，偏移 0, 60, 120<br>
+答案：B. 3 个分片，偏移 0, 60, 120<br>
+解释：<br>
+• 每分片数据 ≤ 480 字节（MTU - 20 字节 IP 头）。</p>
+<p>• 偏移量 = 数据位置 / 8（单位：8 字节块）。</p>
+<p>Key Point: Offset in 8-byte units.</p>
+<hr>
+<p><strong>14. 外部路由协议的主导因素</strong><br>
+题目：Inter-AS 路由决策的主导因素是？<br>
+选项：<br>
+A. 地理距离<br>
+B. 策略<br>
+C. AS 跳数<br>
+D. 拥塞度<br>
+答案：B. 策略<br>
+解释：<br>
+• BGP 是策略驱动的（如商业合约、政治限制）。</p>
+<p>Key Point: Policy &gt; Metrics in inter-AS routing.</p>
+<hr>
+<p><strong>15. 网页传输特性</strong><br>
+题目：网页文档传输的特性是？<br>
+选项：<br>
+A. 对丢失敏感但对时间不敏感<br>
+B. 对丢失不敏感但对时间敏感<br>
+答案：A. 对丢失敏感但对时间不敏感<br>
+解释：<br>
+• HTTP 基于 TCP，要求数据完整，但允许延迟。</p>
+<p>Key Point: Web = Loss-intolerant, delay-tolerant.</p>
+<hr>
+<p><strong>总结 (Summary)</strong><br>
+1. MAC 地址：制造时分配。<br>
+2. 协议差异：TDMA 是调度协议，其他为随机接入。<br>
+3. IP 路由：逐跳转发，无完整路径认知。<br>
+4. TCP 特性：可靠传输 + 流量/拥塞控制。<br>
+5. 分片与偏移：MTU 限制，偏移量以 8 字节为单位。<br>
+6. 分层与分用：模块化设计 + 端口分用。</p>
+<p>考试重点 (Exam Focus):<br>
+• 协议分类、TCP/IP 头部开销、路由决策因素、分层原理。</p>
+<h2 id="二填空题解析-fill-in-the-blank-questions-analysis"><strong>二、填空题解析
+(Fill-in-the-Blank Questions Analysis)</strong></h2>
+<hr>
+<p><strong>1. Data Link, Network, Transport 层的连接对象</strong><br>
+题目：Data link, network, transport 分别是什么之间的链接？<br>
+答案：<br>
+• Data Link
+Layer（数据链路层）：直接相连的节点（如主机-交换机、主机-路由器）。</p>
+<p>• Network Layer（网络层）：源主机到目标主机（端到端）。</p>
+<p>• Transport Layer（传输层）：进程到进程（通过端口号区分应用）。</p>
+<p>解释：<br>
+• 数据链路层：解决同一局域网内帧的传输（MAC 地址）。</p>
+<p>• 网络层：跨网络路由 IP 数据报（IP 地址）。</p>
+<p>• 传输层：确保应用进程间的可靠通信（端口号）。</p>
+<p>Key Point:<br>
+• Data Link: Node-to-node (MAC).</p>
+<p>• Network: Host-to-host (IP).</p>
+<p>• Transport: Process-to-process (Port).</p>
+<hr>
+<p><strong>2. 四种网络时延 (Four Types of Network Delay)</strong><br>
+题目：四个时延是什么？<br>
+答案：<br>
+1. 传输时延（Transmission Delay）：数据量 / 带宽（如 1KB / 1Mbps =
+8ms）。<br>
+2. 传播时延（Propagation Delay）：距离 / 光速（如 1000km 光纤 ≈
+5ms）。<br>
+3. 处理时延（Processing Delay）：路由器/交换机处理分组的时间。<br>
+4. 排队时延（Queuing
+Delay）：分组在缓冲区等待的时间（依赖拥塞程度）。</p>
+<p>解释：<br>
+• 传输时延：与数据大小和链路带宽相关。</p>
+<p>• 传播时延：与物理距离相关，固定值。</p>
+<p>• 处理时延：设备性能决定。</p>
+<p>• 排队时延：网络拥塞时显著增加。</p>
+<p>Key Point:<br>
+• Transmission: Data size ÷ Bandwidth.</p>
+<p>• Propagation: Distance ÷ Speed of light.</p>
+<hr>
+<p><strong>3. OSPF 和 BGP 的算法基础</strong><br>
+题目：OSPF 和 BGP 分别基于哪种算法？<br>
+答案：<br>
+• OSPF：Link-State（链路状态算法）。</p>
+<p>• BGP：Path-Vector（路径向量算法，基于 Distance Vector 改进）。</p>
+<p>解释：<br>
+• OSPF：每个路由器维护全局拓扑图，使用 Dijkstra 算法计算最短路径。</p>
+<p>• BGP：通过 AS 路径（AS-Path）选择最优路由，基于策略而非纯跳数。</p>
+<p>Key Point:<br>
+• OSPF: Global topology + Dijkstra.</p>
+<p>• BGP: Policy-driven path selection.</p>
+<hr>
+<p><strong>4. RIP 和 BGP 的区别</strong><br>
+题目：RIP 和 BGP 的区别是什么？<br>
+答案：<br>
+• RIP：基于跳数（最多 15 跳），适用于小型网络。</p>
+<p>• BGP：基于路径（AS-Path）和策略，适用于大型互联网。</p>
+<p>解释：<br>
+• RIP：Distance Vector 协议，仅考虑跳数，易产生路由环路。</p>
+<p>• BGP：关注 AS 间的商业合约和政治因素（如避免某些 AS）。</p>
+<p>Key Point:<br>
+• RIP: Hop-count limited (15 hops).</p>
+<p>• BGP: Policy over metrics.</p>
+<hr>
+<p><strong>5. TCP 建立连接的方法</strong><br>
+题目：In the TCP, connection establishment of transport layer uses the
+method of ________.<br>
+答案：三次握手（Three-way Handshake）</p>
+<p>解释：<br>
+1. SYN：客户端发送 SYN=1, seq=x。<br>
+2. SYN-ACK：服务端回复 SYN=1, ACK=1, seq=y, ack=x+1。<br>
+3. ACK：客户端发送 ACK=1, seq=x+1, ack=y+1。</p>
+<p>Key Point:<br>
+• SYN → SYN-ACK → ACK.</p>
+<hr>
+<p><strong>6. IP 头部的关键字段</strong><br>
+题目：IP 头部有 ______ field，如果这个值是 0，路由器会丢弃它。<br>
+答案：TTL（Time To Live）</p>
+<p>解释：<br>
+• TTL：初始值通常为 64 或 128，每经过一个路由器减 1。</p>
+<p>• 当 TTL=0 时，路由器丢弃数据包并发送 ICMP 超时消息。</p>
+<p>Key Point:<br>
+• TTL=0 → Packet discarded + ICMP Time Exceeded.</p>
+<hr>
+<p><strong>总结 (Summary)</strong><br>
+1. 分层功能：<br>
+• 数据链路层（MAC）、网络层（IP）、传输层（Port）。</p>
+<ol start="2" type="1">
+<li><p>时延类型：传输、传播、处理、排队。<br>
+</p></li>
+<li><p>路由协议：<br>
+• OSPF（Link-State）、BGP（Path-Vector）。</p>
+<p>• RIP（跳数） vs. BGP（路径策略）。</p></li>
+<li><p>TCP 连接：三次握手建立可靠性。<br>
+</p></li>
+<li><p>IP 头部：TTL 防环路。</p></li>
+</ol>
+<p>考试重点 (Exam Focus):<br>
+• 各层功能对比、时延计算、路由协议特性、TCP/IP 关键字段。</p>
+<h2 id="三判断题解析-truefalse-questions-analysis"><strong>三、判断题解析
+(True/False Questions Analysis)</strong></h2>
+<hr>
+<p><strong>1. Email 使用 POP3 协议投递</strong><br>
+题目：Email deliver using POP3.<br>
+答案：False (F)<br>
+解释：<br>
+• POP3 用于从邮件服务器下载邮件到本地（Pull 操作）。</p>
+<p>• SMTP 才是用于发送邮件（Push 操作）。</p>
+<p>关键点：POP3 ≠ 邮件投递，SMTP 负责投递。</p>
+<hr>
+<p><strong>2. Traceroute 使用 ICMP 包确定路径</strong><br>
+题目：Traceroute in source host sent a series of ICMP packet to
+determine the router path.<br>
+答案：True (T)<br>
+解释：<br>
+• Traceroute 通过发送 ICMP Echo Request（或 UDP 包）并逐步增加
+TTL，利用路由器的 ICMP Time Exceeded 响应构建路径。</p>
+<p>关键点：TTL 递增 + ICMP 响应。</p>
+<hr>
+<p><strong>3. 网页请求的请求/响应消息数量</strong><br>
+题目：A user requests a Web page that consists of some text and three
+images. For this page, the client will send one request message and
+receive four response messages.<br>
+答案：False (F)<br>
+解释：<br>
+• HTTP/1.1：默认需要 4 次 TCP 连接（1 文本 + 3
+图片），每次连接包含独立的请求和响应。</p>
+<p>• HTTP/2：多路复用（1 连接可传输多个资源）。</p>
+<p>关键点：HTTP/1.1 的并行连接限制。</p>
+<hr>
+<p><strong>4. 距离向量算法需知全局拓扑</strong><br>
+题目：Distance vector algorithm must know the complete network
+topology.<br>
+答案：False (F)<br>
+解释：<br>
+• 距离向量算法（如 RIP）仅需知道邻居的路由表，通过迭代更新逐步收敛。</p>
+<p>• 链路状态算法（如 OSPF）才需要全局拓扑。</p>
+<p>关键点：Distance Vector → 局部信息；Link-State → 全局信息。</p>
+<hr>
+<p><strong>5. CSMA/CD 无冲突</strong><br>
+题目：CSMA/CD have no collision.<br>
+答案：False (F)<br>
+解释：<br>
+• CSMA/CD 的核心是 检测冲突（Collision
+Detection），冲突后通过二进制指数退避重传。</p>
+<p>• 只有 CSMA/CA（用于无线网络）才试图避免冲突。</p>
+<p>关键点：CSMA/CD 检测冲突，而非避免。</p>
+<hr>
+<p><strong>6. 窗口大小=1 时 SR=GBN</strong><br>
+题目：If window size is equal 1, SR is the same as GBN.<br>
+答案：True (T)<br>
+解释：<br>
+• 窗口大小=1 时：</p>
+<p>• SR（选择性重传） 和 GBN（回退N帧） 均退化为
+停等协议（发送1帧，等待ACK）。</p>
+<p>关键点：窗口=1 → 无并行传输，两者行为一致。</p>
+<hr>
+<p><strong>7. TCP 分用依据端口和IP</strong><br>
+题目：TCP到达接收方，用 port 和 IP 去 Demultiplexing。<br>
+答案：True (T)<br>
+解释：<br>
+• 分用（Demultiplexing） 通过 目标 IP + 目标端口号
+将数据定向到正确的套接字。</p>
+<p>关键点：IP 定位主机，端口定位进程。</p>
+<hr>
+<p><strong>8. ARP 映射 IP 与主机名</strong><br>
+题目：ARP 取得 the mapping between IP and human-readable-name.<br>
+答案：False (F)<br>
+解释：<br>
+• ARP 解析 IP → MAC 地址（链路层地址）。</p>
+<p>• DNS 才负责解析 域名（human-readable-name）→ IP。</p>
+<p>关键点：ARP ≠ DNS，前者是二层，后者是应用层。</p>
+<hr>
+<p><strong>9. TCP 连接建立后接收窗口不变</strong><br>
+题目：TCP链接建好后，RcvWindow won’t change.<br>
+答案：False (F)<br>
+解释：<br>
+• 接收窗口（RcvWindow）
+动态调整，取决于接收方的可用缓冲区空间和网络拥塞状态。</p>
+<p>关键点：流量控制机制动态调整窗口。</p>
+<hr>
+<p><strong>10. AS 向邻居通告所有路径</strong><br>
+题目：AS know 5 routers to a destination prefix, it will announce all 5
+router to its neighbors.<br>
+答案：False (F)<br>
+解释：<br>
+• BGP 策略：AS 通常仅通告 最优路径（基于策略），而非所有可选路径。</p>
+<p>关键点：BGP 的路由聚合和策略过滤。</p>
+<hr>
+<p><strong>总结 (Summary)</strong><br>
+1. 协议功能：<br>
+• POP3（拉取邮件）≠ SMTP（投递邮件）。</p>
+<p>• ARP（IP→MAC）≠ DNS（域名→IP）。</p>
+<ol start="2" type="1">
+<li><p>算法特性：<br>
+• 距离向量（局部信息） vs. 链路状态（全局信息）。</p></li>
+<li><p>TCP 机制：<br>
+• 分用（IP+端口）、动态窗口调整。</p></li>
+<li><p>BGP 行为：策略驱动，选择性通告。</p></li>
+</ol>
+<p>考试重点 (Exam Focus):<br>
+• 协议用途区分（POP3/SMTP/ARP/DNS）、路由算法对比、TCP/IP 核心机制。</p>
+<h2 id="四简答题解析"><strong>四、简答题解析</strong></h2>
+<hr>
+<p><strong>1. 数据包在网络传输中的封装头 (Headers in Packet
+Transmission)</strong><br>
+问题：数据包在网络传输中，有几种封包头？说出他们的名字。<br>
+答案：<br>
+1. 应用层头（Application Header）：如 HTTP、DNS、SMTP 等协议头。<br>
+2. 传输层头（Transport Header）：TCP 或 UDP
+头（包含端口号、序列号等）。<br>
+3. 网络层头（Network Header）：IP 头（包含源/目标 IP、TTL 等）。<br>
+4. 数据链路层头（Link Header）：以太网帧头（包含源/目标 MAC 地址）。</p>
+<p>解释：<br>
+• 封装过程：数据从应用层到物理层逐层添加头部（如 HTTP → TCP → IP →
+Ethernet）。</p>
+<p>• 解封装：接收方从物理层到应用层逐层解析头部。</p>
+<p>关键点：<br>
+• 分层封装：每层添加自己的控制信息（如端口、IP、MAC）。</p>
+<hr>
+<p><strong>2. DNS 服务器的分布式设计与查询过程</strong><br>
+问题：<br>
+1. DNS 服务器做成分布式的原因？<br>
+2. 如果本地 DNS 没有缓存，描述 DNS 查询过程，并指出涉及的 DNS
+服务器类型（Root, Top, Authority）。</p>
+<p>答案：</p>
+<p><strong>(1) DNS 分布式设计的原因</strong><br>
+• 负载均衡：避免单点故障，分散查询压力。</p>
+<p>• 提高响应速度：全球分布，减少查询延迟。</p>
+<p>• 容错性：部分服务器故障不影响整体服务。</p>
+<p><strong>(2) DNS 查询过程（无缓存时）</strong><br>
+1. 本地 DNS 查询：客户端向 Local DNS 发起请求（如
+<code>www.example.com</code>）。<br>
+2. Root DNS 查询：Local DNS 向 Root DNS 询问 <code>.com</code>
+的顶级域名服务器。<br>
+3. Top-Level DNS 查询：Root DNS 返回 <code>.com</code> 的 Top-Level DNS
+地址，Local DNS 向其查询 <code>example.com</code>。<br>
+4. Authoritative DNS 查询：Top-Level DNS 返回 <code>example.com</code>
+的 Authoritative DNS 地址，Local DNS 向其查询
+<code>www.example.com</code> 的 IP。<br>
+5. 返回结果：Authoritative DNS 返回 <code>www.example.com</code> 的
+IP，Local DNS 缓存并返回给客户端。</p>
+<p>关键点：<br>
+• 递归查询：客户端 → Local DNS（递归）。</p>
+<p>• 迭代查询：Local DNS → Root → Top-Level →
+Authoritative（迭代）。</p>
+<hr>
+<p><strong>3. TCP 累积确认机制 (TCP Cumulative
+Acknowledgment)</strong><br>
+问题：<br>
+主机 A 向 B 发送 4 个 TCP 分段，序列号分别为
+56、216、296、346（最后一个包含 40 字节数据）。<br>
+1. 前三个分段的大小？<br>
+2. 分段 1 和 4 到达，分段 2 和 3 丢失，B 返回的 ACK 号？<br>
+3. 重传的分段 2 和 3 到达后，B 返回的 ACK 号？</p>
+<p>答案：</p>
+<p><strong>(1) 前三个分段的大小</strong><br>
+• 分段 1（56）→ 分段 2（216）：<code>216 - 56 = 160 字节</code></p>
+<p>• 分段 2（216）→ 分段 3（296）：<code>296 - 216 = 80 字节</code></p>
+<p>• 分段 3（296）→ 分段 4（346）：<code>346 - 296 = 50 字节</code></p>
+<p>关键点：<br>
+• TCP 序列号：表示字节流的偏移量，分段大小 = 下一个序列号 -
+当前序列号。</p>
+<p><strong>(2) 分段 1 和 4 到达，分段 2 和 3 丢失，B 的 ACK
+号</strong><br>
+• B 期望收到 216（分段 1 的结束位置），因此：</p>
+<p>• ACK = 216（表示已收到 56-215 的所有数据）。</p>
+<p>• 分段 4（346）因不连续被丢弃（TCP 累积确认要求按序接收）。</p>
+<p>关键点：<br>
+• 累积确认：ACK 表示“期望收到的下一个字节号”。</p>
+<p><strong>(3) 重传的分段 2 和 3 到达后，B 的 ACK 号</strong><br>
+1. 分段 2（216-295）到达：<br>
+• B 确认 ACK = 296（期望 296）。</p>
+<ol start="2" type="1">
+<li><p>分段 3（296-345）到达：<br>
+• B 确认 ACK = 346（期望 346）。</p></li>
+<li><p>分段 4（346-385）已提前到达，因此 B 最终确认：<br>
+• ACK = 386（346 + 40 字节数据）。</p></li>
+</ol>
+<p>关键点：<br>
+• 按序交付：TCP 重组数据后，ACK 更新为最高连续字节号 +1。</p>
+<hr>
+<p><strong>总结 (Summary)</strong><br>
+1. 封装头：应用层 → 传输层 → 网络层 → 数据链路层。<br>
+2. DNS 查询：Root → Top-Level → Authoritative（无缓存时）。<br>
+3. TCP 确认机制：<br>
+• 分段大小 = 序列号差值。</p>
+<p>• 丢失时 ACK 期望号不变，重传后更新为最高连续字节 +1。</p>
+<p>考试重点 (Exam Focus):<br>
+• 协议分层、DNS 递归/迭代查询、TCP 序列号与 ACK 逻辑。</p>
+<h2 id="问题描述"><strong>问题描述</strong></h2>
+<p>题目给出了数据包在通过路由器传输时的三个阶段的封装信息，要求分析 IP
+和 MAC 地址的变化情况，并回答以下问题：</p>
+<ol type="1">
+<li><p>从主机 A 到左路由器：<br>
+• 源 MAC：<code>00-00-00-00-00-00</code></p>
+<p>• 目标 MAC：<code>22-22-22-22-22-22</code></p>
+<p>• 源 IP：<code>111.111.111.001</code></p>
+<p>• 目标 IP：<code>133.333.333.003</code></p></li>
+<li><p>从左路由器到右路由器：<br>
+• 源 MAC：<code>33-33-33-33-33-33</code></p>
+<p>• 目标 MAC：<code>55-55-55-55-55-55</code></p>
+<p>• 源 IP：<code>111.111.111.001</code></p>
+<p>• 目标 IP：<code>133.333.333.003</code></p></li>
+<li><p>从右路由器到目标主机 F：<br>
+• 源 MAC：<code>88-88-88-88-88-88</code></p>
+<p>• 目标 MAC：<code>99-99-99-99-99-99</code></p>
+<p>• 源 IP：<code>111.111.111.001</code></p>
+<p>• 目标 IP：<code>133.333.333.003</code></p></li>
+</ol>
+<p>问题：<br>
+• IP 地址和 MAC 地址在传输过程中如何变化？</p>
+<p>• 为什么 MAC 地址会变，而 IP 地址不变？</p>
+<hr>
+<p><strong>答案与解析</strong></p>
+<p><strong>1. IP 地址和 MAC 地址的变化规律</strong><br>
+| 传输阶段 | 源 MAC | 目标 MAC | 源 IP | 目标 IP | | -------------------
+| ------------------------------------------ |
+------------------------------------------ | ---------------------------
+| --------------------------- | | A → 左路由器 | A 的 MAC
+(<code>00-00-00-00-00-00</code>) | 左路由器的左接口 MAC
+(<code>22-22-22-22-22-22</code>) | A 的 IP
+(<code>111.111.111.001</code>) | F 的 IP (<code>133.333.333.003</code>)
+| | 左路由器 → 右路由器 | 左路由器的右接口 MAC
+(<code>33-33-33-33-33-33</code>) | 右路由器的左接口 MAC
+(<code>55-55-55-55-55-55</code>) | A 的 IP
+(<code>111.111.111.001</code>) | F 的 IP (<code>133.333.333.003</code>)
+| | 右路由器 → F | 右路由器的右接口 MAC (<code>88-88-88-88-88-88</code>)
+| F 的 MAC (<code>99-99-99-99-99-99</code>) | A 的 IP
+(<code>111.111.111.001</code>) | F 的 IP (<code>133.333.333.003</code>)
+|</p>
+<p>关键结论：<br>
+✅ IP 地址不变（端到端）：<br>
+• 源 IP 始终是 <code>111.111.111.001</code>（A 的 IP）。</p>
+<p>• 目标 IP 始终是 <code>133.333.333.003</code>（F 的 IP）。</p>
+<p>✅ MAC 地址逐跳变化（链路层）：<br>
+• 每经过一个路由器，源 MAC 和目标 MAC 都会更新为当前链路的接口 MAC。</p>
+<hr>
+<p><strong>2. 为什么 MAC 地址会变，而 IP 地址不变？</strong><br>
+1. IP 地址的作用（网络层）：<br>
+• 端到端寻址：IP 地址用于标识通信的起点和终点（A →
+F），因此全程不变。</p>
+<p>• 路由决策：路由器根据目标 IP 查找路由表，决定下一跳。</p>
+<ol start="2" type="1">
+<li><p>MAC 地址的作用（数据链路层）：<br>
+• 链路层寻址：MAC 地址仅在同一局域网内有效，不同链路的 MAC
+地址不同。</p>
+<p>• 帧的封装：</p>
+<p>◦ 主机 A 发送帧时，目标 MAC 是默认网关（左路由器）的 MAC。</p>
+<p>◦ 路由器转发时，会剥离旧帧头，封装新帧头（更新源/目标
+MAC）。</p></li>
+</ol>
+<hr>
+<p><strong>关键概念总结</strong><br>
+1. IP 地址：<br>
+• 全局唯一，用于端到端通信，传输过程中不变。</p>
+<ol start="2" type="1">
+<li><p>MAC 地址：<br>
+• 局部有效，仅在当前链路有效，每经过一个路由器都会更新。</p></li>
+<li><p>路由器的作用：<br>
+• 修改 MAC 地址，但不修改 IP 地址（除非 NAT）。</p></li>
+<li><p>ARP 协议：<br>
+• 主机和路由器通过 ARP 解析下一跳的 MAC 地址。</p></li>
+</ol>
+<hr>
+<p><strong>考试重点</strong><br>
+• IP 地址：标识源和目标主机，全程不变。</p>
+<p>• MAC 地址：标识当前链路的发送方和接收方，逐跳更新。</p>
+<p>• 路由器转发机制：改 MAC，不改 IP。</p>
+<p>常见错误：<br>
+❌ 认为 IP 地址会变（除非 NAT，否则 IP 不变）。<br>
+❌ 认为 MAC 地址会保持不变（MAC 是链路层地址，每跳不同）。</p>
+<h2 id="五计算题解析-calculation-questions-analysis"><strong>五、计算题解析
+(Calculation Questions Analysis)</strong></h2>
+<hr>
+<p><strong>1. Dijkstra 算法（计算最短路径）</strong><br>
+题目：给定网络拓扑图，使用 Dijkstra
+算法计算从起点到所有其他节点的最短路径，并给出：<br>
+• 起点的下一跳节点</p>
+<p>• 到每个目的地的总花费</p>
+<p>示例图（假设）：<br>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">A --2-- B --3-- D  </span><br><span class="line"> \     / \     /  </span><br><span class="line">  1   4   2   5  </span><br><span class="line">   \ /     \ /  </span><br><span class="line">    C --7-- E  </span><br></pre></td></tr></table></figure> 问题：以 A 为起点，计算最短路径。</p>
+<p>答案与步骤：<br>
+1. 初始化：<br>
+• 起点 A 的距离 = 0，其他节点距离 = ∞。</p>
+<p>• 优先队列：<code>A(0), B(∞), C(∞), D(∞), E(∞)</code></p>
+<ol start="2" type="1">
+<li><p>迭代过程：<br>
+• 第1步：取出 A，更新邻居：</p>
+<p>◦ B = min(∞, 0+2) = 2</p>
+<p>◦ C = min(∞, 0+1) = 1</p>
+<p>◦ 队列：<code>B(2), C(1), D(∞), E(∞)</code></p>
+<p>• 第2步：取出 C（距离最小），更新邻居：</p>
+<p>◦ B = min(2, 1+4) = 2（不更新）</p>
+<p>◦ E = min(∞, 1+7) = 8</p>
+<p>◦ 队列：<code>B(2), E(8), D(∞)</code></p>
+<p>• 第3步：取出 B，更新邻居：</p>
+<p>◦ D = min(∞, 2+3) = 5</p>
+<p>◦ E = min(8, 2+2) = 4</p>
+<p>◦ 队列：<code>D(5), E(4)</code></p>
+<p>• 第4步：取出 E，更新邻居：</p>
+<p>◦ D = min(5, 4+5) = 5（不更新）</p>
+<p>◦ 队列：<code>D(5)</code></p></li>
+<li><p>最终结果：<br>
+| 目的地 | 下一跳 | 总花费 | | ------ | ------ | ------ | | B | B | 2 |
+| C | C | 1 | | D | B | 5 | | E | B | 4 |</p></li>
+</ol>
+<p>关键点：<br>
+• Dijkstra 算法：每次选择当前距离最小的节点，更新邻居。</p>
+<p>• 下一跳：从起点出发的第一个节点（如 A→D 的下一跳是 B）。</p>
+<hr>
+<p><strong>2. 拥塞控制（TCP Reno vs. Tahoe）</strong><br>
+题目：给定拥塞窗口（cwnd）随时间变化的图，回答：<br>
+1. 慢启动和拥塞避免的时间区间。<br>
+2. 初始阈值（ssthresh）。<br>
+3. 判断使用的是 Reno 还是 Tahoe 版本（根据丢包后的行为）。</p>
+<p>示例图（假设）：<br>
+• 慢启动：cwnd 指数增长（如 1→2→4→8）。</p>
+<p>• 拥塞避免：cwnd 线性增长（如 8→9→10→11）。</p>
+<p>• 丢包后：</p>
+<p>• Reno：cwnd 降半（如 12→6），进入拥塞避免。</p>
+<p>• Tahoe：cwnd 重置为 1，重新慢启动。</p>
+<p>答案：<br>
+1. 慢启动区间：<code>[1,4]</code>（cwnd=1→2→4→8）。<br>
+2. 拥塞避免区间：<code>[4,8]</code>（cwnd=8→9→10→11→12）。<br>
+3. 初始 ssthresh：8（慢启动结束时的 cwnd）。<br>
+4. 版本判断：<br>
+• 如果 cwnd 降半 → Reno。</p>
+<p>• 如果 cwnd 重置为 1 → Tahoe。</p>
+<p>关键点：<br>
+• 慢启动：cwnd 指数增长（每 RTT 翻倍）。</p>
+<p>• 拥塞避免：cwnd 线性增长（每 RTT +1）。</p>
+<p>• Reno：快速恢复（降半后线性增长）。</p>
+<hr>
+<p><strong>3. CRC 循环冗余校验</strong><br>
+题目：<br>
+• 数据 <code>D = 1001 1101</code></p>
+<p>• 生成多项式 <code>G = x³ + 1</code>（对应二进制
+<code>1001</code>）</p>
+<p>问题：<br>
+1. 计算传输的比特串（T）。<br>
+2. 如果左边第3位发生反转（0→1或1→0），CRC 如何检测错误？</p>
+<p>答案与步骤：</p>
+<p><strong>(1) 计算传输的比特串 T</strong><br>
+1. 补 0：G 的阶数为 3，在 D 后补 3 个 0 →
+<code>1001 1101 000</code>。<br>
+2. 模2除法：<br>
+• 用 <code>1001 1101 000</code> ÷ <code>1001</code>（G）。</p>
+<p>• 计算余数 R = <code>110</code>（具体计算略）。</p>
+<ol start="3" type="1">
+<li>构造 T：<br>
+• T = D + R = <code>1001 1101</code> + <code>110</code> =
+<code>1001 1101 110</code>。</li>
+</ol>
+<p><strong>(2) 错误检测</strong><br>
+• 反转第3位：原 D = <code>1**0**01 1101</code> → 错误 D' =
+<code>1**1**01 1101</code>。</p>
+<p>• 接收方校验：</p>
+<ol type="1">
+<li>用 <code>D' + R</code>（<code>1101 1101 110</code>） ÷
+<code>1001</code>。<br>
+</li>
+<li>余数 ≠ 0 → 检测到错误。</li>
+</ol>
+<p>关键点：<br>
+• CRC 校验：余数为 0 则无错误，否则有错误。</p>
+<p>• G 的二进制转换：<code>x³ + 1</code> = <code>1001</code>（系数对应
+x³→x⁰）。</p>
+<hr>
+<p><strong>总结</strong><br>
+1. Dijkstra 算法：计算最短路径，记录下一跳和总花费。<br>
+2. TCP 拥塞控制：区分慢启动/拥塞避免，判断 Reno 或 Tahoe。<br>
+3. CRC 校验：生成多项式 → 二进制，计算余数检测错误。</p>
+<p>考试技巧：<br>
+• Dijkstra 按步骤迭代，避免漏节点。</p>
+<p>• TCP 版本看丢包后的 cwnd 变化。</p>
+<p>• CRC 注意补 0 位数和多项式转换。</p>
+<h2 id="子网划分问题解析-subnetting-problem-analysis"><strong>子网划分问题解析
+(Subnetting Problem Analysis)</strong></h2>
+<hr>
+<p><strong>题目回顾</strong><br>
+• ISP 拥有的 IP 地址块：<code>214.97.24.0/23</code></p>
+<p>• 三个子网需求：</p>
+<p>• 子网 A：250 台主机（interfaces）</p>
+<p>• 子网 B：120 台主机</p>
+<p>• 子网 C：120 台主机</p>
+<p>• 问题：</p>
+<ol type="1">
+<li>ISP 的 <code>/23</code> 地址块能支持多少台主机？<br>
+</li>
+<li>按顺序划分子网 A、B、C，给出各自的 CIDR 格式（a.b.c.d/mask）。</li>
+</ol>
+<hr>
+<p><strong>1. ISP 能支持的主机数量</strong><br>
+计算步骤：<br>
+• <code>/23</code> 表示 网络前缀占 23 位，剩余 主机位 = 32 - 23 = 9
+位。</p>
+<p>• 可用主机数 = <span class="math inline">\(2^9 - 2 = 512 - 2 =
+510\)</span>（减去网络地址和广播地址）。</p>
+<p>答案：<br>
+✅ ISP 的 <code>214.97.24.0/23</code> 最多支持 510 台主机。</p>
+<hr>
+<p><strong>2. 子网划分（A→B→C）</strong><br>
+<strong>关键规则</strong></p>
+<ol type="1">
+<li><p>子网划分顺序：从大到小（先满足子网 A 的 250 台，再划分子网 B 和
+C）。<br>
+</p></li>
+<li><p>主机位数计算：<br>
+• 子网 A 需要 ≥250 台 → 主机位 ≥8（<span class="math inline">\(2^8 - 2 =
+254\)</span>）。</p>
+<p>• 子网 B 和 C 需要 ≥120 台 → 主机位 ≥7（<span class="math inline">\(2^7 - 2 = 126\)</span>）。</p></li>
+</ol>
+<p><strong>步骤 1：划分子网 A</strong><br>
+• 需求：250 台 → 需要 /24 掩码（主机位 8，254 可用）。</p>
+<p>• 分配：</p>
+<p>• 子网 A：<code>214.97.24.0/24</code></p>
+<pre><code>◦ 范围：`214.97.24.1` ~ `214.97.24.254`  
+
+◦ 广播地址：`214.97.24.255`  </code></pre>
+<p>• 剩余地址块：<code>214.97.25.0/23</code>（原 <code>/23</code>
+被拆分为 <code>/24</code> + 剩余 <code>/24</code>）。</p>
+<p><strong>步骤 2：划分子网 B</strong><br>
+• 需求：120 台 → 需要 /25 掩码（主机位 7，126 可用）。</p>
+<p>• 分配：</p>
+<p>• 子网 B：<code>214.97.25.0/25</code></p>
+<pre><code>◦ 范围：`214.97.25.1` ~ `214.97.25.126`  
+
+◦ 广播地址：`214.97.25.127`  </code></pre>
+<p>• 剩余地址块：<code>214.97.25.128/25</code>（未分配）。</p>
+<p><strong>步骤 3：划分子网 C</strong><br>
+• 需求：120 台 → 同样需要 /25。</p>
+<p>• 分配：</p>
+<p>• 子网 C：<code>214.97.25.128/25</code></p>
+<pre><code>◦ 范围：`214.97.25.129` ~ `214.97.25.254`  
+
+◦ 广播地址：`214.97.25.255`  </code></pre>
+<hr>
+<p><strong>最终答案</strong><br>
+| 子网 | CIDR 表示 | 可用主机范围 | 广播地址 | | ---- |
+------------------ | ------------------------ | --------------- | | A |
+<code>214.97.24.0/24</code> | <code>214.97.24.1</code> ~
+<code>.254</code> | <code>214.97.24.255</code> | | B |
+<code>214.97.25.0/25</code> | <code>214.97.25.1</code> ~
+<code>.126</code> | <code>214.97.25.127</code> | | C |
+<code>214.97.25.128/25</code> | <code>214.97.25.129</code> ~
+<code>.254</code> | <code>214.97.25.255</code> |</p>
+<hr>
+<p><strong>关键点总结</strong><br>
+1. ISP 总容量：<code>/23</code> = 510 主机。<br>
+2. 子网划分优先级：<br>
+• 先分配大子网（A），再分配较小的子网（B 和 C）。</p>
+<ol start="3" type="1">
+<li><p>掩码选择：<br>
+• 250 台 → <code>/24</code>（254 主机）</p>
+<p>• 120 台 → <code>/25</code>（126 主机）</p></li>
+<li><p>避免地址浪费：<br>
+• 剩余地址块 <code>214.97.25.128/25</code> 刚好满足子网 C。</p></li>
+</ol>
+<p>考试技巧：<br>
+• 英文术语：</p>
+<p>• "Interfaces" = 主机（Hosts）</p>
+<p>• "Subnet" = 子网（如 A、B、C）</p>
+<p>• "CIDR notation" = <code>a.b.c.d/mask</code> 格式</p>
+<p>• 计算时注意：</p>
+<p>• 每个子网的 第一个 IP 是网络地址，最后一个 IP
+是广播地址，不可用。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://www.totorocatcat.top/">Totoro</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://totorocatcat.top/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C2012%E5%B9%B4%E5%9B%9E%E5%BF%86%E7%89%88%E5%88%86%E6%9E%90/">http://totorocatcat.top/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C2012%E5%B9%B4%E5%9B%9E%E5%BF%86%E7%89%88%E5%88%86%E6%9E%90/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://totorocatcat.top" target="_blank">Totoroの旅</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%9F%BA%E7%A1%80/">基础</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/f1e7bd3259972022ef5860e626348bb.bmp" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%AF%95%E5%8D%B7%E7%B2%BE%E9%80%89%E2%80%94%E2%80%941%EF%BC%88%E9%87%8D%E8%A6%81%EF%BC%89/" title="计算机网络试卷精选——1（重要）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://source.fomal.cc/img/default_cover_58.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">计算机网络试卷精选——1（重要）</div></div></a></div><div class="next-post pull-right"><a href="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E9%97%AE%E9%A2%98%E5%A4%8D%E4%B9%A0%E6%B3%95%EF%BC%883%EF%BC%89/" title="计算机网络——问题复习法（3）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/f1e7bd3259972022ef5860e626348bb.bmp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">计算机网络——问题复习法（3）</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2010%E5%B9%B4%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%9F%E8%80%83-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" title="2010年计算机统考-数据结构"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/e345af5b515d2f76bb44fdaa6eff3db4d6f598d3.jpg@1256w_908h_!web-article-pic.avif" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-10-04</div><div class="title">2010年计算机统考-数据结构</div></div></a></div><div><a href="/2012%E5%B9%B4%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%9F%E8%80%83-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E9%83%A8%E5%88%86/" title="2012年计算机统考-数据结构部分"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/e345af5b515d2f76bb44fdaa6eff3db4d6f598d3.jpg@1256w_908h_!web-article-pic.avif" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-10-05</div><div class="title">2012年计算机统考-数据结构部分</div></div></a></div><div><a href="/2022C-%E8%AF%95%E5%8D%B7/" title="2022C++试卷"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://source.fomal.cc/img/default_cover_80.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-05-16</div><div class="title">2022C++试卷</div></div></a></div><div><a href="/2022%E5%B9%B4C-%E8%AF%95%E5%8D%B7%E8%BD%AF%E4%BB%B6%E5%AD%A6%E9%99%A2/" title="2022年C++试卷软件学院"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://source.fomal.cc/img/default_cover_80.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-05-16</div><div class="title">2022年C++试卷软件学院</div></div></a></div><div><a href="/2011%E5%B9%B4%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%9F%E8%80%83-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E9%83%A8%E5%88%86/" title="2011年计算机统考-数据结构部分"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/e345af5b515d2f76bb44fdaa6eff3db4d6f598d3.jpg@1256w_908h_!web-article-pic.avif" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-10-05</div><div class="title">2011年计算机统考-数据结构部分</div></div></a></div><div><a href="/AJAX%E5%9F%BA%E7%A1%80/" title="AJAX基础"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/ushio-api-img-moe@5.0.16/img_169_2560x1440_96_null_normal.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-05-16</div><div class="title">AJAX基础</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/px3.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Totoro</div><div class="author-info__description">热爱文学的SCUT软件学院学生</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">801</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">34</div></a></div><a id="card-info-btn" href="https://github.com/4512abc"><i class="fab fa-github"></i><span>🛴前往小窝......</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/4512abc" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:4512abc@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到龙猫の小窝</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C2012%E5%B9%B4%E5%9B%9E%E5%BF%86%E7%89%88%E5%88%86%E6%9E%90"><span class="toc-text">计算机网络2012年回忆版分析</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E9%80%89%E6%8B%A9%E9%A2%98%E8%A7%A3%E6%9E%90-multiple-choice-questions-analysis"><span class="toc-text">一、选择题解析
+(Multiple-Choice Questions Analysis)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E5%A1%AB%E7%A9%BA%E9%A2%98%E8%A7%A3%E6%9E%90-fill-in-the-blank-questions-analysis"><span class="toc-text">二、填空题解析
+(Fill-in-the-Blank Questions Analysis)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E5%88%A4%E6%96%AD%E9%A2%98%E8%A7%A3%E6%9E%90-truefalse-questions-analysis"><span class="toc-text">三、判断题解析
+(True&#x2F;False Questions Analysis)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E7%AE%80%E7%AD%94%E9%A2%98%E8%A7%A3%E6%9E%90"><span class="toc-text">四、简答题解析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0"><span class="toc-text">问题描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E8%AE%A1%E7%AE%97%E9%A2%98%E8%A7%A3%E6%9E%90-calculation-questions-analysis"><span class="toc-text">五、计算题解析
+(Calculation Questions Analysis)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%90%E7%BD%91%E5%88%92%E5%88%86%E9%97%AE%E9%A2%98%E8%A7%A3%E6%9E%90-subnetting-problem-analysis"><span class="toc-text">子网划分问题解析
+(Subnetting Problem Analysis)</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%AF%95%E5%8D%B7%E7%B2%BE%E9%80%89%E2%80%94%E2%80%941%EF%BC%88%E9%87%8D%E8%A6%81%EF%BC%89/" title="计算机网络试卷精选——1（重要）"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://source.fomal.cc/img/default_cover_58.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="计算机网络试卷精选——1（重要）"/></a><div class="content"><a class="title" href="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%AF%95%E5%8D%B7%E7%B2%BE%E9%80%89%E2%80%94%E2%80%941%EF%BC%88%E9%87%8D%E8%A6%81%EF%BC%89/" title="计算机网络试卷精选——1（重要）">计算机网络试卷精选——1（重要）</a><time datetime="2025-04-29T10:19:35.000Z" title="发表于 2025-04-29 18:19:35">2025-04-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C2012%E5%B9%B4%E5%9B%9E%E5%BF%86%E7%89%88%E5%88%86%E6%9E%90/" title="计算机网络2012年回忆版分析"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/f1e7bd3259972022ef5860e626348bb.bmp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="计算机网络2012年回忆版分析"/></a><div class="content"><a class="title" href="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C2012%E5%B9%B4%E5%9B%9E%E5%BF%86%E7%89%88%E5%88%86%E6%9E%90/" title="计算机网络2012年回忆版分析">计算机网络2012年回忆版分析</a><time datetime="2025-04-29T10:16:59.000Z" title="发表于 2025-04-29 18:16:59">2025-04-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E9%97%AE%E9%A2%98%E5%A4%8D%E4%B9%A0%E6%B3%95%EF%BC%883%EF%BC%89/" title="计算机网络——问题复习法（3）"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/f1e7bd3259972022ef5860e626348bb.bmp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="计算机网络——问题复习法（3）"/></a><div class="content"><a class="title" href="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E9%97%AE%E9%A2%98%E5%A4%8D%E4%B9%A0%E6%B3%95%EF%BC%883%EF%BC%89/" title="计算机网络——问题复习法（3）">计算机网络——问题复习法（3）</a><time datetime="2025-04-29T10:08:16.000Z" title="发表于 2025-04-29 18:08:16">2025-04-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E9%97%AE%E9%A2%98%E5%A4%8D%E4%B9%A0%E6%B3%95%EF%BC%882%EF%BC%89/" title="计算机网络——问题复习法（2）"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/f1e7bd3259972022ef5860e626348bb.bmp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="计算机网络——问题复习法（2）"/></a><div class="content"><a class="title" href="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E9%97%AE%E9%A2%98%E5%A4%8D%E4%B9%A0%E6%B3%95%EF%BC%882%EF%BC%89/" title="计算机网络——问题复习法（2）">计算机网络——问题复习法（2）</a><time datetime="2025-04-29T10:08:06.000Z" title="发表于 2025-04-29 18:08:06">2025-04-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E9%97%AE%E9%A2%98%E5%A4%8D%E4%B9%A0%E6%B3%95%EF%BC%881%EF%BC%89/" title="计算机网络——问题复习法（1）"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/f1e7bd3259972022ef5860e626348bb.bmp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="计算机网络——问题复习法（1）"/></a><div class="content"><a class="title" href="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E9%97%AE%E9%A2%98%E5%A4%8D%E4%B9%A0%E6%B3%95%EF%BC%881%EF%BC%89/" title="计算机网络——问题复习法（1）">计算机网络——问题复习法（1）</a><time datetime="2025-04-29T10:07:54.000Z" title="发表于 2025-04-29 18:07:54">2025-04-29</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 - 2025 By Totoro</div><div class="footer_custom_text">I wish you to become your own sun, no need to rely on who's light.<p><a target="_blank" href="https://hexo.io/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&logo=hexo" title="博客框架为Hexo"></a>&nbsp;<a target="_blank" href="https://butterfly.js.org/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&logo=bitdefender" title="主题采用butterfly"></a>&nbsp;<a target="_blank" href="https://www.jsdelivr.com/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&logo=jsDelivr" title="本站使用JsDelivr为静态资源提供CDN加速"></a> &nbsp;<a target="_blank" href="https://vercel.com/ "><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Hosted-Vervel-brightgreen?style=flat&logo=Vercel" title="本站采用双线部署，默认线路托管于Vercel"></a>&nbsp;<a target="_blank" href="https://vercel.com/ "><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Hosted-Coding-0cedbe?style=flat&logo=Codio" title="本站采用双线部署，联通线路托管于Coding"></a>&nbsp;<a target="_blank" href="https://github.com/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&logo=GitHub" title="本站项目由Gtihub托管"></a>&nbsp;<a target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&logo=Claris" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"></a></p></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat-btn" type="button" title="聊天"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="/js/tw_cn.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@5.2.0/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'HT1PalaKkPaG1UqAXBhJXIu8-gzGzoHsz',
+      appKey: 'iT0TnVVAwf9zuZ7NqwclQItY',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://cdn.jsdelivr.net/npm/valine@1.5.1/dist/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><script defer src="/js/light.js"></script><canvas id="universe"></canvas><script defer src="/js/universe.js"></script><script async src="/js/title.js"></script><script defer src="https://npm.elemecdn.com/jquery@latest/dist/jquery.min.js"></script><script defer data-pjax src="/js/cat.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="1" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener
+  btf.removeGlobalFnEvent('pjax')
+  btf.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.12.0"></script></div></div><!-- hexo injector body_end start --><script data-pjax>
+    function butterfly_categories_card_injector_config(){
+      var parent_div_git = document.getElementById('recent-posts');
+      var item_html = '<style>li.categoryBar-list-item{width:32.3%;}.categoryBar-list{max-height: 380px;overflow:auto;}.categoryBar-list::-webkit-scrollbar{width:0!important}@media screen and (max-width: 650px){.categoryBar-list{max-height: 320px;}}</style><div class="recent-post-item" style="height:auto;width:100%;padding:0px;"><div id="categoryBar"><ul class="categoryBar-list"><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_12.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/离散数学/&quot;);" href="javascript:void(0);">离散数学</a><span class="categoryBar-list-count">32</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_13.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS61B/&quot;);" href="javascript:void(0);">CS61B</a><span class="categoryBar-list-count">76</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_14.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/期末の旅/&quot;);" href="javascript:void(0);">期末の旅</a><span class="categoryBar-list-count">99</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_17.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/刷题计划/&quot;);" href="javascript:void(0);">刷题计划</a><span class="categoryBar-list-count">60</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_18.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/区域赛の旅/&quot;);" href="javascript:void(0);">区域赛の旅</a><span class="categoryBar-list-count">7</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_19.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/Codeforcesの旅/&quot;);" href="javascript:void(0);">Codeforcesの旅</a><span class="categoryBar-list-count">24</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_20.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/牛客の旅/&quot;);" href="javascript:void(0);">牛客の旅</a><span class="categoryBar-list-count">65</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_21.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/ACMの旅/&quot;);" href="javascript:void(0);">ACMの旅</a><span class="categoryBar-list-count">42</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_22.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/数学建模/&quot;);" href="javascript:void(0);">数学建模</a><span class="categoryBar-list-count">26</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_22.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/前端の旅/&quot;);" href="javascript:void(0);">前端の旅</a><span class="categoryBar-list-count">17</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_23.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/数据结构/&quot;);" href="javascript:void(0);">数据结构</a><span class="categoryBar-list-count">47</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_24.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/Atcoderの旅/&quot;);" href="javascript:void(0);">Atcoderの旅</a><span class="categoryBar-list-count">53</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_25.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/C-の旅/&quot;);" href="javascript:void(0);">C++の旅</a><span class="categoryBar-list-count">17</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_26.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS70の旅/&quot;);" href="javascript:void(0);">CS70の旅</a><span class="categoryBar-list-count">24</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_27.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CSAPPの旅/&quot;);" href="javascript:void(0);">CSAPPの旅</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_28.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/计算机组成原理/&quot;);" href="javascript:void(0);">计算机组成原理</a><span class="categoryBar-list-count">47</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_29.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/编程基础/&quot;);" href="javascript:void(0);">编程基础</a><span class="categoryBar-list-count">14</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_30.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/JAVAの旅/&quot;);" href="javascript:void(0);">JAVAの旅</a><span class="categoryBar-list-count">10</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_31.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/MIT-6-031-Software-Construction/&quot;);" href="javascript:void(0);">MIT 6.031:Software Construction</a><span class="categoryBar-list-count">16</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_32.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS-110L/&quot;);" href="javascript:void(0);">CS 110L</a><span class="categoryBar-list-count">3</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_33.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/数据库の旅/&quot;);" href="javascript:void(0);">数据库の旅</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_34.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/灵魂の旅/&quot;);" href="javascript:void(0);">灵魂の旅</a><span class="categoryBar-list-count">2</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_35.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/个人安排/&quot;);" href="javascript:void(0);">个人安排</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_36.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/杂项/&quot;);" href="javascript:void(0);">杂项</a><span class="categoryBar-list-count">13</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_37.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/文学/&quot;);" href="javascript:void(0);">文学</a><span class="categoryBar-list-count">49</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_38.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/力扣の旅/&quot;);" href="javascript:void(0);">力扣の旅</a><span class="categoryBar-list-count">20</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_39.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/计算机网络/&quot;);" href="javascript:void(0);">计算机网络</a><span class="categoryBar-list-count">15</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_40.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/千里十二行/&quot;);" href="javascript:void(0);">千里十二行</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_41.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/🗡指offer/&quot;);" href="javascript:void(0);">🗡指offer</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_42.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/少年游/&quot;);" href="javascript:void(0);">少年游</a><span class="categoryBar-list-count">2</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_43.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/算法提高课/&quot;);" href="javascript:void(0);">算法提高课</a><span class="categoryBar-list-count">3</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_44.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/汇编の旅/&quot;);" href="javascript:void(0);">汇编の旅</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_44.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/C-实训/&quot;);" href="javascript:void(0);">C++实训</a><span class="categoryBar-list-count">8</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_45.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS知识/&quot;);" href="javascript:void(0);">CS知识</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li></ul></div></div>';
+      console.log('已挂载butterfly_categories_card')
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+      }
+    if( document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+    butterfly_categories_card_injector_config()
+    }
+  </script><script data-pjax>
+  function butterfly_swiper_injector_config(){
+    var parent_div_git = document.getElementById('recent-posts');
+    var item_html = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms;"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;诗兴大发/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://source.fomal.cc/img/default_cover_69.webp" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-01-29</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;诗兴大发/&quot;);" href="javascript:void(0);" alt="">诗兴大发</a><div class="blog-slider__text">未觉，却是中二少年的诗仙梦</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;诗兴大发/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;诗录/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/4b31456c6f0f4489f99177f89e936de7286431045.png@1256w_708h_!web-article-pic.avif" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-10-01</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;诗录/&quot;);" href="javascript:void(0);" alt="">诗录</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;诗录/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;TotoroのPlan/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/51d37eba99d243607ddedfff6e91568f617436609.jpg@1256w_1884h_!web-article-pic.avif" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-10-05</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;TotoroのPlan/&quot;);" href="javascript:void(0);" alt="">TotoroのPlan</a><div class="blog-slider__text">方便大二看（）</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;TotoroのPlan/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;Markdown格式/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/ushio-api-img-moe@5.0.48/img_482_1920x1080_96_null_normal.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-03-03</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;Markdown格式/&quot;);" href="javascript:void(0);" alt="">Markdown格式</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;Markdown格式/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载butterfly_swiper')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_swiper_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_swiper_injector_config();
+  }
+  </script><script defer src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.js"></script><script defer data-pjax src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper_init.js"></script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>

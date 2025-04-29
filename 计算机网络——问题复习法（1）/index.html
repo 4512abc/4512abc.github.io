@@ -1,0 +1,1636 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>计算机网络——问题复习法（1） | Totoroの旅</title><meta name="author" content="Totoro"><meta name="copyright" content="Totoro"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="计算机网络——问题复习法（1） 问题1：Ethernet和WiFi的主要特点是什么？  有线与无线区别！  答案： • Ethernet（以太网）： • 有线局域网（LAN）接入，通过物理电缆（如双绞线、光纤）传输数据。 • 特点：高可靠性、低延迟、带宽稳定（如千兆以太网）。 • WiFi（无线局域网）： • 无线LAN接入，通过无线电波（如2.4GHz&#x2F;5GHz频段）传输数据">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机网络——问题复习法（1）">
+<meta property="og:url" content="http://totorocatcat.top/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E9%97%AE%E9%A2%98%E5%A4%8D%E4%B9%A0%E6%B3%95%EF%BC%881%EF%BC%89/index.html">
+<meta property="og:site_name" content="Totoroの旅">
+<meta property="og:description" content="计算机网络——问题复习法（1） 问题1：Ethernet和WiFi的主要特点是什么？  有线与无线区别！  答案： • Ethernet（以太网）： • 有线局域网（LAN）接入，通过物理电缆（如双绞线、光纤）传输数据。 • 特点：高可靠性、低延迟、带宽稳定（如千兆以太网）。 • WiFi（无线局域网）： • 无线LAN接入，通过无线电波（如2.4GHz&#x2F;5GHz频段）传输数据">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/f1e7bd3259972022ef5860e626348bb.bmp">
+<meta property="article:published_time" content="2025-04-29T10:07:54.000Z">
+<meta property="article:modified_time" content="2025-04-29T10:17:36.602Z">
+<meta property="article:author" content="Totoro">
+<meta property="article:tag" content="基础">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/f1e7bd3259972022ef5860e626348bb.bmp"><link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/b5ca6e582a7a45e6fde46e616eeb68e.png"><link rel="canonical" href="http://totorocatcat.top/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E9%97%AE%E9%A2%98%E5%A4%8D%E4%B9%A0%E6%B3%95%EF%BC%881%EF%BC%89/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta/><link rel="stylesheet" href="/css/index.css?v=4.12.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  noticeOutdate: {"limitDay":765,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体中文","cht_to_chs":"你已切换为简体中文","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"top-right"},
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '计算机网络——问题复习法（1）',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: true,
+  isToc: true,
+  postUpdate: '2025-04-29 18:17:36'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const now = new Date()
+          const hour = now.getHours()
+          const isNight = hour <= 6 || hour >= 18
+          if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/universe.css"><link rel="stylesheet" href="/css/scrollbar.css"><link rel="stylesheet" href="/css/cat.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-categories-card@1.0.0/lib/categorybar.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-double-row-display@1.00/cardlistpost.min.css"/>
+<style>#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags:before {content:"\A";
+  white-space: pre;}#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags > .article-meta__separator{display:none}</style>
+<link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiperstyle.css" media="print" onload="this.media='all'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><div class="loading-img"></div><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><script>window.paceOptions = {
+  restartOnPushState: false
+}
+
+document.addEventListener('pjax:send', () => {
+  Pace.restart()
+})
+</script><link rel="stylesheet" href="/css/progress_bar.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/px3.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">801</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">34</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home-alt"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-envelope-open"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 趣味</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/project/"><i class="fa-fw fas fas fa-folder"></i><span> 项目</span></a></div><div class="menus_item"><a class="site-page" href="/stars/"><i class="fa-fw fas fa-bookmark"></i><span> 收藏</span></a></div><div class="menus_item"><a class="site-page" href="/bilibili/"><i class="fa-fw fas fa-tv"></i><span> 追番</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/f1e7bd3259972022ef5860e626348bb.bmp')"><nav id="nav"><span id="blog-info"><a href="/" title="Totoroの旅"><span class="site-name">Totoroの旅</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home-alt"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-envelope-open"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 趣味</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/project/"><i class="fa-fw fas fas fa-folder"></i><span> 项目</span></a></div><div class="menus_item"><a class="site-page" href="/stars/"><i class="fa-fw fas fa-bookmark"></i><span> 收藏</span></a></div><div class="menus_item"><a class="site-page" href="/bilibili/"><i class="fa-fw fas fa-tv"></i><span> 追番</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">计算机网络——问题复习法（1）</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-04-29T10:07:54.000Z" title="发表于 2025-04-29 18:07:54">2025-04-29</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-04-29T10:17:36.602Z" title="更新于 2025-04-29 18:17:36">2025-04-29</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">12.2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>41分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="计算机网络——问题复习法（1）"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E9%97%AE%E9%A2%98%E5%A4%8D%E4%B9%A0%E6%B3%95%EF%BC%881%EF%BC%89/#post-comment" itemprop="discussionUrl"><span class="valine-comment-count" data-xid="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E9%97%AE%E9%A2%98%E5%A4%8D%E4%B9%A0%E6%B3%95%EF%BC%881%EF%BC%89/" itemprop="commentCount"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="计算机网络问题复习法1">计算机网络——问题复习法（1）</h1>
+<h2 id="问题1ethernet和wifi的主要特点是什么">问题1：Ethernet和WiFi的主要特点是什么？</h2>
+<blockquote>
+<p>有线与无线区别！</p>
+</blockquote>
+<p>答案：<br>
+• Ethernet（以太网）：</p>
+<p>• 有线局域网（LAN）接入，通过物理电缆（如双绞线、光纤）传输数据。</p>
+<p>• 特点：高可靠性、低延迟、带宽稳定（如千兆以太网）。</p>
+<p>• WiFi（无线局域网）：</p>
+<p>• 无线LAN接入，通过无线电波（如2.4GHz/5GHz频段）传输数据。</p>
+<p>• 特点：移动性强、部署灵活，但易受干扰（如障碍物、其他设备）。</p>
+<p>解释：<br>
+Ethernet和WiFi是两种主流的局域网接入技术，分别对应有线和无线场景。Ethernet适合固定设备的高性能需求，而WiFi为移动设备提供便利，但可能牺牲部分稳定性。</p>
+<hr>
+<h2 id="问题2packet-loss丢包的主要原因是什么">问题2：Packet
+loss（丢包）的主要原因是什么？</h2>
+<blockquote>
+<p>路由器缓存不足，缓存空间满了之后，新的分组到来自动丢弃！</p>
+</blockquote>
+<p>答案：<br>
+主要原因：路由器缓存溢出（因缓存空间有限）。<br>
+其他原因可能包括：网络拥塞、链路错误、硬件故障等。</p>
+<p>解释：<br>
+当数据包到达路由器时，若瞬时流量超过缓存容量，后续包会被丢弃（丢包）。例如，TCP通过重传机制应对丢包，但会导致延迟增加。</p>
+<hr>
+<h2 id="问题3解释网络分层中的封装encapsulation与解封装过程">问题3：解释网络分层中的封装（Encapsulation）与解封装过程。</h2>
+<blockquote>
+<p>报文-报文段-数据段-帧！</p>
+</blockquote>
+<p>答案：<br>
+封装流程（发送方）：</p>
+<ol type="1">
+<li>应用层：生成<code>message</code>（如HTTP请求）。<br>
+</li>
+<li>传输层：添加头部（如TCP端口号）→ 形成<code>segment</code>。<br>
+</li>
+<li>网络层：添加IP头部（如源/目的IP）→ 形成<code>datagram</code>。<br>
+</li>
+<li>链路层：添加MAC头部和尾部 → 形成<code>frame</code>。</li>
+</ol>
+<p>解封装流程（接收方）：<br>
+反向逐层剥离头部，最终交付<code>message</code>给应用层。</p>
+<p>解释：<br>
+每层通过添加头部（Header）实现特定功能（如路由、纠错）。例如：<br>
+• TCP头部：确保可靠传输（序列号、确认号）。</p>
+<p>• IP头部：实现跨网络寻址。</p>
+<p>• MAC头部：用于同一链路内的设备寻址。</p>
+<p>示意图：<br>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">应用层： [message]  </span><br><span class="line">传输层： [TCP头部][message] → segment  </span><br><span class="line">网络层： [IP头部][TCP头部][message] → datagram  </span><br><span class="line">链路层： [MAC头部][IP头部][TCP头部][message][MAC尾部] → frame  </span><br></pre></td></tr></table></figure>
+封装和解封装是网络分层模型的核心机制，确保各层职责分离，协同工作。</p>
+<h2 id="问题-question"><strong>问题 (Question):</strong></h2>
+<p>Two important reasons that the Internet is organized as a hierarchy
+of networks for the purposes of routing are:<br>
+<em>(因特网组织为层次体系的原因是路由是……？)</em></p>
+<blockquote>
+<p>规模太大，需要自治！</p>
+</blockquote>
+<p>选项 (Options):<br>
+A. Message complexity and speed of convergence<br>
+<em>(消息复杂性和收敛速度)</em></p>
+<p>B. Least cost and maximum free circuit availability<br>
+<em>(最低成本和最大空闲电路可用性)</em></p>
+<p>C. Link cost changes and link failure<br>
+<em>(链路成本变化和链路故障)</em></p>
+<p>D. Scale and administrative autonomy<br>
+<em>(规模/比例 和 管理的自治)</em></p>
+<hr>
+<p><strong>答案 (Answer):</strong><br>
+✅ D. Scale and administrative autonomy <em>(规模/比例 和
+管理的自治)</em></p>
+<hr>
+<p><strong>解释 (Explanation):</strong></p>
+<p><strong>1. Scale (规模/比例)</strong><br>
+• The Internet is too large to be managed as a single, flat network.</p>
+<p><em>(因特网规模太大，无法作为一个单一的扁平网络来管理。)</em><br>
+• Hierarchical routing (e.g., Autonomous Systems, AS) reduces routing
+table sizes and improves efficiency.</p>
+<p><em>(分层路由（如自治系统
+AS）减少了路由表大小，提高了效率。)</em></p>
+<p><strong>2. Administrative Autonomy (管理的自治)</strong><br>
+• Different organizations (e.g., ISPs, companies) need independent
+control over their networks.</p>
+<p><em>(不同组织（如ISP、公司）需要对其网络进行独立控制。)</em><br>
+• Hierarchical routing allows local policies (e.g., BGP routing
+decisions) without affecting the entire Internet.</p>
+<p><em>(分层路由允许本地策略（如BGP路由决策）而不影响整个因特网。)</em></p>
+<p><strong>Why not other options?</strong><br>
+• A (Message complexity &amp; convergence speed) → Related to routing
+algorithms (e.g., OSPF), but not the primary reason for hierarchy.</p>
+<p><em>(与路由算法相关，但不是层次化的主要原因。)</em><br>
+• B (Least cost &amp; circuit availability) → More about QoS (Quality of
+Service), not hierarchy.</p>
+<p><em>(更偏向服务质量 QoS，而非层次化。)</em><br>
+• C (Link cost changes &amp; failure) → Affects routing stability, but
+not the structural design of the Internet.</p>
+<p><em>(影响路由稳定性，但不是因特网的结构设计原因。)</em></p>
+<hr>
+<h2 id="问题-question-1"><strong>问题 (Question):</strong></h2>
+<p>对比Client-Server模型和P2P模型的主要特征。<br>
+<em>(Compare the key characteristics of the Client-Server model and the
+P2P model.)</em></p>
+<hr>
+<p><strong>答案 (Answer):</strong></p>
+<table>
+<colgroup>
+<col style="width: 18%">
+<col style="width: 36%">
+<col style="width: 45%">
+</colgroup>
+<thead>
+<tr>
+<th>模型 (Model)</th>
+<th>Client-Server 模型</th>
+<th>P2P 模型 (Peer-to-Peer)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>核心结构</td>
+<td>集中式（服务器 + 客户机）</td>
+<td>分布式（对等节点直接通信）</td>
+</tr>
+<tr>
+<td>服务器角色</td>
+<td>Always-on（始终在线），服务多个客户机请求</td>
+<td>无专用服务器，所有节点可同时作为客户机和服务提供者</td>
+</tr>
+<tr>
+<td>客户机间通信</td>
+<td>❌ 不能直接通信</td>
+<td>✅ 任意对等方（peer）可直接通信</td>
+</tr>
+<tr>
+<td>扩展性 (Scalability)</td>
+<td>依赖服务器容量，扩展性有限</td>
+<td>自扩展性 (Self-scalability)，节点越多性能越强</td>
+</tr>
+<tr>
+<td>管理难度</td>
+<td>易于集中管理</td>
+<td>难以管理（缺乏中心控制）</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><strong>解释 (Explanation):</strong></p>
+<p><strong>1. Client-Server 模型</strong><br>
+•
+集中式架构：服务器（Server）作为核心，始终在线并处理来自多个客户机（Client）的请求（如Web服务器和浏览器）。</p>
+<p>•
+通信限制：客户机之间不能直接通信，必须通过服务器中转（例如：电子邮件服务、在线银行）。</p>
+<p>• 优缺点：</p>
+<p>• ✅ 管理简单（集中控制）。</p>
+<p>• ❌ 单点故障风险（服务器宕机则服务中断）。</p>
+<p>• ❌ 扩展性受限（服务器带宽和计算能力是瓶颈）。</p>
+<p><strong>2. P2P 模型</strong><br>
+•
+分布式架构：无中心服务器，所有节点（Peer）地位平等，可直接交换资源（如BitTorrent、区块链网络）。</p>
+<p>•
+自扩展性：新节点的加入会贡献资源（带宽、存储），从而提升整体网络能力。</p>
+<p>• 优缺点：</p>
+<p>• ✅ 高容错性（无单点故障）。</p>
+<p>• ✅ 扩展性强（节点越多，网络性能越强）。</p>
+<p>• ❌ 管理困难（缺乏中心权威，易受恶意节点影响）。</p>
+<p><strong>对比总结</strong><br>
+• 适用场景：</p>
+<p>•
+Client-Server：需要高可靠性、集中管理的服务（如电子商务、云计算）。</p>
+<p>• P2P：需要高扩展性、去中心化的应用（如文件共享、加密货币）。</p>
+<p>• 关键差异：</p>
+<table>
+<thead>
+<tr>
+<th>差异点</th>
+<th>Client-Server</th>
+<th>P2P</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>控制方式</td>
+<td>中心化</td>
+<td>去中心化</td>
+</tr>
+<tr>
+<td>通信模式</td>
+<td>客户机↔︎服务器</td>
+<td>对等方↔︎对等方</td>
+</tr>
+<tr>
+<td>典型应用</td>
+<td>HTTP/Web服务</td>
+<td>BitTorrent/Bitcoin</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="问题-question-2"><strong>问题 (Question):</strong></h2>
+<p>常见应用（如文件传输、电子邮件、网页等）对底层传输服务在数据丢失（Data
+Loss）、吞吐量（Throughput）和时间敏感性（Timing）方面的基本要求是什么？</p>
+<hr>
+<p><strong>答案 (Answer):</strong></p>
+<table>
+<colgroup>
+<col style="width: 23%">
+<col style="width: 22%">
+<col style="width: 33%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr>
+<th>应用 (Application)</th>
+<th>数据丢失容忍度 (Data Loss)</th>
+<th>吞吐量/带宽 (Throughput)</th>
+<th>时间敏感性 (Timing)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>文件传输 (File Transfer)</td>
+<td>❌ 不能丢失 (No loss)</td>
+<td>弹性 (Elastic)</td>
+<td>⏳ 不敏感 (Not sensitive)</td>
+</tr>
+<tr>
+<td>电子邮件 (Email)</td>
+<td>❌ 不能丢失 (No loss)</td>
+<td>弹性 (Elastic)</td>
+<td>⏳ 不敏感 (Not sensitive)</td>
+</tr>
+<tr>
+<td>网页 (Web Documents)</td>
+<td>❌ 不能丢失 (No loss)</td>
+<td>弹性 (几kbps ~ Mbps)</td>
+<td>⏳ 不敏感 (Not sensitive)</td>
+</tr>
+<tr>
+<td>因特网电话/视频会议</td>
+<td>✅ 可容忍 (Tolerant)</td>
+<td>音频: 几kbps–1Mbps<br>视频: 10kbps–5Mbps</td>
+<td>⏱️ 敏感 (100ms 延迟上限)</td>
+</tr>
+<tr>
+<td>存储音频/视频</td>
+<td>✅ 可容忍 (Tolerant)</td>
+<td>同实时音视频</td>
+<td>⏱️ 敏感 (几秒延迟上限)</td>
+</tr>
+<tr>
+<td>交互式游戏 (Online Games)</td>
+<td>✅ 可容忍 (Tolerant)</td>
+<td>几kbps–10kbps</td>
+<td>⏱️ 敏感 (100ms 延迟上限)</td>
+</tr>
+<tr>
+<td>即时通讯 (Instant Messaging)</td>
+<td>❌ 不能丢失 (No loss)</td>
+<td>弹性 (Elastic)</td>
+<td>⏳ 部分敏感 (有时需实时)</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><strong>解释 (Explanation):</strong></p>
+<p><strong>1. 数据丢失容忍度 (Data Loss Tolerance)</strong><br>
+• 不可丢失 (No
+loss)：文件传输、电子邮件、网页等应用要求数据完整可靠（如TCP协议）。</p>
+<p>• 可容忍
+(Tolerant)：实时音视频、游戏等允许少量丢包（如UDP协议），因重传会导致延迟。</p>
+<p><strong>2. 吞吐量/带宽需求 (Throughput Requirements)</strong><br>
+• 弹性
+(Elastic)：文件传输、电子邮件等对带宽无严格限制，能适应网络波动。</p>
+<p>• 固定范围 (Fixed range)：</p>
+<p>• 音视频流：音频（低带宽）、视频（高带宽）。</p>
+<p>• 交互式游戏：低带宽但需稳定。</p>
+<p><strong>3. 时间敏感性 (Timing Sensitivity)</strong><br>
+• 不敏感 (Not sensitive)：文件传输、网页加载等允许延迟（如HTTP）。</p>
+<p>• 高度敏感 (Highly sensitive)：</p>
+<p>• 实时音视频/游戏：延迟 ≤100ms，否则用户体验差。</p>
+<p>• 存储音视频：允许几秒缓冲（如YouTube预加载）。</p>
+<p><strong>底层传输服务选择</strong><br>
+• TCP：用于不可丢失数据（如文件、邮件）。</p>
+<p>• UDP：用于可容忍丢包但低延迟的应用（如视频会议、游戏）。</p>
+<hr>
+<p><strong>总结 (Summary)</strong><br>
+• 关键分类维度：</p>
+<p>• 可靠性 vs. 实时性：不可丢失数据 vs. 低延迟。</p>
+<p>• 带宽需求：弹性适应 vs. 固定范围。</p>
+<p>• 设计启示：不同应用需匹配不同的传输层协议（TCP/UDP）和QoS策略。</p>
+<h2 id="问题-question-3"><strong>问题 (Question):</strong></h2>
+<p>常见应用（如文件传输、电子邮件、网页、实时音视频等）如何选择TCP或UDP协议？</p>
+<hr>
+<p><strong>答案 (Answer):</strong></p>
+<table>
+<colgroup>
+<col style="width: 23%">
+<col style="width: 34%">
+<col style="width: 41%">
+</colgroup>
+<thead>
+<tr>
+<th>应用类型 (Application)</th>
+<th>传输协议 (Protocol)</th>
+<th>选择原因 (Reason)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>文件传输 (File Transfer)</td>
+<td>TCP</td>
+<td>数据必须完整无误，不允许丢失</td>
+</tr>
+<tr>
+<td>电子邮件 (Email)</td>
+<td>TCP</td>
+<td>邮件内容必须可靠送达</td>
+</tr>
+<tr>
+<td>网页浏览 (Web)</td>
+<td>TCP</td>
+<td>网页数据（HTML、图片等）需完整加载</td>
+</tr>
+<tr>
+<td>实时音视频 (VoIP/Video Call)</td>
+<td>UDP</td>
+<td>低延迟优先，允许少量丢包</td>
+</tr>
+<tr>
+<td>在线游戏 (Online Gaming)</td>
+<td>UDP</td>
+<td>实时交互，延迟敏感</td>
+</tr>
+<tr>
+<td>流媒体 (Video Streaming)</td>
+<td>通常UDP（如直播）<br>或TCP（如点播缓冲）</td>
+<td>直播：低延迟优先<br>点播：可缓冲，允许TCP可靠传输</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><strong>解释 (Explanation):</strong></p>
+<p><strong>1. 选择TCP的应用</strong><br>
+• 核心需求：数据完整性（No loss）、可靠性（Reliability）。</p>
+<p>• 典型场景：</p>
+<p>• 文件传输（FTP、云存储）：若数据丢失会导致文件损坏。</p>
+<p>• 电子邮件（SMTP/POP3）：邮件内容必须完整传递。</p>
+<p>• 网页（HTTP/HTTPS）：文本、图片需完全加载，否则页面显示错误。</p>
+<p>• TCP特性：</p>
+<p>•
+通过确认重传（ACK+Retransmission）、流量控制、拥塞控制确保数据可靠传输。</p>
+<p>• 代价：较高延迟（因需建立连接、重传等）。</p>
+<p><strong>2. 选择UDP的应用</strong><br>
+• 核心需求：低延迟（Low latency）、实时性（Real-time）。</p>
+<p>• 典型场景：</p>
+<p>•
+实时音视频（Zoom/Skype）：少量丢包仅导致短暂卡顿，但重传会导致不可接受的延迟。</p>
+<p>•
+在线游戏（MOBA/FPS）：玩家操作需毫秒级响应，丢包可通过游戏逻辑补偿。</p>
+<p>• 直播流媒体（Twitch/YouTube Live）：实时性优先，允许丢帧。</p>
+<p>• UDP特性：</p>
+<p>• 无连接、无重传，传输速度快，但不保证可靠性。</p>
+<p>• 应用层可自行实现部分可靠性（如FEC前向纠错）。</p>
+<p><strong>3. 特殊案例：流媒体（点播 vs. 直播）</strong><br>
+• 点播（如Netflix）：</p>
+<p>• 通常用TCP（如HTTP-based
+streaming），因用户可容忍缓冲，且需完整数据。</p>
+<p>• 直播（如Twitch）：</p>
+<p>• 通常用UDP（如RTMP），因实时性优先，少量丢包不影响观看。</p>
+<hr>
+<h2 id="问题-question-4"><strong>问题 (Question):</strong></h2>
+<p>请解释Web Page、Object和URL之间的关系及其核心概念。</p>
+<hr>
+<p><strong>答案 (Answer):</strong></p>
+<table>
+<colgroup>
+<col style="width: 6%">
+<col style="width: 50%">
+<col style="width: 43%">
+</colgroup>
+<thead>
+<tr>
+<th>概念</th>
+<th>定义</th>
+<th>关键特性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Web Page</td>
+<td>由多个对象（Objects）组成的复合文档（如HTML、图片、CSS等）。</td>
+<td>- 用户看到的完整页面。<br>- 由多个文件组合而成。</td>
+</tr>
+<tr>
+<td>Object</td>
+<td>构成Web
+Page的单个文件（如HTML文件、JPEG图片、JavaScript脚本等）。</td>
+<td>- 每个对象需要独立连接获取。<br>- 通过URL唯一标识。</td>
+</tr>
+<tr>
+<td>URL</td>
+<td>用于定位Object的地址，格式为：<code>协议://主机名/路径名</code>（如<code>http://example.com/image.jpg</code>）。</td>
+<td>- 唯一标识网络资源。<br>- 包含服务器和文件路径信息。</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><strong>解释 (Explanation):</strong></p>
+<p><strong>1. Web Page（网页）</strong><br>
+• 组成：一个Web Page由多个Object（对象）构成，例如：</p>
+<p>• 基础对象：HTML文件（定义页面结构）。</p>
+<p>•
+嵌入对象：图片（JPEG/PNG）、视频（MP4）、样式表（CSS）、脚本（JS）等。</p>
+<p>• 加载过程：</p>
+<ol type="1">
+<li>浏览器首先请求主HTML文件（通过URL）。<br>
+</li>
+<li>解析HTML后，发现嵌入的其他Object（如<code>&lt;img src="image.jpg"&gt;</code>）。<br>
+</li>
+<li>为每个Object发起独立连接（HTTP请求）获取资源。</li>
+</ol>
+<p><strong>2. Object（对象）</strong><br>
+• 本质：是存储在服务器上的独立文件，每个Object需要：</p>
+<p>•
+唯一URL：通过URL定位（如<code>http://hostname/path/to/file</code>）。</p>
+<p>•
+独立传输：每个Object需单独建立连接（早期HTTP/1.1为串行，HTTP/2支持多路复用）。</p>
+<p>• 示例：</p>
+<p>• 若一个网页包含5张图片，则共需加载：1个HTML + 5个图片对象 =
+6个独立文件。</p>
+<p><strong>3. URL（统一资源定位符）</strong><br>
+•
+结构：<code>协议://主机名/路径名</code>（如<code>https://www.example.com/images/logo.png</code>）。</p>
+<p>• 协议：HTTP/HTTPS/FTP等。</p>
+<p>• 主机名：服务器域名或IP地址（如<code>www.example.com</code>）。</p>
+<p>•
+路径名：资源在服务器上的路径（如<code>/images/logo.png</code>）。</p>
+<p>• 作用：</p>
+<p>• 客户端通过URL向服务器请求特定Object。</p>
+<p>• URL是Web资源的全局唯一标识符。</p>
+<hr>
+<p><strong>图示关系 (Diagram Reference):</strong><br>
+• 树状结构（如用户提供的图片所示）：</p>
+<p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Web Page  </span><br><span class="line">│  </span><br><span class="line">├── Object 1 (HTML) → URL: http://host.com/index.html  </span><br><span class="line">├── Object 2 (Image) → URL: http://host.com/image.jpg  </span><br><span class="line">└── Object 3 (CSS) → URL: http://host.com/style.css  </span><br></pre></td></tr></table></figure> • 关键点：</p>
+<p>• 一个Web Page是对象的集合。</p>
+<p>• 每个对象有唯一URL，且需独立获取。</p>
+<hr>
+<p><strong>总结 (Summary):</strong><br>
+• Web Page = 多个Objects的组合。</p>
+<p>• Object = 通过URL定位的独立文件。</p>
+<p>• URL = 资源的“身份证”，包含协议、主机名和路径。</p>
+<p>• 实际影响：</p>
+<p>• 网页性能优化需减少Object数量（如合并CSS/JS）。</p>
+<p>• HTTP/2和HTTP/3通过多路复用降低独立连接的开销。</p>
+<h2 id="问题-question-5"><strong>问题 (Question):</strong></h2>
+<p>解释HTTP请求/响应模型（HTTP Request/Response）以及基于拉取模型（Pull
+Model）的对象获取过程。</p>
+<hr>
+<p><strong>答案 (Answer):</strong></p>
+<p><strong>1. HTTP请求/响应模型（HTTP Request/Response）</strong><br>
+•
+HTTP请求（Request）：客户端（如浏览器）向服务器发送请求，格式如下：</p>
+<p><figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">GET</span> <span class="string">/index.html</span> <span class="meta">HTTP/1.1</span></span><br><span class="line"><span class="attribute">Host</span><span class="punctuation">: </span>www.example.com</span><br><span class="line"><span class="attribute">User-Agent</span><span class="punctuation">: </span>Mozilla/5.0</span><br></pre></td></tr></table></figure> •
+方法（Method）：<code>GET</code>（获取资源）、<code>POST</code>（提交数据）、<code>PUT</code>（更新资源）等。</p>
+<p>• URL路径：<code>/index.html</code>（请求的资源路径）。</p>
+<p>• 协议版本：<code>HTTP/1.1</code> 或 <code>HTTP/2</code>。</p>
+<p>•
+头部（Headers）：附加信息（如<code>Host</code>、<code>User-Agent</code>）。</p>
+<p>• HTTP响应（Response）：服务器返回请求的资源或状态，格式如下：</p>
+<p><figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">HTTP/1.1</span> <span class="number">200</span> OK</span><br><span class="line"><span class="attribute">Content-Type</span><span class="punctuation">: </span>text/html</span><br><span class="line"><span class="attribute">Content-Length</span><span class="punctuation">: </span>1234</span><br><span class="line"></span><br><span class="line"><span class="language-jboss-cli">&lt;html&gt;<span class="string">...</span>（数据内容）<span class="string">...</span>&lt;<span class="string">/html</span>&gt;</span></span><br></pre></td></tr></table></figure> • 状态码（Status
+Code）：<code>200</code>（成功）、<code>404</code>（未找到）、<code>500</code>（服务器错误）等。</p>
+<p>•
+头部（Headers）：描述资源类型（如<code>Content-Type</code>）、长度（<code>Content-Length</code>）。</p>
+<p>• 主体（Body）：实际数据（如HTML文件、图片等）。</p>
+<p><strong>2. 拉取模型（Pull Model）的对象获取</strong><br>
+• 定义：客户端主动发起请求（Pull），服务器被动响应（无推送能力）。</p>
+<p>• 流程：</p>
+<ol type="1">
+<li>用户输入URL（如<code>http://example.com/page.html</code>）。<br>
+</li>
+<li>浏览器发送<code>GET</code>请求获取主HTML文件。<br>
+</li>
+<li>解析HTML后，发现嵌入对象（如<code>&lt;img src="image.jpg"&gt;</code>）。<br>
+</li>
+<li>对每个嵌入对象发起新的HTTP请求（Pull）。<br>
+</li>
+<li>服务器返回对象数据，浏览器渲染完整页面。<br>
+• 特点：</li>
+</ol>
+<p>• 无服务器推送：所有资源需客户端显式请求。</p>
+<p>•
+串行问题：HTTP/1.1需为每个对象建立独立连接（HTTP/2通过多路复用优化）。</p>
+<hr>
+<p><strong>解释 (Explanation):</strong></p>
+<p><strong>1. HTTP请求/响应的核心角色</strong><br>
+•
+无状态协议（Stateless）：每次请求独立，服务器不保留客户端历史信息（依赖Cookies/Session维护状态）。</p>
+<p>• 关键头部示例：</p>
+<p>•
+<code>Cache-Control</code>：控制缓存行为（如<code>max-age=3600</code>）。</p>
+<p>• <code>Cookie</code>：传递会话状态（如用户登录信息）。</p>
+<p><strong>2. 拉取模型 vs. 推送模型（Push Model）</strong><br>
+| 对比项 | 拉取模型（Pull） | 推送模型（Push） | | ---------- |
+------------------------------ | ------------------------------ | |
+发起方 | 客户端（如浏览器） | 服务器（如WebSocket） | | 实时性 |
+依赖轮询（延迟高） | 服务器可主动推送（如聊天消息） | | HTTP/2优化 |
+支持服务器推送（Server Push）* | 原生支持 |</p>
+<blockquote>
+<p>*注：HTTP/2的Server
+Push允许服务器在客户端请求前预推送资源（如CSS文件），但仍基于请求-响应范式。</p>
+</blockquote>
+<p><strong>3. 实际应用中的挑战</strong><br>
+• 性能瓶颈：</p>
+<p>•
+HTTP/1.1的串行请求导致页面加载慢（解决方案：雪碧图、资源合并）。</p>
+<p>• HTTP/2通过多路复用（Multiplexing）解决。</p>
+<p>• 安全性：</p>
+<p>• HTTPS（HTTP over TLS）加密请求/响应内容。</p>
+<hr>
+<p><strong>总结 (Summary):</strong><br>
+• HTTP请求/响应是Web通信的基础，遵循“客户端拉取-服务器响应”模式。</p>
+<p>•
+拉取模型的缺点（延迟、串行）推动了HTTP/2和WebSocket等技术的发展。</p>
+<p>• 关键协议演进：</p>
+<p>• HTTP/1.1 → HTTP/2（多路复用、Server Push） →
+HTTP/3（基于QUIC，解决队头阻塞）。</p>
+<h2 id="问题-question-6"><strong>问题 (Question):</strong></h2>
+<p>解释HTTP协议的无状态性（Stateless）、持久连接（Persistent/Non-Persistent）、HTTP方法（GET/POST/PUT/DELETE等）以及常见状态码（200/404/500等）。<br>
+判断题：<br>
+<em>“当使用持久HTTP（Persistent
+HTTP）传输一个包含文本和3张图片的网页时，每个对象都需要建立独立的连接。”</em>
+→ F（False）</p>
+<hr>
+<p><strong>答案 (Answer):</strong></p>
+<p><strong>1. HTTP的无状态性（Stateless）</strong><br>
+• 定义：服务器不记录客户端之前的请求信息，每次请求独立处理。</p>
+<p>•
+解决方案：通过<code>Cookies</code>、<code>Session</code>或<code>Token</code>（如JWT）维持状态。</p>
+<p><strong>2. 持久连接 vs. 非持久连接</strong><br>
+| 类型 | 非持久HTTP（Non-Persistent） | 持久HTTP（Persistent） | |
+-------- | --------------------------------- |
+--------------------------- | | 连接方式 | 每个对象需单独建立TCP连接 |
+复用同一TCP连接传输多个对象 | | 默认版本 | HTTP/1.0 | HTTP/1.1及以后版本
+| | 性能影响 | 高延迟（三次握手开销 × 对象数量） |
+减少握手开销，提升加载速度 |</p>
+<p><strong>3. HTTP方法（Methods）</strong><br>
+| 方法 | 作用 | 幂等性 | 安全性 | | -------- |
+-------------------------- | ------ | ---------- | | <code>GET</code> |
+获取资源（如请求网页） | 是 | 是（只读） | | <code>POST</code> |
+提交数据（如登录表单） | 否 | 否 | | <code>PUT</code> |
+更新资源（全量替换） | 是 | 否 | | <code>DELETE</code> | 删除资源 | 是 |
+否 | | <code>HEAD</code> | 仅获取响应头（不返回Body） | 是 | 是 |</p>
+<p><strong>4. 常见HTTP状态码</strong><br>
+| 状态码 | 含义 | 示例场景 | | --------------------------- |
+-------------- | ----------------------- | | <code>200 OK</code> |
+请求成功 | 网页加载成功 | | <code>404 Not Found</code> | 资源未找到 |
+URL路径错误或文件被删除 | | <code>500 Internal Server Error</code> |
+服务器内部错误 | 后端代码崩溃 | | <code>302 Found</code> | 临时重定向 |
+登录后跳转到首页 |</p>
+<p><strong>判断题解析</strong><br>
+• 题目：持久HTTP下，每个对象需独立建立连接？</p>
+<p>• 答案：False（错误）。</p>
+<p>•
+原因：持久HTTP（HTTP/1.1默认）复用同一TCP连接传输所有对象（文本+图片），无需重复握手。</p>
+<hr>
+<p><strong>解释 (Explanation):</strong></p>
+<p><strong>1. 无状态协议的实际影响</strong><br>
+• 问题：用户登录后，服务器如何识别后续请求？</p>
+<p>• 解决方案：</p>
+<p>•
+Cookies：服务器通过<code>Set-Cookie</code>头部下发标识，客户端后续请求携带<code>Cookie</code>头部。</p>
+<p>• Session：服务器存储用户状态，通过Cookie中的Session ID关联。</p>
+<p><strong>2. 持久连接的优化原理</strong><br>
+• HTTP/1.1的改进：</p>
+<p>• 默认启用持久连接（<code>Connection: keep-alive</code>）。</p>
+<p>• 传输完一个对象后，连接保持打开状态，供后续请求复用。</p>
+<p>• 示例：</p>
+<p>• 加载含3张图片的网页时：</p>
+<pre><code>◦ 非持久HTTP：需4次TCP握手（1 HTML + 3图片）。  
+
+◦ 持久HTTP：仅1次TCP握手，复用连接传输所有对象。  </code></pre>
+<p><strong>3. HTTP方法的安全性与幂等性</strong><br>
+•
+安全性：<code>GET</code>和<code>HEAD</code>是安全的（仅读取数据，无副作用）。</p>
+<p>•
+幂等性：多次执行效果相同（如<code>GET</code>、<code>PUT</code>、<code>DELETE</code>）。</p>
+<p>• 注意：<code>POST</code>非幂等（重复提交订单可能创建多个订单）。</p>
+<p><strong>4. 状态码分类</strong><br>
+•
+<code>1xx</code>：信息类（如<code>101 Switching Protocols</code>，用于WebSocket升级）。</p>
+<p>•
+<code>2xx</code>：成功类（如<code>206 Partial Content</code>，分片下载）。</p>
+<p>•
+<code>3xx</code>：重定向类（如<code>304 Not Modified</code>，缓存有效）。</p>
+<p>•
+<code>4xx</code>：客户端错误（如<code>403 Forbidden</code>，无访问权限）。</p>
+<p>•
+<code>5xx</code>：服务器错误（如<code>502 Bad Gateway</code>，后端服务不可用）。</p>
+<hr>
+<p><strong>总结 (Summary):</strong><br>
+• 无状态性是HTTP的核心设计，需额外机制（如Cookies）维持会话。</p>
+<p>• 持久连接显著减少延迟（HTTP/1.1的默认行为）。</p>
+<p>•
+HTTP方法区分操作类型，<code>GET</code>/<code>POST</code>是最常用方法。</p>
+<p>•
+状态码快速定位问题，<code>200</code>/<code>404</code>/<code>500</code>需重点掌握。</p>
+<p>•
+判断题关键：持久HTTP下无需为每个对象新建连接（与HTTP/1.0的非持久连接混淆是常见错误）。</p>
+<h2 id="问题-question-7"><strong>问题 (Question):</strong></h2>
+<p>FTP协议中的控制连接（Control Connection）和数据连接（Data
+Connection）分别有什么作用？</p>
+<hr>
+<p><strong>答案 (Answer):</strong></p>
+<table>
+<colgroup>
+<col style="width: 6%">
+<col style="width: 45%">
+<col style="width: 47%">
+</colgroup>
+<thead>
+<tr>
+<th>连接类型</th>
+<th>作用</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>控制连接</td>
+<td>传输控制信息（如用户认证、命令<code>PUT/GET</code>、目录操作等）。</td>
+<td>- 持久化（整个会话期间保持打开）。<br>- 默认端口21。</td>
+</tr>
+<tr>
+<td>数据连接</td>
+<td>实际传输文件内容（如上传/下载文件）。</td>
+<td>- 按需创建，传输完成后关闭。<br>- 默认端口20（主动模式）。</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><strong>解释 (Explanation):</strong></p>
+<p><strong>1. 控制连接（Control Connection）</strong><br>
+• 功能：</p>
+<p>•
+传输命令和响应（如<code>USER</code>、<code>PASS</code>、<code>LIST</code>、<code>PUT</code>、<code>GET</code>）。</p>
+<p>• 维护会话状态（FTP是有状态协议，与HTTP无状态相反）。</p>
+<p>• 流程（如图片所示）：</p>
+<ol type="1">
+<li>用户通过FTP客户端发起连接（如输入<code>ftp example.com</code>）。<br>
+</li>
+<li>客户端与服务器端口21建立控制连接。<br>
+</li>
+<li>通过控制连接发送认证和操作指令（如<code>get file.txt</code>）。</li>
+</ol>
+<p><strong>2. 数据连接（Data Connection）</strong><br>
+• 功能：</p>
+<p>• 专用于传输文件内容或目录列表。</p>
+<p>• 每次文件传输需独立建立数据连接。</p>
+<p>• 两种模式：</p>
+<p>• 主动模式（Active Mode）：服务器从端口20主动连接客户端。</p>
+<p>• 被动模式（Passive
+Mode）：客户端连接服务器的随机高端口（解决防火墙问题）。</p>
+<p>• 流程（如图片所示）：</p>
+<ol type="1">
+<li>用户输入<code>get file.txt</code>后，服务器通过控制连接通知客户端准备传输。<br>
+</li>
+<li>建立数据连接（端口20或高端口），传输文件内容。<br>
+</li>
+<li>传输完成后，数据连接关闭，控制连接保持。</li>
+</ol>
+<p><strong>3. 关键对比（FTP vs. HTTP）</strong><br>
+| 特性 | FTP | HTTP | | -------- | -------------------------- |
+----------------------------- | | 连接类型 | 分离的控制连接+数据连接 |
+单一连接（请求/响应复用） | | 状态管理 | 有状态（控制连接维持会话） |
+无状态（依赖Cookies/Session） | | 默认端口 | 控制21 / 数据20 | 80 (HTTP)
+或 443 (HTTPS) |</p>
+<hr>
+<p><strong>总结 (Summary):</strong><br>
+• 控制连接：FTP的“指挥中心”，负责发送指令和维持会话。</p>
+<p>• 数据连接：FTP的“运输通道”，仅在实际传输文件时临时建立。</p>
+<p>• 为什么分离？</p>
+<p>• 控制与数据分离提高效率（如同时浏览目录和下载文件）。</p>
+<p>• 允许防火墙灵活配置（被动模式解决客户端防火墙限制）。</p>
+<h2 id="问题-question-8"><strong>问题 (Question):</strong></h2>
+<p>在电子邮件系统中，SMTP、POP3、IMAP和HTTP协议分别扮演什么角色？<br>
+判断题：<br>
+<em>“在电子邮件系统中，SMTP是用于发送邮件的协议，而POP3是用于接收邮件的协议。”</em>
+→ T（True）</p>
+<hr>
+<p><strong>答案 (Answer):</strong></p>
+<p><strong>1. 邮件发送协议：SMTP（Simple Mail Transfer
+Protocol）</strong><br>
+• 作用：推送（Push）邮件到邮件服务器或接收方服务器。</p>
+<p>• 模型：客户端→服务器或服务器→服务器（如Gmail发送邮件到QQ邮箱）。</p>
+<p>• 端口：默认25（明文）或465（SSL加密）。</p>
+<p>• 特点：</p>
+<p>• 仅支持文本传输（附件需编码为ASCII，如Base64）。</p>
+<p>•
+使用命令-响应模式（如<code>HELO</code>、<code>MAIL FROM</code>、<code>RCPT TO</code>）。</p>
+<p><strong>2. 邮件接收协议（Pull Model）</strong><br>
+| 协议 | 功能 | 特点 | | ---- | -------------------------------------- |
+-------------------------------------------------------- | | POP3 |
+从服务器下载邮件到本地，删除服务器副本 | - 简单轻量。<br>-
+不支持多设备同步（邮件仅存本地）。 | | IMAP |
+在服务器上管理邮件，同步多设备访问 | - 保留服务器副本。<br>-
+支持文件夹标记、搜索等高级功能。 | | HTTP |
+通过Web界面访问邮件（如Gmail、QQ邮箱） | -
+基于浏览器，无需专用邮件客户端。 |</p>
+<p><strong>3. 判断题解析</strong><br>
+• 题目：SMTP用于发送邮件，POP3用于接收邮件？</p>
+<p>• 答案：True（正确）。</p>
+<p>• 原因：</p>
+<p>• SMTP负责发送邮件（从客户端到服务器，或服务器间中转）。</p>
+<p>• POP3/IMAP/HTTP负责接收邮件（从服务器拉取到客户端）。</p>
+<hr>
+<p><strong>解释 (Explanation):</strong></p>
+<p><strong>1. 邮件系统工作流程</strong><br>
+1. 发送阶段（SMTP）：<br>
+• 用户A通过SMTP将邮件发送到发送方服务器（如Gmail的SMTP服务器）。</p>
+<p>•
+发送方服务器通过SMTP将邮件中转到接收方服务器（如QQ邮箱服务器）。</p>
+<ol start="2" type="1">
+<li><p>接收阶段（POP3/IMAP）：<br>
+•
+用户B通过POP3/IMAP从接收方服务器拉取邮件到本地客户端（如Outlook）。</p></li>
+<li><p>Web邮件（HTTP）：<br>
+• 用户B直接通过浏览器访问邮件服务器（如登录mail.qq.com）。</p></li>
+</ol>
+<p><strong>2. 协议对比（POP3 vs. IMAP）</strong><br>
+| 对比项 | POP3 | IMAP | | -------- | ------------------------ |
+---------------------------- | | 邮件存储 | 下载后默认删除服务器副本 |
+保留服务器副本，多设备同步 | | 功能支持 | 仅基本下载/删除 |
+支持文件夹管理、标记、搜索等 | | 适用场景 | 单设备离线使用 |
+多设备在线协作 |</p>
+<p><strong>3. 为什么SMTP不能接收邮件？</strong><br>
+• SMTP设计为单向传输协议（发送方→接收方），缺乏邮件查询和管理功能。</p>
+<p>•
+接收邮件需协议支持拉取（Pull）和状态管理（如已读/未读标记），这是POP3/IMAP的职责。</p>
+<hr>
+<p><strong>图示参考 (Diagram Reference):</strong><br>
+1. 邮件发送（SMTP）：<br>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">User A → [SMTP] → Gmail Server → [SMTP] → QQ Mail Server  </span><br></pre></td></tr></table></figure> 2. 邮件接收（POP3/IMAP）：<br>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">User B ← [POP3/IMAP] ← QQ Mail Server  </span><br></pre></td></tr></table></figure> 3. Web邮件（HTTP）：<br>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">User B ← [HTTP] ← mail.qq.com  </span><br></pre></td></tr></table></figure></p>
+<hr>
+<p><strong>总结 (Summary):</strong><br>
+• SMTP：邮件系统的“邮递员”，负责发送和中转邮件。</p>
+<p>•
+POP3/IMAP：邮件系统的“收件箱”，负责从服务器拉取邮件（POP3简单，IMAP功能丰富）。</p>
+<p>• HTTP：通过浏览器访问邮件的替代方案（如Gmail网页版）。</p>
+<p>• 关键点：</p>
+<p>• SMTP仅用于发送，POP3/IMAP/HTTP用于接收。</p>
+<p>• IMAP更适合现代多设备场景，POP3逐渐被淘汰。</p>
+<h2 id="问题question"><strong>问题(Question ):</strong></h2>
+<p>解释P2P架构在文件分发中的可扩展性（Scalability）优势。</p>
+<hr>
+<p><strong>答案 (Answer):</strong></p>
+<p><strong>P2P文件分发的可扩展性原理</strong><br>
+1. 去中心化资源共享：<br>
+•
+每个对等节点（Peer）既是客户端（下载数据），也是服务器（上传数据）。</p>
+<p>• 传统C/S模型：服务器带宽是瓶颈；P2P模型：节点越多，总带宽越大。</p>
+<ol start="2" type="1">
+<li><p>自扩展性（Self-scalability）：<br>
+• 新加入的节点贡献上传带宽，系统整体容量随用户增长而提升。</p>
+<p>• 例如：BitTorrent中，下载同一文件的用户越多，下载速度越快。</p></li>
+<li><p>分块传输（Chunk-based Distribution）：<br>
+•
+文件被分割为小块（如256KB），节点间并行交换不同块，减少单点依赖。</p></li>
+<li><p>动态负载均衡：<br>
+• 节点根据网络状况选择最优邻居交换数据，避免拥塞。</p></li>
+</ol>
+<hr>
+<p><strong>解释 (Explanation):</strong><br>
+• 对比C/S模型：</p>
+<table>
+<colgroup>
+<col style="width: 18%">
+<col style="width: 46%">
+<col style="width: 34%">
+</colgroup>
+<thead>
+<tr>
+<th>指标</th>
+<th>C/S模型</th>
+<th>P2P模型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>服务器压力</td>
+<td>高（所有客户端依赖单一服务器）</td>
+<td>低（负载分散到各节点）</td>
+</tr>
+<tr>
+<td>带宽成本</td>
+<td>服务器带宽需求线性增长</td>
+<td>用户越多，总带宽越充足</td>
+</tr>
+<tr>
+<td>• 数学证明：</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>•
+C/S模型分发时间：<code>T = max&#123;F/us, F/dmin&#125;</code>（<code>F</code>为文件大小，<code>us</code>为服务器带宽，<code>dmin</code>为最慢客户端带宽）。</p>
+<p>•
+P2P模型分发时间：<code>T = max&#123;F/us, F/dmin, NF/(us + Σui)&#125;</code>（<code>N</code>为节点数，<code>ui</code>为节点上传带宽）。</p>
+<p>• P2P的T随N增长趋近于常数，而C/S的T随N线性增长。</p>
+<p><em>(注：参考Page 145的BitTorrent案例及分发时间公式。)</em></p>
+<hr>
+<h2 id="问题-question-9"><strong>问题 (Question ):</strong></h2>
+<p>传输层（Transport
+Layer）如何为运行在不同主机上的应用进程提供逻辑通信（Logical
+Communication）？</p>
+<hr>
+<p><strong>答案 (Answer):</strong></p>
+<p><strong>传输层的逻辑通信功能</strong><br>
+1. 抽象信道：<br>
+•
+传输层在端到端（End-to-End）之间建立逻辑链路，屏蔽底层网络细节（如路由、跳数）。</p>
+<p>• 应用进程只需关注IP+端口，无需处理物理链路差异。</p>
+<ol start="2" type="1">
+<li><p>多路复用/解复用：<br>
+•
+复用（Multiplexing）：多个应用进程共享同一网络层连接（如TCP/UDP）。</p>
+<p>•
+解复用（Demultiplexing）：通过端口号将数据正确交付给目标进程。</p></li>
+<li><p>可靠性保障（以TCP为例）：<br>
+• 确保数据有序、无丢失、无差错到达对端进程。</p></li>
+</ol>
+<hr>
+<p><strong>解释 (Explanation):</strong><br>
+• 逻辑 vs. 物理通信：</p>
+<p>•
+物理通信：网络层（IP）负责主机到主机的实际数据传输（可能经过多跳路由）。</p>
+<p>• 逻辑通信：传输层（TCP/UDP）为进程提供直接对话的幻觉，如图：</p>
+<pre><code><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line">    [Process A] ↔ (逻辑链路) ↔ [Process B]  </span><br><span class="line">    ↑↓ 传输层封装/解封装  </span><br><span class="line">    [Host 1] → (物理网络) → [Host 2]  </span><br><span class="line">    ```  </span><br><span class="line">• 关键协议：  </span><br><span class="line"></span><br><span class="line">  • TCP：面向连接，可靠传输（如HTTP、FTP）。  </span><br><span class="line"></span><br><span class="line">  • UDP：无连接，尽力而为（如视频流、DNS）。  </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">## **问题 (Question):**  </span><br><span class="line"></span><br><span class="line">解释传输层的套接字寻址（Socket Addressing）以及无连接（Connectionless）和面向连接（Connection-oriented）的多路复用（Multiplexing）与多路分解（Demultiplexing）机制。  </span><br><span class="line">选择题：  </span><br><span class="line">*“将运输层报文段（segment）中的数据交付到正确套接字（socket）的应用称为？”*  </span><br><span class="line">A. 多路复用（Multiplexing）  </span><br><span class="line">B. 频分复用（FDM）  </span><br><span class="line">C. 多路分解（Demultiplexing）  </span><br><span class="line">D. 时分复用（TDM）  </span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">**答案 (Answer):**  </span><br><span class="line">✅ C. 多路分解（Demultiplexing）  </span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">**解释 (Explanation):**  </span><br><span class="line"></span><br><span class="line">**1. 套接字寻址（Socket Addressing）**  </span><br><span class="line">• 定义：套接字 = IP地址 + 端口号（如`192.168.1.1:80`）。  </span><br><span class="line"></span><br><span class="line">• 作用：唯一标识主机上的一个应用进程，确保数据准确交付。  </span><br><span class="line"></span><br><span class="line">  • 示例：Web服务器监听`80`端口，客户端通过IP+80端口与之通信。  </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">**2. 多路复用与多路分解**  </span><br><span class="line">| 机制     | 方向               | 功能                                                         |</span><br><span class="line">| -------- | ------------------ | ------------------------------------------------------------ |</span><br><span class="line">| 多路复用 | 发送方（源主机）   | 从多个套接字收集数据块，封装为运输层报文段（segment），交给网络层发送。 |</span><br><span class="line">| 多路分解 | 接收方（目标主机） | 根据报文段头部的端口号，将数据交付到正确的套接字（应用进程）。 |</span><br><span class="line"></span><br><span class="line">**3. 无连接（UDP） vs. 面向连接（TCP）的复用/分解**  </span><br><span class="line">• UDP（无连接）：  </span><br><span class="line"></span><br><span class="line">  • 仅通过目标端口号识别套接字（源IP和端口可忽略）。  </span><br><span class="line"></span><br><span class="line">  • 特点：简单快速，但可能误传（如重复报文）。  </span><br><span class="line"></span><br><span class="line">• TCP（面向连接）：  </span><br><span class="line"></span><br><span class="line">  • 通过四元组（源IP、源端口、目标IP、目标端口）唯一标识连接。  </span><br><span class="line"></span><br><span class="line">  • 特点：可靠交付，确保数据有序到达。  </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">**4. 选择题解析**  </span><br><span class="line">• 题目：将segment数据交付到正确套接字的应用是？  </span><br><span class="line"></span><br><span class="line">• 答案：多路分解（Demultiplexing）。  </span><br><span class="line"></span><br><span class="line">• 依据：  </span><br><span class="line"></span><br><span class="line">  • 用户提供的图片明确说明：“多路分解将‘运输层segment’交付到正确的‘套接字’”。  </span><br><span class="line"></span><br><span class="line">  • 多路复用是发送方的封装过程，多路分解是接收方的解封装过程。  </span><br><span class="line"></span><br><span class="line">**5. 图示参考（用户提供的图片）**  </span><br><span class="line">• 文字内容：  </span><br><span class="line"></span><br><span class="line">  ```  </span><br><span class="line">  多路复用[multiplexing]：  </span><br><span class="line">  在源主机从不同「套接字」中收集「数据块」，并为每个数据块封装上header生成segment，传递到网络层。  </span><br><span class="line"></span><br><span class="line">  多路分解[demultiplexing]：  </span><br><span class="line">  将‘运输层segment’交付到正确的「套接字」。  </span><br></pre></td></tr></table></figure></code></pre>
+<p>• 关键点：</p>
+<p>• 复用：多个套接字→一个网络层接口。</p>
+<p>• 分解：一个网络层接口→多个套接字。</p>
+<hr>
+<p><strong>总结 (Summary):</strong><br>
+• 套接字寻址：通过IP+端口唯一标识进程。</p>
+<p>• 多路复用：发送方合并多个应用数据为网络层报文。</p>
+<p>• 多路分解：接收方根据端口号分发数据到目标进程。</p>
+<p>• 核心区别：</p>
+<p>• 复用（Multiplexing）：<em>“从哪来到哪去”</em>（发送端）。</p>
+<p>• 分解（Demultiplexing）：<em>“该给谁”</em>（接收端）。</p>
+<h2 id="问题-question-10"><strong>问题 (Question):</strong></h2>
+<p>解释UDP协议中的检验和（Checksum）机制及其作用。</p>
+<hr>
+<p><strong>答案 (Answer):</strong></p>
+<p><strong>1. UDP检验和（Checksum）的功能</strong><br>
+•
+目的：检测UDP数据报在传输过程中是否发生比特错误（如位翻转、丢失等）。</p>
+<p>• 特点：</p>
+<p>• 非强制（IPv4中可禁用，IPv6中必须启用）。</p>
+<p>• 仅提供差错检测，不纠正错误（出错则丢弃数据报）。</p>
+<p><strong>2. 检验和计算方法</strong>（如图片所示）<br>
+1. 数据分组：将UDP数据报内容（含伪头部）按16位（2字节）分组。<br>
+2. 累加求和：将所有16位字相加（二进制求和）。<br>
+3. 溢出回卷：若结果溢出（超过16位），将进位1加回到最低位。<br>
+4.
+取反码：对最终和取反码（1补数），结果存入<code>Checksum</code>字段。</p>
+<p><strong>3. UDP数据报格式</strong>（参考图片）<br>
+| 字段 | 长度 | 说明 | | ---------------- | ------- |
+---------------------------------------- | | Source Port | 16 bits |
+源端口号（可选，全0表示无端口）。 | | Dest. Port | 16 bits |
+目标端口号（必填）。 | | Length | 16 bits |
+UDP数据报总长度（含头部，最小为8字节）。 | | Checksum | 16 bits |
+检验和（覆盖数据报和伪头部）。 | | Application Data | 可变 |
+上层应用数据（如DNS查询、视频流）。 |</p>
+<hr>
+<p><strong>解释 (Explanation):</strong></p>
+<p><strong>1. 伪头部（Pseudo-Header）的作用</strong><br>
+•
+组成：包含IP层信息（源IP、目标IP、协议号、UDP长度），用于增强校验强度。</p>
+<p>• 目的：确保IP层未错误转发数据报到其他主机或协议。</p>
+<p><strong>2. 检验和计算示例</strong><br>
+假设需校验3个16位字：<br>
+• <code>0x1234</code> + <code>0x5678</code> + <code>0x9ABC</code> =
+<code>0xFFFF</code>（和） →
+取反码得<code>0x0000</code>（Checksum）。</p>
+<p>•
+接收方验证：对所有字段（含Checksum）求和，若结果为<code>0xFFFF</code>，则无错误。</p>
+<p><strong>3. 为什么UDP需要检验和？</strong><br>
+• 不可靠信道：底层网络（如以太网）可能引入比特错误。</p>
+<p>• 轻量级保障：虽不保证可靠传输，但能过滤明显错误的数据报。</p>
+<p><strong>4. 与TCP检验和的对比</strong><br>
+| 对比项 | UDP检验和 | TCP检验和 | | -------- | -----------------------
+| ----------------------- | | 覆盖范围 | UDP头部 + 数据 + 伪头部 |
+TCP头部 + 数据 + 伪头部 | | 强制性 | IPv4可选，IPv6必须 | 必须 |</p>
+<hr>
+<h2 id="问题-question-11"><strong>问题 (Question):</strong></h2>
+<p>解释停止等待协议（Stop-and-Wait）与流水线/滑动窗口协议（Pipelining/Sliding-Window）的工作原理及性能差异。</p>
+<blockquote>
+<p>流水线体现其中！</p>
+</blockquote>
+<figure>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/9375b836ff26b54efd2a43b974f1756.png" alt="9375b836ff26b54efd2a43b974f1756">
+<figcaption aria-hidden="true">9375b836ff26b54efd2a43b974f1756</figcaption>
+</figure>
+<hr>
+<p><strong>答案 (Answer):</strong></p>
+<p><strong>1. 停止等待协议（Stop-and-Wait）</strong><br>
+• 工作原理：</p>
+<ol type="1">
+<li>发送方发送一个数据包，等待对应的ACK确认。<br>
+</li>
+<li>收到ACK后，才发送下一个数据包。<br>
+• 性能分析：</li>
+</ol>
+<p>• 吞吐量公式：<code>Throughput = L / (RTT + L/R)</code></p>
+<pre><code>◦ `L`：数据包大小，`R`：链路速率，`RTT`：往返时延。  </code></pre>
+<p>• 缺点：信道利用率低（大部分时间在等待ACK）。</p>
+<p><strong>2.
+流水线/滑动窗口协议（Pipelining/Sliding-Window）</strong><br>
+• 工作原理：</p>
+<ol type="1">
+<li>发送方连续发送多个数据包（无需等待单个ACK）。<br>
+</li>
+<li>接收方按序确认，发送方通过滑动窗口动态调整未确认包数量。<br>
+• 性能优势：</li>
+</ol>
+<p>• 吞吐量提升：<code>Throughput ≈ min&#123;W × L/RTT, L/R&#125;</code></p>
+<pre><code>◦ `W`：窗口大小（允许未确认的包数量）。  </code></pre>
+<p>• 信道利用率高：持续占用链路，减少空闲时间。</p>
+<hr>
+<p><strong>解释 (Explanation):</strong></p>
+<p><strong>1. 停止等待协议图示分析（参考用户图片）</strong><br>
+• 关键时间点：</p>
+<p>• <code>t=0</code>：发送第一个数据包的第一个比特。</p>
+<p>• <code>t=L/R</code>：发送完最后一个比特。</p>
+<p>• <code>t=RTT+L/R</code>：收到ACK，可发送下一个包。</p>
+<p>• 问题：</p>
+<p>•
+每个数据包需等待完整RTT，导致利用率仅为<code>L/R / (RTT + L/R)</code>（若RTT大，则效率极低）。</p>
+<p><strong>2. 流水线协议图示分析（参考用户图片）</strong><br>
+• 关键改进：</p>
+<p>•
+发送方在<code>t=L/R</code>时已开始发送第二个包，无需等待第一个包的ACK。</p>
+<p>• 接收方批量确认（如累计ACK），减少控制开销。</p>
+<p>• 滑动窗口机制：</p>
+<p>•
+窗口大小<code>W</code>：限制未确认包数量，避免拥塞（如TCP的拥塞控制窗口）。</p>
+<p>• 动态调整：根据网络状况（丢包、延迟）扩大或缩小窗口。</p>
+<p><strong>3. 协议对比</strong><br>
+| 对比项 | 停止等待 | 流水线/滑动窗口 | | -------- |
+-------------------------- | ------------------------- | | 发送方式 |
+逐包发送，等ACK | 连续发送，滑动窗口控制 | | 吞吐量 | 低（受限于RTT） |
+高（与窗口大小成正比） | | 适用场景 | 简单链路（如卫星通信早期） |
+现代互联网（TCP核心机制） |</p>
+<hr>
+<p><strong>总结 (Summary):</strong><br>
+• 停止等待：简单但低效，适用于低带宽或高可靠性需求场景。</p>
+<p>• 流水线/滑动窗口：高效利用带宽，是TCP实现高吞吐的核心技术。</p>
+<p>• 关键公式：</p>
+<p>•
+停止等待：<code>利用率 ≈ 1 / (1 + 2a)</code>，其中<code>a = RTT / (L/R)</code>。</p>
+<p>• 流水线：<code>最大吞吐 = W × L/RTT</code>（理想情况下）。</p>
+<p><strong>问题 (Question):</strong><br>
+解释Go-Back-N（GBN）和Selective Repeat（SR）协议中的累积确认（Cumulative
+Acknowledgment）机制，并回答以下问题：<br>
+1.
+对于GBN滑动窗口协议，若序列号比特数为n，则发送窗口的最大尺寸是？<br>
+A. n<br>
+B. 2n-1<br>
+C. 2<sup>n</sup>-1<br>
+D. 2<sup>n</sup>-1<br>
+答案：C（2<sup>n</sup>-1）</p>
+<ol start="2" type="1">
+<li>当窗口大小为1时，SR、GBN和交替比特协议在功能上等价。<br>
+答案：True（正确）</li>
+</ol>
+<hr>
+<p><strong>答案 (Answer):</strong></p>
+<p><strong>1. 累积确认（Cumulative Acknowledgment）</strong><br>
+•
+定义：接收方通过单个ACK确认按序到达的所有数据包（如ACK=3表示序列号≤3的包均已接收）。</p>
+<p>• GBN vs. SR的差异：</p>
+<table>
+<colgroup>
+<col style="width: 18%">
+<col style="width: 36%">
+<col style="width: 45%">
+</colgroup>
+<thead>
+<tr>
+<th>协议</th>
+<th>ACK机制</th>
+<th>重传策略</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Go-Back-N</td>
+<td>累积确认（ACK=n确认所有≤n的包）</td>
+<td>超时或收到重复ACK时，重传窗口内所有包。</td>
+</tr>
+<tr>
+<td>Selective Repeat</td>
+<td>独立确认（每个包单独ACK）</td>
+<td>仅重传丢失的包，保留正确接收的包。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>2. GBN发送窗口的最大尺寸（2<sup>n</sup>-1）</strong><br>
+• 原因：</p>
+<p>• 序列号空间为2<sup>n</sup>（n比特编码）。</p>
+<p>• 为避免ACK混淆（如新旧包序列号重叠），窗口最大尺寸需满足：</p>
+<pre><code><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br></pre></td><td class="code"><pre><span class="line">    发送窗口大小 + 接收窗口大小 ≤ 序列号空间  </span><br><span class="line">    （GBN中接收窗口=1，故发送窗口 ≤ 2&lt;sup&gt;n&lt;/sup&gt;-1）  </span><br><span class="line">    ```  </span><br><span class="line">  • 示例：n=3时，序列号空间为8（0~7），窗口最大为7。  </span><br><span class="line"></span><br><span class="line">**3. 窗口大小为1时的等价性**  </span><br><span class="line">• 原因：  </span><br><span class="line"></span><br><span class="line">  • 窗口=1意味着每次仅发送一个未确认包，无流水线操作。  </span><br><span class="line"></span><br><span class="line">  • 此时：  </span><br><span class="line"></span><br><span class="line">    ◦ GBN：无累积ACK需求（仅一个包待确认）。  </span><br><span class="line">    </span><br><span class="line">    ◦ SR：无选择性重传需求（仅一个包可能丢失）。  </span><br><span class="line">    </span><br><span class="line">    ◦ 交替比特协议：本质是窗口=1的停等协议。  </span><br><span class="line"></span><br><span class="line">  • 结果：三者均退化为停等协议，功能完全一致。  </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">**解释 (Explanation):**  </span><br><span class="line"></span><br><span class="line">**1. GBN的累积确认与重传**  </span><br><span class="line">• 用户图片内容：  </span><br><span class="line"></span><br><span class="line">  &gt; *“GBN中，一个ACK没收到就把这个ACK前边的都丢掉”*  </span><br><span class="line">  &gt; • 解读：  </span><br><span class="line"></span><br><span class="line">  • 若ACK=3丢失，发送方会重传序列号≥3的所有包（即使部分已正确接收）。  </span><br><span class="line"></span><br><span class="line">  • 缺点：带宽浪费（重复传输正确数据）。  </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">**2. SR的选择性重传**  </span><br><span class="line">• 用户图片内容：  </span><br><span class="line"></span><br><span class="line">  &gt; *“SR中，一个ACK没收到就选择重传这一个”*  </span><br><span class="line">  &gt; • 解读：  </span><br><span class="line"></span><br><span class="line">  • 仅重传丢失的包（如序列号=4的包丢失，仅重传4）。  </span><br><span class="line"></span><br><span class="line">  • 优点：高效利用带宽，但需复杂缓存管理。  </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">**3. 序列号空间与窗口大小关系**  </span><br><span class="line">• 数学推导：  </span><br><span class="line"></span><br><span class="line">  • 序列号范围：0 ~ 2&lt;sup&gt;n&lt;/sup&gt;-1（共2&lt;sup&gt;n&lt;/sup&gt;个序号）。  </span><br><span class="line"></span><br><span class="line">  • GBN约束：发送窗口 ≤ 2&lt;sup&gt;n&lt;/sup&gt;-1（防止接收方无法区分新旧包）。  </span><br><span class="line"></span><br><span class="line">  • SR约束：发送窗口 + 接收窗口 ≤ 2&lt;sup&gt;n&lt;/sup&gt;（通常各取2&lt;sup&gt;n-1&lt;/sup&gt;）。  </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">**4. 功能等价性验证（窗口=1）**  </span><br><span class="line">• 用户图片内容：  </span><br><span class="line"></span><br><span class="line">  &gt; *“窗口1时会自动排除有可能无序的包”*  </span><br><span class="line">  &gt; • 解读：  </span><br><span class="line"></span><br><span class="line">  • 窗口=1时，所有协议均变为停等协议：  </span><br><span class="line"></span><br><span class="line">    ◦ 发送方发送包→等待ACK→超时重传。  </span><br><span class="line">    </span><br><span class="line">    ◦ 无乱序包可能（因每次仅一个包在传输）。  </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">**总结 (Summary):**  </span><br><span class="line">• GBN：累积确认 + 批量重传，窗口最大为2&lt;sup&gt;n&lt;/sup&gt;-1。  </span><br><span class="line"></span><br><span class="line">• SR：独立确认 + 选择性重传，窗口通常为2&lt;sup&gt;n-1&lt;/sup&gt;。  </span><br><span class="line"></span><br><span class="line">• 窗口=1时：所有协议退化为停等协议，功能等价。  </span><br><span class="line"></span><br><span class="line">• 关键公式：  </span><br><span class="line"></span><br><span class="line">  • GBN窗口：`W ≤ 2&lt;sup&gt;n&lt;/sup&gt;-1`  </span><br><span class="line"></span><br><span class="line">  • SR窗口：`W ≤ 2&lt;sup&gt;n-1&lt;/sup&gt;`  </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">## **问题 (Question):**  </span><br><span class="line"></span><br><span class="line">解释最大报文段长度（MSS）和最大传输单元（MTU）的关系，并说明它们如何影响TCP数据传输。  </span><br><span class="line"></span><br><span class="line">&gt; 经常会在少于40这个考点上进行考察！</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">**答案 (Answer):**  </span><br><span class="line"></span><br><span class="line">**1. 定义与关系**  </span><br><span class="line">| 术语                  | 定义                                                         | 关系                           |</span><br><span class="line">| --------------------- | ------------------------------------------------------------ | ------------------------------ |</span><br><span class="line">| MTU（最大传输单元）   | 数据链路层单次可传输的最大数据帧大小（如以太网MTU=1500字节）。 | MTU = MSS + TCP头 + IP头       |</span><br><span class="line">| MSS（最大报文段长度） | TCP协议单次可发送的应用数据最大长度（不含TCP/IP头部）。      | MSS = MTU - 40字节（TCP+IP头） |</span><br><span class="line"></span><br><span class="line">**2. 典型计算（以太网示例）**  </span><br><span class="line">• MTU = 1500字节（常见于以太网）。  </span><br><span class="line"></span><br><span class="line">• TCP头 = 20字节，IP头 = 20字节 → 头部总和 = 40字节。  </span><br><span class="line"></span><br><span class="line">• MSS = 1500 - 40 = 1460字节。  </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">**3. 对TCP传输的影响**  </span><br><span class="line">• 避免分片（Fragmentation）：  </span><br><span class="line"></span><br><span class="line">  • TCP通过MSS协商（三次握手时交换）确保数据段不超过MTU，避免IP层分片（分片降低性能）。  </span><br><span class="line"></span><br><span class="line">• 效率优化：  </span><br><span class="line"></span><br><span class="line">  • 更大的MSS → 更高吞吐量（减少头部开销比例）。  </span><br><span class="line"></span><br><span class="line">  • 但需适配路径最小MTU（Path MTU Discovery机制）。  </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">**解释 (Explanation):**  </span><br><span class="line"></span><br><span class="line">**1. MTU与MSS的层次关系**  </span><br><span class="line">• MTU是数据链路层限制（如以太网、WiFi），决定物理帧的最大载荷。  </span><br><span class="line"></span><br><span class="line">• MSS是传输层（TCP）概念，仅计算应用数据，排除协议头。  </span><br><span class="line"></span><br><span class="line">• 公式验证：  </span><br><span class="line"></span><br><span class="line">  ```  </span><br><span class="line">  IP数据报 = TCP段 + IP头 = (MSS + TCP头) + IP头 ≤ MTU  </span><br><span class="line">  → MSS ≤ MTU - 40  </span><br></pre></td></tr></table></figure></code></pre>
+<p><strong>2. 为什么避免IP分片？</strong><br>
+• 分片缺点：</p>
+<p>• 重组开销：接收方需缓存和重组分片。</p>
+<p>• 全局影响：任一分片丢失会导致整个数据报重传。</p>
+<p>• TCP的解决方案：</p>
+<p>• 通过MSS限制TCP段大小，确保IP数据报不超过MTU。</p>
+<p><strong>3. 实际场景中的MSS协商</strong><br>
+• 三次握手阶段：</p>
+<p>•
+客户端和服务器在<code>SYN</code>和<code>SYN-ACK</code>报文中通告各自的MSS值（如<code>MSS=1460</code>）。</p>
+<p>• 双方选择较小的MSS作为实际值。</p>
+<p>• Path MTU Discovery：</p>
+<p>• 若路径中某链路MTU更小（如VPN隧道），TCP动态调整MSS。</p>
+<hr>
+<p><strong>总结 (Summary):</strong><br>
+• MTU：数据链路层限制，决定单帧最大容量。</p>
+<p>• MSS：TCP优化传输的机制，确保数据段适应MTU。</p>
+<p>• 关键规则：<code>MSS = MTU - 40字节</code>（默认TCP/IP头）。</p>
+<p>• 设计目标：最大化吞吐量，最小化分片。</p>
+<h2 id="问题-question-12"><strong>问题 (Question):</strong></h2>
+<p>解释TCP报文段结构中的RST、SYN、FIN标志位的作用，并描述TCP三次握手（Three-Way
+Handshake）的连接建立过程。</p>
+<blockquote>
+<p>注意ack和ACK,ack一般是1，ACK是对对应发送段的回应！</p>
+</blockquote>
+<hr>
+<p><strong>答案 (Answer):</strong></p>
+<p><strong>1. TCP报文段标志位（6-bit Flags）</strong><br>
+| 标志位 | 作用 | 触发场景 | | ------ |
+------------------------------------------------------ |
+------------------------------------------------------------ | | SYN |
+同步序列号，用于连接建立。 | -
+客户端发送<code>SYN=1</code>发起连接。<br>-
+服务器回复<code>SYN=1, ACK=1</code>。 | | FIN |
+终止连接，表示发送方数据已发送完毕。 | -
+客户端/服务器发送<code>FIN=1</code>关闭连接。<br>-
+对方回复<code>ACK</code>。 | | RST |
+重置连接，强制终止异常连接（如端口未监听、数据错误）。 | -
+服务器拒绝连接时发送<code>RST=1</code>。 |</p>
+<p><strong>2. TCP三次握手流程</strong></p>
+<ol type="1">
+<li>SYN：客户端发送<code>SYN=1, seq=x</code>（随机初始化序列号）。<br>
+</li>
+<li>SYN-ACK：服务器回复<code>SYN=1, ACK=1, seq=y, ack=x+1</code>（分配资源并确认客户端序列号）。<br>
+</li>
+<li>ACK：客户端发送<code>ACK=1, seq=x+1, ack=y+1</code>，连接建立完成。</li>
+</ol>
+<p><strong>3. 接收窗口（Rcv Window）</strong><br>
+•
+作用：接收方通过<code>Rcv Window</code>字段告知发送方剩余缓冲区大小（即愿意接收的字节数）。</p>
+<p>•
+设置时机：在三次握手的<code>SYN-ACK</code>和后续数据段中动态调整。</p>
+<hr>
+<p><strong>解释 (Explanation):</strong></p>
+<p><strong>1. SYN标志位与资源分配</strong><br>
+• 用户图片说明：</p>
+<blockquote>
+<p><em>“SYN：三次握手时，server为了响应一个收到的SYN，分配并初始化连接变量和缓存，并返回SYNACK”</em><br>
+• 关键点：</p>
+</blockquote>
+<p>•
+服务器收到<code>SYN</code>后，会分配内存（如接收缓冲区）并生成初始序列号（<code>seq=y</code>）。</p>
+<p>•
+若资源不足（如连接数超限），可能直接回复<code>RST</code>拒绝连接。</p>
+<p><strong>2. FIN标志位与连接终止</strong><br>
+• 用户图片说明：</p>
+<blockquote>
+<p><em>“FIN：关闭连接时，client向server发送FIN为1的segment，server返回FIN为1的中止segment”</em><br>
+• 关键点：</p>
+</blockquote>
+<p>• 四次挥手：</p>
+<pre><code>1. 客户端发送`FIN=1` → 服务器回复`ACK`。  
+2. 服务器发送`FIN=1` → 客户端回复`ACK`。  </code></pre>
+<p>•
+半关闭状态：一方发送<code>FIN</code>后仍可接收数据（如服务器继续传输剩余数据）。</p>
+<p><strong>3. RST标志位的强制终止</strong><br>
+• 用户图片说明：</p>
+<blockquote>
+<p><em>“RST：ppt都没有。。”</em><br>
+• 实际作用：</p>
+</blockquote>
+<p>•
+异常处理：当收到无效报文（如目标端口未监听）时，直接回复<code>RST</code>重置连接。</p>
+<p>•
+与FIN的区别：<code>RST</code>是立即终止，不保证数据完整性；<code>FIN</code>是优雅关闭。</p>
+<p><strong>4. 接收窗口（Rcv Window）的动态性</strong><br>
+• 用户判断题：</p>
+<blockquote>
+<p><em>“When a TCP connection is established, the value of Rcv Window in
+the segment header is set by the receiver.”</em> → True</p>
+<p>由接收者来界定！</p>
+<p>• 原理：</p>
+</blockquote>
+<p>•
+接收方根据可用缓冲区空间实时更新<code>Rcv Window</code>（如<code>SYN-ACK</code>中初始值为8192字节）。</p>
+<p>• 发送方需遵守窗口限制（流量控制核心机制）。</p>
+<p><strong>5. 三次握手的必要性</strong><br>
+• 用户判断题：</p>
+<blockquote>
+<p><em>“In the TCP, connection establishment of transport layer uses
+method of three-way handshaking.”</em> → True<br>
+• 原因：</p>
+</blockquote>
+<p>•
+防止历史连接冲突：通过随机序列号（<code>seq=x/y</code>）避免旧重复报文干扰。</p>
+<p>•
+双向资源确认：确保双方均准备好通信（客户端确认服务器<code>SYN-ACK</code>，服务器确认客户端<code>ACK</code>）。</p>
+<hr>
+<p><strong>总结 (Summary):</strong><br>
+• SYN：连接建立的钥匙，触发资源分配。</p>
+<p>• FIN：礼貌告别，确保数据完整传输。</p>
+<p>• RST：强制终止，应对异常情况。</p>
+<p>•
+三次握手：通过<code>SYN</code>和<code>ACK</code>的交换，实现可靠的双向连接建立。</p>
+<p>• 接收窗口：动态控制发送速率，避免接收方缓冲区溢出。</p>
+<h2 id="问题-question-13"><strong>问题 (Question):</strong></h2>
+<p>计算一个TCP报文段封装成IP数据报时的开销百分比（Overhead
+Percentage）。<br>
+已知条件：<br>
+• 应用层消息：头部20字节 + 用户数据180字节。</p>
+<p>• TCP头部：20字节（无选项字段）。</p>
+<p>• IP头部：20字节（无选项字段）。</p>
+<p>选项：<br>
+A. 30%<br>
+B. 75%<br>
+C. 33%<br>
+D. 25%</p>
+<blockquote>
+<p>依然是40的问题！</p>
+</blockquote>
+<hr>
+<p><strong>答案 (Answer):</strong><br>
+✅ D. 25%</p>
+<hr>
+<p><strong>解释 (Explanation):</strong></p>
+<p><strong>1. 开销（Overhead）的定义</strong><br>
+• 开销 = 协议头部总字节数 / 总传输数据量。</p>
+<p>• 总传输数据量 = 应用数据 + 所有协议头部。</p>
+<p><strong>2. 分步计算</strong><br>
+1. 应用层消息：<br>
+• 头部：20字节（题目给出）。</p>
+<p>• 用户数据：180字节。</p>
+<ol start="2" type="1">
+<li><p>TCP封装：<br>
+• TCP头部：20字节（无选项字段，Page 234标准值）。</p>
+<p>• TCP报文段总长度 = TCP头部 + 应用层消息 = 20 + (20 + 180) =
+220字节。</p></li>
+<li><p>IP封装：<br>
+• IP头部：20字节（无选项字段）。</p>
+<p>• IP数据报总长度 = IP头部 + TCP报文段 = 20 + 220 = 240字节。</p></li>
+<li><p>开销计算：<br>
+• 总头部字节数 = 应用层头部 + TCP头部 + IP头部 = 20 + 20 + 20 =
+60字节。</p>
+<p>• 开销百分比 = (总头部 / 总传输数据量) × 100% = (60 / 240) × 100% =
+25%。</p></li>
+</ol>
+<p><strong>3. 关键验证</strong><br>
+• 用户提供的公式：</p>
+<p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">IP datagram header = 应用层头部(20) + TCP头部(20) + IP头部(20) = 60字节  </span><br><span class="line">开销百分比 = 60 / (180 + 60) = 25%  </span><br></pre></td></tr></table></figure> • 注意：</p>
+<p>•
+题目中“应用消息头部”是否计入开销需明确。此处根据用户解析，计入总开销。</p>
+<p>•
+若仅计算TCP+IP头部（40字节），则结果为40/220≈18.18%（无对应选项）。</p>
+<p><strong>4. 为什么选D？</strong><br>
+•
+题目明确要求计算每个IP数据报的开销，因此需包含所有协议头部（应用层+TCP+IP）。</p>
+<p>• 只有选项D（25%）匹配计算结果。</p>
+<hr>
+<p><strong>总结 (Summary):</strong><br>
+• TCP头部固定20字节（无选项时），IP头部固定20字节。</p>
+<p>• 开销计算逻辑：</p>
+<p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">总开销 = 各层头部之和  </span><br><span class="line">总数据量 = 用户数据 + 总开销  </span><br><span class="line">百分比 = (总开销 / 总数据量) × 100%  </span><br></pre></td></tr></table></figure> • 核心考点：理解协议封装层次及开销定义。</p>
+<h2 id="问题-question-14"><strong>问题 (Question):</strong></h2>
+<p>解释TCP的流量控制（Flow Control）和拥塞控制（Congestion
+Control）的区别，并判断以下陈述是否正确：</p>
+<ol type="1">
+<li><em>“TCP通过流量控制服务防止发送方淹没接收方。”</em> →
+T（True）<br>
+</li>
+<li><em>“TCP流量控制的目标与拥塞控制的目标相同。”</em> → F（False）</li>
+</ol>
+<blockquote>
+<p>流量控制限制端到端之间，拥塞控制注重于网络，是更加重要的考点！</p>
+</blockquote>
+<hr>
+<p><strong>答案 (Answer):</strong></p>
+<p><strong>1. 流量控制 vs. 拥塞控制的核心区别</strong><br>
+| 对比项 | 流量控制（Flow Control） | 拥塞控制（Congestion Control） | |
+-------- | ------------------------------------------- |
+-------------------------------------- | | 控制对象 |
+接收方（接收缓冲区剩余空间） | 网络（路由器队列拥塞程度） | | 目标 |
+防止发送方超过接收方的处理能力 | 防止发送方超过网络的承载能力 | |
+实现机制 | 通过<code>接收窗口（RcvWindow）</code>动态调整发送速率 |
+通过<code>拥塞窗口（Cwnd）</code>动态调整发送速率 | | 触发信号 |
+接收方的<code>ACK</code>报文中的窗口字段 |
+丢包（超时或重复ACK）或延迟增加 |</p>
+<p><strong>2. 判断题解析</strong><br>
+1. “TCP通过流量控制服务防止发送方淹没接收方。”<br>
+• 答案：True。</p>
+<p>•
+原因：流量控制通过<code>RcvWindow</code>限制发送速率，确保接收方缓冲区不溢出。</p>
+<ol start="2" type="1">
+<li><p>“TCP流量控制的目标与拥塞控制的目标相同。”<br>
+• 答案：False。</p>
+<p>• 原因：</p>
+<p>◦ 流量控制的目标是保护接收方。</p>
+<p>◦ 拥塞控制的目标是保护网络（避免全局性能下降）。</p></li>
+</ol>
+<hr>
+<p><strong>解释 (Explanation):</strong></p>
+<p><strong>1. 流量控制（Flow Control）</strong><br>
+• 用户提供的说明：</p>
+<blockquote>
+<p><em>“Flow control：取决于接收方接收和缓存报文的能力”</em><br>
+• 工作原理：</p>
+</blockquote>
+<p>•
+接收方在<code>ACK</code>中通告<code>RcvWindow</code>（如剩余缓冲区=10KB）。</p>
+<p>• 发送方确保未确认数据量 ≤ RcvWindow。</p>
+<p>• 示例：</p>
+<p>•
+若接收方缓冲区满，<code>RcvWindow=0</code>，发送方暂停发送，直到接收方腾出空间（通过<code>ACK</code>更新窗口）。</p>
+<p><strong>2. 拥塞控制（Congestion Control）</strong><br>
+• 用户提供的说明：</p>
+<blockquote>
+<p><em>“Congestion control：取决于网络拥塞程度”</em><br>
+• 工作原理：</p>
+</blockquote>
+<p>• 丢包作为拥塞信号：超时或收到3个重复ACK（如TCP Reno）。</p>
+<p>• 动态调整<code>Cwnd</code>：</p>
+<pre><code>◦ 慢启动（Slow Start）：`Cwnd`指数增长，探索可用带宽。  
+
+◦ 拥塞避免（AIMD）：`Cwnd`线性增减，平衡公平性与效率。  </code></pre>
+<p>• 示例：</p>
+<p>• 网络拥塞时，路由器丢包 →
+发送方检测到丢包后减半<code>Cwnd</code>。</p>
+<p><strong>3. 为什么目标不同？</strong><br>
+• 流量控制是端到端问题（仅涉及发送方和接收方）。</p>
+<p>• 拥塞控制是全局问题（涉及所有共享同一网络路径的TCP连接）。</p>
+<p><strong>4. 共同点</strong><br>
+• 用户提供的说明：</p>
+<blockquote>
+<p><em>“共同点：加在sender上”</em><br>
+• 解读：</p>
+</blockquote>
+<p>• 两者均通过限制发送方的速率实现控制，但依据的信号和目的不同。</p>
+<hr>
+<p><strong>总结 (Summary):</strong><br>
+• 流量控制：解决接收方过载，依赖<code>RcvWindow</code>。</p>
+<p>• 拥塞控制：解决网络过载，依赖<code>Cwnd</code>和丢包信号。</p>
+<p>• 关键区别：</p>
+<p>• 流量控制是局部优化，拥塞控制是全局优化。</p>
+<p>•
+协议设计：TCP通过<code>Min(RcvWindow, Cwnd)</code>确定实际发送窗口，兼顾两者目标。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://www.totorocatcat.top/">Totoro</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://totorocatcat.top/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E9%97%AE%E9%A2%98%E5%A4%8D%E4%B9%A0%E6%B3%95%EF%BC%881%EF%BC%89/">http://totorocatcat.top/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E9%97%AE%E9%A2%98%E5%A4%8D%E4%B9%A0%E6%B3%95%EF%BC%881%EF%BC%89/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://totorocatcat.top" target="_blank">Totoroの旅</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%9F%BA%E7%A1%80/">基础</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/f1e7bd3259972022ef5860e626348bb.bmp" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E9%97%AE%E9%A2%98%E5%A4%8D%E4%B9%A0%E6%B3%95%EF%BC%882%EF%BC%89/" title="计算机网络——问题复习法（2）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/f1e7bd3259972022ef5860e626348bb.bmp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">计算机网络——问题复习法（2）</div></div></a></div><div class="next-post pull-right"><a href="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%A0%B7%E5%8D%B7E/" title="计算机网络样卷E"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://source.fomal.cc/img/default_cover_4.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">计算机网络样卷E</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2010%E5%B9%B4%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%9F%E8%80%83-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" title="2010年计算机统考-数据结构"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/e345af5b515d2f76bb44fdaa6eff3db4d6f598d3.jpg@1256w_908h_!web-article-pic.avif" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-10-04</div><div class="title">2010年计算机统考-数据结构</div></div></a></div><div><a href="/2012%E5%B9%B4%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%9F%E8%80%83-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E9%83%A8%E5%88%86/" title="2012年计算机统考-数据结构部分"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/e345af5b515d2f76bb44fdaa6eff3db4d6f598d3.jpg@1256w_908h_!web-article-pic.avif" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-10-05</div><div class="title">2012年计算机统考-数据结构部分</div></div></a></div><div><a href="/2022C-%E8%AF%95%E5%8D%B7/" title="2022C++试卷"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://source.fomal.cc/img/default_cover_80.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-05-16</div><div class="title">2022C++试卷</div></div></a></div><div><a href="/2022%E5%B9%B4C-%E8%AF%95%E5%8D%B7%E8%BD%AF%E4%BB%B6%E5%AD%A6%E9%99%A2/" title="2022年C++试卷软件学院"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://source.fomal.cc/img/default_cover_80.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-05-16</div><div class="title">2022年C++试卷软件学院</div></div></a></div><div><a href="/2011%E5%B9%B4%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%9F%E8%80%83-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E9%83%A8%E5%88%86/" title="2011年计算机统考-数据结构部分"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/e345af5b515d2f76bb44fdaa6eff3db4d6f598d3.jpg@1256w_908h_!web-article-pic.avif" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-10-05</div><div class="title">2011年计算机统考-数据结构部分</div></div></a></div><div><a href="/AJAX%E5%9F%BA%E7%A1%80/" title="AJAX基础"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/ushio-api-img-moe@5.0.16/img_169_2560x1440_96_null_normal.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-05-16</div><div class="title">AJAX基础</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/px3.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Totoro</div><div class="author-info__description">热爱文学的SCUT软件学院学生</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">801</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">34</div></a></div><a id="card-info-btn" href="https://github.com/4512abc"><i class="fab fa-github"></i><span>🛴前往小窝......</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/4512abc" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:4512abc@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到龙猫の小窝</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E9%97%AE%E9%A2%98%E5%A4%8D%E4%B9%A0%E6%B3%951"><span class="toc-text">计算机网络——问题复习法（1）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%981ethernet%E5%92%8Cwifi%E7%9A%84%E4%B8%BB%E8%A6%81%E7%89%B9%E7%82%B9%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text">问题1：Ethernet和WiFi的主要特点是什么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%982packet-loss%E4%B8%A2%E5%8C%85%E7%9A%84%E4%B8%BB%E8%A6%81%E5%8E%9F%E5%9B%A0%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text">问题2：Packet
+loss（丢包）的主要原因是什么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%983%E8%A7%A3%E9%87%8A%E7%BD%91%E7%BB%9C%E5%88%86%E5%B1%82%E4%B8%AD%E7%9A%84%E5%B0%81%E8%A3%85encapsulation%E4%B8%8E%E8%A7%A3%E5%B0%81%E8%A3%85%E8%BF%87%E7%A8%8B"><span class="toc-text">问题3：解释网络分层中的封装（Encapsulation）与解封装过程。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98-question"><span class="toc-text">问题 (Question):</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98-question-1"><span class="toc-text">问题 (Question):</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98-question-2"><span class="toc-text">问题 (Question):</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98-question-3"><span class="toc-text">问题 (Question):</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98-question-4"><span class="toc-text">问题 (Question):</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98-question-5"><span class="toc-text">问题 (Question):</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98-question-6"><span class="toc-text">问题 (Question):</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98-question-7"><span class="toc-text">问题 (Question):</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98-question-8"><span class="toc-text">问题 (Question):</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98question"><span class="toc-text">问题(Question ):</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98-question-9"><span class="toc-text">问题 (Question ):</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98-question-10"><span class="toc-text">问题 (Question):</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98-question-11"><span class="toc-text">问题 (Question):</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98-question-12"><span class="toc-text">问题 (Question):</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98-question-13"><span class="toc-text">问题 (Question):</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98-question-14"><span class="toc-text">问题 (Question):</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%AF%95%E5%8D%B7%E7%B2%BE%E9%80%89%E2%80%94%E2%80%941%EF%BC%88%E9%87%8D%E8%A6%81%EF%BC%89/" title="计算机网络试卷精选——1（重要）"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://source.fomal.cc/img/default_cover_58.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="计算机网络试卷精选——1（重要）"/></a><div class="content"><a class="title" href="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%AF%95%E5%8D%B7%E7%B2%BE%E9%80%89%E2%80%94%E2%80%941%EF%BC%88%E9%87%8D%E8%A6%81%EF%BC%89/" title="计算机网络试卷精选——1（重要）">计算机网络试卷精选——1（重要）</a><time datetime="2025-04-29T10:19:35.000Z" title="发表于 2025-04-29 18:19:35">2025-04-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C2012%E5%B9%B4%E5%9B%9E%E5%BF%86%E7%89%88%E5%88%86%E6%9E%90/" title="计算机网络2012年回忆版分析"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/f1e7bd3259972022ef5860e626348bb.bmp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="计算机网络2012年回忆版分析"/></a><div class="content"><a class="title" href="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C2012%E5%B9%B4%E5%9B%9E%E5%BF%86%E7%89%88%E5%88%86%E6%9E%90/" title="计算机网络2012年回忆版分析">计算机网络2012年回忆版分析</a><time datetime="2025-04-29T10:16:59.000Z" title="发表于 2025-04-29 18:16:59">2025-04-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E9%97%AE%E9%A2%98%E5%A4%8D%E4%B9%A0%E6%B3%95%EF%BC%883%EF%BC%89/" title="计算机网络——问题复习法（3）"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/f1e7bd3259972022ef5860e626348bb.bmp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="计算机网络——问题复习法（3）"/></a><div class="content"><a class="title" href="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E9%97%AE%E9%A2%98%E5%A4%8D%E4%B9%A0%E6%B3%95%EF%BC%883%EF%BC%89/" title="计算机网络——问题复习法（3）">计算机网络——问题复习法（3）</a><time datetime="2025-04-29T10:08:16.000Z" title="发表于 2025-04-29 18:08:16">2025-04-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E9%97%AE%E9%A2%98%E5%A4%8D%E4%B9%A0%E6%B3%95%EF%BC%882%EF%BC%89/" title="计算机网络——问题复习法（2）"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/f1e7bd3259972022ef5860e626348bb.bmp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="计算机网络——问题复习法（2）"/></a><div class="content"><a class="title" href="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E9%97%AE%E9%A2%98%E5%A4%8D%E4%B9%A0%E6%B3%95%EF%BC%882%EF%BC%89/" title="计算机网络——问题复习法（2）">计算机网络——问题复习法（2）</a><time datetime="2025-04-29T10:08:06.000Z" title="发表于 2025-04-29 18:08:06">2025-04-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E9%97%AE%E9%A2%98%E5%A4%8D%E4%B9%A0%E6%B3%95%EF%BC%881%EF%BC%89/" title="计算机网络——问题复习法（1）"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/f1e7bd3259972022ef5860e626348bb.bmp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="计算机网络——问题复习法（1）"/></a><div class="content"><a class="title" href="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E9%97%AE%E9%A2%98%E5%A4%8D%E4%B9%A0%E6%B3%95%EF%BC%881%EF%BC%89/" title="计算机网络——问题复习法（1）">计算机网络——问题复习法（1）</a><time datetime="2025-04-29T10:07:54.000Z" title="发表于 2025-04-29 18:07:54">2025-04-29</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 - 2025 By Totoro</div><div class="footer_custom_text">I wish you to become your own sun, no need to rely on who's light.<p><a target="_blank" href="https://hexo.io/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&logo=hexo" title="博客框架为Hexo"></a>&nbsp;<a target="_blank" href="https://butterfly.js.org/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&logo=bitdefender" title="主题采用butterfly"></a>&nbsp;<a target="_blank" href="https://www.jsdelivr.com/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&logo=jsDelivr" title="本站使用JsDelivr为静态资源提供CDN加速"></a> &nbsp;<a target="_blank" href="https://vercel.com/ "><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Hosted-Vervel-brightgreen?style=flat&logo=Vercel" title="本站采用双线部署，默认线路托管于Vercel"></a>&nbsp;<a target="_blank" href="https://vercel.com/ "><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Hosted-Coding-0cedbe?style=flat&logo=Codio" title="本站采用双线部署，联通线路托管于Coding"></a>&nbsp;<a target="_blank" href="https://github.com/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&logo=GitHub" title="本站项目由Gtihub托管"></a>&nbsp;<a target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&logo=Claris" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"></a></p></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat-btn" type="button" title="聊天"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="/js/tw_cn.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@5.2.0/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'HT1PalaKkPaG1UqAXBhJXIu8-gzGzoHsz',
+      appKey: 'iT0TnVVAwf9zuZ7NqwclQItY',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://cdn.jsdelivr.net/npm/valine@1.5.1/dist/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><script defer src="/js/light.js"></script><canvas id="universe"></canvas><script defer src="/js/universe.js"></script><script async src="/js/title.js"></script><script defer src="https://npm.elemecdn.com/jquery@latest/dist/jquery.min.js"></script><script defer data-pjax src="/js/cat.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="1" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener
+  btf.removeGlobalFnEvent('pjax')
+  btf.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.12.0"></script></div></div><!-- hexo injector body_end start --><script data-pjax>
+    function butterfly_categories_card_injector_config(){
+      var parent_div_git = document.getElementById('recent-posts');
+      var item_html = '<style>li.categoryBar-list-item{width:32.3%;}.categoryBar-list{max-height: 380px;overflow:auto;}.categoryBar-list::-webkit-scrollbar{width:0!important}@media screen and (max-width: 650px){.categoryBar-list{max-height: 320px;}}</style><div class="recent-post-item" style="height:auto;width:100%;padding:0px;"><div id="categoryBar"><ul class="categoryBar-list"><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_12.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/离散数学/&quot;);" href="javascript:void(0);">离散数学</a><span class="categoryBar-list-count">32</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_13.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS61B/&quot;);" href="javascript:void(0);">CS61B</a><span class="categoryBar-list-count">76</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_14.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/期末の旅/&quot;);" href="javascript:void(0);">期末の旅</a><span class="categoryBar-list-count">99</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_17.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/刷题计划/&quot;);" href="javascript:void(0);">刷题计划</a><span class="categoryBar-list-count">60</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_18.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/区域赛の旅/&quot;);" href="javascript:void(0);">区域赛の旅</a><span class="categoryBar-list-count">7</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_19.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/Codeforcesの旅/&quot;);" href="javascript:void(0);">Codeforcesの旅</a><span class="categoryBar-list-count">24</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_20.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/牛客の旅/&quot;);" href="javascript:void(0);">牛客の旅</a><span class="categoryBar-list-count">65</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_21.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/ACMの旅/&quot;);" href="javascript:void(0);">ACMの旅</a><span class="categoryBar-list-count">42</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_22.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/数学建模/&quot;);" href="javascript:void(0);">数学建模</a><span class="categoryBar-list-count">26</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_22.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/前端の旅/&quot;);" href="javascript:void(0);">前端の旅</a><span class="categoryBar-list-count">17</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_23.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/数据结构/&quot;);" href="javascript:void(0);">数据结构</a><span class="categoryBar-list-count">47</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_24.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/Atcoderの旅/&quot;);" href="javascript:void(0);">Atcoderの旅</a><span class="categoryBar-list-count">53</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_25.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/C-の旅/&quot;);" href="javascript:void(0);">C++の旅</a><span class="categoryBar-list-count">17</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_26.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS70の旅/&quot;);" href="javascript:void(0);">CS70の旅</a><span class="categoryBar-list-count">24</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_27.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CSAPPの旅/&quot;);" href="javascript:void(0);">CSAPPの旅</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_28.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/计算机组成原理/&quot;);" href="javascript:void(0);">计算机组成原理</a><span class="categoryBar-list-count">47</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_29.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/编程基础/&quot;);" href="javascript:void(0);">编程基础</a><span class="categoryBar-list-count">14</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_30.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/JAVAの旅/&quot;);" href="javascript:void(0);">JAVAの旅</a><span class="categoryBar-list-count">10</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_31.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/MIT-6-031-Software-Construction/&quot;);" href="javascript:void(0);">MIT 6.031:Software Construction</a><span class="categoryBar-list-count">16</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_32.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS-110L/&quot;);" href="javascript:void(0);">CS 110L</a><span class="categoryBar-list-count">3</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_33.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/数据库の旅/&quot;);" href="javascript:void(0);">数据库の旅</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_34.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/灵魂の旅/&quot;);" href="javascript:void(0);">灵魂の旅</a><span class="categoryBar-list-count">2</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_35.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/个人安排/&quot;);" href="javascript:void(0);">个人安排</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_36.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/杂项/&quot;);" href="javascript:void(0);">杂项</a><span class="categoryBar-list-count">13</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_37.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/文学/&quot;);" href="javascript:void(0);">文学</a><span class="categoryBar-list-count">49</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_38.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/力扣の旅/&quot;);" href="javascript:void(0);">力扣の旅</a><span class="categoryBar-list-count">20</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_39.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/计算机网络/&quot;);" href="javascript:void(0);">计算机网络</a><span class="categoryBar-list-count">15</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_40.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/千里十二行/&quot;);" href="javascript:void(0);">千里十二行</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_41.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/🗡指offer/&quot;);" href="javascript:void(0);">🗡指offer</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_42.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/少年游/&quot;);" href="javascript:void(0);">少年游</a><span class="categoryBar-list-count">2</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_43.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/算法提高课/&quot;);" href="javascript:void(0);">算法提高课</a><span class="categoryBar-list-count">3</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_44.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/汇编の旅/&quot;);" href="javascript:void(0);">汇编の旅</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_44.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/C-实训/&quot;);" href="javascript:void(0);">C++实训</a><span class="categoryBar-list-count">8</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_45.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS知识/&quot;);" href="javascript:void(0);">CS知识</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li></ul></div></div>';
+      console.log('已挂载butterfly_categories_card')
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+      }
+    if( document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+    butterfly_categories_card_injector_config()
+    }
+  </script><script data-pjax>
+  function butterfly_swiper_injector_config(){
+    var parent_div_git = document.getElementById('recent-posts');
+    var item_html = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms;"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;诗兴大发/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://source.fomal.cc/img/default_cover_69.webp" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-01-29</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;诗兴大发/&quot;);" href="javascript:void(0);" alt="">诗兴大发</a><div class="blog-slider__text">未觉，却是中二少年的诗仙梦</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;诗兴大发/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;诗录/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/4b31456c6f0f4489f99177f89e936de7286431045.png@1256w_708h_!web-article-pic.avif" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-10-01</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;诗录/&quot;);" href="javascript:void(0);" alt="">诗录</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;诗录/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;TotoroのPlan/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/51d37eba99d243607ddedfff6e91568f617436609.jpg@1256w_1884h_!web-article-pic.avif" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-10-05</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;TotoroのPlan/&quot;);" href="javascript:void(0);" alt="">TotoroのPlan</a><div class="blog-slider__text">方便大二看（）</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;TotoroのPlan/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;Markdown格式/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/ushio-api-img-moe@5.0.48/img_482_1920x1080_96_null_normal.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-03-03</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;Markdown格式/&quot;);" href="javascript:void(0);" alt="">Markdown格式</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;Markdown格式/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载butterfly_swiper')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_swiper_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_swiper_injector_config();
+  }
+  </script><script defer src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.js"></script><script defer data-pjax src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper_init.js"></script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>
