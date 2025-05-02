@@ -1,0 +1,951 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>编译技术3-1 | Totoroの旅</title><meta name="author" content="Totoro"><meta name="copyright" content="Totoro"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="编译技术3-1 语法分析基础（Syntax Analysis Basics）  1. 语法分析在编译流程中的位置 Position in Compilation Pipeline 123Lexical Analysis (词法分析) → Syntax Analysis (语法分析) → Semantic Analysis (语义分析) → IR Generation (中间代码生成)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="编译技术3-1">
+<meta property="og:url" content="http://totorocatcat.top/%E7%BC%96%E8%AF%91%E6%8A%80%E6%9C%AF3-1/index.html">
+<meta property="og:site_name" content="Totoroの旅">
+<meta property="og:description" content="编译技术3-1 语法分析基础（Syntax Analysis Basics）  1. 语法分析在编译流程中的位置 Position in Compilation Pipeline 123Lexical Analysis (词法分析) → Syntax Analysis (语法分析) → Semantic Analysis (语义分析) → IR Generation (中间代码生成)">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://npm.elemecdn.com/ushio-api-img-moe@5.0.22/img_220_1200x675_350.011993408203_null_normal.jpg">
+<meta property="article:published_time" content="2025-05-01T12:42:38.000Z">
+<meta property="article:modified_time" content="2025-05-01T12:42:55.007Z">
+<meta property="article:author" content="Totoro">
+<meta property="article:tag" content="提高">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://npm.elemecdn.com/ushio-api-img-moe@5.0.22/img_220_1200x675_350.011993408203_null_normal.jpg"><link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/b5ca6e582a7a45e6fde46e616eeb68e.png"><link rel="canonical" href="http://totorocatcat.top/%E7%BC%96%E8%AF%91%E6%8A%80%E6%9C%AF3-1/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta/><link rel="stylesheet" href="/css/index.css?v=4.12.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  noticeOutdate: {"limitDay":765,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体中文","cht_to_chs":"你已切换为简体中文","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"top-right"},
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '编译技术3-1',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: true,
+  isToc: true,
+  postUpdate: '2025-05-01 20:42:55'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const now = new Date()
+          const hour = now.getHours()
+          const isNight = hour <= 6 || hour >= 18
+          if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/universe.css"><link rel="stylesheet" href="/css/scrollbar.css"><link rel="stylesheet" href="/css/cat.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-double-row-display@1.00/cardlistpost.min.css"/>
+<style>#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags:before {content:"\A";
+  white-space: pre;}#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags > .article-meta__separator{display:none}</style>
+<link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-categories-card@1.0.0/lib/categorybar.css"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiperstyle.css" media="print" onload="this.media='all'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><div class="loading-img"></div><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><script>window.paceOptions = {
+  restartOnPushState: false
+}
+
+document.addEventListener('pjax:send', () => {
+  Pace.restart()
+})
+</script><link rel="stylesheet" href="/css/progress_bar.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/px3.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">825</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">35</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home-alt"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-envelope-open"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 趣味</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/project/"><i class="fa-fw fas fas fa-folder"></i><span> 项目</span></a></div><div class="menus_item"><a class="site-page" href="/stars/"><i class="fa-fw fas fa-bookmark"></i><span> 收藏</span></a></div><div class="menus_item"><a class="site-page" href="/bilibili/"><i class="fa-fw fas fa-tv"></i><span> 追番</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url('https://npm.elemecdn.com/ushio-api-img-moe@5.0.22/img_220_1200x675_350.011993408203_null_normal.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="Totoroの旅"><span class="site-name">Totoroの旅</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home-alt"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-envelope-open"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 趣味</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/project/"><i class="fa-fw fas fas fa-folder"></i><span> 项目</span></a></div><div class="menus_item"><a class="site-page" href="/stars/"><i class="fa-fw fas fa-bookmark"></i><span> 收藏</span></a></div><div class="menus_item"><a class="site-page" href="/bilibili/"><i class="fa-fw fas fa-tv"></i><span> 追番</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">编译技术3-1</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-05-01T12:42:38.000Z" title="发表于 2025-05-01 20:42:38">2025-05-01</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-05-01T12:42:55.007Z" title="更新于 2025-05-01 20:42:55">2025-05-01</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/">编译原理</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">3k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>12分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="编译技术3-1"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/%E7%BC%96%E8%AF%91%E6%8A%80%E6%9C%AF3-1/#post-comment" itemprop="discussionUrl"><span class="valine-comment-count" data-xid="/%E7%BC%96%E8%AF%91%E6%8A%80%E6%9C%AF3-1/" itemprop="commentCount"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="编译技术3-1">编译技术3-1</h1>
+<h1 id="语法分析基础syntax-analysis-basics">语法分析基础（Syntax
+Analysis Basics）</h1>
+<hr>
+<h3 id="语法分析在编译流程中的位置">1. 语法分析在编译流程中的位置</h3>
+<p><strong>Position in Compilation Pipeline</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Lexical Analysis (词法分析) → Syntax Analysis (语法分析) → </span><br><span class="line">Semantic Analysis (语义分析) → IR Generation (中间代码生成) → </span><br><span class="line">Optimization (优化) → Code Generation (代码生成)</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="什么是语法分析">2. 什么是语法分析？</h3>
+<p><strong>What is Syntax Analysis?</strong></p>
+<ul>
+<li><strong>输入 (Input)</strong>: 词法分析产生的 token 序列</li>
+<li><strong>任务 (Tasks)</strong>:
+<ul>
+<li>从 token 序列中恢复程序结构 (Recover structure from token
+sequence)</li>
+<li>检查语法错误 (Report syntax errors)</li>
+</ul></li>
+<li><strong>输出 (Output)</strong>: 显式或隐式的语法树 (Explicit or
+implicit syntax tree)</li>
+</ul>
+<figure>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/20250501184924.png" alt="img">
+<figcaption aria-hidden="true">img</figcaption>
+</figure>
+<figure>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/20250501185104.png" alt="img">
+<figcaption aria-hidden="true">img</figcaption>
+</figure>
+<hr>
+<h1 id="语法分析形式体系">🧾语法分析形式体系</h1>
+<hr>
+<h2 id="context-free-grammars-cfg">1. Context-Free Grammars (CFG)</h2>
+<h3 id="上下文无关文法">上下文无关文法</h3>
+<p>CFG 是一种形式语言的表示方法，用于定义编程语言的语法结构。 A
+Context-Free Grammar is a formalism used to describe the syntax of
+programming languages.</p>
+<hr>
+<h2 id="cfg-and-grammars">2. CFG and Grammars</h2>
+<h3 id="文法与cfg">文法与CFG</h3>
+<p>一个文法（Grammar）G = (Vₜ, Vₙ, P, S)，其中：</p>
+<ul>
+<li><strong>Vₜ（终结符）Terminals</strong>：不能再被替换的基本符号，通常是词法分析器的
+token。</li>
+<li><strong>Vₙ（非终结符）Non-terminals</strong>：用于表示语法结构的符号。</li>
+<li><strong>P（产生式规则）Productions</strong>：形如 A → α
+的替换规则。</li>
+<li><strong>S（开始符号）Start Symbol</strong>：推导的起点。</li>
+</ul>
+<hr>
+<h2 id="derivations">3. Derivations</h2>
+<h3 id="推导">推导</h3>
+<p>推导是通过应用产生式规则，从开始符号逐步构造出一个字符串的过程。
+Derivation is the process of applying production rules to generate
+strings from the start symbol.</p>
+<ul>
+<li><strong>左推导 Leftmost
+Derivation</strong>：每一步总是替换最左侧的非终结符。</li>
+<li><strong>右推导 Rightmost
+Derivation</strong>：每一步总是替换最右侧的非终结符。</li>
+</ul>
+<hr>
+<h2 id="concrete-and-abstract-syntax-trees">4. Concrete and Abstract
+Syntax Trees</h2>
+<h3 id="具体与抽象语法树">具体与抽象语法树</h3>
+<ul>
+<li><strong>具体语法树（Concrete Syntax
+Tree）</strong>：精确展示了程序中所有语法细节。</li>
+<li><strong>抽象语法树（Abstract Syntax Tree,
+AST）</strong>：省略不必要的符号，只保留程序结构的核心。</li>
+</ul>
+<p>Concrete syntax trees show all grammar symbols; ASTs simplify the
+structure by removing syntactic sugar.</p>
+<hr>
+<h2 id="ambiguity">5. Ambiguity</h2>
+<h3 id="歧义">歧义</h3>
+<p>一个文法是<strong>歧义的</strong>，如果存在某个字符串可以通过不同的方式推导出不同的语法树。
+A grammar is <strong>ambiguous</strong> if a string has more than one
+distinct parse tree.</p>
+<p>例子（Example）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">expr → expr + expr | expr * expr | num  </span><br></pre></td></tr></table></figure>
+<p>表达式 <code>num + num * num</code>
+既可以先加再乘，也可以先乘再加，造成歧义。</p>
+<hr>
+<h2 id="parsing-algorithms">6. Parsing Algorithms</h2>
+<h3 id="解析算法">解析算法</h3>
+<p>用于将 token 序列转换为语法树的算法。 Parsing algorithms convert
+token sequences into syntax trees.</p>
+<h3 id="top-down-parsing">🧭 Top-Down Parsing</h3>
+<p><strong>自顶向下分析</strong></p>
+<ul>
+<li>从开始符号开始尝试推导输入字符串。</li>
+<li>常见方法：递归下降（Recursive Descent）、LL分析器。</li>
+</ul>
+<p>Starts from the start symbol and tries to rewrite it to match the
+input.</p>
+<h3 id="bottom-up-parsing">⛏️ Bottom-Up Parsing</h3>
+<p><strong>自底向上分析</strong></p>
+<ul>
+<li>从输入字符串出发，逐步归约回到开始符号。</li>
+<li>常见方法：LR分析器、移进-归约（Shift-Reduce Parsing）。</li>
+</ul>
+<p>Starts from the input and works backward to the start symbol.</p>
+<hr>
+<h2 id="formal-languages">7. Formal Languages</h2>
+<h3 id="形式语言">形式语言</h3>
+<ul>
+<li><strong>字母表（Alphabet）Σ</strong>：一组符号，作为“字母”。 An
+alphabet is a set Σ of symbols that act as letters.</li>
+<li><strong>语言（Language）</strong>：由 Σ 中的符号组成的字符串的集合。
+A language over Σ is a set of strings made from symbols in Σ.</li>
+</ul>
+<h3 id="在扫描lexing中">在扫描（Lexing）中：</h3>
+<ul>
+<li>字母表：ASCII 字符（如 a-z, 0-9）</li>
+<li>结果：token序列（标记）</li>
+</ul>
+<h3 id="在语法分析parsing中">在语法分析（Parsing）中：</h3>
+<ul>
+<li>字母表：由词法分析产生的 token 集合</li>
+<li>分析目标：使用 CFG 判断 token 序列是否符合语法</li>
+</ul>
+<hr>
+<h1 id="正则语言的局限性">正则语言的局限性</h1>
+<p><strong>The Limits of Regular Languages</strong></p>
+<hr>
+<h2 id="基本定义-definition">📌 基本定义 Definition</h2>
+<ul>
+<li>给定字母表： <strong>Σ = {a, b}</strong> Alphabet: <strong>Σ = {a,
+b}</strong></li>
+<li>构造的字符串集合 S： 在这个字母表下，集合 S 包含一个
+<strong>b</strong>，其左右有相同数量的 <strong>a</strong>。 The set of
+strings <strong>S</strong> over this alphabet consists of a single
+<strong>b</strong> surrounded by the same number of
+<strong>a</strong>s.</li>
+</ul>
+<h3 id="举例-examples">举例 Examples:</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">S = &#123;b, aba, aabaa, aaabaaa, …&#125;</span><br><span class="line">  = &#123; aⁿ b aⁿ | n ≥ 0, n ∈ ℤ &#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="正则表达式是否能描述">❌ 正则表达式是否能描述？</h2>
+<p><strong>Can regular expressions describe this language?</strong></p>
+<ul>
+<li>尝试的正则表达式： <code>a*ba*</code> ✅ <em>这个表达式可以匹配</em>
+但并不精确。 This regular expression matches strings with a
+<strong>b</strong> and any number of <strong>a</strong>s on both
+sides.</li>
+<li>但这不能保证<strong>左右两边的 a 的数量相等</strong>！ But it
+<strong>does not enforce</strong> that the number of <strong>a</strong>s
+before and after <strong>b</strong> are the same.</li>
+</ul>
+<h3 id="结论-conclusion">❗结论 Conclusion:</h3>
+<blockquote>
+<p>这个语言 <strong>不能</strong> 被正则表达式完全描述。 <strong>This
+set cannot be described by a regular expression.</strong></p>
+</blockquote>
+<hr>
+<h2 id="编译中的意义-relevance-in-compilation">🧪 编译中的意义 Relevance
+in Compilation</h2>
+<h3 id="词法分析lexical-analysis">🔍 词法分析（Lexical Analysis）</h3>
+<ul>
+<li>我们使用正则表达式来定义<strong>每一个 token</strong>。 During
+scanning, we used <strong>regular expressions</strong> to define each
+<strong>token</strong>.</li>
+<li>这是可以的，因为大多数 token
+是简单的结构（如标识符、数字、运算符）。 This works because most tokens
+have simple, regular structure (like identifiers, numbers, and
+operators).</li>
+</ul>
+<hr>
+<h2 id="正则表达式的局限-limitations-of-regular-expressions">🚫
+正则表达式的局限 Limitations of Regular Expressions</h2>
+<p>虽然正则表达式在词法分析中很强大，但在更复杂的语法结构中不够用。
+Although useful in scanning, regular expressions are too weak for
+syntax-level tasks.</p>
+<h3 id="无法处理的问题-problems-it-cannot-handle">⚠️ 无法处理的问题
+Problems it cannot handle:</h3>
+<ol type="1">
+<li><strong>无法匹配所有成对括号的表达式</strong> Cannot define a
+regular expression matching all expressions with <strong>properly
+balanced parentheses</strong>.</li>
+<li><strong>无法匹配所有嵌套块结构的函数体</strong> Cannot define a
+regular expression matching all functions with <strong>properly nested
+block structures</strong>.</li>
+</ol>
+<hr>
+<h2 id="解决方法需要更强的形式体系">🚀 解决方法：需要更强的形式体系</h2>
+<p><strong>Solution: We need a more powerful formalism.</strong></p>
+<p>因此，我们需要上下文无关文法（Context-Free Grammars,
+CFGs）来描述这些复杂结构。 So we turn to <strong>context-free
+grammars</strong> (CFGs) to define such structures.</p>
+<hr>
+<h1 id="上下文无关文法context-free-grammars">📘上下文无关文法（Context-Free
+Grammars）</h1>
+<hr>
+<h2 id="基本概念-basic-concept">🧠 基本概念 Basic Concept</h2>
+<p><strong>上下文无关文法（Context-Free Grammar，CFG）</strong>
+是一种用于描述编程语言语法结构的形式体系。</p>
+<blockquote>
+<p>A <strong>context-free grammar (CFG)</strong> is a specification for
+the syntactic structure of a programming language.</p>
+</blockquote>
+<ul>
+<li>它与正则表达式类似，但 CFG 支持递归规则，因此能够描述更复杂的结构。
+Similar to regular expressions, except that <strong>CFGs involve
+recursive rules</strong>.</li>
+<li>CFG 是 <strong>正则语言的严格超集</strong>。 CFGs are a
+<strong>strict superset of the regular languages</strong>.</li>
+</ul>
+<hr>
+<h2 id="示例-example">📌 示例 Example</h2>
+<p>一个用于整数算术表达式的上下文无关文法： A context-free grammar for
+<strong>integer arithmetic expressions</strong>:</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">exp   → exp op exp | (exp) | num</span><br><span class="line">op    → + | - | * | /</span><br><span class="line">num   = digit digit*      ← regular expression</span><br><span class="line">digit = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="正式定义-formal-definition">📐 正式定义 Formal Definition</h2>
+<p>一个上下文无关文法 G 定义为： A CFG is defined as:</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">G = (Vₜ, Vₙ, P, S)</span><br></pre></td></tr></table></figure>
+<p>其中 (where):</p>
+<ul>
+<li><strong>Vₜ (终结符 Terminals):</strong> 用于构成字符串的基本符号，即
+token。 A set of <strong>terminals</strong>, the basic symbols used to
+form strings (tokens).</li>
+<li><strong>Vₙ (非终结符 Nonterminals):</strong>
+表示结构名称的一组符号，用于定义字符串集合。 A set of
+<strong>nonterminals</strong>, names for structures denoting sets of
+strings.</li>
+<li><strong>P (产生式 Productions):</strong> 一组规则，形式为
+<code>A → α</code>，其中 A 是非终结符，α
+是任意长度的终结符和非终结符组合。 A set of
+<strong>productions</strong>, or grammar rules, of the form
+<code>A → α</code>, where <code>A ∈ Vₙ</code> and
+<code>α ∈ (Vₙ ∪ Vₜ)*</code>.</li>
+<li><strong>S (开始符号 Start Symbol):</strong>
+文法推导的起点，<code>S ∈ Vₙ</code>。 The <strong>start symbol</strong>,
+from which derivations begin.</li>
+</ul>
+<blockquote>
+<p><strong>Vₜ 和 Vₙ 没有重叠</strong>，即 <code>Vₜ ∩ Vₙ = ∅</code>
+Terminals and nonterminals are disjoint: <code>Vₜ ∩ Vₙ = ∅</code></p>
+</blockquote>
+<hr>
+<h2 id="结构意义-structural-meaning">🧱 结构意义 Structural Meaning</h2>
+<ul>
+<li><p>每条<strong>产生式（Production）</strong>定义一个结构。 A
+<strong>production</strong> defines a structure:</p>
+<p><code>A → α</code> 表示结构 A 的形式由 α 决定。 <code>A → α</code>
+means structure <code>A</code> is composed as described by
+<code>α</code>.</p></li>
+<li><p><code>→</code> 并不意味着替换，而是说明结构递归定义。 The arrow
+<code>→</code> doesn’t mean literal substitution but <strong>structural
+derivation</strong>, due to recursion.</p></li>
+<li><p>如果 <code>X → Y₁ Y₂ ... Yₙ</code>，表示 <code>X</code>
+可以展开为 <code>Y₁ Y₂ ... Yₙ</code>。 If <code>X → Y₁ ... Yₙ</code>,
+then <code>X</code> can be replaced by <code>Y₁ ... Yₙ</code>.</p></li>
+<li><p>如果 <code>X → ε</code>，表示 <code>X</code>
+可以替换为<strong>空串</strong>。 If <code>X → ε</code>, then
+<code>X</code> can be replaced with the <strong>empty
+string</strong>.</p></li>
+</ul>
+<hr>
+<h2 id="bnf-表示法-backus-naur-form">✏️ BNF 表示法 (Backus-Naur
+Form)</h2>
+<p>这种规则表示形式被称为<strong>巴科斯-诺尔范式（BNF）</strong>，是一种标准的
+CFG 写法。 The format of the production rules <code>A → α</code> is
+known as <strong>Backus-Naur Form (BNF)</strong>.</p>
+<hr>
+<h2 id="推导与语言定义-derivation-language">🧩 推导与语言定义 Derivation
+&amp; Language</h2>
+<ul>
+<li>从起始符号 <code>S</code>
+开始，通过反复应用产生式，可以生成一系列终结符组成的字符串。 Starting
+from the <strong>start symbol <code>S</code></strong>, repeatedly
+applying productions can generate strings of terminals.</li>
+<li>所有从 <code>S</code> 推导出的终结符字符串集合就是这个 CFG
+定义的语言。 The set of all terminal strings derivable from
+<code>S</code> is the <strong>language defined by the
+grammar</strong>.</li>
+</ul>
+<hr>
+<h2 id="小结-summary-中英文对照">✅ 小结 Summary (中英文对照)</h2>
+<table>
+<thead>
+<tr>
+<th>英文术语</th>
+<th>中文术语</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Terminal (Vₜ)</td>
+<td>终结符</td>
+<td>最终输出符号，如 token</td>
+</tr>
+<tr>
+<td>Nonterminal (Vₙ)</td>
+<td>非终结符</td>
+<td>表示结构的符号</td>
+</tr>
+<tr>
+<td>Production (P)</td>
+<td>产生式</td>
+<td>定义结构的规则</td>
+</tr>
+<tr>
+<td>Start Symbol (S)</td>
+<td>开始符号</td>
+<td>从这个非终结符开始推导</td>
+</tr>
+<tr>
+<td>ε (epsilon)</td>
+<td>空串</td>
+<td>表示“什么也不生成”的规则</td>
+</tr>
+<tr>
+<td>Derivation</td>
+<td>推导</td>
+<td>使用规则一步步展开的过程</td>
+</tr>
+<tr>
+<td>BNF</td>
+<td>巴科斯-诺尔范式</td>
+<td>标准的文法书写格式</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h1 id="cfg-示例与表示法">CFG 示例与表示法</h1>
+<blockquote>
+<p>这里其实就是递归写法!</p>
+</blockquote>
+<hr>
+<h2 id="示例简单算术表达式的文法">🎯 示例：简单算术表达式的文法</h2>
+<p><strong>文法 G = (Vₜ, Vₙ, P, S)</strong></p>
+<h3 id="终结符-terminals">终结符 (Terminals):</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">VT = &#123; num, +, -, *, /, (, ) &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="非终结符-nonterminals">非终结符 (Nonterminals):</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">VN = &#123; exp, op &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="开始符号-start-symbol">开始符号 (Start Symbol):</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exp</span><br></pre></td></tr></table></figure>
+<h3 id="产生式-productions">产生式 (Productions):</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">exp → exp op exp</span><br><span class="line">exp → (exp)</span><br><span class="line">exp → num</span><br><span class="line">op   → +</span><br><span class="line">op   → -</span><br><span class="line">op   → *</span><br><span class="line">op   → /</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="表示约定-notation-conventions">✏️ 表示约定 Notation
+Conventions</h2>
+<p>为使文法书写简洁，采用以下约定：</p>
+<blockquote>
+<p>To simplify grammar notation, we adopt the following conventions:</p>
+</blockquote>
+<ul>
+<li><p>默认第一个产生式左侧是开始符号。</p>
+<blockquote>
+<p>The left-hand side of the <strong>first</strong> production is the
+start symbol, unless otherwise stated.</p>
+</blockquote></li>
+<li><p>小写字母或具体符号（如 +, *,
+num）表示<strong>终结符</strong>（tokens）</p>
+<blockquote>
+<p>Lowercase letters or literal symbols represent
+<strong>terminals</strong>.</p>
+</blockquote></li>
+<li><p>大写字母或带尖括号 <code>&lt;...&gt;</code>
+的名称表示<strong>非终结符</strong>。</p>
+<blockquote>
+<p>Uppercase names or angle brackets represent
+<strong>nonterminals</strong>.</p>
+</blockquote></li>
+<li><p>多条产生式拥有相同左侧时可合并写为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">A → α₁ | α₂ | ... | αₙ</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>If <code>A → α₁, A → α₂, ..., A → αₙ</code> share the same left-hand
+side, we write:</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">A → α₁ | α₂ | ... | αₙ</span><br></pre></td></tr></table></figure></li>
+</ul>
+<hr>
+<h2 id="非法表示法-not-notational-shorthand">❌ 非法表示法 Not
+Notational Shorthand</h2>
+<p>在 CFG 中不能使用正则表达式的语法符号：</p>
+<blockquote>
+<p>The syntax for <strong>regular expressions</strong> does
+<strong>not</strong> carry over to CFGs.</p>
+</blockquote>
+<ul>
+<li><p>不能使用 <code>*</code>、<code>|</code>、<code>()</code>
+表示重复、选择或分组。</p>
+<blockquote>
+<p>You <strong>cannot</strong> use <code>*</code>, <code>|</code>, or
+parentheses as in regular expressions.</p>
+</blockquote></li>
+</ul>
+<h3 id="错误示例-incorrect-example">错误示例 (Incorrect Example):</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">S → a*b    ❌</span><br></pre></td></tr></table></figure>
+<h3 id="正确写法-correct-cfg-form">正确写法 (Correct CFG Form):</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">S → Ab</span><br><span class="line">A → Aa | ε</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="再看一个例子-another-example">🎯 再看一个例子 Another
+Example</h2>
+<p>目标语言:
+<code>&#123; aⁿ b | n ≥ 0 &#125; ∪ &#123; aⁿ cᵐ | n ≥ 0, m ≥ 0 &#125;</code></p>
+<p>⚠️ 错误正则表达式尝试：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">S → a(b|c*)    ❌</span><br></pre></td></tr></table></figure>
+<p>⚙️ 正确 CFG 写法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">S → aX</span><br><span class="line">X → b | C</span><br><span class="line">C → Cc | ε</span><br></pre></td></tr></table></figure>
+<p>解释：</p>
+<ul>
+<li><code>X → b</code> 匹配一个 b</li>
+<li><code>X → C</code> 表示 c 的重复（由 C → Cc | ε 实现）</li>
+<li><code>aX</code> 前缀表示 a 的前缀可以递归出现，通过多层调用
+<code>S → aX</code> 来实现</li>
+</ul>
+<hr>
+<p>✅ <strong>总结 Summary</strong></p>
+<table>
+<thead>
+<tr>
+<th>形式</th>
+<th>意义</th>
+<th>CFG 中支持？</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>*</code></td>
+<td>重复</td>
+<td>❌ 不支持</td>
+</tr>
+<tr>
+<td><code>|</code></td>
+<td>或选</td>
+<td></td>
+</tr>
+<tr>
+<td><code>()</code></td>
+<td>分组</td>
+<td>❌ 不支持直接使用</td>
+</tr>
+</tbody>
+</table>
+<p>为了描述复杂的语法结构，我们需要采用递归规则的
+CFG，而不是仅依赖正则表达式。</p>
+<h1 id="chomsky-文法层级chomsky-hierarchy-of-grammars">Chomsky
+文法层级（Chomsky Hierarchy of Grammars）</h1>
+<hr>
+<h2 id="chomsky-hierarchy-of-grammars">📚 Chomsky Hierarchy of
+Grammars</h2>
+<p>乔姆斯基层级（Chomsky
+Hierarchy）是由语言学家诺姆·乔姆斯基提出的形式语言分类方法，根据文法的表达能力将语言分为四类：</p>
+<h3 id="四种文法类型four-types-of-grammars">四种文法类型（Four Types of
+Grammars）</h3>
+<table>
+<colgroup>
+<col style="width: 7%">
+<col style="width: 32%">
+<col style="width: 18%">
+<col style="width: 40%">
+</colgroup>
+<thead>
+<tr>
+<th>类型</th>
+<th>名称（英文）</th>
+<th>名称（中文）</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type 0</td>
+<td>Unrestricted Grammar</td>
+<td>无限制文法</td>
+<td>没有任何限制的产生式</td>
+</tr>
+<tr>
+<td>Type 1</td>
+<td>Context-Sensitive Grammar</td>
+<td>上下文相关文法</td>
+<td>产生式形如 αAβ → αγβ，其中γ非空</td>
+</tr>
+<tr>
+<td>Type 2</td>
+<td>Context-Free Grammar</td>
+<td>上下文无关文法</td>
+<td>产生式形如 A → β</td>
+</tr>
+<tr>
+<td>Type 3</td>
+<td>Regular Grammar</td>
+<td>正则文法</td>
+<td>产生式形如 A → aB 或 A → a</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="各类型产生式形式production-forms">🔄
+各类型产生式形式（Production Forms）</h2>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 8%">
+<col style="width: 20%">
+<col style="width: 41%">
+<col style="width: 30%">
+</colgroup>
+<thead>
+<tr>
+<th>类型</th>
+<th>产生式形式</th>
+<th>限制说明</th>
+<th>例子</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type 0</td>
+<td>α → β</td>
+<td>α, β ∈ (VT ∪ VN)* 且 α ≠ ε</td>
+<td>没有限制：最强表达能力</td>
+</tr>
+<tr>
+<td>Type 1</td>
+<td>αAβ → αγβ</td>
+<td>γ ≠ ε, 保证右侧长度 ≥ 左侧长度</td>
+<td>S → aSBE, aB → ab</td>
+</tr>
+<tr>
+<td>Type 2</td>
+<td>A → β</td>
+<td>A ∈ VN, β ∈ (VT ∪ VN)*</td>
+<td>常用于编程语言语法</td>
+</tr>
+<tr>
+<td>Type 3</td>
+<td>A → aB 或 A → a</td>
+<td>A, B ∈ VN, a ∈ VT</td>
+<td>可对应正则表达式</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="各文法层级之间的关系hierarchy-relationship">🧠
+各文法层级之间的关系（Hierarchy Relationship）</h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Unrestricted ⊇ Context-sensitive ⊇ Context-free ⊇ Regular</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>正则文法是上下文无关文法的子集，而上下文无关文法又是上下文相关文法的子集，依此类推。</p>
+</blockquote>
+<hr>
+<h2 id="示例examples">📌 示例（Examples）</h2>
+<h3 id="context-sensitive-grammar-示例">✅ Context-Sensitive Grammar
+示例</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">S → aSBE</span><br><span class="line">S → aBE</span><br><span class="line">bB → bb</span><br><span class="line">bE → be</span><br><span class="line">aB → ab</span><br><span class="line">eB → eE</span><br><span class="line">eE → ee</span><br></pre></td></tr></table></figure>
+<h3 id="context-free-grammar-示例">✅ Context-Free Grammar 示例</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">S → AB</span><br><span class="line">A → BS | 0</span><br><span class="line">B → SA | 1</span><br></pre></td></tr></table></figure>
+<h3 id="regular-grammar-示例">✅ Regular Grammar 示例</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">S → 0A | 1B | 0</span><br><span class="line">A → 1B | 0</span><br><span class="line">B → 0</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="总结summary">📖 总结（Summary）</h2>
+<ul>
+<li>每种文法在表达能力上是递增的：
+<ul>
+<li>正则文法只能表达线性语言结构</li>
+<li>上下文无关文法可以描述嵌套结构（如括号匹配）</li>
+<li>上下文相关文法可用于描述更多语义限制（如变量声明后才能使用）</li>
+<li>无限制文法则可表达所有形式语言（包括自然语言）</li>
+</ul></li>
+<li>编译器前端常使用 <strong>上下文无关文法（CFG）</strong>
+来描述编程语言的语法。</li>
+</ul>
+<hr>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://www.totorocatcat.top/">Totoro</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://totorocatcat.top/%E7%BC%96%E8%AF%91%E6%8A%80%E6%9C%AF3-1/">http://totorocatcat.top/%E7%BC%96%E8%AF%91%E6%8A%80%E6%9C%AF3-1/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://totorocatcat.top" target="_blank">Totoroの旅</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%8F%90%E9%AB%98/">提高</a></div><div class="post_share"><div class="social-share" data-image="https://npm.elemecdn.com/ushio-api-img-moe@5.0.22/img_220_1200x675_350.011993408203_null_normal.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/%E7%BC%96%E8%AF%91%E6%8A%80%E6%9C%AF3-2/" title="编译技术3-2"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/ushio-api-img-moe@5.0.22/img_220_1200x675_350.011993408203_null_normal.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">编译技术3-2</div></div></a></div><div class="next-post pull-right"><a href="/%E7%BC%96%E8%AF%91%E6%8A%80%E6%9C%AF2-7/" title="编译技术2-7"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/ushio-api-img-moe@5.0.22/img_220_1200x675_350.011993408203_null_normal.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">编译技术2-7</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/'Lec2%20Logic%20and%20Proof,%20Sets,%20and%20Function'/" title="Lec2 Logic and Proof, Sets, and Function"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/1fe6130ca86bb9e7e6a37c9187a32c8.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-11-20</div><div class="title">Lec2 Logic and Proof, Sets, and Function</div></div></a></div><div><a href="/02%EF%BC%89/" title="CS61B 课程笔记（Lecture 02）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/v2-2ed7f4c9e1a7a699a3ef300a6f761abe_720w.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-11</div><div class="title">CS61B 课程笔记（Lecture 02）</div></div></a></div><div><a href="/03%EF%BC%89/" title="CS61B 课程笔记（Lecture 03）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/v2-2ed7f4c9e1a7a699a3ef300a6f761abe_720w.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-12</div><div class="title">CS61B 课程笔记（Lecture 03）</div></div></a></div><div><a href="/04%EF%BC%89/" title="CS61B 课程笔记（Lecture 04）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/2749a496aabc7d650b2912e256582e390a0a636b.jpg@1256w_1246h_!web-article-pic.avif" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-13</div><div class="title">CS61B 课程笔记（Lecture 04）</div></div></a></div><div><a href="/06%EF%BC%89/" title="CS61B 课程笔记（Lecture 06）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/f00af0d55cc81c18403ccbb4957ae6bc298252208.jpg@1256w_1374h_!web-article-pic.avif" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-15</div><div class="title">CS61B 课程笔记（Lecture 06）</div></div></a></div><div><a href="/05%EF%BC%89/" title="CS61B 课程笔记（Lecture 05）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/4ccebbc43a0ca31a719afadee2f86b4902402baf.jpg@1256w_786h_!web-article-pic.avif" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-14</div><div class="title">CS61B 课程笔记（Lecture 05）</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/px3.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Totoro</div><div class="author-info__description">热爱文学的SCUT软件学院学生</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">825</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">35</div></a></div><a id="card-info-btn" href="https://github.com/4512abc"><i class="fab fa-github"></i><span>🛴前往小窝......</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/4512abc" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:4512abc@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到龙猫の小窝</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BC%96%E8%AF%91%E6%8A%80%E6%9C%AF3-1"><span class="toc-text">编译技术3-1</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80syntax-analysis-basics"><span class="toc-text">语法分析基础（Syntax
+Analysis Basics）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90%E5%9C%A8%E7%BC%96%E8%AF%91%E6%B5%81%E7%A8%8B%E4%B8%AD%E7%9A%84%E4%BD%8D%E7%BD%AE"><span class="toc-text">1. 语法分析在编译流程中的位置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90"><span class="toc-text">2. 什么是语法分析？</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90%E5%BD%A2%E5%BC%8F%E4%BD%93%E7%B3%BB"><span class="toc-text">🧾语法分析形式体系</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#context-free-grammars-cfg"><span class="toc-text">1. Context-Free Grammars (CFG)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8A%E4%B8%8B%E6%96%87%E6%97%A0%E5%85%B3%E6%96%87%E6%B3%95"><span class="toc-text">上下文无关文法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cfg-and-grammars"><span class="toc-text">2. CFG and Grammars</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E6%B3%95%E4%B8%8Ecfg"><span class="toc-text">文法与CFG</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#derivations"><span class="toc-text">3. Derivations</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A8%E5%AF%BC"><span class="toc-text">推导</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#concrete-and-abstract-syntax-trees"><span class="toc-text">4. Concrete and Abstract
+Syntax Trees</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B7%E4%BD%93%E4%B8%8E%E6%8A%BD%E8%B1%A1%E8%AF%AD%E6%B3%95%E6%A0%91"><span class="toc-text">具体与抽象语法树</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ambiguity"><span class="toc-text">5. Ambiguity</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A7%E4%B9%89"><span class="toc-text">歧义</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#parsing-algorithms"><span class="toc-text">6. Parsing Algorithms</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E6%9E%90%E7%AE%97%E6%B3%95"><span class="toc-text">解析算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#top-down-parsing"><span class="toc-text">🧭 Top-Down Parsing</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#bottom-up-parsing"><span class="toc-text">⛏️ Bottom-Up Parsing</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#formal-languages"><span class="toc-text">7. Formal Languages</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BD%A2%E5%BC%8F%E8%AF%AD%E8%A8%80"><span class="toc-text">形式语言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8%E6%89%AB%E6%8F%8Flexing%E4%B8%AD"><span class="toc-text">在扫描（Lexing）中：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90parsing%E4%B8%AD"><span class="toc-text">在语法分析（Parsing）中：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AD%A3%E5%88%99%E8%AF%AD%E8%A8%80%E7%9A%84%E5%B1%80%E9%99%90%E6%80%A7"><span class="toc-text">正则语言的局限性</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E5%AE%9A%E4%B9%89-definition"><span class="toc-text">📌 基本定义 Definition</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BE%E4%BE%8B-examples"><span class="toc-text">举例 Examples:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%98%AF%E5%90%A6%E8%83%BD%E6%8F%8F%E8%BF%B0"><span class="toc-text">❌ 正则表达式是否能描述？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%93%E8%AE%BA-conclusion"><span class="toc-text">❗结论 Conclusion:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%96%E8%AF%91%E4%B8%AD%E7%9A%84%E6%84%8F%E4%B9%89-relevance-in-compilation"><span class="toc-text">🧪 编译中的意义 Relevance
+in Compilation</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90lexical-analysis"><span class="toc-text">🔍 词法分析（Lexical Analysis）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84%E5%B1%80%E9%99%90-limitations-of-regular-expressions"><span class="toc-text">🚫
+正则表达式的局限 Limitations of Regular Expressions</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%A0%E6%B3%95%E5%A4%84%E7%90%86%E7%9A%84%E9%97%AE%E9%A2%98-problems-it-cannot-handle"><span class="toc-text">⚠️ 无法处理的问题
+Problems it cannot handle:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95%E9%9C%80%E8%A6%81%E6%9B%B4%E5%BC%BA%E7%9A%84%E5%BD%A2%E5%BC%8F%E4%BD%93%E7%B3%BB"><span class="toc-text">🚀 解决方法：需要更强的形式体系</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%8A%E4%B8%8B%E6%96%87%E6%97%A0%E5%85%B3%E6%96%87%E6%B3%95context-free-grammars"><span class="toc-text">📘上下文无关文法（Context-Free
+Grammars）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5-basic-concept"><span class="toc-text">🧠 基本概念 Basic Concept</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-example"><span class="toc-text">📌 示例 Example</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A3%E5%BC%8F%E5%AE%9A%E4%B9%89-formal-definition"><span class="toc-text">📐 正式定义 Formal Definition</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E6%9E%84%E6%84%8F%E4%B9%89-structural-meaning"><span class="toc-text">🧱 结构意义 Structural Meaning</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#bnf-%E8%A1%A8%E7%A4%BA%E6%B3%95-backus-naur-form"><span class="toc-text">✏️ BNF 表示法 (Backus-Naur
+Form)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%A8%E5%AF%BC%E4%B8%8E%E8%AF%AD%E8%A8%80%E5%AE%9A%E4%B9%89-derivation-language"><span class="toc-text">🧩 推导与语言定义 Derivation
+&amp; Language</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%BB%93-summary-%E4%B8%AD%E8%8B%B1%E6%96%87%E5%AF%B9%E7%85%A7"><span class="toc-text">✅ 小结 Summary (中英文对照)</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#cfg-%E7%A4%BA%E4%BE%8B%E4%B8%8E%E8%A1%A8%E7%A4%BA%E6%B3%95"><span class="toc-text">CFG 示例与表示法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B%E7%AE%80%E5%8D%95%E7%AE%97%E6%9C%AF%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84%E6%96%87%E6%B3%95"><span class="toc-text">🎯 示例：简单算术表达式的文法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%88%E7%BB%93%E7%AC%A6-terminals"><span class="toc-text">终结符 (Terminals):</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%9E%E7%BB%88%E7%BB%93%E7%AC%A6-nonterminals"><span class="toc-text">非终结符 (Nonterminals):</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%80%E5%A7%8B%E7%AC%A6%E5%8F%B7-start-symbol"><span class="toc-text">开始符号 (Start Symbol):</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%A7%E7%94%9F%E5%BC%8F-productions"><span class="toc-text">产生式 (Productions):</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A1%A8%E7%A4%BA%E7%BA%A6%E5%AE%9A-notation-conventions"><span class="toc-text">✏️ 表示约定 Notation
+Conventions</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%9E%E6%B3%95%E8%A1%A8%E7%A4%BA%E6%B3%95-not-notational-shorthand"><span class="toc-text">❌ 非法表示法 Not
+Notational Shorthand</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%94%99%E8%AF%AF%E7%A4%BA%E4%BE%8B-incorrect-example"><span class="toc-text">错误示例 (Incorrect Example):</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A3%E7%A1%AE%E5%86%99%E6%B3%95-correct-cfg-form"><span class="toc-text">正确写法 (Correct CFG Form):</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%8D%E7%9C%8B%E4%B8%80%E4%B8%AA%E4%BE%8B%E5%AD%90-another-example"><span class="toc-text">🎯 再看一个例子 Another
+Example</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#chomsky-%E6%96%87%E6%B3%95%E5%B1%82%E7%BA%A7chomsky-hierarchy-of-grammars"><span class="toc-text">Chomsky
+文法层级（Chomsky Hierarchy of Grammars）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#chomsky-hierarchy-of-grammars"><span class="toc-text">📚 Chomsky Hierarchy of
+Grammars</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B%E7%A7%8D%E6%96%87%E6%B3%95%E7%B1%BB%E5%9E%8Bfour-types-of-grammars"><span class="toc-text">四种文法类型（Four Types of
+Grammars）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%84%E7%B1%BB%E5%9E%8B%E4%BA%A7%E7%94%9F%E5%BC%8F%E5%BD%A2%E5%BC%8Fproduction-forms"><span class="toc-text">🔄
+各类型产生式形式（Production Forms）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%84%E6%96%87%E6%B3%95%E5%B1%82%E7%BA%A7%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BBhierarchy-relationship"><span class="toc-text">🧠
+各文法层级之间的关系（Hierarchy Relationship）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8Bexamples"><span class="toc-text">📌 示例（Examples）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#context-sensitive-grammar-%E7%A4%BA%E4%BE%8B"><span class="toc-text">✅ Context-Sensitive Grammar
+示例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#context-free-grammar-%E7%A4%BA%E4%BE%8B"><span class="toc-text">✅ Context-Free Grammar 示例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#regular-grammar-%E7%A4%BA%E4%BE%8B"><span class="toc-text">✅ Regular Grammar 示例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93summary"><span class="toc-text">📖 总结（Summary）</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86CH2/" title="编译原理CH2"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/ushio-api-img-moe@5.0.22/img_220_1200x675_350.011993408203_null_normal.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="编译原理CH2"/></a><div class="content"><a class="title" href="/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86CH2/" title="编译原理CH2">编译原理CH2</a><time datetime="2025-05-02T14:25:12.000Z" title="发表于 2025-05-02 22:25:12">2025-05-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86CH1/" title="编译原理CH1"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/ushio-api-img-moe@5.0.22/img_220_1200x675_350.011993408203_null_normal.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="编译原理CH1"/></a><div class="content"><a class="title" href="/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86CH1/" title="编译原理CH1">编译原理CH1</a><time datetime="2025-05-02T13:52:58.000Z" title="发表于 2025-05-02 21:52:58">2025-05-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E7%BC%96%E8%AF%91%E6%8A%80%E6%9C%AF4-3/" title="编译技术4-3"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/ushio-api-img-moe@5.0.22/img_220_1200x675_350.011993408203_null_normal.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="编译技术4-3"/></a><div class="content"><a class="title" href="/%E7%BC%96%E8%AF%91%E6%8A%80%E6%9C%AF4-3/" title="编译技术4-3">编译技术4-3</a><time datetime="2025-05-01T17:42:28.000Z" title="发表于 2025-05-02 01:42:28">2025-05-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E7%BC%96%E8%AF%91%E6%8A%80%E6%9C%AF4-2/" title="编译技术4-2"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/ushio-api-img-moe@5.0.22/img_220_1200x675_350.011993408203_null_normal.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="编译技术4-2"/></a><div class="content"><a class="title" href="/%E7%BC%96%E8%AF%91%E6%8A%80%E6%9C%AF4-2/" title="编译技术4-2">编译技术4-2</a><time datetime="2025-05-01T17:31:02.000Z" title="发表于 2025-05-02 01:31:02">2025-05-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E7%BC%96%E8%AF%91%E6%8A%80%E6%9C%AF4-1/" title="编译技术4-1"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/ushio-api-img-moe@5.0.22/img_220_1200x675_350.011993408203_null_normal.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="编译技术4-1"/></a><div class="content"><a class="title" href="/%E7%BC%96%E8%AF%91%E6%8A%80%E6%9C%AF4-1/" title="编译技术4-1">编译技术4-1</a><time datetime="2025-05-01T15:29:25.000Z" title="发表于 2025-05-01 23:29:25">2025-05-01</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 - 2025 By Totoro</div><div class="footer_custom_text">I wish you to become your own sun, no need to rely on who's light.<p><a target="_blank" href="https://hexo.io/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&logo=hexo" title="博客框架为Hexo"></a>&nbsp;<a target="_blank" href="https://butterfly.js.org/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&logo=bitdefender" title="主题采用butterfly"></a>&nbsp;<a target="_blank" href="https://www.jsdelivr.com/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&logo=jsDelivr" title="本站使用JsDelivr为静态资源提供CDN加速"></a> &nbsp;<a target="_blank" href="https://vercel.com/ "><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Hosted-Vervel-brightgreen?style=flat&logo=Vercel" title="本站采用双线部署，默认线路托管于Vercel"></a>&nbsp;<a target="_blank" href="https://vercel.com/ "><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Hosted-Coding-0cedbe?style=flat&logo=Codio" title="本站采用双线部署，联通线路托管于Coding"></a>&nbsp;<a target="_blank" href="https://github.com/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&logo=GitHub" title="本站项目由Gtihub托管"></a>&nbsp;<a target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&logo=Claris" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"></a></p></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat-btn" type="button" title="聊天"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="/js/tw_cn.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@5.2.0/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'HT1PalaKkPaG1UqAXBhJXIu8-gzGzoHsz',
+      appKey: 'iT0TnVVAwf9zuZ7NqwclQItY',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://cdn.jsdelivr.net/npm/valine@1.5.1/dist/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><script defer src="/js/light.js"></script><canvas id="universe"></canvas><script defer src="/js/universe.js"></script><script async src="/js/title.js"></script><script defer src="https://npm.elemecdn.com/jquery@latest/dist/jquery.min.js"></script><script defer data-pjax src="/js/cat.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="1" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener
+  btf.removeGlobalFnEvent('pjax')
+  btf.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.12.0"></script></div></div><!-- hexo injector body_end start --><script data-pjax>
+    function butterfly_categories_card_injector_config(){
+      var parent_div_git = document.getElementById('recent-posts');
+      var item_html = '<style>li.categoryBar-list-item{width:32.3%;}.categoryBar-list{max-height: 380px;overflow:auto;}.categoryBar-list::-webkit-scrollbar{width:0!important}@media screen and (max-width: 650px){.categoryBar-list{max-height: 320px;}}</style><div class="recent-post-item" style="height:auto;width:100%;padding:0px;"><div id="categoryBar"><ul class="categoryBar-list"><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_12.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/离散数学/&quot;);" href="javascript:void(0);">离散数学</a><span class="categoryBar-list-count">33</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_13.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS61B/&quot;);" href="javascript:void(0);">CS61B</a><span class="categoryBar-list-count">76</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_14.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/期末の旅/&quot;);" href="javascript:void(0);">期末の旅</a><span class="categoryBar-list-count">99</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_17.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/刷题计划/&quot;);" href="javascript:void(0);">刷题计划</a><span class="categoryBar-list-count">60</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_18.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/区域赛の旅/&quot;);" href="javascript:void(0);">区域赛の旅</a><span class="categoryBar-list-count">7</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_19.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/Codeforcesの旅/&quot;);" href="javascript:void(0);">Codeforcesの旅</a><span class="categoryBar-list-count">24</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_20.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/牛客の旅/&quot;);" href="javascript:void(0);">牛客の旅</a><span class="categoryBar-list-count">65</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_21.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/ACMの旅/&quot;);" href="javascript:void(0);">ACMの旅</a><span class="categoryBar-list-count">42</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_22.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/数学建模/&quot;);" href="javascript:void(0);">数学建模</a><span class="categoryBar-list-count">26</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_22.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/前端の旅/&quot;);" href="javascript:void(0);">前端の旅</a><span class="categoryBar-list-count">17</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_23.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/数据结构/&quot;);" href="javascript:void(0);">数据结构</a><span class="categoryBar-list-count">47</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_24.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/Atcoderの旅/&quot;);" href="javascript:void(0);">Atcoderの旅</a><span class="categoryBar-list-count">53</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_25.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/C-の旅/&quot;);" href="javascript:void(0);">C++の旅</a><span class="categoryBar-list-count">17</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_26.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS70の旅/&quot;);" href="javascript:void(0);">CS70の旅</a><span class="categoryBar-list-count">24</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_27.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CSAPPの旅/&quot;);" href="javascript:void(0);">CSAPPの旅</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_28.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/计算机组成原理/&quot;);" href="javascript:void(0);">计算机组成原理</a><span class="categoryBar-list-count">47</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_29.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/编程基础/&quot;);" href="javascript:void(0);">编程基础</a><span class="categoryBar-list-count">14</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_30.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/JAVAの旅/&quot;);" href="javascript:void(0);">JAVAの旅</a><span class="categoryBar-list-count">10</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_31.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/MIT-6-031-Software-Construction/&quot;);" href="javascript:void(0);">MIT 6.031:Software Construction</a><span class="categoryBar-list-count">16</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_32.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS-110L/&quot;);" href="javascript:void(0);">CS 110L</a><span class="categoryBar-list-count">3</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_33.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/数据库の旅/&quot;);" href="javascript:void(0);">数据库の旅</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_34.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/灵魂の旅/&quot;);" href="javascript:void(0);">灵魂の旅</a><span class="categoryBar-list-count">2</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_35.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/个人安排/&quot;);" href="javascript:void(0);">个人安排</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_36.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/杂项/&quot;);" href="javascript:void(0);">杂项</a><span class="categoryBar-list-count">13</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_37.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/文学/&quot;);" href="javascript:void(0);">文学</a><span class="categoryBar-list-count">49</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_38.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/力扣の旅/&quot;);" href="javascript:void(0);">力扣の旅</a><span class="categoryBar-list-count">20</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_39.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/计算机网络/&quot;);" href="javascript:void(0);">计算机网络</a><span class="categoryBar-list-count">18</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_40.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/千里十二行/&quot;);" href="javascript:void(0);">千里十二行</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_41.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/🗡指offer/&quot;);" href="javascript:void(0);">🗡指offer</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_42.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/少年游/&quot;);" href="javascript:void(0);">少年游</a><span class="categoryBar-list-count">2</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_43.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/算法提高课/&quot;);" href="javascript:void(0);">算法提高课</a><span class="categoryBar-list-count">3</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_44.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/汇编の旅/&quot;);" href="javascript:void(0);">汇编の旅</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_44.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/C-实训/&quot;);" href="javascript:void(0);">C++实训</a><span class="categoryBar-list-count">8</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_45.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS知识/&quot;);" href="javascript:void(0);">CS知识</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_46.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/编译原理/&quot;);" href="javascript:void(0);">编译原理</a><span class="categoryBar-list-count">20</span><span class="categoryBar-list-descr"></span></li></ul></div></div>';
+      console.log('已挂载butterfly_categories_card')
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+      }
+    if( document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+    butterfly_categories_card_injector_config()
+    }
+  </script><script data-pjax>
+  function butterfly_swiper_injector_config(){
+    var parent_div_git = document.getElementById('recent-posts');
+    var item_html = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms;"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;诗录/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/4b31456c6f0f4489f99177f89e936de7286431045.png@1256w_708h_!web-article-pic.avif" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-10-01</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;诗录/&quot;);" href="javascript:void(0);" alt="">诗录</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;诗录/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;诗兴大发/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://source.fomal.cc/img/default_cover_69.webp" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-01-29</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;诗兴大发/&quot;);" href="javascript:void(0);" alt="">诗兴大发</a><div class="blog-slider__text">未觉，却是中二少年的诗仙梦</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;诗兴大发/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;TotoroのPlan/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/51d37eba99d243607ddedfff6e91568f617436609.jpg@1256w_1884h_!web-article-pic.avif" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-10-05</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;TotoroのPlan/&quot;);" href="javascript:void(0);" alt="">TotoroのPlan</a><div class="blog-slider__text">方便大二看（）</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;TotoroのPlan/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;Markdown格式/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/ushio-api-img-moe@5.0.48/img_482_1920x1080_96_null_normal.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-03-03</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;Markdown格式/&quot;);" href="javascript:void(0);" alt="">Markdown格式</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;Markdown格式/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载butterfly_swiper')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_swiper_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_swiper_injector_config();
+  }
+  </script><script defer src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.js"></script><script defer data-pjax src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper_init.js"></script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>

@@ -1,0 +1,1108 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>编译技术4-1 | Totoroの旅</title><meta name="author" content="Totoro"><meta name="copyright" content="Totoro"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="编译技术4-1 Review from Last Time &#x2F; 上一讲回顾  Goal of syntax analysis: Recover the syntax structure of the program. 语法分析的目标: 恢复程序的语法结构。 Idea:  Use a context-free grammar (CFG) to describe the progra">
+<meta property="og:type" content="article">
+<meta property="og:title" content="编译技术4-1">
+<meta property="og:url" content="http://totorocatcat.top/%E7%BC%96%E8%AF%91%E6%8A%80%E6%9C%AF4-1/index.html">
+<meta property="og:site_name" content="Totoroの旅">
+<meta property="og:description" content="编译技术4-1 Review from Last Time &#x2F; 上一讲回顾  Goal of syntax analysis: Recover the syntax structure of the program. 语法分析的目标: 恢复程序的语法结构。 Idea:  Use a context-free grammar (CFG) to describe the progra">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://npm.elemecdn.com/ushio-api-img-moe@5.0.22/img_220_1200x675_350.011993408203_null_normal.jpg">
+<meta property="article:published_time" content="2025-05-01T15:29:25.000Z">
+<meta property="article:modified_time" content="2025-05-01T15:30:26.200Z">
+<meta property="article:author" content="Totoro">
+<meta property="article:tag" content="提高">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://npm.elemecdn.com/ushio-api-img-moe@5.0.22/img_220_1200x675_350.011993408203_null_normal.jpg"><link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/b5ca6e582a7a45e6fde46e616eeb68e.png"><link rel="canonical" href="http://totorocatcat.top/%E7%BC%96%E8%AF%91%E6%8A%80%E6%9C%AF4-1/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta/><link rel="stylesheet" href="/css/index.css?v=4.12.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  noticeOutdate: {"limitDay":765,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体中文","cht_to_chs":"你已切换为简体中文","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"top-right"},
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '编译技术4-1',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: true,
+  isToc: true,
+  postUpdate: '2025-05-01 23:30:26'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const now = new Date()
+          const hour = now.getHours()
+          const isNight = hour <= 6 || hour >= 18
+          if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/universe.css"><link rel="stylesheet" href="/css/scrollbar.css"><link rel="stylesheet" href="/css/cat.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-double-row-display@1.00/cardlistpost.min.css"/>
+<style>#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags:before {content:"\A";
+  white-space: pre;}#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags > .article-meta__separator{display:none}</style>
+<link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-categories-card@1.0.0/lib/categorybar.css"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiperstyle.css" media="print" onload="this.media='all'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><div class="loading-img"></div><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><script>window.paceOptions = {
+  restartOnPushState: false
+}
+
+document.addEventListener('pjax:send', () => {
+  Pace.restart()
+})
+</script><link rel="stylesheet" href="/css/progress_bar.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/px3.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">825</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">35</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home-alt"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-envelope-open"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 趣味</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/project/"><i class="fa-fw fas fas fa-folder"></i><span> 项目</span></a></div><div class="menus_item"><a class="site-page" href="/stars/"><i class="fa-fw fas fa-bookmark"></i><span> 收藏</span></a></div><div class="menus_item"><a class="site-page" href="/bilibili/"><i class="fa-fw fas fa-tv"></i><span> 追番</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url('https://npm.elemecdn.com/ushio-api-img-moe@5.0.22/img_220_1200x675_350.011993408203_null_normal.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="Totoroの旅"><span class="site-name">Totoroの旅</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home-alt"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-envelope-open"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 趣味</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/project/"><i class="fa-fw fas fas fa-folder"></i><span> 项目</span></a></div><div class="menus_item"><a class="site-page" href="/stars/"><i class="fa-fw fas fa-bookmark"></i><span> 收藏</span></a></div><div class="menus_item"><a class="site-page" href="/bilibili/"><i class="fa-fw fas fa-tv"></i><span> 追番</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">编译技术4-1</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-05-01T15:29:25.000Z" title="发表于 2025-05-01 23:29:25">2025-05-01</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-05-01T15:30:26.200Z" title="更新于 2025-05-01 23:30:26">2025-05-01</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/">编译原理</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">3.7k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>14分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="编译技术4-1"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/%E7%BC%96%E8%AF%91%E6%8A%80%E6%9C%AF4-1/#post-comment" itemprop="discussionUrl"><span class="valine-comment-count" data-xid="/%E7%BC%96%E8%AF%91%E6%8A%80%E6%9C%AF4-1/" itemprop="commentCount"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="编译技术4-1">编译技术4-1</h1>
+<h2 id="review-from-last-time-上一讲回顾"><strong>Review from Last Time
+/ 上一讲回顾</strong></h2>
+<ul>
+<li><strong>Goal of syntax analysis</strong>: Recover the syntax
+structure of the program. <strong>语法分析的目标</strong>:
+恢复程序的语法结构。</li>
+<li><strong>Idea</strong>:
+<ul>
+<li>Use a context-free grammar (CFG) to describe the programming
+language. <strong>思路</strong>: 使用上下文无关文法 (CFG)
+来描述编程语言。</li>
+<li>Given a sequence of tokens, look for a parse tree that represents
+the syntax structure of those tokens. Recovering this syntax tree is
+called <strong>parsing</strong>.
+<strong>给定一系列的词法单元，寻找一个解析树来表示这些词法单元的语法结构。恢复该语法树的过程称为</strong>解析**。</li>
+</ul></li>
+</ul>
+<hr>
+<h2 id="different-types-of-parsing-解析的不同类型"><strong>Different
+Types of Parsing / 解析的不同类型</strong></h2>
+<ul>
+<li><strong>Top-Down Parsing (this section) /
+自顶向下解析（本节）</strong>: Start with the start symbol and try to
+guess the productions that should be applied to eventually derive the
+input string.
+从起始符号开始，尝试猜测应该应用哪些产生式来推导出输入字符串。</li>
+<li><strong>Bottom-Up Parsing (next section) /
+自底向上解析（下一节）</strong>: Start from the input string and work
+backwards, applying productions in reverse to reduce the input string to
+the start symbol.
+从输入字符串开始，反向操作，应用产生式来将输入字符串归约为起始符号。</li>
+</ul>
+<hr>
+<h2 id="top-down-parsing-自顶向下解析"><strong>Top-Down Parsing /
+自顶向下解析</strong></h2>
+<ul>
+<li><p><strong>Grammar Example</strong>: Let's consider a simple
+grammar: <strong>文法示例</strong>:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">E → T  </span><br><span class="line">E → T + E  </span><br><span class="line">T → int  </span><br><span class="line">T → (E)</span><br></pre></td></tr></table></figure></li>
+</ul>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">E → T + E</span><br><span class="line">   → int + E</span><br><span class="line">   → int + T </span><br><span class="line">   → int + (E)</span><br><span class="line">   → int + ( T + E )</span><br><span class="line">   → int + ( int + E )</span><br><span class="line">   → int + ( int + T )</span><br><span class="line">   → int + ( int + int )</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/20250501220716.png" alt="img">
+<figcaption aria-hidden="true">img</figcaption>
+</figure>
+<hr>
+<h4 id="definition-of-top-down-parsing-自顶向下解析的定义"><strong>Definition
+of Top-Down Parsing / 自顶向下解析的定义</strong></h4>
+<ul>
+<li><strong>Parsing</strong> begins with the start symbol of the
+grammar, and by applying the grammar's production rules step by step, it
+tries to find the <strong>leftmost derivation</strong> of the input
+string.
+<strong>解析</strong>从文法的起始符号开始，通过逐步应用文法的产生规则，尝试找到输入字符串的<strong>最左推导</strong>。</li>
+<li><strong>Construction of Parse Tree / 解析树的构造</strong>: The
+start symbol of the grammar is the <strong>root</strong> of the parse
+tree. The parse tree is constructed from the root to the leaves in
+<strong>preorder</strong>. The leaves of the parse tree correspond to
+the input string (tokens). <strong>解析树的构造</strong>:
+文法的起始符号是解析树的<strong>根</strong>。
+解析树从根到叶子的构造是<strong>先序遍历</strong>的。
+解析树的叶子对应于输入字符串（词法单元）。</li>
+</ul>
+<hr>
+<h4 id="key-points-关键要点"><strong>Key Points / 关键要点</strong></h4>
+<ul>
+<li><strong>Top-Down Parsing</strong> starts with the <strong>start
+symbol</strong> and tries to <strong>guess</strong> the correct
+production rules to apply in order to derive the string.
+<strong>自顶向下解析</strong>从<strong>起始符号</strong>开始，尝试<strong>猜测</strong>应该应用哪些产生式来推导出字符串。</li>
+<li>The <strong>parse tree</strong> is built in <strong>preorder
+traversal</strong>.
+<strong>解析树</strong>是通过<strong>先序遍历</strong>构建的。</li>
+<li><strong>Parse trees</strong> are essential for representing the
+structure of the input string according to the grammar.
+<strong>解析树</strong>对于表示根据文法构造的输入字符串的结构至关重要。</li>
+<li><strong>Top-Down Parsing</strong> is often used in
+<strong>predictive parsers</strong>, where we look ahead at the tokens
+to decide which rule to apply next.
+<strong>自顶向下解析</strong>通常用于<strong>预测分析器</strong>，我们通过预览接下来的词法单元来决定应用哪个规则。</li>
+</ul>
+<hr>
+<h2 id="top-down-parsing-示例详解-top-down-parsing-example-explanation">✅
+<strong>Top-Down Parsing 示例详解 / Top-Down Parsing Example
+Explanation</strong></h2>
+<h3 id="给定文法-given-grammar-g">🔸<strong>给定文法 / Given Grammar
+G：</strong></h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">S → cAd  </span><br><span class="line">A → ab  </span><br><span class="line">A → a</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="输入字符串-input-string">🔸<strong>输入字符串 / Input
+String:</strong></h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cabd</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="自顶向下解析过程-top-down-derivation-of-cabd">🔸<strong>自顶向下解析过程
+/ Top-Down Derivation of “cabd”:</strong></h3>
+<ol type="1">
+<li><strong>S → cAd</strong> 初始从 <code>S</code> 开始推导，使用产生式
+<code>S → cAd</code> ⇒ <code>cAd</code></li>
+<li><strong>A → ab</strong> 对非终结符 A 应用规则 <code>A → ab</code> ⇒
+<code>cabd</code></li>
+</ol>
+<p>此时得到的字符串与输入字符串“cabd”完全匹配。</p>
+<hr>
+<h3 id="derivation-summary-推导总结">✅ <strong>Derivation Summary /
+推导总结</strong></h3>
+<p><strong>推导过程：</strong> <code>S ⇒ cAd ⇒ cabd</code>
+<strong>这是一个合法的解析过程。</strong></p>
+<figure>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/20250501224620.png" alt="img">
+<figcaption aria-hidden="true">img</figcaption>
+</figure>
+<hr>
+<h2 id="parsing-as-a-graph-search-将解析视为图搜索问题">🔍
+<strong>Parsing as a Graph Search / 将解析视为图搜索问题</strong></h2>
+<h3 id="核心思想-core-idea">📌<strong>核心思想 / Core
+Idea:</strong></h3>
+<p>我们可以将<strong>语法解析（parsing）看作图搜索（graph
+search）</strong>问题来处理。</p>
+<hr>
+<h3 id="定义-definitions">📌<strong>定义 / Definitions:</strong></h3>
+<ul>
+<li><strong>节点（Node）</strong>：一个由起始符号开始，通过一系列推导得到的<strong>句型（sentential
+form）</strong>，也就是包含终结符和非终结符的字符串。</li>
+<li><strong>边（Edge）</strong>：如果某个句型 <code>α</code>
+可以通过一个产生式一步推导成另一个句型 <code>β</code>（即 α ⇒
+β），那么就在图中从 <code>α</code> 到 <code>β</code> 连一条边。</li>
+</ul>
+<hr>
+<h3 id="图搜索视角解析流程-parsing-as-traversing-the-graph">🌐<strong>图搜索视角解析流程
+/ Parsing as Traversing the Graph</strong></h3>
+<ol type="1">
+<li><strong>初始节点 / Initial Node</strong>：<code>S</code></li>
+<li><strong>第一步 / First Step</strong>：<code>S ⇒ cAd</code> 在图中从
+<code>S</code> 到 <code>cAd</code> 有一条边。</li>
+<li><strong>第二步 / Second Step</strong>：<code>cAd ⇒ cabd</code> 选择
+<code>A → ab</code>，继续前进。图中从 <code>cAd</code> 到
+<code>cabd</code> 有一条边。</li>
+<li><strong>终止节点 / Terminal Node</strong>：<code>cabd</code>
+一个全由终结符构成的句子，完成解析。</li>
+</ol>
+<figure>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/20250501224653.png" alt="img">
+<figcaption aria-hidden="true">img</figcaption>
+</figure>
+<hr>
+<h3 id="图搜索策略-graph-search-strategies">🧠<strong>图搜索策略 / Graph
+Search Strategies</strong></h3>
+<ul>
+<li><strong>深度优先（DFS）</strong>：优先深入某条路径，适用于回溯分析。</li>
+<li><strong>广度优先（BFS）</strong>：同时探索多个路径，有助于找到最短推导。</li>
+<li><strong>受限搜索（带预测集的搜索）</strong>：配合 First/Follow
+集，排除不可能的路径，提高效率。</li>
+</ul>
+<hr>
+<h2 id="总结-summary中英文对照">✅ 总结 / Summary（中英文对照）</h2>
+<table>
+<colgroup>
+<col style="width: 10%">
+<col style="width: 56%">
+<col style="width: 32%">
+</colgroup>
+<thead>
+<tr>
+<th>内容</th>
+<th>英文</th>
+<th>中文</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>解析方法</td>
+<td>Top-Down Parsing</td>
+<td>自顶向下解析</td>
+</tr>
+<tr>
+<td>示例字符串</td>
+<td><code>cabd</code></td>
+<td>示例输入</td>
+</tr>
+<tr>
+<td>推导路径</td>
+<td><code>S ⇒ cAd ⇒ cabd</code></td>
+<td>合法推导过程</td>
+</tr>
+<tr>
+<td>图搜索视角</td>
+<td>Sentential forms as nodes; derivation steps as edges</td>
+<td>句型是图的节点，推导步骤是边</td>
+</tr>
+<tr>
+<td>搜索策略</td>
+<td>DFS / BFS / Predictive Search</td>
+<td>深度优先 / 广度优先 / 预测搜索</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="top-down-parsing-的关键问题">✅ Top-down Parsing 的关键问题</h2>
+<h3 id="the-key-of-top-down-parsing自顶向下解析的核心问题">🔑 The Key of
+Top-down Parsing（自顶向下解析的核心问题）</h3>
+<p><strong>英文：</strong> The key problem of top-down parsing is
+<strong>how to choose the correct production</strong> in each derivation
+step. If the leftmost nonterminal is B, and there are <code>n</code>
+productions for B:</p>
+<blockquote>
+<p>B → A₁ | A₂ | … | Aₙ How do we determine which production to use
+based on the current input?</p>
+</blockquote>
+<p><strong>中文：</strong>
+自顶向下解析的关键在于：<strong>如何在每一步推导中选择正确的产生式（production）</strong>。
+如果当前最左边的非终结符是 B，而 B 有多个产生式：</p>
+<blockquote>
+<p>B → A₁ | A₂ | … | Aₙ
+我们如何根据当前的输入符号判断使用哪一个产生式？</p>
+</blockquote>
+<hr>
+<h2 id="top-down-parsing-的分类-categories-of-top-down-parsing">📚
+Top-down Parsing 的分类 / Categories of Top-down Parsing</h2>
+<h3 id="回溯解析backtracking-parsing">① 回溯解析（Backtracking
+Parsing）</h3>
+<p><strong>英文解释：</strong></p>
+<ul>
+<li>Backtracking is a depth-first parsing approach.</li>
+<li>If a nonterminal has more than one production and the parser cannot
+determine which one to apply, it tries them one by one.</li>
+<li>If one branch fails, it backtracks and tries another.</li>
+<li>This can be very <strong>slow and inefficient</strong> in complex
+grammars.</li>
+</ul>
+<p><strong>中文解释：</strong></p>
+<ul>
+<li>回溯解析是一种<strong>深度优先</strong>的语法解析方式。</li>
+<li>当某个非终结符有多个产生式，且<strong>无法根据当前输入判断使用哪个产生式</strong>时，就依次尝试所有可能。</li>
+<li>一条路径失败后，退回并尝试另一条路径。</li>
+<li>对于复杂语法来说，<strong>效率很低，解析速度慢</strong>。</li>
+</ul>
+<hr>
+<h3 id="预测解析predictive-parsing">② 预测解析（Predictive
+Parsing）</h3>
+<p><strong>英文解释：</strong></p>
+<ul>
+<li>Predictive parsing uses <strong>look-ahead tokens</strong> to decide
+which production to use.</li>
+<li>It avoids backtracking by predicting the next steps.</li>
+<li>Requires grammar to be <strong>non-ambiguous</strong> and ideally in
+<strong>LL(1)</strong> form.</li>
+<li>Two types:
+<ul>
+<li><strong>Recursive-descent Parsing</strong></li>
+<li><strong>LL(1) Parsing</strong></li>
+</ul></li>
+</ul>
+<p><strong>中文解释：</strong></p>
+<ul>
+<li>预测解析通过<strong>向前看一个或多个符号（look-ahead
+tokens）</strong>来选择正确的产生式。</li>
+<li>它<strong>不需要回溯</strong>，更高效。</li>
+<li>要求语法是<strong>无二义性（unambiguous）</strong>的，且最好是
+<strong>LL(1)</strong> 形式。</li>
+<li>有两种类型：
+<ul>
+<li><strong>递归下降解析（Recursive-descent Parsing）</strong></li>
+<li><strong>LL(1) 解析器</strong></li>
+</ul></li>
+</ul>
+<hr>
+<h2 id="总结-summary中英文对照-1">✅ 总结 / Summary（中英文对照）</h2>
+<table>
+<colgroup>
+<col style="width: 10%">
+<col style="width: 61%">
+<col style="width: 28%">
+</colgroup>
+<thead>
+<tr>
+<th>内容</th>
+<th>英文</th>
+<th>中文</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>解析问题</td>
+<td>Choose the correct production for a nonterminal</td>
+<td>选择正确的产生式</td>
+</tr>
+<tr>
+<td>回溯解析</td>
+<td>Try all options, backtrack if needed</td>
+<td>尝试所有选项，失败回溯</td>
+</tr>
+<tr>
+<td>预测解析</td>
+<td>Use look-ahead to decide</td>
+<td>使用向前看符号进行预测</td>
+</tr>
+<tr>
+<td>效率</td>
+<td>Backtracking is slow, Predictive is fast</td>
+<td>回溯慢，预测快</td>
+</tr>
+<tr>
+<td>预测类型</td>
+<td>Recursive-descent, LL(1)</td>
+<td>递归下降，LL(1)</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="the-condition-of-predictive-parsing">📘 4.1 The Condition of
+Predictive Parsing</h2>
+<h3 id="什么是预测解析的条件">🔍 什么是预测解析的条件？</h3>
+<hr>
+<h3 id="predictive-parsing-的基本条件-basic-idea">✅ Predictive Parsing
+的基本条件 / Basic Idea</h3>
+<p><strong>英文：</strong></p>
+<ul>
+<li>Parsing begins with the start symbol.</li>
+<li>If at each step, the parser can uniquely choose a production
+<strong>based on the next <code>k</code> tokens (lookahead)</strong>,
+then it is <strong>predictive parsing</strong>.</li>
+<li>Predictive parsers work with <strong>LL(k) grammars</strong>.</li>
+</ul>
+<p><strong>中文：</strong></p>
+<ul>
+<li>解析从文法的开始符号（start symbol）开始。</li>
+<li>如果在每一步推导中，<strong>可以通过查看输入中的前 k
+个符号（lookahead）唯一确定使用哪条产生式</strong>，那么这种解析称为
+<strong>预测解析（predictive parsing）</strong>。</li>
+<li>预测解析器适用于 <strong>LL(k) 文法</strong>。</li>
+</ul>
+<hr>
+<h3 id="什么是-llk">📌 什么是 LL(k)？</h3>
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>含义（英文）</th>
+<th>含义（中文）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>L</td>
+<td>Left-to-right scan</td>
+<td>从左到右读取输入</td>
+</tr>
+<tr>
+<td>L</td>
+<td>Leftmost derivation</td>
+<td>执行最左推导</td>
+</tr>
+<tr>
+<td>k</td>
+<td>k tokens lookahead</td>
+<td>向前看 k 个符号</td>
+</tr>
+</tbody>
+</table>
+<p>➡️ 实际中我们大多数使用的是 <strong>LL(1)</strong> 文法，也就是
+<strong>只需要向前看一个符号</strong> 的预测解析。</p>
+<hr>
+<h3 id="predictive-parsing-的条件总结-summary">✅ Predictive Parsing
+的条件总结 / Summary</h3>
+<p><strong>英文：</strong> To allow predictive parsing, the grammar must
+satisfy:</p>
+<ul>
+<li>The grammar must be an <strong>LL(1)</strong> grammar.</li>
+<li>For a nonterminal <code>A</code>, <strong>at most one</strong>
+production can be chosen for any lookahead token.</li>
+<li>This depends on the definitions of <strong>First</strong> and
+<strong>Follow</strong> sets.</li>
+</ul>
+<p><strong>中文：</strong> 为了实现预测解析，文法必须满足以下条件：</p>
+<ul>
+<li>文法必须是 <strong>LL(1)</strong> 的。</li>
+<li>对于某个非终结符 <code>A</code>，在任意的 lookahead
+符号下，<strong>最多只能有一个产生式可以被选择</strong>。</li>
+<li>这个选择依赖于两个集合的定义：<strong>First 集</strong> 和
+<strong>Follow 集</strong>（将在后续讲解中介绍）。</li>
+</ul>
+<hr>
+<h3 id="预测解析的核心问题-the-key-problem">🔑 预测解析的核心问题 / The
+Key Problem</h3>
+<blockquote>
+<p>✅ 给定一个非终结符 <code>A</code> 和多个产生式
+<code>A → α1 | α2 | … | αn</code>， 如何判断应该使用哪一个产生式？</p>
+</blockquote>
+<p>答案：必须使用 <strong>lookahead token（向前看的输入符号）</strong>
+来判断。 这就引出了我们接下来要讲的两个重要集合：</p>
+<ol type="1">
+<li><strong>First(α)</strong>：判断某个串 <code>α</code>
+能够以什么符号开始</li>
+<li><strong>Follow(A)</strong>：判断 <code>A</code>
+之后可能出现哪些符号</li>
+</ol>
+<hr>
+<h3 id="总结-summary中英文对照-2">📝 总结 / Summary（中英文对照）</h3>
+<table>
+<colgroup>
+<col style="width: 15%">
+<col style="width: 50%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr>
+<th>项目</th>
+<th>英文解释</th>
+<th>中文解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Predictive Parsing</td>
+<td>Choose production based on lookahead</td>
+<td>基于向前看符号选择产生式</td>
+</tr>
+<tr>
+<td>LL(k) Grammar</td>
+<td>Left-to-right scan, Leftmost derivation, k-token lookahead</td>
+<td>从左到右扫描，最左推导，向前看 k 个符号</td>
+</tr>
+<tr>
+<td>LL(1) Grammar</td>
+<td>Needs only 1 lookahead symbol</td>
+<td>只需向前看一个符号</td>
+</tr>
+<tr>
+<td>条件</td>
+<td>Must use First and Follow sets</td>
+<td>必须使用 First 和 Follow 集</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="ll1-grammar-notes"><strong>LL(1) Grammar Notes</strong></h2>
+<hr>
+<h3 id="一预测分析的条件the-condition-of-predictive-parsing">一、预测分析的条件（The
+Condition of Predictive Parsing）</h3>
+<ul>
+<li><strong>目标（Goal）</strong>：
+预测分析从文法的开始符号开始解析输入串，如果在每一步都能仅靠输入的前瞻符号（lookahead
+token）确定使用哪个产生式，则该文法是可以预测分析的（predictive）。</li>
+<li><strong>LL(k) 文法定义</strong>：
+<ul>
+<li><strong>L</strong>：表示从左到右扫描输入串（Left-to-right）。</li>
+<li><strong>L</strong>：表示构建最左导出（Leftmost derivation）。</li>
+<li><strong>k</strong>：表示最多需要前瞻 k 个符号。</li>
+</ul></li>
+<li>实际中我们通常使用的是 LL(1) 文法（只需要一个前瞻符号）。</li>
+</ul>
+<hr>
+<h3 id="二前瞻符号集的定义definition-of-lookahead-sets">二、前瞻符号集的定义（Definition
+of Lookahead Sets）</h3>
+<h4 id="first-集first-sets">1. FIRST 集（First Sets）</h4>
+<ul>
+<li><p><strong>定义</strong>： 对任意符号串
+β（可以是终结符或非终结符的组合）：</p>
+<blockquote>
+<p>FIRST(β) = { a ∈ VT | β ⇒∗ a... }</p>
+</blockquote>
+<ul>
+<li>如果 β 可以推导出空串 ε，则 ε ∈ FIRST(β)</li>
+<li>简单来说：FIRST(β) 是从 β
+推导出的句型中，第一个出现的终结符的集合（包含 ε）</li>
+</ul></li>
+<li><p><strong>例子（Example G[S]）</strong>：</p></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">S → Ap</span><br><span class="line">S → Bq</span><br><span class="line">A → a</span><br><span class="line">A → cA</span><br><span class="line">B → b</span><br><span class="line">B → dB</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>FIRST(Ap) = { a, c }</p></li>
+<li><p>FIRST(Bq) = { b, d }</p></li>
+<li><p>FIRST(a) = { a }</p></li>
+<li><p>FIRST(cA) = { c }</p></li>
+<li><p>FIRST(b) = { b }</p></li>
+<li><p>FIRST(dB) = { d }</p></li>
+<li><p><strong>预测分析条件</strong>： 若非终结符 A 有多个产生式：A → α
+| β | …，只要满足：</p>
+<blockquote>
+<p>FIRST(α) ∩ FIRST(β) = ∅</p>
+</blockquote>
+<p>则对于任意输入符号，都可以唯一决定选择哪个产生式。</p></li>
+</ul>
+<hr>
+<h4 id="follow-集follow-sets">2. FOLLOW 集（Follow Sets）</h4>
+<ul>
+<li><p><strong>定义</strong>： FOLLOW(A) 是所有能出现在某个句型中 A
+之后的终结符的集合。</p>
+<blockquote>
+<p>FOLLOW(A) = { a ∈ VT | S ⇒* ...Aa... } 如果 A
+出现在句子的末尾，则加入 <code>$</code>（表示输入结束）。</p>
+</blockquote></li>
+<li><p><strong>例子（Example G3[S]）</strong>：</p></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">S → aA | d</span><br><span class="line">A → bAS | ε</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>A 有两个产生式：A → bAS 和 A → ε</p></li>
+<li><p>推导分析：</p>
+<ul>
+<li>S ⇒ aA ，所以 <code>$</code> ∈ FOLLOW(A)</li>
+<li>S ⇒ abAS ⇒ abAaA，说明 a ∈ FOLLOW(A)</li>
+<li>S ⇒ abAd ⇒ ...，说明 d ∈ FOLLOW(A)</li>
+</ul></li>
+<li><p>所以 FOLLOW(A) = { $, a, d }</p></li>
+<li><p><strong>如何使用 FOLLOW</strong>：</p>
+<ul>
+<li>当前输入符号为 <code>x</code>
+<ul>
+<li>如果 <code>x ∈ FIRST(bAS) = &#123; b &#125;</code>，则选择产生式 A → bAS</li>
+<li>如果 <code>x ∈ FOLLOW(A) = &#123; $, a, d &#125;</code>，则选择 A → ε</li>
+</ul></li>
+</ul></li>
+<li><p>只要满足：</p>
+<blockquote>
+<p>FIRST(bAS) ∩ FOLLOW(A) = ∅</p>
+</blockquote>
+<p>就能唯一决定该选择哪个产生式。</p></li>
+</ul>
+<hr>
+<h3 id="三ll1-文法的定义definition-of-ll1-grammar">三、LL(1)
+文法的定义（Definition of LL(1) Grammar）</h3>
+<ul>
+<li><p>文法 G 是 LL(1) 的，当且仅当对所有非终结符 A 的产生式 A → α1 | α2
+| … | αn，满足以下两个条件：</p>
+<ol type="1">
+<li><p>对任意 i ≠ j，有：</p>
+<blockquote>
+<p>FIRST(αi) ∩ FIRST(αj) = ∅</p>
+</blockquote></li>
+<li><p>如果 FIRST(αi) 包含 ε，那么：</p>
+<blockquote>
+<p>FIRST(αi) ∩ FOLLOW(A) = ∅</p>
+</blockquote></li>
+</ol></li>
+</ul>
+<h4 id="例子example-gs">例子（Example G[S]）：</h4>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">S → aAS</span><br><span class="line">S → b</span><br><span class="line">A → bA</span><br><span class="line">A → ε</span><br></pre></td></tr></table></figure>
+<ul>
+<li>FIRST(A) = { b, ε }</li>
+<li>FOLLOW(A) = { a, b }</li>
+<li>FIRST(A) ∩ FOLLOW(A) = { b } ≠ ∅</li>
+</ul>
+<p>因此该文法不是 LL(1)，因为当遇到终结符 <code>b</code>
+时，无法判断应选择 A → bA 还是 A → ε。</p>
+<hr>
+<h3 id="四总结summary">四、总结（Summary）</h3>
+<ul>
+<li><strong>预测分析的核心是提前决定使用哪个产生式。</strong></li>
+<li><strong>需要使用 FIRST 和 FOLLOW 集来帮助选择。</strong></li>
+<li><strong>一个文法是 LL(1)
+的，当它的每个选择都不会造成冲突。</strong></li>
+<li><strong>预测分析不需要回溯，效率高，但需要文法满足 LL(1)
+条件。</strong></li>
+</ul>
+<h1 id="理解帮助">理解帮助</h1>
+<blockquote>
+<hr>
+<h2 id="一什么是-first-集">🌱 一、什么是 FIRST 集？</h2>
+<h3 id="直觉理解中文">🧠 直觉理解（中文）：</h3>
+<blockquote>
+<p><strong>FIRST(α)</strong> 表示：一个符号串 α
+开头<strong>可能出现的终结符号（token）</strong>有哪些。</p>
+</blockquote>
+<ul>
+<li>也可以理解为：如果我们从 α
+推导（展开），<strong>第一个出现的终结符</strong>可能是哪些？</li>
+<li>这个集合是为“预测”而生的。</li>
+</ul>
+<hr>
+<h3 id="first终结符号-很简单">✅ FIRST(终结符号) 很简单：</h3>
+<table>
+<thead>
+<tr>
+<th>例子</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FIRST(a) = { a }</td>
+<td>因为 a 本身就是终结符</td>
+</tr>
+<tr>
+<td>FIRST(+) = { + }</td>
+<td>+ 是终结符</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="first非终结符-的规则稍复杂但我们分步骤">✅ FIRST(非终结符)
+的规则（稍复杂，但我们分步骤）：</h3>
+<p>假设有文法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">A → aB | c</span><br><span class="line">B → b</span><br></pre></td></tr></table></figure>
+<p>我们想求 FIRST(A)</p>
+<h4 id="第一步看-a-的产生式也就是-a-...-的右边">第一步：看 A
+的产生式（也就是 A → ... 的右边）</h4>
+<ul>
+<li>A → aB：右边第一个符号是 <strong>a</strong>（终结符），所以
+<code>a ∈ FIRST(A)</code></li>
+<li>A → c：右边第一个符号是 <strong>c</strong>，所以
+<code>c ∈ FIRST(A)</code></li>
+</ul>
+<p>所以：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FIRST(A) = &#123; a, c &#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="复杂情况右边第一个是非终结符怎么办">🧩
+复杂情况：右边第一个是非终结符怎么办？</h3>
+<p>看这个例子：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">A → B</span><br><span class="line">B → b</span><br></pre></td></tr></table></figure>
+<p>想求 FIRST(A)</p>
+<ul>
+<li>A → B，得看 <strong>B 的 FIRST 集</strong>，所以：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FIRST(B) = &#123; b &#125; ⇒ 所以 FIRST(A) = FIRST(B) = &#123; b &#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="特殊情况如果某条产生式能推导出-ε空串那么也要把-ε-加进去">⭐
+特殊情况：如果某条产生式能推导出 <strong>ε（空串）</strong>，那么也要把
+ε 加进去！</h3>
+<p>比如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">C → ε | d</span><br></pre></td></tr></table></figure>
+<p>那么：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FIRST(C) = &#123; ε, d &#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="二什么是-follow-集">🌱 二、什么是 FOLLOW 集？</h2>
+<h3 id="直觉理解中文-1">🧠 直觉理解（中文）：</h3>
+<blockquote>
+<p><strong>FOLLOW(A)</strong> 表示：在整个推导过程中，<strong>可能跟在 A
+后面出现的终结符有哪些</strong>？</p>
+</blockquote>
+<ul>
+<li>如果我们已经处理完 A，下一步可能看到的符号是什么？</li>
+</ul>
+<hr>
+<h3 id="follow-集的规则用简单话来说">✅ FOLLOW
+集的规则（用简单话来说）：</h3>
+<p>先看这两个产生式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">S → A b</span><br><span class="line">A → a</span><br></pre></td></tr></table></figure>
+<p>我们来求 FOLLOW(A)：</p>
+<ul>
+<li>在 S → A b 中，A 的右边是 <strong>b</strong>，所以 b ∈
+FOLLOW(A)</li>
+</ul>
+<hr>
+<h3 id="follow-集一定包含-结束符号">✅ FOLLOW 集一定包含
+$（结束符号）？</h3>
+<p>是的！如果 A <strong>能推导到文法的最末尾位置</strong>，那么
+<code>$ ∈ FOLLOW(A)</code></p>
+<p>比如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">S → A</span><br></pre></td></tr></table></figure>
+<p>那么 FOLLOW(S) = { $ }，而因为 A 在最后，所以：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FOLLOW(A) = FOLLOW(S) = &#123; $ &#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="复杂点follow-中也可能来自-first-集">🧩 复杂点：FOLLOW
+中也可能来自 FIRST 集！</h3>
+<p>看例子：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">S → A B</span><br><span class="line">A → a | ε</span><br><span class="line">B → b</span><br></pre></td></tr></table></figure>
+<p>我们要找 FOLLOW(A)</p>
+<ul>
+<li>因为 S → A B，而 A 可能推 ε，所以 B 紧跟在 A 后面</li>
+<li>那么 <strong>B 的 FIRST 集</strong> 就是 FOLLOW(A) 的候选</li>
+</ul>
+<p>所以：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">FIRST(B) = &#123; b &#125;</span><br><span class="line">⇒ FOLLOW(A) ⊇ &#123; b &#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="一个完整示例first-和-follow-都有">✅ 一个完整示例（FIRST 和
+FOLLOW 都有）</h2>
+<p>文法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">S → a A c</span><br><span class="line">A → b | ε</span><br></pre></td></tr></table></figure>
+<p>我们求：</p>
+<h3 id="firsta">1️⃣ FIRST(A)</h3>
+<ul>
+<li>A → b ⇒ b ∈ FIRST(A)</li>
+<li>A → ε ⇒ ε ∈ FIRST(A)</li>
+</ul>
+<p>所以：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FIRST(A) = &#123; b, ε &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="followa">2️⃣ FOLLOW(A)</h3>
+<ul>
+<li>在 S → a A c 中，A 的后面是 <strong>c</strong>，所以：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">c ∈ FOLLOW(A)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FOLLOW(A) = &#123; c &#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="总结记忆口诀中文">🧠 总结记忆口诀（中文）：</h2>
+<table>
+<thead>
+<tr>
+<th>集合</th>
+<th>意义</th>
+<th>小口诀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FIRST(X)</td>
+<td>推导 X 开头可能出现的终结符</td>
+<td>“展开看看能出啥”</td>
+</tr>
+<tr>
+<td>FOLLOW(X)</td>
+<td>X 后面可能跟着什么终结符</td>
+<td>“X 后会遇到谁”</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://www.totorocatcat.top/">Totoro</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://totorocatcat.top/%E7%BC%96%E8%AF%91%E6%8A%80%E6%9C%AF4-1/">http://totorocatcat.top/%E7%BC%96%E8%AF%91%E6%8A%80%E6%9C%AF4-1/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://totorocatcat.top" target="_blank">Totoroの旅</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%8F%90%E9%AB%98/">提高</a></div><div class="post_share"><div class="social-share" data-image="https://npm.elemecdn.com/ushio-api-img-moe@5.0.22/img_220_1200x675_350.011993408203_null_normal.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/%E7%BC%96%E8%AF%91%E6%8A%80%E6%9C%AF4-2/" title="编译技术4-2"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/ushio-api-img-moe@5.0.22/img_220_1200x675_350.011993408203_null_normal.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">编译技术4-2</div></div></a></div><div class="next-post pull-right"><a href="/%E7%BC%96%E8%AF%91%E6%8A%80%E6%9C%AF3-2/" title="编译技术3-2"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/ushio-api-img-moe@5.0.22/img_220_1200x675_350.011993408203_null_normal.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">编译技术3-2</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/'Lec2%20Logic%20and%20Proof,%20Sets,%20and%20Function'/" title="Lec2 Logic and Proof, Sets, and Function"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/1fe6130ca86bb9e7e6a37c9187a32c8.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-11-20</div><div class="title">Lec2 Logic and Proof, Sets, and Function</div></div></a></div><div><a href="/02%EF%BC%89/" title="CS61B 课程笔记（Lecture 02）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/v2-2ed7f4c9e1a7a699a3ef300a6f761abe_720w.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-11</div><div class="title">CS61B 课程笔记（Lecture 02）</div></div></a></div><div><a href="/03%EF%BC%89/" title="CS61B 课程笔记（Lecture 03）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/v2-2ed7f4c9e1a7a699a3ef300a6f761abe_720w.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-12</div><div class="title">CS61B 课程笔记（Lecture 03）</div></div></a></div><div><a href="/04%EF%BC%89/" title="CS61B 课程笔记（Lecture 04）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/2749a496aabc7d650b2912e256582e390a0a636b.jpg@1256w_1246h_!web-article-pic.avif" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-13</div><div class="title">CS61B 课程笔记（Lecture 04）</div></div></a></div><div><a href="/06%EF%BC%89/" title="CS61B 课程笔记（Lecture 06）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/f00af0d55cc81c18403ccbb4957ae6bc298252208.jpg@1256w_1374h_!web-article-pic.avif" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-15</div><div class="title">CS61B 课程笔记（Lecture 06）</div></div></a></div><div><a href="/05%EF%BC%89/" title="CS61B 课程笔记（Lecture 05）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/4ccebbc43a0ca31a719afadee2f86b4902402baf.jpg@1256w_786h_!web-article-pic.avif" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-14</div><div class="title">CS61B 课程笔记（Lecture 05）</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/px3.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Totoro</div><div class="author-info__description">热爱文学的SCUT软件学院学生</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">825</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">35</div></a></div><a id="card-info-btn" href="https://github.com/4512abc"><i class="fab fa-github"></i><span>🛴前往小窝......</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/4512abc" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:4512abc@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到龙猫の小窝</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BC%96%E8%AF%91%E6%8A%80%E6%9C%AF4-1"><span class="toc-text">编译技术4-1</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#review-from-last-time-%E4%B8%8A%E4%B8%80%E8%AE%B2%E5%9B%9E%E9%A1%BE"><span class="toc-text">Review from Last Time
+&#x2F; 上一讲回顾</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#different-types-of-parsing-%E8%A7%A3%E6%9E%90%E7%9A%84%E4%B8%8D%E5%90%8C%E7%B1%BB%E5%9E%8B"><span class="toc-text">Different
+Types of Parsing &#x2F; 解析的不同类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#top-down-parsing-%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8B%E8%A7%A3%E6%9E%90"><span class="toc-text">Top-Down Parsing &#x2F;
+自顶向下解析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#definition-of-top-down-parsing-%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8B%E8%A7%A3%E6%9E%90%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-text">Definition
+of Top-Down Parsing &#x2F; 自顶向下解析的定义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#key-points-%E5%85%B3%E9%94%AE%E8%A6%81%E7%82%B9"><span class="toc-text">Key Points &#x2F; 关键要点</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#top-down-parsing-%E7%A4%BA%E4%BE%8B%E8%AF%A6%E8%A7%A3-top-down-parsing-example-explanation"><span class="toc-text">✅
+Top-Down Parsing 示例详解 &#x2F; Top-Down Parsing Example
+Explanation</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%99%E5%AE%9A%E6%96%87%E6%B3%95-given-grammar-g"><span class="toc-text">🔸给定文法 &#x2F; Given Grammar
+G：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E5%AD%97%E7%AC%A6%E4%B8%B2-input-string"><span class="toc-text">🔸输入字符串 &#x2F; Input
+String:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8B%E8%A7%A3%E6%9E%90%E8%BF%87%E7%A8%8B-top-down-derivation-of-cabd"><span class="toc-text">🔸自顶向下解析过程
+&#x2F; Top-Down Derivation of “cabd”:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#derivation-summary-%E6%8E%A8%E5%AF%BC%E6%80%BB%E7%BB%93"><span class="toc-text">✅ Derivation Summary &#x2F;
+推导总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#parsing-as-a-graph-search-%E5%B0%86%E8%A7%A3%E6%9E%90%E8%A7%86%E4%B8%BA%E5%9B%BE%E6%90%9C%E7%B4%A2%E9%97%AE%E9%A2%98"><span class="toc-text">🔍
+Parsing as a Graph Search &#x2F; 将解析视为图搜索问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3-core-idea"><span class="toc-text">📌核心思想 &#x2F; Core
+Idea:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89-definitions"><span class="toc-text">📌定义 &#x2F; Definitions:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%BE%E6%90%9C%E7%B4%A2%E8%A7%86%E8%A7%92%E8%A7%A3%E6%9E%90%E6%B5%81%E7%A8%8B-parsing-as-traversing-the-graph"><span class="toc-text">🌐图搜索视角解析流程
+&#x2F; Parsing as Traversing the Graph</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%BE%E6%90%9C%E7%B4%A2%E7%AD%96%E7%95%A5-graph-search-strategies"><span class="toc-text">🧠图搜索策略 &#x2F; Graph
+Search Strategies</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-summary%E4%B8%AD%E8%8B%B1%E6%96%87%E5%AF%B9%E7%85%A7"><span class="toc-text">✅ 总结 &#x2F; Summary（中英文对照）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#top-down-parsing-%E7%9A%84%E5%85%B3%E9%94%AE%E9%97%AE%E9%A2%98"><span class="toc-text">✅ Top-down Parsing 的关键问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#the-key-of-top-down-parsing%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8B%E8%A7%A3%E6%9E%90%E7%9A%84%E6%A0%B8%E5%BF%83%E9%97%AE%E9%A2%98"><span class="toc-text">🔑 The Key of
+Top-down Parsing（自顶向下解析的核心问题）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#top-down-parsing-%E7%9A%84%E5%88%86%E7%B1%BB-categories-of-top-down-parsing"><span class="toc-text">📚
+Top-down Parsing 的分类 &#x2F; Categories of Top-down Parsing</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9E%E6%BA%AF%E8%A7%A3%E6%9E%90backtracking-parsing"><span class="toc-text">① 回溯解析（Backtracking
+Parsing）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%84%E6%B5%8B%E8%A7%A3%E6%9E%90predictive-parsing"><span class="toc-text">② 预测解析（Predictive
+Parsing）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-summary%E4%B8%AD%E8%8B%B1%E6%96%87%E5%AF%B9%E7%85%A7-1"><span class="toc-text">✅ 总结 &#x2F; Summary（中英文对照）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#the-condition-of-predictive-parsing"><span class="toc-text">📘 4.1 The Condition of
+Predictive Parsing</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E9%A2%84%E6%B5%8B%E8%A7%A3%E6%9E%90%E7%9A%84%E6%9D%A1%E4%BB%B6"><span class="toc-text">🔍 什么是预测解析的条件？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#predictive-parsing-%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%9D%A1%E4%BB%B6-basic-idea"><span class="toc-text">✅ Predictive Parsing
+的基本条件 &#x2F; Basic Idea</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-llk"><span class="toc-text">📌 什么是 LL(k)？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#predictive-parsing-%E7%9A%84%E6%9D%A1%E4%BB%B6%E6%80%BB%E7%BB%93-summary"><span class="toc-text">✅ Predictive Parsing
+的条件总结 &#x2F; Summary</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%84%E6%B5%8B%E8%A7%A3%E6%9E%90%E7%9A%84%E6%A0%B8%E5%BF%83%E9%97%AE%E9%A2%98-the-key-problem"><span class="toc-text">🔑 预测解析的核心问题 &#x2F; The
+Key Problem</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-summary%E4%B8%AD%E8%8B%B1%E6%96%87%E5%AF%B9%E7%85%A7-2"><span class="toc-text">📝 总结 &#x2F; Summary（中英文对照）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ll1-grammar-notes"><span class="toc-text">LL(1) Grammar Notes</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E9%A2%84%E6%B5%8B%E5%88%86%E6%9E%90%E7%9A%84%E6%9D%A1%E4%BB%B6the-condition-of-predictive-parsing"><span class="toc-text">一、预测分析的条件（The
+Condition of Predictive Parsing）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E5%89%8D%E7%9E%BB%E7%AC%A6%E5%8F%B7%E9%9B%86%E7%9A%84%E5%AE%9A%E4%B9%89definition-of-lookahead-sets"><span class="toc-text">二、前瞻符号集的定义（Definition
+of Lookahead Sets）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#first-%E9%9B%86first-sets"><span class="toc-text">1. FIRST 集（First Sets）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#follow-%E9%9B%86follow-sets"><span class="toc-text">2. FOLLOW 集（Follow Sets）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89ll1-%E6%96%87%E6%B3%95%E7%9A%84%E5%AE%9A%E4%B9%89definition-of-ll1-grammar"><span class="toc-text">三、LL(1)
+文法的定义（Definition of LL(1) Grammar）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BE%8B%E5%AD%90example-gs"><span class="toc-text">例子（Example G[S]）：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B%E6%80%BB%E7%BB%93summary"><span class="toc-text">四、总结（Summary）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%90%86%E8%A7%A3%E5%B8%AE%E5%8A%A9"><span class="toc-text">理解帮助</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E4%BB%80%E4%B9%88%E6%98%AF-first-%E9%9B%86"><span class="toc-text">🌱 一、什么是 FIRST 集？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%B4%E8%A7%89%E7%90%86%E8%A7%A3%E4%B8%AD%E6%96%87"><span class="toc-text">🧠 直觉理解（中文）：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#first%E7%BB%88%E7%BB%93%E7%AC%A6%E5%8F%B7-%E5%BE%88%E7%AE%80%E5%8D%95"><span class="toc-text">✅ FIRST(终结符号) 很简单：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#first%E9%9D%9E%E7%BB%88%E7%BB%93%E7%AC%A6-%E7%9A%84%E8%A7%84%E5%88%99%E7%A8%8D%E5%A4%8D%E6%9D%82%E4%BD%86%E6%88%91%E4%BB%AC%E5%88%86%E6%AD%A5%E9%AA%A4"><span class="toc-text">✅ FIRST(非终结符)
+的规则（稍复杂，但我们分步骤）：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5%E7%9C%8B-a-%E7%9A%84%E4%BA%A7%E7%94%9F%E5%BC%8F%E4%B9%9F%E5%B0%B1%E6%98%AF-a-...-%E7%9A%84%E5%8F%B3%E8%BE%B9"><span class="toc-text">第一步：看 A
+的产生式（也就是 A → ... 的右边）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%8D%E6%9D%82%E6%83%85%E5%86%B5%E5%8F%B3%E8%BE%B9%E7%AC%AC%E4%B8%80%E4%B8%AA%E6%98%AF%E9%9D%9E%E7%BB%88%E7%BB%93%E7%AC%A6%E6%80%8E%E4%B9%88%E5%8A%9E"><span class="toc-text">🧩
+复杂情况：右边第一个是非终结符怎么办？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%B9%E6%AE%8A%E6%83%85%E5%86%B5%E5%A6%82%E6%9E%9C%E6%9F%90%E6%9D%A1%E4%BA%A7%E7%94%9F%E5%BC%8F%E8%83%BD%E6%8E%A8%E5%AF%BC%E5%87%BA-%CE%B5%E7%A9%BA%E4%B8%B2%E9%82%A3%E4%B9%88%E4%B9%9F%E8%A6%81%E6%8A%8A-%CE%B5-%E5%8A%A0%E8%BF%9B%E5%8E%BB"><span class="toc-text">⭐
+特殊情况：如果某条产生式能推导出 ε（空串），那么也要把
+ε 加进去！</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E4%BB%80%E4%B9%88%E6%98%AF-follow-%E9%9B%86"><span class="toc-text">🌱 二、什么是 FOLLOW 集？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%B4%E8%A7%89%E7%90%86%E8%A7%A3%E4%B8%AD%E6%96%87-1"><span class="toc-text">🧠 直觉理解（中文）：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#follow-%E9%9B%86%E7%9A%84%E8%A7%84%E5%88%99%E7%94%A8%E7%AE%80%E5%8D%95%E8%AF%9D%E6%9D%A5%E8%AF%B4"><span class="toc-text">✅ FOLLOW
+集的规则（用简单话来说）：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#follow-%E9%9B%86%E4%B8%80%E5%AE%9A%E5%8C%85%E5%90%AB-%E7%BB%93%E6%9D%9F%E7%AC%A6%E5%8F%B7"><span class="toc-text">✅ FOLLOW 集一定包含
+$（结束符号）？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%8D%E6%9D%82%E7%82%B9follow-%E4%B8%AD%E4%B9%9F%E5%8F%AF%E8%83%BD%E6%9D%A5%E8%87%AA-first-%E9%9B%86"><span class="toc-text">🧩 复杂点：FOLLOW
+中也可能来自 FIRST 集！</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E4%B8%AA%E5%AE%8C%E6%95%B4%E7%A4%BA%E4%BE%8Bfirst-%E5%92%8C-follow-%E9%83%BD%E6%9C%89"><span class="toc-text">✅ 一个完整示例（FIRST 和
+FOLLOW 都有）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#firsta"><span class="toc-text">1️⃣ FIRST(A)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#followa"><span class="toc-text">2️⃣ FOLLOW(A)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93%E8%AE%B0%E5%BF%86%E5%8F%A3%E8%AF%80%E4%B8%AD%E6%96%87"><span class="toc-text">🧠 总结记忆口诀（中文）：</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86CH2/" title="编译原理CH2"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/ushio-api-img-moe@5.0.22/img_220_1200x675_350.011993408203_null_normal.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="编译原理CH2"/></a><div class="content"><a class="title" href="/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86CH2/" title="编译原理CH2">编译原理CH2</a><time datetime="2025-05-02T14:25:12.000Z" title="发表于 2025-05-02 22:25:12">2025-05-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86CH1/" title="编译原理CH1"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/ushio-api-img-moe@5.0.22/img_220_1200x675_350.011993408203_null_normal.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="编译原理CH1"/></a><div class="content"><a class="title" href="/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86CH1/" title="编译原理CH1">编译原理CH1</a><time datetime="2025-05-02T13:52:58.000Z" title="发表于 2025-05-02 21:52:58">2025-05-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E7%BC%96%E8%AF%91%E6%8A%80%E6%9C%AF4-3/" title="编译技术4-3"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/ushio-api-img-moe@5.0.22/img_220_1200x675_350.011993408203_null_normal.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="编译技术4-3"/></a><div class="content"><a class="title" href="/%E7%BC%96%E8%AF%91%E6%8A%80%E6%9C%AF4-3/" title="编译技术4-3">编译技术4-3</a><time datetime="2025-05-01T17:42:28.000Z" title="发表于 2025-05-02 01:42:28">2025-05-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E7%BC%96%E8%AF%91%E6%8A%80%E6%9C%AF4-2/" title="编译技术4-2"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/ushio-api-img-moe@5.0.22/img_220_1200x675_350.011993408203_null_normal.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="编译技术4-2"/></a><div class="content"><a class="title" href="/%E7%BC%96%E8%AF%91%E6%8A%80%E6%9C%AF4-2/" title="编译技术4-2">编译技术4-2</a><time datetime="2025-05-01T17:31:02.000Z" title="发表于 2025-05-02 01:31:02">2025-05-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E7%BC%96%E8%AF%91%E6%8A%80%E6%9C%AF4-1/" title="编译技术4-1"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/ushio-api-img-moe@5.0.22/img_220_1200x675_350.011993408203_null_normal.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="编译技术4-1"/></a><div class="content"><a class="title" href="/%E7%BC%96%E8%AF%91%E6%8A%80%E6%9C%AF4-1/" title="编译技术4-1">编译技术4-1</a><time datetime="2025-05-01T15:29:25.000Z" title="发表于 2025-05-01 23:29:25">2025-05-01</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 - 2025 By Totoro</div><div class="footer_custom_text">I wish you to become your own sun, no need to rely on who's light.<p><a target="_blank" href="https://hexo.io/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&logo=hexo" title="博客框架为Hexo"></a>&nbsp;<a target="_blank" href="https://butterfly.js.org/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&logo=bitdefender" title="主题采用butterfly"></a>&nbsp;<a target="_blank" href="https://www.jsdelivr.com/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&logo=jsDelivr" title="本站使用JsDelivr为静态资源提供CDN加速"></a> &nbsp;<a target="_blank" href="https://vercel.com/ "><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Hosted-Vervel-brightgreen?style=flat&logo=Vercel" title="本站采用双线部署，默认线路托管于Vercel"></a>&nbsp;<a target="_blank" href="https://vercel.com/ "><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Hosted-Coding-0cedbe?style=flat&logo=Codio" title="本站采用双线部署，联通线路托管于Coding"></a>&nbsp;<a target="_blank" href="https://github.com/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&logo=GitHub" title="本站项目由Gtihub托管"></a>&nbsp;<a target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&logo=Claris" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"></a></p></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat-btn" type="button" title="聊天"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="/js/tw_cn.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@5.2.0/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'HT1PalaKkPaG1UqAXBhJXIu8-gzGzoHsz',
+      appKey: 'iT0TnVVAwf9zuZ7NqwclQItY',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://cdn.jsdelivr.net/npm/valine@1.5.1/dist/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><script defer src="/js/light.js"></script><canvas id="universe"></canvas><script defer src="/js/universe.js"></script><script async src="/js/title.js"></script><script defer src="https://npm.elemecdn.com/jquery@latest/dist/jquery.min.js"></script><script defer data-pjax src="/js/cat.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="1" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener
+  btf.removeGlobalFnEvent('pjax')
+  btf.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.12.0"></script></div></div><!-- hexo injector body_end start --><script data-pjax>
+    function butterfly_categories_card_injector_config(){
+      var parent_div_git = document.getElementById('recent-posts');
+      var item_html = '<style>li.categoryBar-list-item{width:32.3%;}.categoryBar-list{max-height: 380px;overflow:auto;}.categoryBar-list::-webkit-scrollbar{width:0!important}@media screen and (max-width: 650px){.categoryBar-list{max-height: 320px;}}</style><div class="recent-post-item" style="height:auto;width:100%;padding:0px;"><div id="categoryBar"><ul class="categoryBar-list"><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_12.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/离散数学/&quot;);" href="javascript:void(0);">离散数学</a><span class="categoryBar-list-count">33</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_13.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS61B/&quot;);" href="javascript:void(0);">CS61B</a><span class="categoryBar-list-count">76</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_14.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/期末の旅/&quot;);" href="javascript:void(0);">期末の旅</a><span class="categoryBar-list-count">99</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_17.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/刷题计划/&quot;);" href="javascript:void(0);">刷题计划</a><span class="categoryBar-list-count">60</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_18.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/区域赛の旅/&quot;);" href="javascript:void(0);">区域赛の旅</a><span class="categoryBar-list-count">7</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_19.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/Codeforcesの旅/&quot;);" href="javascript:void(0);">Codeforcesの旅</a><span class="categoryBar-list-count">24</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_20.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/牛客の旅/&quot;);" href="javascript:void(0);">牛客の旅</a><span class="categoryBar-list-count">65</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_21.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/ACMの旅/&quot;);" href="javascript:void(0);">ACMの旅</a><span class="categoryBar-list-count">42</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_22.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/数学建模/&quot;);" href="javascript:void(0);">数学建模</a><span class="categoryBar-list-count">26</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_22.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/前端の旅/&quot;);" href="javascript:void(0);">前端の旅</a><span class="categoryBar-list-count">17</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_23.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/数据结构/&quot;);" href="javascript:void(0);">数据结构</a><span class="categoryBar-list-count">47</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_24.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/Atcoderの旅/&quot;);" href="javascript:void(0);">Atcoderの旅</a><span class="categoryBar-list-count">53</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_25.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/C-の旅/&quot;);" href="javascript:void(0);">C++の旅</a><span class="categoryBar-list-count">17</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_26.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS70の旅/&quot;);" href="javascript:void(0);">CS70の旅</a><span class="categoryBar-list-count">24</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_27.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CSAPPの旅/&quot;);" href="javascript:void(0);">CSAPPの旅</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_28.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/计算机组成原理/&quot;);" href="javascript:void(0);">计算机组成原理</a><span class="categoryBar-list-count">47</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_29.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/编程基础/&quot;);" href="javascript:void(0);">编程基础</a><span class="categoryBar-list-count">14</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_30.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/JAVAの旅/&quot;);" href="javascript:void(0);">JAVAの旅</a><span class="categoryBar-list-count">10</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_31.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/MIT-6-031-Software-Construction/&quot;);" href="javascript:void(0);">MIT 6.031:Software Construction</a><span class="categoryBar-list-count">16</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_32.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS-110L/&quot;);" href="javascript:void(0);">CS 110L</a><span class="categoryBar-list-count">3</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_33.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/数据库の旅/&quot;);" href="javascript:void(0);">数据库の旅</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_34.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/灵魂の旅/&quot;);" href="javascript:void(0);">灵魂の旅</a><span class="categoryBar-list-count">2</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_35.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/个人安排/&quot;);" href="javascript:void(0);">个人安排</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_36.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/杂项/&quot;);" href="javascript:void(0);">杂项</a><span class="categoryBar-list-count">13</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_37.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/文学/&quot;);" href="javascript:void(0);">文学</a><span class="categoryBar-list-count">49</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_38.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/力扣の旅/&quot;);" href="javascript:void(0);">力扣の旅</a><span class="categoryBar-list-count">20</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_39.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/计算机网络/&quot;);" href="javascript:void(0);">计算机网络</a><span class="categoryBar-list-count">18</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_40.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/千里十二行/&quot;);" href="javascript:void(0);">千里十二行</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_41.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/🗡指offer/&quot;);" href="javascript:void(0);">🗡指offer</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_42.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/少年游/&quot;);" href="javascript:void(0);">少年游</a><span class="categoryBar-list-count">2</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_43.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/算法提高课/&quot;);" href="javascript:void(0);">算法提高课</a><span class="categoryBar-list-count">3</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_44.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/汇编の旅/&quot;);" href="javascript:void(0);">汇编の旅</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_44.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/C-实训/&quot;);" href="javascript:void(0);">C++实训</a><span class="categoryBar-list-count">8</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_45.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS知识/&quot;);" href="javascript:void(0);">CS知识</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_46.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/编译原理/&quot;);" href="javascript:void(0);">编译原理</a><span class="categoryBar-list-count">20</span><span class="categoryBar-list-descr"></span></li></ul></div></div>';
+      console.log('已挂载butterfly_categories_card')
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+      }
+    if( document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+    butterfly_categories_card_injector_config()
+    }
+  </script><script data-pjax>
+  function butterfly_swiper_injector_config(){
+    var parent_div_git = document.getElementById('recent-posts');
+    var item_html = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms;"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;诗录/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/4b31456c6f0f4489f99177f89e936de7286431045.png@1256w_708h_!web-article-pic.avif" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-10-01</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;诗录/&quot;);" href="javascript:void(0);" alt="">诗录</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;诗录/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;诗兴大发/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://source.fomal.cc/img/default_cover_69.webp" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-01-29</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;诗兴大发/&quot;);" href="javascript:void(0);" alt="">诗兴大发</a><div class="blog-slider__text">未觉，却是中二少年的诗仙梦</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;诗兴大发/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;TotoroのPlan/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/51d37eba99d243607ddedfff6e91568f617436609.jpg@1256w_1884h_!web-article-pic.avif" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-10-05</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;TotoroのPlan/&quot;);" href="javascript:void(0);" alt="">TotoroのPlan</a><div class="blog-slider__text">方便大二看（）</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;TotoroのPlan/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;Markdown格式/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/ushio-api-img-moe@5.0.48/img_482_1920x1080_96_null_normal.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-03-03</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;Markdown格式/&quot;);" href="javascript:void(0);" alt="">Markdown格式</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;Markdown格式/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载butterfly_swiper')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_swiper_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_swiper_injector_config();
+  }
+  </script><script defer src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.js"></script><script defer data-pjax src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper_init.js"></script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>
