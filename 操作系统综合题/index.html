@@ -1,0 +1,1590 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>操作系统综合题 | Totoroの旅</title><meta name="author" content="Totoro"><meta name="copyright" content="Totoro"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="操作系统综合题 🕰️ 调度算法 Scheduling Algorithms 详细笔记  🌟 基础概念 Basic Concepts ✅ 周转时间（Turnaround Time） 定义： 一个进程从提交到完成所经历的总时间。 计算： 周转时间&#x3D;完成时间−提交时间 &#x3D; -   ⚠️ 忽略进程切换（context switch）时间时：  周转时间&#x3D;等待时间+运行时间 &#x3D;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="操作系统综合题">
+<meta property="og:url" content="http://totorocatcat.top/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%BB%BC%E5%90%88%E9%A2%98/index.html">
+<meta property="og:site_name" content="Totoroの旅">
+<meta property="og:description" content="操作系统综合题 🕰️ 调度算法 Scheduling Algorithms 详细笔记  🌟 基础概念 Basic Concepts ✅ 周转时间（Turnaround Time） 定义： 一个进程从提交到完成所经历的总时间。 计算： 周转时间&#x3D;完成时间−提交时间 &#x3D; -   ⚠️ 忽略进程切换（context switch）时间时：  周转时间&#x3D;等待时间+运行时间 &#x3D;">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://npm.elemecdn.com/ushio-api-img-moe@5.0.22/img_220_1200x675_350.011993408203_null_normal.jpg">
+<meta property="article:published_time" content="2025-05-04T18:20:42.000Z">
+<meta property="article:modified_time" content="2025-05-04T18:21:06.546Z">
+<meta property="article:author" content="Totoro">
+<meta property="article:tag" content="提高">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://npm.elemecdn.com/ushio-api-img-moe@5.0.22/img_220_1200x675_350.011993408203_null_normal.jpg"><link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/b5ca6e582a7a45e6fde46e616eeb68e.png"><link rel="canonical" href="http://totorocatcat.top/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%BB%BC%E5%90%88%E9%A2%98/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta/><link rel="stylesheet" href="/css/index.css?v=4.12.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  noticeOutdate: {"limitDay":765,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体中文","cht_to_chs":"你已切换为简体中文","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"top-right"},
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '操作系统综合题',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: true,
+  isToc: true,
+  postUpdate: '2025-05-05 02:21:06'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const now = new Date()
+          const hour = now.getHours()
+          const isNight = hour <= 6 || hour >= 18
+          if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/universe.css"><link rel="stylesheet" href="/css/scrollbar.css"><link rel="stylesheet" href="/css/cat.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-categories-card@1.0.0/lib/categorybar.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-double-row-display@1.00/cardlistpost.min.css"/>
+<style>#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags:before {content:"\A";
+  white-space: pre;}#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags > .article-meta__separator{display:none}</style>
+<link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiperstyle.css" media="print" onload="this.media='all'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><div class="loading-img"></div><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><script>window.paceOptions = {
+  restartOnPushState: false
+}
+
+document.addEventListener('pjax:send', () => {
+  Pace.restart()
+})
+</script><link rel="stylesheet" href="/css/progress_bar.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/px3.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">836</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">36</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home-alt"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-envelope-open"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 趣味</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/project/"><i class="fa-fw fas fas fa-folder"></i><span> 项目</span></a></div><div class="menus_item"><a class="site-page" href="/stars/"><i class="fa-fw fas fa-bookmark"></i><span> 收藏</span></a></div><div class="menus_item"><a class="site-page" href="/bilibili/"><i class="fa-fw fas fa-tv"></i><span> 追番</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url('https://npm.elemecdn.com/ushio-api-img-moe@5.0.22/img_220_1200x675_350.011993408203_null_normal.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="Totoroの旅"><span class="site-name">Totoroの旅</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home-alt"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-envelope-open"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 趣味</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/project/"><i class="fa-fw fas fas fa-folder"></i><span> 项目</span></a></div><div class="menus_item"><a class="site-page" href="/stars/"><i class="fa-fw fas fa-bookmark"></i><span> 收藏</span></a></div><div class="menus_item"><a class="site-page" href="/bilibili/"><i class="fa-fw fas fa-tv"></i><span> 追番</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">操作系统综合题</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-05-04T18:20:42.000Z" title="发表于 2025-05-05 02:20:42">2025-05-05</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-05-04T18:21:06.546Z" title="更新于 2025-05-05 02:21:06">2025-05-05</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">8.9k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>27分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="操作系统综合题"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%BB%BC%E5%90%88%E9%A2%98/#post-comment" itemprop="discussionUrl"><span class="valine-comment-count" data-xid="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%BB%BC%E5%90%88%E9%A2%98/" itemprop="commentCount"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="操作系统综合题">操作系统综合题</h1>
+<h1 id="调度算法-scheduling-algorithms-详细笔记">🕰️ 调度算法 Scheduling
+Algorithms 详细笔记</h1>
+<hr>
+<h2 id="基础概念-basic-concepts">🌟 基础概念 Basic Concepts</h2>
+<h3 id="周转时间turnaround-time">✅ 周转时间（Turnaround Time）</h3>
+<p><strong>定义：</strong>
+一个进程从<strong>提交到完成</strong>所经历的总时间。
+<strong>计算：</strong></p>
+<p>周转时间=完成时间−提交时间 = - </p>
+<blockquote>
+<p>⚠️ 忽略进程切换（context switch）时间时：</p>
+</blockquote>
+<p>周转时间=等待时间+运行时间 = + </p>
+<p><strong>原因：</strong>
+进程执行的整个周期只包含<strong>运行或等待</strong>两个状态。</p>
+<hr>
+<h3 id="常用评价指标-performance-metrics">✅ 常用评价指标 Performance
+Metrics</h3>
+<table>
+<colgroup>
+<col style="width: 22%">
+<col style="width: 40%">
+<col style="width: 36%">
+</colgroup>
+<thead>
+<tr>
+<th>指标</th>
+<th>英文</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>吞吐量</td>
+<td>Throughput</td>
+<td>单位时间内完成的进程数</td>
+</tr>
+<tr>
+<td>周转时间</td>
+<td>Turnaround Time</td>
+<td>单个进程从提交到完成的时间</td>
+</tr>
+<tr>
+<td>平均周转时间</td>
+<td>Average Turnaround Time</td>
+<td>所有进程周转时间的平均</td>
+</tr>
+<tr>
+<td>带权周转时间</td>
+<td>Weighted Turnaround Time</td>
+<td>周转时间 / 运行时间</td>
+</tr>
+<tr>
+<td>平均带权周转时间</td>
+<td>Avg. Weighted Turnaround Time</td>
+<td>所有进程带权周转时间的平均</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="各类调度算法详解">📋 各类调度算法详解</h2>
+<hr>
+<h3 id="a.-先来先服务fcfs-first-come-first-served">A. 先来先服务（FCFS:
+First-Come First-Served）</h3>
+<p><strong>特点：</strong></p>
+<ul>
+<li>按提交顺序排队调度</li>
+<li>简单易实现</li>
+<li><strong>可能产生“护航效应（Convoy Effect）”</strong></li>
+</ul>
+<p><strong>缺点：</strong></p>
+<ul>
+<li>平均等待时间可能较大</li>
+<li>短作业可能因排在长作业后而等待很久</li>
+</ul>
+<hr>
+<h3 id="b.-最短作业优先sjf-shortest-job-first">B. 最短作业优先（SJF:
+Shortest Job First）</h3>
+<p><strong>特点：</strong></p>
+<ul>
+<li>总是选择运行时间最短的作业</li>
+<li>平均周转时间<strong>最短</strong></li>
+</ul>
+<p><strong>缺点：</strong></p>
+<ul>
+<li>不利于长作业</li>
+<li>需要<strong>预知作业长度</strong></li>
+</ul>
+<hr>
+<h3 id="c.-最短剩余时间优先srtf-shortest-remaining-time-first">C.
+最短剩余时间优先（SRTF: Shortest Remaining Time First）</h3>
+<p><strong>特点：</strong></p>
+<ul>
+<li>是 SJF 的<strong>抢占式</strong>版本</li>
+<li>如果新到进程的剩余时间小于当前运行的进程，则抢占</li>
+</ul>
+<p><strong>优点：</strong></p>
+<ul>
+<li>理论上能达到最优平均等待时间</li>
+</ul>
+<p><strong>缺点：</strong></p>
+<ul>
+<li>计算复杂</li>
+<li>可能导致长作业长时间得不到运行（饥饿）</li>
+</ul>
+<hr>
+<h3 id="d.-时间片轮转round-robin-rr">D. 时间片轮转（Round Robin,
+RR）</h3>
+<p><strong>特点：</strong></p>
+<ul>
+<li>所有进程排队，<strong>每次运行一个时间片（quantum）</strong></li>
+<li>时间片结束就抢占，放到队尾</li>
+</ul>
+<p><strong>优点：</strong></p>
+<ul>
+<li>公平，适合<strong>时间共享系统</strong></li>
+<li>响应快</li>
+</ul>
+<p><strong>缺点：</strong></p>
+<ul>
+<li>时间片太短：切换开销大；太长：接近FCFS</li>
+</ul>
+<hr>
+<h3 id="e.-优先级调度priority-scheduling">E. 优先级调度（Priority
+Scheduling）</h3>
+<p><strong>特点：</strong></p>
+<ul>
+<li>为每个进程分配优先级，高优先级先调度</li>
+</ul>
+<p><strong>问题：</strong></p>
+<ul>
+<li><strong>饥饿问题（starvation）</strong>：低优先级可能永远得不到调度</li>
+</ul>
+<p><strong>解决方案：</strong></p>
+<ul>
+<li><strong>优先级老化（Aging）</strong>：随着等待时间增长提升优先级</li>
+</ul>
+<hr>
+<h3 id="f.-多队列调度multi-queue-scheduling">F. 多队列调度（Multi-Queue
+Scheduling）</h3>
+<p><strong>特点：</strong></p>
+<ul>
+<li>将进程分成不同优先级的队列（如前台、后台）</li>
+<li>每个队列可以有自己的调度策略（如FCFS、RR）</li>
+</ul>
+<p><strong>调度策略示例：</strong></p>
+<ul>
+<li>比如前台采用RR，后台采用FCFS</li>
+<li>队列之间的CPU时间按比例分配</li>
+</ul>
+<hr>
+<h3 id="g.-多级反馈队列multilevel-feedback-queue-mlfq">G.
+多级反馈队列（Multilevel Feedback Queue, MLFQ）</h3>
+<p><strong>特点：</strong></p>
+<ul>
+<li>动态调节优先级：运行时间越长，优先级越低</li>
+<li>新进程从高优先级队列开始</li>
+<li>如果未完成→降级→放入低优先级队列</li>
+</ul>
+<p><strong>优点：</strong></p>
+<ul>
+<li>综合考虑响应性与公平性</li>
+<li>广泛用于现代操作系统</li>
+</ul>
+<hr>
+<h3 id="h.-最短进程优先spf-shortest-process-first">H. 最短进程优先（SPF:
+Shortest Process First）</h3>
+<blockquote>
+<p>📌 有时与 SJF 同义，有时更强调运行总时间最短的进程优先</p>
+</blockquote>
+<hr>
+<h3 id="i.-保证调度guaranteed-scheduling">I. 保证调度（Guaranteed
+Scheduling）</h3>
+<p><strong>思想：</strong></p>
+<ul>
+<li><strong>按承诺</strong>向用户提供公平资源</li>
+<li>记录每个进程“应得的时间”与“实际获得的时间”之比</li>
+<li>比例越低者优先运行（优待落后的进程）</li>
+</ul>
+<p><strong>优点：</strong></p>
+<ul>
+<li>提供<strong>公平保障</strong></li>
+<li>控制饥饿和不平衡</li>
+</ul>
+<hr>
+<h3 id="j.-彩票调度lottery-scheduling">J. 彩票调度（Lottery
+Scheduling）</h3>
+<p><strong>思想：</strong></p>
+<ul>
+<li>每个进程持有一定数量的<strong>“彩票”</strong></li>
+<li>抽奖决定谁获得 CPU</li>
+<li>彩票数量可随<strong>优先级动态调整</strong></li>
+</ul>
+<p><strong>优点：</strong></p>
+<ul>
+<li>实现公平 + 动态可调</li>
+<li>易于实现分配比例控制</li>
+</ul>
+<hr>
+<h3 id="k.-公平分享调度fair-share-scheduling">K.
+公平分享调度（Fair-Share Scheduling）</h3>
+<p><strong>特点：</strong></p>
+<ul>
+<li>以“用户”为单位控制资源（而非以进程为单位）</li>
+<li>保证每个用户获得公平资源</li>
+</ul>
+<p><strong>举例：</strong></p>
+<ul>
+<li>用户A有5个进程，B有1个。系统会让B的进程比A的每个进程运行得更多，以实现用户公平。</li>
+</ul>
+<hr>
+<h2 id="对比小结调度算法优缺点">📊 对比小结（调度算法优缺点）</h2>
+<table>
+<colgroup>
+<col style="width: 16%">
+<col style="width: 13%">
+<col style="width: 16%">
+<col style="width: 26%">
+<col style="width: 26%">
+</colgroup>
+<thead>
+<tr>
+<th>算法</th>
+<th>是否抢占</th>
+<th>公平性</th>
+<th>是否考虑运行时间</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FCFS</td>
+<td>否</td>
+<td>差</td>
+<td>否</td>
+<td>批处理</td>
+</tr>
+<tr>
+<td>SJF</td>
+<td>否</td>
+<td>差</td>
+<td>是</td>
+<td>知道作业时长</td>
+</tr>
+<tr>
+<td>SRTF</td>
+<td>是</td>
+<td>差</td>
+<td>是</td>
+<td>响应性要求高</td>
+</tr>
+<tr>
+<td>RR</td>
+<td>是</td>
+<td>好</td>
+<td>否</td>
+<td>时间共享系统</td>
+</tr>
+<tr>
+<td>优先级</td>
+<td>可抢占</td>
+<td>差（饥饿）</td>
+<td>否</td>
+<td>实时任务</td>
+</tr>
+<tr>
+<td>MLFQ</td>
+<td>是</td>
+<td>好</td>
+<td>否</td>
+<td>综合性操作系统</td>
+</tr>
+<tr>
+<td>彩票调度</td>
+<td>是</td>
+<td>好</td>
+<td>否</td>
+<td>动态比例控制</td>
+</tr>
+<tr>
+<td>保证调度</td>
+<td>是</td>
+<td>好</td>
+<td>否</td>
+<td>面向服务承诺系统</td>
+</tr>
+<tr>
+<td>Fair-Share</td>
+<td>是</td>
+<td>用户公平</td>
+<td>否</td>
+<td>多用户共享系统</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h1 id="死锁deadlock-详细笔记">💀 死锁（Deadlock） 详细笔记</h1>
+<hr>
+<h2 id="一死锁的定义definition">✅ 一、死锁的定义（Definition）</h2>
+<p><strong>死锁（Deadlock）</strong>：
+当多个进程因争夺资源而造成的一种互相等待的现象。
+<strong>一旦发生死锁，除非外力干预，否则进程将永远阻塞。</strong></p>
+<hr>
+<h2 id="二系统模型system-model">✅ 二、系统模型（System Model）</h2>
+<p>系统中存在：</p>
+<ul>
+<li>一组进程 {P1,P2,...,Pn}{P_1, P_2, ..., P_n}</li>
+<li>一组资源类型 {R1,R2,...,Rm}{R_1, R_2, ..., R_m}</li>
+</ul>
+<p>每类资源可以有多个实例。进程通过以下操作使用资源：</p>
+<ul>
+<li>请求（request）</li>
+<li>使用（use）</li>
+<li>释放（release）</li>
+</ul>
+<hr>
+<h2 id="三死锁的四个必要条件necessary-conditions-for-deadlock">✅
+三、死锁的四个必要条件（Necessary Conditions for Deadlock）</h2>
+<p>只要<strong>同时满足以下四个条件，系统就可能进入死锁状态。</strong></p>
+<table>
+<colgroup>
+<col style="width: 4%">
+<col style="width: 11%">
+<col style="width: 18%">
+<col style="width: 65%">
+</colgroup>
+<thead>
+<tr>
+<th>条件</th>
+<th>中文名称</th>
+<th>英文名称</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>①</td>
+<td>互斥条件</td>
+<td>Mutual Exclusion</td>
+<td>至少有一个资源在任一时刻只能由一个进程占用。</td>
+</tr>
+<tr>
+<td>②</td>
+<td>占有且等待</td>
+<td>Hold and Wait</td>
+<td>至少有一个进程占有资源的同时等待其他进程占用的资源。</td>
+</tr>
+<tr>
+<td>③</td>
+<td>不可抢占</td>
+<td>No Preemption</td>
+<td>已分配的资源不能被系统强行抢占，只能由占有者释放。</td>
+</tr>
+<tr>
+<td>④</td>
+<td>循环等待</td>
+<td>Circular Wait</td>
+<td>存在一个进程循环链，每个进程都在等待下一个进程占用的资源。</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="快速记忆口诀">🧠 快速记忆口诀：</h3>
+<blockquote>
+<p><strong>“互占不让还循环”</strong> 互斥、占有、不可抢、循环等待</p>
+</blockquote>
+<hr>
+<h2 id="四死锁的处理策略deadlock-handling-strategies">✅
+四、死锁的处理策略（Deadlock Handling Strategies）</h2>
+<p>死锁处理的方式主要有以下四种：</p>
+<h3 id="鸵鸟策略the-ostrich-algorithm">1. <strong>鸵鸟策略（The Ostrich
+Algorithm）</strong></h3>
+<ul>
+<li>什么都不做，忽略死锁。</li>
+<li>适用于死锁几率极低或代价太高的系统。</li>
+</ul>
+<hr>
+<h3 id="死锁预防deadlock-prevention">2. <strong>死锁预防（Deadlock
+Prevention）</strong></h3>
+<p><strong>核心思想：</strong>破坏四个必要条件之一 常见方法如下：</p>
+<table>
+<thead>
+<tr>
+<th>条件</th>
+<th>破坏策略</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>互斥</td>
+<td>使用可共享资源（不常见）</td>
+</tr>
+<tr>
+<td>占有等待</td>
+<td>要求一次性申请所有资源</td>
+</tr>
+<tr>
+<td>不可抢占</td>
+<td>若得不到资源，则释放已有资源后重试</td>
+</tr>
+<tr>
+<td>环路等待</td>
+<td>给资源编号，按升序申请资源，防止形成循环</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="死锁避免deadlock-avoidance">3. <strong>死锁避免（Deadlock
+Avoidance）</strong></h3>
+<p><strong>核心思想：</strong>不进入不安全状态
+代表算法：<strong>银行家算法（Banker's Algorithm）</strong></p>
+<p>要求：</p>
+<ul>
+<li>进程在开始时声明最大资源需求</li>
+<li>系统在每次资源分配时判断“是否安全”</li>
+</ul>
+<hr>
+<h3 id="死锁检测与恢复deadlock-detection-and-recovery">4.
+<strong>死锁检测与恢复（Deadlock Detection and Recovery）</strong></h3>
+<p><strong>核心思想：</strong>允许死锁发生，之后检测和恢复</p>
+<p>步骤：</p>
+<ul>
+<li>定期运行<strong>死锁检测算法</strong>（如资源分配图）</li>
+<li>若检测到死锁，选择：
+<ul>
+<li>撤销进程</li>
+<li>回收资源</li>
+<li>进程回退</li>
+</ul></li>
+</ul>
+<hr>
+<h2 id="五图示理解资源分配图resource-allocation-graph-rag">✅
+五、图示理解：资源分配图（Resource Allocation Graph, RAG）</h2>
+<p><strong>节点类型：</strong></p>
+<ul>
+<li>圆形节点：进程 PiP_i</li>
+<li>方形节点：资源 RjR_j</li>
+</ul>
+<p><strong>边类型：</strong></p>
+<ul>
+<li>请求边：进程 → 资源（表示正在请求）</li>
+<li>分配边：资源 → 进程（表示资源已分配）</li>
+</ul>
+<p><strong>判断死锁：</strong></p>
+<ul>
+<li><strong>如果图中存在一个环路</strong>，则可能发生死锁</li>
+<li><strong>若每类资源仅有一个实例</strong>，存在环 = 死锁</li>
+</ul>
+<hr>
+<h2 id="六经典例子哲学家就餐问题dining-philosophers-problem">✅
+六、经典例子：哲学家就餐问题（Dining Philosophers Problem）</h2>
+<ul>
+<li>5位哲学家围坐圆桌，筷子放在哲学家之间</li>
+<li>每人要左右两根筷子才能吃饭</li>
+<li>若每人同时拿左手边的筷子 → 死锁！</li>
+</ul>
+<p><strong>解决思路：</strong></p>
+<ul>
+<li>引入限制（例如最多只能有4人同时拿起一根筷子）</li>
+<li>编号资源并按序申请</li>
+</ul>
+<hr>
+<h1 id="页面置换算法概述">🌟页面置换算法概述</h1>
+<p><strong>当发生缺页中断（page
+fault）时，如果内存已满，需要将某个页面换出内存，为新页面腾出空间。页面置换算法负责决定换出哪个页面。</strong></p>
+<hr>
+<h2 id="一最优页面置换算法optimal-page-replacementopt">一、最优页面置换算法（Optimal
+Page Replacement，OPT）</h2>
+<ul>
+<li><strong>思想</strong>：替换未来最长时间内不会被访问的页面。</li>
+<li><strong>优点</strong>：理论上缺页次数最少，是理想的参考算法。</li>
+<li><strong>缺点</strong>：需要<strong>预知未来页面访问顺序</strong>，因此只能用于模拟或性能比较。</li>
+<li><strong>关键</strong>：淘汰“未来最后使用的页面”。</li>
+</ul>
+<hr>
+<h2 id="二nru算法not-recently-used">二、NRU算法（Not Recently
+Used）</h2>
+<ul>
+<li><strong>依靠 R 位（Referenced）和 M 位（Modified）</strong>
+<ul>
+<li>R：是否被访问过</li>
+<li>M：是否被修改过</li>
+</ul></li>
+<li><strong>操作方式</strong>：
+<ol type="1">
+<li>启动时，所有页面 R 和 M 设置为 0。</li>
+<li>每次时钟中断时，清除所有页面的 R 位。</li>
+<li>缺页时，将页面分为四类：
+<ul>
+<li>类 0：R=0，M=0（最理想）</li>
+<li>类 1：R=0，M=1</li>
+<li>类 2：R=1，M=0</li>
+<li>类 3：R=1，M=1（最不理想）</li>
+</ul></li>
+<li><strong>随机从编号最小的非空类中选一页置换。</strong></li>
+</ol></li>
+</ul>
+<hr>
+<h2 id="三先进先出算法fifo">三、先进先出算法（FIFO）</h2>
+<ul>
+<li><strong>思想</strong>：淘汰<strong>最早进入内存</strong>的页面。</li>
+<li><strong>实现</strong>：维护一个队列，先进的先出。</li>
+<li><strong>问题</strong>：可能淘汰“经常使用”的页面（不考虑页面使用频率）。</li>
+</ul>
+<hr>
+<h2 id="四第二次机会算法second-chance">四、第二次机会算法（Second-Chance）</h2>
+<ul>
+<li><strong>在 FIFO 的基础上引入 R 位判断</strong></li>
+<li><strong>操作流程</strong>：
+<ol type="1">
+<li>检查队首页面 R 位：
+<ul>
+<li>若 R=0：淘汰该页面。</li>
+<li>若 R=1：将 R 清
+0，把页面放到队尾（认为它刚进入过），继续检查下一个页面。</li>
+</ul></li>
+</ol></li>
+<li><strong>目标</strong>：给被访问过的页面“第二次机会”避免立即被淘汰。</li>
+<li><strong>缺点</strong>：频繁移动页面，效率较低。</li>
+</ul>
+<hr>
+<h2 id="五时钟页面置换算法clock-algorithm">五、时钟页面置换算法（Clock
+Algorithm）</h2>
+<ul>
+<li><strong>第二次机会算法的优化版</strong></li>
+<li><strong>实现方式</strong>：
+<ul>
+<li>将页面组成<strong>环形队列</strong>，每个页面挂在一个“钟面”位置。</li>
+<li>有一个<strong>指针</strong>（表针）指向当前候选页面。</li>
+<li>若指针指向的页面：
+<ul>
+<li>R=0：淘汰并替换此页，表针移动到下一个。</li>
+<li>R=1：将 R 清 0，表针向前移动一格。</li>
+</ul></li>
+<li><strong>重复直到找到 R=0 的页面为止</strong>。</li>
+</ul></li>
+<li><strong>优点</strong>：实现效率高，性能接近 LRU。</li>
+</ul>
+<hr>
+<h2 id="六最近最少使用算法least-recently-used-lru">六、最近最少使用算法（Least
+Recently Used, LRU）</h2>
+<ul>
+<li><strong>思想</strong>：淘汰<strong>最久没有被访问的页面</strong>。</li>
+<li><strong>实现方式</strong>：
+<ul>
+<li>用链表/栈/时间戳记录每个页面上次使用时间。</li>
+</ul></li>
+<li><strong>缺点</strong>：<strong>硬件实现复杂、成本高</strong>。</li>
+<li><strong>常见近似实现</strong>：
+<ul>
+<li>Aging 算法</li>
+</ul></li>
+</ul>
+<hr>
+<h2 id="七aging老化算法lru-的近似实现">七、Aging（老化）算法（LRU
+的近似实现）</h2>
+<ul>
+<li><strong>思想</strong>：用一个<strong>8位寄存器</strong>记录页面“访问历史”，每时钟周期右移一位。</li>
+<li><strong>操作流程</strong>：
+<ol type="1">
+<li>每个时钟周期：
+<ul>
+<li>所有页面的 aging 寄存器右移一位。</li>
+<li>若某页面 R=1，其最高位变成 1。</li>
+<li>然后将所有 R 位清 0。</li>
+</ul></li>
+<li>缺页时：淘汰 aging 值最小的页面。</li>
+</ol></li>
+<li><strong>优点</strong>：近似 LRU，硬件开销较小。</li>
+</ul>
+<hr>
+<h3 id="小结置换算法比较表">🔁 小结：置换算法比较表</h3>
+<table>
+<colgroup>
+<col style="width: 18%">
+<col style="width: 22%">
+<col style="width: 22%">
+<col style="width: 11%">
+<col style="width: 24%">
+</colgroup>
+<thead>
+<tr>
+<th>算法</th>
+<th>是否考虑使用频率</th>
+<th>是否考虑最近使用</th>
+<th>实现成本</th>
+<th>优劣情况</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OPT</td>
+<td>✔️（未来）</td>
+<td>✔️（未来）</td>
+<td>❌</td>
+<td>理想但无法实现</td>
+</tr>
+<tr>
+<td>FIFO</td>
+<td>❌</td>
+<td>❌</td>
+<td>✅</td>
+<td>简单但可能误淘</td>
+</tr>
+<tr>
+<td>NRU</td>
+<td>✔️（R,M）</td>
+<td>✔️（R）</td>
+<td>✅</td>
+<td>近似，效果一般</td>
+</tr>
+<tr>
+<td>Second-Chance</td>
+<td>✔️（R）</td>
+<td>✔️</td>
+<td>✅</td>
+<td>给页面第二次机会</td>
+</tr>
+<tr>
+<td>Clock</td>
+<td>✔️（R）</td>
+<td>✔️</td>
+<td>✅✅</td>
+<td>实用性强</td>
+</tr>
+<tr>
+<td>LRU</td>
+<td>✔️</td>
+<td>✔️</td>
+<td>❌</td>
+<td>效果好但难实现</td>
+</tr>
+<tr>
+<td>Aging</td>
+<td>✔️（近似）</td>
+<td>✔️（近似）</td>
+<td>✅✅</td>
+<td>实用的近似LRU算法</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h1 id="分页-paging-和-分段-segmentation">分页 (Paging) 和 分段
+(Segmentation)</h1>
+<h4 id="分页-paging">1. <strong>分页 (Paging)</strong></h4>
+<p>分页是一种将物理内存分为固定大小块的内存管理方式。每个块称为页面（Page），而虚拟内存也被划分为与物理页面大小相同的虚拟页面。分页的目的是解决内存的连续分配问题，允许非连续的物理内存分配。</p>
+<p><strong>内部碎片 (Internal Fragmentation)</strong>
+由于每个页面的大小固定，而实际使用的空间可能小于页面大小，导致每个页面内部可能有未使用的空间，这部分未使用的空间称为<strong>内部碎片</strong>。分页方式下，内部碎片的产生是不可避免的。</p>
+<h4 id="分段-segmentation">2. <strong>分段 (Segmentation)</strong></h4>
+<p>分段是将程序或数据分为多个具有不同意义的部分（如代码段、数据段、栈段等）。每个段可以具有不同的大小，因此可以更灵活地管理内存。</p>
+<p><strong>外部碎片 (External Fragmentation)</strong>
+由于分段使用的是不等长的内存块，当程序需要的内存量不连续时，内存中会产生一些未被利用的空闲空间，这部分未被利用的空间称为<strong>外部碎片</strong>。外部碎片随着内存的分配和释放而不断增加。</p>
+<hr>
+<h3 id="空闲内存管理方法">空闲内存管理方法</h3>
+<p>空闲内存管理的目的是有效地分配和回收内存，避免碎片化，常见的管理方法包括位图存储管理和链表存储管理。</p>
+<h4 id="位图存储管理-bitmap-allocation">1. <strong>位图存储管理 (Bitmap
+Allocation)</strong></h4>
+<p>位图存储管理使用一个位图（Bitmap）来表示内存的使用情况。每一位对应内存的一块（如一个页面或一个内存块），位为0表示该内存块空闲，位为1表示该内存块已被分配。</p>
+<p>优点：</p>
+<ul>
+<li>管理简单，空间开销较小。</li>
+<li>可以快速地找到空闲块的位置。</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>如果内存块较小，位图可能会很大，增加额外的内存开销。</li>
+<li>查询一个块是否空闲需要扫描位图，可能效率较低。</li>
+</ul>
+<h4 id="链表存储管理-linked-list-allocation">2. <strong>链表存储管理
+(Linked List Allocation)</strong></h4>
+<p>链表存储管理通过链表来表示内存的使用情况。每个内存块的控制块包含指向下一个内存块的指针，可以通过遍历链表找到空闲块并进行分配。</p>
+<p>优点：</p>
+<ul>
+<li>动态分配内存，适用于任意大小的内存块。</li>
+<li>内存分配和回收比较灵活。</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>对内存块的访问需要遍历链表，可能增加时间复杂度。</li>
+<li>会有额外的指针开销。</li>
+</ul>
+<hr>
+<h3 id="内存分配算法">内存分配算法</h3>
+<p>内存分配算法用于决定如何选择空闲内存块进行分配。常见的算法有：</p>
+<h4 id="首次适配-first-fit">1. <strong>首次适配 (First
+Fit)</strong></h4>
+<p><strong>首次适配算法</strong>从头开始搜索空闲内存列表，找到第一个足够大的空闲块并分配。如果找不到合适的块，则返回失败。</p>
+<p>优点：</p>
+<ul>
+<li>实现简单，分配效率较高。</li>
+<li>对于小块内存的分配较为有效。</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>可能会导致外部碎片，特别是在频繁分配和释放内存时。</li>
+</ul>
+<h4 id="下次适配-next-fit">2. <strong>下次适配 (Next Fit)</strong></h4>
+<p><strong>下次适配算法</strong>与首次适配类似，但它不是从内存的开头开始查找，而是从上次分配结束的位置开始查找。</p>
+<p>优点：</p>
+<ul>
+<li>可以避免首次适配导致的过多集中分配，减少外部碎片。</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>如果分配的内存较大，可能仍然会导致外部碎片。</li>
+</ul>
+<h4 id="最佳适配-best-fit">3. <strong>最佳适配 (Best Fit)</strong></h4>
+<p><strong>最佳适配算法</strong>遍历所有空闲内存块，选择最适合当前请求的最小块进行分配。这样可以尽量减少剩余的碎片。</p>
+<p>优点：</p>
+<ul>
+<li>尽量减少未使用空间的碎片。</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>查找最适合的内存块需要遍历所有空闲块，可能会增加搜索时间。</li>
+<li>可能会造成大量的小空闲块，增加内存碎片。</li>
+</ul>
+<h4 id="最差适配-worst-fit">4. <strong>最差适配 (Worst
+Fit)</strong></h4>
+<p><strong>最差适配算法</strong>选择最大的空闲内存块进行分配。这样可以保证剩余的空闲块相对较大，有利于未来的分配。</p>
+<p>优点：</p>
+<ul>
+<li>可以保证剩余的空闲块较大，减少小碎片。</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>查找最大的空闲块可能需要遍历所有空闲块，效率较低。</li>
+<li>可能导致一些内存块过于分散，增加外部碎片。</li>
+</ul>
+<h4 id="快速适配-quick-fit">5. <strong>快速适配 (Quick
+Fit)</strong></h4>
+<p><strong>快速适配算法</strong>通过预先维护多个空闲链表，每个链表代表固定大小的空闲块。当请求分配某一特定大小的内存时，直接从相应的链表中取出。</p>
+<p>优点：</p>
+<ul>
+<li>分配和回收都非常迅速。</li>
+<li>通过精细化的分区管理，减少外部碎片。</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>需要额外的空间来维护多个链表。</li>
+<li>可能会导致部分内存块无法有效利用，增加内部碎片。</li>
+</ul>
+<hr>
+<h3 id="总结">总结</h3>
+<ul>
+<li><strong>分页</strong>和<strong>分段</strong>分别解决了内存管理中的不同问题。分页减少了内存连续性的要求，但可能导致内部碎片；分段则更加灵活，但可能会导致外部碎片。</li>
+<li><strong>内存管理</strong>有多种方法，使用位图和链表都可以有效地管理内存块，选择不同的管理方式有其各自的优缺点。</li>
+<li><strong>内存分配算法</strong>提供了不同的策略来减少碎片化，选择合适的算法可以提高内存的使用效率，减少碎片化。</li>
+</ul>
+<h1 id="内核态-kernel-mode-与-用户态-user-mode">内核态 (Kernel Mode) 与
+用户态 (User Mode)</h1>
+<p>在计算机系统中，操作系统将程序的执行分为两种模式：<strong>内核态
+(Kernel Mode)</strong> 和 <strong>用户态 (User Mode)</strong>。</p>
+<ol type="1">
+<li><strong>内核态 (Kernel Mode)</strong>
+<ul>
+<li>在内核态下，程序有权限访问系统的所有资源，包括硬件和内存。</li>
+<li>操作系统的内核代码在此模式下执行，系统调用、硬件驱动程序、资源管理等都运行在内核态。</li>
+<li>内核态具有最高的权限，因此能够执行特权操作，例如内存分配、进程调度等。</li>
+</ul></li>
+<li><strong>用户态 (User Mode)</strong>
+<ul>
+<li>用户态是用户程序执行的模式，具有较低的权限，不能直接访问硬件资源。</li>
+<li>在用户态下，程序只能通过系统调用来请求操作系统服务，避免了直接控制硬件的风险。</li>
+<li>用户态程序会受到操作系统的保护，无法进行任何可能破坏系统稳定性或安全性的操作。</li>
+</ul></li>
+</ol>
+<p>用户程序通常从用户态开始运行，只有在进行系统调用（如文件操作、网络通信等）时，才会切换到内核态。</p>
+<hr>
+<h3 id="用户级线程-user-level-threads">用户级线程 (User-level
+Threads)</h3>
+<p>用户级线程是由应用程序管理的线程，操作系统内核对其并不直接感知。</p>
+<h4 id="特点">特点：</h4>
+<ol type="1">
+<li><strong>由应用程序管理</strong>
+<ul>
+<li>用户级线程的管理完全在用户空间进行，操作系统内核不需要参与线程的创建、调度和销毁。</li>
+</ul></li>
+<li><strong>内核不感知线程</strong>
+<ul>
+<li>操作系统并不知道用户级线程的存在。线程的管理和调度由用户级线程库（如
+POSIX Threads, pthreads）处理。</li>
+</ul></li>
+<li><strong>上下文切换便宜</strong>
+<ul>
+<li>由于不涉及内核，用户级线程的上下文切换（从一个线程切换到另一个线程）非常快速和高效。</li>
+</ul></li>
+<li><strong>可以创建任意数量的线程</strong>
+<ul>
+<li>因为线程的管理完全由用户控制，所以下限是应用程序的内存和处理器能力，理论上可以创建任意多的线程。</li>
+</ul></li>
+<li><strong>必须小心使用</strong>
+<ul>
+<li>用户级线程并不由操作系统直接调度和管理，可能会遇到如多核CPU利用不完全、线程阻塞等问题。使用时需要谨慎设计，确保应用程序的线程调度合理，避免不必要的性能问题。</li>
+</ul></li>
+</ol>
+<h4 id="优点">优点：</h4>
+<ul>
+<li>线程创建和销毁速度较快，消耗较少的内存。</li>
+<li>可以创建大量的线程而不依赖内核的资源限制。</li>
+<li>适用于需要大量轻量级线程的应用场景，如并行计算、网络服务等。</li>
+</ul>
+<h4 id="缺点">缺点：</h4>
+<ul>
+<li>用户级线程无法利用多核处理器的优势，因为操作系统无法感知线程，因此无法进行多核分配。</li>
+<li>如果用户级线程中的一个线程被阻塞（如 I/O
+操作），整个进程会被阻塞，因为操作系统看不到线程的存在。</li>
+<li>用户级线程需要由应用程序自己管理，因此开发和调试难度较大。</li>
+</ul>
+<hr>
+<h3 id="内核级线程-kernel-level-threads">内核级线程 (Kernel-level
+Threads)</h3>
+<p>内核级线程是由操作系统内核管理的线程，操作系统对这些线程的状态和调度有完全控制。</p>
+<h4 id="特点-1">特点：</h4>
+<ol type="1">
+<li><strong>由内核管理</strong>
+<ul>
+<li>内核级线程的创建、调度、销毁等操作完全由操作系统内核管理，操作系统会分配必要的资源并调度执行。</li>
+</ul></li>
+<li><strong>消耗内核资源</strong>
+<ul>
+<li>每个内核级线程都需要操作系统为其分配内核资源（如内存、线程控制块等）。这使得内核级线程的管理和调度比用户级线程更消耗资源。</li>
+</ul></li>
+<li><strong>上下文切换开销大</strong>
+<ul>
+<li>内核级线程的上下文切换需要操作系统进行干预，涉及到从用户态到内核态的切换，因此相较于用户级线程，上下文切换的开销较大。</li>
+</ul></li>
+<li><strong>线程数量受限于内核资源</strong>
+<ul>
+<li>内核级线程的数量受到操作系统的资源限制，线程的创建和调度都会消耗系统资源，因此线程的数量通常较少。</li>
+</ul></li>
+<li><strong>更容易使用</strong>
+<ul>
+<li>由于操作系统内核负责线程的管理，程序员无需关心线程的调度和上下文切换，内核会自动进行处理，程序员只需要关注线程的创建和同步。</li>
+</ul></li>
+</ol>
+<h4 id="优点-1">优点：</h4>
+<ul>
+<li>可以有效利用多核处理器，因为操作系统内核会调度线程到不同的 CPU
+核心上运行。</li>
+<li>内核能感知线程的状态，因此在多核环境下，操作系统可以更高效地进行调度。</li>
+<li>线程阻塞不会导致整个进程的阻塞。内核可以在另一个线程上调度运行，避免进程整体挂起。</li>
+</ul>
+<h4 id="缺点-1">缺点：</h4>
+<ul>
+<li>线程创建和销毁的速度相对较慢，因为需要内核介入。</li>
+<li>内核级线程的管理消耗了更多的系统资源，包括内存和 CPU 时间。</li>
+<li>内核的上下文切换开销较大，可能导致性能下降。</li>
+</ul>
+<hr>
+<h3 id="用户级线程与内核级线程的对比">用户级线程与内核级线程的对比</h3>
+<table>
+<colgroup>
+<col style="width: 19%">
+<col style="width: 36%">
+<col style="width: 44%">
+</colgroup>
+<thead>
+<tr>
+<th>特性</th>
+<th>用户级线程 (User-level Thread)</th>
+<th>内核级线程 (Kernel-level Thread)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>管理</strong></td>
+<td>由应用程序管理</td>
+<td>由操作系统内核管理</td>
+</tr>
+<tr>
+<td><strong>内核感知</strong></td>
+<td>内核无法感知</td>
+<td>内核完全感知</td>
+</tr>
+<tr>
+<td><strong>上下文切换开销</strong></td>
+<td>低</td>
+<td>高</td>
+</tr>
+<tr>
+<td><strong>线程数量限制</strong></td>
+<td>不受内核限制，可以创建任意多线程</td>
+<td>受内核资源限制，数量有限</td>
+</tr>
+<tr>
+<td><strong>资源消耗</strong></td>
+<td>较少，主要消耗用户空间</td>
+<td>消耗内核资源，如线程控制块等</td>
+</tr>
+<tr>
+<td><strong>多核利用</strong></td>
+<td>无法有效利用多核</td>
+<td>可以有效利用多核</td>
+</tr>
+<tr>
+<td><strong>阻塞影响</strong></td>
+<td>一个线程阻塞会导致整个进程阻塞</td>
+<td>线程阻塞时，内核可以切换其他线程运行</td>
+</tr>
+<tr>
+<td><strong>适用场景</strong></td>
+<td>适用于需要大量轻量级线程的应用场景</td>
+<td>适用于需要充分利用系统资源、支持多核的场景</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="总结-1">总结</h3>
+<ul>
+<li><strong>用户级线程</strong>适用于轻量级、创建数量多的线程管理场景，但需要谨慎设计以避免线程阻塞和效率问题。</li>
+<li><strong>内核级线程</strong>适用于需要更强系统调度和多核支持的场景，虽然它们的管理和调度开销较大，但能够充分利用现代操作系统的优势，提供更好的并发处理能力。</li>
+</ul>
+<p>选择使用用户级线程还是内核级线程，主要取决于应用场景的需求，性能要求，以及系统资源的限制。</p>
+<h2 id="信号量semaphore">信号量（Semaphore）</h2>
+<p>信号量是一种用于进程间同步和互斥的机制，它用于控制访问共享资源的进程数量，确保在多进程环境中，资源的分配和回收不会发生冲突。信号量的操作包括
+<strong>P 操作</strong> 和 <strong>V
+操作</strong>，它们用于申请和释放资源。</p>
+<h4 id="p-操作proberen申请资源">1. <strong>P
+操作（Proberen，申请资源）</strong></h4>
+<ul>
+<li><strong>P(S)</strong>：执行 P 操作时，信号量 <strong>S</strong>
+减少1（即 <strong>S = S - 1</strong>），表示一个资源被分配。</li>
+<li><strong>过程</strong>：
+<ul>
+<li>如果 <strong>S &gt;=
+0</strong>，表示有可用资源，进程可以继续执行。</li>
+<li>如果 <strong>S &lt;
+0</strong>，表示没有足够的资源，进程需要进入信号量的等待队列，挂起等待。</li>
+</ul></li>
+<li><strong>作用</strong>：P
+操作保证了资源的申请是互斥的，即当一个进程申请资源时，其他进程不能同时占用该资源，避免了并发冲突。</li>
+</ul>
+<h4 id="v-操作verhogen释放资源">2. <strong>V
+操作（Verhogen，释放资源）</strong></h4>
+<ul>
+<li><strong>V(S)</strong>：执行 V 操作时，信号量 <strong>S</strong>
+增加1（即 <strong>S = S + 1</strong>），表示一个资源被释放。</li>
+<li><strong>过程</strong>：
+<ul>
+<li>如果 <strong>S &gt;
+0</strong>，表示有足够的资源，进程可以继续执行。</li>
+<li>如果 <strong>S &lt;=
+0</strong>，表示有进程在等待队列中，操作系统会唤醒一个等待的进程，允许它继续执行。</li>
+</ul></li>
+<li><strong>作用</strong>：V
+操作负责释放资源，并在有进程等待资源时唤醒一个等待队列中的进程。</li>
+</ul>
+<h4 id="信号量总结">信号量总结：</h4>
+<ul>
+<li><strong>S ≥ 0</strong>：表示有可用资源。</li>
+<li><strong>S &lt;
+0</strong>：表示没有可用资源，进程需要进入等待队列。</li>
+<li>信号量的一个重要特性是它用于控制并发访问资源的数量，确保多个进程不会同时访问资源，造成冲突。</li>
+</ul>
+<hr>
+<h3 id="银行家算法bankers-algorithm">银行家算法（Banker's
+Algorithm）</h3>
+<p>银行家算法是一种用于避免死锁的资源分配和安全性算法，特别适用于具有多个资源和多个进程的系统。该算法通过模拟银行对客户的信用授予方式，来判断是否安全地分配资源。银行家算法的核心思想是：在任何时刻，资源的分配不能超过系统的最大需求，且分配后必须确保系统最终能进入安全状态。</p>
+<h4 id="概念与基本原则">1. <strong>概念与基本原则</strong></h4>
+<ul>
+<li><strong>安全状态</strong>：系统处于安全状态时，表示存在一种顺序，使得所有进程最终都能获得足够的资源并顺利完成。换句话说，系统在这种状态下不会进入死锁。</li>
+<li><strong>最大需求矩阵</strong>：每个进程对各类资源的最大需求。</li>
+<li><strong>当前资源矩阵</strong>：每个进程当前已经分配的资源。</li>
+<li><strong>可用资源矩阵</strong>：系统当前未分配的资源数量。</li>
+</ul>
+<h4 id="算法步骤">2. <strong>算法步骤</strong></h4>
+<ul>
+<li><strong>步骤
+1</strong>：每个进程在开始时都声明它的<strong>最大需求</strong>（即需要的最大资源量）。当进程运行时，它会获得当前资源的分配，使用一部分资源。</li>
+<li><strong>步骤
+2</strong>：每次进程请求资源时，系统会检查是否能满足进程的请求。如果请求超过进程的最大需求，则拒绝。</li>
+<li><strong>步骤
+3</strong>：系统检查满足进程请求后是否仍能保持安全状态：
+<ul>
+<li>将请求的资源分配给进程后，检查是否存在一种进程执行的顺序，使得所有进程都可以顺利完成（即系统是否处于安全状态）。</li>
+</ul></li>
+<li><strong>步骤
+4</strong>：如果存在安全顺序，则批准资源请求，更新资源状态。如果不存在安全顺序，则拒绝资源请求。</li>
+</ul>
+<h4 id="安全性检查">3. <strong>安全性检查</strong></h4>
+<ul>
+<li>系统进行“安全性检查”时，会通过模拟进程执行来判断系统是否处于安全状态：
+<ol type="1">
+<li>假设某个进程请求了资源，并且假设系统分配了这些资源。</li>
+<li>系统检查是否有至少一个进程能够完成执行（即它所需的资源可以完全分配给它）。</li>
+<li>如果有，则假设该进程执行完成后会释放资源，并且继续分配给其他进程。</li>
+<li>如果所有进程都可以在某个顺序下完成，系统就是安全的。</li>
+<li>如果没有这种执行顺序，则系统不安全，拒绝该进程的请求。</li>
+</ol></li>
+</ul>
+<h4 id="银行家算法的核心矩阵">4.
+<strong>银行家算法的核心矩阵</strong></h4>
+<ul>
+<li><strong>最大需求矩阵</strong>
+<code>Max</code>：每个进程对各类资源的最大需求。</li>
+<li><strong>已分配矩阵</strong>
+<code>Alloc</code>：每个进程当前已分配的资源数量。</li>
+<li><strong>需求矩阵</strong>
+<code>Need</code>：每个进程的资源需求，<code>Need = Max - Alloc</code>。</li>
+<li><strong>可用资源向量</strong>
+<code>Available</code>：当前系统中未分配的资源数量。</li>
+</ul>
+<h4 id="银行家算法的例子">5. <strong>银行家算法的例子</strong></h4>
+<p>假设有 3 个资源类型（A、B、C）和 5 个进程（P1, P2, P3, P4,
+P5）。它们的资源信息如下：</p>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 6%">
+<col style="width: 17%">
+<col style="width: 17%">
+<col style="width: 17%">
+<col style="width: 13%">
+<col style="width: 13%">
+<col style="width: 13%">
+</colgroup>
+<thead>
+<tr>
+<th>进程</th>
+<th>最大需求 A</th>
+<th>最大需求 B</th>
+<th>最大需求 C</th>
+<th>已分配 A</th>
+<th>已分配 B</th>
+<th>已分配 C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>7</td>
+<td>5</td>
+<td>3</td>
+<td>2</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>3</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>P3</td>
+<td>9</td>
+<td>0</td>
+<td>2</td>
+<td>3</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td>P4</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>P5</td>
+<td>4</td>
+<td>3</td>
+<td>3</td>
+<td>0</td>
+<td>0</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>可用资源</strong>：系统中还剩余多少资源，可以通过公式计算：
+<ul>
+<li><code>Available = Total Resources - Allocated Resources</code></li>
+</ul></li>
+</ul>
+<h4 id="银行家算法的运行">6. <strong>银行家算法的运行</strong></h4>
+<p>当一个进程请求资源时，银行家算法会根据当前状态来判断是否可以分配资源：</p>
+<ol type="1">
+<li>如果进程请求的资源超出它的最大需求，则拒绝。</li>
+<li>否则，计算资源分配后是否会进入安全状态。如果进入安全状态，则批准分配；否则拒绝请求。</li>
+</ol>
+<hr>
+<h3 id="资源分配图resource-allocation-graph-rag">资源分配图（Resource
+Allocation Graph, RAG）</h3>
+<p>资源分配图是一种用于表示和分析资源分配与进程需求的图形工具，特别用于死锁检测和预防。</p>
+<h4 id="图的组成">1. <strong>图的组成</strong></h4>
+<ul>
+<li><strong>进程节点</strong>：表示系统中的进程。</li>
+<li><strong>资源节点</strong>：表示系统中的资源类型。</li>
+<li><strong>请求边</strong>：从进程节点指向资源节点，表示进程请求资源。</li>
+<li><strong>分配边</strong>：从资源节点指向进程节点，表示资源已经分配给进程。</li>
+</ul>
+<h4 id="资源分配图的操作">2. <strong>资源分配图的操作</strong></h4>
+<ul>
+<li><strong>请求资源</strong>：当进程请求某个资源时，系统将在图中添加一条请求边。</li>
+<li><strong>分配资源</strong>：当资源分配给进程时，系统将在图中添加一条分配边。</li>
+<li><strong>资源释放</strong>：当进程释放资源时，分配边会被删除，资源节点会回到空闲状态。</li>
+</ul>
+<h4 id="死锁检测">3. <strong>死锁检测</strong></h4>
+<p>通过分析资源分配图，如果图中存在环路（Cycle），则表示系统可能处于死锁状态。对于每个请求的资源，如果请求无法满足，且图中存在环路，说明该请求可能导致死锁。</p>
+<hr>
+<h3 id="总结-2">总结</h3>
+<ul>
+<li><strong>信号量</strong>用于进程间同步，确保资源的正确申请和释放。</li>
+<li><strong>银行家算法</strong>是一种避免死锁的资源分配算法，它确保在资源请求时保持系统安全性，防止进入死锁状态。</li>
+<li><strong>资源分配图</strong>是一种图形化的工具，用于分析和检测死锁，通过分析图中的请求和分配情况，判断是否存在死锁。</li>
+</ul>
+<h1 id="操作系统的两种视角">操作系统的两种视角</h1>
+<p>操作系统可以从以下两个视角来看待：</p>
+<ol type="1">
+<li><strong>扩展机器（Extended Machine）</strong>：
+<ul>
+<li>从这一视角来看，操作系统的目标是简化硬件资源的使用，提供更方便的接口给用户程序。它抽象出硬件细节，让应用程序能够在一个虚拟的、简化的机器上运行，用户无需关注硬件的复杂性。</li>
+<li>操作系统像一个<strong>扩展机器</strong>，为用户提供了更多的功能和灵活性，使得硬件资源能够得到更加高效、简单的管理。</li>
+</ul></li>
+<li><strong>资源管理器（Resource Manager）</strong>：
+<ul>
+<li>从这个角度来看，操作系统的主要职责是管理计算机的资源，包括CPU、内存、I/O设备等。</li>
+<li>操作系统作为资源管理器，负责分配和调度这些资源，确保不同程序在执行过程中不会发生冲突，并尽量保证资源的高效利用。</li>
+</ul></li>
+</ol>
+<hr>
+<h3 id="临界区域critical-section">临界区域（Critical Section）</h3>
+<p>临界区是指一段程序代码，它需要对共享资源（如内存、文件等）进行访问。由于资源是共享的，多个进程或线程可能同时访问它们，因此需要确保在任何时刻，只有一个进程或线程能够进入临界区，从而避免<strong>竞争条件（race
+condition）</strong>。</p>
+<h4 id="竞争条件">竞争条件：</h4>
+<ul>
+<li>竞争条件发生在多个进程或线程试图同时访问共享资源时，导致系统行为不可预测或错误。</li>
+<li>例如，如果两个进程都在同一时刻修改共享变量，没有适当的同步机制，结果可能是不可预料的。</li>
+</ul>
+<h4 id="临界区解决方案">临界区解决方案：</h4>
+<p>为了解决竞争条件问题，我们需要保证<strong>互斥性</strong>，即在任何时刻，只有一个进程能够进入临界区。常见的解决方案包括：</p>
+<ul>
+<li><strong>信号量（Semaphore）</strong>：用来控制进程对临界区的访问。</li>
+<li><strong>互斥锁（Mutex）</strong>：用于保证互斥访问，即一次只允许一个进程进入临界区。</li>
+<li><strong>条件变量（Condition
+Variables）</strong>：在多线程编程中，用于在线程之间同步操作。</li>
+</ul>
+<hr>
+<h3 id="多道程序设计multiprogramming">多道程序设计（Multiprogramming）</h3>
+<p><strong>多道程序设计</strong>是计算机系统的一种特性，指的是系统能够在内存中同时存放并执行多个作业。这些作业共享系统资源，但通过合理的调度，它们能并行执行，提升计算机资源的利用率。</p>
+<ul>
+<li><strong>多道程序设计的优点</strong>：
+<ul>
+<li>提高了计算机资源的利用率，减少了空闲时间。</li>
+<li>使得多个作业可以同时进行，增加了系统的吞吐量。</li>
+</ul></li>
+<li><strong>实现方式</strong>：
+<ul>
+<li>操作系统通过任务调度算法（如轮转调度、优先级调度等）来管理不同进程之间的切换，从而实现多道程序设计。</li>
+</ul></li>
+</ul>
+<hr>
+<h3 id="设备独立性device-independence">设备独立性（Device
+Independence）</h3>
+<p>设备独立性是I/O软件设计中的一个关键概念。它意味着程序应该能够访问任何类型的I/O设备，而不需要事先为每种不同的设备进行专门的编程。</p>
+<h4 id="设备独立性的重要性">设备独立性的重要性：</h4>
+<ul>
+<li><strong>抽象层次的引入</strong>：操作系统通过引入设备驱动程序，为不同的硬件设备提供统一的接口。无论设备是硬盘、DVD、USB盘还是其他设备，程序都能够通过相同的方式进行访问。</li>
+<li><strong>增强程序的移植性</strong>：如果程序不依赖于特定的硬件设备，它就能够在不同的硬件平台上运行，而不需要修改程序的代码。</li>
+</ul>
+<h4 id="设备独立性的体现">设备独立性的体现：</h4>
+<ol type="1">
+<li><strong>统一的接口</strong>：操作系统为各种I/O设备提供统一的接口，用户程序只需要调用操作系统提供的接口进行I/O操作，而不需要关心底层硬件的细节。</li>
+<li><strong>硬件无关的程序设计</strong>：通过设备独立性，程序能够访问硬盘、DVD、USB驱动器等设备，而不需要编写针对每种设备的特定代码。</li>
+<li><strong>示例</strong>：比如，编写一个读取文件的程序，它应当能够从硬盘、DVD或USB驱动器读取文件，而不需要修改程序代码以适应不同的存储设备。</li>
+</ol>
+<hr>
+<h3 id="总结-3">总结</h3>
+<ol type="1">
+<li><strong>操作系统的两种视角</strong>：操作系统既是一个扩展机器，简化了硬件访问，也作为资源管理器负责管理计算机系统的资源。</li>
+<li><strong>临界区</strong>：为避免竞争条件，需要确保对共享资源的访问是互斥的，通常通过信号量或互斥锁来实现。</li>
+<li><strong>多道程序设计</strong>：通过在内存中同时运行多个作业，操作系统提升了计算机资源的利用率和系统的吞吐量。</li>
+<li><strong>设备独立性</strong>：操作系统通过提供统一的接口和设备驱动程序，确保程序能够在不同的硬件设备上运行，而不需要专门为每种设备编写代码。</li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://www.totorocatcat.top/">Totoro</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://totorocatcat.top/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%BB%BC%E5%90%88%E9%A2%98/">http://totorocatcat.top/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%BB%BC%E5%90%88%E9%A2%98/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://totorocatcat.top" target="_blank">Totoroの旅</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%8F%90%E9%AB%98/">提高</a></div><div class="post_share"><div class="social-share" data-image="https://npm.elemecdn.com/ushio-api-img-moe@5.0.22/img_220_1200x675_350.011993408203_null_normal.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%94%E8%AE%B0/" title="操作系统笔记"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/ushio-api-img-moe@5.0.22/img_220_1200x675_350.011993408203_null_normal.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">操作系统笔记</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/'Lec2%20Logic%20and%20Proof,%20Sets,%20and%20Function'/" title="Lec2 Logic and Proof, Sets, and Function"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/1fe6130ca86bb9e7e6a37c9187a32c8.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-11-20</div><div class="title">Lec2 Logic and Proof, Sets, and Function</div></div></a></div><div><a href="/02%EF%BC%89/" title="CS61B 课程笔记（Lecture 02）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/v2-2ed7f4c9e1a7a699a3ef300a6f761abe_720w.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-11</div><div class="title">CS61B 课程笔记（Lecture 02）</div></div></a></div><div><a href="/03%EF%BC%89/" title="CS61B 课程笔记（Lecture 03）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/v2-2ed7f4c9e1a7a699a3ef300a6f761abe_720w.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-12</div><div class="title">CS61B 课程笔记（Lecture 03）</div></div></a></div><div><a href="/04%EF%BC%89/" title="CS61B 课程笔记（Lecture 04）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/2749a496aabc7d650b2912e256582e390a0a636b.jpg@1256w_1246h_!web-article-pic.avif" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-13</div><div class="title">CS61B 课程笔记（Lecture 04）</div></div></a></div><div><a href="/06%EF%BC%89/" title="CS61B 课程笔记（Lecture 06）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/f00af0d55cc81c18403ccbb4957ae6bc298252208.jpg@1256w_1374h_!web-article-pic.avif" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-15</div><div class="title">CS61B 课程笔记（Lecture 06）</div></div></a></div><div><a href="/05%EF%BC%89/" title="CS61B 课程笔记（Lecture 05）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/4ccebbc43a0ca31a719afadee2f86b4902402baf.jpg@1256w_786h_!web-article-pic.avif" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-14</div><div class="title">CS61B 课程笔记（Lecture 05）</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/px3.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Totoro</div><div class="author-info__description">热爱文学的SCUT软件学院学生</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">836</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">36</div></a></div><a id="card-info-btn" href="https://github.com/4512abc"><i class="fab fa-github"></i><span>🛴前往小窝......</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/4512abc" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:4512abc@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到龙猫の小窝</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%BB%BC%E5%90%88%E9%A2%98"><span class="toc-text">操作系统综合题</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95-scheduling-algorithms-%E8%AF%A6%E7%BB%86%E7%AC%94%E8%AE%B0"><span class="toc-text">🕰️ 调度算法 Scheduling
+Algorithms 详细笔记</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5-basic-concepts"><span class="toc-text">🌟 基础概念 Basic Concepts</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%91%A8%E8%BD%AC%E6%97%B6%E9%97%B4turnaround-time"><span class="toc-text">✅ 周转时间（Turnaround Time）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E8%AF%84%E4%BB%B7%E6%8C%87%E6%A0%87-performance-metrics"><span class="toc-text">✅ 常用评价指标 Performance
+Metrics</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%84%E7%B1%BB%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3"><span class="toc-text">📋 各类调度算法详解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#a.-%E5%85%88%E6%9D%A5%E5%85%88%E6%9C%8D%E5%8A%A1fcfs-first-come-first-served"><span class="toc-text">A. 先来先服务（FCFS:
+First-Come First-Served）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#b.-%E6%9C%80%E7%9F%AD%E4%BD%9C%E4%B8%9A%E4%BC%98%E5%85%88sjf-shortest-job-first"><span class="toc-text">B. 最短作业优先（SJF:
+Shortest Job First）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#c.-%E6%9C%80%E7%9F%AD%E5%89%A9%E4%BD%99%E6%97%B6%E9%97%B4%E4%BC%98%E5%85%88srtf-shortest-remaining-time-first"><span class="toc-text">C.
+最短剩余时间优先（SRTF: Shortest Remaining Time First）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#d.-%E6%97%B6%E9%97%B4%E7%89%87%E8%BD%AE%E8%BD%ACround-robin-rr"><span class="toc-text">D. 时间片轮转（Round Robin,
+RR）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#e.-%E4%BC%98%E5%85%88%E7%BA%A7%E8%B0%83%E5%BA%A6priority-scheduling"><span class="toc-text">E. 优先级调度（Priority
+Scheduling）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#f.-%E5%A4%9A%E9%98%9F%E5%88%97%E8%B0%83%E5%BA%A6multi-queue-scheduling"><span class="toc-text">F. 多队列调度（Multi-Queue
+Scheduling）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#g.-%E5%A4%9A%E7%BA%A7%E5%8F%8D%E9%A6%88%E9%98%9F%E5%88%97multilevel-feedback-queue-mlfq"><span class="toc-text">G.
+多级反馈队列（Multilevel Feedback Queue, MLFQ）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#h.-%E6%9C%80%E7%9F%AD%E8%BF%9B%E7%A8%8B%E4%BC%98%E5%85%88spf-shortest-process-first"><span class="toc-text">H. 最短进程优先（SPF:
+Shortest Process First）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#i.-%E4%BF%9D%E8%AF%81%E8%B0%83%E5%BA%A6guaranteed-scheduling"><span class="toc-text">I. 保证调度（Guaranteed
+Scheduling）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#j.-%E5%BD%A9%E7%A5%A8%E8%B0%83%E5%BA%A6lottery-scheduling"><span class="toc-text">J. 彩票调度（Lottery
+Scheduling）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#k.-%E5%85%AC%E5%B9%B3%E5%88%86%E4%BA%AB%E8%B0%83%E5%BA%A6fair-share-scheduling"><span class="toc-text">K.
+公平分享调度（Fair-Share Scheduling）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%B9%E6%AF%94%E5%B0%8F%E7%BB%93%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="toc-text">📊 对比小结（调度算法优缺点）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AD%BB%E9%94%81deadlock-%E8%AF%A6%E7%BB%86%E7%AC%94%E8%AE%B0"><span class="toc-text">💀 死锁（Deadlock） 详细笔记</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E6%AD%BB%E9%94%81%E7%9A%84%E5%AE%9A%E4%B9%89definition"><span class="toc-text">✅ 一、死锁的定义（Definition）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E7%B3%BB%E7%BB%9F%E6%A8%A1%E5%9E%8Bsystem-model"><span class="toc-text">✅ 二、系统模型（System Model）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E6%AD%BB%E9%94%81%E7%9A%84%E5%9B%9B%E4%B8%AA%E5%BF%85%E8%A6%81%E6%9D%A1%E4%BB%B6necessary-conditions-for-deadlock"><span class="toc-text">✅
+三、死锁的四个必要条件（Necessary Conditions for Deadlock）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BF%AB%E9%80%9F%E8%AE%B0%E5%BF%86%E5%8F%A3%E8%AF%80"><span class="toc-text">🧠 快速记忆口诀：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E6%AD%BB%E9%94%81%E7%9A%84%E5%A4%84%E7%90%86%E7%AD%96%E7%95%A5deadlock-handling-strategies"><span class="toc-text">✅
+四、死锁的处理策略（Deadlock Handling Strategies）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%B8%B5%E9%B8%9F%E7%AD%96%E7%95%A5the-ostrich-algorithm"><span class="toc-text">1. 鸵鸟策略（The Ostrich
+Algorithm）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%BB%E9%94%81%E9%A2%84%E9%98%B2deadlock-prevention"><span class="toc-text">2. 死锁预防（Deadlock
+Prevention）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%BB%E9%94%81%E9%81%BF%E5%85%8Ddeadlock-avoidance"><span class="toc-text">3. 死锁避免（Deadlock
+Avoidance）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%BB%E9%94%81%E6%A3%80%E6%B5%8B%E4%B8%8E%E6%81%A2%E5%A4%8Ddeadlock-detection-and-recovery"><span class="toc-text">4.
+死锁检测与恢复（Deadlock Detection and Recovery）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E5%9B%BE%E7%A4%BA%E7%90%86%E8%A7%A3%E8%B5%84%E6%BA%90%E5%88%86%E9%85%8D%E5%9B%BEresource-allocation-graph-rag"><span class="toc-text">✅
+五、图示理解：资源分配图（Resource Allocation Graph, RAG）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E7%BB%8F%E5%85%B8%E4%BE%8B%E5%AD%90%E5%93%B2%E5%AD%A6%E5%AE%B6%E5%B0%B1%E9%A4%90%E9%97%AE%E9%A2%98dining-philosophers-problem"><span class="toc-text">✅
+六、经典例子：哲学家就餐问题（Dining Philosophers Problem）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%A1%B5%E9%9D%A2%E7%BD%AE%E6%8D%A2%E7%AE%97%E6%B3%95%E6%A6%82%E8%BF%B0"><span class="toc-text">🌟页面置换算法概述</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E6%9C%80%E4%BC%98%E9%A1%B5%E9%9D%A2%E7%BD%AE%E6%8D%A2%E7%AE%97%E6%B3%95optimal-page-replacementopt"><span class="toc-text">一、最优页面置换算法（Optimal
+Page Replacement，OPT）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8Cnru%E7%AE%97%E6%B3%95not-recently-used"><span class="toc-text">二、NRU算法（Not Recently
+Used）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E5%85%88%E8%BF%9B%E5%85%88%E5%87%BA%E7%AE%97%E6%B3%95fifo"><span class="toc-text">三、先进先出算法（FIFO）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E7%AC%AC%E4%BA%8C%E6%AC%A1%E6%9C%BA%E4%BC%9A%E7%AE%97%E6%B3%95second-chance"><span class="toc-text">四、第二次机会算法（Second-Chance）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E6%97%B6%E9%92%9F%E9%A1%B5%E9%9D%A2%E7%BD%AE%E6%8D%A2%E7%AE%97%E6%B3%95clock-algorithm"><span class="toc-text">五、时钟页面置换算法（Clock
+Algorithm）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E6%9C%80%E8%BF%91%E6%9C%80%E5%B0%91%E4%BD%BF%E7%94%A8%E7%AE%97%E6%B3%95least-recently-used-lru"><span class="toc-text">六、最近最少使用算法（Least
+Recently Used, LRU）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83aging%E8%80%81%E5%8C%96%E7%AE%97%E6%B3%95lru-%E7%9A%84%E8%BF%91%E4%BC%BC%E5%AE%9E%E7%8E%B0"><span class="toc-text">七、Aging（老化）算法（LRU
+的近似实现）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%8F%E7%BB%93%E7%BD%AE%E6%8D%A2%E7%AE%97%E6%B3%95%E6%AF%94%E8%BE%83%E8%A1%A8"><span class="toc-text">🔁 小结：置换算法比较表</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%86%E9%A1%B5-paging-%E5%92%8C-%E5%88%86%E6%AE%B5-segmentation"><span class="toc-text">分页 (Paging) 和 分段
+(Segmentation)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E9%A1%B5-paging"><span class="toc-text">1. 分页 (Paging)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E6%AE%B5-segmentation"><span class="toc-text">2. 分段 (Segmentation)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A9%BA%E9%97%B2%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E6%96%B9%E6%B3%95"><span class="toc-text">空闲内存管理方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%8D%E5%9B%BE%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86-bitmap-allocation"><span class="toc-text">1. 位图存储管理 (Bitmap
+Allocation)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%93%BE%E8%A1%A8%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86-linked-list-allocation"><span class="toc-text">2. 链表存储管理
+(Linked List Allocation)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D%E7%AE%97%E6%B3%95"><span class="toc-text">内存分配算法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A6%96%E6%AC%A1%E9%80%82%E9%85%8D-first-fit"><span class="toc-text">1. 首次适配 (First
+Fit)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8B%E6%AC%A1%E9%80%82%E9%85%8D-next-fit"><span class="toc-text">2. 下次适配 (Next Fit)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%80%E4%BD%B3%E9%80%82%E9%85%8D-best-fit"><span class="toc-text">3. 最佳适配 (Best Fit)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%80%E5%B7%AE%E9%80%82%E9%85%8D-worst-fit"><span class="toc-text">4. 最差适配 (Worst
+Fit)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BF%AB%E9%80%9F%E9%80%82%E9%85%8D-quick-fit"><span class="toc-text">5. 快速适配 (Quick
+Fit)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%86%85%E6%A0%B8%E6%80%81-kernel-mode-%E4%B8%8E-%E7%94%A8%E6%88%B7%E6%80%81-user-mode"><span class="toc-text">内核态 (Kernel Mode) 与
+用户态 (User Mode)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E7%BA%A7%E7%BA%BF%E7%A8%8B-user-level-threads"><span class="toc-text">用户级线程 (User-level
+Threads)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%89%B9%E7%82%B9"><span class="toc-text">特点：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%98%E7%82%B9"><span class="toc-text">优点：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%BA%E7%82%B9"><span class="toc-text">缺点：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%85%E6%A0%B8%E7%BA%A7%E7%BA%BF%E7%A8%8B-kernel-level-threads"><span class="toc-text">内核级线程 (Kernel-level
+Threads)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%89%B9%E7%82%B9-1"><span class="toc-text">特点：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%98%E7%82%B9-1"><span class="toc-text">优点：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%BA%E7%82%B9-1"><span class="toc-text">缺点：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E7%BA%A7%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%86%85%E6%A0%B8%E7%BA%A7%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%AF%B9%E6%AF%94"><span class="toc-text">用户级线程与内核级线程的对比</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-1"><span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%A1%E5%8F%B7%E9%87%8Fsemaphore"><span class="toc-text">信号量（Semaphore）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#p-%E6%93%8D%E4%BD%9Cproberen%E7%94%B3%E8%AF%B7%E8%B5%84%E6%BA%90"><span class="toc-text">1. P
+操作（Proberen，申请资源）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#v-%E6%93%8D%E4%BD%9Cverhogen%E9%87%8A%E6%94%BE%E8%B5%84%E6%BA%90"><span class="toc-text">2. V
+操作（Verhogen，释放资源）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BF%A1%E5%8F%B7%E9%87%8F%E6%80%BB%E7%BB%93"><span class="toc-text">信号量总结：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%93%B6%E8%A1%8C%E5%AE%B6%E7%AE%97%E6%B3%95bankers-algorithm"><span class="toc-text">银行家算法（Banker&#39;s
+Algorithm）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A6%82%E5%BF%B5%E4%B8%8E%E5%9F%BA%E6%9C%AC%E5%8E%9F%E5%88%99"><span class="toc-text">1. 概念与基本原则</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E6%AD%A5%E9%AA%A4"><span class="toc-text">2. 算法步骤</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E5%85%A8%E6%80%A7%E6%A3%80%E6%9F%A5"><span class="toc-text">3. 安全性检查</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%93%B6%E8%A1%8C%E5%AE%B6%E7%AE%97%E6%B3%95%E7%9A%84%E6%A0%B8%E5%BF%83%E7%9F%A9%E9%98%B5"><span class="toc-text">4.
+银行家算法的核心矩阵</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%93%B6%E8%A1%8C%E5%AE%B6%E7%AE%97%E6%B3%95%E7%9A%84%E4%BE%8B%E5%AD%90"><span class="toc-text">5. 银行家算法的例子</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%93%B6%E8%A1%8C%E5%AE%B6%E7%AE%97%E6%B3%95%E7%9A%84%E8%BF%90%E8%A1%8C"><span class="toc-text">6. 银行家算法的运行</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B5%84%E6%BA%90%E5%88%86%E9%85%8D%E5%9B%BEresource-allocation-graph-rag"><span class="toc-text">资源分配图（Resource
+Allocation Graph, RAG）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9B%BE%E7%9A%84%E7%BB%84%E6%88%90"><span class="toc-text">1. 图的组成</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B5%84%E6%BA%90%E5%88%86%E9%85%8D%E5%9B%BE%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="toc-text">2. 资源分配图的操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%BB%E9%94%81%E6%A3%80%E6%B5%8B"><span class="toc-text">3. 死锁检测</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-2"><span class="toc-text">总结</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%B8%A4%E7%A7%8D%E8%A7%86%E8%A7%92"><span class="toc-text">操作系统的两种视角</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%B4%E7%95%8C%E5%8C%BA%E5%9F%9Fcritical-section"><span class="toc-text">临界区域（Critical Section）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AB%9E%E4%BA%89%E6%9D%A1%E4%BB%B6"><span class="toc-text">竞争条件：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%B4%E7%95%8C%E5%8C%BA%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="toc-text">临界区解决方案：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E9%81%93%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1multiprogramming"><span class="toc-text">多道程序设计（Multiprogramming）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E5%A4%87%E7%8B%AC%E7%AB%8B%E6%80%A7device-independence"><span class="toc-text">设备独立性（Device
+Independence）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%BE%E5%A4%87%E7%8B%AC%E7%AB%8B%E6%80%A7%E7%9A%84%E9%87%8D%E8%A6%81%E6%80%A7"><span class="toc-text">设备独立性的重要性：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%BE%E5%A4%87%E7%8B%AC%E7%AB%8B%E6%80%A7%E7%9A%84%E4%BD%93%E7%8E%B0"><span class="toc-text">设备独立性的体现：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-3"><span class="toc-text">总结</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%BB%BC%E5%90%88%E9%A2%98/" title="操作系统综合题"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/ushio-api-img-moe@5.0.22/img_220_1200x675_350.011993408203_null_normal.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="操作系统综合题"/></a><div class="content"><a class="title" href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%BB%BC%E5%90%88%E9%A2%98/" title="操作系统综合题">操作系统综合题</a><time datetime="2025-05-04T18:20:42.000Z" title="发表于 2025-05-05 02:20:42">2025-05-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%94%E8%AE%B0/" title="操作系统笔记"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/ushio-api-img-moe@5.0.22/img_220_1200x675_350.011993408203_null_normal.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="操作系统笔记"/></a><div class="content"><a class="title" href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%94%E8%AE%B0/" title="操作系统笔记">操作系统笔记</a><time datetime="2025-05-04T17:59:45.000Z" title="发表于 2025-05-05 01:59:45">2025-05-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F2012%E5%B8%A6%E6%89%B9%E6%B3%A8/" title="操作系统2012带批注"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/ushio-api-img-moe@5.0.22/img_220_1200x675_350.011993408203_null_normal.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="操作系统2012带批注"/></a><div class="content"><a class="title" href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F2012%E5%B8%A6%E6%89%B9%E6%B3%A8/" title="操作系统2012带批注">操作系统2012带批注</a><time datetime="2025-05-04T17:28:38.000Z" title="发表于 2025-05-05 01:28:38">2025-05-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F2012/" title="操作系统2012"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/ushio-api-img-moe@5.0.22/img_220_1200x675_350.011993408203_null_normal.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="操作系统2012"/></a><div class="content"><a class="title" href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F2012/" title="操作系统2012">操作系统2012</a><time datetime="2025-05-04T17:15:36.000Z" title="发表于 2025-05-05 01:15:36">2025-05-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F2011/" title="操作系统2011"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/ushio-api-img-moe@5.0.22/img_220_1200x675_350.011993408203_null_normal.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="操作系统2011"/></a><div class="content"><a class="title" href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F2011/" title="操作系统2011">操作系统2011</a><time datetime="2025-05-04T15:52:32.000Z" title="发表于 2025-05-04 23:52:32">2025-05-04</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 - 2025 By Totoro</div><div class="footer_custom_text">I wish you to become your own sun, no need to rely on who's light.<p><a target="_blank" href="https://hexo.io/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&logo=hexo" title="博客框架为Hexo"></a>&nbsp;<a target="_blank" href="https://butterfly.js.org/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&logo=bitdefender" title="主题采用butterfly"></a>&nbsp;<a target="_blank" href="https://www.jsdelivr.com/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&logo=jsDelivr" title="本站使用JsDelivr为静态资源提供CDN加速"></a> &nbsp;<a target="_blank" href="https://vercel.com/ "><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Hosted-Vervel-brightgreen?style=flat&logo=Vercel" title="本站采用双线部署，默认线路托管于Vercel"></a>&nbsp;<a target="_blank" href="https://vercel.com/ "><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Hosted-Coding-0cedbe?style=flat&logo=Codio" title="本站采用双线部署，联通线路托管于Coding"></a>&nbsp;<a target="_blank" href="https://github.com/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&logo=GitHub" title="本站项目由Gtihub托管"></a>&nbsp;<a target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&logo=Claris" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"></a></p></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat-btn" type="button" title="聊天"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="/js/tw_cn.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@5.2.0/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'HT1PalaKkPaG1UqAXBhJXIu8-gzGzoHsz',
+      appKey: 'iT0TnVVAwf9zuZ7NqwclQItY',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://cdn.jsdelivr.net/npm/valine@1.5.1/dist/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><script defer src="/js/light.js"></script><canvas id="universe"></canvas><script defer src="/js/universe.js"></script><script async src="/js/title.js"></script><script defer src="https://npm.elemecdn.com/jquery@latest/dist/jquery.min.js"></script><script defer data-pjax src="/js/cat.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="1" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener
+  btf.removeGlobalFnEvent('pjax')
+  btf.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.12.0"></script></div></div><!-- hexo injector body_end start --><script data-pjax>
+    function butterfly_categories_card_injector_config(){
+      var parent_div_git = document.getElementById('recent-posts');
+      var item_html = '<style>li.categoryBar-list-item{width:32.3%;}.categoryBar-list{max-height: 380px;overflow:auto;}.categoryBar-list::-webkit-scrollbar{width:0!important}@media screen and (max-width: 650px){.categoryBar-list{max-height: 320px;}}</style><div class="recent-post-item" style="height:auto;width:100%;padding:0px;"><div id="categoryBar"><ul class="categoryBar-list"><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_12.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/离散数学/&quot;);" href="javascript:void(0);">离散数学</a><span class="categoryBar-list-count">33</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_13.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS61B/&quot;);" href="javascript:void(0);">CS61B</a><span class="categoryBar-list-count">76</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_14.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/期末の旅/&quot;);" href="javascript:void(0);">期末の旅</a><span class="categoryBar-list-count">99</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_17.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/刷题计划/&quot;);" href="javascript:void(0);">刷题计划</a><span class="categoryBar-list-count">60</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_18.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/区域赛の旅/&quot;);" href="javascript:void(0);">区域赛の旅</a><span class="categoryBar-list-count">7</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_19.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/Codeforcesの旅/&quot;);" href="javascript:void(0);">Codeforcesの旅</a><span class="categoryBar-list-count">24</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_20.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/牛客の旅/&quot;);" href="javascript:void(0);">牛客の旅</a><span class="categoryBar-list-count">65</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_21.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/ACMの旅/&quot;);" href="javascript:void(0);">ACMの旅</a><span class="categoryBar-list-count">42</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_22.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/数学建模/&quot;);" href="javascript:void(0);">数学建模</a><span class="categoryBar-list-count">26</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_22.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/前端の旅/&quot;);" href="javascript:void(0);">前端の旅</a><span class="categoryBar-list-count">17</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_23.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/数据结构/&quot;);" href="javascript:void(0);">数据结构</a><span class="categoryBar-list-count">47</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_24.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/Atcoderの旅/&quot;);" href="javascript:void(0);">Atcoderの旅</a><span class="categoryBar-list-count">53</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_25.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/C-の旅/&quot;);" href="javascript:void(0);">C++の旅</a><span class="categoryBar-list-count">17</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_26.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS70の旅/&quot;);" href="javascript:void(0);">CS70の旅</a><span class="categoryBar-list-count">24</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_27.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CSAPPの旅/&quot;);" href="javascript:void(0);">CSAPPの旅</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_28.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/计算机组成原理/&quot;);" href="javascript:void(0);">计算机组成原理</a><span class="categoryBar-list-count">47</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_29.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/编程基础/&quot;);" href="javascript:void(0);">编程基础</a><span class="categoryBar-list-count">14</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_30.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/JAVAの旅/&quot;);" href="javascript:void(0);">JAVAの旅</a><span class="categoryBar-list-count">10</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_31.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/MIT-6-031-Software-Construction/&quot;);" href="javascript:void(0);">MIT 6.031:Software Construction</a><span class="categoryBar-list-count">16</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_32.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS-110L/&quot;);" href="javascript:void(0);">CS 110L</a><span class="categoryBar-list-count">3</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_33.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/数据库の旅/&quot;);" href="javascript:void(0);">数据库の旅</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_34.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/灵魂の旅/&quot;);" href="javascript:void(0);">灵魂の旅</a><span class="categoryBar-list-count">2</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_35.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/个人安排/&quot;);" href="javascript:void(0);">个人安排</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_36.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/杂项/&quot;);" href="javascript:void(0);">杂项</a><span class="categoryBar-list-count">13</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_37.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/文学/&quot;);" href="javascript:void(0);">文学</a><span class="categoryBar-list-count">49</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_38.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/力扣の旅/&quot;);" href="javascript:void(0);">力扣の旅</a><span class="categoryBar-list-count">20</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_39.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/计算机网络/&quot;);" href="javascript:void(0);">计算机网络</a><span class="categoryBar-list-count">18</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_40.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/千里十二行/&quot;);" href="javascript:void(0);">千里十二行</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_41.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/🗡指offer/&quot;);" href="javascript:void(0);">🗡指offer</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_42.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/少年游/&quot;);" href="javascript:void(0);">少年游</a><span class="categoryBar-list-count">2</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_43.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/算法提高课/&quot;);" href="javascript:void(0);">算法提高课</a><span class="categoryBar-list-count">3</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_44.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/汇编の旅/&quot;);" href="javascript:void(0);">汇编の旅</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_44.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/C-实训/&quot;);" href="javascript:void(0);">C++实训</a><span class="categoryBar-list-count">8</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_45.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS知识/&quot;);" href="javascript:void(0);">CS知识</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_46.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/编译原理/&quot;);" href="javascript:void(0);">编译原理</a><span class="categoryBar-list-count">22</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_48.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/操作系统/&quot;);" href="javascript:void(0);">操作系统</a><span class="categoryBar-list-count">9</span><span class="categoryBar-list-descr"></span></li></ul></div></div>';
+      console.log('已挂载butterfly_categories_card')
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+      }
+    if( document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+    butterfly_categories_card_injector_config()
+    }
+  </script><script data-pjax>
+  function butterfly_swiper_injector_config(){
+    var parent_div_git = document.getElementById('recent-posts');
+    var item_html = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms;"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;诗录/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/4b31456c6f0f4489f99177f89e936de7286431045.png@1256w_708h_!web-article-pic.avif" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-10-01</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;诗录/&quot;);" href="javascript:void(0);" alt="">诗录</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;诗录/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;诗兴大发/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://source.fomal.cc/img/default_cover_69.webp" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-01-29</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;诗兴大发/&quot;);" href="javascript:void(0);" alt="">诗兴大发</a><div class="blog-slider__text">未觉，却是中二少年的诗仙梦</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;诗兴大发/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;TotoroのPlan/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/51d37eba99d243607ddedfff6e91568f617436609.jpg@1256w_1884h_!web-article-pic.avif" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-10-05</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;TotoroのPlan/&quot;);" href="javascript:void(0);" alt="">TotoroのPlan</a><div class="blog-slider__text">方便大二看（）</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;TotoroのPlan/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;Markdown格式/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/ushio-api-img-moe@5.0.48/img_482_1920x1080_96_null_normal.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-03-03</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;Markdown格式/&quot;);" href="javascript:void(0);" alt="">Markdown格式</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;Markdown格式/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载butterfly_swiper')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_swiper_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_swiper_injector_config();
+  }
+  </script><script defer src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.js"></script><script defer data-pjax src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper_init.js"></script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>
