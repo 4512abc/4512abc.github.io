@@ -1,0 +1,2923 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>操作系统CH3（A） | Totoroの旅</title><meta name="author" content="Totoro"><meta name="copyright" content="Totoro"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Chapter 3 Memory Management A 内存管理（Memory Management）  内存管理的目标与任务 以下是对内存管理目标与任务的详细讲解，包括内存层次结构、程序加载、内存管理的目标以及具体任务。  1. 理想的内存特性 • 程序员对内存的期望： What Programmers Want from Memory: • 大容量（Large）：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="操作系统CH3（A）">
+<meta property="og:url" content="http://totorocatcat.top/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FCH3%EF%BC%88A%EF%BC%89/index.html">
+<meta property="og:site_name" content="Totoroの旅">
+<meta property="og:description" content="Chapter 3 Memory Management A 内存管理（Memory Management）  内存管理的目标与任务 以下是对内存管理目标与任务的详细讲解，包括内存层次结构、程序加载、内存管理的目标以及具体任务。  1. 理想的内存特性 • 程序员对内存的期望： What Programmers Want from Memory: • 大容量（Large）：">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://npm.elemecdn.com/ushio-api-img-moe@5.0.22/img_220_1200x675_350.011993408203_null_normal.jpg">
+<meta property="article:published_time" content="2025-05-06T09:06:41.000Z">
+<meta property="article:modified_time" content="2025-05-06T09:07:05.897Z">
+<meta property="article:author" content="Totoro">
+<meta property="article:tag" content="提高">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://npm.elemecdn.com/ushio-api-img-moe@5.0.22/img_220_1200x675_350.011993408203_null_normal.jpg"><link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/b5ca6e582a7a45e6fde46e616eeb68e.png"><link rel="canonical" href="http://totorocatcat.top/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FCH3%EF%BC%88A%EF%BC%89/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta/><link rel="stylesheet" href="/css/index.css?v=4.12.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  noticeOutdate: {"limitDay":765,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体中文","cht_to_chs":"你已切换为简体中文","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"top-right"},
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '操作系统CH3（A）',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: true,
+  isToc: true,
+  postUpdate: '2025-05-06 17:07:05'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const now = new Date()
+          const hour = now.getHours()
+          const isNight = hour <= 6 || hour >= 18
+          if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/universe.css"><link rel="stylesheet" href="/css/scrollbar.css"><link rel="stylesheet" href="/css/cat.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiperstyle.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-double-row-display@1.00/cardlistpost.min.css"/>
+<style>#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags:before {content:"\A";
+  white-space: pre;}#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags > .article-meta__separator{display:none}</style>
+<link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-categories-card@1.0.0/lib/categorybar.css"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><div class="loading-img"></div><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><script>window.paceOptions = {
+  restartOnPushState: false
+}
+
+document.addEventListener('pjax:send', () => {
+  Pace.restart()
+})
+</script><link rel="stylesheet" href="/css/progress_bar.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/px3.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">842</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">36</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home-alt"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-envelope-open"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 趣味</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/project/"><i class="fa-fw fas fas fa-folder"></i><span> 项目</span></a></div><div class="menus_item"><a class="site-page" href="/stars/"><i class="fa-fw fas fa-bookmark"></i><span> 收藏</span></a></div><div class="menus_item"><a class="site-page" href="/bilibili/"><i class="fa-fw fas fa-tv"></i><span> 追番</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url('https://npm.elemecdn.com/ushio-api-img-moe@5.0.22/img_220_1200x675_350.011993408203_null_normal.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="Totoroの旅"><span class="site-name">Totoroの旅</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home-alt"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-envelope-open"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 趣味</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/project/"><i class="fa-fw fas fas fa-folder"></i><span> 项目</span></a></div><div class="menus_item"><a class="site-page" href="/stars/"><i class="fa-fw fas fa-bookmark"></i><span> 收藏</span></a></div><div class="menus_item"><a class="site-page" href="/bilibili/"><i class="fa-fw fas fa-tv"></i><span> 追番</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">操作系统CH3（A）</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-05-06T09:06:41.000Z" title="发表于 2025-05-06 17:06:41">2025-05-06</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-05-06T09:07:05.897Z" title="更新于 2025-05-06 17:07:05">2025-05-06</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">20.4k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>82分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="操作系统CH3（A）"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FCH3%EF%BC%88A%EF%BC%89/#post-comment" itemprop="discussionUrl"><span class="valine-comment-count" data-xid="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FCH3%EF%BC%88A%EF%BC%89/" itemprop="commentCount"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="chapter-3-memory-management-a">Chapter 3 Memory Management
+A</h2>
+<h3 id="内存管理memory-management"><strong>内存管理（Memory
+Management）</strong></h3>
+<hr>
+<h3 id="内存管理的目标与任务"><strong>内存管理的目标与任务</strong></h3>
+<p>以下是对内存管理目标与任务的详细讲解，包括内存层次结构、程序加载、内存管理的目标以及具体任务。</p>
+<hr>
+<h4 id="理想的内存特性"><strong>1. 理想的内存特性</strong></h4>
+<p>• <strong>程序员对内存的期望：</strong><br>
+<strong>What Programmers Want from Memory:</strong><br>
+• <strong>大容量（Large）：</strong><br>
+◦ 内存容量越大，程序可以处理的数据和任务越多。<br>
+<strong>The larger the memory, the more data and tasks a program can
+handle.</strong><br>
+• <strong>高速度（Fast）：</strong><br>
+◦ 快速的内存可以提高程序的执行效率。<br>
+<strong>Fast memory improves program execution
+efficiency.</strong><br>
+• <strong>非易失性（Nonvolatile）：</strong><br>
+◦ 非易失性内存可以在断电后保留数据，避免数据丢失。<br>
+<strong>Nonvolatile memory retains data after power loss, preventing
+data loss.</strong><br>
+• <strong>低成本（Inexpensive）：</strong><br>
+◦ 低成本的内存可以降低系统整体成本。<br>
+<strong>Inexpensive memory reduces the overall cost of the
+system.</strong></p>
+<p>• <strong>现实中的内存特性：</strong><br>
+<strong>Reality of Memory Characteristics:</strong><br>
+• 内存的速度、容量和成本之间存在权衡关系。<br>
+<strong>There is a trade-off among speed, capacity, and cost in
+memory.</strong></p>
+<hr>
+<h4 id="内存层次结构memory-hierarchy"><strong>2. 内存层次结构（Memory
+Hierarchy）</strong></h4>
+<p>• <strong>内存层次结构的组成：</strong><br>
+<strong>Components of the Memory Hierarchy:</strong><br>
+1. <strong>高速缓存（Cache Memory）：</strong><br>
+◦ <strong>特点：</strong> 少量、快速、昂贵、易失性。<br>
+<strong>Characteristics: Small, fast, expensive,
+volatile.</strong><br>
+◦ <strong>作用：</strong> 提供最快的访问速度，存储 CPU
+最近或最常用的数据。<br>
+<strong>Purpose: Provides the fastest access speed, storing the most
+recently or frequently used data by the CPU.</strong><br>
+2. <strong>主内存（Main Memory）：</strong><br>
+◦ <strong>特点：</strong> 中等容量、中等速度、中等价格、易失性。<br>
+<strong>Characteristics: Medium capacity, medium speed, moderate price,
+volatile.</strong><br>
+◦ <strong>作用：</strong> 存储当前正在运行的程序和数据。<br>
+<strong>Purpose: Stores the programs and data currently being
+executed.</strong><br>
+3. <strong>磁盘存储（Disk Storage）：</strong><br>
+◦ <strong>特点：</strong> 大容量、慢速、便宜、非易失性。<br>
+<strong>Characteristics: Large capacity, slow speed, inexpensive,
+nonvolatile.</strong><br>
+◦ <strong>作用：</strong> 提供长期存储，存储程序和数据的备份。<br>
+<strong>Purpose: Provides long-term storage, storing backups of programs
+and data.</strong></p>
+<p>• <strong>内存层次结构的特点：</strong><br>
+<strong>Characteristics of the Memory Hierarchy:</strong><br>
+• <strong>速度与成本的权衡：</strong><br>
+◦ 越靠近 CPU 的存储器速度越快，但容量越小、成本越高。<br>
+<strong>Trade-off between speed and cost: The closer the memory is to
+the CPU, the faster it is, but the smaller its capacity and the higher
+its cost.</strong><br>
+• <strong>存储器的互补性：</strong><br>
+◦ 不同层次的存储器共同协作，提供高效的内存管理。<br>
+<strong>Complementary nature of storage: Different levels of memory work
+together to provide efficient memory management.</strong></p>
+<hr>
+<h4 id="内存管理器的职责memory-managers-role"><strong>3.
+内存管理器的职责（Memory Manager's Role）</strong></h4>
+<p>• <strong>内存管理器的作用：</strong><br>
+<strong>Role of the Memory Manager:</strong><br>
+• 管理内存层次结构，协调不同层次的存储器之间的数据交换。<br>
+<strong>Manages the memory hierarchy, coordinating data exchange between
+different levels of storage.</strong><br>
+• 确保程序能够高效地访问内存，同时满足系统的性能和安全性需求。<br>
+<strong>Ensures that programs can access memory efficiently while
+meeting system performance and security requirements.</strong></p>
+<hr>
+<h4 id="存储层次结构storage-hierarchy"><strong>4. 存储层次结构（Storage
+Hierarchy）</strong></h4>
+<p>• <strong>存储层次结构的组成：</strong><br>
+<strong>Components of the Storage Hierarchy:</strong><br>
+1. <strong>寄存器（Registers）：</strong><br>
+◦ CPU 内部的高速存储单元，速度最快，容量最小。<br>
+<strong>High-speed storage units inside the CPU, fastest but smallest in
+capacity.</strong><br>
+2. <strong>高速缓存（Cache）：</strong><br>
+◦ 位于 CPU 和主内存之间，提供快速的数据访问。<br>
+<strong>Located between the CPU and main memory, providing fast data
+access.</strong><br>
+3. <strong>主内存（Main Memory）：</strong><br>
+◦ 存储当前正在运行的程序和数据。<br>
+<strong>Stores the programs and data currently being
+executed.</strong><br>
+4. <strong>磁盘存储（Disk Storage）：</strong><br>
+◦ 提供长期存储，容量大但速度较慢。<br>
+<strong>Provides long-term storage, large capacity but slower
+speed.</strong><br>
+5. <strong>磁带存储（Tape Storage）：</strong><br>
+◦ 用于归档和备份，容量最大但速度最慢。<br>
+<strong>Used for archiving and backup, largest capacity but slowest
+speed.</strong></p>
+<hr>
+<h4 id="程序加载与内存管理"><strong>5. 程序加载与内存管理</strong></h4>
+<p>• <strong>程序加载的基本要求：</strong><br>
+<strong>Basic Requirements for Program Loading:</strong><br>
+1. <strong>程序必须加载到内存中：</strong><br>
+◦ 程序需要被加载到内存中，并分配到一个进程的地址空间中才能运行。<br>
+<strong>Programs must be loaded into memory and allocated to a process's
+address space to run.</strong><br>
+2. <strong>连续的地址空间：</strong><br>
+◦ 程序的代码和数据通常存储在连续的地址空间中。<br>
+<strong>Program code and data are typically stored in contiguous address
+spaces.</strong><br>
+3. <strong>系统段与用户段：</strong><br>
+◦ 内存分为系统段（操作系统代码和数据）和用户段（用户程序和数据）。<br>
+<strong>Memory is divided into system segments (operating system code
+and data) and user segments (user program and data).</strong></p>
+<hr>
+<h4 id="内存管理的目标objectives-of-memory-management"><strong>6.
+内存管理的目标（Objectives of Memory Management）</strong></h4>
+<p>• <strong>支持多道程序设计（Support
+Multiprogramming）：</strong><br>
+• 允许多个程序同时驻留在内存中，提高系统的资源利用率。<br>
+<strong>Allows multiple programs to reside in memory simultaneously,
+improving resource utilization.</strong></p>
+<p>• <strong>方便用户（Convenience to User）：</strong><br>
+• 隐藏硬件细节，自动加载用户程序，简化用户的操作。<br>
+<strong>Hides hardware details, automatically loads user programs, and
+simplifies user operations.</strong></p>
+<p>• <strong>解决程序空间大于内存空间的问题（Solve Program Space &gt;
+Memory Space）：</strong><br>
+• 通过虚拟内存等技术，使程序可以使用比物理内存更大的地址空间。<br>
+<strong>Solves the problem where program space exceeds memory space
+using techniques like virtual memory.</strong></p>
+<p>• <strong>进程在内存中的灵活性（Process Flexibility in
+Memory）：</strong><br>
+• 支持进程的动态加载、运行和卸载，允许进程在内存中灵活移动。<br>
+<strong>Supports dynamic loading, execution, and unloading of processes,
+allowing flexible movement of processes in memory.</strong></p>
+<p>• <strong>快速访问（Quick Access）：</strong><br>
+• 确保程序能够快速访问所需的内存资源，减少延迟。<br>
+<strong>Ensures quick access to required memory resources, reducing
+latency.</strong></p>
+<p>• <strong>存储保护与安全性（Storage Protection and
+Security）：</strong><br>
+• 防止进程访问其他进程的内存，保护系统的安全性和稳定性。<br>
+<strong>Prevents processes from accessing each other's memory,
+protecting system security and stability.</strong></p>
+<p>• <strong>共享与通信（Share and Communication）：</strong><br>
+• 支持进程间的内存共享和通信，提高系统的协作能力。<br>
+<strong>Supports memory sharing and communication between processes,
+improving system collaboration.</strong></p>
+<p>• <strong>性能与成本的平衡（Performance and Cost）：</strong><br>
+• 在性能和成本之间取得平衡，优化内存的使用效率。<br>
+<strong>Balances performance and cost, optimizing memory usage
+efficiency.</strong></p>
+<hr>
+<h4 id="内存管理的任务tasks-of-memory-management"><strong>7.
+内存管理的任务（Tasks of Memory Management）</strong></h4>
+<p>• <strong>内存分配与释放（Memory Allocation and
+Freeing）：</strong><br>
+• <strong>任务描述：</strong><br>
+◦ 在程序运行时分配所需的内存空间，并在程序结束时释放内存。<br>
+<strong>Task Description: Allocates the required memory space during
+program execution and frees memory when the program ends.</strong><br>
+• <strong>挑战：</strong><br>
+◦ 如何高效地分配和释放内存，避免内存碎片。<br>
+<strong>Challenges: How to allocate and free memory efficiently,
+avoiding memory fragmentation.</strong></p>
+<p>• <strong>地址重定位（Address Relocation）：</strong><br>
+• <strong>任务描述：</strong><br>
+◦ 将程序的逻辑地址转换为物理地址，确保程序能够正确访问内存。<br>
+<strong>Task Description: Converts the program's logical addresses into
+physical addresses, ensuring correct memory access.</strong><br>
+• <strong>实现方式：</strong><br>
+◦ 静态重定位：在程序加载时完成地址转换。<br>
+<strong>Static Relocation: Completes address conversion during program
+loading.</strong><br>
+◦ 动态重定位：在程序运行时动态完成地址转换。<br>
+<strong>Dynamic Relocation: Dynamically completes address conversion
+during program execution.</strong></p>
+<p>• <strong>内存共享与保护（Memory Sharing and
+Protection）：</strong><br>
+• <strong>任务描述：</strong><br>
+◦ 确保多个进程可以安全地共享内存，同时防止非法访问。<br>
+<strong>Task Description: Ensures that multiple processes can safely
+share memory while preventing illegal access.</strong><br>
+• <strong>实现方式：</strong><br>
+◦ 使用页表和段表管理内存访问权限。<br>
+<strong>Uses page tables and segment tables to manage memory access
+permissions.</strong></p>
+<p>• <strong>内存扩展（Memory Expansion）：</strong><br>
+• <strong>任务描述：</strong><br>
+◦
+通过虚拟内存技术扩展内存容量，使程序可以使用比物理内存更大的地址空间。<br>
+<strong>Task Description: Expands memory capacity through virtual memory
+technology, allowing programs to use a larger address space than
+physical memory.</strong><br>
+• <strong>实现方式：</strong><br>
+◦ 使用磁盘作为扩展内存，按需加载数据。<br>
+<strong>Uses disk as extended memory, loading data on
+demand.</strong></p>
+<hr>
+<h4 id="内存管理的挑战与优化"><strong>8.
+内存管理的挑战与优化</strong></h4>
+<p>• <strong>内存碎片（Memory Fragmentation）：</strong><br>
+• <strong>问题：</strong><br>
+◦ 频繁的内存分配和释放可能导致内存碎片，降低内存利用率。<br>
+<strong>Problem: Frequent memory allocation and release can lead to
+memory fragmentation, reducing memory utilization.</strong><br>
+• <strong>解决方法：</strong><br>
+◦ 使用内存池化技术或内存压缩技术减少碎片。<br>
+<strong>Solutions: Use memory pooling or memory compression techniques
+to reduce fragmentation.</strong></p>
+<p>• <strong>虚拟内存的性能开销（Performance Overhead of Virtual
+Memory）：</strong><br>
+• <strong>问题：</strong><br>
+◦ 地址映射和页表管理可能带来额外的性能开销。<br>
+<strong>Problem: Address mapping and page table management may introduce
+additional performance overhead.</strong><br>
+• <strong>解决方法：</strong><br>
+◦ 使用硬件加速（如 TLB）和优化页面置换算法。<br>
+<strong>Solutions: Use hardware acceleration (e.g., TLB) and optimize
+page replacement algorithms.</strong></p>
+<p>• <strong>内存保护与共享的平衡（Balancing Protection and
+Sharing）：</strong><br>
+• <strong>问题：</strong><br>
+◦ 过于严格的内存保护可能限制进程间的通信和共享。<br>
+<strong>Problem: Overly strict memory protection may limit inter-process
+communication and sharing.</strong><br>
+• <strong>解决方法：</strong><br>
+◦ 使用共享内存段和访问控制机制，在保护的同时支持共享。<br>
+<strong>Solutions: Use shared memory segments and access control
+mechanisms to support sharing while ensuring protection.</strong></p>
+<hr>
+<h4 id="总结"><strong>9. 总结</strong></h4>
+<p>• <strong>内存管理的目标：</strong><br>
+• 支持多道程序设计，提高资源利用率。<br>
+<strong>Support multiprogramming to improve resource
+utilization.</strong><br>
+• 提供方便的用户接口，隐藏硬件细节。<br>
+<strong>Provide a user-friendly interface, hiding hardware
+details.</strong><br>
+• 解决程序空间大于内存空间的问题，支持虚拟内存。<br>
+<strong>Solve the problem of program space exceeding memory space,
+supporting virtual memory.</strong><br>
+• 确保内存的安全性、灵活性和高效性。<br>
+<strong>Ensure memory security, flexibility, and
+efficiency.</strong></p>
+<p>• <strong>内存管理的任务：</strong><br>
+• 内存分配与释放、地址重定位、内存共享与保护、内存扩展。<br>
+<strong>Memory allocation and freeing, address relocation, memory
+sharing and protection, memory expansion.</strong></p>
+<p>• <strong>内存管理的挑战：</strong><br>
+• 内存碎片、虚拟内存性能开销、内存保护与共享的平衡。<br>
+<strong>Memory fragmentation, performance overhead of virtual memory,
+balancing memory protection and sharing.</strong></p>
+<p>• <strong>优化方向：</strong><br>
+• 使用硬件加速、优化页面置换算法、改进内存分配策略。<br>
+<strong>Optimization directions: Use hardware acceleration, optimize
+page replacement algorithms, improve memory allocation
+strategies.</strong></p>
+<h3 id="内存管理的演进从无内存抽象到多程序并发运行"><strong>内存管理的演进：从无内存抽象到多程序并发运行</strong></h3>
+<p>以下是对内存管理的进一步讲解，涵盖无内存抽象、多程序并发运行的挑战与解决方案，以及早期硬件支持的保护机制和重定位技术。</p>
+<hr>
+<h4 id="无内存抽象no-memory-abstraction"><strong>7. 无内存抽象（No
+Memory Abstraction）</strong></h4>
+<p>• <strong>定义：</strong><br>
+<strong>Definition:</strong><br>
+•
+在无内存抽象的情况下，程序直接访问物理内存，操作系统不提供任何内存隔离或管理机制。<br>
+<strong>In the absence of memory abstraction, programs directly access
+physical memory, and the operating system provides no memory isolation
+or management mechanisms.</strong></p>
+<p>• <strong>特点：</strong><br>
+<strong>Characteristics:</strong><br>
+1. <strong>简单性：</strong><br>
+◦ 程序直接操作物理内存，操作系统无需复杂的内存管理逻辑。<br>
+<strong>Simplicity: Programs directly manipulate physical memory, and
+the operating system does not require complex memory management
+logic.</strong><br>
+2. <strong>局限性：</strong><br>
+◦ <strong>无法运行多个程序：</strong><br>
+◦ 多个程序无法同时驻留在内存中，因为它们会相互干扰。<br>
+<strong>Cannot run multiple programs: Multiple programs cannot reside in
+memory simultaneously because they interfere with each
+other.</strong><br>
+◦ <strong>安全性差：</strong><br>
+◦ 程序可以直接访问其他程序的内存，可能导致数据破坏或系统崩溃。<br>
+<strong>Poor security: Programs can directly access the memory of other
+programs, potentially causing data corruption or system
+crashes.</strong></p>
+<p>• <strong>内存组织方式：</strong><br>
+<strong>Memory Organization:</strong><br>
+• <strong>单程序模式：</strong><br>
+◦ 内存完全分配给一个程序，操作系统不驻留在内存中。<br>
+<strong>Single Program Mode: Memory is fully allocated to one program,
+and the operating system is not resident in memory.</strong><br>
+• <strong>操作系统与程序共存：</strong><br>
+◦ 操作系统驻留在内存的一部分，程序运行在另一部分。<br>
+<strong>Operating System and Program Coexistence: The operating system
+resides in one part of memory, while the program runs in another
+part.</strong></p>
+<hr>
+<h4 id="多程序并发运行multiple-programs-in-memory"><strong>8.
+多程序并发运行（Multiple Programs in Memory）</strong></h4>
+<p>• <strong>目标：</strong><br>
+<strong>Goals:</strong><br>
+• 允许多个程序同时驻留在内存中运行，而不会相互干扰。<br>
+<strong>Allow multiple programs to reside in memory and run
+simultaneously without interfering with each other.</strong></p>
+<p>• <strong>需要解决的两个问题：</strong><br>
+<strong>Two Problems to Solve:</strong><br>
+1. <strong>保护（Protection）：</strong><br>
+◦ 如何防止进程之间相互干扰？<br>
+<strong>How does the system prevent processes from interfering with each
+other?</strong><br>
+2. <strong>重定位（Relocation）：</strong><br>
+◦
+进程可能不会被加载到主内存的相同区域，如何让任务或进程在主内存的不同位置运行？<br>
+<strong>How does a task or process run in different locations in main
+memory when it may not be loaded into the same region?</strong></p>
+<hr>
+<h4 id="无内存抽象下的多程序运行multiple-programs-without-memory-abstraction"><strong>9.
+无内存抽象下的多程序运行（Multiple Programs without Memory
+Abstraction）</strong></h4>
+<p>• <strong>早期解决方案：</strong><br>
+<strong>Early Solutions:</strong><br>
+• 通过引入特殊硬件，可以实现多个程序的并发运行。<br>
+<strong>With the addition of some special hardware, it is possible to
+run multiple programs concurrently.</strong></p>
+<p>• <strong>早期 IBM 360 的保护机制：</strong><br>
+<strong>Protection Mechanism of Early IBM 360:</strong><br>
+1. <strong>内存分块：</strong><br>
+◦ 将内存划分为 2 KB 的块。<br>
+<strong>Divide memory into 2 KB blocks.</strong><br>
+2. <strong>保护键（Protection Key）：</strong><br>
+◦ 每个块分配一个 4 位的保护键，存储在 CPU 的特殊寄存器中。<br>
+<strong>Assign each block a 4-bit protection key, stored in special
+registers of the CPU.</strong><br>
+3. <strong>进程保护键：</strong><br>
+◦ 每个进程也有一个保护键值，存储在程序状态字（PSW）中。<br>
+<strong>Each process also has a protection key value associated with it,
+stored in the Program Status Word (PSW).</strong><br>
+4. <strong>访问控制：</strong><br>
+◦ 当进程访问内存时，比较内存块的保护键与 PSW 中的键值。<br>
+<strong>When a process accesses memory, compare the protection key of
+the memory block with the key in the PSW.</strong></p>
+<p>• <strong>早期 IBM 360 的重定位问题：</strong><br>
+<strong>Relocation Problem of Early IBM 360:</strong><br>
+• <strong>问题描述：</strong><br>
+◦
+如果两个程序分别运行在内存中，可能会因为直接引用物理地址而导致错误。<br>
+<strong>Problem Description: If two programs run in memory, they may
+cause errors by directly referencing physical addresses.</strong><br>
+• <strong>示例：</strong><br>
+◦ 程序 A 和程序 B 各占 16 KB 内存。<br>
+◦ 当程序 A 运行结束后，操作系统加载程序 B。<br>
+◦ 如果程序 A 和程序 B 的代码中引用了相同的物理地址（如
+<code>JMP 28</code>），则会导致错误。<br>
+<strong>Example:</strong><br>
+▪ Programs A and B each occupy 16 KB of memory.<br>
+▪ When program A finishes, the operating system loads program B.<br>
+▪ If both programs reference the same physical address (e.g.,
+<code>JMP 28</code>), an error occurs.</p>
+<hr>
+<h4 id="静态重定位static-relocation"><strong>10. 静态重定位（Static
+Relocation）</strong></h4>
+<p>• <strong>定义：</strong><br>
+<strong>Definition:</strong><br>
+• 在加载进程时，将程序中的逻辑地址静态地修改为物理地址。<br>
+<strong>Modify the logical addresses in a program statically to physical
+addresses when loading the process.</strong></p>
+<p>• <strong>工作原理：</strong><br>
+<strong>How It Works:</strong><br>
+• 假设程序 A 被加载到内存的基地址为 0，程序 B 被加载到内存的基地址为
+16,384（16 KB）。<br>
+◦ 如果程序 B 中的指令 <code>JMP 28</code> 需要跳转到地址 28 + 16,384 =
+16,412，则在加载时将地址 28 修改为 16,412。<br>
+<strong>If program B contains an instruction <code>JMP 28</code> that
+needs to jump to address 28 + 16,384 = 16,412, the address 28 is
+modified to 16,412 during loading.</strong></p>
+<p>• <strong>优点：</strong><br>
+<strong>Advantages:</strong><br>
+1. <strong>无需硬件支持：</strong><br>
+◦ 静态重定位完全由软件完成，不需要额外的硬件机制。<br>
+<strong>No hardware support required: Static relocation is entirely
+software-based and does not require additional hardware
+mechanisms.</strong></p>
+<p>• <strong>缺点：</strong><br>
+<strong>Disadvantages:</strong><br>
+1. <strong>加载速度慢：</strong><br>
+◦ 每次加载程序时都需要修改地址，增加了加载时间。<br>
+<strong>Slow loading: Addresses need to be modified during each program
+load, increasing loading time.</strong><br>
+2. <strong>无法动态移动：</strong><br>
+◦
+一旦程序被加载到内存中，其代码或数据无法在不重新加载的情况下移动到其他内存位置。<br>
+<strong>Cannot be dynamically moved: Once a program is loaded into
+memory, its code or data cannot be moved to another memory location
+without reloading.</strong><br>
+3. <strong>地址区分复杂：</strong><br>
+◦ 加载器需要区分地址和常量，增加了实现的复杂性。<br>
+<strong>Complex address distinction: The loader needs a way to
+distinguish between addresses and constants, increasing implementation
+complexity.</strong><br>
+◦ <strong>示例：</strong><br>
+◦ 指令 <code>MOVE REGISTER1, 28</code> 中的 <code>28</code>
+是常量还是地址？<br>
+<strong>Example:</strong><br>
+▪ Is <code>28</code> in the instruction <code>MOVE REGISTER1, 28</code>
+a constant or an address?</p>
+<hr>
+<h4 id="动态重定位dynamic-relocation"><strong>11. 动态重定位（Dynamic
+Relocation）</strong></h4>
+<p>• <strong>定义：</strong><br>
+<strong>Definition:</strong><br>
+• 在程序运行时，通过硬件机制动态地将逻辑地址转换为物理地址。<br>
+<strong>Dynamically convert logical addresses to physical addresses
+during program execution through hardware mechanisms.</strong></p>
+<p>• <strong>实现方式：</strong><br>
+<strong>Implementation:</strong><br>
+1. <strong>基址寄存器（Base Register）：</strong><br>
+◦ 每个进程有一个基址寄存器，存储进程在内存中的起始地址。<br>
+<strong>Each process has a base register that stores the starting
+address of the process in memory.</strong><br>
+2. <strong>界限寄存器（Limit Register）：</strong><br>
+◦ 每个进程有一个界限寄存器，存储进程在内存中的结束地址。<br>
+<strong>Each process has a limit register that stores the ending address
+of the process in memory.</strong><br>
+3. <strong>地址转换：</strong><br>
+◦ 当进程访问内存时，逻辑地址加上基址寄存器的值，得到物理地址。<br>
+<strong>When a process accesses memory, the logical address is added to
+the value in the base register to obtain the physical
+address.</strong><br>
+◦ 如果逻辑地址超出界限寄存器的范围，则触发错误。<br>
+<strong>If the logical address exceeds the range of the limit register,
+an error is triggered.</strong></p>
+<p>• <strong>优点：</strong><br>
+<strong>Advantages:</strong><br>
+1. <strong>支持动态加载：</strong><br>
+◦ 程序可以在内存中动态移动，而无需重新加载。<br>
+<strong>Supports dynamic loading: Programs can be dynamically moved in
+memory without reloading.</strong><br>
+2. <strong>提高灵活性：</strong><br>
+◦ 允许多个程序共享内存，提高资源利用率。<br>
+<strong>Improves flexibility: Allows multiple programs to share memory,
+improving resource utilization.</strong></p>
+<p>• <strong>缺点：</strong><br>
+<strong>Disadvantages:</strong><br>
+1. <strong>硬件依赖：</strong><br>
+◦ 动态重定位需要基址寄存器和界限寄存器的支持，增加了硬件复杂性。<br>
+<strong>Hardware dependency: Dynamic relocation requires base and limit
+registers, increasing hardware complexity.</strong><br>
+2. <strong>性能开销：</strong><br>
+◦ 每次访问内存时都需要进行地址转换，可能带来额外的性能开销。<br>
+<strong>Performance overhead: Address conversion is required for each
+memory access, potentially introducing additional performance
+overhead.</strong></p>
+<hr>
+<h4 id="内存管理的演进总结"><strong>12. 内存管理的演进总结</strong></h4>
+<p>• <strong>无内存抽象：</strong><br>
+• 简单但无法支持多程序运行，安全性差。<br>
+<strong>Simple but cannot support multi-programming and has poor
+security.</strong></p>
+<p>• <strong>静态重定位：</strong><br>
+• 解决了多程序运行的基本问题，但加载速度慢且无法动态移动程序。<br>
+<strong>Solves basic problems of multi-programming but has slow loading
+and cannot dynamically move programs.</strong></p>
+<p>• <strong>动态重定位：</strong><br>
+• 提供了更高的灵活性和性能，但需要硬件支持并带来一定的性能开销。<br>
+<strong>Provides higher flexibility and performance but requires
+hardware support and introduces some performance overhead.</strong></p>
+<p>• <strong>现代内存管理：</strong><br>
+•
+结合虚拟内存、分页、分段等技术，进一步优化了内存利用率和系统性能。<br>
+<strong>Modern memory management combines virtual memory, paging,
+segmentation, etc., to further optimize memory utilization and system
+performance.</strong></p>
+<hr>
+<h3 id="地址空间address-spaces"><strong>地址空间（Address
+Spaces）</strong></h3>
+<p>以下是对地址空间的简要讲解，包括其定义、作用、地址绑定、动态重定位以及硬件支持的实现。</p>
+<hr>
+<h4 id="地址空间的背景与需求"><strong>13.
+地址空间的背景与需求</strong></h4>
+<p>• <strong>内存的多道程序设计需求：</strong><br>
+<strong>Memory Needs for Multiprogramming:</strong><br>
+1. <strong>保护（Protection）：</strong><br>
+◦
+系统需要防止进程之间相互干扰，确保每个进程只能访问自己的内存区域。<br>
+<strong>The system needs to prevent processes from interfering with each
+other, ensuring that each process can only access its own memory
+area.</strong><br>
+2. <strong>重定位（Relocation）：</strong><br>
+◦
+进程可能需要加载到主内存的不同位置，系统需要支持进程在不同内存位置运行。<br>
+<strong>Processes may need to be loaded into different locations in main
+memory, and the system needs to support running processes in different
+memory locations.</strong></p>
+<p>• <strong>更好的解决方案：地址空间（Address Space）：</strong><br>
+<strong>A Better Solution: Address Space:</strong><br>
+•
+地址空间提供了一种逻辑上的内存管理方式，解决了保护和重定位的问题。<br>
+<strong>Address space provides a logical way to manage memory, solving
+the problems of protection and relocation.</strong></p>
+<hr>
+<h4 id="地址空间的定义与特点"><strong>14.
+地址空间的定义与特点</strong></h4>
+<p>• <strong>地址空间的定义：</strong><br>
+<strong>Definition of Address Space:</strong><br>
+• 地址空间是进程可以用来访问内存的一组地址。<br>
+<strong>An address space is a set of addresses that a process can use to
+access memory.</strong></p>
+<p>• <strong>特点：</strong><br>
+<strong>Characteristics:</strong><br>
+1. <strong>独立性：</strong><br>
+◦ 每个进程都有自己独立的地址空间，与其他进程的地址空间隔离。<br>
+<strong>Independence: Each process has its own independent address
+space, isolated from the address spaces of other
+processes.</strong><br>
+2. <strong>逻辑地址与虚拟地址：</strong><br>
+◦ 地址空间中的地址是逻辑地址（Logical Address），也称为虚拟地址（Virtual
+Address）。<br>
+<strong>Logical and Virtual Addresses: Addresses in the address space
+are logical addresses, also known as virtual addresses.</strong></p>
+<p>• <strong>地址绑定（Address Binding）：</strong><br>
+<strong>Address Binding:</strong><br>
+•
+将程序中的逻辑地址与物理内存地址关联的过程称为地址绑定，也称为重定位（Relocation）。<br>
+<strong>The process of associating logical addresses in a program with
+physical memory addresses is called address binding, or
+relocation.</strong></p>
+<hr>
+<h4 id="动态重定位与硬件支持"><strong>15.
+动态重定位与硬件支持</strong></h4>
+<p>• <strong>动态重定位的定义：</strong><br>
+<strong>Definition of Dynamic Relocation:</strong><br>
+• 动态重定位将每个进程的地址空间映射到物理内存的不同部分。<br>
+<strong>Dynamic relocation maps each process's address space to
+different parts of physical memory.</strong></p>
+<p>• <strong>物理地址空间：</strong><br>
+<strong>Physical Address Space:</strong><br>
+• 物理地址空间的范围为 <span class="math inline">\(R+0\)</span> 到 <span class="math inline">\(R+\text{max}\)</span>，其中 <span class="math inline">\(R\)</span> 是基址值。<br>
+<strong>The range of the physical address space is <span class="math inline">\(R+0\)</span> to <span class="math inline">\(R+\text{max}\)</span>, where <span class="math inline">\(R\)</span> is the base value.</strong></p>
+<p>• <strong>物理地址与真实地址：</strong><br>
+<strong>Physical and Real Addresses:</strong><br>
+• 物理地址（Physical
+Address）是内存中实际的硬件地址，也称为真实地址（Real Address）。<br>
+<strong>Physical addresses are the actual hardware addresses in memory,
+also known as real addresses.</strong></p>
+<p>• <strong>硬件支持：</strong><br>
+<strong>Hardware Support:</strong><br>
+1. <strong>基址寄存器（Base Register）：</strong><br>
+◦ 存储进程地址空间的起始位置。<br>
+<strong>Stores the starting location of the process's address
+space.</strong><br>
+2. <strong>界限寄存器（Limit Register）：</strong><br>
+◦ 存储进程地址空间的大小限制。<br>
+<strong>Stores the size limit of the process's address
+space.</strong></p>
+<p>• <strong>工作原理：</strong><br>
+<strong>How It Works:</strong><br>
+• 当进程访问逻辑地址时，CPU
+将逻辑地址加上基址寄存器的值，生成物理地址。<br>
+<strong>When a process accesses a logical address, the CPU adds the
+logical address to the value in the base register to generate the
+physical address.</strong><br>
+• 如果逻辑地址超出界限寄存器的范围，则触发错误。<br>
+<strong>If the logical address exceeds the range of the limit register,
+an error is triggered.</strong></p>
+<hr>
+<h3 id="总结-1"><strong>总结</strong></h3>
+<p>• <strong>地址空间的作用：</strong><br>
+• 提供了进程间的内存隔离，解决了保护和重定位问题。<br>
+<strong>Provides memory isolation between processes, solving protection
+and relocation problems.</strong></p>
+<p>• <strong>动态重定位的优势：</strong><br>
+• 支持进程在内存中的灵活加载和运行，提高了内存利用率。<br>
+<strong>Supports flexible loading and running of processes in memory,
+improving memory utilization.</strong></p>
+<p>• <strong>硬件支持的必要性：</strong><br>
+• 基址寄存器和界限寄存器是实现动态重定位的关键硬件机制。<br>
+**Base and limit registers are key hardware mechanisms for implementing
+dynamic relocation.</p>
+<h3 id="基址寄存器与界限寄存器base-and-limit-registers"><strong>基址寄存器与界限寄存器（Base
+and Limit Registers）</strong></h3>
+<p>以下是对基址寄存器和界限寄存器的详细讲解，包括其工作原理、示例、优点和缺点。</p>
+<hr>
+<h4 id="基址寄存器与界限寄存器的工作原理"><strong>16.
+基址寄存器与界限寄存器的工作原理</strong></h4>
+<p>• <strong>硬件组成：</strong><br>
+<strong>Hardware Components:</strong><br>
+• <strong>基址寄存器（Base Register, BA）：</strong><br>
+◦ 存储进程地址空间的起始物理地址。<br>
+<strong>Stores the starting physical address of the process's address
+space.</strong><br>
+• <strong>界限寄存器（Limit Register, LA）：</strong><br>
+◦ 存储进程地址空间的大小（或结束地址）。<br>
+<strong>Stores the size (or ending address) of the process's address
+space.</strong></p>
+<p>• <strong>地址转换过程：</strong><br>
+<strong>Address Translation Process:</strong></p>
+<ol type="1">
+<li>CPU 生成逻辑地址（Logical Address, LA）。<br>
+<strong>The CPU generates a logical address (LA).</strong><br>
+</li>
+<li>CPU 将逻辑地址与基址寄存器的值相加，生成物理地址（Physical Address,
+PA）。<br>
+<strong>The CPU adds the logical address to the value in the base
+register to generate the physical address (PA).</strong><br>
+<span class="math display">\[
+PA = LA + BA
+\]</span></li>
+<li>CPU 检查逻辑地址是否超出界限寄存器的范围：<br>
+◦ 如果 <span class="math inline">\(LA &lt; \text{Limit
+Register}\)</span>，则访问合法，继续执行。<br>
+◦ 如果 <span class="math inline">\(LA \geq \text{Limit
+Register}\)</span>，则触发错误（Fault）。<br>
+<strong>If <span class="math inline">\(LA &lt; \text{Limit
+Register}\)</span>, the access is valid and execution
+continues.</strong><br>
+<strong>If <span class="math inline">\(LA \geq \text{Limit
+Register}\)</span>, an error (Fault) is triggered.</strong></li>
+</ol>
+<p>• <strong>示意图：</strong><br>
+<strong>Diagram:</strong><br>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">CPU</span><br><span class="line">|</span><br><span class="line">Logical Address (LA)</span><br><span class="line">|</span><br><span class="line">+-------------------+</span><br><span class="line">| Base Register (BA)|  --&gt; PA = LA + BA</span><br><span class="line">+-------------------+</span><br><span class="line">|</span><br><span class="line">Physical Address (PA)</span><br><span class="line">|</span><br><span class="line">&lt;-------------------+</span><br><span class="line">| Limit Register    |  --&gt; Check: LA &lt; Limit?</span><br><span class="line">+-------------------+</span><br><span class="line">|</span><br><span class="line">Fault (if LA &gt;= Limit)</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h4 id="基址寄存器与界限寄存器的示例"><strong>17.
+基址寄存器与界限寄存器的示例</strong></h4>
+<p>• <strong>示例场景：</strong><br>
+<strong>Example Scenario:</strong><br>
+• 假设有两个程序，每个程序占用 16 KB 内存。<br>
+<strong>Assume there are two programs, each occupying 16 KB of
+memory.</strong></p>
+<p>• <strong>程序 1 的地址空间：</strong><br>
+<strong>Address Space of Program 1:</strong><br>
+• 基址寄存器（BA）：0<br>
+• 界限寄存器（LA）：16,384（16 KB）<br>
+<strong>Base Register (BA): 0</strong><br>
+<strong>Limit Register (LA): 16,384 (16 KB)</strong></p>
+<p>• <strong>程序 2 的地址空间：</strong><br>
+<strong>Address Space of Program 2:</strong><br>
+• 基址寄存器（BA）：16,384<br>
+• 界限寄存器（LA）：32,768（16 KB）<br>
+<strong>Base Register (BA): 16,384</strong><br>
+<strong>Limit Register (LA): 32,768 (16 KB)</strong></p>
+<p>• <strong>工作过程：</strong><br>
+<strong>Working Process:</strong><br>
+• 当程序 1 访问逻辑地址 <span class="math inline">\(x\)</span>
+时，物理地址为 <span class="math inline">\(PA = x + 0\)</span>。<br>
+◦ 如果 <span class="math inline">\(x \geq
+16,384\)</span>，触发错误。<br>
+<strong>When Program 1 accesses logical address <span class="math inline">\(x\)</span>, the physical address is <span class="math inline">\(PA = x + 0\)</span>.</strong><br>
+<strong>If <span class="math inline">\(x \geq 16,384\)</span>, an error
+is triggered.</strong><br>
+• 当程序 2 访问逻辑地址 <span class="math inline">\(y\)</span>
+时，物理地址为 <span class="math inline">\(PA = y +
+16,384\)</span>。<br>
+◦ 如果 <span class="math inline">\(y \geq
+16,384\)</span>，触发错误。<br>
+<strong>When Program 2 accesses logical address <span class="math inline">\(y\)</span>, the physical address is <span class="math inline">\(PA = y + 16,384\)</span>.</strong><br>
+<strong>If <span class="math inline">\(y \geq 16,384\)</span>, an error
+is triggered.</strong></p>
+<hr>
+<h4 id="动态重定位的优点与缺点"><strong>18.
+动态重定位的优点与缺点</strong></h4>
+<p>• <strong>优点：</strong><br>
+<strong>Advantages:</strong><br>
+1. <strong>支持进程迁移：</strong><br>
+◦ 操作系统可以在运行时轻松地将进程移动到内存的其他位置。<br>
+<strong>The operating system can easily move processes to other
+locations in memory during execution.</strong><br>
+◦ 只需更新基址寄存器的值即可完成迁移。<br>
+<strong>Only the value of the base register needs to be updated to
+complete the migration.</strong><br>
+2. <strong>支持进程增长：</strong><br>
+◦ 操作系统可以通过调整界限寄存器的值，允许进程动态增长。<br>
+<strong>The operating system can allow processes to grow dynamically by
+adjusting the value of the limit register.</strong><br>
+3. <strong>硬件简单：</strong><br>
+◦
+只需要两个特殊寄存器（基址寄存器和界限寄存器）以及加法和比较操作。<br>
+<strong>The hardware is simple: only two special registers (base and
+limit registers) and addition and comparison operations are
+required.</strong></p>
+<p>• <strong>缺点：</strong><br>
+<strong>Disadvantages:</strong><br>
+1. <strong>性能开销：</strong><br>
+◦ 每次访问内存时都需要进行加法和比较操作，降低了性能。<br>
+<strong>Every memory access requires addition and comparison operations,
+reducing performance.</strong><br>
+2. <strong>无法共享内存：</strong><br>
+◦ 每个进程有独立的地址空间，无法直接共享内存。<br>
+<strong>Each process has an independent address space and cannot
+directly share memory.</strong><br>
+3. <strong>受限于物理内存：</strong><br>
+◦ 进程的地址空间大小受限于物理内存的大小。<br>
+<strong>The size of the process's address space is limited by the size
+of the physical memory.</strong><br>
+4. <strong>内存管理复杂性：</strong><br>
+◦ 动态重定位增加了内存管理的复杂性，尤其是在多进程环境下。<br>
+<strong>Dynamic relocation increases the complexity of memory
+management, especially in multi-process environments.</strong></p>
+<hr>
+<h3 id="总结-2"><strong>总结</strong></h3>
+<p>• <strong>基址寄存器与界限寄存器的作用：</strong><br>
+• 提供了一种简单的动态重定位机制，支持进程的地址空间隔离和保护。<br>
+<strong>Provide a simple dynamic relocation mechanism, supporting
+address space isolation and protection for processes.</strong></p>
+<p>• <strong>动态重定位的优点：</strong><br>
+• 支持进程迁移和增长，硬件实现简单。<br>
+<strong>Supports process migration and growth, with simple hardware
+implementation.</strong></p>
+<p>• <strong>动态重定位的缺点：</strong><br>
+• 性能开销较大，无法共享内存，受限于物理内存大小。<br>
+<strong>High performance overhead, inability to share memory, and
+limitation by physical memory size.</strong></p>
+<hr>
+<h3 id="改进方向"><strong>改进方向</strong></h3>
+<p>• <strong>虚拟内存技术：</strong><br>
+• 通过虚拟内存技术，可以解决物理内存限制和进程间共享内存的问题。<br>
+<strong>Virtual memory technology can solve the problems of physical
+memory limitations and inter-process memory sharing.</strong></p>
+<p>• <strong>分页与分段机制：</strong><br>
+• 结合分页和分段机制，可以更高效地管理内存，减少碎片化问题。<br>
+<strong>Combining paging and segmentation mechanisms can manage memory
+more efficiently and reduce fragmentation.</strong></p>
+<hr>
+<h3 id="交换swapping与内存管理"><strong>交换（Swapping）与内存管理</strong></h3>
+<p>以下是对交换（Swapping）的详细讲解，包括其定义、作用、动态内存分配、进程增长的处理、内存碎片问题以及解决方案。</p>
+<hr>
+<h4 id="交换的基本概念"><strong>19. 交换的基本概念</strong></h4>
+<p>• <strong>背景问题：</strong><br>
+<strong>Background Problem:</strong><br>
+• 当系统中运行的程序总大小超过物理内存容量时，如何有效管理内存？<br>
+<strong>When the total size of programs exceeds the physical memory
+capacity, how to manage memory effectively?</strong></p>
+<p>• <strong>交换的定义：</strong><br>
+<strong>Definition of Swapping:</strong><br>
+• <strong>交换（Swapping）：</strong>
+将整个进程从磁盘加载到内存中运行一段时间，然后将其移回磁盘以腾出内存空间。<br>
+<strong>Swapping: Bringing the whole process into memory, running it for
+a while, and then moving it back to disk to free up memory
+space.</strong></p>
+<p>• <strong>虚拟内存的对比：</strong><br>
+<strong>Comparison with Virtual Memory:</strong><br>
+• <strong>虚拟内存（Virtual Memory）：</strong>
+允许程序在仅部分加载到主内存的情况下运行，通过分页或分段机制实现。<br>
+<strong>Virtual Memory: Allows programs to run even when they are only
+partially in main memory, using paging or segmentation
+mechanisms.</strong></p>
+<p>• <strong>交换的优势：</strong><br>
+<strong>Advantages of Swapping:</strong><br>
+• 允许多个进程共享内存分区，提高内存利用率。<br>
+<strong>Allows multiple processes to share memory partitions, improving
+memory utilization.</strong></p>
+<hr>
+<h4 id="交换的内存分配变化"><strong>20. 交换的内存分配变化</strong></h4>
+<p>• <strong>动态内存分配：</strong><br>
+<strong>Dynamic Memory Allocation:</strong><br>
+•
+当进程进入内存时，分配足够的内存空间；如果内存不足，则进程等待在磁盘上。<br>
+<strong>When a process enters memory, allocate sufficient space; if
+memory is insufficient, the process waits on disk.</strong></p>
+<p>• <strong>内存分配示意图：</strong><br>
+<strong>Memory Allocation Diagram:</strong><br>
+• 内存中的阴影区域表示未使用的内存。<br>
+<strong>The shaded areas in memory represent unused memory.</strong></p>
+<hr>
+<h4 id="进程增长的挑战"><strong>21. 进程增长的挑战</strong></h4>
+<p>• <strong>问题描述：</strong><br>
+<strong>Problem Description:</strong><br>
+•
+如果大多数进程在运行时会增长（如动态分配内存），如何处理内存分配问题？<br>
+<strong>If most processes grow during execution (e.g., dynamic memory
+allocation), how to handle memory allocation?</strong></p>
+<p>• <strong>解决方案：</strong><br>
+<strong>Solutions:</strong></p>
+<ol type="1">
+<li><strong>交换进程：</strong><br>
+◦ 将增长的内存进程交换到更大的内存分区中。<br>
+<strong>Swap out the growing process and swap it back into a larger
+memory partition.</strong><br>
+</li>
+<li><strong>问题：</strong><br>
+◦ 频繁的交换操作会导致性能下降，因为磁盘 I/O 操作较慢。<br>
+<strong>Problem: Frequent swapping operations can lead to performance
+degradation due to slow disk I/O.</strong></li>
+</ol>
+<hr>
+<h4 id="进程增长的解决方案"><strong>22. 进程增长的解决方案</strong></h4>
+<p>• <strong>动态分配空间：</strong><br>
+<strong>Dynamic Space Allocation:</strong><br>
+• <strong>数据段增长：</strong><br>
+◦ 为增长的数据段分配额外的内存空间。<br>
+<strong>Allocate additional memory space for the growing data
+segment.</strong><br>
+• <strong>栈增长：</strong><br>
+◦ 为增长的栈和数据段分配额外的内存空间。<br>
+<strong>Allocate additional memory space for the growing stack and data
+segment.</strong></p>
+<p>• <strong>内存分配示意图：</strong><br>
+<strong>Memory Allocation Diagrams:</strong><br>
+• (a) 数据段增长的内存分配。<br>
+<strong>(a) Memory allocation for growing data segment.</strong><br>
+• (b) 栈和数据段同时增长的内存分配。<br>
+<strong>(b) Memory allocation for growing stack and data
+segment.</strong></p>
+<hr>
+<h4 id="内存碎片问题"><strong>23. 内存碎片问题</strong></h4>
+<p>• <strong>内存碎片的产生：</strong><br>
+<strong>Memory Fragmentation:</strong><br>
+•
+随着进程的交换和释放，内存中会出现许多不连续的小块空闲内存（碎片）。<br>
+<strong>As processes are swapped in and out, many small, non-contiguous
+free memory blocks (fragments) appear in memory.</strong></p>
+<p>• <strong>内存碎片的影响：</strong><br>
+<strong>Impact of Memory Fragmentation:</strong><br>
+• 碎片化导致无法分配大块连续内存，即使总空闲内存足够。<br>
+<strong>Fragmentation prevents the allocation of large contiguous memory
+blocks, even if the total free memory is sufficient.</strong></p>
+<p>• <strong>内存碎片示意图：</strong><br>
+<strong>Memory Fragmentation Diagram:</strong><br>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Before Compaction:</span><br><span class="line">Operating System: 128 KB</span><br><span class="line">Process 1: 320 KB</span><br><span class="line">Free: 576 KB (fragmented)</span><br><span class="line">Process 2: 224 KB</span><br><span class="line">Free: 288 KB (fragmented)</span><br><span class="line">Process 3: 224 KB</span><br><span class="line">Free: 64 KB (fragmented)</span><br><span class="line"></span><br><span class="line">After Compaction:</span><br><span class="line">Operating System: 128 KB</span><br><span class="line">Free: 640 KB (contiguous)</span><br><span class="line">Process 1: 320 KB</span><br><span class="line">Process 2: 224 KB</span><br><span class="line">Process 3: 288 KB</span><br></pre></td></tr></table></figure></p>
+<p>• <strong>解决方案：</strong><br>
+<strong>Solutions:</strong><br>
+1. <strong>内存压缩（Memory Compaction）：</strong><br>
+◦ 将所有进程移动到内存的一端，将碎片合并为一个大的连续空闲区域。<br>
+<strong>Move all processes to one end of memory and merge fragments into
+a large contiguous free area.</strong><br>
+2. <strong>问题：</strong><br>
+◦ 内存压缩需要额外的 CPU 时间，可能影响系统性能。<br>
+<strong>Memory compaction requires additional CPU time and may affect
+system performance.</strong></p>
+<hr>
+<h3 id="交换与虚拟内存的对比"><strong>交换与虚拟内存的对比</strong></h3>
+<table>
+<colgroup>
+<col style="width: 9%">
+<col style="width: 45%">
+<col style="width: 45%">
+</colgroup>
+<thead>
+<tr>
+<th><strong>特性</strong></th>
+<th><strong>交换（Swapping）</strong></th>
+<th><strong>虚拟内存（Virtual Memory）</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>定义</strong></td>
+<td>将整个进程加载到内存中运行一段时间，然后移回磁盘。</td>
+<td>允许程序仅加载部分到内存中运行，通过分页或分段机制实现。</td>
+</tr>
+<tr>
+<td><strong>优点</strong></td>
+<td>- 简单易实现。<br>- 提高内存利用率，允许多个进程共享内存。</td>
+<td>- 支持更大的地址空间。<br>- 提高内存利用率，减少内存浪费。<br>-
+支持进程的部分加载和运行。</td>
+</tr>
+<tr>
+<td><strong>缺点</strong></td>
+<td>- 频繁交换导致性能下降。<br>- 无法支持部分加载。<br>-
+内存碎片问题严重。</td>
+<td>- 需要硬件支持（如页表、TLB）。<br>-
+页面置换算法可能导致性能波动（如 Belady 异常）。</td>
+</tr>
+<tr>
+<td><strong>适用场景</strong></td>
+<td>- 早期操作系统或资源受限的环境。</td>
+<td>- 现代操作系统，支持多任务和高性能需求。</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="内存管理的改进方向"><strong>内存管理的改进方向</strong></h3>
+<p>• <strong>虚拟内存的引入：</strong><br>
+•
+通过分页（Paging）和分段（Segmentation）机制，解决交换中的性能问题和内存碎片问题。<br>
+<strong>Introduce virtual memory with paging and segmentation mechanisms
+to solve the performance and fragmentation issues of
+swapping.</strong></p>
+<p>• <strong>内存压缩优化：</strong><br>
+• 使用更高效的内存压缩算法，减少压缩操作对系统性能的影响。<br>
+<strong>Optimize memory compaction algorithms to reduce the performance
+impact of compaction operations.</strong></p>
+<p>• <strong>动态内存分配策略：</strong><br>
+• 使用更智能的内存分配策略（如伙伴系统、SLAB
+分配器）来减少碎片化。<br>
+<strong>Use smarter memory allocation strategies (e.g., buddy system,
+SLAB allocator) to reduce fragmentation.</strong></p>
+<hr>
+<h3 id="总结-3"><strong>总结</strong></h3>
+<p>• <strong>交换的核心思想：</strong><br>
+•
+将进程整体加载到内存中运行一段时间，然后移回磁盘，适合早期资源受限的系统。<br>
+<strong>The core idea of swapping is to load a process entirely into
+memory, run it for a while, and then move it back to disk, suitable for
+early resource-constrained systems.</strong></p>
+<p>• <strong>虚拟内存的优势：</strong><br>
+• 支持部分加载和更大的地址空间，是现代操作系统的主流内存管理方式。<br>
+<strong>Virtual memory supports partial loading and larger address
+spaces, making it the mainstream memory management method in modern
+operating systems.</strong></p>
+<p>• <strong>内存碎片的挑战：</strong><br>
+• 内存碎片会导致内存利用率下降，需要通过压缩或优化分配策略来解决。<br>
+<strong>Memory fragmentation reduces memory utilization and needs to be
+addressed through compaction or optimized allocation
+strategies.</strong></p>
+<p>• <strong>未来方向：</strong><br>
+• 结合虚拟内存、分页、分段等技术，进一步优化内存管理效率。<br>
+<strong>Future directions involve combining virtual memory, paging, and
+segmentation to further optimize memory management
+efficiency.</strong></p>
+<hr>
+<h3 id="内存管理中的紧凑compaction与内存分配跟踪方法"><strong>内存管理中的紧凑（Compaction）与内存分配跟踪方法</strong></h3>
+<p>以下是对内存紧凑（Compaction）、位图（Bitmap）和链表（Linked
+Lists）三种内存管理方法的详细讲解，包括它们的原理、优缺点以及实际应用场景。</p>
+<hr>
+<h4 id="内存紧凑compaction"><strong>26.
+内存紧凑（Compaction）</strong></h4>
+<p>• <strong>定义：</strong><br>
+<strong>Definition:</strong><br>
+•
+内存紧凑是一种通过移动进程来合并内存碎片的技术，生成一个大的连续空闲内存区域。<br>
+<strong>Memory compaction is a technique that moves processes to merge
+memory fragments and create a large contiguous free memory
+area.</strong></p>
+<p>• <strong>假设条件：</strong><br>
+<strong>Assumptions:</strong><br>
+1. 程序是可重定位的（Relocatable），即程序可以在内存中移动。<br>
+<strong>Programs are relocatable, meaning they can be moved in
+memory.</strong><br>
+2. 在紧凑过程中，所有进程必须暂停（Suspended）。<br>
+<strong>All processes must be suspended during compaction.</strong></p>
+<p>• <strong>触发条件：</strong><br>
+<strong>Trigger Condition:</strong><br>
+• 紧凑操作仅在内存碎片非常严重时执行。<br>
+<strong>Compaction is performed only when fragmentation becomes very
+severe.</strong></p>
+<p>• <strong>工作过程：</strong><br>
+<strong>Working Process:</strong><br>
+•
+紧凑操作将所有进程移动到内存的一端，空闲内存被合并为一个大的连续区域。<br>
+<strong>Compaction moves all processes to one end of memory, merging
+free memory into a large contiguous area.</strong></p>
+<p>• <strong>优点：</strong><br>
+<strong>Advantages:</strong><br>
+1. 解决了内存碎片问题，生成大块连续空闲内存。<br>
+<strong>Resolves memory fragmentation and generates large contiguous
+free memory.</strong><br>
+2. 提高了内存分配效率，避免了因碎片化导致的分配失败。<br>
+<strong>Improves memory allocation efficiency and avoids allocation
+failures due to fragmentation.</strong></p>
+<p>• <strong>缺点：</strong><br>
+<strong>Disadvantages:</strong><br>
+1. <strong>性能开销大：</strong><br>
+◦ 紧凑操作需要移动所有进程，消耗大量 CPU 时间。<br>
+<strong>High performance overhead: Compaction requires moving all
+processes, consuming significant CPU time.</strong><br>
+2. <strong>进程暂停：</strong><br>
+◦ 在紧凑过程中，所有进程必须暂停，可能导致系统响应时间变长。<br>
+<strong>Process suspension: All processes must be suspended during
+compaction, potentially increasing system response time.</strong></p>
+<p>• <strong>适用场景：</strong><br>
+<strong>Applicable Scenarios:</strong><br>
+• 内存碎片化严重的早期系统。<br>
+<strong>Early systems with severe memory fragmentation.</strong><br>
+• 现代系统中较少使用，通常通过虚拟内存或其他技术避免碎片化问题。<br>
+<strong>Rarely used in modern systems, which typically avoid
+fragmentation through virtual memory or other techniques.</strong></p>
+<hr>
+<h4 id="内存管理中的跟踪方法"><strong>27.
+内存管理中的跟踪方法</strong></h4>
+<p>• <strong>问题：</strong><br>
+<strong>Problem:</strong><br>
+• 如何跟踪内存的使用情况？<br>
+<strong>How to track memory usage?</strong></p>
+<p>• <strong>两种主要方法：</strong><br>
+<strong>Two Main Methods:</strong><br>
+1. <strong>位图（Bitmap）：</strong><br>
+◦ 使用位图记录每个分配单元的状态（空闲或已分配）。<br>
+<strong>Uses a bitmap to record the status of each allocation unit (free
+or allocated).</strong><br>
+2. <strong>链表（Linked Lists）：</strong><br>
+◦
+使用链表记录每个空闲或已分配的内存段，包括起始地址、长度和指向下一个节点的指针。<br>
+<strong>Uses a linked list to record each free or allocated memory
+segment, including its starting address, length, and a pointer to the
+next node.</strong></p>
+<figure>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/20250506155641.png" alt="img">
+<figcaption aria-hidden="true">img</figcaption>
+</figure>
+<hr>
+<h4 id="位图bitmap"><strong>28. 位图（Bitmap）</strong></h4>
+<p>• <strong>定义：</strong><br>
+<strong>Definition:</strong><br>
+• 内存被划分为固定大小的分配单元（Allocation
+Unit），每个分配单元在位图中用 1 位表示。<br>
+<strong>Memory is divided into fixed-size allocation units, and each
+allocation unit is represented by 1 bit in the bitmap.</strong><br>
+• <strong>0 表示空闲，1 表示已分配。</strong><br>
+<strong>0: Free, 1: Allocated.</strong></p>
+<p>• <strong>优点：</strong><br>
+<strong>Advantages:</strong></p>
+<ol type="1">
+<li><strong>简单高效：</strong><br>
+◦ 位图结构简单，易于实现和管理。<br>
+<strong>Simple and efficient: The bitmap structure is simple and easy to
+implement and manage.</strong><br>
+</li>
+<li><strong>快速查找：</strong><br>
+◦ 可以快速判断某个分配单元是否空闲。<br>
+<strong>Fast lookup: Quickly determine whether an allocation unit is
+free.</strong></li>
+</ol>
+<p>• <strong>缺点：</strong><br>
+<strong>Disadvantages:</strong><br>
+1. <strong>位图大小问题：</strong><br>
+◦ 分配单元越小，位图越大，可能占用大量内存。<br>
+<strong>Bitmap size issue: Smaller allocation units result in a larger
+bitmap, potentially consuming significant memory.</strong><br>
+2. <strong>查找连续空闲单元慢：</strong><br>
+◦ 在位图中查找一段连续的空闲单元（如长度为 <span class="math inline">\(n\)</span>
+的连续空闲区域）是一个缓慢的操作。<br>
+<strong>Slow search for contiguous free units: Searching for a run of
+contiguous free units in the bitmap is a slow operation.</strong></p>
+<p>• <strong>适用场景：</strong><br>
+<strong>Applicable Scenarios:</strong><br>
+• 内存分配单元较大且碎片化不严重的系统。<br>
+<strong>Systems with large allocation units and low
+fragmentation.</strong></p>
+<hr>
+<h4 id="链表linked-lists"><strong>29. 链表（Linked Lists）</strong></h4>
+<p>• <strong>定义：</strong><br>
+<strong>Definition:</strong><br>
+•
+内存管理器维护一个链表，每个节点记录一个空闲段（Hole）或已分配段（Process），包括起始地址、长度和指向下一个节点的指针。<br>
+<strong>The memory manager maintains a linked list, where each node
+records a hole (free segment) or a process (allocated segment),
+including its starting address, length, and a pointer to the next
+node.</strong></p>
+<p>• <strong>链表排序方式：</strong><br>
+<strong>Sorting Methods for the Linked List:</strong><br>
+1. <strong>按地址排序：</strong><br>
+◦ 节点按内存地址顺序排列。<br>
+<strong>Nodes are sorted by memory address.</strong><br>
+2. <strong>按大小排序：</strong><br>
+◦ 节点按空闲段的大小顺序排列。<br>
+<strong>Nodes are sorted by the size of the free segments.</strong></p>
+<p>• <strong>按地址排序的优点：</strong><br>
+<strong>Advantages of Sorting by Address:</strong><br>
+1. <strong>进程终止或交换时更新简单：</strong><br>
+◦ 当一个进程终止或被交换出内存时，更新链表非常直接。<br>
+<strong>Updating the list is straightforward when a process terminates
+or is swapped out.</strong><br>
+2. <strong>适合合并相邻空闲段：</strong><br>
+◦ 按地址排序便于合并相邻的空闲段。<br>
+<strong>Sorting by address facilitates merging adjacent free
+segments.</strong></p>
+<p>• <strong>按大小排序的优点：</strong><br>
+<strong>Advantages of Sorting by Size:</strong><br>
+1. <strong>适合首次适配（First Fit）算法：</strong><br>
+◦ 按大小排序可以更快地找到满足需求的最小空闲段。<br>
+<strong>Sorting by size is suitable for the First Fit algorithm, as it
+can quickly find the smallest free segment that satisfies the
+requirement.</strong></p>
+<p>• <strong>缺点：</strong><br>
+<strong>Disadvantages:</strong></p>
+<ol type="1">
+<li><strong>链表维护开销：</strong><br>
+◦ 每次分配或释放内存时，都需要更新链表，可能带来额外的开销。<br>
+<strong>Overhead of maintaining the linked list: The linked list must be
+updated during each memory allocation or release, potentially
+introducing additional overhead.</strong><br>
+</li>
+<li><strong>碎片化问题：</strong><br>
+◦ 链表无法直接解决内存碎片问题，需要结合其他技术（如紧凑操作）。<br>
+<strong>Fragmentation issue: Linked lists cannot directly resolve memory
+fragmentation and require additional techniques (e.g.,
+compaction).</strong></li>
+</ol>
+<p>• <strong>适用场景：</strong><br>
+<strong>Applicable Scenarios:</strong><br>
+• 动态内存分配需求较高的系统。<br>
+<strong>Systems with high dynamic memory allocation
+requirements.</strong></p>
+<hr>
+<h4 id="内存管理中的链表节点更新process-termination-or-swapping-out"><strong>30.
+内存管理中的链表节点更新（Process Termination or Swapping
+Out）</strong></h4>
+<p>• <strong>问题描述：</strong><br>
+<strong>Problem Description:</strong><br>
+• 当一个进程终止或被交换出内存时，需要更新链表以合并相邻的空闲段。<br>
+<strong>When a process terminates or is swapped out, the linked list
+must be updated to merge adjacent free segments.</strong></p>
+<p>• <strong>四种邻居组合：</strong><br>
+<strong>Four Neighbor Combinations for the Terminating Process <span class="math inline">\(X\)</span>:</strong><br>
+1. <strong>上方有空闲段：</strong><br>
+◦ 合并上方空闲段。<br>
+<strong>Merge with the free segment above.</strong><br>
+2. <strong>下方有空闲段：</strong><br>
+◦ 合并下方空闲段。<br>
+<strong>Merge with the free segment below.</strong><br>
+3. <strong>上方和下方都有空闲段：</strong><br>
+◦ 合并上方和下方的空闲段。<br>
+<strong>Merge with both the free segment above and below.</strong><br>
+4. <strong>没有相邻空闲段：</strong><br>
+◦ 不需要合并，直接标记为新的空闲段。<br>
+<strong>No adjacent free segments; no merging needed, mark as a new free
+segment.</strong></p>
+<hr>
+<h3 id="位图与链表的对比"><strong>位图与链表的对比</strong></h3>
+<table>
+<colgroup>
+<col style="width: 9%">
+<col style="width: 45%">
+<col style="width: 45%">
+</colgroup>
+<thead>
+<tr>
+<th><strong>特性</strong></th>
+<th><strong>位图（Bitmap）</strong></th>
+<th><strong>链表（Linked Lists）</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>定义</strong></td>
+<td>使用位图记录每个分配单元的状态（空闲或已分配）。</td>
+<td>使用链表记录每个空闲段或已分配段，包括起始地址、长度和指针。</td>
+</tr>
+<tr>
+<td><strong>优点</strong></td>
+<td>- 简单高效。<br>- 快速判断某个分配单元是否空闲。</td>
+<td>- 适合动态内存分配。<br>- 按地址排序便于合并相邻空闲段。</td>
+</tr>
+<tr>
+<td><strong>缺点</strong></td>
+<td>- 位图大小与分配单元大小相关，可能占用大量内存。<br>-
+查找连续空闲单元慢。</td>
+<td>- 链表维护开销较大。<br>-
+无法直接解决内存碎片问题，需要结合其他技术（如紧凑操作）。</td>
+</tr>
+<tr>
+<td><strong>适用场景</strong></td>
+<td>- 内存分配单元较大且碎片化不严重的系统。</td>
+<td>- 动态内存分配需求较高的系统。</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="总结-4"><strong>总结</strong></h3>
+<p>• <strong>位图的优势与局限：</strong><br>
+• <strong>优势：</strong> 简单高效，适合快速判断分配单元状态。<br>
+<strong>Advantages: Simple and efficient, suitable for quickly
+determining the status of allocation units.</strong><br>
+• <strong>局限：</strong>
+位图大小与分配单元相关，查找连续空闲单元较慢。<br>
+<strong>Limitations: Bitmap size depends on allocation unit size, and
+searching for contiguous free units is slow.</strong></p>
+<p>• <strong>链表的优势与局限：</strong><br>
+• <strong>优势：</strong>
+动态管理灵活，适合动态内存分配需求高的场景。<br>
+<strong>Advantages: Flexible dynamic management, suitable for scenarios
+with high dynamic memory allocation requirements.</strong><br>
+• <strong>局限：</strong> 维护开销较大，无法直接解决内存碎片问题。<br>
+<strong>Limitations: High maintenance overhead, cannot directly resolve
+memory fragmentation issues.</strong></p>
+<p>• <strong>改进方向：</strong><br>
+• 结合位图和链表的优点，设计混合内存管理机制。<br>
+<strong>Combine the advantages of bitmaps and linked lists to design a
+hybrid memory management mechanism.</strong><br>
+• 使用更高效的算法（如伙伴系统、SLAB 分配器）来减少碎片化问题。<br>
+<strong>Use more efficient algorithms (e.g., buddy system, SLAB
+allocator) to reduce fragmentation issues.</strong></p>
+<hr>
+<h3 id="内存分配策略storage-placement-strategies"><strong>内存分配策略（Storage
+Placement Strategies）</strong></h3>
+<p>以下是对常见内存分配策略的简要讲解，包括首次适配（First
+Fit）、下次适配（Next Fit）、最佳适配（Best Fit）、最差适配（Worst
+Fit）和快速适配（Quick Fit）的原理、优缺点及示例。</p>
+<hr>
+<h4 id="内存分配策略的基本方法"><strong>31.
+内存分配策略的基本方法</strong></h4>
+<p>• <strong>问题描述：</strong><br>
+<strong>Problem Description:</strong><br>
+• 如何从一个空闲洞（Free Holes）列表中满足大小为 <span class="math inline">\(n\)</span> 的内存请求？</p>
+<p>• <strong>主要分配策略：</strong><br>
+<strong>Main Placement Strategies:</strong><br>
+1. <strong>首次适配（First Fit）</strong><br>
+◦ 使用第一个足够大的空闲洞。<br>
+<strong>Use the first available hole that is large enough to meet the
+need.</strong><br>
+◦ <strong>问题：</strong> 容易产生平均大小的内存碎片。<br>
+<strong>Problem: Creates average-sized holes.</strong></p>
+<ol start="2" type="1">
+<li><p><strong>下次适配（Next Fit）</strong><br>
+◦ 首次适配的变体，从上次分配结束的位置开始搜索。<br>
+<strong>A minor variation of First Fit: Start searching from the last
+hole that was stopped at.</strong><br>
+◦ <strong>问题：</strong> 性能略低于首次适配。<br>
+<strong>Problem: Slightly worse performance than First
+Fit.</strong></p></li>
+<li><p><strong>最佳适配（Best Fit）</strong><br>
+◦
+使用大小等于需求的最小空闲洞，如果没有完全匹配，则选择最接近且更大的空闲洞。<br>
+<strong>Use the hole that is equal to the need, or if none is equal, the
+hole that is larger but closest in size.</strong><br>
+◦ <strong>问题：</strong> 容易产生大量无法使用的小碎片。<br>
+<strong>Problem: Creates small holes that cannot be
+used.</strong></p></li>
+<li><p><strong>最差适配（Worst Fit）</strong><br>
+◦ 使用最大的可用空闲洞。<br>
+<strong>Use the largest available hole.</strong><br>
+◦ <strong>问题：</strong> 容易导致大洞被分割，难以运行大程序。<br>
+<strong>Problem: Eliminates large holes, making it difficult to run
+large programs.</strong></p></li>
+<li><p><strong>快速适配（Quick Fit）</strong><br>
+◦ 维护一些常见请求大小的单独链表，快速找到最接近的匹配。<br>
+<strong>Maintain separate lists for some of the more common sizes
+requested and find the closest fit quickly.</strong><br>
+◦ <strong>优点：</strong> 分配速度非常快。<br>
+<strong>Advantage: Very fast allocation scheme.</strong><br>
+◦ <strong>缺点：</strong> 合并空闲洞的开销较大。<br>
+<strong>Disadvantage: Merging free holes is expensive.</strong></p></li>
+</ol>
+<hr>
+<h4 id="存储分配策略的对比"><strong>32. 存储分配策略的对比</strong></h4>
+<table>
+<colgroup>
+<col style="width: 15%">
+<col style="width: 31%">
+<col style="width: 26%">
+<col style="width: 27%">
+</colgroup>
+<thead>
+<tr>
+<th><strong>策略</strong></th>
+<th><strong>定义</strong></th>
+<th><strong>优点</strong></th>
+<th><strong>缺点</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>首次适配（First Fit）</strong></td>
+<td>使用第一个足够大的空闲洞。</td>
+<td>- 简单高效。<br>- 分配速度快。</td>
+<td>- 容易产生平均大小的内存碎片。</td>
+</tr>
+<tr>
+<td><strong>下次适配（Next Fit）</strong></td>
+<td>从上次分配结束的位置开始搜索第一个足够大的空闲洞。</td>
+<td>- 比首次适配稍快，因为不需要从头开始搜索。</td>
+<td>- 性能略低于首次适配，可能导致内存分布不均。</td>
+</tr>
+<tr>
+<td><strong>最佳适配（Best Fit）</strong></td>
+<td>使用最小的足够大的空闲洞，或最接近且更大的空闲洞。</td>
+<td>- 减少内存浪费，适合小内存请求。</td>
+<td>- 容易产生大量无法使用的小碎片。</td>
+</tr>
+<tr>
+<td><strong>最差适配（Worst Fit）</strong></td>
+<td>使用最大的可用空闲洞。</td>
+<td>- 减少小碎片的产生。</td>
+<td>- 容易导致大洞被分割，难以运行大程序。</td>
+</tr>
+<tr>
+<td><strong>快速适配（Quick Fit）</strong></td>
+<td>维护常见大小的链表，快速找到最接近的匹配。</td>
+<td>- 分配速度非常快。</td>
+<td>- 合并空闲洞的开销较大，可能增加碎片化。</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h4 id="示例内存分配请求的处理"><strong>33.
+示例：内存分配请求的处理</strong></h4>
+<p>• <strong>初始内存状态：</strong><br>
+<strong>Initial Memory State:</strong><br>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Before Allocation:</span><br><span class="line">8K (Free)</span><br><span class="line">12K (Allocated)</span><br><span class="line">6K (Free)</span><br><span class="line">8K (Free)</span><br><span class="line">14K (Allocated)</span><br><span class="line">6K (Free)</span><br><span class="line">2K (Free)</span><br><span class="line">Last Allocated Block: 14K</span><br></pre></td></tr></table></figure></p>
+<p>• <strong>请求：</strong><br>
+<strong>Request:</strong><br>
+• 请求分配 16K 的内存。</p>
+<p>• <strong>分配策略的处理结果：</strong><br>
+<strong>Results of Different Placement Strategies:</strong></p>
+<p>##### <strong>首次适配（First Fit）</strong><br>
+• <strong>过程：</strong><br>
+◦ 从空闲列表中找到第一个足够大的空闲洞（8K + 6K + 2K = 16K）。<br>
+<strong>Process: Find the first hole large enough for 16K (8K + 6K + 2K
+= 16K).</strong><br>
+◦ 分配后，合并的空闲洞被分割为 12K 和 6K。<br>
+<strong>After allocation, the free hole is split into 12K and
+6K.</strong><br>
+• <strong>结果：</strong><br>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">After Allocation:</span><br><span class="line">8K (Allocated)</span><br><span class="line">12K (Allocated)</span><br><span class="line">6K (Free)</span><br><span class="line">12K (Free)</span><br><span class="line">6K (Free)</span><br><span class="line">2K (Free)</span><br></pre></td></tr></table></figure></p>
+<p>##### <strong>下次适配（Next Fit）</strong><br>
+• <strong>过程：</strong><br>
+◦ 从上次分配结束的位置（14K）开始搜索，找到第一个足够大的空闲洞（8K + 6K
++ 2K = 16K）。<br>
+<strong>Process: Start searching from the last allocated block (14K) and
+find the first hole large enough for 16K (8K + 6K + 2K =
+16K).</strong><br>
+◦ 分配后，合并的空闲洞被分割为 12K 和 6K。<br>
+<strong>After allocation, the free hole is split into 12K and
+6K.</strong><br>
+• <strong>结果：</strong><br>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">After Allocation:</span><br><span class="line">8K (Allocated)</span><br><span class="line">12K (Allocated)</span><br><span class="line">6K (Free)</span><br><span class="line">12K (Free)</span><br><span class="line">6K (Free)</span><br><span class="line">2K (Free)</span><br></pre></td></tr></table></figure></p>
+<p>##### <strong>最佳适配（Best Fit）</strong><br>
+• <strong>过程：</strong><br>
+◦ 找到最小的足够大的空闲洞（8K + 6K + 2K = 16K）。<br>
+<strong>Process: Find the smallest hole large enough for 16K (8K + 6K +
+2K = 16K).</strong><br>
+◦ 分配后，剩余的空闲洞被分割为多个小碎片。<br>
+<strong>After allocation, the remaining free hole is split into multiple
+small fragments.</strong><br>
+• <strong>结果：</strong><br>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">After Allocation:</span><br><span class="line">8K (Allocated)</span><br><span class="line">12K (Allocated)</span><br><span class="line">6K (Free)</span><br><span class="line">2K (Free)</span><br><span class="line">14K (Allocated)</span><br><span class="line">6K (Free)</span><br></pre></td></tr></table></figure></p>
+<p>##### <strong>最差适配（Worst Fit）</strong><br>
+• <strong>过程：</strong><br>
+◦ 找到最大的空闲洞（14K），分配后剩余 2K。<br>
+<strong>Process: Find the largest hole (14K), allocate 16K, and leave 2K
+as a fragment.</strong><br>
+◦ 剩余的空闲洞较小，难以满足后续大内存请求。<br>
+<strong>The remaining free hole is small and difficult to satisfy future
+large memory requests.</strong><br>
+• <strong>结果：</strong><br>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">After Allocation:</span><br><span class="line">8K (Allocated)</span><br><span class="line">12K (Allocated)</span><br><span class="line">6K (Free)</span><br><span class="line">2K (Free)</span><br><span class="line">14K (Allocated)</span><br></pre></td></tr></table></figure></p>
+<p>##### <strong>快速适配（Quick Fit）</strong><br>
+• <strong>过程：</strong><br>
+◦ 使用常见大小的链表，快速找到一个接近 16K 的空闲洞（8K + 8K）。<br>
+<strong>Process: Use a list of common sizes to quickly find a hole close
+to 16K (8K + 8K).</strong><br>
+◦ 分配后，剩余的空闲洞可能较大或较小，取决于链表的维护方式。<br>
+<strong>After allocation, the remaining free hole may be large or small,
+depending on how the list is maintained.</strong><br>
+• <strong>结果：</strong></p>
+<pre><code><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">After Allocation:</span><br><span class="line">8K (Allocated)</span><br><span class="line">8K (Allocated)</span><br><span class="line">12K (Free)</span><br><span class="line">6K (Free)</span><br><span class="line">2K (Free)</span><br></pre></td></tr></table></figure></code></pre>
+<figure>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/20250506160205.png" alt="img">
+<figcaption aria-hidden="true">img</figcaption>
+</figure>
+<hr>
+<h3 id="内存分配策略的优缺点总结"><strong>内存分配策略的优缺点总结</strong></h3>
+<table>
+<colgroup>
+<col style="width: 22%">
+<col style="width: 37%">
+<col style="width: 39%">
+</colgroup>
+<thead>
+<tr>
+<th><strong>策略</strong></th>
+<th><strong>优点</strong></th>
+<th><strong>缺点</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>首次适配（First Fit）</strong></td>
+<td>- 简单高效。<br>- 分配速度快。</td>
+<td>- 容易产生平均大小的内存碎片。</td>
+</tr>
+<tr>
+<td><strong>下次适配（Next Fit）</strong></td>
+<td>- 比首次适配稍快，因为不需要从头开始搜索。</td>
+<td>- 性能略低于首次适配，可能导致内存分布不均。</td>
+</tr>
+<tr>
+<td><strong>最佳适配（Best Fit）</strong></td>
+<td>- 减少内存浪费，适合小内存请求。</td>
+<td>- 容易产生大量无法使用的小碎片。</td>
+</tr>
+<tr>
+<td><strong>最差适配（Worst Fit）</strong></td>
+<td>- 减少小碎片的产生。</td>
+<td>- 容易导致大洞被分割，难以运行大程序。</td>
+</tr>
+<tr>
+<td><strong>快速适配（Quick Fit）</strong></td>
+<td>- 分配速度非常快。</td>
+<td>- 合并空闲洞的开销较大，可能增加碎片化。</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="实际应用中的选择"><strong>实际应用中的选择</strong></h3>
+<p>• <strong>首次适配（First Fit）：</strong><br>
+• 最常用的策略，适合大多数场景。<br>
+<strong>Most commonly used strategy, suitable for most
+scenarios.</strong></p>
+<p>• <strong>最佳适配（Best Fit）：</strong><br>
+• 适合内存资源紧张、需要减少内存浪费的场景。<br>
+<strong>Suitable for scenarios with limited memory resources where
+reducing waste is critical.</strong></p>
+<p>• <strong>最差适配（Worst Fit）：</strong><br>
+• 适合需要减少小碎片的场景，但可能导致大洞被分割。<br>
+<strong>Suitable for scenarios where reducing small fragments is
+critical, but may lead to fragmentation of large holes.</strong></p>
+<p>• <strong>快速适配（Quick Fit）：</strong><br>
+• 适合对分配速度要求极高的场景，但需要额外的维护成本。<br>
+<strong>Suitable for scenarios requiring extremely fast allocation, but
+incurs additional maintenance costs.</strong></p>
+<hr>
+<h3 id="总结-5"><strong>总结</strong></h3>
+<p>• <strong>首次适配（First Fit）：</strong><br>
+• 简单高效，适合大多数场景。<br>
+<strong>Simple and efficient, suitable for most scenarios.</strong></p>
+<p>• <strong>最佳适配（Best Fit）：</strong><br>
+• 减少内存浪费，但容易产生小碎片。<br>
+<strong>Reduces memory waste but creates small fragments.</strong></p>
+<p>• <strong>最差适配（Worst Fit）：</strong><br>
+• 减少小碎片，但可能导致大洞被分割。<br>
+<strong>Reduces small fragments but may fragment large
+holes.</strong></p>
+<p>• <strong>快速适配（Quick Fit）：</strong><br>
+• 分配速度快，但合并开销大。<br>
+<strong>Fast allocation but high merge cost.</strong></p>
+<p>• <strong>实际选择：</strong><br>
+• 根据系统需求选择合适的策略，通常首次适配是最平衡的选择。<br>
+<strong>Choose the strategy based on system requirements; First Fit is
+often the most balanced choice.</strong></p>
+<hr>
+<h3 id="覆盖技术overlaying"><strong>覆盖技术（Overlaying）</strong></h3>
+<p>以下是对覆盖技术（Overlaying）的详细讲解，包括其定义、工作原理、优缺点以及示例。</p>
+<hr>
+<h4 id="覆盖技术的定义与背景"><strong>34.
+覆盖技术的定义与背景</strong></h4>
+<p>• <strong>定义：</strong><br>
+<strong>Definition:</strong><br>
+•
+覆盖技术是一种在内存有限的情况下，将程序分割成多个小块（称为覆盖，Overlay），并只将需要的部分加载到内存中运行的技术。<br>
+<strong>Overlaying is a technique used in memory-constrained
+environments where a program is divided into small pieces called
+overlays, and only the required pieces are loaded into memory for
+execution.</strong></p>
+<p>• <strong>背景：</strong><br>
+<strong>Background:</strong><br>
+• 覆盖技术起源于 20 世纪 60 年代，当时计算机的内存资源非常有限。<br>
+<strong>Overlaying originated in the 1960s when computer memory
+resources were very limited.</strong></p>
+<p>• <strong>工作原理：</strong><br>
+<strong>Working Principle:</strong><br>
+1.
+程序被分割成多个覆盖（Overlays），每个覆盖是一个独立的代码或数据块。<br>
+<strong>The program is divided into multiple overlays, each of which is
+an independent block of code or data.</strong><br>
+2.
+操作系统负责将需要的覆盖加载到内存中，并在需要时将其替换为其他覆盖。<br>
+<strong>The operating system is responsible for loading the required
+overlays into memory and replacing them with other overlays when
+needed.</strong><br>
+3. 不同覆盖之间可以共享公共内存空间。<br>
+<strong>Overlays can share common memory space.</strong></p>
+<p>• <strong>程序员的职责：</strong><br>
+<strong>Programmer's Responsibility:</strong><br>
+• 程序员需要手动将程序分割成多个覆盖，这增加了编程的复杂性。<br>
+<strong>The programmer must manually divide the program into overlays,
+which increases the complexity of programming.</strong></p>
+<hr>
+<h4 id="覆盖技术的结构"><strong>35. 覆盖技术的结构</strong></h4>
+<p>• <strong>覆盖管理器（Overlay Manager）：</strong><br>
+<strong>Overlay Manager:</strong><br>
+• 操作系统中的一个模块，负责管理覆盖的加载和替换。<br>
+<strong>A module in the operating system responsible for managing the
+loading and replacement of overlays.</strong></p>
+<p>• <strong>覆盖区（Overlay Area）：</strong><br>
+<strong>Overlay Area:</strong><br>
+• 内存中专门用于存储覆盖的区域。<br>
+<strong>A region of memory dedicated to storing overlays.</strong></p>
+<p>• <strong>主程序（Main Program）：</strong><br>
+<strong>Main Program:</strong><br>
+• 程序的核心部分，通常始终驻留在内存中。<br>
+<strong>The core part of the program, usually always resident in
+memory.</strong></p>
+<p>• <strong>覆盖块（Overlays）：</strong><br>
+<strong>Overlays:</strong><br>
+• 程序被分割成的多个小块，按需加载到覆盖区中。<br>
+<strong>Small pieces of the program that are loaded into the overlay
+area as needed.</strong></p>
+<p>• <strong>辅助存储（Secondary Storage）：</strong><br>
+<strong>Secondary Storage:</strong><br>
+• 存储程序的所有覆盖块，当需要时由操作系统加载到内存中。<br>
+<strong>Stores all the overlays of the program and is used by the
+operating system to load overlays into memory when needed.</strong></p>
+<hr>
+<h4 id="覆盖技术的示例"><strong>36. 覆盖技术的示例</strong></h4>
+<p>• <strong>示例 1：覆盖的内存分配</strong><br>
+<strong>Example 1: Memory Allocation for Overlays</strong><br>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Overlay Area:</span><br><span class="line">0K   -   5K: Overlay 1</span><br><span class="line">5K   -  12K: Overlay 2</span><br><span class="line">12K  -  19K: Overlay 3</span><br></pre></td></tr></table></figure></p>
+<p>• <strong>示例 2：程序的内存优化</strong><br>
+<strong>Example 2: Memory Optimization for a Program</strong><br>
+• 程序由多个模块组成，每个模块的大小如下：<br>
+<strong>The program consists of multiple modules, each with the
+following sizes:</strong><br>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">A: 20K</span><br><span class="line">B: 50K</span><br><span class="line">C: 30K</span><br><span class="line">D: 20K</span><br><span class="line">E: 40K</span><br><span class="line">F: 30K</span><br></pre></td></tr></table></figure></p>
+<p>• <strong>未使用覆盖技术的内存需求：</strong><br>
+◦ 如果所有模块都需要同时加载到内存中，则总内存需求为：<br>
+<span class="math display">\[
+      20K + 50K + 30K + 20K + 40K + 30K = 190K
+\]</span> • <strong>使用覆盖技术的内存优化：</strong><br>
+◦ 假设程序的核心部分（Resident）为 20K，其他模块可以按需加载：<br>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Resident: 20K</span><br><span class="line">Overlay 0 (B, D, E): 50K</span><br><span class="line">Overlay 1 (C, F): 30K</span><br></pre></td></tr></table></figure> ◦ 总内存需求减少为：<br>
+<span class="math display">\[
+      20K + 50K + 30K = 100K
+\]</span></p>
+<hr>
+<h4 id="覆盖技术的优缺点"><strong>37. 覆盖技术的优缺点</strong></h4>
+<p>• <strong>优点：</strong><br>
+<strong>Advantages:</strong><br>
+1. <strong>节省内存：</strong><br>
+◦ 通过只加载需要的覆盖块，显著减少了内存需求。<br>
+<strong>Saves memory by loading only the required overlays,
+significantly reducing memory requirements.</strong><br>
+2. <strong>适合早期系统：</strong><br>
+◦ 在内存资源非常有限的系统中，覆盖技术是一种有效的解决方案。<br>
+<strong>Suitable for early systems with very limited memory
+resources.</strong></p>
+<p>• <strong>缺点：</strong><br>
+<strong>Disadvantages:</strong><br>
+1. <strong>编程复杂性高：</strong><br>
+◦ 程序员需要手动将程序分割成多个覆盖块，增加了编程的复杂性。<br>
+<strong>High programming complexity: The programmer must manually divide
+the program into overlays, increasing programming
+complexity.</strong><br>
+2. <strong>运行效率低：</strong><br>
+◦ 覆盖块的加载和替换需要额外的时间，可能影响程序的运行效率。<br>
+<strong>Low runtime efficiency: Loading and replacing overlays takes
+additional time, potentially affecting program
+performance.</strong><br>
+3. <strong>依赖操作系统支持：</strong><br>
+◦ 需要操作系统提供覆盖管理功能，否则无法实现。<br>
+<strong>Dependent on operating system support: Requires the operating
+system to provide overlay management functionality.</strong></p>
+<hr>
+<h4 id="覆盖技术的现代应用"><strong>38. 覆盖技术的现代应用</strong></h4>
+<p>• <strong>现代系统的替代方案：</strong><br>
+<strong>Modern Alternatives to Overlaying:</strong><br>
+•
+覆盖技术在现代操作系统中已基本被淘汰，取而代之的是虚拟内存和分页技术。<br>
+<strong>Overlaying has largely been replaced in modern operating systems
+by virtual memory and paging techniques.</strong><br>
+•
+虚拟内存允许程序在仅部分加载到内存的情况下运行，极大地简化了编程复杂性。<br>
+<strong>Virtual memory allows programs to run with only part of their
+code and data loaded into memory, greatly simplifying programming
+complexity.</strong></p>
+<p>• <strong>覆盖技术的遗留影响：</strong><br>
+•
+覆盖技术的思想仍然影响了现代内存管理的设计，例如模块化加载和动态链接库（DLL）。<br>
+<strong>The concept of overlaying still influences modern memory
+management designs, such as modular loading and dynamic link libraries
+(DLLs).</strong></p>
+<hr>
+<h3 id="覆盖技术与虚拟内存的对比"><strong>覆盖技术与虚拟内存的对比</strong></h3>
+<table>
+<colgroup>
+<col style="width: 10%">
+<col style="width: 43%">
+<col style="width: 45%">
+</colgroup>
+<thead>
+<tr>
+<th><strong>特性</strong></th>
+<th><strong>覆盖技术（Overlaying）</strong></th>
+<th><strong>虚拟内存（Virtual Memory）</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>定义</strong></td>
+<td>将程序分割成多个覆盖块，按需加载到内存中运行。</td>
+<td>允许程序在仅部分加载到内存的情况下运行，通过分页或分段机制实现。</td>
+</tr>
+<tr>
+<td><strong>优点</strong></td>
+<td>- 节省内存。<br>- 适合早期内存资源有限的系统。</td>
+<td>- 支持更大的地址空间。<br>- 提高内存利用率，减少内存浪费。<br>-
+支持部分加载和运行，简化编程复杂性。</td>
+</tr>
+<tr>
+<td><strong>缺点</strong></td>
+<td>- 编程复杂性高。<br>- 运行效率低。<br>- 需要手动分割程序。</td>
+<td>- 需要硬件支持（如页表、TLB）。<br>-
+页面置换算法可能导致性能波动（如 Belady 异常）。</td>
+</tr>
+<tr>
+<td><strong>适用场景</strong></td>
+<td>- 早期操作系统或内存资源非常有限的系统。</td>
+<td>- 现代操作系统，支持多任务和高性能需求。</td>
+</tr>
+<tr>
+<td><strong>编程复杂性</strong></td>
+<td>- 高：程序员需要手动分割程序。</td>
+<td>- 低：操作系统自动管理内存，程序员无需关心内存分配细节。</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="总结-6"><strong>总结</strong></h3>
+<p>• <strong>覆盖技术的核心思想：</strong><br>
+• 在内存有限的情况下，通过分割程序并按需加载覆盖块来节省内存。<br>
+<strong>The core idea of overlaying is to save memory by dividing a
+program into pieces and loading overlays as needed in memory-constrained
+environments.</strong></p>
+<p>• <strong>覆盖技术的局限性：</strong><br>
+• 编程复杂性高，运行效率低，已逐渐被虚拟内存取代。<br>
+<strong>Overlaying has high programming complexity and low runtime
+efficiency, and has been largely replaced by virtual
+memory.</strong></p>
+<p>• <strong>虚拟内存的优势：</strong><br>
+•
+提供了更大的地址空间，支持部分加载和运行，极大地简化了编程复杂性。<br>
+<strong>Virtual memory provides a larger address space, supports partial
+loading and execution, and greatly simplifies programming
+complexity.</strong></p>
+<p>• <strong>现代内存管理的演进：</strong><br>
+•
+覆盖技术的思想仍然影响了现代内存管理的设计，但其功能已被虚拟内存和分页技术所取代。<br>
+<strong>The concept of overlaying still influences modern memory
+management designs, but its functionality has been replaced by virtual
+memory and paging techniques.</strong></p>
+<hr>
+<h3 id="虚拟内存virtual-memory"><strong>虚拟内存（Virtual
+Memory）</strong></h3>
+<p>以下是对虚拟内存的详细讲解，包括其定义、原理、实现方式（分页与分段）、工作原理以及示例。</p>
+<hr>
+<h4 id="虚拟内存的定义与特点"><strong>37.
+虚拟内存的定义与特点</strong></h4>
+<p>• <strong>定义：</strong><br>
+<strong>Definition:</strong><br>
+•
+虚拟内存是一种内存管理技术，通过将用户的逻辑地址空间与物理内存分离，为用户提供比实际物理内存更大的地址空间。<br>
+<strong>Virtual memory is a memory management technique that separates a
+user's logical address space from physical memory, providing a larger
+address space than the actual physical memory.</strong></p>
+<p>• <strong>特点：</strong><br>
+<strong>Features:</strong><br>
+1. <strong>逻辑地址空间大于物理地址空间：</strong><br>
+◦ 用户的逻辑地址空间可以远大于物理内存的大小。<br>
+<strong>The logical address space can be much larger than the physical
+address space.</strong><br>
+2. <strong>存储在磁盘上：</strong><br>
+◦ 虚拟内存存储在磁盘上，只有部分程序需要运行时才会加载到内存中。<br>
+<strong>Virtual memory is stored on disk and only parts of the program
+are loaded into memory when needed.</strong><br>
+3. <strong>地址空间共享：</strong><br>
+◦ 允许多个进程共享地址空间，提高内存利用率。<br>
+<strong>Allows address spaces to be shared by multiple processes,
+improving memory utilization.</strong><br>
+4. <strong>高效进程创建：</strong><br>
+◦ 进程创建时无需一次性加载整个程序，只需加载必要的部分。<br>
+<strong>Enables more efficient process creation by loading only
+necessary parts of the program.</strong><br>
+5. <strong>透明性：</strong><br>
+◦ 地址转换由硬件和操作系统自动完成，用户程序无需干预。<br>
+<strong>Transparent to the user: Address translation is automatically
+completed by hardware and the operating system.</strong></p>
+<hr>
+<h4 id="局部性原理principle-of-locality"><strong>38.
+局部性原理（Principle of Locality）</strong></h4>
+<p>• <strong>定义：</strong><br>
+<strong>Definition:</strong><br>
+•
+局部性原理是指程序在执行过程中，通常只访问其地址空间中的一小部分页面。<br>
+<strong>The principle of locality states that during execution, a
+process typically accesses only a small fraction of its address
+space.</strong></p>
+<p>• <strong>分类：</strong><br>
+<strong>Types:</strong><br>
+1. <strong>时间局部性（Time Locality）：</strong><br>
+◦ 如果某个页面被访问过，那么它很可能在不久的将来再次被访问。<br>
+<strong>If a page is accessed, it is likely to be accessed again in the
+near future.</strong><br>
+2. <strong>空间局部性（Space Locality）：</strong><br>
+◦ 如果某个页面被访问过，那么与其相邻的页面也很可能被访问。<br>
+<strong>If a page is accessed, its neighboring pages are also likely to
+be accessed.</strong></p>
+<p>• <strong>意义：</strong><br>
+<strong>Significance:</strong><br>
+• 局部性原理是虚拟内存技术的基础，确保了虚拟内存的高效性。<br>
+<strong>The principle of locality is the foundation of virtual memory
+technology, ensuring its efficiency.</strong></p>
+<hr>
+<h4 id="虚拟内存的实现方式"><strong>39. 虚拟内存的实现方式</strong></h4>
+<p>• <strong>分页（Paging）：</strong><br>
+<strong>Paging:</strong><br>
+•
+现代主流的虚拟内存实现方式，将地址空间划分为固定大小的页（Page）。<br>
+<strong>The modern and most common approach to implementing virtual
+memory, dividing the address space into fixed-size pages.</strong></p>
+<p>• <strong>分段（Segmentation）：</strong><br>
+<strong>Segmentation:</strong><br>
+•
+早期的虚拟内存实现方式，将地址空间划分为逻辑段（Segment），每段可以动态调整大小。<br>
+<strong>An earlier approach to virtual memory, dividing the address
+space into logical segments that can dynamically adjust in
+size.</strong></p>
+<p>• <strong>分页与分段结合（Combined Paging and
+Segmentation）：</strong><br>
+<strong>Combined Paging and Segmentation:</strong><br>
+• 结合分页和分段的优点，提供更灵活的内存管理方式。<br>
+<strong>Combines the advantages of paging and segmentation, providing a
+more flexible memory management approach.</strong></p>
+<hr>
+<h4 id="分页paging"><strong>40. 分页（Paging）</strong></h4>
+<p>• <strong>定义：</strong><br>
+<strong>Definition:</strong><br>
+•
+分页是一种实现虚拟内存的技术，将虚拟地址空间和物理内存划分为固定大小的页（Page）和页框（Page
+Frame）。<br>
+<strong>Paging is a technique used to implement virtual memory by
+dividing the virtual address space and physical memory into fixed-size
+pages and page frames.</strong></p>
+<p>• <strong>页表（Page Table）：</strong><br>
+<strong>Page Table:</strong><br>
+• 页表用于记录虚拟页到物理页框的映射关系。<br>
+<strong>The page table records the mapping relationship between virtual
+pages and physical page frames.</strong></p>
+<p>• <strong>内存管理单元（MMU）：</strong><br>
+<strong>Memory Management Unit (MMU):</strong><br>
+• MMU 负责将虚拟地址转换为物理地址。<br>
+<strong>The MMU is responsible for translating virtual addresses into
+physical addresses.</strong></p>
+<hr>
+<h4 id="分页的工作原理"><strong>41. 分页的工作原理</strong></h4>
+<p>• <strong>虚拟地址与物理地址的关系：</strong><br>
+<strong>Relationship Between Virtual and Physical
+Addresses:</strong><br>
+• 虚拟地址由页号（Page Number）和页内偏移（Page Offset）组成。<br>
+<strong>A virtual address consists of a page number and a page
+offset.</strong><br>
+• 页表将页号映射到物理页框号（Frame
+Number），结合页内偏移生成物理地址。<br>
+<strong>The page table maps the page number to a physical frame number,
+and the page offset is used to generate the physical
+address.</strong></p>
+<p>• <strong>页错误（Page Fault）：</strong><br>
+<strong>Page Fault:</strong><br>
+• 当访问的页未映射到物理内存时，会触发页错误。<br>
+<strong>A page fault occurs when a page is not mapped to physical
+memory.</strong><br>
+• 操作系统会将所需页从磁盘加载到内存，并更新页表。<br>
+<strong>The operating system loads the required page from disk into
+memory and updates the page table.</strong></p>
+<hr>
+<h4 id="分页的示例"><strong>42. 分页的示例</strong></h4>
+<p>• <strong>假设条件：</strong><br>
+<strong>Assumptions:</strong><br>
+• 计算机可以生成 16 位地址（地址范围为 0 到 64 KB）。<br>
+<strong>The computer can generate 16-bit addresses (address range 0 to
+64 KB).</strong><br>
+• 计算机只有 32 KB 的物理内存。<br>
+<strong>The computer has only 32 KB of physical memory.</strong><br>
+• 虚拟地址空间为 64 KB，但只能部分加载到内存中。<br>
+<strong>The virtual address space is 64 KB, but only part of it can be
+loaded into memory.</strong></p>
+<p>• <strong>页表的作用：</strong><br>
+<strong>Role of the Page Table:</strong><br>
+• 页表记录哪些页已映射到物理内存，哪些页未映射。<br>
+<strong>The page table records which pages are mapped to physical memory
+and which are not.</strong><br>
+• 如果访问未映射的页，会触发页错误。<br>
+<strong>Accessing an unmapped page triggers a page fault.</strong></p>
+<hr>
+<h4 id="分页的地址转换过程"><strong>43. 分页的地址转换过程</strong></h4>
+<p>• <strong>虚拟地址的组成：</strong><br>
+<strong>Components of a Virtual Address:</strong><br>
+• 虚拟地址由页号（Page Number）和页内偏移（Page Offset）组成。<br>
+<strong>A virtual address consists of a page number and a page
+offset.</strong><br>
+• 页号用于索引页表，页内偏移用于定位页内的具体位置。<br>
+<strong>The page number is used to index the page table, and the page
+offset is used to locate the specific position within the
+page.</strong></p>
+<p>• <strong>物理地址的组成：</strong><br>
+<strong>Components of a Physical Address:</strong><br>
+• 物理地址由页框号（Frame Number）和页内偏移（Page Offset）组成。<br>
+<strong>A physical address consists of a frame number and a page
+offset.</strong><br>
+• 页表将虚拟页号映射到物理页框号，结合页内偏移生成物理地址。<br>
+<strong>The page table maps the virtual page number to a physical frame
+number, and the page offset is used to generate the physical
+address.</strong></p>
+<hr>
+<h4 id="分页模型示例"><strong>44. 分页模型示例</strong></h4>
+<p>• <strong>假设条件：</strong><br>
+<strong>Assumptions:</strong><br>
+• 逻辑地址空间为 <span class="math inline">\(2^{32}\)</span> 字节（4
+GB），页大小为 4 KB。<br>
+<strong>Logical address space is <span class="math inline">\(2^{32}\)</span> bytes (4 GB), and page size is 4
+KB.</strong><br>
+• 页号占 20 位，页内偏移占 12 位。<br>
+<strong>The page number occupies 20 bits, and the page offset occupies
+12 bits.</strong></p>
+<p>• <strong>地址转换过程：</strong><br>
+<strong>Address Translation Process:</strong><br>
+1. 虚拟地址被分为页号和页内偏移。<br>
+<strong>The virtual address is divided into a page number and a page
+offset.</strong><br>
+2. 页号用于索引页表，找到对应的物理页框号。<br>
+<strong>The page number is used to index the page table to find the
+corresponding physical frame number.</strong><br>
+3. 物理页框号与页内偏移结合，生成物理地址。<br>
+<strong>The physical frame number is combined with the page offset to
+generate the physical address.</strong></p>
+<hr>
+<h4 id="分页的优缺点"><strong>45. 分页的优缺点</strong></h4>
+<p>• <strong>优点：</strong><br>
+<strong>Advantages:</strong><br>
+1. <strong>实现简单：</strong><br>
+◦ 分页是一种简单且高效的内存管理方式。<br>
+<strong>Simple and efficient memory management.</strong><br>
+2. <strong>支持大地址空间：</strong><br>
+◦ 用户的逻辑地址空间可以远大于物理内存的大小。<br>
+<strong>Supports a large address space, where the user's logical address
+space can be much larger than the physical memory size.</strong><br>
+3. <strong>内存利用率高：</strong><br>
+◦ 通过按需加载和页面置换，提高内存利用率。<br>
+<strong>High memory utilization through demand loading and page
+replacement.</strong></p>
+<p>• <strong>缺点：</strong><br>
+<strong>Disadvantages:</strong><br>
+1. <strong>内部碎片：</strong><br>
+◦ 页大小固定，可能导致内部碎片。<br>
+<strong>Internal fragmentation due to fixed page size.</strong><br>
+2. <strong>页错误开销：</strong><br>
+◦ 页错误会导致额外的磁盘 I/O 操作，影响性能。<br>
+<strong>Page faults incur additional disk I/O operations, affecting
+performance.</strong></p>
+<hr>
+<h4 id="分页与分段的对比"><strong>46. 分页与分段的对比</strong></h4>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 9%">
+<col style="width: 42%">
+<col style="width: 47%">
+</colgroup>
+<thead>
+<tr>
+<th><strong>特性</strong></th>
+<th><strong>分页（Paging）</strong></th>
+<th><strong>分段（Segmentation）</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>定义</strong></td>
+<td>将地址空间划分为固定大小的页。</td>
+<td>将地址空间划分为逻辑段，每段大小可变。</td>
+</tr>
+<tr>
+<td><strong>优点</strong></td>
+<td>- 实现简单。<br>- 支持大地址空间。<br>- 内存利用率高。</td>
+<td>- 支持逻辑分段，便于共享和保护。<br>- 段大小可变，灵活性高。</td>
+</tr>
+<tr>
+<td><strong>缺点</strong></td>
+<td>- 固定页大小可能导致内部碎片。<br>- 页错误开销较大。</td>
+<td>- 段大小可变可能导致外部碎片。<br>- 实现复杂，管理开销较大。</td>
+</tr>
+<tr>
+<td><strong>适用场景</strong></td>
+<td>- 现代操作系统，支持大内存和高性能需求。</td>
+<td>- 早期操作系统，适合逻辑分段需求高的场景。</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h4 id="分页与分段的结合"><strong>47. 分页与分段的结合</strong></h4>
+<p>• <strong>结合方式：</strong><br>
+<strong>Combination Approach:</strong><br>
+• 将分页和分段结合，既支持逻辑分段，又通过分页实现固定大小的页。<br>
+<strong>Combines segmentation and paging, supporting logical
+segmentation while implementing fixed-size pages through
+paging.</strong></p>
+<p>• <strong>优点：</strong><br>
+<strong>Advantages:</strong><br>
+1. <strong>灵活性高：</strong><br>
+◦ 支持逻辑分段，同时通过分页提高内存利用率。<br>
+<strong>High flexibility: Supports logical segmentation while improving
+memory utilization through paging.</strong><br>
+2. <strong>便于管理：</strong><br>
+◦ 分段便于共享和保护，分页便于内存管理。<br>
+<strong>Ease of management: Segmentation facilitates sharing and
+protection, while paging facilitates memory management.</strong></p>
+<p>• <strong>缺点：</strong><br>
+<strong>Disadvantages:</strong><br>
+1. <strong>实现复杂：</strong><br>
+◦ 需要同时维护段表和页表，增加了实现的复杂性。<br>
+<strong>Complex implementation: Requires maintaining both segment tables
+and page tables, increasing complexity.</strong></p>
+<hr>
+<h3 id="总结-7"><strong>总结</strong></h3>
+<p>• <strong>虚拟内存的核心思想：</strong><br>
+•
+将逻辑地址空间与物理内存分离，通过分页或分段技术实现高效的内存管理。<br>
+<strong>The core idea of virtual memory is to separate the logical
+address space from physical memory and achieve efficient memory
+management through paging or segmentation techniques.</strong></p>
+<p>• <strong>分页的优势与局限：</strong><br>
+• <strong>优势：</strong> 实现简单，支持大地址空间，内存利用率高。<br>
+<strong>Advantages: Simple implementation, supports large address space,
+high memory utilization.</strong><br>
+• <strong>局限：</strong>
+固定页大小可能导致内部碎片，页错误开销较大。<br>
+<strong>Limitations: Fixed page size may cause internal fragmentation,
+and page faults incur significant overhead.</strong></p>
+<p>• <strong>分段的独特优势：</strong><br>
+• 支持逻辑分段，便于共享和保护，灵活性高。<br>
+<strong>Supports logical segmentation, facilitates sharing and
+protection, and offers high flexibility.</strong></p>
+<p>• <strong>现代内存管理的趋势：</strong><br>
+•
+现代操作系统通常采用分页技术，同时结合分段的思想，提供更灵活的内存管理方式。<br>
+<strong>Modern operating systems typically use paging techniques
+combined with segmentation to provide more flexible memory
+management.</strong></p>
+<hr>
+<h3 id="页表page-table与转换后备缓冲器tlb"><strong>页表（Page
+Table）与转换后备缓冲器（TLB）</strong></h3>
+<p>以下是对页表及其相关机制的详细讲解，包括页表的结构、问题、多级页表、TLB
+的工作原理及其优化。</p>
+<hr>
+<h4 id="页表的基本概念"><strong>50. 页表的基本概念</strong></h4>
+<p>• <strong>定义：</strong><br>
+<strong>Definition:</strong><br>
+• 页表（Page
+Table）是操作系统用于管理虚拟地址到物理地址映射的核心数据结构。<br>
+<strong>A page table is a core data structure used by the operating
+system to manage the mapping of virtual addresses to physical
+addresses.</strong></p>
+<p>• <strong>页表的作用：</strong><br>
+<strong>Role of the Page Table:</strong><br>
+1. <strong>虚拟页号（VPN）到物理页框号（PFN）的映射：</strong><br>
+◦ 每个虚拟页号（VPN）通过页表映射到一个物理页框号（PFN）。<br>
+<strong>Mapping of virtual page numbers (VPN) to physical frame numbers
+(PFN).</strong><br>
+2. <strong>支持虚拟内存：</strong><br>
+◦ 通过页表，操作系统可以实现虚拟内存的分页管理。<br>
+<strong>Supports virtual memory by enabling paging
+management.</strong></p>
+<p>• <strong>页表的存储：</strong><br>
+<strong>Storage of Page Tables:</strong><br>
+• 每个进程通常有一个独立的页表，由操作系统管理。<br>
+<strong>Each process typically has its own page table, managed by the
+operating system.</strong></p>
+<hr>
+<h4 id="典型的页表项page-table-entry-pte"><strong>51. 典型的页表项（Page
+Table Entry, PTE）</strong></h4>
+<p>• <strong>页表项的内容：</strong><br>
+<strong>Contents of a Page Table Entry (PTE):</strong><br>
+1. <strong>物理页框号（PFN）：</strong><br>
+◦ 记录虚拟页对应的物理页框号。<br>
+<strong>Physical frame number (PFN): Records the physical frame number
+corresponding to the virtual page.</strong><br>
+2. <strong>有效/无效位（Present/Absent Bit）：</strong><br>
+◦ 标识该页表项是否有效（即该虚拟页是否映射到物理内存）。<br>
+<strong>Present/Absent Bit: Indicates whether the page table entry is
+valid (i.e., whether the virtual page is mapped to physical
+memory).</strong><br>
+3. <strong>保护位（Protection Bit）：</strong><br>
+◦ 指定对该页的访问权限（如读、写、执行）。<br>
+<strong>Protection Bit: Specifies access permissions for the page (e.g.,
+read, write, execute).</strong><br>
+4. <strong>修改位（Modified Bit, Dirty Bit）：</strong><br>
+◦ 标识该页是否被修改过，若被修改过，则在写回磁盘时需要保存。<br>
+<strong>Modified Bit (Dirty Bit): Indicates whether the page has been
+modified and needs to be saved when written back to disk.</strong><br>
+5. <strong>引用位（Referenced Bit）：</strong><br>
+◦ 标识该页是否被访问过，用于页面置换算法（如 LRU）。<br>
+<strong>Referenced Bit: Indicates whether the page has been accessed,
+used in page replacement algorithms (e.g., LRU).</strong><br>
+6. <strong>缓存禁用位（Cache Disabled Bit）：</strong><br>
+◦ 指定该页是否可以被缓存。<br>
+<strong>Cache Disabled Bit: Specifies whether the page can be
+cached.</strong></p>
+<hr>
+<h4 id="页表的问题"><strong>58. 页表的问题</strong></h4>
+<p>• <strong>主要问题：</strong><br>
+<strong>Major Issues with Page Tables:</strong><br>
+1. <strong>映射速度问题：</strong><br>
+◦ 每次内存访问都需要进行地址转换，页表查找必须非常快。<br>
+<strong>Mapping speed issue: Address translation is required for every
+memory access, and page table lookups must be very fast.</strong><br>
+2. <strong>页表规模问题：</strong><br>
+◦ 页表可能非常大。例如，32 位地址空间、4 KB 页大小时，页表需要 <span class="math inline">\(2^{20} = 1,048,576\)</span> 个条目。<br>
+<strong>Page table size issue: Page tables can be extremely large. For
+example, with a 32-bit address space and 4 KB page size, the page table
+requires <span class="math inline">\(2^{20} = 1,048,576\)</span>
+entries.</strong></p>
+<hr>
+<h4 id="页表的存储方式"><strong>59. 页表的存储方式</strong></h4>
+<p>• <strong>单页表（Single Page Table）：</strong><br>
+<strong>Single Page Table:</strong><br>
+• 使用硬件寄存器数组存储页表。<br>
+<strong>The page table is stored in an array of hardware
+registers.</strong><br>
+• <strong>优点：</strong><br>
+◦ 实现简单。<br>
+<strong>Advantage: Simple implementation.</strong><br>
+• <strong>缺点：</strong><br>
+◦ 如果页表很大，加载整个页表的开销较高，尤其是在上下文切换时。<br>
+<strong>Disadvantage: Expensive if the table is large, and loading the
+full page table during every context switch hurts
+performance.</strong></p>
+<p>• <strong>页表存储在内存中：</strong><br>
+<strong>Page Table Stored in Memory:</strong><br>
+• 使用一个寄存器指向内存中的页表。<br>
+<strong>A single register points to the page table in
+memory.</strong><br>
+• <strong>优点：</strong><br>
+◦ 上下文切换成本低。<br>
+<strong>Advantage: Cheap context switch.</strong><br>
+• <strong>缺点：</strong><br>
+◦ 每次访问页表项需要额外的内存访问，增加了延迟。<br>
+<strong>Disadvantage: Requires one or more memory references to read
+page table entries, increasing latency.</strong></p>
+<hr>
+<h4 id="虚拟地址到物理地址的查找"><strong>60.
+虚拟地址到物理地址的查找</strong></h4>
+<p>• <strong>问题：</strong><br>
+<strong>Problem:</strong><br>
+•
+每次内存访问都需要将虚拟地址转换为物理地址，可能涉及多级页表查找。<br>
+<strong>Each memory access requires translating a virtual address to a
+physical address, which may involve walking through hierarchical page
+tables.</strong><br>
+• 页表存储在内存中，因此每次地址转换可能需要多次内存访问。<br>
+<strong>Page tables are stored in memory, so each address translation
+may require multiple memory accesses.</strong></p>
+<p>• <strong>解决方案：</strong><br>
+<strong>Solution:</strong><br>
+• 使用转换后备缓冲器（TLB）缓存“活跃”页表项，减少内存访问次数。<br>
+<strong>Use a Translation Lookaside Buffer (TLB) to cache "active" page
+table entries and reduce memory accesses.</strong></p>
+<hr>
+<h4 id="tlb-页表项的位"><strong>61. TLB 页表项的位</strong></h4>
+<p>• <strong>常见位（Common Bits）：</strong><br>
+1. <strong>虚拟页号（Virtual Page Number, VPN）：</strong><br>
+◦ 用于匹配虚拟地址。<br>
+<strong>Virtual Page Number (VPN): Matches the virtual
+address.</strong><br>
+2. <strong>物理页号（Physical Page Number, PFN）：</strong><br>
+◦ 转换后的物理地址。<br>
+<strong>Physical Page Number (PFN): Translated physical
+address.</strong><br>
+3. <strong>有效位（Valid Bit）：</strong><br>
+◦ 标识该页表项是否有效。<br>
+<strong>Valid Bit: Indicates whether the page table entry is
+valid.</strong><br>
+4. <strong>访问位（Access Bits）：</strong><br>
+◦ 区分内核和用户访问权限（如无、读、写）。<br>
+<strong>Access Bits: Differentiate kernel and user access permissions
+(e.g., nil, read, write).</strong></p>
+<p>• <strong>可选位（Optional Bits）：</strong><br>
+1. <strong>进程标签（Process Tag）：</strong><br>
+◦ 标识该页表项属于哪个进程。<br>
+<strong>Process Tag: Identifies which process the page table entry
+belongs to.</strong><br>
+2. <strong>引用位（Reference Bit）：</strong><br>
+◦ 标识该页是否被访问过。<br>
+<strong>Reference Bit: Indicates whether the page has been
+accessed.</strong><br>
+3. <strong>修改位（Modify Bit）：</strong><br>
+◦ 标识该页是否被修改过。<br>
+<strong>Modify Bit: Indicates whether the page has been
+modified.</strong><br>
+4. <strong>可缓存位（Cacheable Bit）：</strong><br>
+◦ 指定该页是否可以被缓存。<br>
+<strong>Cacheable Bit: Specifies whether the page can be
+cached.</strong></p>
+<hr>
+<h4 id="转换后备缓冲器tlb的功能"><strong>62.
+转换后备缓冲器（TLB）的功能</strong></h4>
+<p>• <strong>TLB 的工作原理：</strong><br>
+<strong>How TLB Works:</strong><br>
+1. <strong>TLB 命中（TLB Hit）：</strong><br>
+◦ 如果虚拟地址在 TLB 中找到匹配项，则直接从 TLB
+获取页表项，无需访问页表。<br>
+<strong>TLB Hit: If the virtual address matches an entry in the TLB, the
+page table entry is retrieved directly from the TLB without accessing
+the page table.</strong><br>
+2. <strong>TLB 未命中（TLB Miss）：</strong><br>
+◦ 如果虚拟地址未在 TLB
+中找到匹配项，则需要访问页表进行地址转换，并将新页表项加载到 TLB
+中。<br>
+<strong>TLB Miss: If the virtual address does not match any entry in the
+TLB, the page table is accessed for address translation, and the new
+page table entry is loaded into the TLB.</strong></p>
+<p>• <strong>TLB 命中率（TLB Hit Ratio）：</strong><br>
+• TLB 命中率是指 TLB
+中找到匹配项的百分比，命中率越高，地址转换效率越高。<br>
+<strong>TLB Hit Ratio: The percentage of time a page table entry is
+found in the TLB. A higher hit ratio means better address translation
+efficiency.</strong></p>
+<hr>
+<h4 id="软件控制的-tlb"><strong>66. 软件控制的 TLB</strong></h4>
+<p>• <strong>TLB 未命中的处理：</strong><br>
+<strong>Handling TLB Misses:</strong><br>
+1. 生成 TLB 故障（TLB Fault），并陷入操作系统（软件处理）。<br>
+<strong>Generate a TLB fault and trap to the operating system (software
+handling).</strong><br>
+2. 检查包含页表项的页是否在内存中：<br>
+◦ 如果不在内存中，则触发页错误（Page Fault）。<br>
+<strong>Check if the page containing the PTE is in memory: If not,
+trigger a page fault.</strong><br>
+3. 如果没有空闲 TLB 条目，则写回一个条目，并将新的页表项加载到 TLB
+中。<br>
+<strong>If no free TLB entry is available, evict an entry and load the
+new PTE into the TLB.</strong><br>
+4. 重新启动导致故障的指令。<br>
+<strong>Restart the faulting instruction.</strong></p>
+<hr>
+<h4 id="多级页表multilevel-page-tables"><strong>67. 多级页表（Multilevel
+Page Tables）</strong></h4>
+<p>• <strong>问题：</strong><br>
+<strong>Problem:</strong><br>
+• 单级页表可能非常大，占用大量内存。<br>
+<strong>Single-level page tables can be very large and consume
+significant memory.</strong></p>
+<p>• <strong>解决方案：</strong><br>
+<strong>Solution:</strong><br>
+• 使用多级页表，将页号分为两级或多级索引。<br>
+<strong>Use multilevel page tables, dividing the page number into two or
+more levels of indexing.</strong><br>
+• <strong>优点：</strong><br>
+1. 减小页表的大小。<br>
+<strong>Reduces the size of the page table.</strong><br>
+2. 只存储需要的页表部分，节省内存。<br>
+<strong>Stores only the required parts of the page table, saving
+memory.</strong></p>
+<p>• <strong>多级页表的结构：</strong><br>
+<strong>Structure of Multilevel Page Tables:</strong><br>
+• 第一级页表存储第二级页表的索引。<br>
+<strong>The first-level page table stores indexes to second-level page
+tables.</strong><br>
+• 第二级页表存储实际的页框号（PFN）。<br>
+<strong>The second-level page table stores the actual physical frame
+numbers (PFNs).</strong></p>
+<hr>
+<h4 id="多级页表的优势"><strong>68. 多级页表的优势</strong></h4>
+<p>• <strong>稀疏地址空间的支持：</strong><br>
+•
+多级页表可以高效地支持稀疏地址空间，避免为未使用的虚拟地址分配页表项。<br>
+<strong>Support for sparse address spaces: Multilevel page tables
+efficiently handle sparse address spaces by avoiding allocation of PTEs
+for unused virtual addresses.</strong></p>
+<p>• <strong>更简单的页面置换：</strong><br>
+• 由于页表是分级的，操作系统可以更容易地管理页表的加载和置换。<br>
+<strong>Simpler page replacement: Since the page table is hierarchical,
+the operating system can more easily manage loading and replacement of
+page tables.</strong></p>
+<hr>
+<h3 id="总结-8"><strong>总结</strong></h3>
+<p>• <strong>页表的核心作用：</strong><br>
+• 页表是虚拟内存管理的关键，负责虚拟地址到物理地址的映射。<br>
+<strong>The core role of the page table is to manage the mapping of
+virtual addresses to physical addresses in virtual memory.</strong></p>
+<p>• <strong>页表的挑战：</strong><br>
+• <strong>规模问题：</strong> 页表可能非常大，占用大量内存。<br>
+<strong>Size issue: Page tables can be very large and consume
+significant memory.</strong><br>
+• <strong>速度问题：</strong>
+每次内存访问都需要页表查找，影响性能。<br>
+<strong>Speed issue: Page table lookups are required for every memory
+access, affecting performance.</strong></p>
+<p>• <strong>TLB 的优化：</strong><br>
+• TLB 缓存活跃页表项，显著提高地址转换效率。<br>
+<strong>The TLB caches active page table entries, significantly
+improving address translation efficiency.</strong></p>
+<p>• <strong>多级页表的优势：</strong><br>
+• 减小页表规模，支持稀疏地址空间，优化内存利用率。<br>
+<strong>Multilevel page tables reduce size, support sparse address
+spaces, and optimize memory utilization.</strong></p>
+<p>• <strong>未来趋势：</strong><br>
+• 随着硬件性能的提升，TLB
+和多级页表的结合将成为主流，进一步提高虚拟内存的效率。<br>
+<strong>With advancements in hardware, the combination of TLBs and
+multilevel page tables will become mainstream, further improving virtual
+memory efficiency.</strong></p>
+<hr>
+<h3 id="多级页表系统与倒排页表inverted-page-tables"><strong>多级页表系统与倒排页表（Inverted
+Page Tables）</strong></h3>
+<p>以下是对多级页表系统、倒排页表及其优化方法的详细讲解，包括地址转换过程、性能分析、优缺点以及实际应用。</p>
+<hr>
+<h4 id="多级页表系统的地址分配示例"><strong>69.
+多级页表系统的地址分配示例</strong></h4>
+<p>• <strong>逻辑地址的组成：</strong><br>
+<strong>Composition of Logical Address:</strong><br>
+• 在 32 位机器上，页大小为 4 KB（<span class="math inline">\(2^{12}\)</span>
+字节），逻辑地址被分为两部分：<br>
+<strong>On a 32-bit machine with a 4 KB page size, the logical address
+is divided into two parts:</strong><br>
+1. <strong>页号（Page Number）：</strong> 20 位，用于索引页表。<br>
+<strong>Page Number: 20 bits, used to index the page
+table.</strong><br>
+2. <strong>页内偏移（Page Offset）：</strong> 12
+位，用于定位页内的具体位置。<br>
+<strong>Page Offset: 12 bits, used to locate the specific position
+within the page.</strong></p>
+<p>• <strong>多级页表的分级：</strong><br>
+<strong>Hierarchical Division of Page Numbers:</strong><br>
+• 将 20 位页号进一步分为两级：<br>
+◦ 第一级页号：10 位。<br>
+◦ 第二级页号：10 位。<br>
+<strong>First-level Page Number: 10 bits.</strong><br>
+<strong>Second-level Page Number: 10 bits.</strong></p>
+<p>• <strong>地址转换过程：</strong><br>
+<strong>Address Translation Process:</strong></p>
+<ol type="1">
+<li>使用第一级页号查找第一级页表，找到第二级页表的基址。<br>
+<strong>Use the first-level page number to find the base address of the
+second-level page table.</strong><br>
+</li>
+<li>使用第二级页号查找第二级页表，找到物理页框号（PFN）。<br>
+<strong>Use the second-level page number to find the physical frame
+number (PFN) in the second-level page table.</strong><br>
+</li>
+<li>将物理页框号与页内偏移结合，生成物理地址。<br>
+<strong>Combine the physical frame number with the page offset to
+generate the physical address.</strong></li>
+</ol>
+<hr>
+<h4 id="多级页表的性能分析"><strong>70. 多级页表的性能分析</strong></h4>
+<p>• <strong>多级页表的内存访问次数：</strong><br>
+<strong>Memory Accesses in Multilevel Page Tables:</strong><br>
+• 在四级页表系统中，地址转换可能需要
+<strong>五次内存访问</strong>：<br>
+◦ 四次访问各级页表。<br>
+◦ 一次访问物理内存以读取数据。<br>
+<strong>Five memory accesses in a four-level paging system:</strong> ◦
+Four accesses to traverse the page tables. ◦ One access to read data
+from physical memory.**</p>
+<p>• <strong>性能瓶颈：</strong><br>
+<strong>Performance Bottleneck:</strong><br>
+• 多级页表的地址转换需要多次内存访问，可能导致性能下降。<br>
+<strong>Address translation in multilevel page tables requires multiple
+memory accesses, potentially degrading performance.</strong></p>
+<hr>
+<h4 id="倒排页表inverted-page-tables的核心思想"><strong>71.
+倒排页表（Inverted Page Tables）的核心思想</strong></h4>
+<p>• <strong>定义：</strong><br>
+<strong>Definition:</strong><br>
+• 倒排页表是一种优化页表存储的方式，每个物理页框（Physical Page
+Frame）对应一个页表项（PTE），而不是为每个虚拟页分配一个页表项。<br>
+<strong>An inverted page table is an optimization for storing page
+tables, where each physical page frame has one PTE, rather than
+allocating one PTE for each virtual page.</strong></p>
+<p>• <strong>工作原理：</strong><br>
+<strong>How It Works:</strong><br>
+1. 使用哈希函数将虚拟页号（Vpage）和进程
+ID（pid）映射到倒排页表的索引。<br>
+<strong>A hash function maps the virtual page number (Vpage) and process
+ID (pid) to an index in the inverted page table.</strong><br>
+2. 在倒排页表中查找对应的物理页框号（PFN）。<br>
+<strong>The corresponding physical frame number (PFN) is looked up in
+the inverted page table.</strong></p>
+<hr>
+<h4 id="线性倒排页表linear-inverted-page-tables"><strong>72.
+线性倒排页表（Linear Inverted Page Tables）</strong></h4>
+<p>• <strong>定义：</strong><br>
+<strong>Definition:</strong><br>
+•
+线性倒排页表是一种全局页表，每个物理页框对应一个页表项，记录该物理页框中存储的虚拟页号及其所属进程。<br>
+<strong>A linear inverted page table is a global page table where each
+physical page frame has one entry, recording the virtual page number
+stored in that frame and the owning process.</strong></p>
+<p>• <strong>页表项的内容：</strong><br>
+<strong>Contents of a Page Table Entry:</strong><br>
+• 虚拟页号（Virtual Page Number）。<br>
+• 所属进程 ID（Process ID）。</p>
+<p>• <strong>地址转换过程：</strong><br>
+<strong>Address Translation Process:</strong><br>
+1. 使用哈希函数将虚拟页号和进程 ID 映射到页表索引。<br>
+<strong>Hash the virtual page number and process ID to map to a page
+table index.</strong><br>
+2. 在页表中查找对应的物理页框号。<br>
+<strong>Search for the corresponding physical frame number in the page
+table.</strong></p>
+<hr>
+<h4 id="线性倒排页表的优缺点"><strong>73.
+线性倒排页表的优缺点</strong></h4>
+<p>• <strong>优点：</strong><br>
+<strong>Advantages:</strong><br>
+1. <strong>节省内存：</strong><br>
+◦
+对于大地址空间，倒排页表的大小与物理内存大小成正比，而不是与虚拟地址空间大小成正比。<br>
+<strong>Memory efficient: For large address spaces, the size of the
+inverted page table is proportional to the physical memory size, not the
+virtual address space size.</strong><br>
+2. <strong>适合稀疏地址空间：</strong><br>
+◦ 只存储实际使用的物理页框信息，避免为未使用的虚拟页分配页表项。<br>
+<strong>Suitable for sparse address spaces: Only stores information
+about used physical page frames, avoiding PTEs for unused virtual
+pages.</strong></p>
+<p>• <strong>缺点：</strong><br>
+<strong>Disadvantages:</strong><br>
+1. <strong>查找困难：</strong><br>
+◦
+需要通过哈希查找或线性搜索找到对应的页表项，增加了地址转换的复杂性和延迟。<br>
+<strong>Difficult to search: Requires hash-based or linear search to
+find the corresponding PTE, increasing complexity and
+latency.</strong><br>
+2. <strong>哈希冲突问题：</strong><br>
+◦ 哈希表可能发生冲突，需要额外的管理开销。<br>
+<strong>Hash collision issues: Hash tables may experience collisions,
+requiring additional management overhead.</strong></p>
+<hr>
+<h4 id="线性倒排页表的地址转换方案"><strong>76.
+线性倒排页表的地址转换方案</strong></h4>
+<p>• <strong>地址转换流程：</strong><br>
+<strong>Address Translation Flow:</strong><br>
+1. 使用虚拟页号和进程 ID 计算哈希值，定位到倒排页表的索引。<br>
+<strong>Compute the hash value using the virtual page number and process
+ID to locate the index in the inverted page table.</strong><br>
+2. 在页表中查找对应的物理页框号。<br>
+<strong>Search for the corresponding physical frame number in the page
+table.</strong><br>
+3. 如果找到匹配项，则生成物理地址；否则触发页错误。<br>
+<strong>If a match is found, generate the physical address; otherwise,
+trigger a page fault.</strong></p>
+<figure>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/20250506162616.png" alt="img">
+<figcaption aria-hidden="true">img</figcaption>
+</figure>
+<hr>
+<h4 id="线性倒排页表的示例"><strong>77. 线性倒排页表的示例</strong></h4>
+<p>• <strong>假设条件：</strong><br>
+<strong>Assumptions:</strong><br>
+• 虚拟地址空间为 32 位，页大小为 4 KB。<br>
+<strong>Virtual address space is 32 bits, with a page size of 4
+KB.</strong><br>
+• 物理内存为 1 GB，包含 <span class="math inline">\(1 \text{ GB} / 4
+\text{ KB} = 262,144\)</span> 个物理页框。<br>
+<strong>Physical memory is 1 GB, containing <span class="math inline">\(1 \text{ GB} / 4 \text{ KB} = 262,144\)</span>
+physical page frames.</strong></p>
+<p>• <strong>倒排页表的大小：</strong><br>
+<strong>Size of the Inverted Page Table:</strong><br>
+• 倒排页表的大小为 262,144 个条目，远小于单级页表的 <span class="math inline">\(2^{20} = 1,048,576\)</span> 个条目。<br>
+<strong>The inverted page table has 262,144 entries, much smaller than
+the <span class="math inline">\(2^{20} = 1,048,576\)</span> entries of a
+single-level page table.</strong></p>
+<hr>
+<h4 id="哈希倒排页表hashed-inverted-page-tables"><strong>78.
+哈希倒排页表（Hashed Inverted Page Tables）</strong></h4>
+<p>• <strong>定义：</strong><br>
+<strong>Definition:</strong><br>
+•
+哈希倒排页表在倒排页表的基础上增加了一级哈希表，用于快速定位页表项。<br>
+<strong>A hashed inverted page table adds a hash table to quickly locate
+page table entries in the inverted page table.</strong></p>
+<p>• <strong>工作原理：</strong><br>
+<strong>How It Works:</strong><br>
+1. 使用哈希函数将虚拟页号和进程 ID 映射到哈希表的索引。<br>
+<strong>Hash the virtual page number and process ID to map to an index
+in the hash table.</strong><br>
+2. 在哈希表中查找对应的倒排页表项。<br>
+<strong>Search for the corresponding inverted page table entry in the
+hash table.</strong></p>
+<p>• <strong>哈希冲突的处理：</strong><br>
+<strong>Handling Hash Collisions:</strong><br>
+• 使用链地址法（Chaining）解决哈希冲突：<br>
+◦ 在哈希表的每个条目中维护一个链表，存储所有映射到该索引的页表项。<br>
+<strong>Use chaining to handle hash collisions: Maintain a linked list
+in each hash table entry to store all PTEs mapped to that
+index.</strong></p>
+<hr>
+<h4 id="哈希倒排页表的查找过程"><strong>79.
+哈希倒排页表的查找过程</strong></h4>
+<p>• <strong>查找流程：</strong><br>
+<strong>Lookup Process:</strong><br>
+1. 使用虚拟页号和进程 ID 计算哈希值，定位到哈希表的索引。<br>
+<strong>Compute the hash value using the virtual page number and process
+ID to locate the hash table index.</strong><br>
+2. 在哈希表中查找对应的倒排页表项：<br>
+◦ 比较进程 ID 和虚拟页号是否匹配。<br>
+<strong>Compare the process ID and virtual page number to check for a
+match.</strong><br>
+◦ 如果不匹配，则检查链表中的下一个条目。<br>
+<strong>If no match, check the next entry in the linked
+list.</strong></p>
+<hr>
+<h4 id="哈希倒排页表的示例"><strong>80. 哈希倒排页表的示例</strong></h4>
+<p>• <strong>假设条件：</strong><br>
+<strong>Assumptions:</strong><br>
+• 哈希表大小为 65,536，每个哈希表条目维护一个链表。<br>
+<strong>Hash table size is 65,536, with each entry maintaining a linked
+list.</strong><br>
+• 每个链表平均包含 4 个页表项。<br>
+<strong>Each linked list contains an average of 4 PTEs.</strong></p>
+<p>• <strong>查找性能：</strong><br>
+<strong>Lookup Performance:</strong><br>
+• 平均需要 <span class="math inline">\(1 + 4 = 5\)</span>
+次比较完成查找。<br>
+<strong>On average, 5 comparisons are required to complete a
+lookup.</strong></p>
+<figure>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/20250506163033.png" alt="img">
+<figcaption aria-hidden="true">img</figcaption>
+</figure>
+<hr>
+<h4 id="哈希倒排页表与传统页表的对比"><strong>81.
+哈希倒排页表与传统页表的对比</strong></h4>
+<table>
+<colgroup>
+<col style="width: 10%">
+<col style="width: 43%">
+<col style="width: 46%">
+</colgroup>
+<thead>
+<tr>
+<th><strong>特性</strong></th>
+<th><strong>传统页表（Traditional Page Table）</strong></th>
+<th><strong>哈希倒排页表（Hashed Inverted Page Table）</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>内存占用</strong></td>
+<td>与虚拟地址空间大小成正比，可能非常大。</td>
+<td>与物理内存大小成正比，节省内存。</td>
+</tr>
+<tr>
+<td><strong>查找性能</strong></td>
+<td>每次地址转换需要多级页表查找，可能涉及多次内存访问。</td>
+<td>使用哈希表加速查找，平均查找时间接近 <span class="math inline">\(O(1)\)</span>。</td>
+</tr>
+<tr>
+<td><strong>优点</strong></td>
+<td>- 支持稀疏地址空间。<br>- 实现简单。</td>
+<td>- 内存效率高。<br>- 查找速度快。</td>
+</tr>
+<tr>
+<td><strong>缺点</strong></td>
+<td>- 内存占用大。<br>- 查找性能可能较差。</td>
+<td>- 哈希冲突可能导致性能下降。<br>- 管理哈希表的开销较大。</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h4 id="倒排页表的实际应用"><strong>82. 倒排页表的实际应用</strong></h4>
+<p>• <strong>应用场景：</strong><br>
+<strong>Application Scenarios:</strong><br>
+• 倒排页表目前在一些 IBM 和 Hewlett Packard 的工作站中使用。<br>
+<strong>Inverted page tables are currently used in some IBM and Hewlett
+Packard workstations.</strong><br>
+• 随着 64 位机器的普及，倒排页表的应用将更加广泛。<br>
+<strong>With the widespread adoption of 64-bit machines, inverted page
+tables will become more common.</strong></p>
+<p>• <strong>优点：</strong><br>
+<strong>Advantages:</strong><br>
+1. <strong>高效的内存利用：</strong><br>
+◦ 对于大地址空间，倒排页表显著减少了页表的存储需求。<br>
+<strong>Efficient memory utilization: Significantly reduces the storage
+requirements of page tables for large address spaces.</strong><br>
+2. <strong>适合稀疏地址空间：</strong><br>
+◦ 只存储实际使用的物理页框信息，避免浪费内存。<br>
+<strong>Suitable for sparse address spaces: Only stores information
+about used physical page frames, avoiding memory waste.</strong></p>
+<p>• <strong>缺点：</strong><br>
+<strong>Disadvantages:</strong><br>
+1. <strong>查找复杂：</strong><br>
+◦ 哈希查找或线性搜索可能增加地址转换的延迟。<br>
+<strong>Complex lookup: Hash-based or linear search may increase the
+latency of address translation.</strong><br>
+2. <strong>哈希冲突管理：</strong><br>
+◦ 需要额外的开销来处理哈希冲突。<br>
+<strong>Hash collision management: Requires additional overhead to
+handle hash collisions.</strong></p>
+<hr>
+<h3 id="总结-9"><strong>总结</strong></h3>
+<p>• <strong>多级页表的核心思想：</strong><br>
+• 通过分级存储页表，减少内存占用，支持大地址空间。<br>
+<strong>The core idea of multilevel page tables is to store page tables
+hierarchically, reducing memory usage and supporting large address
+spaces.</strong></p>
+<p>• <strong>倒排页表的核心思想：</strong><br>
+•
+通过为每个物理页框分配一个页表项，减少页表的存储需求，适合大地址空间和稀疏地址空间。<br>
+<strong>The core idea of inverted page tables is to allocate one PTE for
+each physical page frame, reducing storage requirements and being
+suitable for large and sparse address spaces.</strong></p>
+<p>• <strong>哈希倒排页表的优势：</strong><br>
+• 使用哈希表加速查找，平均查找时间接近 <span class="math inline">\(O(1)\)</span>。<br>
+<strong>Hashed inverted page tables use hash tables to accelerate
+lookups, with average lookup times approaching <span class="math inline">\(O(1)\)</span>.</strong></p>
+<p>• <strong>倒排页表的挑战：</strong><br>
+• 哈希冲突管理和查找复杂性可能影响性能。<br>
+<strong>Hash collision management and lookup complexity may impact
+performance.</strong></p>
+<p>• <strong>未来趋势：</strong><br>
+•
+随着硬件性能的提升，倒排页表和哈希倒排页表将更加高效，成为虚拟内存管理的主流技术。<br>
+<strong>With advancements in hardware, inverted and hashed inverted page
+tables will become more efficient and mainstream in virtual memory
+management.</strong></p>
+<hr>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://www.totorocatcat.top/">Totoro</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://totorocatcat.top/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FCH3%EF%BC%88A%EF%BC%89/">http://totorocatcat.top/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FCH3%EF%BC%88A%EF%BC%89/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://totorocatcat.top" target="_blank">Totoroの旅</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%8F%90%E9%AB%98/">提高</a></div><div class="post_share"><div class="social-share" data-image="https://npm.elemecdn.com/ushio-api-img-moe@5.0.22/img_220_1200x675_350.011993408203_null_normal.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/%E6%97%B6%E9%97%B4%E7%BA%BF%E8%A1%A8/" title="时间线表"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://source.fomal.cc/img/default_cover_5.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">时间线表</div></div></a></div><div class="next-post pull-right"><a href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FCH2%EF%BC%883%EF%BC%89/" title="操作系统CH2（3）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/ushio-api-img-moe@5.0.22/img_220_1200x675_350.011993408203_null_normal.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">操作系统CH2（3）</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/'Lec2%20Logic%20and%20Proof,%20Sets,%20and%20Function'/" title="Lec2 Logic and Proof, Sets, and Function"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/1fe6130ca86bb9e7e6a37c9187a32c8.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-11-20</div><div class="title">Lec2 Logic and Proof, Sets, and Function</div></div></a></div><div><a href="/02%EF%BC%89/" title="CS61B 课程笔记（Lecture 02）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/v2-2ed7f4c9e1a7a699a3ef300a6f761abe_720w.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-11</div><div class="title">CS61B 课程笔记（Lecture 02）</div></div></a></div><div><a href="/03%EF%BC%89/" title="CS61B 课程笔记（Lecture 03）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/v2-2ed7f4c9e1a7a699a3ef300a6f761abe_720w.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-12</div><div class="title">CS61B 课程笔记（Lecture 03）</div></div></a></div><div><a href="/04%EF%BC%89/" title="CS61B 课程笔记（Lecture 04）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/2749a496aabc7d650b2912e256582e390a0a636b.jpg@1256w_1246h_!web-article-pic.avif" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-13</div><div class="title">CS61B 课程笔记（Lecture 04）</div></div></a></div><div><a href="/06%EF%BC%89/" title="CS61B 课程笔记（Lecture 06）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/f00af0d55cc81c18403ccbb4957ae6bc298252208.jpg@1256w_1374h_!web-article-pic.avif" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-15</div><div class="title">CS61B 课程笔记（Lecture 06）</div></div></a></div><div><a href="/05%EF%BC%89/" title="CS61B 课程笔记（Lecture 05）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/4ccebbc43a0ca31a719afadee2f86b4902402baf.jpg@1256w_786h_!web-article-pic.avif" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-14</div><div class="title">CS61B 课程笔记（Lecture 05）</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/px3.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Totoro</div><div class="author-info__description">热爱文学的SCUT软件学院学生</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">842</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">36</div></a></div><a id="card-info-btn" href="https://github.com/4512abc"><i class="fab fa-github"></i><span>🛴前往小窝......</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/4512abc" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:4512abc@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到龙猫の小窝</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#chapter-3-memory-management-a"><span class="toc-text">Chapter 3 Memory Management
+A</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86memory-management"><span class="toc-text">内存管理（Memory
+Management）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E7%9A%84%E7%9B%AE%E6%A0%87%E4%B8%8E%E4%BB%BB%E5%8A%A1"><span class="toc-text">内存管理的目标与任务</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%90%86%E6%83%B3%E7%9A%84%E5%86%85%E5%AD%98%E7%89%B9%E6%80%A7"><span class="toc-text">1. 理想的内存特性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E5%B1%82%E6%AC%A1%E7%BB%93%E6%9E%84memory-hierarchy"><span class="toc-text">2. 内存层次结构（Memory
+Hierarchy）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E5%99%A8%E7%9A%84%E8%81%8C%E8%B4%A3memory-managers-role"><span class="toc-text">3.
+内存管理器的职责（Memory Manager&#39;s Role）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E5%B1%82%E6%AC%A1%E7%BB%93%E6%9E%84storage-hierarchy"><span class="toc-text">4. 存储层次结构（Storage
+Hierarchy）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F%E5%8A%A0%E8%BD%BD%E4%B8%8E%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86"><span class="toc-text">5. 程序加载与内存管理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E7%9A%84%E7%9B%AE%E6%A0%87objectives-of-memory-management"><span class="toc-text">6.
+内存管理的目标（Objectives of Memory Management）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E7%9A%84%E4%BB%BB%E5%8A%A1tasks-of-memory-management"><span class="toc-text">7.
+内存管理的任务（Tasks of Memory Management）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E7%9A%84%E6%8C%91%E6%88%98%E4%B8%8E%E4%BC%98%E5%8C%96"><span class="toc-text">8.
+内存管理的挑战与优化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">9. 总结</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E7%9A%84%E6%BC%94%E8%BF%9B%E4%BB%8E%E6%97%A0%E5%86%85%E5%AD%98%E6%8A%BD%E8%B1%A1%E5%88%B0%E5%A4%9A%E7%A8%8B%E5%BA%8F%E5%B9%B6%E5%8F%91%E8%BF%90%E8%A1%8C"><span class="toc-text">内存管理的演进：从无内存抽象到多程序并发运行</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%97%A0%E5%86%85%E5%AD%98%E6%8A%BD%E8%B1%A1no-memory-abstraction"><span class="toc-text">7. 无内存抽象（No
+Memory Abstraction）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%9A%E7%A8%8B%E5%BA%8F%E5%B9%B6%E5%8F%91%E8%BF%90%E8%A1%8Cmultiple-programs-in-memory"><span class="toc-text">8.
+多程序并发运行（Multiple Programs in Memory）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%97%A0%E5%86%85%E5%AD%98%E6%8A%BD%E8%B1%A1%E4%B8%8B%E7%9A%84%E5%A4%9A%E7%A8%8B%E5%BA%8F%E8%BF%90%E8%A1%8Cmultiple-programs-without-memory-abstraction"><span class="toc-text">9.
+无内存抽象下的多程序运行（Multiple Programs without Memory
+Abstraction）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E9%87%8D%E5%AE%9A%E4%BD%8Dstatic-relocation"><span class="toc-text">10. 静态重定位（Static
+Relocation）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E9%87%8D%E5%AE%9A%E4%BD%8Ddynamic-relocation"><span class="toc-text">11. 动态重定位（Dynamic
+Relocation）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E7%9A%84%E6%BC%94%E8%BF%9B%E6%80%BB%E7%BB%93"><span class="toc-text">12. 内存管理的演进总结</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%B0%E5%9D%80%E7%A9%BA%E9%97%B4address-spaces"><span class="toc-text">地址空间（Address
+Spaces）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9C%B0%E5%9D%80%E7%A9%BA%E9%97%B4%E7%9A%84%E8%83%8C%E6%99%AF%E4%B8%8E%E9%9C%80%E6%B1%82"><span class="toc-text">13.
+地址空间的背景与需求</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9C%B0%E5%9D%80%E7%A9%BA%E9%97%B4%E7%9A%84%E5%AE%9A%E4%B9%89%E4%B8%8E%E7%89%B9%E7%82%B9"><span class="toc-text">14.
+地址空间的定义与特点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E9%87%8D%E5%AE%9A%E4%BD%8D%E4%B8%8E%E7%A1%AC%E4%BB%B6%E6%94%AF%E6%8C%81"><span class="toc-text">15.
+动态重定位与硬件支持</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-1"><span class="toc-text">总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E5%9D%80%E5%AF%84%E5%AD%98%E5%99%A8%E4%B8%8E%E7%95%8C%E9%99%90%E5%AF%84%E5%AD%98%E5%99%A8base-and-limit-registers"><span class="toc-text">基址寄存器与界限寄存器（Base
+and Limit Registers）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E5%9D%80%E5%AF%84%E5%AD%98%E5%99%A8%E4%B8%8E%E7%95%8C%E9%99%90%E5%AF%84%E5%AD%98%E5%99%A8%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="toc-text">16.
+基址寄存器与界限寄存器的工作原理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E5%9D%80%E5%AF%84%E5%AD%98%E5%99%A8%E4%B8%8E%E7%95%8C%E9%99%90%E5%AF%84%E5%AD%98%E5%99%A8%E7%9A%84%E7%A4%BA%E4%BE%8B"><span class="toc-text">17.
+基址寄存器与界限寄存器的示例</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E9%87%8D%E5%AE%9A%E4%BD%8D%E7%9A%84%E4%BC%98%E7%82%B9%E4%B8%8E%E7%BC%BA%E7%82%B9"><span class="toc-text">18.
+动态重定位的优点与缺点</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-2"><span class="toc-text">总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%94%B9%E8%BF%9B%E6%96%B9%E5%90%91"><span class="toc-text">改进方向</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%A4%E6%8D%A2swapping%E4%B8%8E%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86"><span class="toc-text">交换（Swapping）与内存管理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%A4%E6%8D%A2%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-text">19. 交换的基本概念</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%A4%E6%8D%A2%E7%9A%84%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D%E5%8F%98%E5%8C%96"><span class="toc-text">20. 交换的内存分配变化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E5%A2%9E%E9%95%BF%E7%9A%84%E6%8C%91%E6%88%98"><span class="toc-text">21. 进程增长的挑战</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E5%A2%9E%E9%95%BF%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="toc-text">22. 进程增长的解决方案</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E7%A2%8E%E7%89%87%E9%97%AE%E9%A2%98"><span class="toc-text">23. 内存碎片问题</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%A4%E6%8D%A2%E4%B8%8E%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98%E7%9A%84%E5%AF%B9%E6%AF%94"><span class="toc-text">交换与虚拟内存的对比</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E7%9A%84%E6%94%B9%E8%BF%9B%E6%96%B9%E5%90%91"><span class="toc-text">内存管理的改进方向</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-3"><span class="toc-text">总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E4%B8%AD%E7%9A%84%E7%B4%A7%E5%87%91compaction%E4%B8%8E%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D%E8%B7%9F%E8%B8%AA%E6%96%B9%E6%B3%95"><span class="toc-text">内存管理中的紧凑（Compaction）与内存分配跟踪方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E7%B4%A7%E5%87%91compaction"><span class="toc-text">26.
+内存紧凑（Compaction）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E4%B8%AD%E7%9A%84%E8%B7%9F%E8%B8%AA%E6%96%B9%E6%B3%95"><span class="toc-text">27.
+内存管理中的跟踪方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%8D%E5%9B%BEbitmap"><span class="toc-text">28. 位图（Bitmap）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%93%BE%E8%A1%A8linked-lists"><span class="toc-text">29. 链表（Linked Lists）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E4%B8%AD%E7%9A%84%E9%93%BE%E8%A1%A8%E8%8A%82%E7%82%B9%E6%9B%B4%E6%96%B0process-termination-or-swapping-out"><span class="toc-text">30.
+内存管理中的链表节点更新（Process Termination or Swapping
+Out）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%8D%E5%9B%BE%E4%B8%8E%E9%93%BE%E8%A1%A8%E7%9A%84%E5%AF%B9%E6%AF%94"><span class="toc-text">位图与链表的对比</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-4"><span class="toc-text">总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D%E7%AD%96%E7%95%A5storage-placement-strategies"><span class="toc-text">内存分配策略（Storage
+Placement Strategies）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D%E7%AD%96%E7%95%A5%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%96%B9%E6%B3%95"><span class="toc-text">31.
+内存分配策略的基本方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E5%88%86%E9%85%8D%E7%AD%96%E7%95%A5%E7%9A%84%E5%AF%B9%E6%AF%94"><span class="toc-text">32. 存储分配策略的对比</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D%E8%AF%B7%E6%B1%82%E7%9A%84%E5%A4%84%E7%90%86"><span class="toc-text">33.
+示例：内存分配请求的处理</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D%E7%AD%96%E7%95%A5%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9%E6%80%BB%E7%BB%93"><span class="toc-text">内存分配策略的优缺点总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E9%99%85%E5%BA%94%E7%94%A8%E4%B8%AD%E7%9A%84%E9%80%89%E6%8B%A9"><span class="toc-text">实际应用中的选择</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-5"><span class="toc-text">总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A6%86%E7%9B%96%E6%8A%80%E6%9C%AFoverlaying"><span class="toc-text">覆盖技术（Overlaying）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A6%86%E7%9B%96%E6%8A%80%E6%9C%AF%E7%9A%84%E5%AE%9A%E4%B9%89%E4%B8%8E%E8%83%8C%E6%99%AF"><span class="toc-text">34.
+覆盖技术的定义与背景</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A6%86%E7%9B%96%E6%8A%80%E6%9C%AF%E7%9A%84%E7%BB%93%E6%9E%84"><span class="toc-text">35. 覆盖技术的结构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A6%86%E7%9B%96%E6%8A%80%E6%9C%AF%E7%9A%84%E7%A4%BA%E4%BE%8B"><span class="toc-text">36. 覆盖技术的示例</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A6%86%E7%9B%96%E6%8A%80%E6%9C%AF%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="toc-text">37. 覆盖技术的优缺点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A6%86%E7%9B%96%E6%8A%80%E6%9C%AF%E7%9A%84%E7%8E%B0%E4%BB%A3%E5%BA%94%E7%94%A8"><span class="toc-text">38. 覆盖技术的现代应用</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A6%86%E7%9B%96%E6%8A%80%E6%9C%AF%E4%B8%8E%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98%E7%9A%84%E5%AF%B9%E6%AF%94"><span class="toc-text">覆盖技术与虚拟内存的对比</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-6"><span class="toc-text">总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98virtual-memory"><span class="toc-text">虚拟内存（Virtual
+Memory）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98%E7%9A%84%E5%AE%9A%E4%B9%89%E4%B8%8E%E7%89%B9%E7%82%B9"><span class="toc-text">37.
+虚拟内存的定义与特点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B1%80%E9%83%A8%E6%80%A7%E5%8E%9F%E7%90%86principle-of-locality"><span class="toc-text">38.
+局部性原理（Principle of Locality）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98%E7%9A%84%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F"><span class="toc-text">39. 虚拟内存的实现方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E9%A1%B5paging"><span class="toc-text">40. 分页（Paging）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E9%A1%B5%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="toc-text">41. 分页的工作原理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E9%A1%B5%E7%9A%84%E7%A4%BA%E4%BE%8B"><span class="toc-text">42. 分页的示例</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E9%A1%B5%E7%9A%84%E5%9C%B0%E5%9D%80%E8%BD%AC%E6%8D%A2%E8%BF%87%E7%A8%8B"><span class="toc-text">43. 分页的地址转换过程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E9%A1%B5%E6%A8%A1%E5%9E%8B%E7%A4%BA%E4%BE%8B"><span class="toc-text">44. 分页模型示例</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E9%A1%B5%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="toc-text">45. 分页的优缺点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E9%A1%B5%E4%B8%8E%E5%88%86%E6%AE%B5%E7%9A%84%E5%AF%B9%E6%AF%94"><span class="toc-text">46. 分页与分段的对比</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E9%A1%B5%E4%B8%8E%E5%88%86%E6%AE%B5%E7%9A%84%E7%BB%93%E5%90%88"><span class="toc-text">47. 分页与分段的结合</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-7"><span class="toc-text">总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%B5%E8%A1%A8page-table%E4%B8%8E%E8%BD%AC%E6%8D%A2%E5%90%8E%E5%A4%87%E7%BC%93%E5%86%B2%E5%99%A8tlb"><span class="toc-text">页表（Page
+Table）与转换后备缓冲器（TLB）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A1%B5%E8%A1%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-text">50. 页表的基本概念</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B8%E5%9E%8B%E7%9A%84%E9%A1%B5%E8%A1%A8%E9%A1%B9page-table-entry-pte"><span class="toc-text">51. 典型的页表项（Page
+Table Entry, PTE）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A1%B5%E8%A1%A8%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-text">58. 页表的问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A1%B5%E8%A1%A8%E7%9A%84%E5%AD%98%E5%82%A8%E6%96%B9%E5%BC%8F"><span class="toc-text">59. 页表的存储方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%99%9A%E6%8B%9F%E5%9C%B0%E5%9D%80%E5%88%B0%E7%89%A9%E7%90%86%E5%9C%B0%E5%9D%80%E7%9A%84%E6%9F%A5%E6%89%BE"><span class="toc-text">60.
+虚拟地址到物理地址的查找</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#tlb-%E9%A1%B5%E8%A1%A8%E9%A1%B9%E7%9A%84%E4%BD%8D"><span class="toc-text">61. TLB 页表项的位</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BD%AC%E6%8D%A2%E5%90%8E%E5%A4%87%E7%BC%93%E5%86%B2%E5%99%A8tlb%E7%9A%84%E5%8A%9F%E8%83%BD"><span class="toc-text">62.
+转换后备缓冲器（TLB）的功能</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E6%8E%A7%E5%88%B6%E7%9A%84-tlb"><span class="toc-text">66. 软件控制的 TLB</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%9A%E7%BA%A7%E9%A1%B5%E8%A1%A8multilevel-page-tables"><span class="toc-text">67. 多级页表（Multilevel
+Page Tables）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%9A%E7%BA%A7%E9%A1%B5%E8%A1%A8%E7%9A%84%E4%BC%98%E5%8A%BF"><span class="toc-text">68. 多级页表的优势</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-8"><span class="toc-text">总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E7%BA%A7%E9%A1%B5%E8%A1%A8%E7%B3%BB%E7%BB%9F%E4%B8%8E%E5%80%92%E6%8E%92%E9%A1%B5%E8%A1%A8inverted-page-tables"><span class="toc-text">多级页表系统与倒排页表（Inverted
+Page Tables）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%9A%E7%BA%A7%E9%A1%B5%E8%A1%A8%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%9C%B0%E5%9D%80%E5%88%86%E9%85%8D%E7%A4%BA%E4%BE%8B"><span class="toc-text">69.
+多级页表系统的地址分配示例</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%9A%E7%BA%A7%E9%A1%B5%E8%A1%A8%E7%9A%84%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90"><span class="toc-text">70. 多级页表的性能分析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%80%92%E6%8E%92%E9%A1%B5%E8%A1%A8inverted-page-tables%E7%9A%84%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3"><span class="toc-text">71.
+倒排页表（Inverted Page Tables）的核心思想</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E5%80%92%E6%8E%92%E9%A1%B5%E8%A1%A8linear-inverted-page-tables"><span class="toc-text">72.
+线性倒排页表（Linear Inverted Page Tables）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E5%80%92%E6%8E%92%E9%A1%B5%E8%A1%A8%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="toc-text">73.
+线性倒排页表的优缺点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E5%80%92%E6%8E%92%E9%A1%B5%E8%A1%A8%E7%9A%84%E5%9C%B0%E5%9D%80%E8%BD%AC%E6%8D%A2%E6%96%B9%E6%A1%88"><span class="toc-text">76.
+线性倒排页表的地址转换方案</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E5%80%92%E6%8E%92%E9%A1%B5%E8%A1%A8%E7%9A%84%E7%A4%BA%E4%BE%8B"><span class="toc-text">77. 线性倒排页表的示例</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%93%88%E5%B8%8C%E5%80%92%E6%8E%92%E9%A1%B5%E8%A1%A8hashed-inverted-page-tables"><span class="toc-text">78.
+哈希倒排页表（Hashed Inverted Page Tables）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%93%88%E5%B8%8C%E5%80%92%E6%8E%92%E9%A1%B5%E8%A1%A8%E7%9A%84%E6%9F%A5%E6%89%BE%E8%BF%87%E7%A8%8B"><span class="toc-text">79.
+哈希倒排页表的查找过程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%93%88%E5%B8%8C%E5%80%92%E6%8E%92%E9%A1%B5%E8%A1%A8%E7%9A%84%E7%A4%BA%E4%BE%8B"><span class="toc-text">80. 哈希倒排页表的示例</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%93%88%E5%B8%8C%E5%80%92%E6%8E%92%E9%A1%B5%E8%A1%A8%E4%B8%8E%E4%BC%A0%E7%BB%9F%E9%A1%B5%E8%A1%A8%E7%9A%84%E5%AF%B9%E6%AF%94"><span class="toc-text">81.
+哈希倒排页表与传统页表的对比</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%80%92%E6%8E%92%E9%A1%B5%E8%A1%A8%E7%9A%84%E5%AE%9E%E9%99%85%E5%BA%94%E7%94%A8"><span class="toc-text">82. 倒排页表的实际应用</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-9"><span class="toc-text">总结</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/%E6%97%B6%E9%97%B4%E7%BA%BF%E8%A1%A8/" title="时间线表"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://source.fomal.cc/img/default_cover_5.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="时间线表"/></a><div class="content"><a class="title" href="/%E6%97%B6%E9%97%B4%E7%BA%BF%E8%A1%A8/" title="时间线表">时间线表</a><time datetime="2025-05-06T16:24:18.000Z" title="发表于 2025-05-07 00:24:18">2025-05-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FCH3%EF%BC%88A%EF%BC%89/" title="操作系统CH3（A）"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/ushio-api-img-moe@5.0.22/img_220_1200x675_350.011993408203_null_normal.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="操作系统CH3（A）"/></a><div class="content"><a class="title" href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FCH3%EF%BC%88A%EF%BC%89/" title="操作系统CH3（A）">操作系统CH3（A）</a><time datetime="2025-05-06T09:06:41.000Z" title="发表于 2025-05-06 17:06:41">2025-05-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FCH2%EF%BC%883%EF%BC%89/" title="操作系统CH2（3）"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/ushio-api-img-moe@5.0.22/img_220_1200x675_350.011993408203_null_normal.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="操作系统CH2（3）"/></a><div class="content"><a class="title" href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FCH2%EF%BC%883%EF%BC%89/" title="操作系统CH2（3）">操作系统CH2（3）</a><time datetime="2025-05-06T09:05:47.000Z" title="发表于 2025-05-06 17:05:47">2025-05-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%882%EF%BC%89/" title="操作系统CH2（2）"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/ushio-api-img-moe@5.0.22/img_220_1200x675_350.011993408203_null_normal.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="操作系统CH2（2）"/></a><div class="content"><a class="title" href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%882%EF%BC%89/" title="操作系统CH2（2）">操作系统CH2（2）</a><time datetime="2025-05-06T09:04:48.000Z" title="发表于 2025-05-06 17:04:48">2025-05-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FCH2/" title="操作系统CH2（1）"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/ushio-api-img-moe@5.0.22/img_220_1200x675_350.011993408203_null_normal.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="操作系统CH2（1）"/></a><div class="content"><a class="title" href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FCH2/" title="操作系统CH2（1）">操作系统CH2（1）</a><time datetime="2025-05-06T09:03:29.000Z" title="发表于 2025-05-06 17:03:29">2025-05-06</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 - 2025 By Totoro</div><div class="footer_custom_text">I wish you to become your own sun, no need to rely on who's light.<p><a target="_blank" href="https://hexo.io/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&logo=hexo" title="博客框架为Hexo"></a>&nbsp;<a target="_blank" href="https://butterfly.js.org/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&logo=bitdefender" title="主题采用butterfly"></a>&nbsp;<a target="_blank" href="https://www.jsdelivr.com/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&logo=jsDelivr" title="本站使用JsDelivr为静态资源提供CDN加速"></a> &nbsp;<a target="_blank" href="https://vercel.com/ "><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Hosted-Vervel-brightgreen?style=flat&logo=Vercel" title="本站采用双线部署，默认线路托管于Vercel"></a>&nbsp;<a target="_blank" href="https://vercel.com/ "><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Hosted-Coding-0cedbe?style=flat&logo=Codio" title="本站采用双线部署，联通线路托管于Coding"></a>&nbsp;<a target="_blank" href="https://github.com/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&logo=GitHub" title="本站项目由Gtihub托管"></a>&nbsp;<a target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&logo=Claris" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"></a></p></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat-btn" type="button" title="聊天"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="/js/tw_cn.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@5.2.0/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'HT1PalaKkPaG1UqAXBhJXIu8-gzGzoHsz',
+      appKey: 'iT0TnVVAwf9zuZ7NqwclQItY',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://cdn.jsdelivr.net/npm/valine@1.5.1/dist/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><script defer src="/js/light.js"></script><canvas id="universe"></canvas><script defer src="/js/universe.js"></script><script async src="/js/title.js"></script><script defer src="https://npm.elemecdn.com/jquery@latest/dist/jquery.min.js"></script><script defer data-pjax src="/js/cat.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="1" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener
+  btf.removeGlobalFnEvent('pjax')
+  btf.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.12.0"></script></div></div><!-- hexo injector body_end start --><script data-pjax>
+  function butterfly_swiper_injector_config(){
+    var parent_div_git = document.getElementById('recent-posts');
+    var item_html = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms;"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;诗录/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/4b31456c6f0f4489f99177f89e936de7286431045.png@1256w_708h_!web-article-pic.avif" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-10-01</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;诗录/&quot;);" href="javascript:void(0);" alt="">诗录</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;诗录/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;诗兴大发/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://source.fomal.cc/img/default_cover_69.webp" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-01-29</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;诗兴大发/&quot;);" href="javascript:void(0);" alt="">诗兴大发</a><div class="blog-slider__text">未觉，却是中二少年的诗仙梦</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;诗兴大发/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;TotoroのPlan/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/51d37eba99d243607ddedfff6e91568f617436609.jpg@1256w_1884h_!web-article-pic.avif" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-10-05</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;TotoroのPlan/&quot;);" href="javascript:void(0);" alt="">TotoroのPlan</a><div class="blog-slider__text">方便大二看（）</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;TotoroのPlan/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;Markdown格式/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/ushio-api-img-moe@5.0.48/img_482_1920x1080_96_null_normal.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-03-03</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;Markdown格式/&quot;);" href="javascript:void(0);" alt="">Markdown格式</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;Markdown格式/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载butterfly_swiper')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_swiper_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_swiper_injector_config();
+  }
+  </script><script defer src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.js"></script><script defer data-pjax src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper_init.js"></script><script data-pjax>
+    function butterfly_categories_card_injector_config(){
+      var parent_div_git = document.getElementById('recent-posts');
+      var item_html = '<style>li.categoryBar-list-item{width:32.3%;}.categoryBar-list{max-height: 380px;overflow:auto;}.categoryBar-list::-webkit-scrollbar{width:0!important}@media screen and (max-width: 650px){.categoryBar-list{max-height: 320px;}}</style><div class="recent-post-item" style="height:auto;width:100%;padding:0px;"><div id="categoryBar"><ul class="categoryBar-list"><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_12.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/离散数学/&quot;);" href="javascript:void(0);">离散数学</a><span class="categoryBar-list-count">33</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_13.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS61B/&quot;);" href="javascript:void(0);">CS61B</a><span class="categoryBar-list-count">76</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_14.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/期末の旅/&quot;);" href="javascript:void(0);">期末の旅</a><span class="categoryBar-list-count">99</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_17.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/刷题计划/&quot;);" href="javascript:void(0);">刷题计划</a><span class="categoryBar-list-count">60</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_18.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/区域赛の旅/&quot;);" href="javascript:void(0);">区域赛の旅</a><span class="categoryBar-list-count">7</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_19.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/Codeforcesの旅/&quot;);" href="javascript:void(0);">Codeforcesの旅</a><span class="categoryBar-list-count">24</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_20.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/牛客の旅/&quot;);" href="javascript:void(0);">牛客の旅</a><span class="categoryBar-list-count">65</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_21.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/ACMの旅/&quot;);" href="javascript:void(0);">ACMの旅</a><span class="categoryBar-list-count">42</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_22.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/数学建模/&quot;);" href="javascript:void(0);">数学建模</a><span class="categoryBar-list-count">26</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_22.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/前端の旅/&quot;);" href="javascript:void(0);">前端の旅</a><span class="categoryBar-list-count">17</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_23.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/数据结构/&quot;);" href="javascript:void(0);">数据结构</a><span class="categoryBar-list-count">47</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_24.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/Atcoderの旅/&quot;);" href="javascript:void(0);">Atcoderの旅</a><span class="categoryBar-list-count">53</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_25.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/C-の旅/&quot;);" href="javascript:void(0);">C++の旅</a><span class="categoryBar-list-count">17</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_26.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS70の旅/&quot;);" href="javascript:void(0);">CS70の旅</a><span class="categoryBar-list-count">24</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_27.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CSAPPの旅/&quot;);" href="javascript:void(0);">CSAPPの旅</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_28.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/计算机组成原理/&quot;);" href="javascript:void(0);">计算机组成原理</a><span class="categoryBar-list-count">47</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_29.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/编程基础/&quot;);" href="javascript:void(0);">编程基础</a><span class="categoryBar-list-count">14</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_30.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/JAVAの旅/&quot;);" href="javascript:void(0);">JAVAの旅</a><span class="categoryBar-list-count">10</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_31.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/MIT-6-031-Software-Construction/&quot;);" href="javascript:void(0);">MIT 6.031:Software Construction</a><span class="categoryBar-list-count">16</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_32.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS-110L/&quot;);" href="javascript:void(0);">CS 110L</a><span class="categoryBar-list-count">3</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_33.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/数据库の旅/&quot;);" href="javascript:void(0);">数据库の旅</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_34.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/灵魂の旅/&quot;);" href="javascript:void(0);">灵魂の旅</a><span class="categoryBar-list-count">2</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_35.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/个人安排/&quot;);" href="javascript:void(0);">个人安排</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_36.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/杂项/&quot;);" href="javascript:void(0);">杂项</a><span class="categoryBar-list-count">13</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_37.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/文学/&quot;);" href="javascript:void(0);">文学</a><span class="categoryBar-list-count">49</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_38.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/力扣の旅/&quot;);" href="javascript:void(0);">力扣の旅</a><span class="categoryBar-list-count">20</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_39.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/计算机网络/&quot;);" href="javascript:void(0);">计算机网络</a><span class="categoryBar-list-count">18</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_40.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/千里十二行/&quot;);" href="javascript:void(0);">千里十二行</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_41.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/🗡指offer/&quot;);" href="javascript:void(0);">🗡指offer</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_42.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/少年游/&quot;);" href="javascript:void(0);">少年游</a><span class="categoryBar-list-count">2</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_43.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/算法提高课/&quot;);" href="javascript:void(0);">算法提高课</a><span class="categoryBar-list-count">3</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_44.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/汇编の旅/&quot;);" href="javascript:void(0);">汇编の旅</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_44.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/C-实训/&quot;);" href="javascript:void(0);">C++实训</a><span class="categoryBar-list-count">8</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_45.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS知识/&quot;);" href="javascript:void(0);">CS知识</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_46.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/编译原理/&quot;);" href="javascript:void(0);">编译原理</a><span class="categoryBar-list-count">22</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_48.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/操作系统/&quot;);" href="javascript:void(0);">操作系统</a><span class="categoryBar-list-count">14</span><span class="categoryBar-list-descr"></span></li></ul></div></div>';
+      console.log('已挂载butterfly_categories_card')
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+      }
+    if( document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+    butterfly_categories_card_injector_config()
+    }
+  </script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>

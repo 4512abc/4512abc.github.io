@@ -1,0 +1,1987 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>操作系统CH2（1） | Totoroの旅</title><meta name="author" content="Totoro"><meta name="copyright" content="Totoro"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Chapter 2 Processes and Threads 2.1 进程（Process）  1. 顺序执行（Sequential Execution） Sequential Execution • 定义： Definition: • 在单道程序系统中，一个具有独立功能的程序独占处理器直至最终结束的过程称为程序的顺序执行。 In a single-program syst">
+<meta property="og:type" content="article">
+<meta property="og:title" content="操作系统CH2（1）">
+<meta property="og:url" content="http://totorocatcat.top/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FCH2/index.html">
+<meta property="og:site_name" content="Totoroの旅">
+<meta property="og:description" content="Chapter 2 Processes and Threads 2.1 进程（Process）  1. 顺序执行（Sequential Execution） Sequential Execution • 定义： Definition: • 在单道程序系统中，一个具有独立功能的程序独占处理器直至最终结束的过程称为程序的顺序执行。 In a single-program syst">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://npm.elemecdn.com/ushio-api-img-moe@5.0.22/img_220_1200x675_350.011993408203_null_normal.jpg">
+<meta property="article:published_time" content="2025-05-06T09:03:29.000Z">
+<meta property="article:modified_time" content="2025-05-06T09:04:07.390Z">
+<meta property="article:author" content="Totoro">
+<meta property="article:tag" content="提高">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://npm.elemecdn.com/ushio-api-img-moe@5.0.22/img_220_1200x675_350.011993408203_null_normal.jpg"><link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/b5ca6e582a7a45e6fde46e616eeb68e.png"><link rel="canonical" href="http://totorocatcat.top/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FCH2/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta/><link rel="stylesheet" href="/css/index.css?v=4.12.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  noticeOutdate: {"limitDay":765,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体中文","cht_to_chs":"你已切换为简体中文","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"top-right"},
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '操作系统CH2（1）',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: true,
+  isToc: true,
+  postUpdate: '2025-05-06 17:04:07'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const now = new Date()
+          const hour = now.getHours()
+          const isNight = hour <= 6 || hour >= 18
+          if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/universe.css"><link rel="stylesheet" href="/css/scrollbar.css"><link rel="stylesheet" href="/css/cat.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiperstyle.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-double-row-display@1.00/cardlistpost.min.css"/>
+<style>#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags:before {content:"\A";
+  white-space: pre;}#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags > .article-meta__separator{display:none}</style>
+<link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-categories-card@1.0.0/lib/categorybar.css"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><div class="loading-img"></div><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><script>window.paceOptions = {
+  restartOnPushState: false
+}
+
+document.addEventListener('pjax:send', () => {
+  Pace.restart()
+})
+</script><link rel="stylesheet" href="/css/progress_bar.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/px3.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">842</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">36</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home-alt"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-envelope-open"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 趣味</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/project/"><i class="fa-fw fas fas fa-folder"></i><span> 项目</span></a></div><div class="menus_item"><a class="site-page" href="/stars/"><i class="fa-fw fas fa-bookmark"></i><span> 收藏</span></a></div><div class="menus_item"><a class="site-page" href="/bilibili/"><i class="fa-fw fas fa-tv"></i><span> 追番</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url('https://npm.elemecdn.com/ushio-api-img-moe@5.0.22/img_220_1200x675_350.011993408203_null_normal.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="Totoroの旅"><span class="site-name">Totoroの旅</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home-alt"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-envelope-open"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 趣味</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/project/"><i class="fa-fw fas fas fa-folder"></i><span> 项目</span></a></div><div class="menus_item"><a class="site-page" href="/stars/"><i class="fa-fw fas fa-bookmark"></i><span> 收藏</span></a></div><div class="menus_item"><a class="site-page" href="/bilibili/"><i class="fa-fw fas fa-tv"></i><span> 追番</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">操作系统CH2（1）</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-05-06T09:03:29.000Z" title="发表于 2025-05-06 17:03:29">2025-05-06</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-05-06T09:04:07.390Z" title="更新于 2025-05-06 17:04:07">2025-05-06</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">11.2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>47分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="操作系统CH2（1）"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FCH2/#post-comment" itemprop="discussionUrl"><span class="valine-comment-count" data-xid="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FCH2/" itemprop="commentCount"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="chapter-2-processes-and-threads">Chapter 2 Processes and
+Threads</h1>
+<h3 id="进程process"><strong>2.1 进程（Process）</strong></h3>
+<hr>
+<h4 id="顺序执行sequential-execution"><strong>1. 顺序执行（Sequential
+Execution）</strong></h4>
+<p><strong>Sequential Execution</strong></p>
+<p>• <strong>定义：</strong><br>
+<strong>Definition:</strong><br>
+•
+在单道程序系统中，一个具有独立功能的程序独占处理器直至最终结束的过程称为程序的顺序执行。<br>
+<strong>In a single-program system, a program with independent
+functionality occupies the processor exclusively until it finishes,
+known as sequential execution.</strong></p>
+<p>• <strong>特点：</strong><br>
+<strong>Characteristics:</strong><br>
+• <strong>顺序性（Sequential）：</strong>
+程序结构中的指令按顺序执行（可能包含分支或循环）。<br>
+<strong>Sequential:</strong> Instructions in the program structure are
+executed in order (may include branches or loops).<br>
+• <strong>封闭性（Close）：</strong> 程序独占所有资源。<br>
+<strong>Close:</strong> The program occupies all resources
+exclusively.<br>
+• <strong>可再现性（Reappear）：</strong>
+如果初始条件相同，结果也相同。<br>
+<strong>Reappear:</strong> If the initial conditions are the same, the
+result will be the same.</p>
+<hr>
+<h4 id="并发执行concurrency-execution"><strong>2. 并发执行（Concurrency
+Execution）</strong></h4>
+<p><strong>Concurrency Execution</strong></p>
+<p>• <strong>定义：</strong><br>
+<strong>Definition:</strong><br>
+• 多个程序或程序段在同一时间段内交替执行，称为并发执行。<br>
+<strong>Multiple programs or program segments are executed alternately
+within the same time period, known as concurrency
+execution.</strong></p>
+<p>• <strong>特点：</strong><br>
+<strong>Characteristics:</strong><br>
+• <strong>并发性（Concurrency）：</strong>
+引入进程的概念，描述程序的并发执行。<br>
+<strong>Concurrency:</strong> Introduces the concept of processes to
+describe concurrent execution of programs.<br>
+• <strong>多道程序设计（Multiprogramming）：</strong>
+多个程序同时驻留在内存中，交替执行。<br>
+<strong>Multiprogramming:</strong> Multiple programs reside in memory
+simultaneously and execute alternately.</p>
+<p>• <strong>问题：</strong><br>
+<strong>Problems:</strong><br>
+• <strong>资源竞争（Compete for Resources）：</strong>
+多个进程竞争有限的系统资源。<br>
+<strong>Compete for Resources:</strong> Multiple processes compete for
+limited system resources.<br>
+• <strong>通信（Communication）：</strong> 进程之间需要交换信息。<br>
+<strong>Communication:</strong> Processes need to exchange
+information.<br>
+• <strong>协作（Collaboration）：</strong>
+进程之间需要协同完成任务。<br>
+<strong>Collaboration:</strong> Processes need to cooperate to complete
+tasks.</p>
+<p>• <strong>解决方案：</strong><br>
+<strong>Solution:</strong><br>
+•
+引入<strong>进程（Process）</strong>的概念，通过进程管理解决并发执行中的问题。<br>
+<strong>Introduces the concept of processes to manage concurrency and
+solve related problems.</strong></p>
+<hr>
+<h4 id="进程模型process-model"><strong>3. 进程模型（Process
+Model）</strong></h4>
+<p><strong>Process Model</strong></p>
+<p>• <strong>多道程序设计的进程模型：</strong><br>
+<strong>Process Model in Multiprogramming:</strong><br>
+• <strong>图a：</strong> 四个程序的多道程序设计。<br>
+<strong>Figure a:</strong> Multiprogramming of four programs.<br>
+• <strong>图b：</strong> 四个独立的顺序进程的概念模型。<br>
+<strong>Figure b:</strong> Conceptual model of four independent,
+sequential processes.<br>
+• <strong>图c：</strong> 任何时刻只有一个程序在运行。<br>
+<strong>Figure c:</strong> Only one program is active at any
+instant.</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/20250506124735.png" alt="img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FCH2/Users\86150\AppData\Roaming\Typora\typora-user-images\image-20250506124729021.png" alt="image-20250506124729021"></p>
+<p>• <strong>核心思想：</strong><br>
+<strong>Core Idea:</strong><br>
+• 在进程模型中，所有可运行的软件都被组织为进程的集合。<br>
+<strong>In the process model, all runnable software is organized as a
+collection of processes.</strong></p>
+<hr>
+<h4 id="进程的概念process-concept"><strong>4. 进程的概念（Process
+Concept）</strong></h4>
+<p><strong>Process Concept</strong></p>
+<p>• <strong>起源：</strong><br>
+<strong>Origin:</strong><br>
+• 从MULTICS和CTSS/360系统（任务）发展而来。<br>
+<strong>Developed from MULTICS and CTSS/360 systems (task).</strong></p>
+<p>• <strong>定义：</strong><br>
+<strong>Definition:</strong><br>
+• 进程是对正在运行的程序的抽象。<br>
+<strong>An abstraction of a running program.</strong><br>
+• 进程是程序的一次执行过程。<br>
+<strong>A program in execution.</strong><br>
+• 进程是一个具有一定独立功能的程序关于某个数据集合的一次活动。<br>
+<strong>A process is an activity of a program with independent
+functionality on a certain data set.</strong></p>
+<p>• <strong>类比：</strong><br>
+<strong>Analogy:</strong><br>
+• 生日蛋糕食谱（程序）与制作蛋糕的活动（进程）。<br>
+<strong>Birthday cake recipe (program) vs. the activity of making a cake
+(process).</strong></p>
+<hr>
+<h4 id="进程与程序的区别"><strong>5. 进程与程序的区别</strong></h4>
+<p><strong>Difference Between Process and Program</strong></p>
+<ol type="1">
+<li><p><strong>程序（Program）：</strong><br>
+• 指令的集合，是静态概念。<br>
+<strong>The collection of instructions, a static concept.</strong><br>
+<strong>进程（Process）：</strong><br>
+• 描述并发执行，是动态概念。<br>
+<strong>Describes concurrency, a dynamic concept.</strong></p></li>
+<li><p><strong>进程包括：</strong><br>
+• 程序、数据和进程控制块（PCB）。<br>
+<strong>Process includes program, data, and PCB.</strong></p></li>
+<li><p><strong>进程是临时的：</strong><br>
+• 进程在执行时存在，结束后消失。<br>
+<strong>Process is temporary; it exists during execution and disappears
+after completion.</strong><br>
+<strong>程序是永久的：</strong><br>
+• 程序存储在存储设备中，长期存在。<br>
+<strong>Program is permanent; it is stored on storage devices and exists
+long-term.</strong></p></li>
+<li><p><strong>程序与进程的关系：</strong><br>
+• 一个程序可以是多个进程的执行程序。<br>
+<strong>A program can be the execution program of multiple
+processes.</strong><br>
+• 一个进程可以调用多个程序。<br>
+<strong>A process can call multiple programs.</strong></p></li>
+<li><p><strong>进程的创建：</strong><br>
+• 进程可以创建其他进程。<br>
+<strong>A process can create other processes.</strong></p></li>
+</ol>
+<hr>
+<h3 id="总结"><strong>总结</strong></h3>
+<p><strong>Summary</strong></p>
+<p>• <strong>顺序执行：</strong>
+程序独占资源，按顺序执行，具有封闭性和可再现性。<br>
+<strong>Sequential Execution:</strong> The program occupies resources
+exclusively, executes in order, and is closed and reproducible.</p>
+<p>• <strong>并发执行：</strong>
+多个程序交替执行，引入进程的概念，解决资源竞争、通信和协作问题。<br>
+<strong>Concurrency Execution:</strong> Multiple programs execute
+alternately, introducing the concept of processes to solve resource
+competition, communication, and collaboration issues.</p>
+<p>• <strong>进程模型：</strong>
+将可运行软件组织为进程的集合，描述多道程序设计的行为。<br>
+<strong>Process Model:</strong> Organizes runnable software as a
+collection of processes, describing the behavior of
+multiprogramming.</p>
+<p>• <strong>进程与程序的区别：</strong><br>
+<strong>Difference Between Process and Program:</strong><br>
+• 进程是动态的，包括程序、数据和PCB；程序是静态的指令集合。<br>
+<strong>Process is dynamic, including program, data, and PCB; program is
+a static collection of instructions.</strong><br>
+• 进程是临时的，程序是永久的。<br>
+<strong>Process is temporary; program is permanent.</strong><br>
+• 进程可以创建其他进程，程序可以被多个进程执行。<br>
+<strong>Process can create other processes; program can be executed by
+multiple processes.</strong></p>
+<h3 id="进程创建process-creation"><strong>2.1 进程创建（Process
+Creation）</strong></h3>
+<hr>
+<h4 id="进程创建的触发事件"><strong>1. 进程创建的触发事件</strong></h4>
+<p><strong>Principal Events That Cause Process Creation</strong></p>
+<ol type="1">
+<li><p><strong>系统初始化（System Initialization）：</strong><br>
+• 系统启动或重启时，操作系统会创建初始进程。<br>
+<strong>When the system starts or reboots, the OS creates initial
+processes.</strong><br>
+• <strong>前台进程（Foreground Processes）：</strong>
+与用户交互并为用户执行任务的进程。<br>
+<strong>Foreground processes interact with users and perform tasks for
+them.</strong><br>
+• <strong>后台进程（Background Processes）：</strong>
+处理某些请求的进程，称为守护进程（Daemons）。<br>
+<strong>Background processes handle some incoming requests and are
+called daemons.</strong></p></li>
+<li><p><strong>执行进程创建系统调用（Execution of a Process Creation
+System Call）：</strong><br>
+• 例如，在UNIX中使用<code>fork()</code>系统调用创建新进程。<br>
+<strong>For example, in UNIX, the <code>fork()</code> system call is
+used to create a new process.</strong></p></li>
+<li><p><strong>用户请求创建新进程（User Request to Create a New
+Process）：</strong><br>
+• 用户在命令行或图形界面中请求创建新进程（例如，点击图标）。<br>
+<strong>A user requests to create a new process via the command line or
+by clicking an icon.</strong></p></li>
+<li><p><strong>批处理作业的启动（Initiation of a Batch
+Job）：</strong><br>
+• 系统启动批处理作业时创建新进程。<br>
+<strong>A new process is created when the system initiates a batch
+job.</strong></p></li>
+</ol>
+<hr>
+<h4 id="unix中的进程创建"><strong>2. UNIX中的进程创建</strong></h4>
+<p><strong>Process Creation in UNIX</strong></p>
+<p>• <strong><code>fork()</code>系统调用：</strong><br>
+<strong><code>fork()</code> System Call:</strong><br>
+• 在UNIX中，<code>fork()</code>用于创建新进程。<br>
+<strong>In UNIX, <code>fork()</code> is used to create a new
+process.</strong><br>
+• 最初，父进程和子进程具有相同的内存映像、环境字符串和打开的文件。<br>
+<strong>Initially, the parent and the child have the same memory image,
+the same environment strings, and the same open files.</strong><br>
+• <strong><code>execve()</code>系统调用：</strong>
+用于加载新程序，替换当前进程的内存映像。<br>
+<strong><code>execve()</code> System Call:</strong> Used to load a new
+program, replacing the current process’s memory image.<br>
+• 父进程和子进程拥有各自独立的地址空间。<br>
+<strong>The parent and child have their own distinct address
+spaces.</strong></p>
+<hr>
+<h4 id="windows中的进程创建"><strong>3.
+Windows中的进程创建</strong></h4>
+<p><strong>Process Creation in Windows</strong></p>
+<p>• <strong><code>CreateProcess()</code>函数：</strong><br>
+<strong><code>CreateProcess()</code> Function:</strong><br>
+•
+在Windows中，<code>CreateProcess()</code>同时处理进程创建和加载正确程序到新进程中。<br>
+<strong>In Windows, <code>CreateProcess()</code> handles both process
+creation and loading the correct program into the new
+process.</strong><br>
+• 函数原型：<br>
+<strong>Function Prototype:</strong><br>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">BOOL <span class="title function_">CreateProcess</span><span class="params">(</span></span><br><span class="line"><span class="params">    LPCTSTR lpApplicationName,          <span class="comment">// 可执行模块的名称</span></span></span><br><span class="line"><span class="params">    LPTSTR lpCommandLine,               <span class="comment">// 命令行字符串</span></span></span><br><span class="line"><span class="params">    LPSECURITY_ATTRIBUTES lpProcessAttributes, <span class="comment">// 进程安全属性</span></span></span><br><span class="line"><span class="params">    LPSECURITY_ATTRIBUTES lpThreadAttributes,  <span class="comment">// 线程安全属性</span></span></span><br><span class="line"><span class="params">    BOOL bInheritHandles,               <span class="comment">// 句柄继承标志</span></span></span><br><span class="line"><span class="params">    DWORD dwCreationFlags,              <span class="comment">// 创建标志</span></span></span><br><span class="line"><span class="params">    LPVOID lpEnvironment,               <span class="comment">// 新环境块</span></span></span><br><span class="line"><span class="params">    LPCTSTR lpCurrentDirectory,         <span class="comment">// 当前目录</span></span></span><br><span class="line"><span class="params">    LPSTARTUPINFO lpStartupInfo,        <span class="comment">// 启动信息</span></span></span><br><span class="line"><span class="params">    LPPROCESS_INFORMATION lpProcessInformation <span class="comment">// 进程信息</span></span></span><br><span class="line"><span class="params">)</span>;</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h4 id="如何列出正在运行的进程"><strong>4.
+如何列出正在运行的进程？</strong></h4>
+<p><strong>How to List the Running Processes?</strong></p>
+<p>• <strong>在UNIX中：</strong><br>
+<strong>In UNIX:</strong><br>
+• 使用<code>ps</code>命令列出正在运行的进程。<br>
+<strong>Use the <code>ps</code> command to list running
+processes.</strong></p>
+<p>• <strong>在Windows中：</strong><br>
+<strong>In Windows:</strong><br>
+• 使用任务管理器（Task Manager）查看正在运行的进程。<br>
+<strong>Use the Task Manager to view running processes.</strong></p>
+<hr>
+<h3 id="总结-1"><strong>总结</strong></h3>
+<p><strong>Summary</strong></p>
+<p>• <strong>进程创建的触发事件：</strong><br>
+<strong>Events That Cause Process Creation:</strong><br>
+• 系统初始化、执行<code>fork()</code>、用户请求、批处理作业启动。<br>
+<strong>System initialization, execution of <code>fork()</code>, user
+request, initiation of a batch job.</strong></p>
+<p>• <strong>UNIX中的进程创建：</strong><br>
+<strong>Process Creation in UNIX:</strong><br>
+•
+使用<code>fork()</code>创建新进程，<code>execve()</code>加载新程序。<br>
+<strong>Use <code>fork()</code> to create a new process,
+<code>execve()</code> to load a new program.</strong></p>
+<p>• <strong>Windows中的进程创建：</strong><br>
+<strong>Process Creation in Windows:</strong><br>
+• 使用<code>CreateProcess()</code>同时处理进程创建和程序加载。<br>
+<strong>Use <code>CreateProcess()</code> to handle both process creation
+and program loading.</strong></p>
+<p>• <strong>列出正在运行的进程：</strong><br>
+<strong>List Running Processes:</strong><br>
+• 在UNIX中使用<code>ps</code>命令，在Windows中使用任务管理器。<br>
+<strong>Use <code>ps</code> in UNIX and Task Manager in
+Windows.</strong></p>
+<h3 id="进程终止process-termination"><strong>2.1 进程终止（Process
+Termination）</strong></h3>
+<hr>
+<h4 id="进程终止的条件"><strong>1. 进程终止的条件</strong></h4>
+<p><strong>Conditions Which Terminate Processes</strong></p>
+<ol type="1">
+<li><p><strong>正常退出（Normal Exit - Voluntary）：</strong><br>
+• 进程完成任务后主动退出。<br>
+<strong>The process exits voluntarily after completing its
+task.</strong><br>
+• <strong>示例：</strong><br>
+<strong>Examples:</strong><br>
+◦ 在UNIX中使用<code>exit()</code>系统调用。<br>
+<strong>Use <code>exit()</code> in UNIX.</strong><br>
+◦ 在Windows中使用<code>ExitProcess()</code>函数。<br>
+<strong>Use <code>ExitProcess()</code> in Windows.</strong></p></li>
+<li><p><strong>错误退出（Error Exit - Voluntary）：</strong><br>
+• 进程在执行过程中遇到错误，主动退出。<br>
+<strong>The process exits voluntarily due to an error encountered during
+execution.</strong><br>
+• <strong>示例：</strong><br>
+<strong>Examples:</strong><br>
+◦ 编译错误（Compiling errors）。<br>
+◦ 文件未找到（File not found）。</p></li>
+<li><p><strong>致命错误（Fatal Error - Involuntary）：</strong><br>
+• 进程在执行过程中遇到无法恢复的错误，被迫终止。<br>
+<strong>The process is terminated involuntarily due to an unrecoverable
+error encountered during execution.</strong><br>
+• <strong>示例：</strong><br>
+<strong>Examples:</strong><br>
+◦ 除以零（Divide by 0）。<br>
+◦ 执行非法指令（Executing an illegal instruction）。<br>
+◦ 访问不存在的内存（Referencing nonexistent memory）。</p></li>
+<li><p><strong>被其他进程终止（Killed by Another Process -
+Involuntary）：</strong><br>
+• 一个进程被另一个进程强制终止。<br>
+<strong>A process is forcibly terminated by another
+process.</strong><br>
+• <strong>示例：</strong><br>
+<strong>Examples:</strong><br>
+◦ 在UNIX中使用<code>kill</code>命令。<br>
+<strong>Use <code>kill</code> in UNIX.</strong><br>
+◦ 在Windows中使用<code>TerminateProcess()</code>函数。<br>
+<strong>Use <code>TerminateProcess()</code> in
+Windows.</strong></p></li>
+</ol>
+<hr>
+<h3 id="总结-2"><strong>总结</strong></h3>
+<p><strong>Summary</strong></p>
+<p>进程终止的四种主要条件：<br>
+<strong>Four main conditions for process termination:</strong><br>
+1. <strong>正常退出（Normal Exit）：</strong>
+进程完成任务后主动退出。<br>
+<strong>Normal Exit:</strong> The process exits voluntarily after
+completing its task.<br>
+2. <strong>错误退出（Error Exit）：</strong>
+进程因执行错误主动退出。<br>
+<strong>Error Exit:</strong> The process exits voluntarily due to an
+execution error.<br>
+3. <strong>致命错误（Fatal Error）：</strong>
+进程因无法恢复的错误被迫终止。<br>
+<strong>Fatal Error:</strong> The process is terminated involuntarily
+due to an unrecoverable error.<br>
+4. <strong>被其他进程终止（Killed by Another Process）：</strong>
+进程被另一个进程强制终止。<br>
+<strong>Killed by Another Process:</strong> The process is forcibly
+terminated by another process.</p>
+<p>这些条件涵盖了进程终止的常见场景，无论是自愿还是非自愿。<br>
+<strong>These conditions cover common scenarios for process termination,
+whether voluntary or involuntary.</strong></p>
+<h3 id="进程层次结构process-hierarchies"><strong>2.1
+进程层次结构（Process Hierarchies）</strong></h3>
+<hr>
+<h4 id="进程层次结构的概念"><strong>1. 进程层次结构的概念</strong></h4>
+<p><strong>Concept of Process Hierarchies</strong></p>
+<p>• <strong>父进程与子进程：</strong><br>
+<strong>Parent and Child Processes:</strong><br>
+•
+父进程可以创建子进程，子进程又可以创建自己的子进程，从而形成一个进程层次结构。<br>
+<strong>A parent process can create a child process, and the child
+process can create its own child processes, forming a process
+hierarchy.</strong></p>
+<p>• <strong>进程组（Process Group）：</strong><br>
+<strong>Process Group:</strong><br>
+• 在UNIX中，这种层次结构被称为“进程组”。<br>
+<strong>In UNIX, this hierarchy is called a "process
+group."</strong><br>
+• <strong><code>init</code>进程：</strong>
+在UNIX系统中，<code>init</code>进程是所有进程的根进程（PID为1）。<br>
+<strong><code>init</code> Process:</strong> In UNIX systems, the
+<code>init</code> process is the root of all processes (with PID 1).</p>
+<hr>
+<h4 id="unix中的进程层次结构"><strong>2.
+UNIX中的进程层次结构</strong></h4>
+<p><strong>Process Hierarchies in UNIX</strong></p>
+<p>• <strong>特点：</strong><br>
+<strong>Characteristics:</strong><br>
+• 进程之间存在明确的父子关系，形成一个树状结构。<br>
+<strong>There is a clear parent-child relationship between processes,
+forming a tree structure.</strong><br>
+• <strong>进程组（Process Group）：</strong>
+用于管理一组相关的进程，例如一个终端会话中的所有进程。<br>
+<strong>Process Group:</strong> Used to manage a group of related
+processes, such as all processes in a terminal session.</p>
+<p>• <strong>示例：</strong><br>
+<strong>Example:</strong><br>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">init (PID: 1)</span><br><span class="line">├─ bash (PID: 100)</span><br><span class="line">│   ├─ ls (PID: 101)</span><br><span class="line">│   └─ grep (PID: 102)</span><br><span class="line">└─ sshd (PID: 200)</span><br><span class="line">    └─ sshd (PID: 201)</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h4 id="windows中的进程层次结构"><strong>3.
+Windows中的进程层次结构</strong></h4>
+<p><strong>Process Hierarchies in Windows</strong></p>
+<p>• <strong>特点：</strong><br>
+<strong>Characteristics:</strong><br>
+• Windows没有明确的进程层次结构概念，所有进程在创建时是平等的。<br>
+<strong>Windows has no concept of process hierarchy; all processes are
+created equal.</strong><br>
+•
+进程之间没有父子关系，而是通过句柄（Handle）和进程ID（PID）进行管理。<br>
+<strong>There is no parent-child relationship between processes; they
+are managed via handles and process IDs (PIDs).</strong></p>
+<hr>
+<h3 id="总结-3"><strong>总结</strong></h3>
+<p><strong>Summary</strong></p>
+<p>• <strong>UNIX中的进程层次结构：</strong><br>
+<strong>Process Hierarchies in UNIX:</strong><br>
+• 进程之间存在明确的父子关系，形成一个树状结构，称为“进程组”。<br>
+<strong>There is a clear parent-child relationship between processes,
+forming a tree structure called a "process group."</strong><br>
+• <code>init</code>进程是所有进程的根进程。<br>
+<strong>The <code>init</code> process is the root of all
+processes.</strong></p>
+<p>• <strong>Windows中的进程层次结构：</strong><br>
+<strong>Process Hierarchies in Windows:</strong><br>
+• 没有进程层次结构的概念，所有进程在创建时是平等的。<br>
+<strong>No concept of process hierarchy; all processes are created
+equal.</strong><br>
+• 进程之间通过句柄和进程ID进行管理。<br>
+<strong>Processes are managed via handles and process IDs.</strong></p>
+<p>两种操作系统在进程管理上的设计理念不同，UNIX强调层次结构，而Windows强调平等性。<br>
+<strong>The design philosophies of the two operating systems differ in
+process management: UNIX emphasizes hierarchy, while Windows emphasizes
+equality.</strong></p>
+<h3 id="进程状态process-states"><strong>2.1 进程状态（Process
+States）</strong></h3>
+<hr>
+<h4 id="基本进程状态"><strong>1. 基本进程状态</strong></h4>
+<p><strong>Basic Process States</strong></p>
+<ol type="1">
+<li><p><strong>运行状态（Running）：</strong><br>
+• 进程正在使用CPU执行指令。<br>
+<strong>The process is using the CPU to execute
+instructions.</strong></p></li>
+<li><p><strong>就绪状态（Ready）：</strong><br>
+• 进程已准备好运行，正在等待CPU调度。<br>
+<strong>The process is runnable and waiting to be scheduled by the
+CPU.</strong><br>
+• 处于就绪队列（Ready Queue）中。<br>
+<strong>Located in the ready queue.</strong></p></li>
+<li><p><strong>阻塞状态（Blocked）：</strong><br>
+• 进程无法运行，直到某个外部事件发生（例如，等待键盘输入）。<br>
+<strong>The process is unable to run until an external event occurs
+(e.g., waiting for a key to be pressed).</strong></p></li>
+</ol>
+<hr>
+<h4 id="进程状态之间的转换"><strong>2. 进程状态之间的转换</strong></h4>
+<p><strong>Transitions Between Process States</strong></p>
+<ol type="1">
+<li><p><strong>进程因输入阻塞（Process Blocks for
+Input）：</strong><br>
+• 运行中的进程因等待输入而进入阻塞状态。<br>
+<strong>A running process blocks for input and enters the blocked
+state.</strong></p></li>
+<li><p><strong>调度器选择另一个进程（Scheduler Picks Another
+Process）：</strong><br>
+• 调度器从就绪队列中选择另一个进程运行。<br>
+<strong>The scheduler picks another process from the ready queue to
+run.</strong></p></li>
+<li><p><strong>调度器选择当前进程（Scheduler Picks This
+Process）：</strong><br>
+• 调度器选择当前进程从就绪状态进入运行状态。<br>
+<strong>The scheduler picks this process to move from the ready state to
+the running state.</strong></p></li>
+<li><p><strong>输入可用（Input Becomes Available）：</strong><br>
+• 阻塞的进程因输入事件完成而进入就绪状态。<br>
+<strong>A blocked process becomes ready when the input event is
+completed.</strong></p></li>
+</ol>
+<figure>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/20250506130510.png" alt="img">
+<figcaption aria-hidden="true">img</figcaption>
+</figure>
+<hr>
+<h4 id="其他进程状态"><strong>3. 其他进程状态</strong></h4>
+<p><strong>Other Process States</strong></p>
+<ol type="1">
+<li><p><strong>新建状态（New State）：</strong><br>
+• 进程刚刚被创建，尚未进入就绪状态。<br>
+<strong>The process has just been created and has not yet entered the
+ready state.</strong></p></li>
+<li><p><strong>退出状态（Exit State）：</strong><br>
+• 进程已完成执行或被终止，正在等待操作系统回收资源。<br>
+<strong>The process has finished execution or been terminated and is
+waiting for the OS to reclaim its resources.</strong></p></li>
+</ol>
+<figure>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/20250506130619.png" alt="img">
+<figcaption aria-hidden="true">img</figcaption>
+</figure>
+<hr>
+<h4 id="挂起状态suspend-state"><strong>4. 挂起状态（Suspend
+State）</strong></h4>
+<p><strong>Suspend State</strong></p>
+<ol type="1">
+<li><p><strong>阻塞挂起状态（Blocked, Suspend State）：</strong><br>
+• 进程因等待外部事件而被挂起，且不占用内存资源。<br>
+<strong>The process is blocked and suspended, not occupying memory
+resources.</strong></p></li>
+<li><p><strong>就绪挂起状态（Ready, Suspend State）：</strong><br>
+• 进程已准备好运行，但被挂起，不占用内存资源。<br>
+<strong>The process is ready to run but is suspended, not occupying
+memory resources.</strong></p></li>
+</ol>
+<figure>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/20250506130850.png" alt="img">
+<figcaption aria-hidden="true">img</figcaption>
+</figure>
+<hr>
+<h3 id="总结-4"><strong>总结</strong></h3>
+<p><strong>Summary</strong></p>
+<p>• <strong>基本进程状态：</strong><br>
+<strong>Basic Process States:</strong><br>
+• <strong>运行（Running）：</strong> 使用CPU执行指令。<br>
+<strong>Running:</strong> Using the CPU to execute instructions.<br>
+• <strong>就绪（Ready）：</strong> 等待CPU调度。<br>
+<strong>Ready:</strong> Waiting to be scheduled by the CPU.<br>
+• <strong>阻塞（Blocked）：</strong> 等待外部事件。<br>
+<strong>Blocked:</strong> Waiting for an external event.</p>
+<p>• <strong>进程状态转换：</strong><br>
+<strong>Transitions Between Process States:</strong><br>
+• 进程因输入阻塞 → 调度器选择另一个进程 → 调度器选择当前进程 →
+输入可用。<br>
+<strong>Process blocks for input → Scheduler picks another process →
+Scheduler picks this process → Input becomes available.</strong></p>
+<p>• <strong>其他进程状态：</strong><br>
+<strong>Other Process States:</strong><br>
+• <strong>新建（New）：</strong> 进程刚被创建。<br>
+<strong>New:</strong> The process has just been created.<br>
+• <strong>退出（Exit）：</strong> 进程已完成执行。<br>
+<strong>Exit:</strong> The process has finished execution.</p>
+<p>• <strong>挂起状态：</strong><br>
+<strong>Suspend State:</strong><br>
+• <strong>阻塞挂起（Blocked, Suspend）：</strong>
+进程被挂起且不占用内存。<br>
+<strong>Blocked, Suspend:</strong> The process is suspended and not
+occupying memory.<br>
+• <strong>就绪挂起（Ready, Suspend）：</strong>
+进程已准备好运行但被挂起。<br>
+<strong>Ready, Suspend:</strong> The process is ready to run but is
+suspended.</p>
+<p>这些状态及其转换描述了进程在生命周期中的行为。<br>
+<strong>These states and their transitions describe the behavior of
+processes during their lifecycle.</strong></p>
+<h3 id="进程的实现implementation-of-processes"><strong>2.1
+进程的实现（Implementation of Processes）</strong></h3>
+<hr>
+<h4 id="进程的组成process-image"><strong>1. 进程的组成（Process
+Image）</strong></h4>
+<p><strong>What is in a Process?</strong></p>
+<p>• <strong>用户程序（User Program）：</strong><br>
+• 进程执行的代码。<br>
+<strong>The code executed by the process.</strong></p>
+<p>• <strong>用户数据（User Data）：</strong><br>
+• 进程操作的数据。<br>
+<strong>The data manipulated by the process.</strong></p>
+<p>• <strong>栈（Stack）：</strong><br>
+• 用于过程调用和参数传递。<br>
+<strong>Used for procedure calls and parameter passing.</strong></p>
+<p>• <strong>进程控制块（PCB, Process Control Block）：</strong><br>
+• 描述进程的属性，用于操作系统管理和控制进程。<br>
+<strong>Describes the attributes of the process, used by the OS to
+manage and control the process.</strong></p>
+<hr>
+<h4 id="进程控制块pcb"><strong>2. 进程控制块（PCB）</strong></h4>
+<p><strong>Process Control Block (PCB)</strong></p>
+<p>• <strong>PCB的内容：</strong><br>
+<strong>Contents of a PCB:</strong><br>
+• PCB的结构完全依赖于操作系统，不同操作系统可能包含不同的信息。<br>
+<strong>The architecture of a PCB is completely dependent on the
+operating system and may contain different information in different
+operating systems.</strong><br>
+• <strong>示例：</strong>
+Linux的PCB结构为<code>task_struct</code>，包含106个字段。<br>
+<strong>Example:</strong> Linux’s PCB structure is
+<code>task_struct</code>, containing 106 fields.</p>
+<p>• <strong>典型的PCB字段：</strong><br>
+<strong>Some Fields of a Typical PCB Entry:</strong><br>
+•
+进程ID（PID）、进程状态、程序计数器（PC）、寄存器状态、内存管理信息、I/O状态等。<br>
+<strong>Process ID (PID), process state, program counter (PC), register
+state, memory management information, I/O status, etc.</strong></p>
+<hr>
+<h4 id="进程上下文process-context"><strong>3. 进程上下文（Process
+Context）</strong></h4>
+<p><strong>Process Context</strong></p>
+<p>• <strong>定义：</strong><br>
+<strong>Definition:</strong><br>
+• 进程上下文的静态描述，包括：<br>
+<strong>The static description of the whole execution process,
+including:</strong><br>
+◦ <strong>用户上下文（User Context）：</strong> 用户程序和数据。<br>
+<strong>User Context:</strong> User program and data.<br>
+◦ <strong>寄存器上下文（Register Context）：</strong>
+CPU寄存器的状态。<br>
+<strong>Register Context:</strong> State of CPU registers.<br>
+◦ <strong>系统上下文（System Context）：</strong>
+操作系统资源的状态。<br>
+<strong>System Context:</strong> State of OS resources.</p>
+<p>• <strong>上下文切换（Context Switch）：</strong><br>
+<strong>Context Switch:</strong><br>
+•
+将CPU从一个进程切换到另一个进程的过程，由调度器执行（详见第2.4章）。<br>
+<strong>Switching the CPU from one process to another, performed by the
+scheduler (see Chapter 2.4).</strong><br>
+• <strong>包括：</strong><br>
+<strong>Includes:</strong><br>
+◦ 保存旧进程的PCB状态。<br>
+<strong>Save the PCB state of the old process.</strong><br>
+◦ 加载新进程的PCB状态。<br>
+<strong>Load the PCB state of the new process.</strong><br>
+◦ 刷新内存缓存。<br>
+<strong>Flush the memory cache.</strong><br>
+◦ 更改内存映射。<br>
+<strong>Change memory mapping.</strong><br>
+• <strong>开销：</strong><br>
+<strong>Overhead:</strong><br>
+◦
+上下文切换是昂贵的（1-1000微秒），不执行有用工作（纯开销），可能成为系统瓶颈。<br>
+<strong>Context switch is expensive (1-1000 microseconds), no useful
+work is done (pure overhead), and it can become a
+bottleneck.</strong></p>
+<hr>
+<h4 id="进程表或pcb表process-table-or-pcb-table"><strong>4.
+进程表或PCB表（Process Table or PCB Table）</strong></h4>
+<p><strong>Process Table or PCB Table</strong></p>
+<p>• <strong>定义：</strong><br>
+<strong>Definition:</strong><br>
+• 操作系统维护一个进程表，每个条目是一个PCB。<br>
+<strong>The OS maintains a process table, where each entry is a
+PCB.</strong></p>
+<p>• <strong>系统并发度：</strong><br>
+<strong>Concurrency Degree of the System:</strong><br>
+• PCB表的大小决定了系统的并发度。<br>
+<strong>The size of the PCB table determines the concurrency degree of
+the system.</strong></p>
+<p>• <strong>组织形式：</strong><br>
+<strong>Organization Forms:</strong></p>
+<ol type="1">
+<li><strong>链表（Link）：</strong><br>
+◦ 使用链表组织PCB表。<br>
+<strong>Use a linked list to organize the PCB table.</strong><br>
+</li>
+<li><strong>索引表（Index）：</strong><br>
+◦ 使用索引表组织PCB表。<br>
+<strong>Use an index table to organize the PCB table.</strong></li>
+</ol>
+<p>• <strong>示例：</strong><br>
+<strong>Example:</strong></p>
+<figure>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/20250506140846.png" alt="img">
+<figcaption aria-hidden="true">img</figcaption>
+</figure>
+<p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">PCB Table</span><br><span class="line">├── Ready</span><br><span class="line">│   ├── PCB1</span><br><span class="line">│   ├── PCB2</span><br><span class="line">├── Blocked</span><br><span class="line">│   ├── PCB3</span><br><span class="line">Index Table</span><br><span class="line">├── Ready</span><br><span class="line">│   ├── Index1 -&gt; PCB1</span><br><span class="line">│   ├── Index2 -&gt; PCB2</span><br><span class="line">├── Blocked</span><br><span class="line">│   ├── Index3 -&gt; PCB3</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h3 id="总结-5"><strong>总结</strong></h3>
+<p><strong>Summary</strong></p>
+<p>• <strong>进程的组成：</strong><br>
+<strong>Process Image:</strong><br>
+• 包括用户程序、用户数据、栈和进程控制块（PCB）。<br>
+<strong>Includes user program, user data, stack, and process control
+block (PCB).</strong></p>
+<p>• <strong>进程控制块（PCB）：</strong><br>
+<strong>Process Control Block (PCB):</strong><br>
+• 描述进程的属性，不同操作系统的PCB结构可能不同。<br>
+<strong>Describes the attributes of the process; the architecture of a
+PCB may vary across operating systems.</strong></p>
+<p>• <strong>进程上下文：</strong><br>
+<strong>Process Context:</strong><br>
+• 包括用户上下文、寄存器上下文和系统上下文。<br>
+<strong>Includes user context, register context, and system
+context.</strong></p>
+<p>• <strong>上下文切换：</strong><br>
+<strong>Context Switch:</strong><br>
+• 由调度器执行，保存旧进程状态并加载新进程状态，开销较大。<br>
+<strong>Performed by the scheduler, saves the state of the old process
+and loads the state of the new process, with significant
+overhead.</strong></p>
+<p>• <strong>进程表或PCB表：</strong><br>
+<strong>Process Table or PCB Table:</strong><br>
+• 操作系统维护的PCB表，决定系统并发度，可通过链表或索引表组织。<br>
+<strong>Maintained by the OS, determines the concurrency degree of the
+system, and can be organized via linked lists or index
+tables.</strong></p>
+<h3 id="线程thread"><strong>2.2 线程（Thread）</strong></h3>
+<hr>
+<h4 id="线程的概念"><strong>1. 线程的概念</strong></h4>
+<p><strong>Thread Concept</strong></p>
+<p>• <strong>背景：</strong><br>
+<strong>Background:</strong><br>
+•
+如何使多个程序更好地并发执行，同时尽量减少系统开销，成为操作系统设计的重要目标。<br>
+<strong>How to make multiple programs execute concurrently more
+efficiently while minimizing system overhead is an important goal in OS
+design.</strong></p>
+<p>• <strong>解决方案：</strong><br>
+<strong>Solution:</strong><br>
+• 将进程的两个基本属性分开处理：<br>
+<strong>Separate the two basic attributes of a process:</strong><br>
+1. <strong>调度和分派的基本单位：</strong>
+线程，不拥有资源，轻量级。<br>
+<strong>Basic unit of scheduling and dispatching:</strong> Thread, does
+not own resources, lightweight.<br>
+2. <strong>拥有资源的基本单位：</strong> 进程，不频繁切换。<br>
+<strong>Basic unit of resource allocation:</strong> Process, not
+frequently switched.</p>
+<p>• <strong>线程的定义：</strong><br>
+<strong>Definition of Thread:</strong><br>
+• 线程是进程中的一个顺序执行流，是CPU调度的基本单位。<br>
+<strong>A thread is a sequential execution stream within a process and
+the basic unit of CPU utilization.</strong><br>
+• 进程是资源分配的基本单位。<br>
+<strong>A process is the basic unit of resource allocation.</strong></p>
+<hr>
+<h4 id="线程的组成"><strong>2. 线程的组成</strong></h4>
+<p><strong>Thread Composition</strong></p>
+<p>• <strong>原进程PCB的拆分：</strong><br>
+<strong>Splitting of the Original PCB:</strong><br>
+• 将进程控制块（PCB）的内容分为两部分：<br>
+<strong>Split the contents of the Process Control Block (PCB) into two
+parts:</strong><br>
+1. <strong>描述进程资源和空间的部分。</strong><br>
+<strong>Part describing process resources and space.</strong><br>
+2. <strong>描述执行现场、状态及调度的部分。</strong><br>
+<strong>Part describing execution context, state, and
+scheduling.</strong><br>
+•
+第二部分作为线程控制块（TCB）的内容，一个进程内允许多个线程存在。<br>
+<strong>The second part becomes the content of the Thread Control Block
+(TCB), and multiple threads are allowed within a process.</strong></p>
+<p>• <strong>新进程的描述：</strong><br>
+<strong>Description of the New Process:</strong><br>
+• 一个独立的进程空间，可装入进程映像。<br>
+<strong>An independent process space that can load the process
+image.</strong><br>
+• 一个与进程相关联的执行文件。<br>
+<strong>An executable file associated with the process.</strong><br>
+• 进程所用的系统资源。<br>
+<strong>System resources used by the process.</strong><br>
+•
+一个或多个线程（进程在创建时一般同时创建第一个线程，其他线程按需创建）。<br>
+<strong>One or more threads (the first thread is usually created when
+the process is created, and other threads are created as needed by the
+user program).</strong></p>
+<p>• <strong>线程的资源：</strong><br>
+<strong>Thread Resources:</strong><br>
+•
+线程不拥有系统资源，只有运行所必需的一些数据结构：TCB、程序计数器、寄存器组和栈。<br>
+<strong>A thread does not own system resources, only some data
+structures necessary for its execution: TCB, program counter, register
+set, and stack.</strong><br>
+• 线程与同一进程内的其他线程共享进程的全部资源。<br>
+<strong>A thread shares all resources of the process with other threads
+in the same process.</strong><br>
+• <strong>堆栈和寄存器：</strong> 用于存储线程内的局部变量。<br>
+<strong>Stack and Registers:</strong> Used to store local variables
+within the thread.<br>
+• <strong>线程控制块（TCB）：</strong>
+说明线程存在的标识，记录线程属性和调度信息（例如，Linux的TCB结构为<code>thread_struct</code>，包含24个字段）。<br>
+<strong>Thread Control Block (TCB):</strong> Identifies the thread and
+records thread attributes and scheduling information (e.g., Linux’s TCB
+structure is <code>thread_struct</code>, containing 24 fields).</p>
+<hr>
+<h4 id="多线程multithreading"><strong>3.
+多线程（Multithreading）</strong></h4>
+<p><strong>Multithreading</strong></p>
+<p>• <strong>传统进程（单线程）：</strong><br>
+<strong>Traditional (Heavyweight) Process:</strong><br>
+• 只有一个控制线程。<br>
+<strong>Has a single thread of control.</strong></p>
+<p>• <strong>多线程进程：</strong><br>
+<strong>Multithreaded Process:</strong><br>
+• 有多个控制线程，可以同时执行多个任务。<br>
+<strong>Has multiple threads of control and can perform more than one
+task at a time.</strong><br>
+• 这种情况称为多线程。<br>
+<strong>This situation is called multithreading.</strong></p>
+<hr>
+<h4 id="线程与进程的比较"><strong>4. 线程与进程的比较</strong></h4>
+<p><strong>Thread vs Process</strong></p>
+<ol type="1">
+<li><p><strong>资源分配：</strong><br>
+<strong>Resource Allocation:</strong><br>
+• 进程是资源分配的基本单位，拥有完整的虚拟地址空间。<br>
+<strong>A process is the basic unit of resource allocation and has a
+complete virtual address space.</strong><br>
+•
+线程与资源分配无关，属于某个进程，并与该进程内的其他线程共享资源。<br>
+<strong>A thread is unrelated to resource allocation, belongs to a
+process, and shares resources with other threads in the same
+process.</strong></p></li>
+<li><p><strong>地址空间：</strong><br>
+<strong>Address Space:</strong><br>
+• 不同进程拥有不同的虚拟地址空间。<br>
+<strong>Different processes have different virtual address
+spaces.</strong><br>
+• 同一进程中的多个线程共享同一地址空间。<br>
+<strong>Multiple threads in the same process share the same address
+space.</strong></p></li>
+<li><p><strong>切换开销：</strong><br>
+<strong>Switching Overhead:</strong><br>
+• 进程切换涉及资源指针的保存和地址空间的转换，开销较大。<br>
+<strong>Process switching involves saving resource pointers and
+converting address spaces, resulting in high overhead.</strong><br>
+• 线程切换不涉及资源指针的保存和地址空间的变化，开销较小。<br>
+<strong>Thread switching does not involve saving resource pointers or
+changing address spaces, resulting in low overhead.</strong></p></li>
+<li><p><strong>调度与切换：</strong><br>
+<strong>Scheduling and Switching:</strong><br>
+• 进程的调度与切换由操作系统内核完成。<br>
+<strong>Process scheduling and switching are performed by the OS
+kernel.</strong><br>
+• 线程的调度与切换可由操作系统内核或用户程序完成。<br>
+<strong>Thread scheduling and switching can be performed by the OS
+kernel or user programs.</strong></p></li>
+<li><p><strong>创建：</strong><br>
+<strong>Creation:</strong><br>
+• 进程可以动态创建子进程。<br>
+<strong>A process can dynamically create child processes.</strong><br>
+• 线程也可以创建其他线程。<br>
+<strong>A thread can also create other threads.</strong></p></li>
+<li><p><strong>生命周期：</strong><br>
+<strong>Lifecycle:</strong><br>
+• 进程有创建、执行、消亡的生命周期。<br>
+<strong>A process has a lifecycle of creation, execution, and
+termination.</strong><br>
+• 线程也有类似的生命周期。<br>
+<strong>A thread also has a similar lifecycle.</strong></p></li>
+</ol>
+<hr>
+<h3 id="总结-6"><strong>总结</strong></h3>
+<p><strong>Summary</strong></p>
+<p>• <strong>线程：</strong>
+进程中的一个顺序执行流，是CPU调度的基本单位，轻量级，不拥有资源。<br>
+<strong>Thread:</strong> A sequential execution stream within a process,
+the basic unit of CPU utilization, lightweight, and does not own
+resources.</p>
+<p>• <strong>进程：</strong>
+资源分配的基本单位，拥有完整的虚拟地址空间。<br>
+<strong>Process:</strong> The basic unit of resource allocation, with a
+complete virtual address space.</p>
+<p>• <strong>多线程：</strong>
+一个进程包含多个线程，可以同时执行多个任务。<br>
+<strong>Multithreading:</strong> A process contains multiple threads and
+can perform multiple tasks simultaneously.</p>
+<p>• <strong>线程与进程的比较：</strong><br>
+<strong>Thread vs Process:</strong><br>
+•
+线程切换开销小，共享地址空间；进程切换开销大，拥有独立的地址空间。<br>
+<strong>Thread switching has low overhead and shares address space;
+process switching has high overhead and has an independent address
+space.</strong><br>
+• 线程调度可由内核或用户程序完成；进程调度由内核完成。<br>
+<strong>Thread scheduling can be performed by the kernel or user
+programs; process scheduling is performed by the kernel.</strong></p>
+<p>线程的引入提高了系统的并发性和效率，是现代操作系统的重要特性。<br>
+<strong>The introduction of threads improves system concurrency and
+efficiency and is an important feature of modern operating
+systems.</strong></p>
+<h3 id="线程的优势thread-advantage"><strong>2.2 线程的优势（Thread
+Advantage）</strong></h3>
+<hr>
+<h4 id="线程的创建退出和切换开销小"><strong>1.
+线程的创建、退出和切换开销小</strong></h4>
+<p><strong>Low Overhead for Thread Creation, Exit, and
+Switching</strong></p>
+<p>• <strong>线程创建（Thread Creation）：</strong><br>
+•
+线程的创建比进程更快，因为线程共享进程的资源，不需要分配新的地址空间或资源。<br>
+<strong>Thread creation is faster than process creation because threads
+share process resources and do not require allocating new address space
+or resources.</strong></p>
+<p>• <strong>线程退出（Thread Exit）：</strong><br>
+• 线程的退出也比进程更快，因为线程的资源释放和清理工作更简单。<br>
+<strong>Thread exit is faster than process exit because resource release
+and cleanup are simpler for threads.</strong></p>
+<p>• <strong>线程切换（Thread Switch）：</strong><br>
+•
+线程切换的开销比进程切换小，因为线程共享地址空间，不需要切换内存映射或资源指针。<br>
+<strong>Thread switching has lower overhead than process switching
+because threads share address space and do not require switching memory
+mappings or resource pointers.</strong></p>
+<hr>
+<h4 id="线程间通信简单"><strong>2. 线程间通信简单</strong></h4>
+<p><strong>Simple Communication Between Threads</strong></p>
+<p>• <strong>共享内存和文件资源：</strong><br>
+<strong>Shared Memory and File Resources:</strong><br>
+•
+线程共享所属进程的内存和文件资源，因此线程间通信可以直接通过共享内存进行，无需复杂的机制。<br>
+<strong>Threads share the memory and file resources of their process, so
+communication between threads can be done directly through shared memory
+without complex mechanisms.</strong></p>
+<hr>
+<h3 id="总结-7"><strong>总结</strong></h3>
+<p><strong>Summary</strong></p>
+<p>线程的优势主要体现在以下几个方面：<br>
+<strong>The advantages of threads are mainly reflected in the following
+aspects:</strong><br>
+1. <strong>创建、退出和切换开销小：</strong><br>
+<strong>Low Overhead for Creation, Exit, and Switching:</strong><br>
+• 线程的创建、退出和切换比进程更快，效率更高。<br>
+<strong>Thread creation, exit, and switching are faster and more
+efficient than processes.</strong></p>
+<ol start="2" type="1">
+<li><strong>线程间通信简单：</strong><br>
+<strong>Simple Communication Between Threads:</strong><br>
+• 线程共享进程的内存和文件资源，通信机制简单直接。<br>
+<strong>Threads share process memory and file resources, making
+communication mechanisms simple and direct.</strong></li>
+</ol>
+<p>这些优势使得线程在多任务处理和高并发场景中表现出色，是现代操作系统的核心特性之一。<br>
+<strong>These advantages make threads excel in multitasking and
+high-concurrency scenarios, making them a core feature of modern
+operating systems.</strong></p>
+<h3 id="线程模型the-thread-model"><strong>2.2 线程模型（The Thread
+Model）</strong></h3>
+<hr>
+<h4 id="单线程进程与多线程进程"><strong>1.
+单线程进程与多线程进程</strong></h4>
+<p><strong>Single-Threaded vs Multi-Threaded Processes</strong></p>
+<p>• <strong>图a：三个单线程进程（Three Processes Each with One
+Thread）：</strong><br>
+• 每个进程只有一个线程，线程之间相互独立。<br>
+<strong>Each process has only one thread, and the threads are
+independent of each other.</strong></p>
+<p>• <strong>图b：一个多线程进程（One Process with Three
+Threads）：</strong><br>
+• 一个进程包含三个线程，线程之间共享进程的资源。<br>
+<strong>One process contains three threads, and the threads share the
+resources of the process.</strong></p>
+<hr>
+<h4 id="线程共享与私有的内容"><strong>2.
+线程共享与私有的内容</strong></h4>
+<p><strong>Items Shared and Private to Threads</strong></p>
+<p>• <strong>线程共享的内容（Items Shared by All Threads in a
+Process）：</strong><br>
+• 进程的地址空间、全局变量、文件资源等。<br>
+<strong>Process address space, global variables, file resources,
+etc.</strong></p>
+<p>• <strong>线程私有的内容（Items Private to Each
+Thread）：</strong><br>
+• 线程的栈、程序计数器、寄存器状态等。<br>
+<strong>Thread stack, program counter, register state, etc.</strong></p>
+<hr>
+<h4 id="线程的栈"><strong>3. 线程的栈</strong></h4>
+<p><strong>Each Thread Has Its Own Stack</strong></p>
+<p>• <strong>线程栈的作用：</strong><br>
+<strong>Role of Thread Stack:</strong><br>
+• 用于存储线程的局部变量、函数调用和返回地址。<br>
+<strong>Used to store thread-local variables, function calls, and return
+addresses.</strong></p>
+<p>• <strong>线程栈的独立性：</strong><br>
+<strong>Independence of Thread Stack:</strong><br>
+• 每个线程有自己独立的栈，确保线程间的执行上下文互不干扰。<br>
+<strong>Each thread has its own independent stack, ensuring that the
+execution contexts of threads do not interfere with each
+other.</strong></p>
+<blockquote>
+<p>栈相互不干扰</p>
+</blockquote>
+<figure>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/20250506141438.png" alt="img">
+<figcaption aria-hidden="true">img</figcaption>
+</figure>
+<hr>
+<h3 id="总结-8"><strong>总结</strong></h3>
+<p><strong>Summary</strong></p>
+<p>• <strong>单线程进程与多线程进程：</strong><br>
+<strong>Single-Threaded vs Multi-Threaded Processes:</strong><br>
+•
+单线程进程中，每个进程只有一个线程；多线程进程中，一个进程可以包含多个线程。<br>
+<strong>In a single-threaded process, each process has only one thread;
+in a multi-threaded process, one process can contain multiple
+threads.</strong></p>
+<p>• <strong>线程共享与私有的内容：</strong><br>
+<strong>Items Shared and Private to Threads:</strong><br>
+• 线程共享进程的地址空间和资源，但每个线程有自己的栈和寄存器状态。<br>
+<strong>Threads share the address space and resources of the process,
+but each thread has its own stack and register state.</strong></p>
+<p>• <strong>线程的栈：</strong><br>
+<strong>Thread Stack:</strong><br>
+• 每个线程有独立的栈，用于存储局部变量和执行上下文。<br>
+<strong>Each thread has an independent stack for storing local variables
+and execution context.</strong></p>
+<p>线程模型通过共享资源和独立执行上下文，实现了高效的并发执行。<br>
+<strong>The thread model achieves efficient concurrent execution by
+sharing resources and maintaining independent execution
+contexts.</strong></p>
+<h3 id="线程的使用thread-usage"><strong>2.2 线程的使用（Thread
+Usage）</strong></h3>
+<hr>
+<h4 id="为什么使用线程"><strong>1. 为什么使用线程？</strong></h4>
+<p><strong>Why Do You Use Threads?</strong></p>
+<ol type="1">
+<li><p><strong>响应性（Responsiveness）：</strong><br>
+• 多个活动可以同时进行，提高应用程序的响应速度。<br>
+<strong>Multiple activities can be done at the same time, speeding up
+the application.</strong></p></li>
+<li><p><strong>资源共享（Resource Sharing）：</strong><br>
+• 线程共享所属进程的内存和资源，减少资源开销。<br>
+<strong>Threads share the memory and resources of the process to which
+they belong, reducing resource overhead.</strong></p></li>
+<li><p><strong>经济性（Economy）：</strong><br>
+• 线程的创建和销毁比进程更简单、更高效。<br>
+<strong>Threads are easier to create and destroy than
+processes.</strong></p></li>
+<li><p><strong>多处理器架构的利用（Utilization of MP
+Architectures）：</strong><br>
+• 线程在多CPU系统上非常有用，可以充分利用多核处理器的性能。<br>
+<strong>Threads are useful on multiple CPU systems, fully utilizing the
+performance of multi-core processors.</strong></p></li>
+<li><p><strong>示例：文字处理器（Word
+Processor）或电子表格（Spreadsheet）：</strong><br>
+• <strong>一个线程与用户交互。</strong><br>
+<strong>One thread interacts with the user.</strong><br>
+• <strong>一个线程格式化文档（或电子表格）。</strong><br>
+<strong>One thread formats the document (or spreadsheet).</strong><br>
+• <strong>一个线程定期将文件写入磁盘。</strong><br>
+<strong>One thread writes the file to disk periodically.</strong><br>
+• <strong>为什么不使用三个进程？</strong><br>
+<strong>Why not three processes?</strong><br>
+◦ 进程的创建和切换开销更大，且进程间通信更复杂。<br>
+<strong>Process creation and switching have higher overhead, and
+inter-process communication is more complex.</strong></p></li>
+</ol>
+<hr>
+<h4 id="示例多线程文字处理器"><strong>2.
+示例：多线程文字处理器</strong></h4>
+<p><strong>Example: Multithreaded Word Processor</strong></p>
+<p>• <strong>描述：</strong><br>
+<strong>Description:</strong><br>
+•
+一个文字处理器包含三个线程，分别负责用户交互、文档格式化和文件写入。<br>
+<strong>A word processor contains three threads, responsible for user
+interaction, document formatting, and file writing,
+respectively.</strong></p>
+<hr>
+<h4 id="示例多线程web服务器"><strong>3.
+示例：多线程Web服务器</strong></h4>
+<p><strong>Example: Multithreaded Web Server</strong></p>
+<p>• <strong>描述：</strong><br>
+<strong>Description:</strong><br>
+• <strong>调度器线程（Dispatcher Thread）：</strong>
+负责接收请求并将其分发给工作线程。<br>
+<strong>Dispatcher Thread:</strong> Receives requests and distributes
+them to worker threads.<br>
+• <strong>工作线程（Worker Thread）：</strong>
+负责处理请求，包括查找缓存、从磁盘读取页面并返回页面。<br>
+<strong>Worker Thread:</strong> Handles requests, including looking up
+the cache, reading pages from disk, and returning pages.</p>
+<p>• <strong>代码框架：</strong><br>
+<strong>Rough Outline of Code:</strong><br>
+• <strong>调度器线程：</strong><br>
+<strong>Dispatcher Thread:</strong><br>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">  <span class="keyword">while</span> (TRUE) &#123;</span><br><span class="line">      get_next_request(&amp;buf);</span><br><span class="line">      handoff_work(&amp;buf);</span><br><span class="line">  &#125;</span><br><span class="line">  ```  </span><br><span class="line">• **工作线程：**  </span><br><span class="line">  **Worker Thread:**  </span><br><span class="line">  ```c</span><br><span class="line">  <span class="title function_">while</span> <span class="params">(TRUE)</span> &#123;</span><br><span class="line">      wait_for_work(&amp;buf);</span><br><span class="line">      look_for_page_in_cache(&amp;buf, &amp;page);</span><br><span class="line">      <span class="keyword">if</span> (page_not_in_cache(&amp;page))</span><br><span class="line">          read_page_from_disk(&amp;buf, &amp;page);</span><br><span class="line">      return_page(&amp;page);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h3 id="总结-9"><strong>总结</strong></h3>
+<p><strong>Summary</strong></p>
+<p>• <strong>线程的优势：</strong><br>
+<strong>Advantages of Threads:</strong><br>
+• 提高响应性、资源共享、经济性，以及充分利用多处理器架构。<br>
+<strong>Improves responsiveness, resource sharing, economy, and
+utilization of multiprocessor architectures.</strong></p>
+<p>• <strong>示例：</strong><br>
+<strong>Examples:</strong><br>
+• <strong>文字处理器：</strong>
+使用多个线程分别处理用户交互、文档格式化和文件写入。<br>
+<strong>Word Processor:</strong> Uses multiple threads for user
+interaction, document formatting, and file writing.<br>
+• <strong>Web服务器：</strong>
+使用调度器线程和工作线程高效处理请求。<br>
+<strong>Web Server:</strong> Uses dispatcher and worker threads to
+efficiently handle requests.**</p>
+<p>线程通过并发执行和资源共享，显著提高了应用程序的性能和效率。<br>
+<strong>Threads significantly improve application performance and
+efficiency through concurrent execution and resource
+sharing.</strong></p>
+<h3 id="posix-线程posix-threads-pthreads"><strong>2.2 POSIX 线程（POSIX
+Threads, Pthreads）</strong></h3>
+<hr>
+<h4 id="pthreads-函数调用"><strong>1. Pthreads 函数调用</strong></h4>
+<p><strong>Pthreads Function Calls</strong></p>
+<table>
+<colgroup>
+<col style="width: 27%">
+<col style="width: 72%">
+</colgroup>
+<thead>
+<tr>
+<th><strong>函数调用</strong></th>
+<th><strong>描述</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pthread_create</code></td>
+<td>创建一个新线程。</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>Create a new thread.</strong></td>
+</tr>
+<tr>
+<td><code>pthread_exit</code></td>
+<td>终止调用线程。</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>Terminate the calling thread.</strong></td>
+</tr>
+<tr>
+<td><code>pthread_join</code></td>
+<td>等待指定线程退出。</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>Wait for a specific thread to exit.</strong></td>
+</tr>
+<tr>
+<td><code>pthread_yield</code></td>
+<td>释放CPU，让其他线程运行。</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>Release the CPU to let another thread run.</strong></td>
+</tr>
+<tr>
+<td><code>pthread_attr_init</code></td>
+<td>创建并初始化线程的属性结构。</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>Create and initialize a thread's attribute
+structure.</strong></td>
+</tr>
+<tr>
+<td><code>pthread_attr_destroy</code></td>
+<td>删除线程的属性结构。</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>Remove a thread's attribute structure.</strong></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h4 id="示例程序使用线程"><strong>2. 示例程序：使用线程</strong></h4>
+<p><strong>Example Program Using Threads</strong></p>
+<p>• <strong>代码：</strong><br>
+<strong>Code:</strong><br>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;pthread.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> NUMBER_OF_THREADS 10</span></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> *<span class="title function_">print_hello_world</span><span class="params">(<span class="type">void</span> *tid)</span> &#123;</span><br><span class="line">    <span class="comment">/* 该函数打印线程的标识符并退出。 */</span></span><br><span class="line">    <span class="comment">/* This function prints the thread&#x27;s identifier and then exits. */</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Hello World. Greetings from thread %d\n&quot;</span>, (<span class="type">int</span>)tid);</span><br><span class="line">    pthread_exit(<span class="literal">NULL</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span> *argv[])</span> &#123;</span><br><span class="line">    <span class="comment">/* 主程序创建10个线程并退出。 */</span></span><br><span class="line">    <span class="comment">/* The main program creates 10 threads and then exits. */</span></span><br><span class="line">    <span class="type">pthread_t</span> threads[NUMBER_OF_THREADS];</span><br><span class="line">    <span class="type">int</span> status, i;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; NUMBER_OF_THREADS; i++) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;Main here. Creating thread %d\n&quot;</span>, i);</span><br><span class="line">        status = pthread_create(&amp;threads[i], <span class="literal">NULL</span>, print_hello_world, (<span class="type">void</span> *)i);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (status != <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;Oops. pthread_create returned error code %d\n&quot;</span>, status);</span><br><span class="line">            <span class="built_in">exit</span>(<span class="number">-1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">exit</span>(<span class="literal">NULL</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>• <strong>功能：</strong><br>
+<strong>Functionality:</strong><br>
+• 主程序创建10个线程，每个线程打印“Hello World”并退出。<br>
+<strong>The main program creates 10 threads, and each thread prints
+"Hello World" and exits.</strong></p>
+<p>• <strong>代码说明：</strong><br>
+<strong>Code Explanation:</strong><br>
+1. <strong><code>pthread_create</code>：</strong>
+创建线程，传入线程函数<code>print_hello_world</code>和线程ID。<br>
+<strong><code>pthread_create</code>:</strong> Creates a thread, passing
+the thread function <code>print_hello_world</code> and the thread
+ID.<br>
+2. <strong><code>pthread_exit</code>：</strong>
+线程执行完毕后调用<code>pthread_exit</code>退出。<br>
+<strong><code>pthread_exit</code>:</strong> Called by the thread to exit
+after execution.<br>
+3. <strong>错误处理：</strong>
+如果<code>pthread_create</code>返回非零值，表示线程创建失败，程序退出。<br>
+<strong>Error Handling:</strong> If <code>pthread_create</code> returns
+a non-zero value, the thread creation fails, and the program exits.</p>
+<hr>
+<h3 id="总结-10"><strong>总结</strong></h3>
+<p><strong>Summary</strong></p>
+<p>• <strong>POSIX 线程（Pthreads）：</strong><br>
+<strong>POSIX Threads (Pthreads):</strong><br>
+• 提供了一组标准的API，用于创建和管理线程。<br>
+<strong>Provides a set of standard APIs for creating and managing
+threads.</strong></p>
+<p>• <strong>常用函数：</strong><br>
+<strong>Common Functions:</strong><br>
+•
+<code>pthread_create</code>、<code>pthread_exit</code>、<code>pthread_join</code>、<code>pthread_yield</code>、<code>pthread_attr_init</code>、<code>pthread_attr_destroy</code>。<br>
+<strong><code>pthread_create</code>, <code>pthread_exit</code>,
+<code>pthread_join</code>, <code>pthread_yield</code>,
+<code>pthread_attr_init</code>,
+<code>pthread_attr_destroy</code>.</strong></p>
+<p>• <strong>示例程序：</strong><br>
+<strong>Example Program:</strong><br>
+•
+使用<code>pthread_create</code>创建多个线程，每个线程执行独立的任务。<br>
+<strong>Uses <code>pthread_create</code> to create multiple threads,
+each performing an independent task.</strong></p>
+<p>POSIX 线程是跨平台的线程实现，广泛应用于多线程编程中。<br>
+<strong>POSIX Threads is a cross-platform thread implementation widely
+used in multithreaded programming.</strong></p>
+<h3 id="线程的实现implementation-of-threads"><strong>2.2
+线程的实现（Implementation of Threads）</strong></h3>
+<hr>
+<h4 id="三种线程实现机制"><strong>1. 三种线程实现机制</strong></h4>
+<p><strong>Three Mechanisms for Implementing Threads</strong></p>
+<ol type="1">
+<li><p><strong>在用户空间实现线程（Implementing Threads in User
+Space）：</strong><br>
+• <strong>描述：</strong><br>
+<strong>Description:</strong><br>
+◦
+线程的管理完全由用户空间的线程库完成，操作系统内核并不知道线程的存在。<br>
+<strong>Thread management is entirely handled by a user-space thread
+library, and the OS kernel is unaware of the threads.</strong><br>
+• <strong>优点：</strong><br>
+<strong>Advantages:</strong><br>
+◦ 线程切换开销小，不需要内核介入。<br>
+<strong>Low overhead for thread switching, no kernel involvement
+required.</strong><br>
+◦ 线程库可以针对特定应用进行优化。<br>
+<strong>The thread library can be optimized for specific
+applications.</strong><br>
+• <strong>缺点：</strong><br>
+<strong>Disadvantages:</strong><br>
+◦ 一个线程的阻塞会导致整个进程阻塞，因为内核并不知道线程的存在。<br>
+<strong>Blocking of one thread blocks the entire process because the
+kernel is unaware of the threads.</strong><br>
+◦ 无法利用多核处理器的优势，因为内核只看到一个进程。<br>
+<strong>Cannot take advantage of multi-core processors because the
+kernel sees only one process.</strong></p></li>
+<li><p><strong>在内核空间实现线程（Implementing Threads in Kernel
+Space）：</strong><br>
+• <strong>描述：</strong><br>
+<strong>Description:</strong><br>
+◦ 线程的管理由操作系统内核完成，内核知道每个线程的存在。<br>
+<strong>Thread management is handled by the OS kernel, and the kernel is
+aware of each thread.</strong><br>
+• <strong>优点：</strong><br>
+<strong>Advantages:</strong><br>
+◦ 一个线程的阻塞不会影响其他线程，因为内核可以调度其他线程。<br>
+<strong>Blocking of one thread does not affect other threads because the
+kernel can schedule other threads.</strong><br>
+◦ 可以充分利用多核处理器的优势。<br>
+<strong>Can fully utilize the advantages of multi-core
+processors.</strong><br>
+• <strong>缺点：</strong><br>
+<strong>Disadvantages:</strong><br>
+◦ 线程切换开销较大，因为需要内核介入。<br>
+<strong>Higher overhead for thread switching due to kernel
+involvement.</strong><br>
+◦ 线程管理的复杂性增加。<br>
+<strong>Increased complexity in thread management.</strong></p></li>
+<li><p><strong>混合实现（Hybrid Implementations）：</strong><br>
+• <strong>描述：</strong><br>
+<strong>Description:</strong><br>
+◦ 结合用户空间和内核空间的优点，将线程分为用户级线程和内核级线程。<br>
+<strong>Combines the advantages of user-space and kernel-space
+implementations by dividing threads into user-level threads and
+kernel-level threads.</strong><br>
+• <strong>实现方式：</strong><br>
+<strong>Implementation:</strong><br>
+◦ 用户级线程由用户空间的线程库管理，内核级线程由内核管理。<br>
+<strong>User-level threads are managed by a user-space thread library,
+and kernel-level threads are managed by the kernel.</strong><br>
+◦ 多个用户级线程映射到一个内核级线程。<br>
+<strong>Multiple user-level threads are mapped to one kernel-level
+thread.</strong><br>
+• <strong>优点：</strong><br>
+<strong>Advantages:</strong><br>
+◦ 减少线程切换开销，同时支持多核处理器。<br>
+<strong>Reduces thread switching overhead while supporting multi-core
+processors.</strong><br>
+• <strong>缺点：</strong><br>
+<strong>Disadvantages:</strong><br>
+◦ 实现复杂性较高。<br>
+<strong>Higher implementation complexity.</strong></p></li>
+</ol>
+<hr>
+<h3 id="总结-11"><strong>总结</strong></h3>
+<p><strong>Summary</strong></p>
+<p>• <strong>用户空间实现线程：</strong><br>
+<strong>Implementing Threads in User Space:</strong><br>
+•
+线程管理由用户空间的线程库完成，切换开销小，但无法利用多核处理器。<br>
+<strong>Thread management is handled by a user-space thread library,
+with low switching overhead but no multi-core processor
+utilization.</strong></p>
+<p>• <strong>内核空间实现线程：</strong><br>
+<strong>Implementing Threads in Kernel Space:</strong><br>
+• 线程管理由内核完成，支持多核处理器，但切换开销较大。<br>
+<strong>Thread management is handled by the kernel, supporting
+multi-core processors but with higher switching overhead.</strong></p>
+<p>• <strong>混合实现：</strong><br>
+<strong>Hybrid Implementations:</strong><br>
+•
+结合用户空间和内核空间的优点，减少切换开销并支持多核处理器，但实现复杂性较高。<br>
+<strong>Combines the advantages of user-space and kernel-space
+implementations, reducing switching overhead and supporting multi-core
+processors, but with higher implementation complexity.</strong></p>
+<p>线程的实现方式需要根据应用场景和性能需求进行选择。<br>
+<strong>The implementation of threads should be chosen based on
+application scenarios and performance requirements.</strong></p>
+<h3 id="线程的实现续"><strong>2.2 线程的实现（续）</strong></h3>
+<p><strong>Implementation of Threads (Continued)</strong></p>
+<hr>
+<h4 id="用户空间实现线程"><strong>1. 用户空间实现线程</strong></h4>
+<p><strong>Implementing Threads in User Space</strong></p>
+<p>• <strong>描述：</strong><br>
+<strong>Description:</strong><br>
+•
+线程的管理完全由用户空间的线程库完成，操作系统内核并不知道线程的存在。<br>
+<strong>Thread management is entirely handled by a user-space thread
+library, and the OS kernel is unaware of the threads.</strong><br>
+• <strong>示例：</strong> 用户级线程包（User-Level Threads
+Package）。<br>
+<strong>Example:</strong> A user-level threads package.</p>
+<p>• <strong>优点：</strong><br>
+<strong>Advantages:</strong><br>
+• 线程切换开销小，不需要内核介入。<br>
+<strong>Low overhead for thread switching, no kernel involvement
+required.</strong><br>
+• 线程库可以针对特定应用进行优化。<br>
+<strong>The thread library can be optimized for specific
+applications.</strong></p>
+<p>• <strong>缺点：</strong><br>
+<strong>Disadvantages:</strong><br>
+• 一个线程的阻塞会导致整个进程阻塞，因为内核并不知道线程的存在。<br>
+<strong>Blocking of one thread blocks the entire process because the
+kernel is unaware of the threads.</strong><br>
+• 无法利用多核处理器的优势，因为内核只看到一个进程。<br>
+<strong>Cannot take advantage of multi-core processors because the
+kernel sees only one process.</strong></p>
+<hr>
+<h4 id="内核线程kernel-threads-klt"><strong>2. 内核线程（Kernel Threads,
+KLT）</strong></h4>
+<p><strong>Kernel Threads (KLT)</strong></p>
+<p>• <strong>描述：</strong><br>
+<strong>Description:</strong><br>
+• 线程的创建、调度和管理由内核完成。<br>
+<strong>The kernel performs thread creation, scheduling, and management
+in kernel space.</strong><br>
+• 不需要线程库，内核提供API。<br>
+<strong>No thread library is needed; the kernel provides
+APIs.</strong><br>
+• 内核维护进程和线程的上下文。<br>
+<strong>The kernel maintains the context of processes and
+threads.</strong><br>
+• 线程切换需要内核介入。<br>
+<strong>Thread switching requires kernel involvement.</strong><br>
+• 线程是调度的基本单位。<br>
+<strong>Thread is the basic unit of scheduler.</strong></p>
+<p>• <strong>缺点：</strong><br>
+<strong>Disadvantages:</strong><br>
+• 线程切换的开销较高。<br>
+<strong>High cost for thread switching.</strong></p>
+<p>• <strong>示例：</strong><br>
+<strong>Examples:</strong><br>
+• Windows 95/98/NT/2000/XP。<br>
+<strong>Windows 95/98/NT/2000/XP.</strong></p>
+<hr>
+<h4 id="内核空间实现线程"><strong>3. 内核空间实现线程</strong></h4>
+<p><strong>Implementing Threads in the Kernel</strong></p>
+<p>• <strong>描述：</strong><br>
+<strong>Description:</strong><br>
+• 线程的管理由内核完成，内核知道每个线程的存在。<br>
+<strong>Thread management is handled by the OS kernel, and the kernel is
+aware of each thread.</strong><br>
+• <strong>示例：</strong> 由内核管理的线程包（A Threads Package Managed
+by the Kernel）。<br>
+<strong>Example:</strong> A threads package managed by the kernel.</p>
+<p>• <strong>优点：</strong><br>
+<strong>Advantages:</strong><br>
+• 一个线程的阻塞不会影响其他线程，因为内核可以调度其他线程。<br>
+<strong>Blocking of one thread does not affect other threads because the
+kernel can schedule other threads.</strong><br>
+• 可以充分利用多核处理器的优势。<br>
+<strong>Can fully utilize the advantages of multi-core
+processors.</strong></p>
+<p>• <strong>缺点：</strong><br>
+<strong>Disadvantages:</strong><br>
+• 线程切换开销较大，因为需要内核介入。<br>
+<strong>Higher overhead for thread switching due to kernel
+involvement.</strong><br>
+• 线程管理的复杂性增加。<br>
+<strong>Increased complexity in thread management.</strong></p>
+<hr>
+<h4 id="混合实现"><strong>4. 混合实现</strong></h4>
+<p><strong>Hybrid Implementations</strong></p>
+<p>• <strong>描述：</strong><br>
+<strong>Description:</strong><br>
+• 结合用户空间和内核空间的优点，将线程分为用户级线程和内核级线程。<br>
+<strong>Combines the advantages of user-space and kernel-space
+implementations by dividing threads into user-level threads and
+kernel-level threads.</strong><br>
+• <strong>实现方式：</strong><br>
+<strong>Implementation:</strong><br>
+◦ 多个用户级线程映射到一个内核级线程。<br>
+<strong>Multiple user-level threads are mapped to one kernel-level
+thread.</strong><br>
+• <strong>示例：</strong> SUN Solaris。<br>
+<strong>Example:</strong> SUN Solaris.</p>
+<p>• <strong>优点：</strong><br>
+<strong>Advantages:</strong><br>
+• 减少线程切换开销，同时支持多核处理器。<br>
+<strong>Reduces thread switching overhead while supporting multi-core
+processors.</strong></p>
+<p>• <strong>缺点：</strong><br>
+<strong>Disadvantages:</strong><br>
+• 实现复杂性较高。<br>
+<strong>Higher implementation complexity.</strong></p>
+<hr>
+<h4 id="弹出线程pop-up-threads"><strong>5. 弹出线程（Pop-Up
+Threads）</strong></h4>
+<p><strong>Pop-Up Threads</strong></p>
+<p>• <strong>描述：</strong><br>
+<strong>Description:</strong><br>
+• 当消息到达时创建新线程来处理消息。<br>
+<strong>Creation of a new thread when a message arrives.</strong><br>
+• <strong>图a：</strong> 消息到达前。<br>
+<strong>Figure a:</strong> Before the message arrives.<br>
+• <strong>图b：</strong> 消息到达后，创建新线程处理消息。<br>
+<strong>Figure b:</strong> After the message arrives, a new thread is
+created to handle the message.</p>
+<p>• <strong>优点：</strong><br>
+<strong>Advantages:</strong><br>
+• 动态创建线程，提高响应速度。<br>
+<strong>Dynamically creates threads to improve
+responsiveness.</strong></p>
+<hr>
+<h3 id="总结-12"><strong>总结</strong></h3>
+<p><strong>Summary</strong></p>
+<p>• <strong>用户空间实现线程：</strong><br>
+<strong>Implementing Threads in User Space:</strong><br>
+•
+线程管理由用户空间的线程库完成，切换开销小，但无法利用多核处理器。<br>
+<strong>Thread management is handled by a user-space thread library,
+with low switching overhead but no multi-core processor
+utilization.</strong></p>
+<p>• <strong>内核线程（KLT）：</strong><br>
+<strong>Kernel Threads (KLT):</strong><br>
+• 线程管理由内核完成，支持多核处理器，但切换开销较大。<br>
+<strong>Thread management is handled by the kernel, supporting
+multi-core processors but with higher switching overhead.</strong></p>
+<p>• <strong>内核空间实现线程：</strong><br>
+<strong>Implementing Threads in the Kernel:</strong><br>
+• 线程管理由内核完成，支持多核处理器，但切换开销较大。<br>
+<strong>Thread management is handled by the kernel, supporting
+multi-core processors but with higher switching overhead.</strong></p>
+<p>• <strong>混合实现：</strong><br>
+<strong>Hybrid Implementations:</strong><br>
+•
+结合用户空间和内核空间的优点，减少切换开销并支持多核处理器，但实现复杂性较高。<br>
+<strong>Combines the advantages of user-space and kernel-space
+implementations, reducing switching overhead and supporting multi-core
+processors, but with higher implementation complexity.</strong></p>
+<p>• <strong>弹出线程：</strong><br>
+<strong>Pop-Up Threads:</strong><br>
+• 动态创建线程处理消息，提高响应速度。<br>
+<strong>Dynamically creates threads to handle messages, improving
+responsiveness.</strong></p>
+<p>线程的实现方式需要根据应用场景和性能需求进行选择。<br>
+<strong>The implementation of threads should be chosen based on
+application scenarios and performance requirements.</strong></p>
+<h3 id="线程总结summary-of-threads"><strong>2.2 线程总结（Summary of
+Threads）</strong></h3>
+<hr>
+<h4 id="什么是线程为什么需要线程"><strong>1.
+什么是线程？为什么需要线程？</strong></h4>
+<p><strong>What is a Thread? Why Do We Need Threads?</strong></p>
+<p>• <strong>线程的定义：</strong><br>
+<strong>Definition of Thread:</strong><br>
+• 线程是进程中的一个顺序执行流，是CPU调度的基本单位。<br>
+<strong>A thread is a sequential execution stream within a process and
+the basic unit of CPU utilization.</strong></p>
+<p>• <strong>为什么需要线程：</strong><br>
+<strong>Why We Need Threads:</strong><br>
+• 提高并发性、响应性和资源利用率，同时减少系统开销。<br>
+<strong>To improve concurrency, responsiveness, and resource utilization
+while reducing system overhead.</strong></p>
+<hr>
+<h4 id="线程与进程的区别"><strong>2. 线程与进程的区别</strong></h4>
+<p><strong>Difference Between Process and Thread</strong></p>
+<table>
+<colgroup>
+<col style="width: 18%">
+<col style="width: 32%">
+<col style="width: 48%">
+</colgroup>
+<thead>
+<tr>
+<th><strong>特性</strong></th>
+<th><strong>进程</strong></th>
+<th><strong>线程</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>资源分配</strong></td>
+<td>资源分配的基本单位。</td>
+<td>与资源分配无关，共享进程资源。</td>
+</tr>
+<tr>
+<td><strong>地址空间</strong></td>
+<td>拥有独立的虚拟地址空间。</td>
+<td>与同一进程内的其他线程共享地址空间。</td>
+</tr>
+<tr>
+<td><strong>切换开销</strong></td>
+<td>切换开销较大。</td>
+<td>切换开销较小。</td>
+</tr>
+<tr>
+<td><strong>调度与切换</strong></td>
+<td>由内核完成。</td>
+<td>可由内核或用户程序完成。</td>
+</tr>
+<tr>
+<td><strong>创建与销毁</strong></td>
+<td>创建和销毁开销较大。</td>
+<td>创建和销毁开销较小。</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h4 id="线程的使用"><strong>3. 线程的使用</strong></h4>
+<p><strong>Thread Usage</strong></p>
+<p>• <strong>示例：</strong><br>
+<strong>Examples:</strong><br>
+• <strong>文字处理器：</strong>
+使用多个线程分别处理用户交互、文档格式化和文件写入。<br>
+<strong>Word Processor:</strong> Uses multiple threads for user
+interaction, document formatting, and file writing.<br>
+• <strong>Web服务器：</strong>
+使用调度器线程和工作线程高效处理请求。<br>
+<strong>Web Server:</strong> Uses dispatcher and worker threads to
+efficiently handle requests.**</p>
+<hr>
+<h4 id="线程的实现及其权衡"><strong>4. 线程的实现及其权衡</strong></h4>
+<p><strong>Thread Implementations and Their Tradeoffs</strong></p>
+<ol type="1">
+<li><p><strong>用户级线程（User-Level Threads）：</strong><br>
+• <strong>优点：</strong> 切换开销小，无需内核介入。<br>
+<strong>Advantages:</strong> Low switching overhead, no kernel
+involvement.<br>
+• <strong>缺点：</strong>
+无法利用多核处理器，一个线程的阻塞会导致整个进程阻塞。<br>
+<strong>Disadvantages:</strong> Cannot utilize multi-core processors,
+blocking of one thread blocks the entire process.</p></li>
+<li><p><strong>内核级线程（Kernel-Level Threads）：</strong><br>
+• <strong>优点：</strong>
+支持多核处理器，一个线程的阻塞不会影响其他线程。<br>
+<strong>Advantages:</strong> Supports multi-core processors, blocking of
+one thread does not affect other threads.<br>
+• <strong>缺点：</strong> 切换开销较大，需要内核介入。<br>
+<strong>Disadvantages:</strong> Higher switching overhead, requires
+kernel involvement.</p></li>
+<li><p><strong>混合实现（Hybrid Implementations）：</strong><br>
+• <strong>优点：</strong> 减少切换开销，同时支持多核处理器。<br>
+<strong>Advantages:</strong> Reduces switching overhead while supporting
+multi-core processors.<br>
+• <strong>缺点：</strong> 实现复杂性较高。<br>
+<strong>Disadvantages:</strong> Higher implementation
+complexity.</p></li>
+<li><p><strong>弹出线程（Pop-Up Threads）：</strong><br>
+• <strong>优点：</strong> 动态创建线程处理消息，提高响应速度。<br>
+<strong>Advantages:</strong> Dynamically creates threads to handle
+messages, improving responsiveness.</p></li>
+</ol>
+<hr>
+<h4 id="下一讲进程间通信inter-process-communication-ipc"><strong>5.
+下一讲：进程间通信（Inter-Process Communication, IPC）</strong></h4>
+<p><strong>Next Lecture: Inter-Process Communication</strong></p>
+<p>• <strong>主题：</strong><br>
+<strong>Topics:</strong><br>
+• 进程间通信的机制和方法，如管道、消息队列、共享内存等。<br>
+<strong>Mechanisms and methods for inter-process communication, such as
+pipes, message queues, shared memory, etc.</strong></p>
+<hr>
+<h3 id="总结-13"><strong>总结</strong></h3>
+<p><strong>Summary</strong></p>
+<p>• <strong>线程：</strong>
+是进程中的一个顺序执行流，用于提高并发性和资源利用率。<br>
+<strong>Thread:</strong> A sequential execution stream within a process,
+used to improve concurrency and resource utilization.</p>
+<p>• <strong>线程与进程的区别：</strong><br>
+<strong>Difference Between Process and Thread:</strong><br>
+• 线程共享进程资源，切换开销小；进程拥有独立资源，切换开销大。<br>
+<strong>Threads share process resources and have low switching overhead;
+processes have independent resources and higher switching
+overhead.</strong></p>
+<p>• <strong>线程的实现方式：</strong><br>
+<strong>Thread Implementations:</strong><br>
+•
+用户级线程、内核级线程、混合实现和弹出线程各有优缺点，需根据应用场景选择。<br>
+<strong>User-level threads, kernel-level threads, hybrid
+implementations, and pop-up threads each have their pros and cons, and
+should be chosen based on application scenarios.</strong></p>
+<p>• <strong>下一讲：</strong> 进程间通信（IPC）。<br>
+<strong>Next Lecture:</strong> Inter-Process Communication (IPC).</p>
+<p>线程是现代操作系统的核心特性之一，理解其实现和使用方式对于开发高效并发程序至关重要。<br>
+<strong>Threads are a core feature of modern operating systems, and
+understanding their implementation and usage is crucial for developing
+efficient concurrent programs.</strong></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://www.totorocatcat.top/">Totoro</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://totorocatcat.top/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FCH2/">http://totorocatcat.top/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FCH2/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://totorocatcat.top" target="_blank">Totoroの旅</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%8F%90%E9%AB%98/">提高</a></div><div class="post_share"><div class="social-share" data-image="https://npm.elemecdn.com/ushio-api-img-moe@5.0.22/img_220_1200x675_350.011993408203_null_normal.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%882%EF%BC%89/" title="操作系统CH2（2）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/ushio-api-img-moe@5.0.22/img_220_1200x675_350.011993408203_null_normal.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">操作系统CH2（2）</div></div></a></div><div class="next-post pull-right"><a href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FCH-1/" title="操作系统CH-1"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/ushio-api-img-moe@5.0.22/img_220_1200x675_350.011993408203_null_normal.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">操作系统CH-1</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/'Lec2%20Logic%20and%20Proof,%20Sets,%20and%20Function'/" title="Lec2 Logic and Proof, Sets, and Function"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/1fe6130ca86bb9e7e6a37c9187a32c8.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-11-20</div><div class="title">Lec2 Logic and Proof, Sets, and Function</div></div></a></div><div><a href="/02%EF%BC%89/" title="CS61B 课程笔记（Lecture 02）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/v2-2ed7f4c9e1a7a699a3ef300a6f761abe_720w.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-11</div><div class="title">CS61B 课程笔记（Lecture 02）</div></div></a></div><div><a href="/03%EF%BC%89/" title="CS61B 课程笔记（Lecture 03）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/v2-2ed7f4c9e1a7a699a3ef300a6f761abe_720w.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-12</div><div class="title">CS61B 课程笔记（Lecture 03）</div></div></a></div><div><a href="/04%EF%BC%89/" title="CS61B 课程笔记（Lecture 04）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/2749a496aabc7d650b2912e256582e390a0a636b.jpg@1256w_1246h_!web-article-pic.avif" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-13</div><div class="title">CS61B 课程笔记（Lecture 04）</div></div></a></div><div><a href="/06%EF%BC%89/" title="CS61B 课程笔记（Lecture 06）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/f00af0d55cc81c18403ccbb4957ae6bc298252208.jpg@1256w_1374h_!web-article-pic.avif" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-15</div><div class="title">CS61B 课程笔记（Lecture 06）</div></div></a></div><div><a href="/05%EF%BC%89/" title="CS61B 课程笔记（Lecture 05）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/4ccebbc43a0ca31a719afadee2f86b4902402baf.jpg@1256w_786h_!web-article-pic.avif" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-14</div><div class="title">CS61B 课程笔记（Lecture 05）</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/px3.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Totoro</div><div class="author-info__description">热爱文学的SCUT软件学院学生</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">842</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">36</div></a></div><a id="card-info-btn" href="https://github.com/4512abc"><i class="fab fa-github"></i><span>🛴前往小窝......</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/4512abc" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:4512abc@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到龙猫の小窝</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#chapter-2-processes-and-threads"><span class="toc-text">Chapter 2 Processes and
+Threads</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8Bprocess"><span class="toc-text">2.1 进程（Process）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A1%BA%E5%BA%8F%E6%89%A7%E8%A1%8Csequential-execution"><span class="toc-text">1. 顺序执行（Sequential
+Execution）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B9%B6%E5%8F%91%E6%89%A7%E8%A1%8Cconcurrency-execution"><span class="toc-text">2. 并发执行（Concurrency
+Execution）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E6%A8%A1%E5%9E%8Bprocess-model"><span class="toc-text">3. 进程模型（Process
+Model）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E7%9A%84%E6%A6%82%E5%BF%B5process-concept"><span class="toc-text">4. 进程的概念（Process
+Concept）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%A8%8B%E5%BA%8F%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">5. 进程与程序的区别</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E5%88%9B%E5%BB%BAprocess-creation"><span class="toc-text">2.1 进程创建（Process
+Creation）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E5%88%9B%E5%BB%BA%E7%9A%84%E8%A7%A6%E5%8F%91%E4%BA%8B%E4%BB%B6"><span class="toc-text">1. 进程创建的触发事件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#unix%E4%B8%AD%E7%9A%84%E8%BF%9B%E7%A8%8B%E5%88%9B%E5%BB%BA"><span class="toc-text">2. UNIX中的进程创建</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#windows%E4%B8%AD%E7%9A%84%E8%BF%9B%E7%A8%8B%E5%88%9B%E5%BB%BA"><span class="toc-text">3.
+Windows中的进程创建</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%88%97%E5%87%BA%E6%AD%A3%E5%9C%A8%E8%BF%90%E8%A1%8C%E7%9A%84%E8%BF%9B%E7%A8%8B"><span class="toc-text">4.
+如何列出正在运行的进程？</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-1"><span class="toc-text">总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E7%BB%88%E6%AD%A2process-termination"><span class="toc-text">2.1 进程终止（Process
+Termination）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E7%BB%88%E6%AD%A2%E7%9A%84%E6%9D%A1%E4%BB%B6"><span class="toc-text">1. 进程终止的条件</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-2"><span class="toc-text">总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E5%B1%82%E6%AC%A1%E7%BB%93%E6%9E%84process-hierarchies"><span class="toc-text">2.1
+进程层次结构（Process Hierarchies）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E5%B1%82%E6%AC%A1%E7%BB%93%E6%9E%84%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-text">1. 进程层次结构的概念</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#unix%E4%B8%AD%E7%9A%84%E8%BF%9B%E7%A8%8B%E5%B1%82%E6%AC%A1%E7%BB%93%E6%9E%84"><span class="toc-text">2.
+UNIX中的进程层次结构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#windows%E4%B8%AD%E7%9A%84%E8%BF%9B%E7%A8%8B%E5%B1%82%E6%AC%A1%E7%BB%93%E6%9E%84"><span class="toc-text">3.
+Windows中的进程层次结构</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-3"><span class="toc-text">总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E7%8A%B6%E6%80%81process-states"><span class="toc-text">2.1 进程状态（Process
+States）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E8%BF%9B%E7%A8%8B%E7%8A%B6%E6%80%81"><span class="toc-text">1. 基本进程状态</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E7%8A%B6%E6%80%81%E4%B9%8B%E9%97%B4%E7%9A%84%E8%BD%AC%E6%8D%A2"><span class="toc-text">2. 进程状态之间的转换</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E8%BF%9B%E7%A8%8B%E7%8A%B6%E6%80%81"><span class="toc-text">3. 其他进程状态</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8C%82%E8%B5%B7%E7%8A%B6%E6%80%81suspend-state"><span class="toc-text">4. 挂起状态（Suspend
+State）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-4"><span class="toc-text">总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E7%9A%84%E5%AE%9E%E7%8E%B0implementation-of-processes"><span class="toc-text">2.1
+进程的实现（Implementation of Processes）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E7%9A%84%E7%BB%84%E6%88%90process-image"><span class="toc-text">1. 进程的组成（Process
+Image）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E6%8E%A7%E5%88%B6%E5%9D%97pcb"><span class="toc-text">2. 进程控制块（PCB）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E4%B8%8A%E4%B8%8B%E6%96%87process-context"><span class="toc-text">3. 进程上下文（Process
+Context）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E8%A1%A8%E6%88%96pcb%E8%A1%A8process-table-or-pcb-table"><span class="toc-text">4.
+进程表或PCB表（Process Table or PCB Table）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-5"><span class="toc-text">总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8Bthread"><span class="toc-text">2.2 线程（Thread）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-text">1. 线程的概念</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E7%9A%84%E7%BB%84%E6%88%90"><span class="toc-text">2. 线程的组成</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%9A%E7%BA%BF%E7%A8%8Bmultithreading"><span class="toc-text">3.
+多线程（Multithreading）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E4%B8%8E%E8%BF%9B%E7%A8%8B%E7%9A%84%E6%AF%94%E8%BE%83"><span class="toc-text">4. 线程与进程的比较</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-6"><span class="toc-text">总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E7%9A%84%E4%BC%98%E5%8A%BFthread-advantage"><span class="toc-text">2.2 线程的优势（Thread
+Advantage）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%88%9B%E5%BB%BA%E9%80%80%E5%87%BA%E5%92%8C%E5%88%87%E6%8D%A2%E5%BC%80%E9%94%80%E5%B0%8F"><span class="toc-text">1.
+线程的创建、退出和切换开销小</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1%E7%AE%80%E5%8D%95"><span class="toc-text">2. 线程间通信简单</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-7"><span class="toc-text">总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%9E%8Bthe-thread-model"><span class="toc-text">2.2 线程模型（The Thread
+Model）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%95%E7%BA%BF%E7%A8%8B%E8%BF%9B%E7%A8%8B%E4%B8%8E%E5%A4%9A%E7%BA%BF%E7%A8%8B%E8%BF%9B%E7%A8%8B"><span class="toc-text">1.
+单线程进程与多线程进程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E5%85%B1%E4%BA%AB%E4%B8%8E%E7%A7%81%E6%9C%89%E7%9A%84%E5%86%85%E5%AE%B9"><span class="toc-text">2.
+线程共享与私有的内容</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E7%9A%84%E6%A0%88"><span class="toc-text">3. 线程的栈</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-8"><span class="toc-text">总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E7%9A%84%E4%BD%BF%E7%94%A8thread-usage"><span class="toc-text">2.2 线程的使用（Thread
+Usage）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%BF%E7%94%A8%E7%BA%BF%E7%A8%8B"><span class="toc-text">1. 为什么使用线程？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B%E5%A4%9A%E7%BA%BF%E7%A8%8B%E6%96%87%E5%AD%97%E5%A4%84%E7%90%86%E5%99%A8"><span class="toc-text">2.
+示例：多线程文字处理器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B%E5%A4%9A%E7%BA%BF%E7%A8%8Bweb%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-text">3.
+示例：多线程Web服务器</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-9"><span class="toc-text">总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#posix-%E7%BA%BF%E7%A8%8Bposix-threads-pthreads"><span class="toc-text">2.2 POSIX 线程（POSIX
+Threads, Pthreads）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#pthreads-%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8"><span class="toc-text">1. Pthreads 函数调用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B%E7%A8%8B%E5%BA%8F%E4%BD%BF%E7%94%A8%E7%BA%BF%E7%A8%8B"><span class="toc-text">2. 示例程序：使用线程</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-10"><span class="toc-text">总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%AE%9E%E7%8E%B0implementation-of-threads"><span class="toc-text">2.2
+线程的实现（Implementation of Threads）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%89%E7%A7%8D%E7%BA%BF%E7%A8%8B%E5%AE%9E%E7%8E%B0%E6%9C%BA%E5%88%B6"><span class="toc-text">1. 三种线程实现机制</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-11"><span class="toc-text">总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%AE%9E%E7%8E%B0%E7%BB%AD"><span class="toc-text">2.2 线程的实现（续）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E7%A9%BA%E9%97%B4%E5%AE%9E%E7%8E%B0%E7%BA%BF%E7%A8%8B"><span class="toc-text">1. 用户空间实现线程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%86%85%E6%A0%B8%E7%BA%BF%E7%A8%8Bkernel-threads-klt"><span class="toc-text">2. 内核线程（Kernel Threads,
+KLT）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%86%85%E6%A0%B8%E7%A9%BA%E9%97%B4%E5%AE%9E%E7%8E%B0%E7%BA%BF%E7%A8%8B"><span class="toc-text">3. 内核空间实现线程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B7%B7%E5%90%88%E5%AE%9E%E7%8E%B0"><span class="toc-text">4. 混合实现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%B9%E5%87%BA%E7%BA%BF%E7%A8%8Bpop-up-threads"><span class="toc-text">5. 弹出线程（Pop-Up
+Threads）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-12"><span class="toc-text">总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E6%80%BB%E7%BB%93summary-of-threads"><span class="toc-text">2.2 线程总结（Summary of
+Threads）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E7%BA%BF%E7%A8%8B%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E7%BA%BF%E7%A8%8B"><span class="toc-text">1.
+什么是线程？为什么需要线程？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E4%B8%8E%E8%BF%9B%E7%A8%8B%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">2. 线程与进程的区别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-text">3. 线程的使用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8F%8A%E5%85%B6%E6%9D%83%E8%A1%A1"><span class="toc-text">4. 线程的实现及其权衡</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8B%E4%B8%80%E8%AE%B2%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1inter-process-communication-ipc"><span class="toc-text">5.
+下一讲：进程间通信（Inter-Process Communication, IPC）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-13"><span class="toc-text">总结</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/%E6%97%B6%E9%97%B4%E7%BA%BF%E8%A1%A8/" title="时间线表"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://source.fomal.cc/img/default_cover_5.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="时间线表"/></a><div class="content"><a class="title" href="/%E6%97%B6%E9%97%B4%E7%BA%BF%E8%A1%A8/" title="时间线表">时间线表</a><time datetime="2025-05-06T16:24:18.000Z" title="发表于 2025-05-07 00:24:18">2025-05-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FCH3%EF%BC%88A%EF%BC%89/" title="操作系统CH3（A）"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/ushio-api-img-moe@5.0.22/img_220_1200x675_350.011993408203_null_normal.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="操作系统CH3（A）"/></a><div class="content"><a class="title" href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FCH3%EF%BC%88A%EF%BC%89/" title="操作系统CH3（A）">操作系统CH3（A）</a><time datetime="2025-05-06T09:06:41.000Z" title="发表于 2025-05-06 17:06:41">2025-05-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FCH2%EF%BC%883%EF%BC%89/" title="操作系统CH2（3）"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/ushio-api-img-moe@5.0.22/img_220_1200x675_350.011993408203_null_normal.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="操作系统CH2（3）"/></a><div class="content"><a class="title" href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FCH2%EF%BC%883%EF%BC%89/" title="操作系统CH2（3）">操作系统CH2（3）</a><time datetime="2025-05-06T09:05:47.000Z" title="发表于 2025-05-06 17:05:47">2025-05-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%882%EF%BC%89/" title="操作系统CH2（2）"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/ushio-api-img-moe@5.0.22/img_220_1200x675_350.011993408203_null_normal.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="操作系统CH2（2）"/></a><div class="content"><a class="title" href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%882%EF%BC%89/" title="操作系统CH2（2）">操作系统CH2（2）</a><time datetime="2025-05-06T09:04:48.000Z" title="发表于 2025-05-06 17:04:48">2025-05-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FCH2/" title="操作系统CH2（1）"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/ushio-api-img-moe@5.0.22/img_220_1200x675_350.011993408203_null_normal.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="操作系统CH2（1）"/></a><div class="content"><a class="title" href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FCH2/" title="操作系统CH2（1）">操作系统CH2（1）</a><time datetime="2025-05-06T09:03:29.000Z" title="发表于 2025-05-06 17:03:29">2025-05-06</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 - 2025 By Totoro</div><div class="footer_custom_text">I wish you to become your own sun, no need to rely on who's light.<p><a target="_blank" href="https://hexo.io/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&logo=hexo" title="博客框架为Hexo"></a>&nbsp;<a target="_blank" href="https://butterfly.js.org/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&logo=bitdefender" title="主题采用butterfly"></a>&nbsp;<a target="_blank" href="https://www.jsdelivr.com/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&logo=jsDelivr" title="本站使用JsDelivr为静态资源提供CDN加速"></a> &nbsp;<a target="_blank" href="https://vercel.com/ "><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Hosted-Vervel-brightgreen?style=flat&logo=Vercel" title="本站采用双线部署，默认线路托管于Vercel"></a>&nbsp;<a target="_blank" href="https://vercel.com/ "><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Hosted-Coding-0cedbe?style=flat&logo=Codio" title="本站采用双线部署，联通线路托管于Coding"></a>&nbsp;<a target="_blank" href="https://github.com/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&logo=GitHub" title="本站项目由Gtihub托管"></a>&nbsp;<a target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&logo=Claris" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"></a></p></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat-btn" type="button" title="聊天"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="/js/tw_cn.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@5.2.0/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'HT1PalaKkPaG1UqAXBhJXIu8-gzGzoHsz',
+      appKey: 'iT0TnVVAwf9zuZ7NqwclQItY',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://cdn.jsdelivr.net/npm/valine@1.5.1/dist/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><script defer src="/js/light.js"></script><canvas id="universe"></canvas><script defer src="/js/universe.js"></script><script async src="/js/title.js"></script><script defer src="https://npm.elemecdn.com/jquery@latest/dist/jquery.min.js"></script><script defer data-pjax src="/js/cat.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="1" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener
+  btf.removeGlobalFnEvent('pjax')
+  btf.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.12.0"></script></div></div><!-- hexo injector body_end start --><script data-pjax>
+  function butterfly_swiper_injector_config(){
+    var parent_div_git = document.getElementById('recent-posts');
+    var item_html = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms;"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;诗录/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/4b31456c6f0f4489f99177f89e936de7286431045.png@1256w_708h_!web-article-pic.avif" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-10-01</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;诗录/&quot;);" href="javascript:void(0);" alt="">诗录</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;诗录/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;诗兴大发/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://source.fomal.cc/img/default_cover_69.webp" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-01-29</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;诗兴大发/&quot;);" href="javascript:void(0);" alt="">诗兴大发</a><div class="blog-slider__text">未觉，却是中二少年的诗仙梦</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;诗兴大发/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;TotoroのPlan/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/51d37eba99d243607ddedfff6e91568f617436609.jpg@1256w_1884h_!web-article-pic.avif" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-10-05</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;TotoroのPlan/&quot;);" href="javascript:void(0);" alt="">TotoroのPlan</a><div class="blog-slider__text">方便大二看（）</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;TotoroのPlan/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;Markdown格式/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/ushio-api-img-moe@5.0.48/img_482_1920x1080_96_null_normal.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-03-03</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;Markdown格式/&quot;);" href="javascript:void(0);" alt="">Markdown格式</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;Markdown格式/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载butterfly_swiper')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_swiper_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_swiper_injector_config();
+  }
+  </script><script defer src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.js"></script><script defer data-pjax src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper_init.js"></script><script data-pjax>
+    function butterfly_categories_card_injector_config(){
+      var parent_div_git = document.getElementById('recent-posts');
+      var item_html = '<style>li.categoryBar-list-item{width:32.3%;}.categoryBar-list{max-height: 380px;overflow:auto;}.categoryBar-list::-webkit-scrollbar{width:0!important}@media screen and (max-width: 650px){.categoryBar-list{max-height: 320px;}}</style><div class="recent-post-item" style="height:auto;width:100%;padding:0px;"><div id="categoryBar"><ul class="categoryBar-list"><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_12.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/离散数学/&quot;);" href="javascript:void(0);">离散数学</a><span class="categoryBar-list-count">33</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_13.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS61B/&quot;);" href="javascript:void(0);">CS61B</a><span class="categoryBar-list-count">76</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_14.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/期末の旅/&quot;);" href="javascript:void(0);">期末の旅</a><span class="categoryBar-list-count">99</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_17.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/刷题计划/&quot;);" href="javascript:void(0);">刷题计划</a><span class="categoryBar-list-count">60</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_18.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/区域赛の旅/&quot;);" href="javascript:void(0);">区域赛の旅</a><span class="categoryBar-list-count">7</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_19.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/Codeforcesの旅/&quot;);" href="javascript:void(0);">Codeforcesの旅</a><span class="categoryBar-list-count">24</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_20.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/牛客の旅/&quot;);" href="javascript:void(0);">牛客の旅</a><span class="categoryBar-list-count">65</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_21.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/ACMの旅/&quot;);" href="javascript:void(0);">ACMの旅</a><span class="categoryBar-list-count">42</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_22.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/数学建模/&quot;);" href="javascript:void(0);">数学建模</a><span class="categoryBar-list-count">26</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_22.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/前端の旅/&quot;);" href="javascript:void(0);">前端の旅</a><span class="categoryBar-list-count">17</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_23.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/数据结构/&quot;);" href="javascript:void(0);">数据结构</a><span class="categoryBar-list-count">47</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_24.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/Atcoderの旅/&quot;);" href="javascript:void(0);">Atcoderの旅</a><span class="categoryBar-list-count">53</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_25.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/C-の旅/&quot;);" href="javascript:void(0);">C++の旅</a><span class="categoryBar-list-count">17</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_26.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS70の旅/&quot;);" href="javascript:void(0);">CS70の旅</a><span class="categoryBar-list-count">24</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_27.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CSAPPの旅/&quot;);" href="javascript:void(0);">CSAPPの旅</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_28.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/计算机组成原理/&quot;);" href="javascript:void(0);">计算机组成原理</a><span class="categoryBar-list-count">47</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_29.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/编程基础/&quot;);" href="javascript:void(0);">编程基础</a><span class="categoryBar-list-count">14</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_30.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/JAVAの旅/&quot;);" href="javascript:void(0);">JAVAの旅</a><span class="categoryBar-list-count">10</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_31.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/MIT-6-031-Software-Construction/&quot;);" href="javascript:void(0);">MIT 6.031:Software Construction</a><span class="categoryBar-list-count">16</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_32.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS-110L/&quot;);" href="javascript:void(0);">CS 110L</a><span class="categoryBar-list-count">3</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_33.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/数据库の旅/&quot;);" href="javascript:void(0);">数据库の旅</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_34.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/灵魂の旅/&quot;);" href="javascript:void(0);">灵魂の旅</a><span class="categoryBar-list-count">2</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_35.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/个人安排/&quot;);" href="javascript:void(0);">个人安排</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_36.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/杂项/&quot;);" href="javascript:void(0);">杂项</a><span class="categoryBar-list-count">13</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_37.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/文学/&quot;);" href="javascript:void(0);">文学</a><span class="categoryBar-list-count">49</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_38.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/力扣の旅/&quot;);" href="javascript:void(0);">力扣の旅</a><span class="categoryBar-list-count">20</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_39.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/计算机网络/&quot;);" href="javascript:void(0);">计算机网络</a><span class="categoryBar-list-count">18</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_40.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/千里十二行/&quot;);" href="javascript:void(0);">千里十二行</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_41.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/🗡指offer/&quot;);" href="javascript:void(0);">🗡指offer</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_42.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/少年游/&quot;);" href="javascript:void(0);">少年游</a><span class="categoryBar-list-count">2</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_43.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/算法提高课/&quot;);" href="javascript:void(0);">算法提高课</a><span class="categoryBar-list-count">3</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_44.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/汇编の旅/&quot;);" href="javascript:void(0);">汇编の旅</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_44.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/C-实训/&quot;);" href="javascript:void(0);">C++实训</a><span class="categoryBar-list-count">8</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_45.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS知识/&quot;);" href="javascript:void(0);">CS知识</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_46.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/编译原理/&quot;);" href="javascript:void(0);">编译原理</a><span class="categoryBar-list-count">22</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_48.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/操作系统/&quot;);" href="javascript:void(0);">操作系统</a><span class="categoryBar-list-count">14</span><span class="categoryBar-list-descr"></span></li></ul></div></div>';
+      console.log('已挂载butterfly_categories_card')
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+      }
+    if( document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+    butterfly_categories_card_injector_config()
+    }
+  </script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>

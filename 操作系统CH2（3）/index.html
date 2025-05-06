@@ -1,0 +1,1650 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>操作系统CH2（3） | Totoroの旅</title><meta name="author" content="Totoro"><meta name="copyright" content="Totoro"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Chapter 2 2.5 Scheduling 本讲内容：调度算法 以下是关于调度算法的详细讲解，包括基本调度算法、交互式系统调度算法以及一些高级调度策略。  1. 什么是调度？ What is Scheduling? • 定义： Definition: • 调度是操作系统决定哪个进程&#x2F;线程获得CPU时间的过程。 Scheduling is the process by whi">
+<meta property="og:type" content="article">
+<meta property="og:title" content="操作系统CH2（3）">
+<meta property="og:url" content="http://totorocatcat.top/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FCH2%EF%BC%883%EF%BC%89/index.html">
+<meta property="og:site_name" content="Totoroの旅">
+<meta property="og:description" content="Chapter 2 2.5 Scheduling 本讲内容：调度算法 以下是关于调度算法的详细讲解，包括基本调度算法、交互式系统调度算法以及一些高级调度策略。  1. 什么是调度？ What is Scheduling? • 定义： Definition: • 调度是操作系统决定哪个进程&#x2F;线程获得CPU时间的过程。 Scheduling is the process by whi">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://npm.elemecdn.com/ushio-api-img-moe@5.0.22/img_220_1200x675_350.011993408203_null_normal.jpg">
+<meta property="article:published_time" content="2025-05-06T09:05:47.000Z">
+<meta property="article:modified_time" content="2025-05-06T09:06:08.957Z">
+<meta property="article:author" content="Totoro">
+<meta property="article:tag" content="提高">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://npm.elemecdn.com/ushio-api-img-moe@5.0.22/img_220_1200x675_350.011993408203_null_normal.jpg"><link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/b5ca6e582a7a45e6fde46e616eeb68e.png"><link rel="canonical" href="http://totorocatcat.top/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FCH2%EF%BC%883%EF%BC%89/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta/><link rel="stylesheet" href="/css/index.css?v=4.12.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  noticeOutdate: {"limitDay":765,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体中文","cht_to_chs":"你已切换为简体中文","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"top-right"},
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '操作系统CH2（3）',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: true,
+  isToc: true,
+  postUpdate: '2025-05-06 17:06:08'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const now = new Date()
+          const hour = now.getHours()
+          const isNight = hour <= 6 || hour >= 18
+          if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/universe.css"><link rel="stylesheet" href="/css/scrollbar.css"><link rel="stylesheet" href="/css/cat.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiperstyle.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-double-row-display@1.00/cardlistpost.min.css"/>
+<style>#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags:before {content:"\A";
+  white-space: pre;}#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags > .article-meta__separator{display:none}</style>
+<link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-categories-card@1.0.0/lib/categorybar.css"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><div class="loading-img"></div><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><script>window.paceOptions = {
+  restartOnPushState: false
+}
+
+document.addEventListener('pjax:send', () => {
+  Pace.restart()
+})
+</script><link rel="stylesheet" href="/css/progress_bar.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/px3.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">842</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">36</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home-alt"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-envelope-open"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 趣味</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/project/"><i class="fa-fw fas fas fa-folder"></i><span> 项目</span></a></div><div class="menus_item"><a class="site-page" href="/stars/"><i class="fa-fw fas fa-bookmark"></i><span> 收藏</span></a></div><div class="menus_item"><a class="site-page" href="/bilibili/"><i class="fa-fw fas fa-tv"></i><span> 追番</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url('https://npm.elemecdn.com/ushio-api-img-moe@5.0.22/img_220_1200x675_350.011993408203_null_normal.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="Totoroの旅"><span class="site-name">Totoroの旅</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home-alt"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-envelope-open"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 趣味</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/project/"><i class="fa-fw fas fas fa-folder"></i><span> 项目</span></a></div><div class="menus_item"><a class="site-page" href="/stars/"><i class="fa-fw fas fa-bookmark"></i><span> 收藏</span></a></div><div class="menus_item"><a class="site-page" href="/bilibili/"><i class="fa-fw fas fa-tv"></i><span> 追番</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">操作系统CH2（3）</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-05-06T09:05:47.000Z" title="发表于 2025-05-06 17:05:47">2025-05-06</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-05-06T09:06:08.957Z" title="更新于 2025-05-06 17:06:08">2025-05-06</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">12.3k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>51分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="操作系统CH2（3）"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FCH2%EF%BC%883%EF%BC%89/#post-comment" itemprop="discussionUrl"><span class="valine-comment-count" data-xid="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FCH2%EF%BC%883%EF%BC%89/" itemprop="commentCount"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="chapter-2-2.5-scheduling">Chapter 2 2.5 Scheduling</h2>
+<h3 id="本讲内容调度算法"><strong>本讲内容：调度算法</strong></h3>
+<p>以下是关于调度算法的详细讲解，包括基本调度算法、交互式系统调度算法以及一些高级调度策略。</p>
+<hr>
+<h4 id="什么是调度"><strong>1. 什么是调度？</strong></h4>
+<p><strong>What is Scheduling?</strong></p>
+<p>• <strong>定义：</strong><br>
+<strong>Definition:</strong><br>
+• 调度是操作系统决定哪个进程/线程获得CPU时间的过程。<br>
+<strong>Scheduling is the process by which the operating system decides
+which process/thread gets CPU time.</strong></p>
+<p>• <strong>目标：</strong><br>
+<strong>Goals:</strong><br>
+• 提高CPU利用率，减少等待时间，确保公平性，满足实时需求等。<br>
+<strong>Improve CPU utilization, reduce waiting time, ensure fairness,
+meet real-time requirements, etc.</strong></p>
+<hr>
+<h4 id="何时调度"><strong>2. 何时调度？</strong></h4>
+<p><strong>When to Schedule?</strong></p>
+<p>调度可能在以下情况下发生：<br>
+<strong>Scheduling may occur in the following situations:</strong></p>
+<ol type="1">
+<li><strong>进程创建或终止时。</strong><br>
+<strong>When a process is created or terminated.</strong><br>
+</li>
+<li><strong>进程从运行状态切换到等待状态时。</strong><br>
+<strong>When a process switches from the running state to the waiting
+state.</strong><br>
+</li>
+<li><strong>进程从等待状态切换到就绪状态时。</strong><br>
+<strong>When a process switches from the waiting state to the ready
+state.</strong><br>
+</li>
+<li><strong>中断发生时。</strong><br>
+<strong>When an interrupt occurs.</strong></li>
+</ol>
+<hr>
+<h4 id="基本调度算法"><strong>3. 基本调度算法</strong></h4>
+<p><strong>Basic Scheduling Algorithms</strong></p>
+<hr>
+<h5 id="批处理系统batch-systems"><strong>批处理系统（Batch
+Systems）</strong></h5>
+<ol type="1">
+<li><p><strong>先来先服务（First-Come First-Served,
+FCFS）：</strong><br>
+<strong>First-Come First-Served (FCFS):</strong><br>
+• 按照进程到达的顺序分配CPU时间。<br>
+<strong>Allocate CPU time in the order processes arrive.</strong><br>
+• <strong>优点：</strong> 简单易实现。<br>
+<strong>Advantage:</strong> Simple and easy to implement.<br>
+• <strong>缺点：</strong> 可能导致“护航效应”，长任务阻塞短任务。<br>
+<strong>Disadvantage:</strong> May lead to the "convoy effect," where
+long tasks block short tasks.</p></li>
+<li><p><strong>最短作业优先（Shortest Job First, SJF）：</strong><br>
+<strong>Shortest Job First (SJF):</strong><br>
+• 优先调度运行时间最短的进程。<br>
+<strong>Schedule the process with the shortest running time
+first.</strong><br>
+• <strong>优点：</strong> 最小化平均等待时间。<br>
+<strong>Advantage:</strong> Minimizes the average waiting time.<br>
+• <strong>缺点：</strong>
+需要预先知道作业的运行时间，可能导致长作业饥饿。<br>
+<strong>Disadvantage:</strong> Requires prior knowledge of job running
+times and may cause starvation of long jobs.</p></li>
+</ol>
+<hr>
+<h5 id="交互式系统interactive-systems"><strong>交互式系统（Interactive
+Systems）</strong></h5>
+<ol type="1">
+<li><p><strong>轮转调度（Round-Robin, RR）：</strong><br>
+<strong>Round-Robin (RR):</strong><br>
+•
+每个进程分配一个固定时间片（quantum），时间片用完后切换到下一个进程。<br>
+<strong>Each process is allocated a fixed time slice (quantum), and
+after the time slice is used up, switch to the next
+process.</strong><br>
+• <strong>优点：</strong> 公平，响应时间短。<br>
+<strong>Advantage:</strong> Fair and provides short response
+times.<br>
+• <strong>缺点：</strong> 时间片大小选择不当可能影响性能。<br>
+<strong>Disadvantage:</strong> Poor choice of time slice size may affect
+performance.</p></li>
+<li><p><strong>优先级调度（Priority Scheduling）：</strong><br>
+<strong>Priority Scheduling:</strong><br>
+• 为每个进程分配一个优先级，优先调度高优先级进程。<br>
+<strong>Assign a priority to each process and schedule high-priority
+processes first.</strong><br>
+• <strong>优点：</strong> 灵活，可以满足不同需求。<br>
+<strong>Advantage:</strong> Flexible and can meet different needs.<br>
+• <strong>缺点：</strong> 可能导致低优先级进程饥饿。<br>
+<strong>Disadvantage:</strong> May cause starvation of low-priority
+processes.</p></li>
+<li><p><strong>多级队列调度（Multi-Queue Scheduling）：</strong><br>
+<strong>Multi-Queue Scheduling:</strong><br>
+• 将进程分为多个队列，每个队列采用不同的调度算法。<br>
+<strong>Divide processes into multiple queues, each using a different
+scheduling algorithm.</strong><br>
+• <strong>优点：</strong> 灵活，适应不同类型的进程。<br>
+<strong>Advantage:</strong> Flexible and adapts to different types of
+processes.<br>
+• <strong>缺点：</strong> 实现复杂，可能导致队列间的不公平。<br>
+<strong>Disadvantage:</strong> Complex to implement and may cause
+unfairness between queues.</p></li>
+<li><p><strong>多级反馈队列调度（Multi-Level Feedback Queue,
+MLFQ）：</strong><br>
+<strong>Multi-Level Feedback Queue (MLFQ):</strong><br>
+• 结合多级队列和优先级调度，动态调整进程的优先级和队列。<br>
+<strong>Combines multi-queue and priority scheduling, dynamically
+adjusting process priorities and queues.</strong><br>
+• <strong>优点：</strong> 适应性强，能有效处理不同类型的进程。<br>
+<strong>Advantage:</strong> Highly adaptable and effectively handles
+different types of processes.<strong>Disadvantage:</strong> Complex to
+implement and may cause unfairness between queues.</p></li>
+<li><p><strong>多级反馈队列调度（Multi-Level Feedback Queue,
+MLFQ）：</strong><br>
+<strong>Multi-Level Feedback Queue (MLFQ):</strong><br>
+• 结合多级队列和优先级调度，动态调整进程的优先级和队列。<br>
+<strong>Combines multi-queue and priority scheduling, dynamically
+adjusting process priorities and queues.</strong><br>
+• <strong>优点：</strong> 适应性强，能有效处理不同类型的进程。<br>
+<strong>Advantage:</strong> Highly adaptable and effectively handles
+different types of processes.<br>
+• <strong>缺点：</strong> 实现复杂，可能导致低优先级进程饥饿。<br>
+<strong>Disadvantage:</strong> Complex to implement and may cause
+starvation of low-priority processes.</p></li>
+</ol>
+<hr>
+<h4 id="高级调度策略"><strong>4. 高级调度策略</strong></h4>
+<p><strong>Advanced Scheduling Policies</strong></p>
+<ol type="1">
+<li><p><strong>保证调度（Guaranteed Scheduling）：</strong><br>
+<strong>Guaranteed Scheduling:</strong><br>
+• 确保每个进程获得一定比例的CPU时间。<br>
+<strong>Ensure that each process gets a certain proportion of CPU
+time.</strong><br>
+• <strong>优点：</strong> 公平，避免进程饥饿。<br>
+<strong>Advantage:</strong> Fair and prevents process starvation.<br>
+• <strong>缺点：</strong> 实现复杂，可能影响系统性能。<br>
+<strong>Disadvantage:</strong> Complex to implement and may affect
+system performance.</p></li>
+<li><p><strong>彩票调度（Lottery Scheduling）：</strong><br>
+<strong>Lottery Scheduling:</strong><br>
+• 为每个进程分配“彩票”，根据彩票数量决定调度概率。<br>
+<strong>Assign "lottery tickets" to each process and determine
+scheduling probability based on the number of tickets.</strong><br>
+• <strong>优点：</strong> 简单，公平，适应性强。<br>
+<strong>Advantage:</strong> Simple, fair, and highly adaptable.<br>
+• <strong>缺点：</strong> 可能无法精确控制资源分配。<br>
+<strong>Disadvantage:</strong> May not precisely control resource
+allocation.</p></li>
+<li><p><strong>公平共享调度（Fair Share Scheduling）：</strong><br>
+<strong>Fair Share Scheduling:</strong><br>
+• 根据用户或组的资源配额分配CPU时间。<br>
+<strong>Allocate CPU time based on resource quotas for users or
+groups.</strong><br>
+• <strong>优点：</strong> 公平，避免资源被少数用户独占。<br>
+<strong>Advantage:</strong> Fair and prevents resources from being
+monopolized by a few users.<br>
+• <strong>缺点：</strong> 实现复杂，可能影响系统性能。<br>
+<strong>Disadvantage:</strong> Complex to implement and may affect
+system performance.</p></li>
+</ol>
+<hr>
+<h4 id="总结"><strong>5. 总结</strong></h4>
+<p><strong>Summary</strong></p>
+<p>•
+<strong>调度是操作系统决定进程/线程获得CPU时间的过程，目标是提高CPU利用率、减少等待时间、确保公平性等。</strong><br>
+<strong>Scheduling is the process by which the operating system decides
+which process/thread gets CPU time, with goals such as improving CPU
+utilization, reducing waiting time, and ensuring fairness.</strong></p>
+<p>•
+<strong>基本调度算法包括先来先服务、最短作业优先、轮转调度、优先级调度、多级队列调度和多级反馈队列调度。</strong><br>
+<strong>Basic scheduling algorithms include First-Come First-Served,
+Shortest Job First, Round-Robin, Priority Scheduling, Multi-Queue
+Scheduling, and Multi-Level Feedback Queue Scheduling.</strong></p>
+<p>•
+<strong>高级调度策略包括保证调度、彩票调度和公平共享调度，用于满足更复杂的调度需求。</strong><br>
+<strong>Advanced scheduling policies include Guaranteed Scheduling,
+Lottery Scheduling, and Fair Share Scheduling, used to meet more complex
+scheduling needs.</strong></p>
+<p>通过理解这些调度算法和策略，可以更好地设计和实现操作系统中的调度机制，优化系统性能。<br>
+<strong>By understanding these scheduling algorithms and policies, we
+can better design and implement scheduling mechanisms in operating
+systems, optimizing system performance.</strong></p>
+<hr>
+<h3 id="调度与进程行为"><strong>调度与进程行为</strong></h3>
+<p>以下是关于调度和进程行为的详细讲解，帮助你理解操作系统如何决定进程的执行顺序以及进程的行为模式。</p>
+<hr>
+<h4 id="什么是调度-1"><strong>1. 什么是调度？</strong></h4>
+<p><strong>What is Scheduling?</strong></p>
+<p>• <strong>定义：</strong><br>
+<strong>Definition:</strong><br>
+• 调度是决定哪个进程/线程接下来占用资源（如CPU）运行的过程。<br>
+<strong>Scheduling is the process of deciding which process/thread
+should occupy the resource (e.g., CPU) to run next.</strong></p>
+<p>• <strong>类比：</strong><br>
+<strong>Analogy:</strong><br>
+• 将CPU比作“马力”，多个进程（如马匹）争夺使用CPU的机会。<br>
+<strong>Think of the CPU as "horsepower," with multiple processes
+(horses) competing for the chance to use it.</strong></p>
+<hr>
+<h4 id="进程调度器"><strong>2. 进程调度器</strong></h4>
+<p><strong>Process Scheduler</strong></p>
+<p>• <strong>调度器的任务：</strong><br>
+<strong>Task of the Scheduler:</strong><br>
+• 从就绪队列中选择一个进程，分配CPU时间。<br>
+<strong>Select a process from the ready queue and allocate CPU
+time.</strong></p>
+<p>• <strong>调度示例：</strong><br>
+<strong>Scheduling Example:</strong><br>
+•
+<code>Proc1</code>需要20个时间单位，<code>Proc2</code>需要4个时间单位，<code>Proc3</code>需要2个时间单位。<br>
+<strong><code>Proc1</code> needs 20 time units, <code>Proc2</code> needs
+4 time units, <code>Proc3</code> needs 2 time units.</strong></p>
+<p>• <strong>抢占式与非抢占式调度：</strong><br>
+<strong>Preemptive vs. Non-Preemptive Scheduling:</strong><br>
+• <strong>抢占式调度：</strong>
+允许操作系统中断正在运行的进程，将CPU分配给其他进程。<br>
+<strong>Preemptive Scheduling:</strong> Allows the operating system to
+interrupt a running process and allocate the CPU to another
+process.<br>
+• <strong>非抢占式调度：</strong> 进程运行直到完成或主动放弃CPU。<br>
+<strong>Non-Preemptive Scheduling:</strong> The process runs until it
+completes or voluntarily gives up the CPU.</p>
+<hr>
+<h4 id="进程行为"><strong>3. 进程行为</strong></h4>
+<p><strong>Process Behavior</strong></p>
+<p>• <strong>进程的组成：</strong><br>
+<strong>Composition of Processes:</strong><br>
+•
+进程通常由<strong>CPU突发</strong>和<strong>I/O突发</strong>交替组成。<br>
+<strong>Processes typically consist of alternating CPU bursts and I/O
+bursts.</strong></p>
+<hr>
+<h5 id="cpu突发cpu-bursts"><strong>CPU突发（CPU Bursts）</strong></h5>
+<p>• <strong>定义：</strong><br>
+<strong>Definition:</strong><br>
+• 进程需要CPU的时间段称为CPU突发。<br>
+<strong>A period of time when a process needs the CPU is called a CPU
+burst.</strong></p>
+<hr>
+<h5 id="io突发io-bursts"><strong>I/O突发（I/O Bursts）</strong></h5>
+<p>• <strong>定义：</strong><br>
+<strong>Definition:</strong><br>
+• 进程需要I/O的时间段称为I/O突发。<br>
+<strong>A period of time when a process needs I/O is called an I/O
+burst.</strong></p>
+<hr>
+<h4 id="进程行为的类型"><strong>4. 进程行为的类型</strong></h4>
+<p><strong>Types of Process Behavior</strong></p>
+<ol type="1">
+<li><p><strong>CPU密集型进程（CPU-bound Process）：</strong><br>
+<strong>CPU-bound Process:</strong><br>
+• <strong>特点：</strong> CPU突发时间长，I/O等待时间少。<br>
+<strong>Characteristics:</strong> Long CPU bursts, infrequent I/O
+waits.<br>
+• <strong>示例：</strong> 数值计算任务、图像处理。<br>
+<strong>Examples:</strong> Number crunching tasks, image
+processing.</p></li>
+<li><p><strong>I/O密集型进程（I/O-bound Process）：</strong><br>
+<strong>I/O-bound Process:</strong><br>
+• <strong>特点：</strong> CPU突发时间短，I/O等待时间多。<br>
+<strong>Characteristics:</strong> Short CPU bursts, frequent I/O
+waits.<br>
+• <strong>示例：</strong> 从磁盘读取数据的任务，例如统计文件行数。<br>
+<strong>Examples:</strong> Tasks that process data from disk, such as
+counting the number of lines in a file.</p></li>
+</ol>
+<hr>
+<h4 id="cpu与io突发的交替"><strong>5. CPU与I/O突发的交替</strong></h4>
+<p><strong>Alternating Sequence of CPU and I/O Bursts</strong></p>
+<p>• <strong>进程行为的模式：</strong><br>
+<strong>Pattern of Process Behavior:</strong><br>
+• CPU使用和I/O等待交替进行。<br>
+<strong>Bursts of CPU usage alternate with periods of I/O
+wait.</strong></p>
+<p>• <strong>示例：</strong><br>
+<strong>Examples:</strong><br>
+1. <strong>CPU密集型进程：</strong><br>
+<strong>CPU-bound Process:</strong><br>
+◦ CPU突发时间长，I/O等待时间少。<br>
+<strong>Long CPU bursts, infrequent I/O waits.</strong><br>
+2. <strong>I/O密集型进程：</strong><br>
+<strong>I/O-bound Process:</strong><br>
+◦ CPU突发时间短，I/O等待时间多。<br>
+<strong>Short CPU bursts, frequent I/O waits.</strong></p>
+<hr>
+<h4 id="进程行为的变化趋势"><strong>6. 进程行为的变化趋势</strong></h4>
+<p><strong>Trends in Process Behavior</strong></p>
+<p>• <strong>随着CPU速度的提升：</strong><br>
+<strong>As CPUs get faster:</strong><br>
+• 进程趋向于更加I/O密集型。<br>
+<strong>Processes tend to become more I/O-bound.</strong></p>
+<hr>
+<h3 id="总结-1"><strong>总结</strong></h3>
+<p><strong>Summary</strong></p>
+<p>•
+<strong>调度是决定哪个进程/线程接下来占用CPU运行的过程，分为抢占式和非抢占式调度。</strong><br>
+<strong>Scheduling is the process of deciding which process/thread
+should occupy the CPU to run next, divided into preemptive and
+non-preemptive scheduling.</strong></p>
+<p>•
+<strong>进程行为由CPU突发和I/O突发交替组成，分为CPU密集型进程和I/O密集型进程。</strong><br>
+<strong>Process behavior consists of alternating CPU bursts and I/O
+bursts, divided into CPU-bound processes and I/O-bound
+processes.</strong></p>
+<p>• <strong>随着CPU速度的提升，进程趋向于更加I/O密集型。</strong><br>
+<strong>As CPUs get faster, processes tend to become more
+I/O-bound.</strong></p>
+<p>通过理解调度和进程行为，可以更好地设计和实现操作系统中的调度机制，优化系统性能。<br>
+<strong>By understanding scheduling and process behavior, we can better
+design and implement scheduling mechanisms in operating systems,
+optimizing system performance.</strong></p>
+<hr>
+<h3 id="cpu调度"><strong>CPU调度</strong></h3>
+<p>以下是关于CPU调度的详细讲解，包括调度时机、抢占式与非抢占式调度以及调度算法的分类。</p>
+<hr>
+<h4 id="cpu调度的问题"><strong>1. CPU调度的问题</strong></h4>
+<p><strong>CPU Scheduling Problems</strong></p>
+<ol type="1">
+<li><p><strong>何时调度（When）：</strong><br>
+<strong>When to Schedule:</strong><br>
+• 在什么情况下进行调度？<br>
+<strong>Under what circumstances should scheduling
+occur?</strong></p></li>
+<li><p><strong>调度什么（What）：</strong><br>
+<strong>What to Schedule:</strong><br>
+• 使用什么调度算法？<br>
+<strong>What scheduling algorithm should be used?</strong></p></li>
+<li><p><strong>如何调度（How）：</strong><br>
+<strong>How to Schedule:</strong><br>
+• 如何进行上下文切换？<br>
+<strong>How to perform context switching?</strong></p></li>
+</ol>
+<hr>
+<h4 id="调度时机"><strong>2. 调度时机</strong></h4>
+<p><strong>When to Schedule?</strong></p>
+<p>调度可能在以下情况下发生：<br>
+<strong>Scheduling may occur in the following situations:</strong></p>
+<ol type="1">
+<li><strong>新进程创建时。</strong><br>
+<strong>When a new process is created.</strong><br>
+</li>
+<li><strong>运行中的进程退出时。</strong><br>
+<strong>When the running process exits.</strong><br>
+</li>
+<li><strong>运行中的进程被阻塞时。</strong><br>
+<strong>When the running process is blocked.</strong><br>
+</li>
+<li><strong>发生I/O中断时（某些进程将变为就绪状态）。</strong><br>
+<strong>When an I/O interrupt occurs (some processes will become
+ready).</strong><br>
+</li>
+<li><strong>发生时钟中断时（例如每10毫秒）。</strong><br>
+<strong>When a clock interrupt occurs (e.g., every 10
+milliseconds).</strong></li>
+</ol>
+<hr>
+<h4 id="抢占式与非抢占式调度"><strong>3.
+抢占式与非抢占式调度</strong></h4>
+<p><strong>Preemptive vs. Non-Preemptive Scheduling</strong></p>
+<hr>
+<h5 id="非抢占式调度non-preemptive-scheduling"><strong>非抢占式调度（Non-Preemptive
+Scheduling）</strong></h5>
+<p>• <strong>定义：</strong><br>
+<strong>Definition:</strong><br>
+• 运行中的进程保持CPU直到它自愿放弃CPU。<br>
+<strong>The running process keeps the CPU until it voluntarily gives up
+the CPU.</strong></p>
+<p>• <strong>放弃CPU的情况：</strong><br>
+<strong>Situations where the CPU is released:</strong><br>
+1. 进程退出。<br>
+<strong>The process exits.</strong><br>
+2. 进程切换到阻塞状态。<br>
+<strong>The process switches to the blocked state.</strong></p>
+<p>• <strong>缺点：</strong><br>
+<strong>Disadvantage:</strong><br>
+• 可能导致响应时间过长，影响系统性能。<br>
+<strong>May lead to long response times, affecting system
+performance.</strong></p>
+<hr>
+<h5 id="抢占式调度preemptive-scheduling"><strong>抢占式调度（Preemptive
+Scheduling）</strong></h5>
+<p>• <strong>定义：</strong><br>
+<strong>Definition:</strong><br>
+• 运行中的进程可以被中断，必须释放CPU（可能被强制放弃CPU）。<br>
+<strong>The running process can be interrupted and must release the CPU
+(may be forced to give up the CPU).</strong></p>
+<p>• <strong>抢占原则：</strong><br>
+<strong>Preemptive Principles:</strong><br>
+1. 更高优先级的进程变为就绪状态。<br>
+<strong>A higher-priority process becomes ready.</strong><br>
+2. 时间片用完（例如轮转调度）。<br>
+<strong>The time slice is used up (e.g., Round-Robin
+Scheduling).</strong><br>
+3. 发生中断（如I/O中断或时钟中断）。<br>
+<strong>An interrupt occurs (e.g., I/O interrupt or clock
+interrupt).</strong></p>
+<hr>
+<h4 id="调度算法的分类"><strong>4. 调度算法的分类</strong></h4>
+<p><strong>Categories of Scheduling Algorithms</strong></p>
+<hr>
+<h5 id="批处理系统batch-system"><strong>批处理系统（Batch
+System）</strong></h5>
+<p>• <strong>特点：</strong><br>
+<strong>Characteristics:</strong><br>
+• 非抢占式算法或抢占式算法，但每个进程的时间片较长。<br>
+<strong>Non-preemptive algorithms or preemptive algorithms with long
+time periods for each process.</strong></p>
+<p>• <strong>目标：</strong><br>
+<strong>Goal:</strong><br>
+• 最大化吞吐量，最小化平均等待时间。<br>
+<strong>Maximize throughput and minimize average waiting
+time.</strong></p>
+<hr>
+<h5 id="交互式系统interactive-system"><strong>交互式系统（Interactive
+System）</strong></h5>
+<p>• <strong>特点：</strong><br>
+<strong>Characteristics:</strong><br>
+• 抢占式调度是必需的。<br>
+<strong>Preemption is essential.</strong></p>
+<p>• <strong>目标：</strong><br>
+<strong>Goal:</strong><br>
+• 最小化响应时间，提高用户体验。<br>
+<strong>Minimize response time and improve user experience.</strong></p>
+<hr>
+<h5 id="实时系统real-time-system"><strong>实时系统（Real-Time
+System）</strong></h5>
+<p>• <strong>特点：</strong><br>
+<strong>Characteristics:</strong><br>
+• 抢占式调度有时不需要。<br>
+<strong>Preemption is sometimes not needed.</strong></p>
+<p>• <strong>目标：</strong><br>
+<strong>Goal:</strong><br>
+• 确保任务在截止时间内完成。<br>
+<strong>Ensure tasks are completed within deadlines.</strong></p>
+<hr>
+<h3 id="总结-2"><strong>总结</strong></h3>
+<p><strong>Summary</strong></p>
+<p>•
+<strong>CPU调度解决的问题包括何时调度、使用什么调度算法以及如何进行上下文切换。</strong><br>
+<strong>CPU scheduling problems include when to schedule, what
+scheduling algorithm to use, and how to perform context
+switching.</strong></p>
+<p>•
+<strong>调度时机包括新进程创建、进程退出、进程阻塞、I/O中断和时钟中断。</strong><br>
+<strong>Scheduling opportunities include new process creation, process
+exit, process blocking, I/O interrupts, and clock
+interrupts.</strong></p>
+<p>•
+<strong>抢占式调度允许操作系统中断正在运行的进程，而非抢占式调度则要求进程自愿放弃CPU。</strong><br>
+<strong>Preemptive scheduling allows the operating system to interrupt a
+running process, while non-preemptive scheduling requires the process to
+voluntarily give up the CPU.</strong></p>
+<p>•
+<strong>调度算法分为批处理系统、交互式系统和实时系统，每种系统有不同的调度需求和目标。</strong><br>
+<strong>Scheduling algorithms are divided into batch systems,
+interactive systems, and real-time systems, each with different
+scheduling needs and goals.</strong></p>
+<p>通过理解CPU调度的原理和分类，可以更好地设计和实现操作系统中的调度机制，优化系统性能。<br>
+<strong>By understanding the principles and categories of CPU
+scheduling, we can better design and implement scheduling mechanisms in
+operating systems, optimizing system performance.</strong></p>
+<hr>
+<h3 id="调度算法与性能指标"><strong>调度算法与性能指标</strong></h3>
+<p>以下是关于调度算法的设计目标以及不同系统性能指标的详细讲解。</p>
+<hr>
+<h4 id="调度算法的设计目标"><strong>1. 调度算法的设计目标</strong></h4>
+<p><strong>Goals of Scheduling Algorithms</strong></p>
+<ol type="1">
+<li><p><strong>公平性（Fairness）：</strong><br>
+<strong>Fairness:</strong><br>
+• 确保所有进程都能获得CPU时间，避免饥饿。<br>
+<strong>Ensure all processes get CPU time and avoid
+starvation.</strong></p></li>
+<li><p><strong>优先级（Priority）：</strong><br>
+<strong>Priority:</strong><br>
+• 高优先级进程优先获得CPU时间。<br>
+<strong>High-priority processes get CPU time first.</strong></p></li>
+<li><p><strong>效率（Efficiency）：</strong><br>
+<strong>Efficiency:</strong><br>
+• 最大化资源利用率，减少空闲时间。<br>
+<strong>Maximize resource utilization and reduce idle
+time.</strong></p></li>
+<li><p><strong>鼓励良好行为（Encourage Good Behavior）：</strong><br>
+<strong>Encourage Good Behavior:</strong><br>
+• 奖励短任务或I/O密集型任务，优化系统性能。<br>
+<strong>Reward short tasks or I/O-bound tasks to optimize system
+performance.</strong></p></li>
+<li><p><strong>支持高负载（Support Heavy Loads）：</strong><br>
+<strong>Support Heavy Loads:</strong><br>
+• 在高负载情况下，系统性能应平稳下降。<br>
+<strong>System performance should degrade gracefully under heavy
+loads.</strong></p></li>
+<li><p><strong>适应不同环境（Adapt to Different
+Environments）：</strong><br>
+<strong>Adapt to Different Environments:</strong><br>
+• 调度算法应适应交互式、实时等不同系统环境。<br>
+<strong>Scheduling algorithms should adapt to different system
+environments, such as interactive and real-time
+systems.</strong></p></li>
+</ol>
+<hr>
+<h4 id="性能指标"><strong>2. 性能指标</strong></h4>
+<p><strong>Performance Criteria</strong></p>
+<hr>
+<h5 id="所有系统的共同指标"><strong>所有系统的共同指标</strong></h5>
+<p><strong>Common Criteria for All Systems</strong></p>
+<ol type="1">
+<li><p><strong>公平性（Fairness）：</strong><br>
+<strong>Fairness:</strong><br>
+• 确保没有进程会因长时间等待而饥饿。<br>
+<strong>Ensure no process suffers from starvation due to long waiting
+times.</strong></p></li>
+<li><p><strong>效率（Efficiency）：</strong><br>
+<strong>Efficiency:</strong><br>
+• 尽可能保持资源忙碌，减少空闲时间。<br>
+<strong>Keep resources as busy as possible and reduce idle
+time.</strong></p></li>
+<li><p><strong>策略执行（Policy Enforcement）：</strong><br>
+<strong>Policy Enforcement:</strong><br>
+• 确保调度算法能够执行既定的策略。<br>
+<strong>Ensure that the scheduling algorithm carries out the stated
+policy.</strong></p></li>
+</ol>
+<hr>
+<h5 id="批处理系统的性能指标"><strong>批处理系统的性能指标</strong></h5>
+<p><strong>Performance Criteria for Batch Systems</strong></p>
+<ol type="1">
+<li><p><strong>吞吐量（Throughput）：</strong><br>
+<strong>Throughput:</strong><br>
+• 单位时间内完成的进程数量。<br>
+<strong>Number of processes that complete in a unit of
+time.</strong></p></li>
+<li><p><strong>周转时间（Turnaround Time）：</strong><br>
+<strong>Turnaround Time:</strong><br>
+• 从进程进入系统到完成执行的总时间。<br>
+<strong>Amount of time to execute a particular process from the time it
+enters the system.</strong></p></li>
+<li><p><strong>等待时间（Waiting Time）：</strong><br>
+<strong>Waiting Time:</strong><br>
+• 进程在就绪队列中等待的总时间。<br>
+<strong>Amount of time a process has been waiting in the ready
+queue.</strong></p></li>
+<li><p><strong>CPU利用率（Processor Utilization）：</strong><br>
+<strong>Processor Utilization:</strong><br>
+• CPU忙碌时间的百分比。<br>
+<strong>Percentage of time the CPU is busy.</strong></p></li>
+</ol>
+<hr>
+<h5 id="交互式系统的性能指标"><strong>交互式系统的性能指标</strong></h5>
+<p><strong>Performance Criteria for Interactive Systems</strong></p>
+<ol type="1">
+<li><p><strong>响应时间（Response Time）：</strong><br>
+<strong>Response Time:</strong><br>
+• 从提交请求到产生第一个响应的时间。<br>
+<strong>Amount of time from when a request is first submitted until the
+first response is produced.</strong></p></li>
+<li><p><strong>比例性（Proportionality）：</strong><br>
+<strong>Proportionality:</strong><br>
+• 满足用户的期望，例如短任务应快速完成。<br>
+<strong>Meet users' expectations, such as short tasks should be
+completed quickly.</strong></p></li>
+</ol>
+<hr>
+<h5 id="实时系统的性能指标"><strong>实时系统的性能指标</strong></h5>
+<p><strong>Performance Criteria for Real-Time Systems</strong></p>
+<ol type="1">
+<li><p><strong>满足截止时间（Meeting Deadlines）：</strong><br>
+<strong>Meeting Deadlines:</strong><br>
+• 确保任务在截止时间内完成，避免数据丢失。<br>
+<strong>Ensure tasks are completed within deadlines to avoid data
+loss.</strong></p></li>
+<li><p><strong>可预测性（Predictability）：</strong><br>
+<strong>Predictability:</strong><br>
+• 无论系统负载如何，任务的处理时间和成本应保持一致。<br>
+<strong>The time and cost of processing tasks should remain consistent
+regardless of the system load.</strong></p></li>
+</ol>
+<hr>
+<h3 id="总结-3"><strong>总结</strong></h3>
+<p><strong>Summary</strong></p>
+<p>•
+<strong>调度算法的设计目标包括公平性、优先级、效率、鼓励良好行为、支持高负载和适应不同环境。</strong><br>
+<strong>The goals of scheduling algorithms include fairness, priority,
+efficiency, encouraging good behavior, supporting heavy loads, and
+adapting to different environments.</strong></p>
+<p>•
+<strong>所有系统的共同性能指标包括公平性、效率和策略执行。</strong><br>
+<strong>Common performance criteria for all systems include fairness,
+efficiency, and policy enforcement.</strong></p>
+<p>•
+<strong>批处理系统的性能指标包括吞吐量、周转时间、等待时间和CPU利用率。</strong><br>
+<strong>Performance criteria for batch systems include throughput,
+turnaround time, waiting time, and processor utilization.</strong></p>
+<p>• <strong>交互式系统的性能指标包括响应时间和比例性。</strong><br>
+<strong>Performance criteria for interactive systems include response
+time and proportionality.</strong></p>
+<p>•
+<strong>实时系统的性能指标包括满足截止时间和可预测性。</strong><br>
+<strong>Performance criteria for real-time systems include meeting
+deadlines and predictability.</strong></p>
+<p>通过理解调度算法的设计目标和性能指标，可以更好地设计和实现操作系统中的调度机制，优化系统性能。<br>
+<strong>By understanding the goals of scheduling algorithms and
+performance criteria, we can better design and implement scheduling
+mechanisms in operating systems, optimizing system
+performance.</strong></p>
+<hr>
+<h3 id="单处理器调度算法"><strong>单处理器调度算法</strong></h3>
+<p>以下是关于单处理器调度算法的详细讲解，包括批处理系统和交互式系统的调度算法。</p>
+<hr>
+<h4 id="批处理系统的调度算法"><strong>1.
+批处理系统的调度算法</strong></h4>
+<p><strong>Scheduling Algorithms for Batch Systems</strong></p>
+<hr>
+<h5 id="先来先服务first-come-first-served-fcfs"><strong>先来先服务（First
+Come First Served, FCFS）</strong></h5>
+<p>• <strong>定义：</strong><br>
+<strong>Definition:</strong><br>
+• 最先请求CPU的进程最先获得CPU。<br>
+<strong>The process that requests the CPU first is allocated the CPU
+first.</strong></p>
+<p>• <strong>特点：</strong><br>
+<strong>Characteristics:</strong><br>
+• 非抢占式调度算法。<br>
+<strong>Non-preemptive scheduling algorithm.</strong><br>
+• 用于批处理系统。<br>
+<strong>Used in batch systems.</strong><br>
+• 实现：使用FIFO队列。<br>
+<strong>Implementation: FIFO queues.</strong><br>
+◦ 新进程进入队列尾部。<br>
+<strong>A new process enters the tail of the queue.</strong><br>
+◦ 调度器从队列头部选择进程。<br>
+<strong>The scheduler selects from the head of the queue.</strong></p>
+<p>• <strong>性能指标：</strong><br>
+<strong>Performance Metric:</strong><br>
+• 平均等待时间（Average Waiting Time）。<br>
+<strong>Average Waiting Time.</strong></p>
+<hr>
+<h6 id="fcfs示例"><strong>FCFS示例</strong></h6>
+<p>• <strong>进程参数：</strong><br>
+<strong>Process Parameters:</strong><br>
+| 进程 | 持续时间（ms） | 顺序 | 到达时间 | | ---- | -------------- |
+---- | -------- | | P1 | 24 | 1 | 0 | | P2 | 3 | 2 | 0 | | P3 | 4 | 3 |
+0 |</p>
+<p>• <strong>调度结果：</strong><br>
+<strong>Schedule:</strong><br>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">0──────24──────27──────31</span><br><span class="line">P1 (24) P2 (3)  P3 (4)</span><br></pre></td></tr></table></figure></p>
+<p>• <strong>等待时间：</strong><br>
+<strong>Waiting Time:</strong><br>
+• P1: 0<br>
+• P2: 24<br>
+• P3: 27</p>
+<p>• <strong>平均等待时间：</strong><br>
+<strong>Average Waiting Time:</strong><br>
+• (0 + 24 + 27) / 3 = 17</p>
+<hr>
+<h6 id="fcfs的护航效应convoy-effect"><strong>FCFS的护航效应（Convoy
+Effect）</strong></h6>
+<p>• <strong>问题描述：</strong><br>
+<strong>Problem Description:</strong><br>
+• 如果短进程排在长进程后面，会导致短进程长时间等待，降低系统性能。<br>
+<strong>If short processes are behind long processes, it leads to long
+waiting times for short processes, reducing system
+performance.</strong></p>
+<p>• <strong>示例：</strong><br>
+<strong>Example:</strong><br>
+• 如果进程到达顺序为P2、P3、P1：<br>
+<strong>If the processes arrive in the order P2, P3, P1:</strong><br>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br></pre></td><td class="code"><pre><span class="line">    0────3────7────31</span><br><span class="line">    P2 (3) P3 (4) P1 (24)</span><br><span class="line">    ```  </span><br><span class="line">  • 等待时间：  </span><br><span class="line">    **Waiting Time:**  </span><br><span class="line">    ◦ P1: 7  </span><br><span class="line">    ◦ P2: 0  </span><br><span class="line">    ◦ P3: 3  </span><br><span class="line">  • 平均等待时间：  </span><br><span class="line">    **Average Waiting Time:**  </span><br><span class="line">    ◦ (7 + 0 + 3) / 3 = 3.3</span><br><span class="line"></span><br><span class="line">• **护航效应的原因：**  </span><br><span class="line"></span><br><span class="line">&gt; 注意护航效应！</span><br><span class="line"></span><br><span class="line">  **Reason for Convoy Effect:**  </span><br><span class="line">  • CPU密集型进程占用CPU时间过长，导致I/O密集型进程无法及时获得CPU，I/O设备空闲。  </span><br><span class="line">    **CPU-bound processes occupy the CPU for too long, causing I/O-bound processes to wait and I/O devices to idle.**</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">#### **2. 交互式系统的调度算法**  </span><br><span class="line">**Scheduling Algorithms for Interactive Systems**</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">##### **轮转调度（Round Robin, RR）**</span><br><span class="line"></span><br><span class="line">• **定义：**  </span><br><span class="line">  **Definition:**  </span><br><span class="line">  • 每个进程分配一个固定时间片，时间片用完后切换到下一个进程。  </span><br><span class="line">    **Each process is allocated a fixed time slice, and after the time slice is used up, switch to the next process.**</span><br><span class="line"></span><br><span class="line">• **特点：**  </span><br><span class="line">  **Characteristics:**  </span><br><span class="line">  • 抢占式调度算法。  </span><br><span class="line">    **Preemptive scheduling algorithm.**  </span><br><span class="line">  • 用于交互式系统。  </span><br><span class="line">    **Used in interactive systems.**</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">##### **优先级调度（Priority Scheduling）**</span><br><span class="line"></span><br><span class="line">• **定义：**  </span><br><span class="line">  **Definition:**  </span><br><span class="line">  • 为每个进程分配一个优先级，优先调度高优先级进程。  </span><br><span class="line">    **Assign a priority to each process and schedule high-priority processes first.**</span><br><span class="line"></span><br><span class="line">• **特点：**  </span><br><span class="line">  **Characteristics:**  </span><br><span class="line">  • 可能导致低优先级进程饥饿。  </span><br><span class="line">    **May cause starvation of low-priority processes.**</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">##### **多级队列调度（Multi-Queue Scheduling）**</span><br><span class="line"></span><br><span class="line">• **定义：**  </span><br><span class="line">  **Definition:**  </span><br><span class="line">  • 将进程分为多个队列，每个队列采用不同的调度算法。  </span><br><span class="line">    **Divide processes into multiple queues, each using a different scheduling algorithm.**</span><br><span class="line"></span><br><span class="line">• **特点：**  </span><br><span class="line">  **Characteristics:**  </span><br><span class="line">  • 灵活，适应不同类型的进程。  </span><br><span class="line">    **Flexible and adapts to different types of processes.**</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">##### **多级反馈队列调度（Multi-Level Feedback Queue, MLFQ）**</span><br><span class="line"></span><br><span class="line">• **定义：**  </span><br><span class="line">  **Definition:**  </span><br><span class="line">  • 结合多级队列和优先级调度，动态调整进程的优先级和队列。  </span><br><span class="line">    **Combines multi-queue and priority scheduling, dynamically adjusting process priorities and queues.**</span><br><span class="line"></span><br><span class="line">• **特点：**  </span><br><span class="line">  **Characteristics:**  </span><br><span class="line">  • 适应性强，能有效处理不同类型的进程。  </span><br><span class="line">    **Highly adaptable and effectively handles different types of processes.**</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">##### **保证调度（Guaranteed Scheduling）**</span><br><span class="line"></span><br><span class="line">• **定义：**  </span><br><span class="line">  **Definition:**  </span><br><span class="line">  • 确保每个进程获得一定比例的CPU时间。  </span><br><span class="line">    **Ensure that each process gets a certain proportion of CPU time.**</span><br><span class="line"></span><br><span class="line">• **特点：**  </span><br><span class="line">  **Characteristics:**  </span><br><span class="line">  • 公平，避免进程饥饿。  </span><br><span class="line">    **Fair and prevents process starvation.**</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">##### **彩票调度（Lottery Scheduling）**</span><br><span class="line"></span><br><span class="line">• **定义：**  </span><br><span class="line">  **Definition:**  </span><br><span class="line">  • 为每个进程分配“彩票”，根据彩票数量决定调度概率。  </span><br><span class="line">    **Assign &quot;lottery tickets&quot; to each process and determine scheduling probability based on the number of tickets.**</span><br><span class="line"></span><br><span class="line">• **特点：**  </span><br><span class="line">  **Characteristics:**  </span><br><span class="line">  • 简单，公平，适应性强。  </span><br><span class="line">    **Simple, fair, and highly adaptable.**</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">##### **公平共享调度（Fair Share Scheduling）**</span><br><span class="line"></span><br><span class="line">• **定义：**  </span><br><span class="line">  **Definition:**  </span><br><span class="line">  • 根据用户或组的资源配额分配CPU时间。  </span><br><span class="line">    **Allocate CPU time based on resource quotas for users or groups.**</span><br><span class="line"></span><br><span class="line">• **特点：**  </span><br><span class="line">  **Characteristics:**  </span><br><span class="line">  • 公平，避免资源被少数用户独占。  </span><br><span class="line">    **Fair and prevents resources from being monopolized by a few users.**</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">### **总结**  </span><br><span class="line">**Summary**</span><br><span class="line"></span><br><span class="line">• **批处理系统的调度算法包括先来先服务（FCFS）和最短作业优先（SJF）。**  </span><br><span class="line">  **Scheduling algorithms for batch systems include First Come First Served (FCFS) and Shortest Job First (SJF).**</span><br><span class="line"></span><br><span class="line">• **交互式系统的调度算法包括轮转调度（RR）、优先级调度、多级队列调度、多级反馈队列调度、保证调度、彩票调度和公平共享调度。**  </span><br><span class="line">  **Scheduling algorithms for interactive systems include Round Robin (RR), Priority Scheduling, Multi-Queue Scheduling, Multi-Level Feedback Queue (MLFQ), Guaranteed Scheduling, Lottery Scheduling, and Fair Share Scheduling.**</span><br><span class="line"></span><br><span class="line">• **先来先服务（FCFS）可能导致护航效应，降低系统性能。**  </span><br><span class="line">  **First Come First Served (FCFS) may lead to the convoy effect, reducing system performance.**</span><br><span class="line"></span><br><span class="line">通过理解这些调度算法，可以更好地设计和实现操作系统中的调度机制，优化系统性能。  </span><br><span class="line">**By understanding these scheduling algorithms, we can better design and implement scheduling mechanisms in operating systems, optimizing system performance.**</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">### **最短作业优先（Shortest Job First, SJF）**</span><br><span class="line"></span><br><span class="line">以下是关于最短作业优先（SJF）调度算法的详细讲解，包括非抢占式和抢占式SJF，以及其优缺点。</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">#### **1. 最短作业优先（SJF）的定义**  </span><br><span class="line">**Definition of Shortest Job First (SJF)**</span><br><span class="line"></span><br><span class="line">• **定义：**  </span><br><span class="line">  **Definition:**  </span><br><span class="line">  • 优先调度运行时间最短的作业。  </span><br><span class="line">    **Schedule the job with the shortest elapsed time first.**</span><br><span class="line"></span><br><span class="line">• **应用场景：**  </span><br><span class="line">  **Application:**  </span><br><span class="line">  • 批处理系统。  </span><br><span class="line">    **Batch systems.**</span><br><span class="line"></span><br><span class="line">• **类型：**  </span><br><span class="line">  **Types:**  </span><br><span class="line">  1. **非抢占式SJF：** 进程运行直到完成。  </span><br><span class="line">     **Non-preemptive SJF:** The process runs until it completes.  </span><br><span class="line">  2. **抢占式SJF（最短剩余时间优先，SRTF）：** 优先调度剩余时间最短的进程。  </span><br><span class="line">     **Preemptive SJF (Shortest Remaining Time First, SRTF):** Schedule the job with the shortest remaining time required to complete.</span><br><span class="line"></span><br><span class="line">• **要求：**  </span><br><span class="line">  **Requirement:**  </span><br><span class="line">  • 需要预先知道作业的运行时间。  </span><br><span class="line">    **The elapsed time needs to be known in advance.**</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">#### **2. 非抢占式SJF示例**  </span><br><span class="line">**Example of Non-Preemptive SJF**</span><br><span class="line"></span><br><span class="line">• **进程参数：**  </span><br><span class="line">  **Process Parameters:**  </span><br><span class="line">| 进程 | 持续时间（ms） | 顺序 | 到达时间 |</span><br><span class="line">| ---- | -------------- | ---- | -------- |</span><br><span class="line">| P1   | 6              | 2    | 0        |</span><br><span class="line">| P2   | 8              | 4    | 0        |</span><br><span class="line">| P3   | 7              | 3    | 0        |</span><br><span class="line">| P4   | 3              | 1    | 0        |</span><br><span class="line"></span><br><span class="line">• **调度结果：**  </span><br><span class="line">  **Schedule:**  </span><br></pre></td></tr></table></figure> 0────3────9────16────24 P4 (3) P1 (6) P3 (7) P2 (8)
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">• **等待时间：**  </span><br><span class="line">  **Waiting Time:**  </span><br><span class="line">  • P4: 0  </span><br><span class="line">  • P1: 3  </span><br><span class="line">  • P3: 9  </span><br><span class="line">  • P2: 16  </span><br><span class="line"></span><br><span class="line">• **平均等待时间：**  </span><br><span class="line">  **Average Waiting Time (AWT):**  </span><br><span class="line">  • (0 + 3 + 9 + 16) / 4 = 7</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">#### **3. 与FCFS的比较**  </span><br><span class="line">**Comparison with FCFS**</span><br><span class="line"></span><br><span class="line">• **FCFS调度结果：**  </span><br><span class="line">  **FCFS Schedule:**  </span><br></pre></td></tr></table></figure> 0────6────14────21────24 P1 (6) P3 (7) P2 (8) P4 (3)
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">• **等待时间：**  </span><br><span class="line">  **Waiting Time:**  </span><br><span class="line">  • P1: 0  </span><br><span class="line">  • P3: 6  </span><br><span class="line">  • P2: 14  </span><br><span class="line">  • P4: 21  </span><br><span class="line"></span><br><span class="line">• **平均等待时间：**  </span><br><span class="line">  **Average Waiting Time (AWT):**  </span><br><span class="line">  • (0 + 6 + 14 + 21) / 4 = 10.25</span><br><span class="line"></span><br><span class="line">• **结论：**  </span><br><span class="line">  **Conclusion:**  </span><br><span class="line">  • SJF的平均等待时间（7）优于FCFS（10.25）。  </span><br><span class="line">    **SJF provides a better average waiting time (7) compared to FCFS (10.25).**</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">#### **4. SJF的局限性**  </span><br><span class="line">**Limitations of SJF**</span><br><span class="line"></span><br><span class="line">1. **非同时到达的作业：**  </span><br><span class="line">   **Jobs Not Available Simultaneously:**  </span><br><span class="line">   • 如果作业不是同时到达，SJF可能不是最优的。  </span><br><span class="line">     **If jobs do not arrive simultaneously, SJF may not be optimal.**</span><br><span class="line"></span><br><span class="line">   • **示例：**  </span><br><span class="line">     **Example:**  </span><br><span class="line">   | 进程 | 持续时间（ms） | 顺序 | 到达时间 |</span><br><span class="line">   | ---- | -------------- | ---- | -------- |</span><br><span class="line">   | P1   | 10             | 1    | 0        |</span><br><span class="line">   | P2   | 2              | 2    | 2        |</span><br><span class="line"></span><br><span class="line">     ◦ **调度结果：**  </span><br><span class="line">       **Schedule:**  </span><br></pre></td></tr></table></figure> 0────10────12 P1 (10) P2 (2) <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">◦ **等待时间：**  </span><br><span class="line">  **Waiting Time:**  </span><br><span class="line">  ◦ P1: 0  </span><br><span class="line">  ◦ P2: 8  </span><br><span class="line"></span><br><span class="line">◦ **平均等待时间：**  </span><br><span class="line">  **Average Waiting Time (AWT):**  </span><br><span class="line">  ◦ (0 + 8) / 2 = 4</span><br><span class="line"></span><br><span class="line">◦ **优化方案：**  </span><br><span class="line">  **Optimization:**  </span><br><span class="line">  ◦ 如果调度器等待2个时间单位：  </span><br><span class="line">    **If the scheduler waits for 2 time units:**  </span><br></pre></td></tr></table></figure> 0────2────14 P2
+(2) P1 (10) <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">       ◦ **等待时间：**  </span><br><span class="line">         **Waiting Time:**  </span><br><span class="line">         ▪ P1: 4  </span><br><span class="line">         ▪ P2: 0  </span><br><span class="line">       ◦ **平均等待时间：**  </span><br><span class="line">         **Average Waiting Time (AWT):**  </span><br><span class="line">         ▪ (0 + 4) / 2 = 2</span><br><span class="line"></span><br><span class="line">2. **饥饿问题（Starvation）：**  </span><br><span class="line">   **Starvation:**  </span><br><span class="line">   • 如果有大量短作业不断到达，长作业可能永远无法获得CPU时间。  </span><br><span class="line">     **If a large number of short jobs keep arriving, long jobs may never get CPU time.**</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">#### **5. 抢占式SJF（最短剩余时间优先，SRTF）**  </span><br><span class="line">**Preemptive SJF (Shortest Remaining Time First, SRTF)**</span><br><span class="line"></span><br><span class="line">• **定义：**  </span><br><span class="line">  **Definition:**  </span><br><span class="line">  • 优先调度剩余时间最短的进程。  </span><br><span class="line">    **Schedule the job with the shortest remaining time required to complete.**</span><br><span class="line"></span><br><span class="line">• **示例：**  </span><br><span class="line">  **Example:**  </span><br><span class="line">| 进程 | 持续时间（ms） | 顺序 | 到达时间 |</span><br><span class="line">| ---- | -------------- | ---- | -------- |</span><br><span class="line">| P1   | 10             | 1    | 0        |</span><br><span class="line">| P2   | 2              | 2    | 2        |</span><br><span class="line"></span><br><span class="line">  • **调度结果：**  </span><br><span class="line">    **Schedule:**  </span><br><span class="line"></span><br></pre></td></tr></table></figure> 0────2────4────12 P1 (2) P2 (2) P1 (8)
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">  • **等待时间：**  </span><br><span class="line">    **Waiting Time:**  </span><br><span class="line">    ◦ P1: 2  </span><br><span class="line">    ◦ P2: 0  </span><br><span class="line"></span><br><span class="line">  • **平均等待时间：**  </span><br><span class="line">    **Average Waiting Time (AWT):**  </span><br><span class="line">    ◦ (0 + 2) / 2 = 1</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">#### **6. 交互式系统的调度算法**  </span><br><span class="line">**Scheduling Algorithms for Interactive Systems**</span><br><span class="line"></span><br><span class="line">• **特点：**  </span><br><span class="line">  **Characteristics:**  </span><br><span class="line">  • 通常是抢占式的。  </span><br><span class="line">    **Usually preemptive.**  </span><br><span class="line">  • 时间被划分为时间片（quantum）。  </span><br><span class="line">    **Time is sliced into quantum (time intervals).**  </span><br><span class="line">  • 每个时间片开始时进行调度决策。  </span><br><span class="line">    **Scheduling decision is made at the beginning of each quantum.**</span><br><span class="line"></span><br><span class="line">• **性能指标：**  </span><br><span class="line">  **Performance Criteria:**  </span><br><span class="line">  • 最小化响应时间。  </span><br><span class="line">    **Minimize response time.**  </span><br><span class="line">  • 最佳比例性。  </span><br><span class="line">    **Best proportionality.**</span><br><span class="line"></span><br><span class="line">• **代表性算法：**  </span><br><span class="line">  **Representative Algorithms:**  </span><br><span class="line">  • 轮转调度（Round-Robin）。  </span><br><span class="line">  • 基于优先级的调度（Priority-based）。  </span><br><span class="line">  • 多级队列调度和多级反馈队列调度（Multi-Queue &amp; Multi-Level Feedback）。  </span><br><span class="line">  • 保证调度（Guaranteed Scheduling）。  </span><br><span class="line">  • 彩票调度（Lottery Scheduling）。  </span><br><span class="line">  • 公平共享调度（Fair Share Scheduling）。</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">### **总结**  </span><br><span class="line">**Summary**</span><br><span class="line"></span><br><span class="line">• **最短作业优先（SJF）优先调度运行时间最短的作业，适用于批处理系统。**  </span><br><span class="line">  **Shortest Job First (SJF) schedules the job with the shortest elapsed time first and is used in batch systems.**</span><br><span class="line"></span><br><span class="line">• **SJF分为非抢占式和抢占式（最短剩余时间优先，SRTF）。**  </span><br><span class="line">  **SJF is divided into non-preemptive and preemptive (Shortest Remaining Time First, SRTF).**</span><br><span class="line"></span><br><span class="line">• **SJF的最优性依赖于所有作业同时到达的假设，否则可能导致饥饿问题。**  </span><br><span class="line">  **The optimality of SJF depends on the assumption that all jobs arrive simultaneously; otherwise, it may lead to starvation.**</span><br><span class="line"></span><br><span class="line">• **交互式系统通常使用抢占式调度算法，如轮转调度和优先级调度。**  </span><br><span class="line">  **Interactive systems usually use preemptive scheduling algorithms, such as Round-Robin and Priority-based scheduling.**</span><br><span class="line"></span><br><span class="line">通过理解这些调度算法，可以更好地设计和实现操作系统中的调度机制，优化系统性能。  </span><br><span class="line">**By understanding these scheduling algorithms, we can better design and implement scheduling mechanisms in operating systems, optimizing system performance.**</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">### **轮转调度（Round-Robin, RR）**</span><br><span class="line"></span><br><span class="line">以下是关于轮转调度（RR）算法的详细讲解，包括其工作原理、示例以及时间片大小的选择。</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">#### **1. 轮转调度的定义**  </span><br><span class="line">**Definition of Round-Robin (RR)**</span><br><span class="line"></span><br><span class="line">• **定义：**  </span><br><span class="line">  **Definition:**  </span><br><span class="line">  • 从就绪队列中按顺序选择进程/线程，每个进程分配一个固定时间片（quantum）。  </span><br><span class="line">    **Select processes/threads from the ready queue in a round-robin fashion, allocating a fixed time slice (quantum) to each process.**</span><br><span class="line"></span><br><span class="line">• **特点：**  </span><br><span class="line">  **Characteristics:**  </span><br><span class="line">  • 简单、公平、易于实现。  </span><br><span class="line">    **Simple, fair, and easy to implement.**  </span><br><span class="line">  • 不考虑优先级。  </span><br><span class="line">    **Does not consider priority.**  </span><br><span class="line">  • 上下文切换开销较大。  </span><br><span class="line">    **Context switch overhead is significant.**</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">#### **2. 轮转调度的示例**  </span><br><span class="line">**Example of Round-Robin (RR)**</span><br><span class="line"></span><br><span class="line">• **进程参数：**  </span><br><span class="line">  **Process Parameters:**  </span><br><span class="line">| 进程 | 持续时间（ms） | 顺序 | 到达时间 |</span><br><span class="line">| ---- | -------------- | ---- | -------- |</span><br><span class="line">| P1   | 3              | 1    | 0        |</span><br><span class="line">| P2   | 4              | 2    | 0        |</span><br><span class="line">| P3   | 3              | 3    | 0        |</span><br><span class="line"></span><br><span class="line">• **时间片大小：**  </span><br><span class="line">  **Time Quantum:**  </span><br><span class="line">  • 1个时间单位。  </span><br><span class="line">    **1 unit.**</span><br><span class="line"></span><br><span class="line">• **调度结果：**  </span><br><span class="line">  **Schedule:**  </span><br></pre></td></tr></table></figure> 0──1──2──3──4──5──6──7──8──9──10 P1 P2 P3 P1 P2 P3 P1 P2
+P3 P2 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">• **等待时间：**  </span><br><span class="line">  **Waiting Time:**  </span><br><span class="line">  • P1: 4  </span><br><span class="line">  • P2: 6  </span><br><span class="line">  • P3: 6  </span><br><span class="line"></span><br><span class="line">• **平均等待时间：**  </span><br><span class="line">  **Average Waiting Time (AWT):**  </span><br><span class="line">  • (4 + 6 + 6) / 3 = 5.33</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">#### **3. 时间片大小的选择**  </span><br><span class="line">**Choosing the Time Quantum**</span><br><span class="line"></span><br><span class="line">1. **时间片过大：**  </span><br><span class="line">   **Time Slice Too Large:**  </span><br><span class="line">   • 行为类似于先来先服务（FCFS）。  （考点：一旦时间片太大就和先到先服务没有什么区别了，直接就跑完了）</span><br><span class="line"></span><br><span class="line">2.   **Behavior similar to First Come First Served (FCFS).**  </span><br><span class="line">   • 响应时间变长。  </span><br><span class="line">     **Poor response time.**</span><br><span class="line"></span><br><span class="line">3. **时间片过小：**  </span><br><span class="line">   **Time Slice Too Small:**  </span><br><span class="line">   • 上下文切换次数增加，开销过大。  </span><br><span class="line">     **Too many context switches, leading to high overhead.**  </span><br><span class="line">   • CPU利用率降低。  </span><br><span class="line">     **Inefficient CPU utilization.**</span><br><span class="line"></span><br><span class="line">4. **启发式方法：**  </span><br><span class="line">   **Heuristic Approach:**  </span><br><span class="line">   • 选择时间片大小，使得70-80%的作业在时间片内阻塞。  </span><br><span class="line">     **Choose a time slice size such that 70-80% of jobs block within the time slice.**</span><br><span class="line"></span><br><span class="line">5. **典型时间片大小：**  </span><br><span class="line">   **Typical Time Slice Size:**  </span><br><span class="line">   • 10到100毫秒。  </span><br><span class="line">     **10 to 100 milliseconds.**</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">### **总结**  </span><br><span class="line">**Summary**</span><br><span class="line"></span><br><span class="line">• **轮转调度（RR）是一种简单、公平的调度算法，常用于交互式系统。**  </span><br><span class="line">  **Round-Robin (RR) is a simple and fair scheduling algorithm commonly used in interactive systems.**</span><br><span class="line"></span><br><span class="line">• **RR不考虑优先级，但上下文切换开销较大。**  </span><br><span class="line">  **RR does not consider priority but has significant context switch overhead.**</span><br><span class="line"></span><br><span class="line">• **时间片大小的选择对系统性能有重要影响：时间片过大会导致响应时间变长，时间片过小会增加上下文切换开销。**  </span><br><span class="line">  **The choice of time quantum size has a significant impact on system performance: too large a time slice leads to long response times, while too small a time slice increases context switch overhead.**</span><br><span class="line"></span><br><span class="line">通过理解轮转调度算法及其时间片大小的选择，可以更好地设计和实现操作系统中的调度机制，优化系统性能。  </span><br><span class="line">**By understanding the Round-Robin scheduling algorithm and the choice of time quantum size, we can better design and implement scheduling mechanisms in operating systems, optimizing system performance.**</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### **优先级调度（Priority Scheduling）**</span><br><span class="line"></span><br><span class="line">以下是关于优先级调度算法的详细讲解，包括其工作原理、优先级设置方式以及存在的问题。</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">#### **1. 优先级调度的定义**  </span><br><span class="line">**Definition of Priority Scheduling**</span><br><span class="line"></span><br><span class="line">• **定义：**  </span><br><span class="line">  **Definition:**  </span><br><span class="line">  • 每个作业被分配一个优先级，优先调度高优先级作业。  </span><br><span class="line">    **Each job is assigned a priority, and the highest priority job is scheduled first.**</span><br><span class="line"></span><br><span class="line">• **特点：**  </span><br><span class="line">  **Characteristics:**  </span><br><span class="line">  • 在同一优先级内使用先来先服务（FCFS）。  </span><br><span class="line">    **FCFS is used within each priority level.**  </span><br><span class="line">  • 高优先级作业通常是关键任务。  </span><br><span class="line">    **Higher priority jobs are typically mission-critical.**</span><br><span class="line"></span><br><span class="line">• **问题：**  </span><br><span class="line">  **Problems:**  </span><br><span class="line">  • 可能无法提供最佳的平均等待时间（AWT）。  </span><br><span class="line">    **May not provide the best average waiting time (AWT).**  </span><br><span class="line">  • 可能导致低优先级作业无限期阻塞或饥饿。  </span><br><span class="line">    **May cause indefinite blocking or starvation of low-priority jobs.**</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">#### **2. 优先级的设置**  </span><br><span class="line">**Setting Priority**</span><br><span class="line"></span><br><span class="line">1. **静态优先级（Static Priority）：**  </span><br><span class="line">   **Static Priority:**  </span><br><span class="line">   • 适用于系统已知且应用程序行为规律的环境。  </span><br><span class="line">     **For systems with well-known and regular application behaviors.**</span><br><span class="line"></span><br><span class="line">2. **动态优先级（Dynamic Priority）：**  </span><br><span class="line">   **Dynamic Priority:**  </span><br><span class="line">   • 适用于其他情况。  </span><br><span class="line">     **Otherwise.**</span><br><span class="line"></span><br><span class="line">• **优先级依据：**  </span><br><span class="line">  **Priority may be based on:**  </span><br><span class="line">  • 用户成本。  </span><br><span class="line">    **Cost to user.**  </span><br><span class="line">  • 用户重要性。  </span><br><span class="line">    **Importance of user.**  </span><br><span class="line">  • 进程类型。  </span><br><span class="line">    **Process type.**  </span><br><span class="line">  • 资源需求。  </span><br><span class="line">    **Requirement to resource.**  </span><br><span class="line">  • 老化（Aging）。  </span><br><span class="line">    **Aging.**  </span><br><span class="line">  • 过去X小时内使用的CPU时间百分比。  </span><br><span class="line">    **Percentage of CPU time used in the last X hours.**</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">#### **3. 优先级调度的示例**  </span><br><span class="line">**Example of Priority Scheduling**</span><br><span class="line"></span><br><span class="line">• **进程参数：**  </span><br><span class="line">  **Process Parameters:**  </span><br><span class="line">| 进程 | 持续时间（ms） | 优先级 | 到达时间 |</span><br><span class="line">| ---- | -------------- | ------ | -------- |</span><br><span class="line">| P1   | 6              | 4      | 0        |</span><br><span class="line">| P2   | 8              | 1      | 0        |</span><br><span class="line">| P3   | 7              | 3      | 0        |</span><br><span class="line">| P4   | 3              | 2      | 0        |</span><br><span class="line"></span><br><span class="line">• **调度结果：**  </span><br><span class="line">  **Schedule:**  </span><br></pre></td></tr></table></figure> 0────8────11────18────24 P4 (3) P1 (6) P3 (7) P2 (8)
+```</p>
+<p>• <strong>等待时间：</strong><br>
+<strong>Waiting Time:</strong><br>
+• P2: 0<br>
+• P4: 8<br>
+• P3: 11<br>
+• P1: 18</p>
+<p>• <strong>平均等待时间：</strong><br>
+<strong>Average Waiting Time (AWT):</strong><br>
+• (0 + 8 + 11 + 18) / 4 = 9.25</p>
+<p>• <strong>与SJF的比较：</strong><br>
+<strong>Comparison with SJF:</strong><br>
+• SJF的平均等待时间为7，优于优先级调度的9.25。<br>
+<strong>SJF provides a better average waiting time (7) compared to
+priority scheduling (9.25).</strong></p>
+<hr>
+<h4 id="unix中的nice命令"><strong>4. Unix中的“nice”命令</strong></h4>
+<p><strong>Be “nice” in Unix</strong></p>
+<p>• <strong>定义：</strong><br>
+<strong>Definition:</strong><br>
+•
+<code>nice</code>命令用于调整进程的优先级，使其更“友好”（即降低优先级）。<br>
+<strong>The <code>nice</code> command is used to adjust the priority of
+a process, making it "nicer" (i.e., lowering its priority).</strong></p>
+<p>• <strong>用途：</strong><br>
+<strong>Purpose:</strong><br>
+• 避免低优先级进程占用过多CPU资源，影响高优先级进程的执行。<br>
+<strong>Prevent low-priority processes from consuming too much CPU
+resources, affecting the execution of high-priority
+processes.</strong></p>
+<hr>
+<h3 id="总结-4"><strong>总结</strong></h3>
+<p><strong>Summary</strong></p>
+<p>•
+<strong>优先级调度根据作业的优先级进行调度，适用于关键任务。</strong><br>
+<strong>Priority scheduling schedules jobs based on their priority and
+is suitable for mission-critical tasks.</strong></p>
+<p>•
+<strong>优先级可以是静态的或动态的，依据包括用户成本、用户重要性、进程类型等。</strong><br>
+<strong>Priority can be static or dynamic, based on factors such as cost
+to user, importance of user, process type, etc.</strong></p>
+<p>•
+<strong>优先级调度可能导致低优先级作业饥饿，因此需要结合老化（Aging）等机制来避免这一问题。</strong><br>
+<strong>Priority scheduling may cause starvation of low-priority jobs,
+so mechanisms such as aging are needed to avoid this issue.</strong></p>
+<p>•
+<strong>Unix中的<code>nice</code>命令用于调整进程的优先级，使其更“友好”。</strong><br>
+<strong>The <code>nice</code> command in Unix is used to adjust the
+priority of a process, making it "nicer."</strong></p>
+<p>通过理解优先级调度算法及其应用，可以更好地设计和实现操作系统中的调度机制，优化系统性能。<br>
+<strong>By understanding the priority scheduling algorithm and its
+applications, we can better design and implement scheduling mechanisms
+in operating systems, optimizing system performance.</strong></p>
+<hr>
+<h3 id="多级反馈队列调度multi-level-feedback-queue-mlfq"><strong>多级反馈队列调度（Multi-Level
+Feedback Queue, MLFQ）</strong></h3>
+<blockquote>
+<p><strong>考试常考</strong></p>
+</blockquote>
+<p>以下是关于多级反馈队列调度算法的详细讲解，包括其工作原理、细节以及示例。</p>
+<hr>
+<h4 id="多级反馈队列调度的定义"><strong>1.
+多级反馈队列调度的定义</strong></h4>
+<p><strong>Definition of Multi-Level Feedback Queue (MLFQ)</strong></p>
+<p>• <strong>定义：</strong><br>
+<strong>Definition:</strong><br>
+• 一种结合多级队列和优先级调度的调度算法，允许进程在队列之间移动。<br>
+<strong>A scheduling algorithm that combines multi-queue and priority
+scheduling, allowing processes to move between queues.</strong></p>
+<p>• <strong>工作原理：</strong><br>
+<strong>Working Principle:</strong><br>
+•
+每个进程开始时在高优先级队列中，每次CPU突发完成后，移动到较低优先级队列。<br>
+<strong>Start each process in a high-priority queue; as it finishes each
+CPU burst, move it to a lower-priority queue.</strong><br>
+• 每个队列代表具有相似CPU使用情况的作业。<br>
+<strong>Each queue represents jobs with similar CPU
+usage.</strong><br>
+• 每个队列中的作业使用特定的时间片执行。<br>
+<strong>Jobs in a given queue are executed with a given time
+slice.</strong></p>
+<p>• <strong>设计理念：</strong><br>
+<strong>Rationale:</strong><br>
+• I/O密集型进程完成I/O请求后应具有更高的CPU优先级。<br>
+<strong>Once an I/O process completes an I/O request, it should have
+higher CPU priority.</strong></p>
+<hr>
+<h4 id="多级反馈队列调度的细节"><strong>2.
+多级反馈队列调度的细节</strong></h4>
+<p><strong>Details of Multi-Level Feedback Queue (MLFQ)</strong></p>
+<p>• <strong>示例（CTSS）：</strong><br>
+<strong>Example (CTSS):</strong><br>
+• 队列<code>Queuei</code>的时间片为<code>t * 2^i</code>。<br>
+<strong>Queuei has a time slice of <code>t * 2^i</code>.</strong><br>
+•
+如果队列<code>Queuei</code>中的作业在时间片结束时未阻塞，则移动到<code>Queuei+1</code>。<br>
+<strong>If a job in Queuei doesn't block by the end of the time slice,
+it is moved to Queuei+1.</strong><br>
+• 最低优先级队列使用FCFS调度算法。<br>
+<strong>The lowest priority queue uses FCFS scheduling.</strong></p>
+<hr>
+<h4 id="多级反馈队列调度的示例"><strong>3.
+多级反馈队列调度的示例</strong></h4>
+<p><strong>Example of Multi-Level Feedback Queue (MLFQ)</strong></p>
+<p>• <strong>队列设置：</strong><br>
+<strong>Queue Setup:</strong><br>
+1. <strong>Q0：</strong> 时间片8ms。<br>
+<strong>Q0: Time slice of 8ms.</strong><br>
+2. <strong>Q1：</strong> 时间片16ms。<br>
+<strong>Q1: Time slice of 16ms.</strong><br>
+3. <strong>Q2：</strong> 使用FCFS调度算法。<br>
+<strong>Q2: Uses FCFS scheduling.</strong></p>
+<p>• <strong>工作流程：</strong><br>
+<strong>Workflow:</strong><br>
+1. 新进程进入Q0，使用8ms的时间片执行。<br>
+<strong>A new process enters Q0 and executes with an 8ms time
+slice.</strong><br>
+2. 如果进程在8ms内未完成，则移动到Q1，使用16ms的时间片执行。<br>
+<strong>If the process does not complete within 8ms, it moves to Q1 and
+executes with a 16ms time slice.</strong><br>
+3. 如果进程在16ms内仍未完成，则移动到Q2，使用FCFS调度算法执行。<br>
+<strong>If the process still does not complete within 16ms, it moves to
+Q2 and executes using FCFS scheduling.</strong></p>
+<hr>
+<h3 id="总结-5"><strong>总结</strong></h3>
+<p><strong>Summary</strong></p>
+<p>•
+<strong>多级反馈队列调度是一种结合多级队列和优先级调度的调度算法，允许进程在队列之间移动。</strong><br>
+<strong>Multi-level feedback queue scheduling is a scheduling algorithm
+that combines multi-queue and priority scheduling, allowing processes to
+move between queues.</strong></p>
+<p>•
+<strong>每个队列代表具有相似CPU使用情况的作业，并使用特定的时间片执行。</strong><br>
+<strong>Each queue represents jobs with similar CPU usage and executes
+them with a given time slice.</strong></p>
+<p>•
+<strong>最低优先级队列使用FCFS调度算法，确保长作业最终能够完成。</strong><br>
+<strong>The lowest priority queue uses FCFS scheduling to ensure long
+jobs eventually complete.</strong></p>
+<p>通过理解多级反馈队列调度算法及其应用，可以更好地设计和实现操作系统中的调度机制，优化系统性能。<br>
+<strong>By understanding the multi-level feedback queue scheduling
+algorithm and its applications, we can better design and implement
+scheduling mechanisms in operating systems, optimizing system
+performance.</strong></p>
+<hr>
+<h3 id="多级反馈队列调度mlfq示例与计算"><strong>多级反馈队列调度（MLFQ）示例与计算</strong></h3>
+<p>以下是关于多级反馈队列调度的详细示例，包括调度时间线和平均周转时间的计算。</p>
+<hr>
+<h4 id="问题描述"><strong>1. 问题描述</strong></h4>
+<p><strong>Problem Description</strong></p>
+<p>• <strong>进程参数：</strong><br>
+<strong>Process Parameters:</strong><br>
+| 进程ID | 到达时间 | 突发时间 | | ------ | -------- | -------- | | A |
+0 | 7 | | B | 2 | 9 | | C | 5 | 4 | | D | 7 | 8 | | E | 8 | 2 |</p>
+<p>• <strong>队列设置：</strong><br>
+<strong>Queue Setup:</strong><br>
+1. <strong>Q0：</strong> 时间片3ms，优先级基于到达时间。<br>
+<strong>Q0: Time slice of 2ms, priority based on arrival
+time.</strong><br>
+2. <strong>Q1：</strong> 时间片4ms，优先级基于到达时间。<br>
+<strong>Q1: Time slice of 4ms, priority based on arrival
+time.</strong><br>
+3. <strong>Q2：</strong> 使用FCFS调度算法。<br>
+<strong>Q2: Uses最短作业优先（考试题）</strong></p>
+<figure>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/20250506153907.png" alt="img">
+<figcaption aria-hidden="true">img</figcaption>
+</figure>
+<hr>
+<hr>
+<h3 id="总结-6"><strong>总结</strong></h3>
+<p><strong>Summary</strong></p>
+<p>•
+<strong>多级反馈队列调度根据进程的到达时间和突发时间动态调整优先级，确保系统响应性和公平性。</strong><br>
+<strong>Multi-level feedback queue scheduling dynamically adjusts
+priorities based on process arrival times and burst times, ensuring
+system responsiveness and fairness.</strong></p>
+<p>•
+<strong>通过调度时间线和周转时间计算，可以验证多级反馈队列调度的性能。</strong><br>
+<strong>The scheduling timeline and turnaround time calculation verify
+the performance of multi-level feedback queue scheduling.</strong></p>
+<p>•
+<strong>平均周转时间为18.2，表明多级反馈队列调度在该示例中表现良好。</strong><br>
+<strong>The average turnaround time of 18.2 indicates that multi-level
+feedback queue scheduling performs well in this example.</strong></p>
+<p>通过理解多级反馈队列调度算法及其应用，可以更好地设计和实现操作系统中的调度机制，优化系统性能。<br>
+<strong>By understanding the multi-level feedback queue scheduling
+algorithm and its applications, we can better design and implement
+scheduling mechanisms in operating systems, optimizing system
+performance.</strong></p>
+<hr>
+<h3 id="调度算法回顾"><strong>调度算法回顾</strong></h3>
+<p>以下是对调度算法的总结，涵盖了批处理系统和交互式系统中常用的调度算法。</p>
+<hr>
+<h4 id="批处理系统中的调度算法"><strong>1.
+批处理系统中的调度算法</strong></h4>
+<p><strong>Scheduling Algorithms in Batch Systems</strong></p>
+<p>批处理系统的目标是<strong>最大化吞吐量</strong>和<strong>最小化平均等待时间</strong>，通常使用非抢占式调度算法。</p>
+<hr>
+<h5 id="先来先服务first-come-first-served-fcfs-1"><strong>1.1
+先来先服务（First Come First Served, FCFS）</strong></h5>
+<p>• <strong>定义：</strong><br>
+• 最先到达的进程最先获得CPU。<br>
+<strong>The process that arrives first is allocated the CPU
+first.</strong> • <strong>特点：</strong><br>
+• 非抢占式调度算法。<br>
+<strong>Non-preemptive scheduling algorithm.</strong> •
+简单易实现，但可能导致<strong>护航效应</strong>（长作业阻塞短作业）。<br>
+<strong>Simple to implement but may cause convoy effects (long jobs
+block short jobs).</strong> • <strong>适用场景：</strong><br>
+• 批处理系统。<br>
+<strong>Batch systems.</strong></p>
+<hr>
+<h5 id="最短作业优先shortest-job-first-sjf"><strong>1.2
+最短作业优先（Shortest Job First, SJF）</strong></h5>
+<p>• <strong>定义：</strong><br>
+• 优先调度运行时间最短的作业。<br>
+<strong>The job with the shortest elapsed time is scheduled
+first.</strong> • <strong>类型：</strong><br>
+1. <strong>非抢占式SJF：</strong><br>
+◦ 进程运行直到完成。<br>
+<strong>The process runs until it completes.</strong> 2.
+<strong>抢占式SJF（最短剩余时间优先，SRTF）：</strong><br>
+◦ 优先调度剩余时间最短的进程。<br>
+<strong>The job with the shortest remaining time is scheduled
+first.</strong></p>
+<pre><code>• **优点：**  
+
+• 如果所有作业同时到达，SJF是最优的，提供最小的平均等待时间。  
+
+**If all jobs arrive simultaneously, SJF is optimal and provides the minimum average waiting time.**</code></pre>
+<p>• <strong>缺点：</strong><br>
+• 需要预先知道作业的运行时间。<br>
+<strong>Requires prior knowledge of job execution times.</strong> •
+可能导致<strong>饥饿</strong>（长作业永远无法运行）。<br>
+<strong>May cause starvation (long jobs may never run).</strong> •
+<strong>适用场景：</strong><br>
+• 批处理系统。<br>
+<strong>Batch systems.</strong></p>
+<hr>
+<h4 id="交互式系统中的调度算法"><strong>2.
+交互式系统中的调度算法</strong></h4>
+<p><strong>Scheduling Algorithms in Interactive Systems</strong></p>
+<p>交互式系统的目标是<strong>最小化响应时间</strong>和<strong>提高用户体验</strong>，通常使用抢占式调度算法。</p>
+<hr>
+<h5 id="轮转调度round-robin-rr"><strong>2.1 轮转调度（Round-Robin,
+RR）</strong></h5>
+<p>• <strong>定义：</strong><br>
+• 每个进程分配一个固定时间片，时间片用完后切换到下一个进程。<br>
+<strong>Each process is allocated a fixed time slice, and after the time
+slice is used up, the next process is scheduled.</strong> •
+<strong>特点：</strong><br>
+• 抢占式调度算法。<br>
+<strong>Preemptive scheduling algorithm.</strong> •
+公平，但可能导致<strong>上下文切换开销</strong>。<br>
+<strong>Fair but may incur high context switch overhead.</strong> •
+<strong>适用场景：</strong><br>
+• 交互式系统。<br>
+<strong>Interactive systems.</strong></p>
+<hr>
+<h5 id="优先级调度priority-scheduling"><strong>2.2 优先级调度（Priority
+Scheduling）</strong></h5>
+<p>• <strong>定义：</strong><br>
+• 每个进程分配一个优先级，优先调度高优先级进程。<br>
+<strong>Each process is assigned a priority, and higher-priority
+processes are scheduled first.</strong> • <strong>特点：</strong><br>
+•
+可以是静态优先级（基于进程类型或用户重要性）或动态优先级（根据运行情况调整）。<br>
+<strong>Can be static (based on process type or user importance) or
+dynamic (adjusted based on runtime behavior).</strong> •
+可能导致<strong>低优先级进程饥饿</strong>。<br>
+<strong>May cause starvation of low-priority processes.</strong> •
+<strong>适用场景：</strong><br>
+• 实时系统或需要区分任务重要性的场景。<br>
+<strong>Real-time systems or scenarios where task importance needs to be
+distinguished.</strong></p>
+<hr>
+<h5 id="多级队列调度multi-queue-scheduling"><strong>2.3
+多级队列调度（Multi-Queue Scheduling）</strong></h5>
+<p>• <strong>定义：</strong><br>
+•
+将就绪队列分为多个子队列，每个子队列代表一类进程（如交互式进程、后台进程等）。<br>
+<strong>The ready queue is divided into multiple sub-queues, each
+representing a class of processes (e.g., interactive,
+background).</strong> • <strong>特点：</strong><br>
+• 每个子队列可以使用不同的调度算法。<br>
+<strong>Each sub-queue can use a different scheduling
+algorithm.</strong> • 高优先级队列中的进程优先执行。<br>
+<strong>Processes in higher-priority queues are scheduled
+first.</strong> • <strong>适用场景：</strong><br>
+• 需要根据进程类型分类调度的场景。<br>
+<strong>Scenarios where processes need to be classified and scheduled
+based on their type.</strong></p>
+<hr>
+<h5 id="多级反馈队列调度multi-level-feedback-queue-mlfq-1"><strong>2.4
+多级反馈队列调度（Multi-Level Feedback Queue, MLFQ）</strong></h5>
+<p>• <strong>定义：</strong><br>
+• 结合多级队列和优先级调度，允许进程在队列之间动态移动。<br>
+<strong>Combines multi-level queue and priority scheduling, allowing
+processes to move between queues dynamically.</strong> •
+<strong>特点：</strong><br>
+• 新进程从高优先级队列开始，每次完成时间片后降级到低优先级队列。<br>
+<strong>New processes start in the highest-priority queue and are
+demoted to lower-priority queues after completing a time slice.</strong>
+• 低优先级队列通常使用FCFS调度算法。<br>
+<strong>The lowest-priority queue typically uses FCFS
+scheduling.</strong> • 动态调整优先级，避免低优先级进程饥饿。<br>
+<strong>Dynamically adjusts priorities to avoid starvation of
+low-priority processes.</strong> • <strong>适用场景：</strong><br>
+• 需要兼顾响应性和公平性的场景。<br>
+<strong>Scenarios that require a balance between responsiveness and
+fairness.</strong></p>
+<hr>
+<h4 id="调度算法总结"><strong>3. 调度算法总结</strong></h4>
+<p><strong>Summary of Scheduling Algorithms</strong></p>
+<table>
+<colgroup>
+<col style="width: 24%">
+<col style="width: 50%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr>
+<th><strong>算法</strong></th>
+<th><strong>特点</strong></th>
+<th><strong>适用场景</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>先来先服务（FCFS）</strong></td>
+<td>简单易实现，但可能导致护航效应。</td>
+<td>批处理系统。</td>
+</tr>
+<tr>
+<td><strong>最短作业优先（SJF）</strong></td>
+<td>最优的平均等待时间，但需要预先知道作业时间，可能导致饥饿。</td>
+<td>批处理系统。</td>
+</tr>
+<tr>
+<td><strong>轮转调度（RR）</strong></td>
+<td>公平，但可能导致上下文切换开销。</td>
+<td>交互式系统。</td>
+</tr>
+<tr>
+<td><strong>优先级调度</strong></td>
+<td>区分任务重要性，但可能导致低优先级进程饥饿。</td>
+<td>实时系统或任务重要性区分场景。</td>
+</tr>
+<tr>
+<td><strong>多级队列调度</strong></td>
+<td>根据进程类型分类调度，灵活性高。</td>
+<td>需要分类调度的场景。</td>
+</tr>
+<tr>
+<td><strong>多级反馈队列调度（MLFQ）</strong></td>
+<td>动态调整优先级，兼顾响应性和公平性，避免饥饿。</td>
+<td>需要平衡响应性和公平性的场景。</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="总结-7"><strong>总结</strong></h3>
+<p><strong>Summary</strong></p>
+<p>•
+<strong>批处理系统</strong>通常使用<strong>FCFS</strong>和<strong>SJF</strong>，目标是最大化吞吐量和最小化平均等待时间。<br>
+<strong>Batch systems typically use FCFS and SJF, aiming to maximize
+throughput and minimize average waiting time.</strong></p>
+<p>•
+<strong>交互式系统</strong>需要更灵活的调度算法，如<strong>RR</strong>、<strong>优先级调度</strong>和<strong>MLFQ</strong>，以满足实时性和用户体验需求。<br>
+<strong>Interactive systems require more flexible scheduling algorithms,
+such as RR, priority scheduling, and MLFQ, to meet real-time and user
+experience requirements.</strong></p>
+<p>•
+<strong>多级反馈队列调度（MLFQ）</strong>是一种高级调度算法，结合了多级队列和优先级调度的优点，适合复杂的多任务环境。<br>
+<strong>Multi-level feedback queue scheduling (MLFQ) is an advanced
+scheduling algorithm that combines the advantages of multi-level queue
+and priority scheduling, suitable for complex multitasking
+environments.</strong></p>
+<p>通过理解这些调度算法的特点和适用场景，可以更好地设计和实现操作系统中的调度机制，优化系统性能。<br>
+<strong>By understanding the characteristics and application scenarios
+of these scheduling algorithms, we can better design and implement
+scheduling mechanisms in operating systems, optimizing system
+performance.</strong></p>
+<hr>
+<h3 id="高级调度算法与实时系统调度"><strong>高级调度算法与实时系统调度</strong></h3>
+<p>以下是关于保证调度（Guaranteed Scheduling）、彩票调度（Lottery
+Scheduling）、公平共享调度（Fair-Share
+Scheduling）以及实时系统调度的详细讲解。</p>
+<hr>
+<h4 id="保证调度guaranteed-scheduling-qos"><strong>7.
+保证调度（Guaranteed Scheduling, QoS）</strong></h4>
+<p>• <strong>定义：</strong><br>
+<strong>Definition:</strong><br>
+• 向用户做出实际的性能承诺，并兑现这些承诺。<br>
+<strong>Make real promises to users about performance and then fulfill
+them.</strong></p>
+<p>• <strong>工作原理：</strong><br>
+<strong>Working Principle:</strong><br>
+•
+假设有<code>n</code>个进程正在运行，调度器确保每个进程获得<code>1/n</code>的CPU时间。<br>
+<strong>If there are <code>n</code> processes running, the scheduler
+ensures that each process gets 1/n of the CPU cycles.</strong> •
+计算每个进程实际消耗的CPU时间与其应得CPU时间的比率，选择比率最低的进程运行。<br>
+<strong>Compute the ratio of actual CPU time consumed to CPU time
+entitled, and select the process with the lowest ratio.</strong></p>
+<p>• <strong>优点：</strong><br>
+<strong>Advantages:</strong><br>
+• 提供公平的资源分配，避免某些进程长期占用CPU。<br>
+<strong>Provides fair resource allocation and prevents certain processes
+from monopolizing the CPU.</strong></p>
+<p>• <strong>缺点：</strong><br>
+<strong>Disadvantages:</strong><br>
+• 需要精确的CPU时间监控和调度决策，可能增加系统开销。<br>
+<strong>Requires precise monitoring of CPU time and scheduling
+decisions, which may increase system overhead.</strong></p>
+<hr>
+<h4 id="彩票调度lottery-scheduling"><strong>8. 彩票调度（Lottery
+Scheduling）</strong></h4>
+<p>• <strong>定义：</strong><br>
+<strong>Definition:</strong><br>
+•
+基于概率的调度算法，为每个进程分配“彩票”，调度时随机选择一张彩票，持有该彩票的进程获得资源。<br>
+<strong>A probability-based scheduling algorithm that assigns "lottery
+tickets" to processes. At scheduling time, a lottery ticket is chosen
+randomly, and the process holding the ticket gets the
+resource.</strong></p>
+<p>• <strong>工作原理：</strong><br>
+<strong>Working Principle:</strong><br>
+• 高优先级进程获得更多的彩票（近似优先级调度）。<br>
+<strong>Higher-priority processes are given more tickets (approximates
+priority scheduling).</strong><br>
+• 短作业可以获得更多的彩票（近似最短作业优先调度）。<br>
+<strong>Short jobs are given more tickets (approximates shortest job
+first scheduling).</strong></p>
+<p>• <strong>优点：</strong><br>
+<strong>Advantages:</strong><br>
+• 简单易实现。<br>
+<strong>Simple to implement.</strong><br>
+• 高度响应性。<br>
+<strong>Highly responsive.</strong><br>
+• 支持进程间的协作。<br>
+<strong>Supports cooperation between processes.</strong><br>
+• 易于支持优先级和比例需求。<br>
+<strong>Easily supports priority and proportion
+requirements.</strong></p>
+<p>• <strong>缺点：</strong><br>
+<strong>Disadvantages:</strong><br>
+• 彩票分配可能导致不公平（例如，高优先级进程可能长期占用资源）。<br>
+<strong>Ticket allocation may lead to unfairness (e.g., high-priority
+processes may monopolize resources for a long time).</strong></p>
+<hr>
+<h4 id="公平共享调度fair-share-scheduling"><strong>9.
+公平共享调度（Fair-Share Scheduling）</strong></h4>
+<p>• <strong>定义：</strong><br>
+<strong>Definition:</strong><br>
+•
+基于用户的公平共享调度，确保每个用户获得公平的CPU时间，而不是仅仅基于进程数量。<br>
+<strong>A user-based fair-share scheduling ensures that each user gets a
+fair share of CPU time, rather than just based on the number of
+processes.</strong></p>
+<p>• <strong>工作原理：</strong><br>
+<strong>Working Principle:</strong><br>
+• 每个用户分配一定的CPU时间配额。<br>
+<strong>Each user is assigned a certain CPU time quota.</strong><br>
+• 示例：<br>
+<strong>Example:</strong><br>
+◦ Alice有4个进程（A1, A2, A3, A4），Bob有1个进程（B1）。<br>
+<strong>Alice has 4 processes (A1, A2, A3, A4), and Bob has 1 process
+(B1).</strong><br>
+◦
+Alice的每个进程只能获得50%的CPU时间，而Bob的进程可以获得另外50%的CPU时间。<br>
+<strong>Each of Alice's processes is entitled to only 50% of the CPU
+time, while Bob's process is entitled to the other 50%.</strong><br>
+◦ 可能的调度序列：<br>
+<strong>Possible scheduling sequence:</strong><br>
+A1 → B1 → A2 → B1 → A3 → B1 → A4 → B1 → ...</p>
+<p>• <strong>优点：</strong><br>
+<strong>Advantages:</strong><br>
+• 避免了某些用户独占CPU资源的情况。<br>
+<strong>Prevents certain users from monopolizing CPU
+resources.</strong></p>
+<p>• <strong>缺点：</strong><br>
+<strong>Disadvantages:</strong><br>
+• 可能导致某些进程的响应时间变长。<br>
+<strong>May result in longer response times for certain
+processes.</strong></p>
+<hr>
+<h4 id="实时系统调度scheduling-in-real-time-systems"><strong>10.
+实时系统调度（Scheduling in Real-Time Systems）</strong></h4>
+<p>• <strong>定义：</strong><br>
+<strong>Definition:</strong><br>
+• 调度器对用户的截止时间或CPU利用率做出实际承诺。<br>
+<strong>The scheduler makes real promises to users in terms of deadlines
+or CPU utilization.</strong></p>
+<p>• <strong>可调度性条件：</strong><br>
+<strong>Schedulability Condition:</strong><br>
+• 给定<code>m</code>个周期性事件：<br>
+<strong>Given <code>m</code> periodic events:</strong><br>
+◦
+事件<code>i</code>在周期<code>Pi</code>内发生，需要<code>Ci</code>秒的CPU时间。<br>
+<strong>Event <code>i</code> occurs within period <code>Pi</code> and
+requires <code>Ci</code> seconds of CPU time.</strong><br>
+◦ 如果满足以下条件，则系统是可调度的：<br>
+<strong>The system is schedulable if:</strong><br>
+$ _{i=1}^{m} $ ◦</p>
+<p>系统是可调度的。</p>
+<hr>
+<h4 id="用户级线程调度user-level-thread-scheduling"><strong>11.
+用户级线程调度（User-Level Thread Scheduling）</strong></h4>
+<p>• <strong>定义：</strong><br>
+<strong>Definition:</strong><br>
+• 用户级线程的调度由用户空间的线程库管理，操作系统内核不直接参与。<br>
+<strong>User-level thread scheduling is managed by a user-space thread
+library, and the operating system kernel is not directly
+involved.</strong></p>
+<p>• <strong>示例：</strong><br>
+<strong>Example:</strong><br>
+• 假设时间片为50ms，每个线程运行5ms的CPU突发时间。<br>
+<strong>Assume a quantum of 50ms, and each thread runs for 5ms of CPU
+burst time.</strong></p>
+<hr>
+<h4 id="内核级线程调度kernel-level-thread-scheduling"><strong>12.
+内核级线程调度（Kernel-Level Thread Scheduling）</strong></h4>
+<p>• <strong>定义：</strong><br>
+<strong>Definition:</strong><br>
+• 内核级线程的调度由操作系统内核直接管理，内核负责分配CPU时间片。<br>
+<strong>Kernel-level thread scheduling is directly managed by the
+operating system kernel, which is responsible for allocating CPU time
+slices.</strong></p>
+<p>• <strong>示例：</strong><br>
+<strong>Example:</strong><br>
+• 假设时间片为50ms，每个线程运行5ms的CPU突发时间。<br>
+<strong>Assume a quantum of 50ms, and each thread runs for 5ms of CPU
+burst time.</strong></p>
+<p>• <strong>与用户级线程调度的区别：</strong><br>
+<strong>Differences from User-Level Thread Scheduling:</strong><br>
+•
+内核级线程调度由操作系统内核直接管理，支持多核处理器和优先级调度。<br>
+<strong>Kernel-level thread scheduling is directly managed by the OS
+kernel, supporting multi-core processors and priority
+scheduling.</strong><br>
+•
+用户级线程调度由用户空间的线程库管理，性能更高，但无法利用多核处理器。<br>
+<strong>User-level thread scheduling is managed by a user-space thread
+library, offering higher performance but cannot utilize multi-core
+processors.</strong></p>
+<hr>
+<h3 id="总结-8"><strong>总结</strong></h3>
+<p>• <strong>保证调度（Guaranteed Scheduling）：</strong>
+提供公平的资源分配，确保每个进程获得承诺的CPU时间。<br>
+<strong>Guaranteed Scheduling provides fair resource allocation and
+ensures each process gets the promised CPU time.</strong></p>
+<p>• <strong>彩票调度（Lottery Scheduling）：</strong>
+基于概率的调度算法，简单高效，支持优先级和比例需求。<br>
+<strong>Lottery Scheduling is a probability-based scheduling algorithm
+that is simple, efficient, and supports priority and proportion
+requirements.</strong></p>
+<p>• <strong>公平共享调度（Fair-Share Scheduling）：</strong>
+基于用户的公平调度，确保每个用户获得公平的CPU时间。<br>
+<strong>Fair-Share Scheduling ensures each user gets a fair share of CPU
+time.</strong></p>
+<p>• <strong>实时系统调度：</strong>
+通过可调度性条件确保系统能够满足实时任务的截止时间和资源需求。<br>
+<strong>Real-time system scheduling ensures the system can meet the
+deadlines and resource requirements of real-time tasks through
+schedulability conditions.</strong></p>
+<p>• <strong>用户级线程调度与内核级线程调度：</strong>
+用户级线程调度性能更高，但无法利用多核；内核级线程调度支持多核，但性能稍低。<br>
+<strong>User-level thread scheduling offers higher performance but
+cannot utilize multi-core processors, while kernel-level thread
+scheduling supports multi-core but has slightly lower
+performance.</strong></p>
+<p>通过理解这些高级调度算法和实时系统调度机制，可以更好地设计和实现操作系统中的调度策略，优化系统性能和用户体验。<br>
+<strong>By understanding these advanced scheduling algorithms and
+real-time system scheduling mechanisms, we can better design and
+implement scheduling strategies in operating systems, optimizing system
+performance and user experience.</strong></p>
+<hr>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://www.totorocatcat.top/">Totoro</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://totorocatcat.top/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FCH2%EF%BC%883%EF%BC%89/">http://totorocatcat.top/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FCH2%EF%BC%883%EF%BC%89/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://totorocatcat.top" target="_blank">Totoroの旅</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%8F%90%E9%AB%98/">提高</a></div><div class="post_share"><div class="social-share" data-image="https://npm.elemecdn.com/ushio-api-img-moe@5.0.22/img_220_1200x675_350.011993408203_null_normal.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FCH3%EF%BC%88A%EF%BC%89/" title="操作系统CH3（A）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/ushio-api-img-moe@5.0.22/img_220_1200x675_350.011993408203_null_normal.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">操作系统CH3（A）</div></div></a></div><div class="next-post pull-right"><a href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%882%EF%BC%89/" title="操作系统CH2（2）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/ushio-api-img-moe@5.0.22/img_220_1200x675_350.011993408203_null_normal.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">操作系统CH2（2）</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/'Lec2%20Logic%20and%20Proof,%20Sets,%20and%20Function'/" title="Lec2 Logic and Proof, Sets, and Function"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/1fe6130ca86bb9e7e6a37c9187a32c8.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-11-20</div><div class="title">Lec2 Logic and Proof, Sets, and Function</div></div></a></div><div><a href="/02%EF%BC%89/" title="CS61B 课程笔记（Lecture 02）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/v2-2ed7f4c9e1a7a699a3ef300a6f761abe_720w.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-11</div><div class="title">CS61B 课程笔记（Lecture 02）</div></div></a></div><div><a href="/03%EF%BC%89/" title="CS61B 课程笔记（Lecture 03）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/v2-2ed7f4c9e1a7a699a3ef300a6f761abe_720w.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-12</div><div class="title">CS61B 课程笔记（Lecture 03）</div></div></a></div><div><a href="/04%EF%BC%89/" title="CS61B 课程笔记（Lecture 04）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/2749a496aabc7d650b2912e256582e390a0a636b.jpg@1256w_1246h_!web-article-pic.avif" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-13</div><div class="title">CS61B 课程笔记（Lecture 04）</div></div></a></div><div><a href="/06%EF%BC%89/" title="CS61B 课程笔记（Lecture 06）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/f00af0d55cc81c18403ccbb4957ae6bc298252208.jpg@1256w_1374h_!web-article-pic.avif" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-15</div><div class="title">CS61B 课程笔记（Lecture 06）</div></div></a></div><div><a href="/05%EF%BC%89/" title="CS61B 课程笔记（Lecture 05）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/4ccebbc43a0ca31a719afadee2f86b4902402baf.jpg@1256w_786h_!web-article-pic.avif" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-14</div><div class="title">CS61B 课程笔记（Lecture 05）</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/px3.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Totoro</div><div class="author-info__description">热爱文学的SCUT软件学院学生</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">842</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">36</div></a></div><a id="card-info-btn" href="https://github.com/4512abc"><i class="fab fa-github"></i><span>🛴前往小窝......</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/4512abc" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:4512abc@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到龙猫の小窝</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#chapter-2-2.5-scheduling"><span class="toc-text">Chapter 2 2.5 Scheduling</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%AC%E8%AE%B2%E5%86%85%E5%AE%B9%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95"><span class="toc-text">本讲内容：调度算法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E8%B0%83%E5%BA%A6"><span class="toc-text">1. 什么是调度？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%95%E6%97%B6%E8%B0%83%E5%BA%A6"><span class="toc-text">2. 何时调度？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95"><span class="toc-text">3. 基本调度算法</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%89%B9%E5%A4%84%E7%90%86%E7%B3%BB%E7%BB%9Fbatch-systems"><span class="toc-text">批处理系统（Batch
+Systems）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BA%A4%E4%BA%92%E5%BC%8F%E7%B3%BB%E7%BB%9Finteractive-systems"><span class="toc-text">交互式系统（Interactive
+Systems）</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%AB%98%E7%BA%A7%E8%B0%83%E5%BA%A6%E7%AD%96%E7%95%A5"><span class="toc-text">4. 高级调度策略</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">5. 总结</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B0%83%E5%BA%A6%E4%B8%8E%E8%BF%9B%E7%A8%8B%E8%A1%8C%E4%B8%BA"><span class="toc-text">调度与进程行为</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E8%B0%83%E5%BA%A6-1"><span class="toc-text">1. 什么是调度？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6%E5%99%A8"><span class="toc-text">2. 进程调度器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E8%A1%8C%E4%B8%BA"><span class="toc-text">3. 进程行为</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#cpu%E7%AA%81%E5%8F%91cpu-bursts"><span class="toc-text">CPU突发（CPU Bursts）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#io%E7%AA%81%E5%8F%91io-bursts"><span class="toc-text">I&#x2F;O突发（I&#x2F;O Bursts）</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E8%A1%8C%E4%B8%BA%E7%9A%84%E7%B1%BB%E5%9E%8B"><span class="toc-text">4. 进程行为的类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#cpu%E4%B8%8Eio%E7%AA%81%E5%8F%91%E7%9A%84%E4%BA%A4%E6%9B%BF"><span class="toc-text">5. CPU与I&#x2F;O突发的交替</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E8%A1%8C%E4%B8%BA%E7%9A%84%E5%8F%98%E5%8C%96%E8%B6%8B%E5%8A%BF"><span class="toc-text">6. 进程行为的变化趋势</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-1"><span class="toc-text">总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cpu%E8%B0%83%E5%BA%A6"><span class="toc-text">CPU调度</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#cpu%E8%B0%83%E5%BA%A6%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-text">1. CPU调度的问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B0%83%E5%BA%A6%E6%97%B6%E6%9C%BA"><span class="toc-text">2. 调度时机</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8A%A2%E5%8D%A0%E5%BC%8F%E4%B8%8E%E9%9D%9E%E6%8A%A2%E5%8D%A0%E5%BC%8F%E8%B0%83%E5%BA%A6"><span class="toc-text">3.
+抢占式与非抢占式调度</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%9D%9E%E6%8A%A2%E5%8D%A0%E5%BC%8F%E8%B0%83%E5%BA%A6non-preemptive-scheduling"><span class="toc-text">非抢占式调度（Non-Preemptive
+Scheduling）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%8A%A2%E5%8D%A0%E5%BC%8F%E8%B0%83%E5%BA%A6preemptive-scheduling"><span class="toc-text">抢占式调度（Preemptive
+Scheduling）</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95%E7%9A%84%E5%88%86%E7%B1%BB"><span class="toc-text">4. 调度算法的分类</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%89%B9%E5%A4%84%E7%90%86%E7%B3%BB%E7%BB%9Fbatch-system"><span class="toc-text">批处理系统（Batch
+System）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BA%A4%E4%BA%92%E5%BC%8F%E7%B3%BB%E7%BB%9Finteractive-system"><span class="toc-text">交互式系统（Interactive
+System）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AE%9E%E6%97%B6%E7%B3%BB%E7%BB%9Freal-time-system"><span class="toc-text">实时系统（Real-Time
+System）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-2"><span class="toc-text">总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95%E4%B8%8E%E6%80%A7%E8%83%BD%E6%8C%87%E6%A0%87"><span class="toc-text">调度算法与性能指标</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95%E7%9A%84%E8%AE%BE%E8%AE%A1%E7%9B%AE%E6%A0%87"><span class="toc-text">1. 调度算法的设计目标</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%A7%E8%83%BD%E6%8C%87%E6%A0%87"><span class="toc-text">2. 性能指标</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%89%80%E6%9C%89%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%85%B1%E5%90%8C%E6%8C%87%E6%A0%87"><span class="toc-text">所有系统的共同指标</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%89%B9%E5%A4%84%E7%90%86%E7%B3%BB%E7%BB%9F%E7%9A%84%E6%80%A7%E8%83%BD%E6%8C%87%E6%A0%87"><span class="toc-text">批处理系统的性能指标</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BA%A4%E4%BA%92%E5%BC%8F%E7%B3%BB%E7%BB%9F%E7%9A%84%E6%80%A7%E8%83%BD%E6%8C%87%E6%A0%87"><span class="toc-text">交互式系统的性能指标</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AE%9E%E6%97%B6%E7%B3%BB%E7%BB%9F%E7%9A%84%E6%80%A7%E8%83%BD%E6%8C%87%E6%A0%87"><span class="toc-text">实时系统的性能指标</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-3"><span class="toc-text">总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95%E5%A4%84%E7%90%86%E5%99%A8%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95"><span class="toc-text">单处理器调度算法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%89%B9%E5%A4%84%E7%90%86%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95"><span class="toc-text">1.
+批处理系统的调度算法</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%85%88%E6%9D%A5%E5%85%88%E6%9C%8D%E5%8A%A1first-come-first-served-fcfs"><span class="toc-text">先来先服务（First
+Come First Served, FCFS）</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#fcfs%E7%A4%BA%E4%BE%8B"><span class="toc-text">FCFS示例</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#fcfs%E7%9A%84%E6%8A%A4%E8%88%AA%E6%95%88%E5%BA%94convoy-effect"><span class="toc-text">FCFS的护航效应（Convoy
+Effect）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#unix%E4%B8%AD%E7%9A%84nice%E5%91%BD%E4%BB%A4"><span class="toc-text">4. Unix中的“nice”命令</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-4"><span class="toc-text">总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E7%BA%A7%E5%8F%8D%E9%A6%88%E9%98%9F%E5%88%97%E8%B0%83%E5%BA%A6multi-level-feedback-queue-mlfq"><span class="toc-text">多级反馈队列调度（Multi-Level
+Feedback Queue, MLFQ）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%9A%E7%BA%A7%E5%8F%8D%E9%A6%88%E9%98%9F%E5%88%97%E8%B0%83%E5%BA%A6%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-text">1.
+多级反馈队列调度的定义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%9A%E7%BA%A7%E5%8F%8D%E9%A6%88%E9%98%9F%E5%88%97%E8%B0%83%E5%BA%A6%E7%9A%84%E7%BB%86%E8%8A%82"><span class="toc-text">2.
+多级反馈队列调度的细节</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%9A%E7%BA%A7%E5%8F%8D%E9%A6%88%E9%98%9F%E5%88%97%E8%B0%83%E5%BA%A6%E7%9A%84%E7%A4%BA%E4%BE%8B"><span class="toc-text">3.
+多级反馈队列调度的示例</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-5"><span class="toc-text">总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E7%BA%A7%E5%8F%8D%E9%A6%88%E9%98%9F%E5%88%97%E8%B0%83%E5%BA%A6mlfq%E7%A4%BA%E4%BE%8B%E4%B8%8E%E8%AE%A1%E7%AE%97"><span class="toc-text">多级反馈队列调度（MLFQ）示例与计算</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0"><span class="toc-text">1. 问题描述</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-6"><span class="toc-text">总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95%E5%9B%9E%E9%A1%BE"><span class="toc-text">调度算法回顾</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%89%B9%E5%A4%84%E7%90%86%E7%B3%BB%E7%BB%9F%E4%B8%AD%E7%9A%84%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95"><span class="toc-text">1.
+批处理系统中的调度算法</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%85%88%E6%9D%A5%E5%85%88%E6%9C%8D%E5%8A%A1first-come-first-served-fcfs-1"><span class="toc-text">1.1
+先来先服务（First Come First Served, FCFS）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%9C%80%E7%9F%AD%E4%BD%9C%E4%B8%9A%E4%BC%98%E5%85%88shortest-job-first-sjf"><span class="toc-text">1.2
+最短作业优先（Shortest Job First, SJF）</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%A4%E4%BA%92%E5%BC%8F%E7%B3%BB%E7%BB%9F%E4%B8%AD%E7%9A%84%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95"><span class="toc-text">2.
+交互式系统中的调度算法</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%BD%AE%E8%BD%AC%E8%B0%83%E5%BA%A6round-robin-rr"><span class="toc-text">2.1 轮转调度（Round-Robin,
+RR）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BC%98%E5%85%88%E7%BA%A7%E8%B0%83%E5%BA%A6priority-scheduling"><span class="toc-text">2.2 优先级调度（Priority
+Scheduling）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%A4%9A%E7%BA%A7%E9%98%9F%E5%88%97%E8%B0%83%E5%BA%A6multi-queue-scheduling"><span class="toc-text">2.3
+多级队列调度（Multi-Queue Scheduling）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%A4%9A%E7%BA%A7%E5%8F%8D%E9%A6%88%E9%98%9F%E5%88%97%E8%B0%83%E5%BA%A6multi-level-feedback-queue-mlfq-1"><span class="toc-text">2.4
+多级反馈队列调度（Multi-Level Feedback Queue, MLFQ）</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93"><span class="toc-text">3. 调度算法总结</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-7"><span class="toc-text">总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%AB%98%E7%BA%A7%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95%E4%B8%8E%E5%AE%9E%E6%97%B6%E7%B3%BB%E7%BB%9F%E8%B0%83%E5%BA%A6"><span class="toc-text">高级调度算法与实时系统调度</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BF%9D%E8%AF%81%E8%B0%83%E5%BA%A6guaranteed-scheduling-qos"><span class="toc-text">7.
+保证调度（Guaranteed Scheduling, QoS）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BD%A9%E7%A5%A8%E8%B0%83%E5%BA%A6lottery-scheduling"><span class="toc-text">8. 彩票调度（Lottery
+Scheduling）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%AC%E5%B9%B3%E5%85%B1%E4%BA%AB%E8%B0%83%E5%BA%A6fair-share-scheduling"><span class="toc-text">9.
+公平共享调度（Fair-Share Scheduling）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E6%97%B6%E7%B3%BB%E7%BB%9F%E8%B0%83%E5%BA%A6scheduling-in-real-time-systems"><span class="toc-text">10.
+实时系统调度（Scheduling in Real-Time Systems）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E7%BA%A7%E7%BA%BF%E7%A8%8B%E8%B0%83%E5%BA%A6user-level-thread-scheduling"><span class="toc-text">11.
+用户级线程调度（User-Level Thread Scheduling）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%86%85%E6%A0%B8%E7%BA%A7%E7%BA%BF%E7%A8%8B%E8%B0%83%E5%BA%A6kernel-level-thread-scheduling"><span class="toc-text">12.
+内核级线程调度（Kernel-Level Thread Scheduling）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-8"><span class="toc-text">总结</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/%E6%97%B6%E9%97%B4%E7%BA%BF%E8%A1%A8/" title="时间线表"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://source.fomal.cc/img/default_cover_5.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="时间线表"/></a><div class="content"><a class="title" href="/%E6%97%B6%E9%97%B4%E7%BA%BF%E8%A1%A8/" title="时间线表">时间线表</a><time datetime="2025-05-06T16:24:18.000Z" title="发表于 2025-05-07 00:24:18">2025-05-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FCH3%EF%BC%88A%EF%BC%89/" title="操作系统CH3（A）"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/ushio-api-img-moe@5.0.22/img_220_1200x675_350.011993408203_null_normal.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="操作系统CH3（A）"/></a><div class="content"><a class="title" href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FCH3%EF%BC%88A%EF%BC%89/" title="操作系统CH3（A）">操作系统CH3（A）</a><time datetime="2025-05-06T09:06:41.000Z" title="发表于 2025-05-06 17:06:41">2025-05-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FCH2%EF%BC%883%EF%BC%89/" title="操作系统CH2（3）"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/ushio-api-img-moe@5.0.22/img_220_1200x675_350.011993408203_null_normal.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="操作系统CH2（3）"/></a><div class="content"><a class="title" href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FCH2%EF%BC%883%EF%BC%89/" title="操作系统CH2（3）">操作系统CH2（3）</a><time datetime="2025-05-06T09:05:47.000Z" title="发表于 2025-05-06 17:05:47">2025-05-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%882%EF%BC%89/" title="操作系统CH2（2）"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/ushio-api-img-moe@5.0.22/img_220_1200x675_350.011993408203_null_normal.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="操作系统CH2（2）"/></a><div class="content"><a class="title" href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%882%EF%BC%89/" title="操作系统CH2（2）">操作系统CH2（2）</a><time datetime="2025-05-06T09:04:48.000Z" title="发表于 2025-05-06 17:04:48">2025-05-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FCH2/" title="操作系统CH2（1）"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/ushio-api-img-moe@5.0.22/img_220_1200x675_350.011993408203_null_normal.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="操作系统CH2（1）"/></a><div class="content"><a class="title" href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FCH2/" title="操作系统CH2（1）">操作系统CH2（1）</a><time datetime="2025-05-06T09:03:29.000Z" title="发表于 2025-05-06 17:03:29">2025-05-06</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 - 2025 By Totoro</div><div class="footer_custom_text">I wish you to become your own sun, no need to rely on who's light.<p><a target="_blank" href="https://hexo.io/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&logo=hexo" title="博客框架为Hexo"></a>&nbsp;<a target="_blank" href="https://butterfly.js.org/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&logo=bitdefender" title="主题采用butterfly"></a>&nbsp;<a target="_blank" href="https://www.jsdelivr.com/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&logo=jsDelivr" title="本站使用JsDelivr为静态资源提供CDN加速"></a> &nbsp;<a target="_blank" href="https://vercel.com/ "><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Hosted-Vervel-brightgreen?style=flat&logo=Vercel" title="本站采用双线部署，默认线路托管于Vercel"></a>&nbsp;<a target="_blank" href="https://vercel.com/ "><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Hosted-Coding-0cedbe?style=flat&logo=Codio" title="本站采用双线部署，联通线路托管于Coding"></a>&nbsp;<a target="_blank" href="https://github.com/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&logo=GitHub" title="本站项目由Gtihub托管"></a>&nbsp;<a target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&logo=Claris" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"></a></p></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat-btn" type="button" title="聊天"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="/js/tw_cn.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@5.2.0/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'HT1PalaKkPaG1UqAXBhJXIu8-gzGzoHsz',
+      appKey: 'iT0TnVVAwf9zuZ7NqwclQItY',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://cdn.jsdelivr.net/npm/valine@1.5.1/dist/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><script defer src="/js/light.js"></script><canvas id="universe"></canvas><script defer src="/js/universe.js"></script><script async src="/js/title.js"></script><script defer src="https://npm.elemecdn.com/jquery@latest/dist/jquery.min.js"></script><script defer data-pjax src="/js/cat.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="1" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener
+  btf.removeGlobalFnEvent('pjax')
+  btf.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.12.0"></script></div></div><!-- hexo injector body_end start --><script data-pjax>
+  function butterfly_swiper_injector_config(){
+    var parent_div_git = document.getElementById('recent-posts');
+    var item_html = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms;"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;诗录/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/4b31456c6f0f4489f99177f89e936de7286431045.png@1256w_708h_!web-article-pic.avif" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-10-01</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;诗录/&quot;);" href="javascript:void(0);" alt="">诗录</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;诗录/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;诗兴大发/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://source.fomal.cc/img/default_cover_69.webp" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-01-29</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;诗兴大发/&quot;);" href="javascript:void(0);" alt="">诗兴大发</a><div class="blog-slider__text">未觉，却是中二少年的诗仙梦</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;诗兴大发/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;TotoroのPlan/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/51d37eba99d243607ddedfff6e91568f617436609.jpg@1256w_1884h_!web-article-pic.avif" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-10-05</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;TotoroのPlan/&quot;);" href="javascript:void(0);" alt="">TotoroのPlan</a><div class="blog-slider__text">方便大二看（）</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;TotoroのPlan/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;Markdown格式/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/ushio-api-img-moe@5.0.48/img_482_1920x1080_96_null_normal.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-03-03</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;Markdown格式/&quot;);" href="javascript:void(0);" alt="">Markdown格式</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;Markdown格式/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载butterfly_swiper')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_swiper_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_swiper_injector_config();
+  }
+  </script><script defer src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.js"></script><script defer data-pjax src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper_init.js"></script><script data-pjax>
+    function butterfly_categories_card_injector_config(){
+      var parent_div_git = document.getElementById('recent-posts');
+      var item_html = '<style>li.categoryBar-list-item{width:32.3%;}.categoryBar-list{max-height: 380px;overflow:auto;}.categoryBar-list::-webkit-scrollbar{width:0!important}@media screen and (max-width: 650px){.categoryBar-list{max-height: 320px;}}</style><div class="recent-post-item" style="height:auto;width:100%;padding:0px;"><div id="categoryBar"><ul class="categoryBar-list"><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_12.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/离散数学/&quot;);" href="javascript:void(0);">离散数学</a><span class="categoryBar-list-count">33</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_13.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS61B/&quot;);" href="javascript:void(0);">CS61B</a><span class="categoryBar-list-count">76</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_14.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/期末の旅/&quot;);" href="javascript:void(0);">期末の旅</a><span class="categoryBar-list-count">99</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_17.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/刷题计划/&quot;);" href="javascript:void(0);">刷题计划</a><span class="categoryBar-list-count">60</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_18.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/区域赛の旅/&quot;);" href="javascript:void(0);">区域赛の旅</a><span class="categoryBar-list-count">7</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_19.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/Codeforcesの旅/&quot;);" href="javascript:void(0);">Codeforcesの旅</a><span class="categoryBar-list-count">24</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_20.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/牛客の旅/&quot;);" href="javascript:void(0);">牛客の旅</a><span class="categoryBar-list-count">65</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_21.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/ACMの旅/&quot;);" href="javascript:void(0);">ACMの旅</a><span class="categoryBar-list-count">42</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_22.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/数学建模/&quot;);" href="javascript:void(0);">数学建模</a><span class="categoryBar-list-count">26</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_22.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/前端の旅/&quot;);" href="javascript:void(0);">前端の旅</a><span class="categoryBar-list-count">17</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_23.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/数据结构/&quot;);" href="javascript:void(0);">数据结构</a><span class="categoryBar-list-count">47</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_24.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/Atcoderの旅/&quot;);" href="javascript:void(0);">Atcoderの旅</a><span class="categoryBar-list-count">53</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_25.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/C-の旅/&quot;);" href="javascript:void(0);">C++の旅</a><span class="categoryBar-list-count">17</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_26.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS70の旅/&quot;);" href="javascript:void(0);">CS70の旅</a><span class="categoryBar-list-count">24</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_27.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CSAPPの旅/&quot;);" href="javascript:void(0);">CSAPPの旅</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_28.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/计算机组成原理/&quot;);" href="javascript:void(0);">计算机组成原理</a><span class="categoryBar-list-count">47</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_29.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/编程基础/&quot;);" href="javascript:void(0);">编程基础</a><span class="categoryBar-list-count">14</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_30.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/JAVAの旅/&quot;);" href="javascript:void(0);">JAVAの旅</a><span class="categoryBar-list-count">10</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_31.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/MIT-6-031-Software-Construction/&quot;);" href="javascript:void(0);">MIT 6.031:Software Construction</a><span class="categoryBar-list-count">16</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_32.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS-110L/&quot;);" href="javascript:void(0);">CS 110L</a><span class="categoryBar-list-count">3</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_33.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/数据库の旅/&quot;);" href="javascript:void(0);">数据库の旅</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_34.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/灵魂の旅/&quot;);" href="javascript:void(0);">灵魂の旅</a><span class="categoryBar-list-count">2</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_35.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/个人安排/&quot;);" href="javascript:void(0);">个人安排</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_36.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/杂项/&quot;);" href="javascript:void(0);">杂项</a><span class="categoryBar-list-count">13</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_37.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/文学/&quot;);" href="javascript:void(0);">文学</a><span class="categoryBar-list-count">49</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_38.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/力扣の旅/&quot;);" href="javascript:void(0);">力扣の旅</a><span class="categoryBar-list-count">20</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_39.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/计算机网络/&quot;);" href="javascript:void(0);">计算机网络</a><span class="categoryBar-list-count">18</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_40.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/千里十二行/&quot;);" href="javascript:void(0);">千里十二行</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_41.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/🗡指offer/&quot;);" href="javascript:void(0);">🗡指offer</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_42.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/少年游/&quot;);" href="javascript:void(0);">少年游</a><span class="categoryBar-list-count">2</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_43.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/算法提高课/&quot;);" href="javascript:void(0);">算法提高课</a><span class="categoryBar-list-count">3</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_44.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/汇编の旅/&quot;);" href="javascript:void(0);">汇编の旅</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_44.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/C-实训/&quot;);" href="javascript:void(0);">C++实训</a><span class="categoryBar-list-count">8</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_45.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS知识/&quot;);" href="javascript:void(0);">CS知识</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_46.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/编译原理/&quot;);" href="javascript:void(0);">编译原理</a><span class="categoryBar-list-count">22</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_48.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/操作系统/&quot;);" href="javascript:void(0);">操作系统</a><span class="categoryBar-list-count">14</span><span class="categoryBar-list-descr"></span></li></ul></div></div>';
+      console.log('已挂载butterfly_categories_card')
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+      }
+    if( document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+    butterfly_categories_card_injector_config()
+    }
+  </script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>
