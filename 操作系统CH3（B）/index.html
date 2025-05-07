@@ -1,0 +1,2893 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>操作系统CH3（B） | Totoroの旅</title><meta name="author" content="Totoro"><meta name="copyright" content="Totoro"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="CH3 B  分页策略（Paging Policies）  1. 分页策略的分类 1.1 Fetch Strategies（获取策略） • 定义： • 决定何时将页面从辅助存储（如磁盘）加载到主内存中。 Definition: Determines when a page should be brought from secondary storage (e.g., disk">
+<meta property="og:type" content="article">
+<meta property="og:title" content="操作系统CH3（B）">
+<meta property="og:url" content="http://totorocatcat.top/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FCH3%EF%BC%88B%EF%BC%89/index.html">
+<meta property="og:site_name" content="Totoroの旅">
+<meta property="og:description" content="CH3 B  分页策略（Paging Policies）  1. 分页策略的分类 1.1 Fetch Strategies（获取策略） • 定义： • 决定何时将页面从辅助存储（如磁盘）加载到主内存中。 Definition: Determines when a page should be brought from secondary storage (e.g., disk">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E4%BE%A0%E5%AE%A2-%E5%89%91%E6%9D%A5-%E5%8F%A4%E9%A3%8E.png">
+<meta property="article:published_time" content="2025-05-07T08:30:57.000Z">
+<meta property="article:modified_time" content="2025-05-07T08:32:50.568Z">
+<meta property="article:author" content="Totoro">
+<meta property="article:tag" content="提高">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E4%BE%A0%E5%AE%A2-%E5%89%91%E6%9D%A5-%E5%8F%A4%E9%A3%8E.png"><link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/b5ca6e582a7a45e6fde46e616eeb68e.png"><link rel="canonical" href="http://totorocatcat.top/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FCH3%EF%BC%88B%EF%BC%89/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta/><link rel="stylesheet" href="/css/index.css?v=4.12.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  noticeOutdate: {"limitDay":765,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体中文","cht_to_chs":"你已切换为简体中文","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"top-right"},
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '操作系统CH3（B）',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: true,
+  isToc: true,
+  postUpdate: '2025-05-07 16:32:50'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const now = new Date()
+          const hour = now.getHours()
+          const isNight = hour <= 6 || hour >= 18
+          if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/universe.css"><link rel="stylesheet" href="/css/scrollbar.css"><link rel="stylesheet" href="/css/cat.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-categories-card@1.0.0/lib/categorybar.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-double-row-display@1.00/cardlistpost.min.css"/>
+<style>#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags:before {content:"\A";
+  white-space: pre;}#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags > .article-meta__separator{display:none}</style>
+<link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiperstyle.css" media="print" onload="this.media='all'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><div class="loading-img"></div><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><script>window.paceOptions = {
+  restartOnPushState: false
+}
+
+document.addEventListener('pjax:send', () => {
+  Pace.restart()
+})
+</script><link rel="stylesheet" href="/css/progress_bar.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/px3.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">846</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">37</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home-alt"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-envelope-open"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 趣味</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/project/"><i class="fa-fw fas fas fa-folder"></i><span> 项目</span></a></div><div class="menus_item"><a class="site-page" href="/stars/"><i class="fa-fw fas fa-bookmark"></i><span> 收藏</span></a></div><div class="menus_item"><a class="site-page" href="/bilibili/"><i class="fa-fw fas fa-tv"></i><span> 追番</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E4%BE%A0%E5%AE%A2-%E5%89%91%E6%9D%A5-%E5%8F%A4%E9%A3%8E.png')"><nav id="nav"><span id="blog-info"><a href="/" title="Totoroの旅"><span class="site-name">Totoroの旅</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home-alt"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-envelope-open"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 趣味</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/project/"><i class="fa-fw fas fas fa-folder"></i><span> 项目</span></a></div><div class="menus_item"><a class="site-page" href="/stars/"><i class="fa-fw fas fa-bookmark"></i><span> 收藏</span></a></div><div class="menus_item"><a class="site-page" href="/bilibili/"><i class="fa-fw fas fa-tv"></i><span> 追番</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">操作系统CH3（B）</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-05-07T08:30:57.000Z" title="发表于 2025-05-07 16:30:57">2025-05-07</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-05-07T08:32:50.568Z" title="更新于 2025-05-07 16:32:50">2025-05-07</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">20.9k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>70分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="操作系统CH3（B）"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FCH3%EF%BC%88B%EF%BC%89/#post-comment" itemprop="discussionUrl"><span class="valine-comment-count" data-xid="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FCH3%EF%BC%88B%EF%BC%89/" itemprop="commentCount"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="ch3-b">CH3 B</h1>
+<hr>
+<h3 id="分页策略paging-policies"><strong>分页策略（Paging
+Policies）</strong></h3>
+<hr>
+<h3 id="分页策略的分类"><strong>1. 分页策略的分类</strong></h3>
+<h4 id="fetch-strategies获取策略"><strong>1.1 Fetch
+Strategies（获取策略）</strong></h4>
+<p>• <strong>定义：</strong><br>
+• 决定何时将页面从辅助存储（如磁盘）加载到主内存中。<br>
+<strong>Definition: Determines when a page should be brought from
+secondary storage (e.g., disk) into primary memory.</strong></p>
+<p>• <strong>常见策略：</strong> 1. <strong>按需获取（Demand
+Fetching）：</strong><br>
+◦ 只有在需要访问某页面时，才将其加载到主内存中。<br>
+<strong>Bring a page into primary memory only when it is
+needed.</strong> 2. <strong>预取（Prepaging）：</strong><br>
+◦ 在加载某个页面时，提前将相邻页面也加载到主内存中。<br>
+<strong>Bring a page into primary memory in advance, along with adjacent
+pages.</strong></p>
+<hr>
+<h4 id="replacement-strategies替换策略"><strong>1.2 Replacement
+Strategies（替换策略）</strong></h4>
+<p>• <strong>定义：</strong><br>
+• 当主内存已满且需要加载新页面时，决定移除哪个页面以腾出空间。<br>
+<strong>Definition: Determines which page in primary memory should be
+removed to make space for a new page when memory is full.</strong></p>
+<p>• <strong>常见策略：</strong> 1. <strong>最优算法（Optimal
+Algorithm）：</strong><br>
+◦ 替换未来最长时间不会被访问的页面。<br>
+<strong>Replace the page that will not be used again for the longest
+time in the future.</strong> 2.
+<strong>先进先出（FIFO）：</strong><br>
+◦ 替换最早进入主内存的页面。<br>
+<strong>Replace the page that has been in primary memory the
+longest.</strong> 3. <strong>二次机会（Second Chance）：</strong><br>
+◦ FIFO 的改进版本，为页面提供“二次机会”，避免移除活跃页面。<br>
+<strong>An improved version of FIFO that gives pages a "second chance"
+to avoid removing active pages.</strong> 4. <strong>时钟算法（Clock
+Algorithm）：</strong><br>
+◦ 使用环形链表和引用位实现二次机会的改进版本。<br>
+<strong>An improved version of second chance using a circular list and
+reference bits.</strong> 5. <strong>最近最少使用（LRU）：</strong><br>
+◦ 替换最近最少被访问的页面。<br>
+<strong>Replace the page that has not been accessed for the longest
+time.</strong> 6. <strong>最不常用（LFU）：</strong><br>
+◦ 替换访问频率最低的页面。<br>
+<strong>Replace the page with the lowest access frequency.</strong> 7.
+<strong>老化算法（Aging）：</strong><br>
+◦ LFU 的改进版本，通过逐渐衰减访问频率计数器来减少历史访问的影响。<br>
+<strong>An improved version of LFU that gradually decays access
+frequency counters to reduce the impact of historical accesses.</strong>
+8. <strong>工作集算法（Working Set Algorithm）：</strong><br>
+◦ 保留进程当前正在使用的页面，移除不在工作集中的页面。<br>
+<strong>Keep in memory the pages that the process is actively using and
+remove those not in the working set.</strong> 9. <strong>WSClock
+算法：</strong><br>
+◦ 工作集算法和时钟算法的结合，通过引用位和时间戳近似工作集。<br>
+<strong>A combination of the working set algorithm and clock algorithm,
+approximating the working set using reference bits and
+timestamps.</strong></p>
+<hr>
+<h4 id="clean-strategies清理策略"><strong>1.3 Clean
+Strategies（清理策略）</strong></h4>
+<p>• <strong>定义：</strong><br>
+• 决定何时将主内存中的页面写回磁盘（如果页面被修改过）。<br>
+<strong>Definition: Determines when a page in primary memory should be
+written back to disk if it has been modified.</strong></p>
+<p>• <strong>常见策略：</strong> 1.
+<strong>立即写回（Write-Through）：</strong><br>
+◦ 每次页面被修改时，立即将其写回磁盘。<br>
+<strong>Write the page back to disk immediately after it is
+modified.</strong> 2. <strong>延迟写回（Write-Back）：</strong><br>
+◦ 只有在页面被替换或显式刷新时，才将其写回磁盘。<br>
+<strong>Write the page back to disk only when it is replaced or
+explicitly flushed.</strong></p>
+<hr>
+<h3 id="fetch-strategies-的详细讲解"><strong>2. Fetch Strategies
+的详细讲解</strong></h3>
+<h4 id="按需获取demand-fetching"><strong>2.1 按需获取（Demand
+Fetching）</strong></h4>
+<p>• <strong>工作原理：</strong><br>
+1. 当发生页面错误（Page
+Fault）时，检查虚拟地址是否有效。如果无效，终止进程。<br>
+<strong>When a page fault occurs, check if the virtual address is valid.
+If invalid, terminate the process.</strong> 2.
+如果地址有效，检查页面是否已在内存中（可能被其他进程缓存）。如果是，直接跳转到第
+7 步。<br>
+<strong>If the address is valid, check if the page is already in memory
+(possibly cached for another process). If so, skip to step 7.</strong>
+3. 查找一个空闲页帧。<br>
+<strong>Find a free page frame.</strong> 4.
+将磁盘块映射到页帧，并将磁盘块加载到页帧中，暂停用户进程。<br>
+<strong>Map the disk block to the page frame and load the disk block
+into the page frame, suspending the user process.</strong> 5.
+磁盘读取完成后，更新页表映射。<br>
+<strong>After the disk read is complete, update the page table
+mapping.</strong> 6. 如果需要，重新启动进程。<br>
+<strong>Restart the process if necessary.</strong></p>
+<p>• <strong>优点：</strong><br>
+• 节省内存，只有在需要时才加载页面。<br>
+<strong>Advantage: Saves memory by loading pages only when
+needed.</strong></p>
+<p>• <strong>缺点：</strong><br>
+• 页面错误可能导致性能下降。<br>
+<strong>Disadvantage: Page faults can lead to performance
+degradation.</strong></p>
+<hr>
+<h4 id="预取prepaging"><strong>2.2 预取（Prepaging）</strong></h4>
+<p>• <strong>工作原理：</strong><br>
+• 在加载某个页面时，提前将相邻页面也加载到主内存中。<br>
+<strong>When a page is loaded, bring adjacent pages into memory in
+advance.</strong></p>
+<p>• <strong>优点：</strong><br>
+1. 提高 I/O 效率，减少后续页面加载的延迟。<br>
+<strong>Improves I/O efficiency by reducing the latency of subsequent
+page loads.</strong> 2. 适合顺序访问模式。<br>
+<strong>Suitable for sequential access patterns.</strong></p>
+<p>• <strong>缺点：</strong><br>
+1. 基于预测，如果预取的页面很少被访问，效率较低。<br>
+<strong>Based on prediction; if prefetched pages are rarely accessed,
+efficiency is low.</strong> 2. 可能浪费内存。<br>
+<strong>May waste memory.</strong></p>
+<p>• <strong>应用场景：</strong><br>
+• 在加载页面时使用，尤其是顺序访问模式下。<br>
+<strong>Used when loading pages, especially in sequential access
+scenarios.</strong></p>
+<hr>
+<h3 id="page-replacement-的详细讲解"><strong>3. Page Replacement
+的详细讲解</strong></h3>
+<h4 id="页面替换的目标"><strong>3.1 页面替换的目标</strong></h4>
+<ol type="1">
+<li><strong>降低页面错误率（Main Objective）：</strong><br>
+• 确保频繁使用的页面留在内存中。<br>
+<strong>Ensure frequently used pages stay in memory.</strong> •
+替换的页面在一段时间内不会被再次访问。<br>
+<strong>Replace pages that are not needed for some time.</strong></li>
+<li><strong>减少页面错误的延迟（Reduce Latency of Page
+Faults）：</strong><br>
+• 使用高效的代码和算法。<br>
+<strong>Use efficient code and algorithms.</strong> •
+替换不需要写回磁盘的页面。<br>
+<strong>Replace pages that do not need to be written back to
+disk.</strong></li>
+</ol>
+<hr>
+<h4 id="页面替换算法"><strong>3.2 页面替换算法</strong></h4>
+<ol type="1">
+<li><p><strong>最优算法（Optimal Algorithm, OPT 或 MIN）</strong><br>
+• <strong>原理：</strong> 替换未来最长时间不会被访问的页面。<br>
+<strong>Principle: Replace the page that will not be used again for the
+longest time in the future.</strong><br>
+• <strong>优点：</strong> 理论上最优，页面错误率最低。<br>
+<strong>Advantage: Theoretically optimal with the lowest page fault
+rate.</strong><br>
+• <strong>缺点：</strong> 需要预知未来的页面访问序列，不可行。<br>
+<strong>Disadvantage: Requires knowledge of future page accesses, which
+is impractical.</strong></p></li>
+<li><p><strong>先进先出算法（FIFO, First-In-First-Out）</strong><br>
+• <strong>原理：</strong> 替换最早进入内存的页面。<br>
+<strong>Principle: Replace the page that has been in memory the
+longest.</strong><br>
+• <strong>优点：</strong> 实现简单，开销低。<br>
+<strong>Advantage: Simple to implement with low overhead.</strong><br>
+• <strong>缺点：</strong> 可能出现 Belady 异常。<br>
+<strong>Disadvantage: May exhibit Belady's anomaly.</strong></p></li>
+<li><p><strong>二次机会算法（Second-Chance Algorithm）</strong><br>
+• <strong>原理：</strong> FIFO
+的改进版本，为页面提供“二次机会”，避免移除活跃页面。<br>
+<strong>Principle: An improved version of FIFO that gives pages a
+"second chance" to avoid removing active pages.</strong><br>
+• <strong>优点：</strong> 改进了 FIFO，避免了 Belady 异常。<br>
+<strong>Advantage: Improves FIFO by avoiding Belady's
+anomaly.</strong><br>
+• <strong>缺点：</strong> 需要额外的硬件支持（引用位）。<br>
+<strong>Disadvantage: Requires additional hardware support (reference
+bits).</strong></p></li>
+<li><p><strong>时钟算法（Clock Algorithm）</strong><br>
+• <strong>原理：</strong>
+使用环形链表和引用位实现二次机会的改进版本。<br>
+<strong>Principle: An improved version of second chance using a circular
+list and reference bits.</strong><br>
+• <strong>优点：</strong> 性能接近 LRU，实现相对简单。<br>
+<strong>Advantage: Performance is close to LRU and simpler to
+implement.</strong><br>
+• <strong>缺点：</strong> 需要额外的硬件支持。<br>
+<strong>Disadvantage: Requires additional hardware
+support.</strong></p></li>
+<li><p><strong>最近最少使用算法（LRU, Least Recently
+Used）</strong><br>
+• <strong>原理：</strong> 替换最近最少被访问的页面。<br>
+<strong>Principle: Replace the page that has not been accessed for the
+longest time.</strong><br>
+• <strong>优点：</strong> 性能接近最优算法。<br>
+<strong>Advantage: Performance is close to the optimal
+algorithm.</strong><br>
+• <strong>缺点：</strong> 实现复杂，开销较高。<br>
+<strong>Disadvantage: Complex to implement with higher
+overhead.</strong></p></li>
+<li><p><strong>最不常用算法（LFU, Least Frequently Used）</strong><br>
+• <strong>原理：</strong> 替换访问频率最低的页面。<br>
+<strong>Principle: Replace the page with the lowest access
+frequency.</strong><br>
+• <strong>优点：</strong> 适合访问频率差异较大的场景。<br>
+<strong>Advantage: Suitable for scenarios with large differences in
+access frequency.</strong><br>
+• <strong>缺点：</strong> 需要维护访问频率计数器，开销较高。<br>
+<strong>Disadvantage: Requires maintaining access frequency counters,
+which increases overhead.</strong></p></li>
+<li><p><strong>老化算法（Aging）</strong><br>
+• <strong>原理：</strong> LFU
+的改进版本，通过逐渐衰减访问频率计数器来减少历史访问的影响。<br>
+<strong>Principle: An improved version of LFU that gradually decays
+access frequency counters to reduce the impact of historical
+accesses.</strong><br>
+• <strong>优点：</strong> 更适合动态变化的访问模式。<br>
+<strong>Advantage: Better suited for dynamically changing access
+patterns.</strong><br>
+• <strong>缺点：</strong> 实现复杂，需要额外的硬件支持。<br>
+<strong>Disadvantage: Complex to implement and requires additional
+hardware support.</strong></p></li>
+<li><p><strong>工作集算法（Working Set Algorithm）</strong><br>
+• <strong>原理：</strong>
+保留进程当前正在使用的页面，移除不在工作集中的页面。<br>
+<strong>Principle: Keep in memory the pages that the process is actively
+using and remove those not in the working set.</strong><br>
+• <strong>优点：</strong> 有效减少页面错误率。<br>
+<strong>Advantage: Effectively reduces page fault rates.</strong><br>
+• <strong>缺点：</strong> 需要维护工作集信息，开销较高。<br>
+<strong>Disadvantage: Requires maintaining working set information,
+which increases overhead.</strong></p></li>
+<li><p><strong>WSClock 算法</strong><br>
+• <strong>原理：</strong>
+工作集算法和时钟算法的结合，通过引用位和时间戳近似工作集。<br>
+<strong>Principle: A combination of the working set algorithm and clock
+algorithm, approximating the working set using reference bits and
+timestamps.</strong><br>
+• <strong>优点：</strong> 性能接近工作集算法，实现相对简单。<br>
+<strong>Advantage: Performance is close to the working set algorithm and
+simpler to implement.</strong><br>
+• <strong>缺点：</strong> 需要额外的硬件支持。<br>
+<strong>Disadvantage: Requires additional hardware
+support.</strong></p></li>
+</ol>
+<hr>
+<h3 id="页面替换算法的对比"><strong>4. 页面替换算法的对比</strong></h3>
+<table>
+<colgroup>
+<col style="width: 11%">
+<col style="width: 40%">
+<col style="width: 23%">
+<col style="width: 24%">
+</colgroup>
+<thead>
+<tr>
+<th><strong>算法</strong></th>
+<th><strong>原理</strong></th>
+<th><strong>优点</strong></th>
+<th><strong>缺点</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Optimal</strong></td>
+<td>替换未来最长时间不会被访问的页面。</td>
+<td>理论上最优，页面错误率最低。</td>
+<td>需要预知未来的页面访问序列，不可行。</td>
+</tr>
+<tr>
+<td><strong>FIFO</strong></td>
+<td>替换最早进入内存的页面。</td>
+<td>实现简单，开销低。</td>
+<td>可能出现 Belady 异常。</td>
+</tr>
+<tr>
+<td><strong>Second-Chance</strong></td>
+<td>改进的 FIFO，使用引用位避免替换活跃页面。</td>
+<td>改进了 FIFO，避免了 Belady 异常。</td>
+<td>需要额外的硬件支持。</td>
+</tr>
+<tr>
+<td><strong>Clock</strong></td>
+<td>使用环形链表和引用位实现二次机会的改进版本。</td>
+<td>性能接近 LRU，实现相对简单。</td>
+<td>需要额外的硬件支持。</td>
+</tr>
+<tr>
+<td><strong>LRU</strong></td>
+<td>替换最近最少被访问的页面。</td>
+<td>性能接近最优算法。</td>
+<td>实现复杂，开销较高。</td>
+</tr>
+<tr>
+<td><strong>LFU</strong></td>
+<td>替换访问频率最低的页面。</td>
+<td>适合访问频率差异较大的场景。</td>
+<td>需要维护访问频率计数器，开销较高。</td>
+</tr>
+<tr>
+<td><strong>Aging</strong></td>
+<td>LFU 的改进版本，通过衰减访问频率计数器减少历史访问的影响。</td>
+<td>更适合动态变化的访问模式。</td>
+<td>实现复杂，需要额外的硬件支持。</td>
+</tr>
+<tr>
+<td><strong>Working Set</strong></td>
+<td>保留进程当前正在使用的页面，移除不在工作集中的页面。</td>
+<td>有效减少页面错误率。</td>
+<td>需要维护工作集信息，开销较高。</td>
+</tr>
+<tr>
+<td><strong>WSClock</strong></td>
+<td>工作集算法和时钟算法的结合，通过引用位和时间戳近似工作集。</td>
+<td>性能接近工作集算法，实现相对简单。</td>
+<td>需要额外的硬件支持。</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="总结"><strong>总结</strong></h3>
+<p>• <strong>Fetch Strategies：</strong><br>
+• 按需获取（Demand
+Fetching）节省内存，但可能导致页面错误；预取（Prepaging）提高 I/O
+效率，但可能浪费内存。</p>
+<p>• <strong>Replacement Strategies：</strong><br>
+• LRU 和其近似算法（如
+Clock、WSClock）在实际系统中应用广泛，性能接近最优算法。<br>
+• LFU 和 Aging 适合访问频率差异较大的场景，但实现复杂且开销较高。</p>
+<p>• <strong>Clean Strategies：</strong><br>
+• 延迟写回（Write-Back）是主流策略，减少了频繁的磁盘写操作。</p>
+<p>• <strong>未来趋势：</strong><br>
+• 随着硬件性能的提升，TLB
+和缓存技术将进一步优化分页和替换策略的效率。<br>
+<strong>With advancements in hardware, TLBs and caching techniques will
+further optimize the efficiency of paging and replacement
+strategies.</strong></p>
+<hr>
+<h3 id="补充说明"><strong>补充说明</strong></h3>
+<p>• <strong>页面替换算法的硬件支持：</strong><br>
+• 现代处理器通常提供硬件支持（如 TLB
+和引用位）来加速页面替换和地址转换。<br>
+<strong>Modern processors often provide hardware support (e.g., TLBs and
+reference bits) to accelerate page replacement and address
+translation.</strong></p>
+<p>• <strong>未来发展方向：</strong><br>
+• 随着人工智能和机器学习的发展，动态调整页面替换策略可能成为趋势。<br>
+<strong>With the development of AI and machine learning, dynamically
+adjusting page replacement strategies may become a trend.</strong></p>
+<h3 id="最优算法optimal-algorithm与-fifo-算法"><strong>最优算法（Optimal
+Algorithm）与 FIFO 算法</strong></h3>
+<p>以下是对最优算法（Optimal Algorithm）、FIFO 算法及其改进版本（Second
+Chance Algorithm）的详细讲解，包括它们的原理、优缺点、示例以及 Belady
+异常的分析。</p>
+<hr>
+<h3 id="最优算法optimal-algorithm"><strong>10. 最优算法（Optimal
+Algorithm）</strong></h3>
+<h4 id="描述"><strong>10.1 描述</strong></h4>
+<p>• <strong>基本思想：</strong><br>
+•
+假设每个页面都可以标记为在第一次被引用之前将执行的指令数，即我们知道程序的未来引用序列（future
+reference string）。<br>
+<strong>Assume that each page can be labeled with the number of
+instructions that will be executed before that page is first referenced,
+i.e., we know the future reference string for a program.</strong> •
+最优算法会选择在未来最长时间内不会被访问的页面进行替换。<br>
+<strong>The optimal page algorithm chooses the page with the highest
+label (farthest in the future) to be removed from memory.</strong></p>
+<p>• <strong>优点：</strong><br>
+• 最优算法产生的页面错误（Page
+Faults）数量最少，是理论上的最优算法。<br>
+<strong>This algorithm results in the fewest number of page faults and
+is the optimal solution theoretically.</strong></p>
+<p>• <strong>缺点：</strong><br>
+• <strong>不切实际：</strong>
+需要预知未来的页面引用序列，而这在实际系统中是不可能的。<br>
+<strong>Impractical because it requires knowledge of future references,
+which is not feasible in real systems.</strong></p>
+<p>• <strong>适用场景：</strong><br>
+• 提供与其他页面替换算法的比较基准。<br>
+<strong>Provides a basis for comparison with other page replacement
+schemes.</strong></p>
+<p>• <strong>改进建议：</strong><br>
+• 如果未来引用序列已知，则不应使用按需获取（Demand
+Fetching），而应使用预取（Prepaging）策略，使页面加载与计算重叠。<br>
+<strong>If future references are known, demand fetching should not be
+used; instead, prepaging should be used to overlap paging with
+computation.</strong></p>
+<hr>
+<h4 id="最优算法的示例"><strong>10.2 最优算法的示例</strong></h4>
+<p>• <strong>引用序列：</strong><br>
+•
+假设引用序列为：<code>1, 2, 3, 4, 1, 2, 5, 1, 2, 3, 4, 5</code>。<br>
+<strong>Reference string: 1, 2, 3, 4, 1, 2, 5, 1, 2, 3, 4, 5.</strong> •
+页面帧数：3。<br>
+<strong>Number of page frames: 3.</strong> • 页面错误：7 次。<br>
+<strong>Page faults: 7.</strong></p>
+<p>• <strong>分析：</strong><br>
+•
+最优算法通过预测未来的页面访问序列，选择在未来最长时间内不会被访问的页面进行替换，从而最小化页面错误。</p>
+<figure>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/20250507131346.png" alt="376297e8aa0c59c1631daad04a58d57">
+<figcaption aria-hidden="true">376297e8aa0c59c1631daad04a58d57</figcaption>
+</figure>
+<hr>
+<h3 id="fifo-页面替换算法"><strong>11. FIFO 页面替换算法</strong></h3>
+<h4 id="描述-1"><strong>11.1 描述</strong></h4>
+<p>• <strong>基本思想：</strong><br>
+• FIFO
+算法维护一个按页面进入内存顺序排列的链表，链表头部是最早进入内存的页面，尾部是最新进入内存的页面。<br>
+<strong>Maintain a linked list of all pages in the order they came into
+memory, with the oldest page at the front of the list.</strong> •
+当需要替换页面时，选择链表头部的页面进行替换。<br>
+<strong>The page at the beginning of the list is replaced.</strong></p>
+<p>• <strong>优点：</strong><br>
+1. <strong>实现简单：</strong> 使用 FIFO 队列即可实现，开销低。<br>
+<strong>Easy to implement (FIFO queue) with low overhead.</strong> 2.
+<strong>易于理解：</strong> 算法逻辑直观。<br>
+<strong>Intuitive and easy to understand.</strong></p>
+<p>• <strong>缺点：</strong><br>
+1. <strong>Belady 异常：</strong>
+增加页面帧数可能导致页面错误增加。<br>
+<strong>Belady's anomaly: Adding more page frames may increase the
+number of page faults.</strong> 2. <strong>可能移除活跃页面：</strong>
+最早进入内存的页面可能是频繁使用的页面，移除它们会导致频繁的页面错误。<br>
+<strong>May evict frequently used pages, leading to frequent page
+faults.</strong></p>
+<hr>
+<h4 id="fifo-的示例"><strong>11.2 FIFO 的示例</strong></h4>
+<p>• <strong>引用序列：</strong><br>
+•
+假设引用序列为：<code>1, 2, 3, 4, 1, 2, 5, 1, 2, 3, 4, 5</code>。<br>
+<strong>Reference string: 1, 2, 3, 4, 1, 2, 5, 1, 2, 3, 4, 5.</strong> •
+页面帧数：3。<br>
+<strong>Number of page frames: 3.</strong> • 页面错误：9 次。<br>
+<strong>Page faults: 9.</strong></p>
+<p>• <strong>分析：</strong><br>
+• FIFO 算法简单易实现，但可能导致 Belady 异常，性能不如 LRU
+或其他算法。</p>
+<figure>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/20250507131546.png" alt="376297e8aa0c59c1631daad04a58d57">
+<figcaption aria-hidden="true">376297e8aa0c59c1631daad04a58d57</figcaption>
+</figure>
+<hr>
+<h3 id="belady-异常beladys-anomaly"><strong>12. Belady 异常（Belady's
+Anomaly）</strong></h3>
+<h4 id="描述-2"><strong>12.1 描述</strong></h4>
+<p>• <strong>定义：</strong><br>
+• Belady
+异常是指在某些情况下，增加页面帧数反而导致页面错误数量增加的现象。<br>
+<strong>Belady's anomaly occurs when adding more page frames results in
+an increased number of page faults.</strong></p>
+<p>• <strong>发现者：</strong><br>
+• Belady 在研究 FIFO 算法时首次发现该现象。<br>
+<strong>Discovered by Belady during his research on the FIFO
+algorithm.</strong></p>
+<p>• <strong>原因：</strong><br>
+• FIFO
+算法可能移除频繁使用的页面，导致后续频繁访问这些页面时产生更多页面错误。<br>
+<strong>FIFO may evict frequently used pages, leading to more page
+faults when these pages are accessed again.</strong></p>
+<p>• <strong>影响：</strong><br>
+• Belady
+异常表明，增加内存资源并不总是能提高性能，尤其是在使用不合适的页面替换算法时。<br>
+<strong>Belady's anomaly shows that adding memory resources does not
+always improve performance, especially when using inappropriate page
+replacement algorithms.</strong></p>
+<hr>
+<h4 id="belady-异常的示例"><strong>12.2 Belady 异常的示例</strong></h4>
+<p>• <strong>引用序列：</strong><br>
+•
+假设引用序列为：<code>1, 2, 3, 4, 1, 2, 5, 1, 2, 3, 4, 5</code>。<br>
+<strong>Reference string: 1, 2, 3, 4, 1, 2, 5, 1, 2, 3, 4, 5.</strong> •
+<strong>页面帧数：</strong><br>
+• 3 个页面帧时，页面错误为 9 次。<br>
+<strong>With 3 page frames: 9 page faults.</strong> • 4
+个页面帧时，页面错误为 10 次。<br>
+<strong>With 4 page frames: 10 page faults.</strong></p>
+<p>• <strong>分析：</strong><br>
+• 增加页面帧数后，页面错误反而增加，这是 Belady 异常的典型表现。</p>
+<figure>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/20250507131820.png" alt="image-20250507131813350">
+<figcaption aria-hidden="true">image-20250507131813350</figcaption>
+</figure>
+<hr>
+<h3 id="第二次机会算法second-chance-page-replacement-algorithm"><strong>13.
+第二次机会算法（Second Chance Page Replacement Algorithm）</strong></h3>
+<h4 id="描述-3"><strong>13.1 描述</strong></h4>
+<p>• <strong>基本思想：</strong><br>
+• 第二次机会算法是 FIFO 的改进版本，为每个页面维护一个引用位（Reference
+Bit, R）。<br>
+<strong>The second chance algorithm is a modification of FIFO that
+maintains a reference bit (R) for each page.</strong> •
+当需要替换页面时，检查页面的引用位：<br>
+◦ 如果引用位为 0（R = 0），则替换该页面。<br>
+<strong>If R = 0, evict the page.</strong> ◦ 如果引用位为 1（R =
+1），则将其置为 0，并将该页面移到链表尾部（视为新加载的页面）。<br>
+<strong>If R = 1, set R = 0 and move the page to the end of the list
+(treat it as a newly loaded page).</strong></p>
+<p>• <strong>优点：</strong><br>
+1. <strong>避免移除活跃页面：</strong>
+通过引用位保护频繁使用的页面，减少页面错误。<br>
+<strong>Avoids evicting active pages, reducing page faults.</strong> 2.
+<strong>实现简单：</strong> 在 FIFO
+的基础上增加了引用位的检查，开销较低。<br>
+<strong>Simple to implement with a minor overhead for checking reference
+bits.</strong></p>
+<p>• <strong>缺点：</strong><br>
+1. <strong>需要额外的硬件支持：</strong> 引用位需要硬件维护。<br>
+<strong>Requires additional hardware support for maintaining reference
+bits.</strong> 2. <strong>性能依赖于引用位的分布：</strong>
+如果引用位分布不均，可能导致性能下降。<br>
+<strong>Performance depends on the distribution of reference bits;
+uneven distribution may lead to suboptimal performance.</strong></p>
+<figure>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/20250507131938.png" alt="image-20250507131931988">
+<figcaption aria-hidden="true">image-20250507131931988</figcaption>
+</figure>
+<hr>
+<h4 id="第二次机会算法的操作示例"><strong>13.2
+第二次机会算法的操作示例</strong></h4>
+<p>• <strong>页面列表：</strong><br>
+• 假设页面列表按 FIFO 顺序排列，页面的引用位如下：<br>
+<strong>Page list sorted in FIFO order with reference bits
+(R):</strong><br>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Page A (R = 1), Page B (R = 0), Page C (R = 1), Page D (R = 0)</span><br></pre></td></tr></table></figure> • 页面错误发生在时间 20，算法操作如下：<br>
+<strong>Page fault occurs at time 20:</strong></p>
+<pre><code>1. 检查链表头部的页面 A，引用位 R = 1。  
+   **Check the first page in the list (Page A, R = 1).**
+    2. 将页面 A 的引用位置为 0，并将其移到链表尾部。  
+   **Set R = 0 for Page A and move it to the end of the list.**
+        3. 新的页面列表：  
+   **New page list:**  
+   <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Page B (R = 0), Page C (R = 1), Page D (R = 0), Page A (R = 0)</span><br></pre></td></tr></table></figure>
+    4. 替换页面 B，因为它在链表头部且引用位为 0。  
+   **Replace Page B as it is at the front of the list and R = 0.**</code></pre>
+<hr>
+<h3 id="fifo-与第二次机会算法的对比"><strong>14. FIFO
+与第二次机会算法的对比</strong></h3>
+<table>
+<colgroup>
+<col style="width: 17%">
+<col style="width: 41%">
+<col style="width: 40%">
+</colgroup>
+<thead>
+<tr>
+<th><strong>特性</strong></th>
+<th><strong>FIFO</strong></th>
+<th><strong>Second Chance</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>原理</strong></td>
+<td>替换最早进入内存的页面。</td>
+<td>改进的 FIFO，为页面提供“二次机会”。</td>
+</tr>
+<tr>
+<td><strong>优点</strong></td>
+<td>实现简单，开销低。</td>
+<td>避免移除活跃页面，减少页面错误。</td>
+</tr>
+<tr>
+<td><strong>缺点</strong></td>
+<td>可能移除活跃页面，导致 Belady 异常。</td>
+<td>需要额外的硬件支持（引用位）。</td>
+</tr>
+<tr>
+<td><strong>适用场景</strong></td>
+<td>简单场景，对性能要求不高的系统。</td>
+<td>需要保护活跃页面的场景。</td>
+</tr>
+<tr>
+<td><strong>Belady 异常</strong></td>
+<td>存在 Belady 异常。</td>
+<td>避免 Belady 异常。</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="总结-1"><strong>15. 总结</strong></h3>
+<p>• <strong>最优算法（Optimal Algorithm）：</strong><br>
+• 理论上最优，但需要预知未来的页面访问序列，实际中不可行。<br>
+<strong>Theoretically optimal but impractical due to the need for future
+knowledge of page references.</strong></p>
+<p>• <strong>FIFO 算法：</strong><br>
+• 实现简单，但可能导致 Belady 异常，性能不如 LRU 或其他算法。<br>
+<strong>Simple to implement but may exhibit Belady's anomaly, making it
+less efficient than LRU or other algorithms.</strong></p>
+<p>• <strong>第二次机会算法（Second Chance）：</strong><br>
+• 改进了
+FIFO，通过引用位保护活跃页面，减少页面错误，但需要额外的硬件支持。<br>
+<strong>Improves FIFO by protecting active pages with reference bits,
+reducing page faults, but requires additional hardware
+support.</strong></p>
+<p>• <strong>未来趋势：</strong><br>
+• 随着硬件性能的提升，LRU 和其近似算法（如
+Clock、WSClock）将成为主流，结合硬件支持实现高效的页面替换策略。<br>
+<strong>With advancements in hardware, LRU and its approximations (e.g.,
+Clock, WSClock) will become mainstream, supported by hardware for
+efficient page replacement.</strong></p>
+<hr>
+<p>是的，在 <strong>FIFO（First-In-First-Out）页面替换算法</strong>
+中，如果已经查到了某个页面（即该页面在内存中），但它是最早进入内存的页面，并且此时需要加载新的页面而内存已满，那么
+<strong>这个页面仍然会被替换掉</strong>。</p>
+<hr>
+<h3 id="原因分析"><strong>原因分析</strong></h3>
+<ol type="1">
+<li><p><strong>FIFO 的核心逻辑：</strong><br>
+• FIFO
+算法只关注页面进入内存的顺序，而不考虑页面是否最近被访问过。<br>
+•
+即使某个页面已经被访问过（即“命中”），只要它是链表中最老的页面（最早进入内存的页面），在需要替换页面时，它仍然会被移除。</p></li>
+<li><p><strong>FIFO 的缺点：</strong><br>
+• FIFO
+不区分页面的使用频率或最近访问情况，可能导致频繁使用的页面被替换掉。<br>
+• 这种行为可能导致 <strong>Belady
+异常</strong>，即增加页面帧数反而导致页面错误增加。</p></li>
+</ol>
+<hr>
+<h3 id="示例说明"><strong>示例说明</strong></h3>
+<p>假设引用序列为：<code>1, 2, 3, 4, 1, 2, 5, 1, 2, 3, 4, 5</code>，页面帧数为
+3。</p>
+<h4 id="步骤解析"><strong>步骤解析：</strong></h4>
+<ol type="1">
+<li><p><strong>初始状态：</strong><br>
+• 页面帧为空，依次加载页面 1、2、3。<br>
+<strong>Memory: [1, 2, 3]</strong></p></li>
+<li><p><strong>访问页面 4：</strong><br>
+• 页面 4 不在内存中，需要替换最早进入的页面 1。<br>
+<strong>Memory: [2, 3, 4]</strong></p></li>
+<li><p><strong>访问页面 1：</strong><br>
+• 页面 1 不在内存中，需要替换最早进入的页面 2。<br>
+<strong>Memory: [3, 4, 1]</strong></p></li>
+<li><p><strong>访问页面 2：</strong><br>
+• 页面 2 不在内存中，需要替换最早进入的页面 3。<br>
+<strong>Memory: [4, 1, 2]</strong></p></li>
+<li><p><strong>访问页面 5：</strong><br>
+• 页面 5 不在内存中，需要替换最早进入的页面 4。<br>
+<strong>Memory: [1, 2, 5]</strong></p></li>
+<li><p><strong>访问页面 1：</strong><br>
+• 页面 1 已经在内存中（命中），不需要替换。<br>
+<strong>Memory: [1, 2, 5]</strong></p></li>
+<li><p><strong>访问页面 2：</strong><br>
+• 页面 2 已经在内存中（命中），不需要替换。<br>
+<strong>Memory: [1, 2, 5]</strong></p></li>
+<li><p><strong>访问页面 3：</strong><br>
+• 页面 3 不在内存中，需要替换最早进入的页面 1。<br>
+<strong>Memory: [2, 5, 3]</strong></p></li>
+<li><p><strong>访问页面 4：</strong><br>
+• 页面 4 不在内存中，需要替换最早进入的页面 2。<br>
+<strong>Memory: [5, 3, 4]</strong></p></li>
+<li><p><strong>访问页面 5：</strong><br>
+◦ 页面 5 已经在内存中（命中），不需要替换。<br>
+<strong>Memory: [5, 3, 4]</strong></p></li>
+</ol>
+<hr>
+<h3 id="关键点"><strong>关键点</strong></h3>
+<p>• 在第 8 步时，页面 1 被替换掉，尽管它刚刚被访问过（命中）。<br>
+• 这是因为 FIFO
+只关注页面进入内存的顺序，而不考虑页面是否最近被访问。</p>
+<hr>
+<h3 id="fifo-的优缺点"><strong>FIFO 的优缺点</strong></h3>
+<h4 id="优点"><strong>优点：</strong></h4>
+<ol type="1">
+<li><strong>实现简单：</strong><br>
+• 使用链表或队列即可实现，开销低。</li>
+<li><strong>易于理解：</strong><br>
+• 算法逻辑直观，适合初学者学习。</li>
+</ol>
+<h4 id="缺点"><strong>缺点：</strong></h4>
+<ol type="1">
+<li><strong>可能移除活跃页面：</strong><br>
+•
+最早进入内存的页面可能是频繁使用的页面，移除它们会导致频繁的页面错误。</li>
+<li><strong>Belady 异常：</strong><br>
+• 增加页面帧数可能导致页面错误增加。</li>
+</ol>
+<hr>
+<h3 id="改进方法"><strong>改进方法</strong></h3>
+<p>为了避免 FIFO 的缺点，可以使用以下改进算法： 1.
+<strong>第二次机会算法（Second Chance Algorithm）：</strong><br>
+• 为每个页面维护一个引用位（Reference Bit, R）。<br>
+• 如果页面被访问过，引用位为 1，暂时保留该页面；如果引用位为
+0，则替换该页面。 2. <strong>时钟算法（Clock
+Algorithm）：</strong><br>
+• 使用环形链表和引用位实现第二次机会的改进版本，性能接近 LRU。</p>
+<hr>
+<h3 id="总结-2"><strong>总结</strong></h3>
+<p>• 在 FIFO
+算法中，即使某个页面已经被访问过（命中），只要它是最早进入内存的页面，在需要替换页面时，它仍然会被替换掉。
+• 这种行为可能导致频繁使用的页面被移除，从而增加页面错误率。 •
+如果需要避免这种情况，可以使用改进算法（如第二次机会算法或时钟算法）。</p>
+<h3 id="时钟页面替换算法clock-page-replacement-algorithm"><strong>时钟页面替换算法（Clock
+Page Replacement Algorithm）</strong></h3>
+<p><strong>时钟页面替换算法</strong> 是 <strong>第二次机会算法（Second
+Chance Algorithm）</strong> 的一种实现方式，旨在以更高效的方式近似
+<strong>最优页面替换算法（Optimal Page Replacement Algorithm）</strong>
+的行为。</p>
+<hr>
+<figure>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/20250507132326.png" alt="img">
+<figcaption aria-hidden="true">img</figcaption>
+</figure>
+<figure>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/20250507132350.png" alt="img">
+<figcaption aria-hidden="true">img</figcaption>
+</figure>
+<figure>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/20250507132420.png" alt="img">
+<figcaption aria-hidden="true">img</figcaption>
+</figure>
+<hr>
+<h3 id="未最近使用页面替换算法nru-not-recently-used"><strong>未最近使用页面替换算法（NRU,
+Not Recently Used）</strong></h3>
+<h4 id="描述-4"><strong>22. 描述</strong></h4>
+<p>• <strong>基本思想：</strong> • 每个页面有两个位： 1.
+<strong>引用位（R）：</strong> 表示页面是否最近被访问过。 2.
+<strong>修改位（M）：</strong> 表示页面是否被修改过（写入磁盘）。 •
+这些位会定期更新： ◦ 每隔一个时钟间隔（如 20ms），<strong>R
+位</strong>会被清零（<code>R = 0</code>）。</p>
+<p>• <strong>页面分类：</strong> 页面被分为四类： 1. <strong>Class
+0:</strong> 未被引用，未被修改。 2. <strong>Class 1:</strong>
+未被引用，已被修改。 3. <strong>Class 2:</strong> 已被引用，未被修改。
+4. <strong>Class 3:</strong> 已被引用，已被修改。</p>
+<p>• <strong>替换策略：</strong> • NRU 随机从
+<strong>最低编号的非空类</strong> 中移除页面。</p>
+<hr>
+<h4 id="优点-1"><strong>优点：</strong></h4>
+<ol type="1">
+<li><strong>简单易实现：</strong><br>
+• 只需要维护 R 和 M 位，硬件支持简单。</li>
+<li><strong>公平性：</strong><br>
+• 确保所有页面都有机会被替换，避免某些页面长期占用内存。</li>
+</ol>
+<h4 id="缺点-1"><strong>缺点：</strong></h4>
+<ol type="1">
+<li><strong>随机性：</strong><br>
+• 随机选择页面可能导致性能不稳定。</li>
+<li><strong>缺乏精确性：</strong><br>
+• 无法区分同一类页面的使用历史。</li>
+</ol>
+<hr>
+<h3 id="最近最少使用算法lru-least-recently-used"><strong>最近最少使用算法（LRU,
+Least Recently Used）</strong></h3>
+<h4 id="描述-5"><strong>23. 描述</strong></h4>
+<p>• <strong>基本思想：</strong> • 替换掉 <strong>最近最少使用</strong>
+的页面。 • <strong>假设：</strong> •
+最近使用过的页面很可能在不久的将来再次被使用。</p>
+<h4 id="软件实现"><strong>软件实现：</strong></h4>
+<p>• 使用链表记录页面访问顺序： •
+最近使用的页面在链表头部，最少使用的页面在链表尾部。 •
+每次内存访问都需要更新链表（开销较大）。</p>
+<h4 id="硬件实现-1"><strong>硬件实现 1：</strong></h4>
+<p>• 使用 <strong>64 位计数器</strong>： • 每次指令执行后计数器递增。 •
+页面被访问时，将计数器的值存储到页表中。 • 替换计数器值最小的页面。</p>
+<h4 id="硬件实现-2"><strong>硬件实现 2：</strong></h4>
+<p>• 使用 <strong>n x n 矩阵</strong>： • 当页面 K 被访问时： 1. 将第 K
+行的所有位设置为 <code>1</code>。 2. 将第 K 列的所有位设置为
+<code>0</code>。 • 二进制值最小的行对应的页面是 LRU 页面。</p>
+<hr>
+<h4 id="lru-示例"><strong>28. LRU 示例</strong></h4>
+<p>• <strong>引用序列：</strong>
+<code>0, 1, 2, 3, 2, 1, 0, 3, 2, 3</code> • <strong>步骤：</strong> •
+跟踪每个页面的计数器值。 • 替换计数器值最小的页面。</p>
+<figure>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FCH3%EF%BC%88B%EF%BC%89/Users\86150\AppData\Roaming\Typora\typora-user-images\image-20250507132803551.png" alt="image-20250507132803551">
+<figcaption aria-hidden="true">image-20250507132803551</figcaption>
+</figure>
+<hr>
+<h3 id="模拟-lru-的软件算法"><strong>模拟 LRU 的软件算法</strong></h3>
+<h4 id="改进的-nfunot-frequently-used"><strong>改进的 NFU（Not
+Frequently Used）：</strong></h4>
+<p>• <strong>基本思想：</strong> • 使用 <strong>老化算法</strong> 模拟
+LRU： 1. 每次时钟中断时，将所有计数器右移一位。 2. 将 R
+位添加到计数器的最高位。 3. 这样可以优先考虑最近的 R 值。</p>
+<p>• <strong>优点：</strong> • 模拟了 LRU
+的行为，避免了“永远不忘记”的问题。</p>
+<figure>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/20250507133009.png" alt="img">
+<figcaption aria-hidden="true">img</figcaption>
+</figure>
+<figure>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/20250507133233.png" alt="img">
+<figcaption aria-hidden="true">img</figcaption>
+</figure>
+<figure>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/20250507133322.png" alt="img">
+<figcaption aria-hidden="true">img</figcaption>
+</figure>
+<hr>
+<h3 id="工作集页面替换算法working-set-page-replacement-algorithm"><strong>工作集页面替换算法（Working
+Set Page Replacement Algorithm）</strong></h3>
+<h4 id="描述-6"><strong>30. 描述</strong></h4>
+<p>• <strong>基本思想：</strong> • 工作集是 <strong>最近 k
+次内存访问</strong> 中使用的页面集合。 •
+页面不在工作集中时，可以被替换。 • <strong>示例：</strong> • 如果
+<code>k = 10</code>，工作集包含最近的 10 次访问中使用的页面。</p>
+<h4 id="优点-2"><strong>优点：</strong></h4>
+<p>• 减少页面错误，专注于活跃页面。 • 避免替换不活跃页面。</p>
+<hr>
+<h3 id="总结-3"><strong>总结</strong></h3>
+<table>
+<colgroup>
+<col style="width: 13%">
+<col style="width: 41%">
+<col style="width: 23%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr>
+<th><strong>算法</strong></th>
+<th><strong>核心思想</strong></th>
+<th><strong>优点</strong></th>
+<th><strong>缺点</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Clock Algorithm</strong></td>
+<td>使用环形链表和引用位实现近似 LRU 的页面替换。</td>
+<td>实现简单，性能接近 LRU。</td>
+<td>是近似算法，可能不够精确。</td>
+</tr>
+<tr>
+<td><strong>NRU</strong></td>
+<td>根据 R 和 M 位将页面分类，优先替换最低优先级的页面。</td>
+<td>简单高效，适合硬件支持有限的场景。</td>
+<td>随机选择可能导致性能不稳定。</td>
+</tr>
+<tr>
+<td><strong>LRU</strong></td>
+<td>替换最近最少使用的页面，假设最近使用的页面很可能再次被使用。</td>
+<td>性能最优，接近理论最优算法。</td>
+<td>硬件实现复杂，软件实现开销大。</td>
+</tr>
+<tr>
+<td><strong>Working Set</strong></td>
+<td>替换不在工作集中的页面，动态调整工作集大小以适应程序的内存访问模式。</td>
+<td>减少页面错误，专注于活跃页面。</td>
+<td>需要额外开销来跟踪工作集。</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="未来改进方向"><strong>未来改进方向</strong></h3>
+<p>• <strong>Clock Algorithm</strong> 是 LRU
+的高效替代方案，适合硬件支持有限的场景。 • <strong>LRU</strong>
+的硬件实现（如计数器或矩阵）是理想的解决方案，但需要高性能硬件。 •
+<strong>Working Set</strong>
+算法通过动态调整工作集大小，可以进一步优化页面替换策略。</p>
+<h3 id="模拟-lru-的软件算法simulating-lru-in-software"><strong>模拟 LRU
+的软件算法（Simulating LRU in Software）</strong></h3>
+<p>在现代操作系统中，<strong>LRU（Least Recently
+Used，最近最少使用）算法</strong>
+是一种理想的页面替换策略，但由于硬件实现的复杂性，通常无法直接使用硬件支持来实现
+LRU。因此，操作系统通常通过 <strong>软件算法</strong> 来模拟 LRU
+的行为。</p>
+<hr>
+<h3 id="模拟-lru-的软件算法-1"><strong>26. 模拟 LRU
+的软件算法</strong></h3>
+<h4 id="背景问题"><strong>背景问题</strong></h4>
+<p>• <strong>LRU 的硬件实现：</strong> • 理想的 LRU
+实现需要硬件支持，例如： 1. <strong>计数器方案：</strong>
+每个页面维护一个 64
+位计数器，每次内存访问时更新计数器为当前时间戳或指令计数器的值。 2.
+<strong>矩阵方案：</strong> 使用一个 <code>n x n</code>
+的矩阵（<code>n</code> 是页面帧数），通过位操作记录页面的访问顺序。 •
+这些硬件实现复杂且成本高，通常只在高性能系统中使用。</p>
+<p>• <strong>软件实现的必要性：</strong> •
+在大多数系统中，硬件不支持直接实现 LRU，因此需要通过软件算法来模拟 LRU
+的行为。 • <strong>NFU（Not Frequently Used，非频繁使用）算法</strong>
+是一种常见的软件实现方式，但它存在一些问题。</p>
+<hr>
+<h4 id="nfu-算法not-frequently-used-algorithm"><strong>26.1 NFU
+算法（Not Frequently Used Algorithm）</strong></h4>
+<h5 id="基本思想"><strong>基本思想</strong></h5>
+<p>• 每个页面维护一个计数器，用于记录页面的访问频率。 •
+<strong>操作逻辑：</strong></p>
+<ol type="1">
+<li>每次时钟中断时，将页面的 <strong>引用位（R bit）</strong>
+加到计数器中。 ◦ 如果页面被访问过，引用位 <code>R = 1</code>，否则
+<code>R = 0</code>。</li>
+<li>当发生页面错误（Page
+Fault）时，选择计数器值最小的页面进行替换。</li>
+</ol>
+<h5 id="问题"><strong>问题</strong></h5>
+<p>• <strong>“永远不忘记”：</strong> • NFU
+的计数器会不断累加，即使某个页面很久之前被访问过，它的计数器值可能仍然很高。
+• 这会导致一些不再活跃的页面仍然保留在内存中，影响页面替换的效率。</p>
+<hr>
+<h4 id="改进的-nfu-算法modified-nfu-with-aging"><strong>26.2 改进的 NFU
+算法（Modified NFU with Aging）</strong></h4>
+<h5 id="改进思想"><strong>改进思想</strong></h5>
+<p>• 为了解决 NFU 的“永远不忘记”问题，引入了
+<strong>Aging（老化）机制</strong>： • <strong>定期右移计数器：</strong>
+◦ 在每个时钟中断时，将所有页面的计数器右移一位。 ◦
+这样，计数器的低位会被丢弃，高位保留，计数器的值会逐渐“老化”。 •
+<strong>将引用位（R bit）加入最高位：</strong> ◦
+在右移后，将当前时钟中断时的引用位 <code>R</code> 添加到计数器的最高位。
+◦ 这样可以确保最近访问的页面计数器值更高。</p>
+<h5 id="操作步骤"><strong>操作步骤</strong></h5>
+<ol type="1">
+<li><p><strong>初始化：</strong> • 为每个页面维护一个计数器，初始值为
+<code>0</code>。 • 页面的引用位 <code>R</code> 初始化为
+<code>0</code>。</p></li>
+<li><p><strong>时钟中断时：</strong> • 对于每个页面：</p>
+<ol type="1">
+<li>将计数器右移一位。</li>
+<li>如果页面的引用位 <code>R = 1</code>，将最高位设置为
+<code>1</code>；否则，最高位保持为 <code>0</code>。</li>
+<li>重置页面的引用位 <code>R = 0</code>（为下一次时钟中断做准备）。</li>
+</ol></li>
+<li><p><strong>页面错误时：</strong> •
+选择计数器值最小的页面进行替换。</p></li>
+</ol>
+<hr>
+<h4 id="举例说明"><strong>举例说明</strong></h4>
+<h5 id="假设条件"><strong>假设条件：</strong></h5>
+<p>• 页面帧数：3（内存中最多容纳 3 个页面）。 •
+引用序列：<code>1, 2, 3, 2, 1, 4, 2, 3, 4, 5</code>。 •
+初始状态：内存为空。</p>
+<hr>
+<hr>
+<h4 id="改进的-nfu-算法的优点"><strong>改进的 NFU
+算法的优点</strong></h4>
+<ol type="1">
+<li><p><strong>动态优先级：</strong> •
+通过右移计数器和引入老化机制，最近访问的页面会被赋予更高的优先级。 •
+不活跃的页面会逐渐被淘汰。</p></li>
+<li><p><strong>避免“永远不忘记”问题：</strong> •
+通过定期右移计数器，旧访问记录的影响逐渐减弱，避免了 NFU
+的“永远不忘记”问题。</p></li>
+<li><p><strong>简单高效：</strong> • 改进的 NFU
+算法在软件中实现相对简单，适合硬件不支持 LRU 的系统。</p></li>
+</ol>
+<hr>
+<h4 id="改进的-nfu-算法的缺点"><strong>改进的 NFU
+算法的缺点</strong></h4>
+<ol type="1">
+<li><p><strong>近似性：</strong> • 改进的 NFU 是 LRU
+的近似算法，无法完全模拟 LRU 的行为。 •
+页面的访问顺序可能会被错误估计。</p></li>
+<li><p><strong>开销：</strong> •
+每次时钟中断都需要更新所有页面的计数器，开销较大。</p></li>
+</ol>
+<p><strong>工作集页面置换算法（Working Set Page
+Replacement）笔记整理</strong></p>
+<hr>
+<p><strong>1. 核心思想</strong> •
+目标：基于“工作集模型”（进程在一段时间内活跃访问的页面集合），优先淘汰不在工作集的页面。</p>
+<p>• 关键机制：</p>
+<p>• 周期性清除 <code>R</code> 位（每个时钟滴答时，所有页面的
+<code>R</code> 位清零）。</p>
+<p>• 记录页面上次使用时间（LTU）：通过 <code>R</code>
+位判断页面是否被访问，更新 <code>LTU</code>。</p>
+<p>• 淘汰策略：优先淘汰 <code>R=0</code> 且
+<code>(当前时间 - LTU) &gt; τ</code>（阈值）的页面（即长期未使用的页面）。</p>
+<hr>
+<p><strong>2. 算法步骤</strong></p>
+<ol type="1">
+<li><p>周期性清除 <code>R</code> 位 • 每个时钟中断时，所有页面的
+<code>R</code> 位（引用位）被清零。</p>
+<p>• <em>（注：<code>R=1</code>
+表示该页面在本周期被访问过）</em></p></li>
+<li><p>扫描页面表 • 当需要替换页面时，扫描物理内存中的所有页面，检查
+<code>R</code> 位：</p>
+<p>◦ <code>R=1</code>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">◦ 更新该页的 `LTU = 当前虚拟时间`（表示最近被访问）。  </span><br><span class="line"></span><br><span class="line">◦ *（说明该页在工作集中，保留）*  </span><br></pre></td></tr></table></figure>
+<p>◦ <code>R=0</code>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">◦ 计算页面的“年龄”（`age = 当前时间 - LTU`）。  </span><br><span class="line"></span><br><span class="line">◦ 如果 `age &gt; τ`：淘汰该页（不在工作集）。  </span><br><span class="line"></span><br><span class="line">◦ 如果 `age ≤ τ`：记录该页的 `age`，后续可能淘汰年龄最大的页。  </span><br></pre></td></tr></table></figure></li>
+<li><p>特殊情况处理 • 情况1：找到至少一个 <code>R=0</code> 的页面 →
+淘汰其中 <code>age</code> 最大的页。</p>
+<p>• 情况2：所有页面 <code>R=1</code>（无候选页）→
+随机选一个页面替换（优先选“干净页”，即未修改的页）。</p></li>
+</ol>
+<hr>
+<p><strong>3. 关键公式与变量</strong> •
+<code>age = current virtual time - last time used (LTU)</code></p>
+<p>• 表示页面自上次访问以来的“年龄”，年龄越大，越可能被淘汰。</p>
+<p>• 阈值 <code>τ</code>：</p>
+<p>• 由系统定义的时间窗口，若
+<code>age &gt; τ</code>，则认为页面已不在工作集中。</p>
+<hr>
+<p><strong>4. 示例说明（结合图片）</strong> • 图片2中的页面表：</p>
+<table>
+<colgroup>
+<col style="width: 5%">
+<col style="width: 5%">
+<col style="width: 22%">
+<col style="width: 21%">
+<col style="width: 40%">
+<col style="width: 5%">
+</colgroup>
+<thead>
+<tr>
+<th>页号</th>
+<th>R位</th>
+<th>LTU (上次使用时间)</th>
+<th>当前虚拟时间=2204</th>
+<th>计算 <code>age</code></th>
+<th>操作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2084</td>
+<td>1</td>
+<td>1980</td>
+<td>2204 - 1980 = 224</td>
+<td>更新 <code>LTU=2204</code></td>
+<td></td>
+</tr>
+<tr>
+<td>1213</td>
+<td>0</td>
+<td>2014</td>
+<td>2204 - 2014 = 190</td>
+<td>若 <code>τ=200</code>，<code>age ≤ τ</code> → 记录年龄</td>
+<td></td>
+</tr>
+<tr>
+<td>1620</td>
+<td>0</td>
+<td>1620</td>
+<td>2204 - 1620 = 584</td>
+<td>若 <code>τ=200</code>，<code>age &gt; τ</code> → 淘汰该页</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>• 替换决策：</p>
+<p>• 优先淘汰 <code>R=0</code> 且 <code>age &gt; τ</code>
+的页（如页1620）。</p>
+<p>• 若无满足条件的页，则淘汰年龄最大的 <code>R=0</code> 页。</p>
+<h3 id="wsclock-page-replacement-algorithm"><strong>WSClock Page
+Replacement Algorithm</strong></h3>
+<hr>
+<h4 id="描述-7"><strong>36. 描述</strong></h4>
+<h5 id="背景问题-1"><strong>背景问题</strong></h5>
+<p>• <strong>工作集算法（Working Set Algorithm）的缺点：</strong> •
+工作集算法在每次页面错误时需要扫描整个页表，以找到不在工作集中的页面。 •
+这种全表扫描的方式在页表较大时会导致较高的开销，影响系统性能。</p>
+<p>• <strong>WSClock 算法的提出：</strong> • WSClock（Working Set
+Clock）算法是对 <strong>Clock Algorithm</strong> 和 <strong>Working Set
+Algorithm</strong> 的改进。 •
+它结合了时钟算法的高效性和工作集算法的局部性优化，避免了全表扫描的开销。
+• WSClock 算法通过维护一个 <strong>环形链表</strong> 和
+<strong>引用位（R bit）</strong>，以及页面的
+<strong>年龄（age）</strong> 信息，实现了高效的页面替换。</p>
+<hr>
+<h4 id="wsclock-算法的核心思想"><strong>37. WSClock
+算法的核心思想</strong></h4>
+<h5 id="算法特点"><strong>算法特点</strong></h5>
+<ol type="1">
+<li><p><strong>基于时钟算法：</strong> • WSClock
+使用一个环形链表（clock）来管理页面，类似于 Clock Algorithm。 •
+页面按照环形链表的顺序依次被检查。</p></li>
+<li><p><strong>结合工作集信息：</strong> • 每个页面维护一个
+<strong>年龄（age）</strong>，表示页面最后一次被访问后经过的时间。 •
+年龄用于判断页面是否仍在工作集中。</p></li>
+<li><p><strong>引用位（R bit）的作用：</strong> • 如果页面的
+<code>R = 1</code>，表示页面最近被访问过，暂时保留。 • 如果页面的
+<code>R = 0</code>，表示页面可能可以被替换。</p></li>
+<li><p><strong>脏页（Dirty Page）处理：</strong> •
+如果页面是脏页（被修改过），需要将其写回磁盘后才能替换。 •
+如果页面是干净的（未被修改过），可以直接替换。</p></li>
+</ol>
+<hr>
+<h4 id="wsclock-算法的操作逻辑"><strong>38. WSClock
+算法的操作逻辑</strong></h4>
+<h5 id="页面错误时的操作步骤"><strong>页面错误时的操作步骤</strong></h5>
+<ol type="1">
+<li><p><strong>检查页面的引用位（R bit）：</strong> • 如果
+<code>R = 1</code>： ◦ 将 <code>R</code> 置为
+<code>0</code>，并将页面的年龄设置为当前时间。 ◦
+移动手（hand）到下一个页面，继续检查。 • 如果 <code>R = 0</code>： ◦
+检查页面的年龄： ◦ 如果 <code>age ≤ t</code>（页面仍在工作集中）： ▪
+移动手到下一个页面，继续检查。 ◦ 如果
+<code>age &gt; t</code>（页面不在工作集中）： ▪
+如果页面是干净的（未被修改过），直接替换该页面。 ▪
+如果页面是脏页（被修改过），将其标记为需要写回磁盘，并移动手到下一个页面。</p></li>
+<li><p><strong>当手回到起点时的处理：</strong> • <strong>情况
+1：至少有一个脏页被标记为需要写回磁盘：</strong> ◦
+替换第一个遇到的干净页面。 • <strong>情况
+2：没有脏页需要写回磁盘（所有页面都在工作集中）：</strong> ◦
+替换任意一个干净页面。 ◦
+如果没有干净页面，则替换当前页面，并将其写回磁盘。</p></li>
+</ol>
+<hr>
+<h4 id="wsclock-算法的操作示例"><strong>39. WSClock
+算法的操作示例</strong></h4>
+<h5 id="假设条件-1"><strong>假设条件</strong></h5>
+<p>• 页面帧数：3（内存中最多容纳 3 个页面）。 •
+时间窗口：<code>t = 5</code>（单位：时钟中断次数）。 •
+初始状态：内存为空。</p>
+<hr>
+<table>
+<colgroup>
+<col style="width: 7%">
+<col style="width: 10%">
+<col style="width: 14%">
+<col style="width: 7%">
+<col style="width: 8%">
+<col style="width: 52%">
+</colgroup>
+<thead>
+<tr>
+<th><strong>步骤</strong></th>
+<th><strong>引用序列</strong></th>
+<th><strong>内存中的页面</strong></th>
+<th><strong>R 位</strong></th>
+<th><strong>Age</strong></th>
+<th><strong>操作说明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>[1]</td>
+<td>1</td>
+<td>1</td>
+<td>加载页面 1，<code>R = 1</code>，<code>Age = 1</code>。</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2</td>
+<td>[1, 2]</td>
+<td>1, 1</td>
+<td>2, 2</td>
+<td>加载页面 2，<code>R = 1</code>，<code>Age = 2</code>。</td>
+</tr>
+<tr>
+<td>3</td>
+<td>3</td>
+<td>[1, 2, 3]</td>
+<td>1, 1, 1</td>
+<td>3, 3, 3</td>
+<td>加载页面 3，<code>R = 1</code>，<code>Age = 3</code>。</td>
+</tr>
+<tr>
+<td>4</td>
+<td>2</td>
+<td>[1, 2, 3]</td>
+<td>1, 1, 0</td>
+<td>4, 4, 3</td>
+<td>页面 2 被访问，<code>R = 1</code>，<code>Age = 4</code>；页面 3 的
+<code>R = 0</code>，但 <code>Age = 3 ≤ t</code>，仍在工作集中。</td>
+</tr>
+<tr>
+<td>5</td>
+<td>1</td>
+<td>[1, 2, 3]</td>
+<td>1, 0, 0</td>
+<td>5, 5, 4</td>
+<td>页面 1 被访问，<code>R = 1</code>，<code>Age = 5</code>；页面 2 和 3
+的 <code>R = 0</code>，但仍在工作集中。</td>
+</tr>
+<tr>
+<td>6</td>
+<td>4</td>
+<td>[4, 2, 3]</td>
+<td>1, 0, 0</td>
+<td>6, 6, 6</td>
+<td>页面 1 被替换，页面 4
+加载，<code>R = 1</code>，<code>Age = 6</code>；页面 2 和 3 的
+<code>R = 0</code>，但仍在工作集中。</td>
+</tr>
+<tr>
+<td>7</td>
+<td>2</td>
+<td>[4, 2, 3]</td>
+<td>0, 1, 0</td>
+<td>7, 7, 7</td>
+<td>页面 4 的 <code>R = 0</code>，<code>Age = 7 &gt; t</code>，页面 4
+不在工作集中；页面 2
+被访问，<code>R = 1</code>，<code>Age = 7</code>。</td>
+</tr>
+<tr>
+<td>8</td>
+<td>3</td>
+<td>[4, 2, 3]</td>
+<td>0, 0, 1</td>
+<td>8, 8, 8</td>
+<td>页面 4 的 <code>R = 0</code>，<code>Age = 8 &gt; t</code>，页面 4
+不在工作集中；页面 3
+被访问，<code>R = 1</code>，<code>Age = 8</code>。</td>
+</tr>
+<tr>
+<td>9</td>
+<td>4</td>
+<td>[4, 2, 3]</td>
+<td>1, 0, 0</td>
+<td>9, 9, 9</td>
+<td>页面 4 被访问，<code>R = 1</code>，<code>Age = 9</code>；页面 2 和 3
+的 <code>R = 0</code>，但仍在工作集中。</td>
+</tr>
+<tr>
+<td>10</td>
+<td>5</td>
+<td>[5, 2, 4]</td>
+<td>1, 0, 0</td>
+<td>10, 10, 10</td>
+<td>页面 4 被替换，页面 5
+加载，<code>R = 1</code>，<code>Age = 10</code>；页面 2 的
+<code>R = 0</code>，但仍在工作集中。</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h4 id="wsclock-算法的特殊情况处理"><strong>40. WSClock
+算法的特殊情况处理</strong></h4>
+<h5 id="当手回到起点时的处理"><strong>当手回到起点时的处理</strong></h5>
+<ol type="1">
+<li><p><strong>情况 1：至少有一个脏页被标记为需要写回磁盘：</strong> •
+替换第一个遇到的干净页面。 •
+如果没有干净页面，则等待磁盘写操作完成后再替换。</p></li>
+<li><p><strong>情况
+2：没有脏页需要写回磁盘（所有页面都在工作集中）：</strong> •
+替换任意一个干净页面。 •
+如果没有干净页面，则替换当前页面，并将其写回磁盘。</p></li>
+</ol>
+<hr>
+<h4 id="wsclock-算法的优缺点"><strong>WSClock 算法的优缺点</strong></h4>
+<h5 id="优点-3"><strong>优点</strong></h5>
+<ol type="1">
+<li><p><strong>高效性：</strong> • WSClock
+算法结合了时钟算法的高效性和工作集算法的局部性优化，避免了全表扫描的开销。
+• 通过环形链表和引用位的结合，快速找到可以替换的页面。</p></li>
+<li><p><strong>动态适应性：</strong> • WSClock
+算法能够动态调整页面的替换策略，适应进程的内存访问模式。 •
+当内存访问的局部性较强时，算法倾向于保留工作集中的页面；当局部性较弱时，算法会替换不在工作集中的页面。</p></li>
+<li><p><strong>脏页处理：</strong> • WSClock
+算法对脏页的处理更加灵活，避免了频繁的磁盘写操作。</p></li>
+</ol>
+<h5 id="缺点-2"><strong>缺点</strong></h5>
+<ol type="1">
+<li><p><strong>实现复杂度：</strong> • 需要为每个页面维护 <code>R</code>
+位和 <code>Age</code>，并在每次时钟中断时更新这些信息。 •
+页面扫描和替换操作可能带来一定的开销。</p></li>
+<li><p><strong>时间窗口的选择：</strong> • 时间窗口 <code>t</code>
+的选择对算法性能有重要影响： ◦ 如果 <code>t</code>
+太小，可能导致频繁的页面替换。 ◦ 如果 <code>t</code>
+太大，可能导致内存利用率下降。</p></li>
+</ol>
+<hr>
+<h4 id="wsclock-算法的改进方向"><strong>WSClock
+算法的改进方向</strong></h4>
+<ol type="1">
+<li><p><strong>动态时间窗口：</strong> •
+根据进程的内存访问模式动态调整时间窗口 <code>t</code> 的大小。 •
+当内存访问的局部性较强时，缩小时间窗口；当局部性较弱时，扩大时间窗口。</p></li>
+<li><p><strong>结合其他算法：</strong> • 将 WSClock
+算法与其他页面替换算法（如 LRU 或 Clock
+Algorithm）结合，取长补短。</p></li>
+<li><p><strong>硬件支持：</strong> •
+如果硬件支持，可以使用硬件计数器来记录页面的访问时间和引用位，减少软件实现的复杂度。</p></li>
+</ol>
+<hr>
+<h4 id="wsclock-算法与工作集算法的对比"><strong>WSClock
+算法与工作集算法的对比</strong></h4>
+<table>
+<colgroup>
+<col style="width: 9%">
+<col style="width: 45%">
+<col style="width: 45%">
+</colgroup>
+<thead>
+<tr>
+<th><strong>特性</strong></th>
+<th><strong>工作集算法</strong></th>
+<th><strong>WSClock 算法</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>核心思想</strong></td>
+<td>基于内存访问的局部性，保留工作集中的页面，替换不在工作集中的页面。</td>
+<td>结合时钟算法和工作集算法，通过环形链表和引用位高效管理页面替换。</td>
+</tr>
+<tr>
+<td><strong>优点</strong></td>
+<td>动态适应性强，减少页面错误，利用内存访问的局部性。</td>
+<td>高效性高，避免了全表扫描的开销，适合大规模页表场景。</td>
+</tr>
+<tr>
+<td><strong>缺点</strong></td>
+<td>实现复杂，时间窗口选择对性能影响较大。</td>
+<td>实现复杂度较高，时间窗口的选择仍然需要权衡。</td>
+</tr>
+<tr>
+<td><strong>适用场景</strong></td>
+<td>内存访问具有明显局部性的场景，或者硬件不支持复杂算法的系统。</td>
+<td>高性能系统，硬件支持有限的场景，或者需要高效页面替换的场景。</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h4 id="总结-4"><strong>总结</strong></h4>
+<p>• <strong>WSClock 算法</strong> 是对 <strong>Clock Algorithm</strong>
+和 <strong>Working Set Algorithm</strong> 的改进，结合了两者的优点： •
+<strong>高效性：</strong> 通过环形链表和引用位快速找到可以替换的页面。 •
+<strong>局部性优化：</strong> 结合工作集信息，动态调整页面替换策略。 •
+它是一种简单、高效的页面替换算法，适合大规模页表场景。 •
+尽管实现复杂度较高，但它在实际系统中表现出色，尤其是在硬件支持有限的情况下。</p>
+<h3 id="页面替换算法回顾"><strong>41. 页面替换算法回顾</strong></h3>
+<h4 id="总结与评价"><strong>总结与评价</strong></h4>
+<p>以下是对常见页面替换算法的总结与评价：</p>
+<table>
+<colgroup>
+<col style="width: 21%">
+<col style="width: 26%">
+<col style="width: 26%">
+<col style="width: 26%">
+</colgroup>
+<thead>
+<tr>
+<th><strong>算法</strong></th>
+<th><strong>描述</strong></th>
+<th><strong>优点</strong></th>
+<th><strong>缺点</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Optimal（最优算法）</strong></td>
+<td>替换未来最长时间内不会被访问的页面。</td>
+<td>理论上最优，页面错误最少。</td>
+<td>不切实际，需要预知未来的页面访问序列。</td>
+</tr>
+<tr>
+<td><strong>NRU（Not Recently Used，非频繁使用算法）</strong></td>
+<td>根据页面的引用位（R bit）和修改位（M
+bit）分类页面，优先替换最低优先级的页面。</td>
+<td>简单易实现，适合硬件支持有限的场景。</td>
+<td>缺乏精确性，可能无法区分同一类页面的使用历史。</td>
+</tr>
+<tr>
+<td><strong>FIFO（First-In-First-Out，先进先出算法）</strong></td>
+<td>替换最早进入内存的页面。</td>
+<td>实现简单，开销低。</td>
+<td>可能移除活跃页面（Belady 异常），性能不如 LRU 或其他算法。</td>
+</tr>
+<tr>
+<td><strong>Second Chance（第二次机会算法）</strong></td>
+<td>FIFO
+的改进版本，为页面提供“第二次机会”，通过引用位保护活跃页面。</td>
+<td>避免移除活跃页面，减少页面错误。</td>
+<td>实现稍复杂，仍可能受到 Belady 异常的影响。</td>
+</tr>
+<tr>
+<td><strong>Clock（时钟算法）</strong></td>
+<td>使用环形链表和引用位实现近似 LRU 的页面替换。</td>
+<td>高效，适合硬件支持有限的场景。</td>
+<td>是近似算法，可能不够精确。</td>
+</tr>
+<tr>
+<td><strong>LRU（Least Recently Used，最近最少使用算法）</strong></td>
+<td>替换最近最少使用的页面，假设最近使用的页面很可能再次被使用。</td>
+<td>性能最优，接近理论最优算法。</td>
+<td>硬件实现复杂，软件实现开销大。</td>
+</tr>
+<tr>
+<td><strong>NFU（Not Frequently Used，非频繁使用算法）</strong></td>
+<td>根据页面的访问频率替换访问次数最少的页面。</td>
+<td>简单易实现，适合硬件支持有限的场景。</td>
+<td>缺乏对最近访问的敏感性，可能无法适应动态变化的内存访问模式。</td>
+</tr>
+<tr>
+<td><strong>Aging（老化算法）</strong></td>
+<td>NFU
+的改进版本，通过右移计数器和结合引用位，动态调整页面的优先级。</td>
+<td>动态适应性强，避免“永远不忘记”问题，适合硬件支持有限的场景。</td>
+<td>实现稍复杂，时间窗口的选择对性能有重要影响。</td>
+</tr>
+<tr>
+<td><strong>Working Set（工作集算法）</strong></td>
+<td>替换不在工作集中的页面，动态调整工作集大小以适应程序的内存访问模式。</td>
+<td>减少页面错误，专注于活跃页面，适合内存访问具有局部性的场景。</td>
+<td>实现复杂，时间窗口的选择对性能有重要影响。</td>
+</tr>
+<tr>
+<td><strong>WSClock（工作集时钟算法）</strong></td>
+<td>结合时钟算法和工作集算法，通过环形链表和引用位高效管理页面替换。</td>
+<td>高效，避免了全表扫描的开销，适合大规模页表场景。</td>
+<td>实现复杂度较高，时间窗口的选择仍然需要权衡。</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h4 id="评价与推荐"><strong>评价与推荐</strong></h4>
+<p>• <strong>最优算法（Optimal）：</strong> •
+理论上最优，但无法实际实现，主要用于作为其他算法的性能基准。 •
+<strong>工作集算法（Working Set）和 WSClock 算法：</strong> •
+是实际系统中表现最好的算法之一，能够动态适应内存访问的局部性。 • WSClock
+算法在高效性和实现复杂度之间取得了良好的平衡，适合大规模系统。 •
+<strong>时钟算法（Clock）：</strong> • 是 LRU
+的高效近似算法，适合硬件支持有限的场景。 • <strong>LRU（Least Recently
+Used）：</strong> • 性能最优，但硬件实现复杂，适合高性能系统。 •
+<strong>FIFO 和 Second Chance：</strong> • 简单易实现，但性能不如 LRU
+和时钟算法，适合资源受限的系统。 • <strong>NFU 和 Aging：</strong> • 是
+LRU 的近似算法，适合硬件支持有限的场景，但缺乏对最近访问的敏感性。</p>
+<hr>
+<h3 id="页面分配策略的设计问题"><strong>42.
+页面分配策略的设计问题</strong></h3>
+<h4 id="局部分配与全局分配策略"><strong>局部分配与全局分配策略</strong></h4>
+<h5 id="局部分配策略local-page-replacement"><strong>局部分配策略（Local
+Page Replacement）</strong></h5>
+<p>• <strong>定义：</strong> •
+每个进程只能替换自己的页面，不能从其他进程中获取页面。 •
+<strong>优点：</strong> 1. <strong>隔离性：</strong> ◦
+进程之间的内存访问互不干扰，系统稳定性更高。 2.
+<strong>实现简单：</strong> ◦
+每个进程维护自己的页表和页面替换策略，逻辑清晰。 •
+<strong>缺点：</strong> 1. <strong>内存利用率低：</strong> ◦
+如果某个进程的内存需求较大，可能导致其他进程的内存资源被浪费。 2.
+<strong>无法全局优化：</strong> ◦
+系统无法跨进程优化内存分配，可能导致整体性能下降。</p>
+<h5 id="全局分配策略global-page-replacement"><strong>全局分配策略（Global
+Page Replacement）</strong></h5>
+<p>• <strong>定义：</strong> •
+系统中的所有页面都可以被任意进程替换，内存资源可以跨进程共享。 •
+<strong>优点：</strong> 1. <strong>内存利用率高：</strong> ◦
+系统可以根据全局需求动态调整内存分配，最大化内存利用率。 2.
+<strong>全局优化：</strong> ◦
+系统可以优先保留活跃页面，减少整体页面错误。 • <strong>缺点：</strong>
+1. <strong>复杂性：</strong> ◦
+需要维护全局页表和页面替换策略，实现复杂度较高。 2.
+<strong>进程间干扰：</strong> ◦
+某个进程的内存需求可能导致其他进程的页面被替换，影响系统稳定性。</p>
+<hr>
+<h4 id="局部分配与全局分配的对比"><strong>局部分配与全局分配的对比</strong></h4>
+<table>
+<colgroup>
+<col style="width: 15%">
+<col style="width: 40%">
+<col style="width: 44%">
+</colgroup>
+<thead>
+<tr>
+<th><strong>特性</strong></th>
+<th><strong>局部分配策略</strong></th>
+<th><strong>全局分配策略</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>内存利用率</strong></td>
+<td>较低，可能导致内存资源浪费。</td>
+<td>较高，动态调整内存分配以最大化利用率。</td>
+</tr>
+<tr>
+<td><strong>实现复杂度</strong></td>
+<td>较低，每个进程独立管理页面替换。</td>
+<td>较高，需要维护全局页表和页面替换策略。</td>
+</tr>
+<tr>
+<td><strong>进程隔离性</strong></td>
+<td>高，进程之间的内存访问互不干扰。</td>
+<td>低，进程之间可能相互影响。</td>
+</tr>
+<tr>
+<td><strong>适用场景</strong></td>
+<td>单用户系统或对稳定性要求较高的系统。</td>
+<td>多用户系统或对内存利用率要求较高的系统。</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="负载控制load-control"><strong>43. 负载控制（Load
+Control）</strong></h3>
+<h4 id="问题描述"><strong>问题描述</strong></h4>
+<p>• <strong>系统抖动（Thrashing）：</strong> •
+即使页面替换算法设计良好，系统仍可能因为内存不足而进入抖动状态。 •
+<strong>抖动的特征：</strong> ◦ 进程频繁发生页面错误，导致 CPU
+利用率下降。 ◦ 系统大部分时间花费在页面交换上，无法有效执行任务。</p>
+<p>• <strong>原因：</strong> •
+系统中某些进程需要更多内存，但没有进程释放内存。 •
+内存资源分配不合理，导致多个进程竞争有限的内存资源。</p>
+<hr>
+<h4 id="解决方案负载控制"><strong>解决方案：负载控制</strong></h4>
+<h5 id="减少竞争内存的进程数量"><strong>1.
+减少竞争内存的进程数量</strong></h5>
+<p>• <strong>方法：</strong> • 将部分进程的内存页面交换到磁盘（Swap
+Out）。 • 释放这些进程占用的内存资源，供其他进程使用。 •
+<strong>实现：</strong> • 选择内存占用较大但活跃度较低的进程进行交换。 •
+将进程的页面写入磁盘后，将其从内存中移除。</p>
+<h5 id="调整多道程序设计的程度"><strong>2.
+调整多道程序设计的程度</strong></h5>
+<p>• <strong>方法：</strong> • 减少系统中同时运行的进程数量。 •
+通过动态调整多道程序设计的程度，避免过多进程竞争内存资源。 •
+<strong>实现：</strong> •
+根据系统的内存使用情况，动态增加或减少进程数量。 •
+当内存资源紧张时，优先保留活跃进程，暂停或交换非活跃进程。</p>
+<hr>
+<h4 id="负载控制的优点"><strong>负载控制的优点</strong></h4>
+<ol type="1">
+<li><strong>提高系统稳定性：</strong> •
+通过减少竞争内存的进程数量，避免系统进入抖动状态。</li>
+<li><strong>优化内存利用率：</strong> •
+动态调整内存分配，确保内存资源被高效利用。</li>
+<li><strong>提升系统性能：</strong> • 减少页面错误的发生频率，提高 CPU
+利用率。</li>
+</ol>
+<hr>
+<h4 id="负载控制的缺点"><strong>负载控制的缺点</strong></h4>
+<ol type="1">
+<li><strong>交换开销：</strong> • 将进程页面交换到磁盘需要额外的 I/O
+开销，可能影响系统性能。</li>
+<li><strong>进程调度复杂性：</strong> •
+需要动态调整进程的运行状态，增加了调度的复杂性。</li>
+<li><strong>用户体验：</strong> •
+如果交换的进程是用户正在使用的进程，可能导致用户体验下降。</li>
+</ol>
+<hr>
+<h3 id="总结-5"><strong>总结</strong></h3>
+<h4 id="页面替换算法-1"><strong>页面替换算法</strong></h4>
+<p>• <strong>最优算法（Optimal）</strong> 和 <strong>工作集算法（Working
+Set）</strong> 是理论上表现最好的算法。 • <strong>WSClock 算法</strong>
+是实际系统中广泛使用的算法，结合了时钟算法的高效性和工作集算法的局部性优化。</p>
+<h4 id="页面分配策略"><strong>页面分配策略</strong></h4>
+<p>• <strong>局部分配策略</strong> 简单易实现，但内存利用率较低。 •
+<strong>全局分配策略</strong> 内存利用率高，但实现复杂度较高。</p>
+<h4 id="负载控制"><strong>负载控制</strong></h4>
+<p>•
+通过减少竞争内存的进程数量和调整多道程序设计的程度，可以有效避免系统抖动。
+• 负载控制需要在系统稳定性和性能之间找到平衡点。</p>
+<hr>
+<h3 id="未来改进方向-1"><strong>未来改进方向</strong></h3>
+<ol type="1">
+<li><strong>动态分配策略：</strong> •
+根据系统的内存使用情况，动态选择局部分配或全局分配策略。</li>
+<li><strong>智能交换机制：</strong> •
+使用机器学习算法预测进程的内存需求，优化交换策略。</li>
+<li><strong>硬件支持：</strong> •
+如果硬件支持，可以使用硬件计数器记录页面访问信息，减少软件实现的复杂度。</li>
+</ol>
+<h3 id="页面大小page-size"><strong>44. 页面大小（Page
+Size）</strong></h3>
+<h4 id="小页面大小small-page-size"><strong>小页面大小（Small Page
+Size）</strong></h4>
+<h5 id="优点-4"><strong>优点</strong></h5>
+<ol type="1">
+<li><p><strong>减少内部碎片（Internal Fragmentation）：</strong> •
+页面大小越小，程序分配的内存块越接近其实际需求，减少了内存的浪费。 •
+<strong>公式：</strong> ◦ 内部碎片 = 页面大小 - 程序剩余未使用的空间。 ◦
+小页面大小可以显著减少这种浪费。</p></li>
+<li><p><strong>减少程序在内存中的浪费：</strong> •
+小页面大小允许程序更精确地使用内存，避免了大页面大小可能导致的内存浪费。</p></li>
+</ol>
+<h5 id="缺点-3"><strong>缺点</strong></h5>
+<ol type="1">
+<li><p><strong>程序需要更多页面：</strong> •
+页面越小，程序需要更多的页面来存储其代码和数据。 •
+这可能导致页表变大，增加页表管理的复杂性。</p></li>
+<li><p><strong>页表变大：</strong> •
+每个进程都需要一个页表来记录其页面的映射关系。 •
+页面数量增加会导致页表的大小显著增加，占用更多内存。</p></li>
+</ol>
+<hr>
+<h4 id="页面大小的权衡公式"><strong>页面大小的权衡公式</strong></h4>
+<h5 id="公式"><strong>公式：</strong></h5>
+<p><span class="math display">\[
+\text{Overhead} = \frac{s}{p} \cdot e + \frac{p}{2}
+\]</span> • <strong><code>s</code></strong> =
+平均进程大小（以字节为单位）。 • <strong><code>p</code></strong> =
+页面大小（以字节为单位）。 • <strong><code>e</code></strong> =
+每个页表项的大小（以字节为单位）。 • <strong>公式解释：</strong> •
+第一项 <span class="math inline">\(\frac{s}{p} \cdot e\)</span>
+表示页表空间的开销。 ◦ <span class="math inline">\(\frac{s}{p}\)</span>
+是页面数量，乘以每个页表项的大小 <span class="math inline">\(e\)</span>。 • 第二项 <span class="math inline">\(\frac{p}{2}\)</span> 表示内部碎片的平均开销。 ◦
+内部碎片的平均大小是页面大小的一半。</p>
+<h5 id="优化条件"><strong>优化条件：</strong></h5>
+<p>• 当页面大小 <span class="math inline">\(p\)</span>
+满足以下条件时，开销最小化： <span class="math display">\[
+p = 2 \sqrt{s \cdot e}
+\]</span></p>
+<hr>
+<h3 id="页面错误处理的性能优化目标"><strong>页面错误处理的性能优化目标</strong></h3>
+<p>• <strong>减少页面错误率：</strong>
+提高页面命中率，减少中断发生频率。 •
+<strong>缩短页面错误处理时间：</strong> 优化磁盘 I/O 和页表更新操作。 •
+<strong>提高系统吞吐量：</strong>
+确保页面错误对系统性能的影响最小化。</p>
+<hr>
+<p><strong>1. 清理策略（Cleaning Policy）</strong> •
+后台进程（分页守护进程，paging daemon）</p>
+<p>• 定期检查内存状态，确保空闲帧数量充足。</p>
+<p>• 若空闲帧不足，根据页面置换算法（如时钟算法）选择待换出的页面。</p>
+<p>• 时钟算法（Clock Algorithm）的改进</p>
+<p>• 使用双指针（前指针 <code>front hand</code> 和后指针
+<code>back hand</code>）优化页面扫描效率。</p>
+<hr>
+<p><strong>2. 操作系统参与分页的四个时机</strong></p>
+<ol type="1">
+<li>进程创建时 • 确定程序大小，创建页表。</li>
+<li>进程执行时 • 重置MMU（内存管理单元），清空TLB（快表）。</li>
+<li>发生缺页异常时 •
+定位引发异常的虚拟地址，换出目标页，换入所需页。</li>
+<li>进程终止时 • 释放页表和占用的物理页帧。</li>
+</ol>
+<hr>
+<p><strong>3. 缺页异常处理流程</strong> （1）硬件与操作系统协作阶段</p>
+<ol type="1">
+<li>硬件陷入内核，保存程序计数器（PC）到栈。</li>
+<li>保存通用寄存器状态。</li>
+<li>操作系统确定所需的虚拟页。</li>
+<li>检查地址有效性，寻找空闲页帧： •
+若目标页帧被修改（脏页），先写回磁盘，挂起进程。</li>
+</ol>
+<p>（2）页面加载与恢复执行阶段</p>
+<ol start="5" type="1">
+<li>操作系统调度磁盘读取新页，进程保持挂起。</li>
+<li>磁盘中断完成，更新页表。</li>
+<li>回退故障指令到起始状态。</li>
+<li>重新调度故障进程。</li>
+<li>恢复寄存器状态。</li>
+<li>程序继续执行。</li>
+</ol>
+<h3 id="分段segmentation-背景与问题"><strong>52. 分段（Segmentation）——
+背景与问题</strong></h3>
+<h4 id="分段与分页的对比"><strong>分段与分页的对比</strong></h4>
+<p>• <strong>分页（Paging）：</strong> •
+分页是一种一维的虚拟内存管理方案，将虚拟地址空间划分为固定大小的页面。 •
+虚拟地址被分为页号（Page Number）和页内偏移（Offset）。 •
+分页的优点是实现简单，适合管理固定大小的内存块。 •
+<strong>问题：</strong> ◦
+分页将内存划分为固定大小的页面，可能导致内存碎片（如内部碎片和外部碎片）。
+◦ 对于某些应用程序，分页无法很好地反映程序的逻辑结构。</p>
+<p>• <strong>分段（Segmentation）：</strong> •
+分段是一种二维的虚拟内存管理方案，允许程序员根据程序的逻辑结构将内存划分为多个段（Segment）。
+• 每个段的大小可以动态调整，适合管理不同大小的内存块。 •
+<strong>优点：</strong> ◦
+更好地反映程序的逻辑结构（如主程序、过程、函数、符号表、栈等）。 ◦
+支持动态增长和收缩，减少内存碎片问题。</p>
+<hr>
+<h4 id="分段的应用场景"><strong>分段的应用场景</strong></h4>
+<p>• <strong>编译器的内存需求：</strong> •
+编译器在编译过程中需要管理多个表（如源代码表、符号表、常量表、解析树和栈）。
+•
+这些表的大小可能动态变化，如果使用分页，可能导致某些表被分割到多个页面中，增加访问开销。
+• <strong>变量数量远大于其他内存需求的情况：</strong> •
+如果程序有大量的变量，但其他内存需求（如代码段、栈等）正常，分页可能导致内存浪费。
+• 分段可以更好地适应这种需求，允许变量段动态增长。</p>
+<hr>
+<h3 id="分段segmentation-一维地址空间的问题"><strong>53.
+分段（Segmentation）—— 一维地址空间的问题</strong></h3>
+<h4 id="问题描述-1"><strong>问题描述</strong></h4>
+<p>•
+在一维地址空间中，所有表（如符号表、常量表、栈等）共享同一个地址空间。 •
+<strong>问题：</strong> •
+如果一个表的大小增长，可能会与其他表发生冲突（即“碰撞”）。 •
+例如，符号表的增长可能导致常量表被覆盖，或者栈的增长可能导致代码段被破坏。</p>
+<h4 id="示例"><strong>示例：</strong></h4>
+<p>• 假设有两个表：符号表和常量表。 • 符号表从地址 <code>0</code>
+开始，随着变量数量的增加，符号表不断增长。 • 常量表从地址 <code>N</code>
+开始，如果符号表增长到超过地址
+<code>N</code>，就会覆盖常量表，导致程序出错。</p>
+<figure>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/20250507160040.png" alt="img">
+<figcaption aria-hidden="true">img</figcaption>
+</figure>
+<hr>
+<h3 id="分段segmentation-解决方案"><strong>54. 分段（Segmentation）——
+解决方案</strong></h3>
+<h4 id="分段的核心思想"><strong>分段的核心思想</strong></h4>
+<p>•
+分段通过将虚拟地址空间划分为多个独立的段（Segment），每个段可以独立增长或收缩。
+• 每个段是一个逻辑单元，具有自己的起始地址和长度。 •
+分段允许程序员根据程序的逻辑结构定义内存区域，避免不同表之间的冲突。</p>
+<h4 id="分段的优点"><strong>分段的优点</strong></h4>
+<ol type="1">
+<li><strong>逻辑独立性：</strong> •
+每个段可以独立管理，避免不同段之间的干扰。</li>
+<li><strong>动态增长：</strong> •
+每个段的大小可以动态调整，适应程序的需求。</li>
+<li><strong>减少内存碎片：</strong> •
+分段减少了内存碎片问题，因为每个段的大小可以根据需要调整。</li>
+</ol>
+<figure>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/20250507160141.png" alt="img">
+<figcaption aria-hidden="true">img</figcaption>
+</figure>
+<hr>
+<h3 id="分段segmentation-用户视角"><strong>55. 分段（Segmentation）——
+用户视角</strong></h3>
+<h4 id="用户对程序的视图"><strong>用户对程序的视图</strong></h4>
+<p>• 在分段模型中，程序被看作是由多个段组成的集合。 •
+每个段是一个逻辑单元，具有特定的用途，例如： • <strong>主程序（Main
+Program）：</strong> 存储程序的主逻辑代码。 •
+<strong>过程（Procedure）：</strong> 存储子程序或函数的代码。 •
+<strong>函数（Function）：</strong> 存储特定功能的代码。 •
+<strong>符号表（Symbol Table）：</strong> 存储编译过程中生成的符号信息。
+• <strong>栈（Stack）：</strong> 存储函数调用的局部变量和返回地址。</p>
+<h4 id="分段的优势"><strong>分段的优势</strong></h4>
+<p>• 分段更好地反映了程序的逻辑结构，便于程序员理解和管理内存。 •
+每个段可以根据需要动态增长或收缩，适应程序的需求。</p>
+<hr>
+<h3 id="分段segmentation-逻辑视图"><strong>56. 分段（Segmentation）——
+逻辑视图</strong></h3>
+<h4 id="分段的逻辑视图"><strong>分段的逻辑视图</strong></h4>
+<p>• 程序被划分为多个段，每个段具有以下特性： 1. <strong>段号（Segment
+Number）：</strong> 唯一标识一个段。 2.
+<strong>段内偏移（Offset）：</strong> 表示段内的具体地址。</p>
+<pre><code>• **示例：**
+
+• 主程序段：`Segment 0`
+• 符号表段：`Segment 1`
+• 栈段：`Segment 2`</code></pre>
+<h4 id="逻辑地址的组成"><strong>逻辑地址的组成</strong></h4>
+<p>• 逻辑地址由两部分组成： • <strong>段号（Virtual Segment
+Number）：</strong> 标识段。 • <strong>偏移（Offset）：</strong>
+指定段内的具体地址。</p>
+<hr>
+<h3 id="分段架构segmentation-architecture"><strong>57.
+分段架构（Segmentation Architecture）</strong></h3>
+<h4 id="分段地址的组成"><strong>分段地址的组成</strong></h4>
+<p>• <strong>逻辑地址：</strong> • 逻辑地址由两部分组成： ◦
+<strong>虚拟段号（Virtual Segment Number）：</strong> 标识段。 ◦
+<strong>偏移（Offset）：</strong> 指定段内的具体地址。</p>
+<h4 id="段表segment-table"><strong>段表（Segment Table）</strong></h4>
+<p>• <strong>功能：</strong> • 将二维的用户定义地址（段号 +
+偏移）映射为一维的物理地址。 • <strong>段表项（Segment Table Entry,
+STE）：</strong> • 每个段表项包含以下信息： 1.
+<strong>基地址（Base）：</strong> 段在内存中的起始物理地址。 2.
+<strong>段长度（Limit）：</strong> 段的长度，用于检查偏移是否越界。 •
+<strong>段表基址寄存器（Segment Table Base Register, STBR）：</strong> •
+指向段表在内存中的位置。</p>
+<h4 id="地址转换过程"><strong>地址转换过程</strong></h4>
+<ol type="1">
+<li><p><strong>提取段号和偏移：</strong> •
+从逻辑地址中提取虚拟段号和偏移。</p></li>
+<li><p><strong>查找段表：</strong> •
+使用虚拟段号作为索引，查找段表项。</p></li>
+<li><p><strong>检查偏移是否越界：</strong> •
+如果偏移大于段长度（Limit），则发生段越界错误。</p></li>
+<li><p><strong>计算物理地址：</strong> • 物理地址 = 段基地址（Base） +
+偏移（Offset）。</p>
+<figure>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/20250507160341.png" alt="img">
+<figcaption aria-hidden="true">img</figcaption>
+</figure></li>
+</ol>
+<figure>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/20250507160614.png" alt="img">
+<figcaption aria-hidden="true">img</figcaption>
+</figure>
+<hr>
+<h3 id="地址转换address-translation"><strong>58. 地址转换（Address
+Translation）</strong></h3>
+<h4 id="地址转换的步骤"><strong>地址转换的步骤</strong></h4>
+<ol type="1">
+<li><strong>逻辑地址分解：</strong> • 逻辑地址分为虚拟段号（Segment
+Number）和偏移（Offset）。</li>
+<li><strong>段表查找：</strong> •
+使用虚拟段号查找段表项，获取段的基地址（Base）和段长度（Limit）。</li>
+<li><strong>越界检查：</strong> •
+如果偏移大于段长度（Limit），则触发段越界错误。</li>
+<li><strong>物理地址计算：</strong> • 物理地址 = 段基地址（Base） +
+偏移（Offset）。</li>
+</ol>
+<h4 id="示例-1"><strong>示例：</strong></h4>
+<p>• 假设逻辑地址为 <code>&lt;Segment 2, Offset 50&gt;</code>： •
+查找段表，找到段号为 <code>2</code> 的段表项： ◦ 基地址（Base） =
+<code>2000</code> ◦ 段长度（Limit） = <code>100</code> •
+检查偏移是否越界： ◦ <code>50 &lt; 100</code>，未越界。 • 计算物理地址：
+◦ 物理地址 = <code>2000 + 50 = 2050</code>。</p>
+<hr>
+<h3 id="分段的示例"><strong>59. 分段的示例</strong></h3>
+<h4 id="假设条件-2"><strong>假设条件</strong></h4>
+<p>• 程序由以下段组成： • 主程序段（Segment 0）：基地址 =
+<code>1000</code>，长度 = <code>500</code> • 符号表段（Segment
+1）：基地址 = <code>2000</code>，长度 = <code>300</code> • 栈段（Segment
+2）：基地址 = <code>3000</code>，长度 = <code>200</code> •
+逻辑地址：<code>&lt;Segment 1, Offset 150&gt;</code></p>
+<h4 id="地址转换过程-1"><strong>地址转换过程</strong></h4>
+<ol type="1">
+<li><strong>提取段号和偏移：</strong> • 虚拟段号 = <code>1</code> • 偏移
+= <code>150</code></li>
+<li><strong>查找段表：</strong> • 找到段号为 <code>1</code> 的段表项： ◦
+基地址（Base） = <code>2000</code> ◦ 段长度（Limit） =
+<code>300</code></li>
+<li><strong>越界检查：</strong> •
+<code>150 &lt; 300</code>，未越界。</li>
+<li><strong>计算物理地址：</strong> • 物理地址 =
+<code>2000 + 150 = 2150</code></li>
+</ol>
+<hr>
+<h3 id="分段的优缺点"><strong>分段的优缺点</strong></h3>
+<h4 id="优点-5"><strong>优点</strong></h4>
+<ol type="1">
+<li><strong>逻辑独立性：</strong> •
+每个段可以独立管理，避免不同段之间的干扰。</li>
+<li><strong>动态增长：</strong> •
+每个段的大小可以动态调整，适应程序的需求。</li>
+<li><strong>减少内存碎片：</strong> •
+分段减少了内存碎片问题，因为每个段的大小可以根据需要调整。</li>
+<li><strong>反映程序逻辑：</strong> •
+分段更好地反映了程序的逻辑结构，便于程序员理解和管理内存。</li>
+</ol>
+<h4 id="缺点-4"><strong>缺点</strong></h4>
+<ol type="1">
+<li><strong>段表管理复杂：</strong> •
+段表需要记录每个段的基地址和长度，管理复杂度较高。</li>
+<li><strong>段越界检查开销：</strong> •
+每次地址转换都需要检查偏移是否越界，增加了开销。</li>
+<li><strong>外部碎片：</strong> •
+分段可能导致外部碎片问题，因为段的大小不固定。</li>
+</ol>
+<h3 id="练习分段地址转换"><strong>60. 练习：分段地址转换</strong></h3>
+<h4 id="题目描述"><strong>题目描述</strong></h4>
+<p>• 给定分段表（Segment Table），计算以下逻辑地址对应的物理地址： 1.
+<strong>段号 2，偏移 247</strong> 2. <strong>段号 4，偏移
+439</strong></p>
+<h4 id="分段表"><strong>分段表</strong></h4>
+<table>
+<colgroup>
+<col style="width: 41%">
+<col style="width: 28%">
+<col style="width: 30%">
+</colgroup>
+<thead>
+<tr>
+<th><strong>段号（Segment Number）</strong></th>
+<th><strong>基地址（Base）</strong></th>
+<th><strong>段长度（Limit）</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>5432</td>
+<td>350</td>
+</tr>
+<tr>
+<td>1</td>
+<td>115</td>
+<td>100</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2200</td>
+<td>780</td>
+</tr>
+<tr>
+<td>3</td>
+<td>4235</td>
+<td>1100</td>
+</tr>
+<tr>
+<td>4</td>
+<td>1650</td>
+<td>400</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="解答段号-2偏移-247"><strong>61. 解答：段号 2，偏移
+247</strong></h3>
+<h4 id="步骤-1提取段号和偏移"><strong>步骤
+1：提取段号和偏移</strong></h4>
+<p>• 段号 = <code>2</code> • 偏移 = <code>247</code></p>
+<h4 id="步骤-2查找段表"><strong>步骤 2：查找段表</strong></h4>
+<p>• 根据分段表，找到段号为 <code>2</code> 的段表项： •
+<strong>基地址（Base）</strong> = <code>2200</code> •
+<strong>段长度（Limit）</strong> = <code>780</code></p>
+<h4 id="步骤-3检查偏移是否越界"><strong>步骤
+3：检查偏移是否越界</strong></h4>
+<p>• 比较偏移与段长度： • 偏移 <code>247</code> &lt; 段长度
+<code>780</code>，未越界。 • 如果偏移大于或等于段长度，则会触发
+<strong>段越界错误（Invalid Address Error）</strong>。</p>
+<h4 id="步骤-4计算物理地址"><strong>步骤 4：计算物理地址</strong></h4>
+<p>• 物理地址 = 段基地址（Base） + 偏移（Offset） • 物理地址 =
+<code>2200 + 247 = 2447</code></p>
+<h4 id="结果"><strong>结果：</strong></h4>
+<p>• 段号 <code>2</code>，偏移 <code>247</code> 的物理地址为
+<strong>2447</strong>。</p>
+<hr>
+<h3 id="解答段号-4偏移-439"><strong>62. 解答：段号 4，偏移
+439</strong></h3>
+<h4 id="步骤-1提取段号和偏移-1"><strong>步骤
+1：提取段号和偏移</strong></h4>
+<p>• 段号 = <code>4</code> • 偏移 = <code>439</code></p>
+<h4 id="步骤-2查找段表-1"><strong>步骤 2：查找段表</strong></h4>
+<p>• 根据分段表，找到段号为 <code>4</code> 的段表项： •
+<strong>基地址（Base）</strong> = <code>1650</code> •
+<strong>段长度（Limit）</strong> = <code>400</code></p>
+<h4 id="步骤-3检查偏移是否越界-1"><strong>步骤
+3：检查偏移是否越界</strong></h4>
+<p>• 比较偏移与段长度： • 偏移 <code>439</code> &gt; 段长度
+<code>400</code>，越界。 • 如果偏移大于段长度，则会触发
+<strong>段越界错误（Invalid Address Error）</strong>。</p>
+<h4 id="步骤-4处理越界错误"><strong>步骤 4：处理越界错误</strong></h4>
+<p>• 因为偏移超出了段的范围，系统会生成一个
+<strong>段越界错误</strong>，并终止程序或采取其他错误处理措施。</p>
+<h4 id="结果-1"><strong>结果：</strong></h4>
+<p>• 段号 <code>4</code>，偏移 <code>439</code> 的物理地址
+<strong>无效</strong>，触发 <strong>段越界错误</strong>。</p>
+<hr>
+<h3 id="总结分段地址转换的步骤"><strong>总结：分段地址转换的步骤</strong></h3>
+<h4 id="提取段号和偏移"><strong>1. 提取段号和偏移</strong></h4>
+<p>• 从逻辑地址中提取虚拟段号（Segment Number）和偏移（Offset）。</p>
+<h4 id="查找段表"><strong>2. 查找段表</strong></h4>
+<p>• 使用虚拟段号作为索引，查找段表项。 • 段表项包含以下信息： •
+<strong>基地址（Base）：</strong> 段在内存中的起始物理地址。 •
+<strong>段长度（Limit）：</strong> 段的长度，用于检查偏移是否越界。</p>
+<h4 id="检查偏移是否越界"><strong>3. 检查偏移是否越界</strong></h4>
+<p>• 比较偏移与段长度： • 如果偏移 &lt;
+段长度，偏移有效，继续计算物理地址。 • 如果偏移 ≥ 段长度，触发
+<strong>段越界错误</strong>。</p>
+<h4 id="计算物理地址"><strong>4. 计算物理地址</strong></h4>
+<p>• 物理地址 = 段基地址（Base） + 偏移（Offset）。</p>
+<hr>
+<h3 id="分段地址转换的示例总结"><strong>分段地址转换的示例总结</strong></h3>
+<table>
+<colgroup>
+<col style="width: 22%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 17%">
+<col style="width: 16%">
+<col style="width: 10%">
+<col style="width: 18%">
+</colgroup>
+<thead>
+<tr>
+<th><strong>逻辑地址</strong></th>
+<th><strong>段号</strong></th>
+<th><strong>偏移</strong></th>
+<th><strong>段基地址（Base）</strong></th>
+<th><strong>段长度（Limit）</strong></th>
+<th><strong>是否越界</strong></th>
+<th><strong>物理地址</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&lt;Segment 2, Offset 247&gt;</code></td>
+<td>2</td>
+<td>247</td>
+<td>2200</td>
+<td>780</td>
+<td>否</td>
+<td>2200 + 247 = <strong>2447</strong></td>
+</tr>
+<tr>
+<td><code>&lt;Segment 4, Offset 439&gt;</code></td>
+<td>4</td>
+<td>439</td>
+<td>1650</td>
+<td>400</td>
+<td>是</td>
+<td><strong>无效地址，错误</strong></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><strong>分段存储管理（Segmentation）笔记（中文版）</strong></p>
+<hr>
+<p><strong>1. 分段存储的优点</strong></p>
+<ol type="1">
+<li>动态调整段大小 •
+可根据需求动态扩展或收缩段（如数据段、堆栈段）。</li>
+<li>独立的保护机制 •
+每个段可设置独立的读写/执行权限，比基于页的保护更简单高效。</li>
+<li>简化程序链接 •
+链接不同模块时，只需调整段基址（无需重定位每个指令）。</li>
+<li>代码共享便捷 •
+多个进程可共享同一代码段（如共享库），只需加载一次到内存。</li>
+</ol>
+<hr>
+<p><strong>2. 分段存储的缺点</strong></p>
+<ol type="1">
+<li>程序员需感知内存模型 •
+在汇编层面需显式管理段寄存器（如x86的<code>CS</code>、<code>DS</code>）。</li>
+<li>外部碎片化问题 •
+动态分配段会导致内存碎片（类似交换系统的缺点）。</li>
+<li>大段物理内存限制 •
+若段大小超过物理内存容量，需复杂处理（如覆盖技术或动态加载）。</li>
+</ol>
+<figure>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/20250507160807.png" alt="img">
+<figcaption aria-hidden="true">img</figcaption>
+</figure>
+<hr>
+<h3 id="分段与分页的对比-1"><strong>分段与分页的对比</strong></h3>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 40%">
+<col style="width: 45%">
+</colgroup>
+<thead>
+<tr>
+<th><strong>特性</strong></th>
+<th><strong>分段（Segmentation）</strong></th>
+<th><strong>分页（Paging）</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>地址空间结构</strong></td>
+<td>二维地址空间（段号 + 偏移）</td>
+<td>一维地址空间（页号 + 页内偏移）</td>
+</tr>
+<tr>
+<td><strong>逻辑结构</strong></td>
+<td>反映程序的逻辑结构（如主程序、函数、符号表等）</td>
+<td>不反映程序的逻辑结构，仅将内存划分为固定大小的页面</td>
+</tr>
+<tr>
+<td><strong>动态调整</strong></td>
+<td>每个段的大小可以动态调整</td>
+<td>页面大小固定，无法动态调整</td>
+</tr>
+<tr>
+<td><strong>内存碎片</strong></td>
+<td>减少内存碎片，但可能导致外部碎片</td>
+<td>减少内部碎片，但可能导致外部碎片</td>
+</tr>
+<tr>
+<td><strong>共享与保护</strong></td>
+<td>支持段级别的共享和保护</td>
+<td>支持页级别的共享和保护，但粒度较粗</td>
+</tr>
+<tr>
+<td><strong>实现复杂度</strong></td>
+<td>较高，需要管理段表和段越界检查</td>
+<td>较低，只需管理页表</td>
+</tr>
+<tr>
+<td><strong>性能开销</strong></td>
+<td>段表查找和段越界检查增加开销</td>
+<td>页表查找开销较小，但可能需要多次页表访问（多级页表）</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="分段与分页的结合段页式内存管理"><strong>分段与分页的结合：段页式内存管理</strong></h3>
+<h4 id="段页式内存管理segmented-paging"><strong>段页式内存管理（Segmented
+Paging）</strong></h4>
+<p>• <strong>核心思想：</strong> •
+将分段和分页结合，既支持逻辑独立性，又减少内存碎片。 •
+<strong>实现方式：</strong> • 每个段被划分为多个固定大小的页面。 •
+使用段表管理段的基地址和长度。 • 使用页表管理段内页面的物理地址。 •
+<strong>优点：</strong> • 支持逻辑独立性（分段）。 •
+减少内存碎片（分页）。 • <strong>缺点：</strong> •
+实现复杂度较高，需要同时管理段表和页表。</p>
+<hr>
+<h3 id="分段的优势advantage-of-segmentation"><strong>65.
+分段的优势（Advantage of Segmentation）</strong></h3>
+<h4 id="动态增长和收缩"><strong>1. 动态增长和收缩</strong></h4>
+<p>• 分段的大小可以动态调整，适应程序的需求。 • 例如： •
+符号表可以根据编译过程中生成的符号数量动态扩展。 •
+栈可以根据函数调用的深度动态增长。</p>
+<h4 id="更简单的保护机制"><strong>2. 更简单的保护机制</strong></h4>
+<p>• 每个段可以独立设置保护信息（如读、写、执行权限）。 •
+相比分页的细粒度保护（每页单独设置权限），分段的保护机制更简单、更高效。</p>
+<h4 id="程序链接更简单"><strong>3. 程序链接更简单</strong></h4>
+<p>• 分段使得程序链接变得简单： • 每个段可以独立编译和链接。 •
+链接时只需调整段的基地址，无需重新组织内存中的代码和数据。</p>
+<h4 id="代码共享"><strong>4. 代码共享</strong></h4>
+<p>• 分段支持代码段的共享： •
+多个进程可以共享同一个代码段，只需加载一次代码段。 •
+例如，多个进程运行同一个程序时，可以共享程序的代码段，减少内存占用。</p>
+<hr>
+<h3 id="分段的劣势disadvantage-of-segmentation"><strong>66.
+分段的劣势（Disadvantage of Segmentation）</strong></h3>
+<h4 id="程序员需要了解内存模型"><strong>1.
+程序员需要了解内存模型</strong></h4>
+<p>• 在汇编语言级别，程序员需要显式管理段的使用。 •
+程序员需要了解段的划分、段的基地址和段的大小，增加了编程复杂性。</p>
+<h4 id="内存碎片问题"><strong>2. 内存碎片问题</strong></h4>
+<p>• 分段可能导致 <strong>外部碎片</strong>： •
+外部碎片是指内存中存在许多小块的空闲内存，这些空闲内存块无法合并成足够大的块来满足大段的需求。
+• 外部碎片会导致内存利用率降低。</p>
+<h4 id="段过大的问题"><strong>3. 段过大的问题</strong></h4>
+<p>• 如果某个段的大小过大，可能无法完全加载到物理内存中。 • 解决方法： •
+使用 <strong>分段交换（Segment Swapping）</strong>，将部分段交换到磁盘。
+• 或者结合分页技术，将段划分为固定大小的页面。</p>
+<hr>
+<h3 id="分段的改进建议"><strong>分段的改进建议</strong></h3>
+<h4 id="结合分页技术"><strong>1. 结合分页技术</strong></h4>
+<p>• <strong>段页式内存管理（Segmented Paging）：</strong> •
+将分段和分页结合，既支持逻辑独立性，又减少内存碎片。 •
+每个段被划分为多个固定大小的页面，使用页表管理段内页面的物理地址。 •
+<strong>优点：</strong> • 支持逻辑独立性（分段）。 •
+减少内存碎片（分页）。 • <strong>缺点：</strong> •
+实现复杂度较高，需要同时管理段表和页表。</p>
+<h4 id="动态压缩技术"><strong>2. 动态压缩技术</strong></h4>
+<p>• 使用动态压缩技术解决外部碎片问题： •
+定期将已分配的段移动到内存的一端，合并空闲内存块。 •
+<strong>优点：</strong> • 提高内存利用率。 • <strong>缺点：</strong> •
+压缩操作可能导致系统性能开销。</p>
+<h4 id="智能段管理"><strong>3. 智能段管理</strong></h4>
+<p>• 使用机器学习算法预测段的大小需求，优化段的分配和释放。 •
+<strong>优点：</strong> • 提高内存利用率，减少碎片问题。</p>
+<hr>
+<h3 id="总结-6"><strong>总结</strong></h3>
+<h4 id="分段的核心思想-1"><strong>分段的核心思想</strong></h4>
+<p>•
+分段通过将虚拟地址空间划分为多个独立的段，每个段可以独立管理，避免了分页的固定大小限制。
+• 分段更好地反映了程序的逻辑结构，支持动态增长和收缩。</p>
+<h4 id="分段的关键点"><strong>分段的关键点</strong></h4>
+<ol type="1">
+<li><strong>逻辑地址：</strong> • 由虚拟段号和偏移组成。</li>
+<li><strong>段表：</strong> •
+将逻辑地址映射为物理地址，记录每个段的基地址和长度。</li>
+<li><strong>地址转换：</strong> •
+包括段表查找、越界检查和物理地址计算。</li>
+<li><strong>内存分配问题：</strong> •
+动态存储分配可能导致检查棋盘化和外部碎片。</li>
+</ol>
+<h4 id="分段的优势-1"><strong>分段的优势</strong></h4>
+<ol type="1">
+<li><strong>动态增长和收缩：</strong> •
+每个段的大小可以动态调整，适应程序的需求。</li>
+<li><strong>简单的保护机制：</strong> •
+每个段可以独立设置保护信息，比分页的保护机制更简单。</li>
+<li><strong>程序链接更简单：</strong> •
+分段使得程序链接变得简单，只需调整段的基地址。</li>
+<li><strong>代码共享：</strong> •
+分段支持代码段的共享，减少内存占用。</li>
+</ol>
+<h4 id="分段的劣势"><strong>分段的劣势</strong></h4>
+<ol type="1">
+<li><strong>程序员需要了解内存模型：</strong> •
+在汇编语言级别，程序员需要显式管理段的使用。</li>
+<li><strong>内存碎片问题：</strong> •
+分段可能导致外部碎片，降低内存利用率。</li>
+<li><strong>段过大的问题：</strong> •
+如果段的大小过大，可能无法完全加载到物理内存中。</li>
+</ol>
+<h3 id="分段与分页结合segmentation-with-paging-基本概念"><strong>67.
+分段与分页结合（Segmentation with Paging）—— 基本概念</strong></h3>
+<h4 id="分段与分页结合的思想"><strong>分段与分页结合的思想</strong></h4>
+<p>• <strong>分段在虚拟内存中，分页在物理内存中：</strong> •
+虚拟地址空间被划分为多个段（Segment），每个段是一个逻辑单元。 •
+每个段内部被进一步划分为固定大小的页面（Page），物理内存中只存储段的实际页面，而不是整个段。
+• <strong>优点：</strong> • <strong>分段的优势：</strong>
+支持逻辑独立性，每个段可以动态增长或收缩。 •
+<strong>分页的优势：</strong> 减少内存碎片，提高内存利用率。</p>
+<h4 id="地址的三部分组成"><strong>地址的三部分组成</strong></h4>
+<p>• 在分段与分页结合的系统中，虚拟地址由三部分组成： 1.
+<strong>段号（Segment Number）：</strong> 标识虚拟地址所属的段。 2.
+<strong>页号（Page Number）：</strong> 标识段内的页。 3.
+<strong>页内偏移（Offset）：</strong> 标识页内的具体地址。</p>
+<h4 id="物理内存的特点"><strong>物理内存的特点</strong></h4>
+<p>• 物理内存中只存储段的实际页面，而不是整个段。 •
+如果某个段的页面未被访问，这些页面不会加载到物理内存中。</p>
+<figure>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/20250507161744.png" alt="img">
+<figcaption aria-hidden="true">img</figcaption>
+</figure>
+<hr>
+<h3 id="分段与分页结合segmentation-with-paging-实现细节"><strong>69.
+分段与分页结合（Segmentation with Paging）—— 实现细节</strong></h3>
+<h4 id="段表segment-table-1"><strong>1. 段表（Segment
+Table）</strong></h4>
+<p>• 每个进程需要一个段表，用于管理段的映射信息。 •
+<strong>段表的作用：</strong> • 将虚拟段号映射到物理内存中的页表。 •
+每个段表项（Segment Table Entry, STE）包含以下信息： ◦
+<strong>页表基址（Page Table Base Address）：</strong> 指向该段的页表。
+◦ <strong>段长度（Segment Length）：</strong> 段的大小（页数）。</p>
+<h4 id="页表page-table"><strong>2. 页表（Page Table）</strong></h4>
+<p>• 每个段有一个页表，用于管理段内页面的映射信息。 •
+<strong>页表的作用：</strong> •
+将段内的虚拟页号映射到物理内存中的页框号（Frame Number）。 •
+每个页表项（Page Table Entry, PTE）包含以下信息： ◦
+<strong>页框号（Frame Number）：</strong> 页面在物理内存中的起始地址。 ◦
+<strong>有效位（Valid Bit）：</strong> 表示该页是否在内存中。 ◦
+<strong>访问权限（Access Rights）：</strong> 如读、写、执行权限。</p>
+<h4 id="多级页表"><strong>3. 多级页表</strong></h4>
+<p>• 如果段的大小较大，页表可能会占用大量内存。 •
+为了解决这个问题，可以使用多级页表（Multi-Level Page Table）： •
+页表被划分为多个层次，只有实际使用的部分才会加载到内存中。 •
+这种方式减少了内存占用，但增加了地址转换的复杂性。</p>
+<hr>
+<h3 id="地址转换address-translation-1"><strong>70. 地址转换（Address
+Translation）</strong></h3>
+<h4 id="地址转换的过程"><strong>地址转换的过程</strong></h4>
+<ol type="1">
+<li><p><strong>提取段号、页号和偏移：</strong> •
+从虚拟地址中提取虚拟段号、虚拟页号和页内偏移。</p></li>
+<li><p><strong>查找段表：</strong> • 使用虚拟段号作为索引，查找段表项。
+• 获取该段的页表基址。</p></li>
+<li><p><strong>查找页表：</strong> • 使用虚拟页号作为索引，查找页表项。
+• 检查页表项的有效位： ◦ 如果有效位为
+<code>1</code>，表示该页在内存中，获取页框号。 ◦ 如果有效位为
+<code>0</code>，触发 <strong>页错误（Page Fault）</strong>。</p></li>
+<li><p><strong>计算物理地址：</strong> • 物理地址 = 页框号（Frame
+Number） + 页内偏移（Offset）。</p></li>
+<li><p><strong>访问物理内存：</strong> •
+使用物理地址访问物理内存中的数据。</p></li>
+</ol>
+<figure>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/20250507161917.png" alt="img">
+<figcaption aria-hidden="true">img</figcaption>
+</figure>
+<hr>
+<h3 id="分段与分页结合multics"><strong>72.
+分段与分页结合：MULTICS</strong></h3>
+<h4 id="multics-的背景"><strong>MULTICS 的背景</strong></h4>
+<p>• MULTICS（Multiplexed Information and Computing
+Service）是一个早期的多用户操作系统。 • MULTICS
+是最早实现分段与分页结合的系统之一。</p>
+<h4 id="multics-的分段与分页设计"><strong>MULTICS
+的分段与分页设计</strong></h4>
+<ol type="1">
+<li><p><strong>描述符段（Descriptor Segment）：</strong> • MULTICS
+使用一个特殊的段（描述符段）来存储所有段的页表信息。 •
+描述符段中的每个描述符指向一个段的页表。</p></li>
+<li><p><strong>段描述符（Segment Descriptor）：</strong> •
+每个段描述符包含以下信息： ◦ <strong>页表基址（Page Table Base
+Address）：</strong> 指向该段的页表。 ◦ <strong>段长度（Segment
+Length）：</strong> 段的大小（页数）。 ◦ <strong>访问权限（Access
+Rights）：</strong> 如读、写、执行权限。</p></li>
+<li><p><strong>虚拟地址结构：</strong> • MULTICS
+的虚拟地址由以下部分组成： ◦ <strong>描述符段号（Descriptor Segment
+Number）：</strong> 标识描述符段。 ◦ <strong>段号（Segment
+Number）：</strong> 标识虚拟地址所属的段。 ◦ <strong>页号（Page
+Number）：</strong> 标识段内的页。 ◦
+<strong>页内偏移（Offset）：</strong> 标识页内的具体地址。</p></li>
+</ol>
+<figure>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FCH3%EF%BC%88B%EF%BC%89/Users\86150\AppData\Roaming\Typora\typora-user-images\image-20250507162206268.png" alt="image-20250507162206268">
+<figcaption aria-hidden="true">image-20250507162206268</figcaption>
+</figure>
+<hr>
+<h3 id="multics-的虚拟地址结构"><strong>73. MULTICS
+的虚拟地址结构</strong></h3>
+<h4 id="虚拟地址的字段"><strong>虚拟地址的字段</strong></h4>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FCH3%EF%BC%88B%EF%BC%89/Users\86150\AppData\Roaming\Typora\typora-user-images\image-20250507162359832.png" alt="image-20250507162359832"><br>
+</p>
+<figure>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/20250507162549.png" alt="img">
+<figcaption aria-hidden="true">img</figcaption>
+</figure>
+<hr>
+<h3 id="multics-的-tlbtranslation-lookaside-buffer"><strong>75. MULTICS
+的 TLB（Translation Lookaside Buffer）</strong></h3>
+<h4 id="tlb-的作用"><strong>TLB 的作用</strong></h4>
+<p>• TLB 是一种高速缓存，用于加速地址转换。 • TLB
+存储了最近使用的段描述符和页表项的映射信息。</p>
+<h4 id="multics-的-tlb-特点"><strong>MULTICS 的 TLB 特点</strong></h4>
+<p>• <strong>两级 TLB：</strong> • MULTICS 的 TLB 分为两级： 1.
+<strong>段 TLB：</strong> 存储段描述符的映射信息。 2. <strong>页
+TLB：</strong> 存储页表项的映射信息。 •
+<strong>两级页表的影响：</strong> • 由于 MULTICS 使用两级页表，TLB
+的设计更加复杂。 • 需要同时缓存段描述符和页表项的映射信息。</p>
+<h4 id="tlb-的工作流程"><strong>TLB 的工作流程</strong></h4>
+<ol type="1">
+<li><p><strong>查找 TLB：</strong> • 首先在段 TLB 中查找段描述符。 •
+如果找到，继续在页 TLB 中查找页表项。 • 如果未找到，触发 TLB 未命中（TLB
+Miss），需要访问内存中的描述符段和页表。</p></li>
+<li><p><strong>更新 TLB：</strong> • 将新访问的段描述符和页表项加载到
+TLB 中。</p></li>
+</ol>
+<figure>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/20250507162809.png" alt="img">
+<figcaption aria-hidden="true">img</figcaption>
+</figure>
+<hr>
+<h3 id="分段与分页结合的优缺点"><strong>分段与分页结合的优缺点</strong></h3>
+<h4 id="优点-6"><strong>优点</strong></h4>
+<ol type="1">
+<li><strong>逻辑独立性：</strong> •
+分段支持逻辑独立性，每个段可以动态增长或收缩。</li>
+<li><strong>内存利用率高：</strong> •
+分页减少内存碎片，提高内存利用率。</li>
+<li><strong>灵活的保护机制：</strong> •
+每个段和页可以独立设置访问权限，提供更灵活的保护机制。</li>
+<li><strong>支持共享：</strong> •
+分段支持代码段的共享，分页支持页面级别的共享。</li>
+</ol>
+<h4 id="缺点-5"><strong>缺点</strong></h4>
+<ol type="1">
+<li><strong>复杂性：</strong> • 分段与分页结合增加了系统的复杂性。 •
+需要管理段表、页表和 TLB。</li>
+<li><strong>性能开销：</strong> •
+地址转换需要多次查找（段表、页表、TLB），增加了性能开销。</li>
+<li><strong>内存碎片：</strong> •
+虽然分页减少了内存碎片，但分段可能导致外部碎片。</li>
+</ol>
+<h3 id="总结summary"><strong>76. 总结（Summary）</strong></h3>
+<hr>
+<h3 id="页面替换策略page-replacement-strategies"><strong>1.
+页面替换策略（Page Replacement Strategies）</strong></h3>
+<p>页面替换策略决定了当物理内存不足时，哪些页面应该被替换出去。以下是常见的页面替换算法及其特点：</p>
+<h4 id="最优算法optimal-algorithm-1"><strong>1.1 最优算法（Optimal
+Algorithm）</strong></h4>
+<p>• <strong>描述：</strong> • 替换未来最长时间内不会被访问的页面。 •
+<strong>优点：</strong> • 理论上最优，页面错误最少。 •
+<strong>缺点：</strong> • 不切实际，需要预知未来的页面访问序列。 •
+<strong>适用场景：</strong> • 作为性能基准，用于评估其他算法的效果。</p>
+<h4 id="最近未使用算法nru-not-recently-used"><strong>1.2
+最近未使用算法（NRU, Not Recently Used）</strong></h4>
+<p>• <strong>描述：</strong> • 根据页面的引用位（R bit）和修改位（M
+bit）分类页面，优先替换最低优先级的页面。 • <strong>优点：</strong> •
+简单易实现，适合硬件支持有限的场景。 • <strong>缺点：</strong> •
+缺乏精确性，可能无法区分同一类页面的使用历史。</p>
+<h4 id="先进先出算法fifo-first-in-first-out"><strong>1.3
+先进先出算法（FIFO, First-In-First-Out）</strong></h4>
+<p>• <strong>描述：</strong> • 替换最早进入内存的页面。 •
+<strong>优点：</strong> • 实现简单，开销低。 • <strong>缺点：</strong> •
+可能移除活跃页面（Belady 异常），性能不如 LRU 或其他算法。</p>
+<h4 id="第二次机会算法second-chance"><strong>1.4 第二次机会算法（Second
+Chance）</strong></h4>
+<p>• <strong>描述：</strong> • FIFO
+的改进版本，为页面提供“第二次机会”，通过引用位保护活跃页面。 •
+<strong>优点：</strong> • 避免移除活跃页面，减少页面错误。 •
+<strong>缺点：</strong> • 实现稍复杂，仍可能受到 Belady 异常的影响。</p>
+<h4 id="时钟算法clock-algorithm"><strong>1.5 时钟算法（Clock
+Algorithm）</strong></h4>
+<p>• <strong>描述：</strong> • 使用环形链表和引用位实现近似 LRU
+的页面替换。 • <strong>优点：</strong> • 高效，适合硬件支持有限的场景。
+• <strong>缺点：</strong> • 是近似算法，可能不够精确。</p>
+<h4 id="最近最少使用算法lru-least-recently-used-1"><strong>1.6
+最近最少使用算法（LRU, Least Recently Used）</strong></h4>
+<p>• <strong>描述：</strong> •
+替换最近最少使用的页面，假设最近使用的页面很可能再次被使用。 •
+<strong>优点：</strong> • 性能最优，接近理论最优算法。 •
+<strong>缺点：</strong> • 硬件实现复杂，软件实现开销大。</p>
+<h4 id="频繁使用算法nfu-not-frequently-used"><strong>1.7
+频繁使用算法（NFU, Not Frequently Used）</strong></h4>
+<p>• <strong>描述：</strong> •
+根据页面的访问频率替换访问次数最少的页面。 • <strong>优点：</strong> •
+简单易实现，适合硬件支持有限的场景。 • <strong>缺点：</strong> •
+缺乏对最近访问的敏感性，可能无法适应动态变化的内存访问模式。</p>
+<h4 id="老化算法aging"><strong>1.8 老化算法（Aging）</strong></h4>
+<p>• <strong>描述：</strong> • NFU
+的改进版本，通过右移计数器和结合引用位，动态调整页面的优先级。 •
+<strong>优点：</strong> •
+动态适应性强，避免“永远不忘记”问题，适合硬件支持有限的场景。 •
+<strong>缺点：</strong> •
+实现稍复杂，时间窗口的选择对性能有重要影响。</p>
+<h4 id="工作集算法working-set-algorithm"><strong>1.9 工作集算法（Working
+Set Algorithm）</strong></h4>
+<p>• <strong>描述：</strong> •
+替换不在工作集中的页面，动态调整工作集大小以适应程序的内存访问模式。 •
+<strong>优点：</strong> •
+减少页面错误，专注于活跃页面，适合内存访问具有局部性的场景。 •
+<strong>缺点：</strong> • 实现复杂，时间窗口的选择对性能有重要影响。</p>
+<h4 id="wsclock-算法工作集时钟算法"><strong>1.10 WSClock
+算法（工作集时钟算法）</strong></h4>
+<p>• <strong>描述：</strong> •
+结合时钟算法和工作集算法，通过环形链表和引用位高效管理页面替换。 •
+<strong>优点：</strong> •
+高效，避免了全表扫描的开销，适合大规模页表场景。 •
+<strong>缺点：</strong> •
+实现复杂度较高，时间窗口的选择仍然需要权衡。</p>
+<hr>
+<h3 id="分页系统设计问题design-issues-for-paging-systems"><strong>2.
+分页系统设计问题（Design Issues for Paging Systems）</strong></h3>
+<h4 id="局部分配与全局分配策略-1"><strong>2.1
+局部分配与全局分配策略</strong></h4>
+<p>• <strong>局部分配策略（Local Page Replacement）：</strong> •
+每个进程只能替换自己的页面，不能从其他进程中获取页面。 •
+<strong>优点：</strong> 隔离性好，实现简单。 • <strong>缺点：</strong>
+内存利用率低，可能导致内存资源浪费。</p>
+<p>• <strong>全局分配策略（Global Page Replacement）：</strong> •
+系统中的所有页面都可以被任意进程替换，内存资源可以跨进程共享。 •
+<strong>优点：</strong> 内存利用率高，全局优化。 •
+<strong>缺点：</strong> 实现复杂度高，进程间可能相互影响。</p>
+<h4 id="负载控制load-control-1"><strong>2.2 负载控制（Load
+Control）</strong></h4>
+<p>• <strong>问题：</strong> • 系统可能因内存不足而进入抖动状态。 •
+<strong>解决方案：</strong> • 减少竞争内存的进程数量： ◦
+将部分进程的内存页面交换到磁盘，释放内存资源。 ◦
+重新考虑多道程序设计的程度。</p>
+<hr>
+<h3 id="分段segmentation"><strong>3. 分段（Segmentation）</strong></h3>
+<h4 id="分段的核心思想-2"><strong>3.1 分段的核心思想</strong></h4>
+<p>•
+分段通过将虚拟地址空间划分为多个独立的段（Segment），每个段可以独立管理。
+• 每个段是一个逻辑单元，具有自己的起始地址和长度。</p>
+<h4 id="分段的优势-2"><strong>3.2 分段的优势</strong></h4>
+<ol type="1">
+<li><strong>逻辑独立性：</strong> •
+每个段可以独立管理，避免不同段之间的干扰。</li>
+<li><strong>动态增长：</strong> •
+每个段的大小可以动态调整，适应程序的需求。</li>
+<li><strong>减少内存碎片：</strong> •
+分段减少了内存碎片问题，因为每个段的大小可以根据需要调整。</li>
+<li><strong>便于共享：</strong> •
+不同进程可以共享某些段（如代码段），提高内存利用率。</li>
+</ol>
+<h4 id="分段的劣势-1"><strong>3.3 分段的劣势</strong></h4>
+<ol type="1">
+<li><strong>段表管理复杂：</strong> •
+段表需要记录每个段的基地址和长度，管理复杂度较高。</li>
+<li><strong>段越界检查开销：</strong> •
+每次地址转换都需要检查偏移是否越界，增加了开销。</li>
+<li><strong>可能产生外部碎片：</strong> •
+分段可能导致外部碎片问题，因为段的大小不固定。</li>
+</ol>
+<hr>
+<h3 id="分段与分页结合segmentation-with-paging"><strong>4.
+分段与分页结合（Segmentation with Paging）</strong></h3>
+<h4 id="核心思想"><strong>4.1 核心思想</strong></h4>
+<p>• <strong>分段在虚拟内存中，分页在物理内存中：</strong> •
+虚拟地址空间被划分为多个段（Segment），每个段是一个逻辑单元。 •
+每个段内部被进一步划分为固定大小的页面（Page），物理内存中只存储段的实际页面。</p>
+<h4 id="地址结构"><strong>4.2 地址结构</strong></h4>
+<p>• 虚拟地址由三部分组成： 1. <strong>段号（Segment Number）：</strong>
+标识虚拟地址所属的段。 2. <strong>页号（Page Number）：</strong>
+标识段内的页。 3. <strong>页内偏移（Offset）：</strong>
+标识页内的具体地址。</p>
+<h4 id="地址转换过程-2"><strong>4.3 地址转换过程</strong></h4>
+<ol type="1">
+<li><strong>查找段表：</strong> •
+使用虚拟段号作为索引，查找段表项，获取页表基址。</li>
+<li><strong>查找页表：</strong> •
+使用虚拟页号作为索引，查找页表项，获取页框号。</li>
+<li><strong>计算物理地址：</strong> • 物理地址 = 页框号 +
+页内偏移。</li>
+</ol>
+<h4 id="multics-的设计"><strong>4.4 MULTICS 的设计</strong></h4>
+<p>• <strong>描述符段（Descriptor Segment）：</strong> •
+存储所有段的页表信息。 • <strong>段描述符（Segment
+Descriptor）：</strong> • 包含页表基址、段长度和访问权限。 •
+<strong>虚拟地址结构：</strong> •
+由描述符段号、段号、页号和偏移组成。</p>
+<hr>
+<h3 id="总结与对比"><strong>5. 总结与对比</strong></h3>
+<h4 id="分页paging"><strong>5.1 分页（Paging）</strong></h4>
+<p>• <strong>优点：</strong> • 内存利用率高，减少内存碎片。 •
+实现简单，适合硬件支持。 • <strong>缺点：</strong> •
+缺乏逻辑独立性，无法反映程序的逻辑结构。 •
+页面大小固定，可能导致内部或外部碎片。</p>
+<h4 id="分段segmentation-1"><strong>5.2
+分段（Segmentation）</strong></h4>
+<p>• <strong>优点：</strong> •
+支持逻辑独立性，每个段可以动态增长或收缩。 •
+更简单的保护机制，每个段可以独立设置访问权限。 •
+支持代码共享，减少内存占用。 • <strong>缺点：</strong> •
+管理复杂，段表可能占用大量内存。 •
+可能产生外部碎片，段过大的问题难以解决。</p>
+<h4 id="分段与分页结合segmentation-with-paging-1"><strong>5.3
+分段与分页结合（Segmentation with Paging）</strong></h4>
+<p>• <strong>优点：</strong> •
+结合了分段和分页的优点，既支持逻辑独立性，又减少内存碎片。 •
+提供灵活的内存管理方案。 • <strong>缺点：</strong> •
+实现复杂度高，需要同时管理段表和页表。 • 地址转换开销较大。</p>
+<hr>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://www.totorocatcat.top/">Totoro</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://totorocatcat.top/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FCH3%EF%BC%88B%EF%BC%89/">http://totorocatcat.top/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FCH3%EF%BC%88B%EF%BC%89/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://totorocatcat.top" target="_blank">Totoroの旅</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%8F%90%E9%AB%98/">提高</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E4%BE%A0%E5%AE%A2-%E5%89%91%E6%9D%A5-%E5%8F%A4%E9%A3%8E.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FCH4/" title="操作系统CH4"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E4%BE%A0%E5%AE%A2-%E5%89%91%E6%9D%A5-%E5%8F%A4%E9%A3%8E.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">操作系统CH4</div></div></a></div><div class="next-post pull-right"><a href="/%E6%97%B6%E9%97%B4%E7%BA%BF%E8%A1%A8/" title="时间线表"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E4%BE%A0%E5%AE%A2-%E5%89%91%E6%9D%A5-%E5%8F%A4%E9%A3%8E.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">时间线表</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/'Lec2%20Logic%20and%20Proof,%20Sets,%20and%20Function'/" title="Lec2 Logic and Proof, Sets, and Function"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/1fe6130ca86bb9e7e6a37c9187a32c8.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-11-20</div><div class="title">Lec2 Logic and Proof, Sets, and Function</div></div></a></div><div><a href="/02%EF%BC%89/" title="CS61B 课程笔记（Lecture 02）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/v2-2ed7f4c9e1a7a699a3ef300a6f761abe_720w.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-11</div><div class="title">CS61B 课程笔记（Lecture 02）</div></div></a></div><div><a href="/03%EF%BC%89/" title="CS61B 课程笔记（Lecture 03）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/v2-2ed7f4c9e1a7a699a3ef300a6f761abe_720w.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-12</div><div class="title">CS61B 课程笔记（Lecture 03）</div></div></a></div><div><a href="/04%EF%BC%89/" title="CS61B 课程笔记（Lecture 04）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/2749a496aabc7d650b2912e256582e390a0a636b.jpg@1256w_1246h_!web-article-pic.avif" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-13</div><div class="title">CS61B 课程笔记（Lecture 04）</div></div></a></div><div><a href="/06%EF%BC%89/" title="CS61B 课程笔记（Lecture 06）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/f00af0d55cc81c18403ccbb4957ae6bc298252208.jpg@1256w_1374h_!web-article-pic.avif" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-15</div><div class="title">CS61B 课程笔记（Lecture 06）</div></div></a></div><div><a href="/05%EF%BC%89/" title="CS61B 课程笔记（Lecture 05）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/4ccebbc43a0ca31a719afadee2f86b4902402baf.jpg@1256w_786h_!web-article-pic.avif" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-14</div><div class="title">CS61B 课程笔记（Lecture 05）</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/px3.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Totoro</div><div class="author-info__description">热爱文学的SCUT软件学院学生</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">846</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">37</div></a></div><a id="card-info-btn" href="https://github.com/4512abc"><i class="fab fa-github"></i><span>🛴前往小窝......</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/4512abc" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:4512abc@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到龙猫の小窝</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#ch3-b"><span class="toc-text">CH3 B</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E9%A1%B5%E7%AD%96%E7%95%A5paging-policies"><span class="toc-text">分页策略（Paging
+Policies）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E9%A1%B5%E7%AD%96%E7%95%A5%E7%9A%84%E5%88%86%E7%B1%BB"><span class="toc-text">1. 分页策略的分类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#fetch-strategies%E8%8E%B7%E5%8F%96%E7%AD%96%E7%95%A5"><span class="toc-text">1.1 Fetch
+Strategies（获取策略）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#replacement-strategies%E6%9B%BF%E6%8D%A2%E7%AD%96%E7%95%A5"><span class="toc-text">1.2 Replacement
+Strategies（替换策略）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#clean-strategies%E6%B8%85%E7%90%86%E7%AD%96%E7%95%A5"><span class="toc-text">1.3 Clean
+Strategies（清理策略）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#fetch-strategies-%E7%9A%84%E8%AF%A6%E7%BB%86%E8%AE%B2%E8%A7%A3"><span class="toc-text">2. Fetch Strategies
+的详细讲解</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8C%89%E9%9C%80%E8%8E%B7%E5%8F%96demand-fetching"><span class="toc-text">2.1 按需获取（Demand
+Fetching）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A2%84%E5%8F%96prepaging"><span class="toc-text">2.2 预取（Prepaging）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#page-replacement-%E7%9A%84%E8%AF%A6%E7%BB%86%E8%AE%B2%E8%A7%A3"><span class="toc-text">3. Page Replacement
+的详细讲解</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A1%B5%E9%9D%A2%E6%9B%BF%E6%8D%A2%E7%9A%84%E7%9B%AE%E6%A0%87"><span class="toc-text">3.1 页面替换的目标</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A1%B5%E9%9D%A2%E6%9B%BF%E6%8D%A2%E7%AE%97%E6%B3%95"><span class="toc-text">3.2 页面替换算法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%B5%E9%9D%A2%E6%9B%BF%E6%8D%A2%E7%AE%97%E6%B3%95%E7%9A%84%E5%AF%B9%E6%AF%94"><span class="toc-text">4. 页面替换算法的对比</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%A5%E5%85%85%E8%AF%B4%E6%98%8E"><span class="toc-text">补充说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%80%E4%BC%98%E7%AE%97%E6%B3%95optimal-algorithm%E4%B8%8E-fifo-%E7%AE%97%E6%B3%95"><span class="toc-text">最优算法（Optimal
+Algorithm）与 FIFO 算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%80%E4%BC%98%E7%AE%97%E6%B3%95optimal-algorithm"><span class="toc-text">10. 最优算法（Optimal
+Algorithm）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8F%8F%E8%BF%B0"><span class="toc-text">10.1 描述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%80%E4%BC%98%E7%AE%97%E6%B3%95%E7%9A%84%E7%A4%BA%E4%BE%8B"><span class="toc-text">10.2 最优算法的示例</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#fifo-%E9%A1%B5%E9%9D%A2%E6%9B%BF%E6%8D%A2%E7%AE%97%E6%B3%95"><span class="toc-text">11. FIFO 页面替换算法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8F%8F%E8%BF%B0-1"><span class="toc-text">11.1 描述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#fifo-%E7%9A%84%E7%A4%BA%E4%BE%8B"><span class="toc-text">11.2 FIFO 的示例</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#belady-%E5%BC%82%E5%B8%B8beladys-anomaly"><span class="toc-text">12. Belady 异常（Belady&#39;s
+Anomaly）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8F%8F%E8%BF%B0-2"><span class="toc-text">12.1 描述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#belady-%E5%BC%82%E5%B8%B8%E7%9A%84%E7%A4%BA%E4%BE%8B"><span class="toc-text">12.2 Belady 异常的示例</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E6%AC%A1%E6%9C%BA%E4%BC%9A%E7%AE%97%E6%B3%95second-chance-page-replacement-algorithm"><span class="toc-text">13.
+第二次机会算法（Second Chance Page Replacement Algorithm）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8F%8F%E8%BF%B0-3"><span class="toc-text">13.1 描述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E6%AC%A1%E6%9C%BA%E4%BC%9A%E7%AE%97%E6%B3%95%E7%9A%84%E6%93%8D%E4%BD%9C%E7%A4%BA%E4%BE%8B"><span class="toc-text">13.2
+第二次机会算法的操作示例</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#fifo-%E4%B8%8E%E7%AC%AC%E4%BA%8C%E6%AC%A1%E6%9C%BA%E4%BC%9A%E7%AE%97%E6%B3%95%E7%9A%84%E5%AF%B9%E6%AF%94"><span class="toc-text">14. FIFO
+与第二次机会算法的对比</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-1"><span class="toc-text">15. 总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%9F%E5%9B%A0%E5%88%86%E6%9E%90"><span class="toc-text">原因分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B%E8%AF%B4%E6%98%8E"><span class="toc-text">示例说明</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4%E8%A7%A3%E6%9E%90"><span class="toc-text">步骤解析：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E9%94%AE%E7%82%B9"><span class="toc-text">关键点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#fifo-%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="toc-text">FIFO 的优缺点</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%98%E7%82%B9"><span class="toc-text">优点：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%BA%E7%82%B9"><span class="toc-text">缺点：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%94%B9%E8%BF%9B%E6%96%B9%E6%B3%95"><span class="toc-text">改进方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-2"><span class="toc-text">总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%B6%E9%92%9F%E9%A1%B5%E9%9D%A2%E6%9B%BF%E6%8D%A2%E7%AE%97%E6%B3%95clock-page-replacement-algorithm"><span class="toc-text">时钟页面替换算法（Clock
+Page Replacement Algorithm）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%AA%E6%9C%80%E8%BF%91%E4%BD%BF%E7%94%A8%E9%A1%B5%E9%9D%A2%E6%9B%BF%E6%8D%A2%E7%AE%97%E6%B3%95nru-not-recently-used"><span class="toc-text">未最近使用页面替换算法（NRU,
+Not Recently Used）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8F%8F%E8%BF%B0-4"><span class="toc-text">22. 描述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%98%E7%82%B9-1"><span class="toc-text">优点：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%BA%E7%82%B9-1"><span class="toc-text">缺点：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%80%E8%BF%91%E6%9C%80%E5%B0%91%E4%BD%BF%E7%94%A8%E7%AE%97%E6%B3%95lru-least-recently-used"><span class="toc-text">最近最少使用算法（LRU,
+Least Recently Used）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8F%8F%E8%BF%B0-5"><span class="toc-text">23. 描述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E5%AE%9E%E7%8E%B0"><span class="toc-text">软件实现：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A1%AC%E4%BB%B6%E5%AE%9E%E7%8E%B0-1"><span class="toc-text">硬件实现 1：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A1%AC%E4%BB%B6%E5%AE%9E%E7%8E%B0-2"><span class="toc-text">硬件实现 2：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#lru-%E7%A4%BA%E4%BE%8B"><span class="toc-text">28. LRU 示例</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A8%A1%E6%8B%9F-lru-%E7%9A%84%E8%BD%AF%E4%BB%B6%E7%AE%97%E6%B3%95"><span class="toc-text">模拟 LRU 的软件算法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%94%B9%E8%BF%9B%E7%9A%84-nfunot-frequently-used"><span class="toc-text">改进的 NFU（Not
+Frequently Used）：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B7%A5%E4%BD%9C%E9%9B%86%E9%A1%B5%E9%9D%A2%E6%9B%BF%E6%8D%A2%E7%AE%97%E6%B3%95working-set-page-replacement-algorithm"><span class="toc-text">工作集页面替换算法（Working
+Set Page Replacement Algorithm）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8F%8F%E8%BF%B0-6"><span class="toc-text">30. 描述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%98%E7%82%B9-2"><span class="toc-text">优点：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-3"><span class="toc-text">总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%AA%E6%9D%A5%E6%94%B9%E8%BF%9B%E6%96%B9%E5%90%91"><span class="toc-text">未来改进方向</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A8%A1%E6%8B%9F-lru-%E7%9A%84%E8%BD%AF%E4%BB%B6%E7%AE%97%E6%B3%95simulating-lru-in-software"><span class="toc-text">模拟 LRU
+的软件算法（Simulating LRU in Software）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A8%A1%E6%8B%9F-lru-%E7%9A%84%E8%BD%AF%E4%BB%B6%E7%AE%97%E6%B3%95-1"><span class="toc-text">26. 模拟 LRU
+的软件算法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%83%8C%E6%99%AF%E9%97%AE%E9%A2%98"><span class="toc-text">背景问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#nfu-%E7%AE%97%E6%B3%95not-frequently-used-algorithm"><span class="toc-text">26.1 NFU
+算法（Not Frequently Used Algorithm）</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%80%9D%E6%83%B3"><span class="toc-text">基本思想</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%97%AE%E9%A2%98"><span class="toc-text">问题</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%94%B9%E8%BF%9B%E7%9A%84-nfu-%E7%AE%97%E6%B3%95modified-nfu-with-aging"><span class="toc-text">26.2 改进的 NFU
+算法（Modified NFU with Aging）</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%94%B9%E8%BF%9B%E6%80%9D%E6%83%B3"><span class="toc-text">改进思想</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E6%AD%A5%E9%AA%A4"><span class="toc-text">操作步骤</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BE%E4%BE%8B%E8%AF%B4%E6%98%8E"><span class="toc-text">举例说明</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%81%87%E8%AE%BE%E6%9D%A1%E4%BB%B6"><span class="toc-text">假设条件：</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%94%B9%E8%BF%9B%E7%9A%84-nfu-%E7%AE%97%E6%B3%95%E7%9A%84%E4%BC%98%E7%82%B9"><span class="toc-text">改进的 NFU
+算法的优点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%94%B9%E8%BF%9B%E7%9A%84-nfu-%E7%AE%97%E6%B3%95%E7%9A%84%E7%BC%BA%E7%82%B9"><span class="toc-text">改进的 NFU
+算法的缺点</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#wsclock-page-replacement-algorithm"><span class="toc-text">WSClock Page
+Replacement Algorithm</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8F%8F%E8%BF%B0-7"><span class="toc-text">36. 描述</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%83%8C%E6%99%AF%E9%97%AE%E9%A2%98-1"><span class="toc-text">背景问题</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#wsclock-%E7%AE%97%E6%B3%95%E7%9A%84%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3"><span class="toc-text">37. WSClock
+算法的核心思想</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E7%89%B9%E7%82%B9"><span class="toc-text">算法特点</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#wsclock-%E7%AE%97%E6%B3%95%E7%9A%84%E6%93%8D%E4%BD%9C%E9%80%BB%E8%BE%91"><span class="toc-text">38. WSClock
+算法的操作逻辑</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%A1%B5%E9%9D%A2%E9%94%99%E8%AF%AF%E6%97%B6%E7%9A%84%E6%93%8D%E4%BD%9C%E6%AD%A5%E9%AA%A4"><span class="toc-text">页面错误时的操作步骤</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#wsclock-%E7%AE%97%E6%B3%95%E7%9A%84%E6%93%8D%E4%BD%9C%E7%A4%BA%E4%BE%8B"><span class="toc-text">39. WSClock
+算法的操作示例</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%81%87%E8%AE%BE%E6%9D%A1%E4%BB%B6-1"><span class="toc-text">假设条件</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#wsclock-%E7%AE%97%E6%B3%95%E7%9A%84%E7%89%B9%E6%AE%8A%E6%83%85%E5%86%B5%E5%A4%84%E7%90%86"><span class="toc-text">40. WSClock
+算法的特殊情况处理</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%BD%93%E6%89%8B%E5%9B%9E%E5%88%B0%E8%B5%B7%E7%82%B9%E6%97%B6%E7%9A%84%E5%A4%84%E7%90%86"><span class="toc-text">当手回到起点时的处理</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#wsclock-%E7%AE%97%E6%B3%95%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="toc-text">WSClock 算法的优缺点</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BC%98%E7%82%B9-3"><span class="toc-text">优点</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%BC%BA%E7%82%B9-2"><span class="toc-text">缺点</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#wsclock-%E7%AE%97%E6%B3%95%E7%9A%84%E6%94%B9%E8%BF%9B%E6%96%B9%E5%90%91"><span class="toc-text">WSClock
+算法的改进方向</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#wsclock-%E7%AE%97%E6%B3%95%E4%B8%8E%E5%B7%A5%E4%BD%9C%E9%9B%86%E7%AE%97%E6%B3%95%E7%9A%84%E5%AF%B9%E6%AF%94"><span class="toc-text">WSClock
+算法与工作集算法的对比</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-4"><span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%B5%E9%9D%A2%E6%9B%BF%E6%8D%A2%E7%AE%97%E6%B3%95%E5%9B%9E%E9%A1%BE"><span class="toc-text">41. 页面替换算法回顾</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%BB%E7%BB%93%E4%B8%8E%E8%AF%84%E4%BB%B7"><span class="toc-text">总结与评价</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%84%E4%BB%B7%E4%B8%8E%E6%8E%A8%E8%8D%90"><span class="toc-text">评价与推荐</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%B5%E9%9D%A2%E5%88%86%E9%85%8D%E7%AD%96%E7%95%A5%E7%9A%84%E8%AE%BE%E8%AE%A1%E9%97%AE%E9%A2%98"><span class="toc-text">42.
+页面分配策略的设计问题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B1%80%E9%83%A8%E5%88%86%E9%85%8D%E4%B8%8E%E5%85%A8%E5%B1%80%E5%88%86%E9%85%8D%E7%AD%96%E7%95%A5"><span class="toc-text">局部分配与全局分配策略</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%B1%80%E9%83%A8%E5%88%86%E9%85%8D%E7%AD%96%E7%95%A5local-page-replacement"><span class="toc-text">局部分配策略（Local
+Page Replacement）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%85%A8%E5%B1%80%E5%88%86%E9%85%8D%E7%AD%96%E7%95%A5global-page-replacement"><span class="toc-text">全局分配策略（Global
+Page Replacement）</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B1%80%E9%83%A8%E5%88%86%E9%85%8D%E4%B8%8E%E5%85%A8%E5%B1%80%E5%88%86%E9%85%8D%E7%9A%84%E5%AF%B9%E6%AF%94"><span class="toc-text">局部分配与全局分配的对比</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B4%9F%E8%BD%BD%E6%8E%A7%E5%88%B6load-control"><span class="toc-text">43. 负载控制（Load
+Control）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0"><span class="toc-text">问题描述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%E8%B4%9F%E8%BD%BD%E6%8E%A7%E5%88%B6"><span class="toc-text">解决方案：负载控制</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%87%8F%E5%B0%91%E7%AB%9E%E4%BA%89%E5%86%85%E5%AD%98%E7%9A%84%E8%BF%9B%E7%A8%8B%E6%95%B0%E9%87%8F"><span class="toc-text">1.
+减少竞争内存的进程数量</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%B0%83%E6%95%B4%E5%A4%9A%E9%81%93%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%9A%84%E7%A8%8B%E5%BA%A6"><span class="toc-text">2.
+调整多道程序设计的程度</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B4%9F%E8%BD%BD%E6%8E%A7%E5%88%B6%E7%9A%84%E4%BC%98%E7%82%B9"><span class="toc-text">负载控制的优点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B4%9F%E8%BD%BD%E6%8E%A7%E5%88%B6%E7%9A%84%E7%BC%BA%E7%82%B9"><span class="toc-text">负载控制的缺点</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-5"><span class="toc-text">总结</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A1%B5%E9%9D%A2%E6%9B%BF%E6%8D%A2%E7%AE%97%E6%B3%95-1"><span class="toc-text">页面替换算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A1%B5%E9%9D%A2%E5%88%86%E9%85%8D%E7%AD%96%E7%95%A5"><span class="toc-text">页面分配策略</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B4%9F%E8%BD%BD%E6%8E%A7%E5%88%B6"><span class="toc-text">负载控制</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%AA%E6%9D%A5%E6%94%B9%E8%BF%9B%E6%96%B9%E5%90%91-1"><span class="toc-text">未来改进方向</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%B5%E9%9D%A2%E5%A4%A7%E5%B0%8Fpage-size"><span class="toc-text">44. 页面大小（Page
+Size）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B0%8F%E9%A1%B5%E9%9D%A2%E5%A4%A7%E5%B0%8Fsmall-page-size"><span class="toc-text">小页面大小（Small Page
+Size）</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BC%98%E7%82%B9-4"><span class="toc-text">优点</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%BC%BA%E7%82%B9-3"><span class="toc-text">缺点</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A1%B5%E9%9D%A2%E5%A4%A7%E5%B0%8F%E7%9A%84%E6%9D%83%E8%A1%A1%E5%85%AC%E5%BC%8F"><span class="toc-text">页面大小的权衡公式</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%85%AC%E5%BC%8F"><span class="toc-text">公式：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BC%98%E5%8C%96%E6%9D%A1%E4%BB%B6"><span class="toc-text">优化条件：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%B5%E9%9D%A2%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86%E7%9A%84%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E7%9B%AE%E6%A0%87"><span class="toc-text">页面错误处理的性能优化目标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%AE%B5segmentation-%E8%83%8C%E6%99%AF%E4%B8%8E%E9%97%AE%E9%A2%98"><span class="toc-text">52. 分段（Segmentation）——
+背景与问题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E6%AE%B5%E4%B8%8E%E5%88%86%E9%A1%B5%E7%9A%84%E5%AF%B9%E6%AF%94"><span class="toc-text">分段与分页的对比</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E6%AE%B5%E7%9A%84%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-text">分段的应用场景</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%AE%B5segmentation-%E4%B8%80%E7%BB%B4%E5%9C%B0%E5%9D%80%E7%A9%BA%E9%97%B4%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-text">53.
+分段（Segmentation）—— 一维地址空间的问题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0-1"><span class="toc-text">问题描述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B"><span class="toc-text">示例：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%AE%B5segmentation-%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="toc-text">54. 分段（Segmentation）——
+解决方案</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E6%AE%B5%E7%9A%84%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3"><span class="toc-text">分段的核心思想</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E6%AE%B5%E7%9A%84%E4%BC%98%E7%82%B9"><span class="toc-text">分段的优点</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%AE%B5segmentation-%E7%94%A8%E6%88%B7%E8%A7%86%E8%A7%92"><span class="toc-text">55. 分段（Segmentation）——
+用户视角</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E5%AF%B9%E7%A8%8B%E5%BA%8F%E7%9A%84%E8%A7%86%E5%9B%BE"><span class="toc-text">用户对程序的视图</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E6%AE%B5%E7%9A%84%E4%BC%98%E5%8A%BF"><span class="toc-text">分段的优势</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%AE%B5segmentation-%E9%80%BB%E8%BE%91%E8%A7%86%E5%9B%BE"><span class="toc-text">56. 分段（Segmentation）——
+逻辑视图</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E6%AE%B5%E7%9A%84%E9%80%BB%E8%BE%91%E8%A7%86%E5%9B%BE"><span class="toc-text">分段的逻辑视图</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%BB%E8%BE%91%E5%9C%B0%E5%9D%80%E7%9A%84%E7%BB%84%E6%88%90"><span class="toc-text">逻辑地址的组成</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%AE%B5%E6%9E%B6%E6%9E%84segmentation-architecture"><span class="toc-text">57.
+分段架构（Segmentation Architecture）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E6%AE%B5%E5%9C%B0%E5%9D%80%E7%9A%84%E7%BB%84%E6%88%90"><span class="toc-text">分段地址的组成</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AE%B5%E8%A1%A8segment-table"><span class="toc-text">段表（Segment Table）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9C%B0%E5%9D%80%E8%BD%AC%E6%8D%A2%E8%BF%87%E7%A8%8B"><span class="toc-text">地址转换过程</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%B0%E5%9D%80%E8%BD%AC%E6%8D%A2address-translation"><span class="toc-text">58. 地址转换（Address
+Translation）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9C%B0%E5%9D%80%E8%BD%AC%E6%8D%A2%E7%9A%84%E6%AD%A5%E9%AA%A4"><span class="toc-text">地址转换的步骤</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-1"><span class="toc-text">示例：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%AE%B5%E7%9A%84%E7%A4%BA%E4%BE%8B"><span class="toc-text">59. 分段的示例</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%81%87%E8%AE%BE%E6%9D%A1%E4%BB%B6-2"><span class="toc-text">假设条件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9C%B0%E5%9D%80%E8%BD%AC%E6%8D%A2%E8%BF%87%E7%A8%8B-1"><span class="toc-text">地址转换过程</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%AE%B5%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="toc-text">分段的优缺点</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%98%E7%82%B9-5"><span class="toc-text">优点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%BA%E7%82%B9-4"><span class="toc-text">缺点</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%83%E4%B9%A0%E5%88%86%E6%AE%B5%E5%9C%B0%E5%9D%80%E8%BD%AC%E6%8D%A2"><span class="toc-text">60. 练习：分段地址转换</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="toc-text">题目描述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E6%AE%B5%E8%A1%A8"><span class="toc-text">分段表</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E7%AD%94%E6%AE%B5%E5%8F%B7-2%E5%81%8F%E7%A7%BB-247"><span class="toc-text">61. 解答：段号 2，偏移
+247</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4-1%E6%8F%90%E5%8F%96%E6%AE%B5%E5%8F%B7%E5%92%8C%E5%81%8F%E7%A7%BB"><span class="toc-text">步骤
+1：提取段号和偏移</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4-2%E6%9F%A5%E6%89%BE%E6%AE%B5%E8%A1%A8"><span class="toc-text">步骤 2：查找段表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4-3%E6%A3%80%E6%9F%A5%E5%81%8F%E7%A7%BB%E6%98%AF%E5%90%A6%E8%B6%8A%E7%95%8C"><span class="toc-text">步骤
+3：检查偏移是否越界</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4-4%E8%AE%A1%E7%AE%97%E7%89%A9%E7%90%86%E5%9C%B0%E5%9D%80"><span class="toc-text">步骤 4：计算物理地址</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%93%E6%9E%9C"><span class="toc-text">结果：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E7%AD%94%E6%AE%B5%E5%8F%B7-4%E5%81%8F%E7%A7%BB-439"><span class="toc-text">62. 解答：段号 4，偏移
+439</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4-1%E6%8F%90%E5%8F%96%E6%AE%B5%E5%8F%B7%E5%92%8C%E5%81%8F%E7%A7%BB-1"><span class="toc-text">步骤
+1：提取段号和偏移</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4-2%E6%9F%A5%E6%89%BE%E6%AE%B5%E8%A1%A8-1"><span class="toc-text">步骤 2：查找段表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4-3%E6%A3%80%E6%9F%A5%E5%81%8F%E7%A7%BB%E6%98%AF%E5%90%A6%E8%B6%8A%E7%95%8C-1"><span class="toc-text">步骤
+3：检查偏移是否越界</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4-4%E5%A4%84%E7%90%86%E8%B6%8A%E7%95%8C%E9%94%99%E8%AF%AF"><span class="toc-text">步骤 4：处理越界错误</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%93%E6%9E%9C-1"><span class="toc-text">结果：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93%E5%88%86%E6%AE%B5%E5%9C%B0%E5%9D%80%E8%BD%AC%E6%8D%A2%E7%9A%84%E6%AD%A5%E9%AA%A4"><span class="toc-text">总结：分段地址转换的步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8F%90%E5%8F%96%E6%AE%B5%E5%8F%B7%E5%92%8C%E5%81%8F%E7%A7%BB"><span class="toc-text">1. 提取段号和偏移</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E6%89%BE%E6%AE%B5%E8%A1%A8"><span class="toc-text">2. 查找段表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A3%80%E6%9F%A5%E5%81%8F%E7%A7%BB%E6%98%AF%E5%90%A6%E8%B6%8A%E7%95%8C"><span class="toc-text">3. 检查偏移是否越界</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E7%89%A9%E7%90%86%E5%9C%B0%E5%9D%80"><span class="toc-text">4. 计算物理地址</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%AE%B5%E5%9C%B0%E5%9D%80%E8%BD%AC%E6%8D%A2%E7%9A%84%E7%A4%BA%E4%BE%8B%E6%80%BB%E7%BB%93"><span class="toc-text">分段地址转换的示例总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%AE%B5%E4%B8%8E%E5%88%86%E9%A1%B5%E7%9A%84%E5%AF%B9%E6%AF%94-1"><span class="toc-text">分段与分页的对比</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%AE%B5%E4%B8%8E%E5%88%86%E9%A1%B5%E7%9A%84%E7%BB%93%E5%90%88%E6%AE%B5%E9%A1%B5%E5%BC%8F%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86"><span class="toc-text">分段与分页的结合：段页式内存管理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AE%B5%E9%A1%B5%E5%BC%8F%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86segmented-paging"><span class="toc-text">段页式内存管理（Segmented
+Paging）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%AE%B5%E7%9A%84%E4%BC%98%E5%8A%BFadvantage-of-segmentation"><span class="toc-text">65.
+分段的优势（Advantage of Segmentation）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E5%A2%9E%E9%95%BF%E5%92%8C%E6%94%B6%E7%BC%A9"><span class="toc-text">1. 动态增长和收缩</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9B%B4%E7%AE%80%E5%8D%95%E7%9A%84%E4%BF%9D%E6%8A%A4%E6%9C%BA%E5%88%B6"><span class="toc-text">2. 更简单的保护机制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F%E9%93%BE%E6%8E%A5%E6%9B%B4%E7%AE%80%E5%8D%95"><span class="toc-text">3. 程序链接更简单</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%85%B1%E4%BA%AB"><span class="toc-text">4. 代码共享</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%AE%B5%E7%9A%84%E5%8A%A3%E5%8A%BFdisadvantage-of-segmentation"><span class="toc-text">66.
+分段的劣势（Disadvantage of Segmentation）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F%E5%91%98%E9%9C%80%E8%A6%81%E4%BA%86%E8%A7%A3%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B"><span class="toc-text">1.
+程序员需要了解内存模型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E7%A2%8E%E7%89%87%E9%97%AE%E9%A2%98"><span class="toc-text">2. 内存碎片问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AE%B5%E8%BF%87%E5%A4%A7%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-text">3. 段过大的问题</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%AE%B5%E7%9A%84%E6%94%B9%E8%BF%9B%E5%BB%BA%E8%AE%AE"><span class="toc-text">分段的改进建议</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%93%E5%90%88%E5%88%86%E9%A1%B5%E6%8A%80%E6%9C%AF"><span class="toc-text">1. 结合分页技术</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E5%8E%8B%E7%BC%A9%E6%8A%80%E6%9C%AF"><span class="toc-text">2. 动态压缩技术</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%99%BA%E8%83%BD%E6%AE%B5%E7%AE%A1%E7%90%86"><span class="toc-text">3. 智能段管理</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-6"><span class="toc-text">总结</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E6%AE%B5%E7%9A%84%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3-1"><span class="toc-text">分段的核心思想</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E6%AE%B5%E7%9A%84%E5%85%B3%E9%94%AE%E7%82%B9"><span class="toc-text">分段的关键点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E6%AE%B5%E7%9A%84%E4%BC%98%E5%8A%BF-1"><span class="toc-text">分段的优势</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E6%AE%B5%E7%9A%84%E5%8A%A3%E5%8A%BF"><span class="toc-text">分段的劣势</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%AE%B5%E4%B8%8E%E5%88%86%E9%A1%B5%E7%BB%93%E5%90%88segmentation-with-paging-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-text">67.
+分段与分页结合（Segmentation with Paging）—— 基本概念</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E6%AE%B5%E4%B8%8E%E5%88%86%E9%A1%B5%E7%BB%93%E5%90%88%E7%9A%84%E6%80%9D%E6%83%B3"><span class="toc-text">分段与分页结合的思想</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9C%B0%E5%9D%80%E7%9A%84%E4%B8%89%E9%83%A8%E5%88%86%E7%BB%84%E6%88%90"><span class="toc-text">地址的三部分组成</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%89%A9%E7%90%86%E5%86%85%E5%AD%98%E7%9A%84%E7%89%B9%E7%82%B9"><span class="toc-text">物理内存的特点</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%AE%B5%E4%B8%8E%E5%88%86%E9%A1%B5%E7%BB%93%E5%90%88segmentation-with-paging-%E5%AE%9E%E7%8E%B0%E7%BB%86%E8%8A%82"><span class="toc-text">69.
+分段与分页结合（Segmentation with Paging）—— 实现细节</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AE%B5%E8%A1%A8segment-table-1"><span class="toc-text">1. 段表（Segment
+Table）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A1%B5%E8%A1%A8page-table"><span class="toc-text">2. 页表（Page Table）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%9A%E7%BA%A7%E9%A1%B5%E8%A1%A8"><span class="toc-text">3. 多级页表</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%B0%E5%9D%80%E8%BD%AC%E6%8D%A2address-translation-1"><span class="toc-text">70. 地址转换（Address
+Translation）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9C%B0%E5%9D%80%E8%BD%AC%E6%8D%A2%E7%9A%84%E8%BF%87%E7%A8%8B"><span class="toc-text">地址转换的过程</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%AE%B5%E4%B8%8E%E5%88%86%E9%A1%B5%E7%BB%93%E5%90%88multics"><span class="toc-text">72.
+分段与分页结合：MULTICS</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#multics-%E7%9A%84%E8%83%8C%E6%99%AF"><span class="toc-text">MULTICS 的背景</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#multics-%E7%9A%84%E5%88%86%E6%AE%B5%E4%B8%8E%E5%88%86%E9%A1%B5%E8%AE%BE%E8%AE%A1"><span class="toc-text">MULTICS
+的分段与分页设计</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#multics-%E7%9A%84%E8%99%9A%E6%8B%9F%E5%9C%B0%E5%9D%80%E7%BB%93%E6%9E%84"><span class="toc-text">73. MULTICS
+的虚拟地址结构</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%99%9A%E6%8B%9F%E5%9C%B0%E5%9D%80%E7%9A%84%E5%AD%97%E6%AE%B5"><span class="toc-text">虚拟地址的字段</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#multics-%E7%9A%84-tlbtranslation-lookaside-buffer"><span class="toc-text">75. MULTICS
+的 TLB（Translation Lookaside Buffer）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#tlb-%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-text">TLB 的作用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#multics-%E7%9A%84-tlb-%E7%89%B9%E7%82%B9"><span class="toc-text">MULTICS 的 TLB 特点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#tlb-%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B"><span class="toc-text">TLB 的工作流程</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%AE%B5%E4%B8%8E%E5%88%86%E9%A1%B5%E7%BB%93%E5%90%88%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="toc-text">分段与分页结合的优缺点</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%98%E7%82%B9-6"><span class="toc-text">优点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%BA%E7%82%B9-5"><span class="toc-text">缺点</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93summary"><span class="toc-text">76. 总结（Summary）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%B5%E9%9D%A2%E6%9B%BF%E6%8D%A2%E7%AD%96%E7%95%A5page-replacement-strategies"><span class="toc-text">1.
+页面替换策略（Page Replacement Strategies）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%80%E4%BC%98%E7%AE%97%E6%B3%95optimal-algorithm-1"><span class="toc-text">1.1 最优算法（Optimal
+Algorithm）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%80%E8%BF%91%E6%9C%AA%E4%BD%BF%E7%94%A8%E7%AE%97%E6%B3%95nru-not-recently-used"><span class="toc-text">1.2
+最近未使用算法（NRU, Not Recently Used）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%88%E8%BF%9B%E5%85%88%E5%87%BA%E7%AE%97%E6%B3%95fifo-first-in-first-out"><span class="toc-text">1.3
+先进先出算法（FIFO, First-In-First-Out）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E6%AC%A1%E6%9C%BA%E4%BC%9A%E7%AE%97%E6%B3%95second-chance"><span class="toc-text">1.4 第二次机会算法（Second
+Chance）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%97%B6%E9%92%9F%E7%AE%97%E6%B3%95clock-algorithm"><span class="toc-text">1.5 时钟算法（Clock
+Algorithm）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%80%E8%BF%91%E6%9C%80%E5%B0%91%E4%BD%BF%E7%94%A8%E7%AE%97%E6%B3%95lru-least-recently-used-1"><span class="toc-text">1.6
+最近最少使用算法（LRU, Least Recently Used）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A2%91%E7%B9%81%E4%BD%BF%E7%94%A8%E7%AE%97%E6%B3%95nfu-not-frequently-used"><span class="toc-text">1.7
+频繁使用算法（NFU, Not Frequently Used）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%80%81%E5%8C%96%E7%AE%97%E6%B3%95aging"><span class="toc-text">1.8 老化算法（Aging）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B7%A5%E4%BD%9C%E9%9B%86%E7%AE%97%E6%B3%95working-set-algorithm"><span class="toc-text">1.9 工作集算法（Working
+Set Algorithm）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#wsclock-%E7%AE%97%E6%B3%95%E5%B7%A5%E4%BD%9C%E9%9B%86%E6%97%B6%E9%92%9F%E7%AE%97%E6%B3%95"><span class="toc-text">1.10 WSClock
+算法（工作集时钟算法）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E9%A1%B5%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E9%97%AE%E9%A2%98design-issues-for-paging-systems"><span class="toc-text">2.
+分页系统设计问题（Design Issues for Paging Systems）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B1%80%E9%83%A8%E5%88%86%E9%85%8D%E4%B8%8E%E5%85%A8%E5%B1%80%E5%88%86%E9%85%8D%E7%AD%96%E7%95%A5-1"><span class="toc-text">2.1
+局部分配与全局分配策略</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B4%9F%E8%BD%BD%E6%8E%A7%E5%88%B6load-control-1"><span class="toc-text">2.2 负载控制（Load
+Control）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%AE%B5segmentation"><span class="toc-text">3. 分段（Segmentation）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E6%AE%B5%E7%9A%84%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3-2"><span class="toc-text">3.1 分段的核心思想</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E6%AE%B5%E7%9A%84%E4%BC%98%E5%8A%BF-2"><span class="toc-text">3.2 分段的优势</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E6%AE%B5%E7%9A%84%E5%8A%A3%E5%8A%BF-1"><span class="toc-text">3.3 分段的劣势</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%AE%B5%E4%B8%8E%E5%88%86%E9%A1%B5%E7%BB%93%E5%90%88segmentation-with-paging"><span class="toc-text">4.
+分段与分页结合（Segmentation with Paging）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3"><span class="toc-text">4.1 核心思想</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9C%B0%E5%9D%80%E7%BB%93%E6%9E%84"><span class="toc-text">4.2 地址结构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9C%B0%E5%9D%80%E8%BD%AC%E6%8D%A2%E8%BF%87%E7%A8%8B-2"><span class="toc-text">4.3 地址转换过程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#multics-%E7%9A%84%E8%AE%BE%E8%AE%A1"><span class="toc-text">4.4 MULTICS 的设计</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93%E4%B8%8E%E5%AF%B9%E6%AF%94"><span class="toc-text">5. 总结与对比</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E9%A1%B5paging"><span class="toc-text">5.1 分页（Paging）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E6%AE%B5segmentation-1"><span class="toc-text">5.2
+分段（Segmentation）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E6%AE%B5%E4%B8%8E%E5%88%86%E9%A1%B5%E7%BB%93%E5%90%88segmentation-with-paging-1"><span class="toc-text">5.3
+分段与分页结合（Segmentation with Paging）</span></a></li></ol></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FCH6/" title="操作系统CH6"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E4%BE%A0%E5%AE%A2-%E5%89%91%E6%9D%A5-%E5%8F%A4%E9%A3%8E.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="操作系统CH6"/></a><div class="content"><a class="title" href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FCH6/" title="操作系统CH6">操作系统CH6</a><time datetime="2025-05-07T13:07:41.000Z" title="发表于 2025-05-07 21:07:41">2025-05-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FCH5/" title="操作系统CH5"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E4%BE%A0%E5%AE%A2-%E5%89%91%E6%9D%A5-%E5%8F%A4%E9%A3%8E.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="操作系统CH5"/></a><div class="content"><a class="title" href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FCH5/" title="操作系统CH5">操作系统CH5</a><time datetime="2025-05-07T12:07:07.000Z" title="发表于 2025-05-07 20:07:07">2025-05-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FCH4/" title="操作系统CH4"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E4%BE%A0%E5%AE%A2-%E5%89%91%E6%9D%A5-%E5%8F%A4%E9%A3%8E.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="操作系统CH4"/></a><div class="content"><a class="title" href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FCH4/" title="操作系统CH4">操作系统CH4</a><time datetime="2025-05-07T11:18:34.000Z" title="发表于 2025-05-07 19:18:34">2025-05-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FCH3%EF%BC%88B%EF%BC%89/" title="操作系统CH3（B）"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E4%BE%A0%E5%AE%A2-%E5%89%91%E6%9D%A5-%E5%8F%A4%E9%A3%8E.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="操作系统CH3（B）"/></a><div class="content"><a class="title" href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FCH3%EF%BC%88B%EF%BC%89/" title="操作系统CH3（B）">操作系统CH3（B）</a><time datetime="2025-05-07T08:30:57.000Z" title="发表于 2025-05-07 16:30:57">2025-05-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E6%97%B6%E9%97%B4%E7%BA%BF%E8%A1%A8/" title="时间线表"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E4%BE%A0%E5%AE%A2-%E5%89%91%E6%9D%A5-%E5%8F%A4%E9%A3%8E.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="时间线表"/></a><div class="content"><a class="title" href="/%E6%97%B6%E9%97%B4%E7%BA%BF%E8%A1%A8/" title="时间线表">时间线表</a><time datetime="2025-05-06T16:24:18.000Z" title="发表于 2025-05-07 00:24:18">2025-05-07</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 - 2025 By Totoro</div><div class="footer_custom_text">I wish you to become your own sun, no need to rely on who's light.<p><a target="_blank" href="https://hexo.io/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&logo=hexo" title="博客框架为Hexo"></a>&nbsp;<a target="_blank" href="https://butterfly.js.org/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&logo=bitdefender" title="主题采用butterfly"></a>&nbsp;<a target="_blank" href="https://www.jsdelivr.com/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&logo=jsDelivr" title="本站使用JsDelivr为静态资源提供CDN加速"></a> &nbsp;<a target="_blank" href="https://vercel.com/ "><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Hosted-Vervel-brightgreen?style=flat&logo=Vercel" title="本站采用双线部署，默认线路托管于Vercel"></a>&nbsp;<a target="_blank" href="https://vercel.com/ "><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Hosted-Coding-0cedbe?style=flat&logo=Codio" title="本站采用双线部署，联通线路托管于Coding"></a>&nbsp;<a target="_blank" href="https://github.com/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&logo=GitHub" title="本站项目由Gtihub托管"></a>&nbsp;<a target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&logo=Claris" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"></a></p></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat-btn" type="button" title="聊天"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="/js/tw_cn.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@5.2.0/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'HT1PalaKkPaG1UqAXBhJXIu8-gzGzoHsz',
+      appKey: 'iT0TnVVAwf9zuZ7NqwclQItY',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://cdn.jsdelivr.net/npm/valine@1.5.1/dist/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><script defer src="/js/light.js"></script><canvas id="universe"></canvas><script defer src="/js/universe.js"></script><script async src="/js/title.js"></script><script defer src="https://npm.elemecdn.com/jquery@latest/dist/jquery.min.js"></script><script defer data-pjax src="/js/cat.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="1" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener
+  btf.removeGlobalFnEvent('pjax')
+  btf.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.12.0"></script></div></div><!-- hexo injector body_end start --><script data-pjax>
+    function butterfly_categories_card_injector_config(){
+      var parent_div_git = document.getElementById('recent-posts');
+      var item_html = '<style>li.categoryBar-list-item{width:32.3%;}.categoryBar-list{max-height: 380px;overflow:auto;}.categoryBar-list::-webkit-scrollbar{width:0!important}@media screen and (max-width: 650px){.categoryBar-list{max-height: 320px;}}</style><div class="recent-post-item" style="height:auto;width:100%;padding:0px;"><div id="categoryBar"><ul class="categoryBar-list"><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_12.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/离散数学/&quot;);" href="javascript:void(0);">离散数学</a><span class="categoryBar-list-count">33</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_13.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS61B/&quot;);" href="javascript:void(0);">CS61B</a><span class="categoryBar-list-count">76</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_14.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/期末の旅/&quot;);" href="javascript:void(0);">期末の旅</a><span class="categoryBar-list-count">99</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_17.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/刷题计划/&quot;);" href="javascript:void(0);">刷题计划</a><span class="categoryBar-list-count">60</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_18.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/区域赛の旅/&quot;);" href="javascript:void(0);">区域赛の旅</a><span class="categoryBar-list-count">7</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_19.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/Codeforcesの旅/&quot;);" href="javascript:void(0);">Codeforcesの旅</a><span class="categoryBar-list-count">24</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_20.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/牛客の旅/&quot;);" href="javascript:void(0);">牛客の旅</a><span class="categoryBar-list-count">65</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_21.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/ACMの旅/&quot;);" href="javascript:void(0);">ACMの旅</a><span class="categoryBar-list-count">42</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_22.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/数学建模/&quot;);" href="javascript:void(0);">数学建模</a><span class="categoryBar-list-count">26</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_22.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/前端の旅/&quot;);" href="javascript:void(0);">前端の旅</a><span class="categoryBar-list-count">17</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_23.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/数据结构/&quot;);" href="javascript:void(0);">数据结构</a><span class="categoryBar-list-count">47</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_24.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/Atcoderの旅/&quot;);" href="javascript:void(0);">Atcoderの旅</a><span class="categoryBar-list-count">53</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_25.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/C-の旅/&quot;);" href="javascript:void(0);">C++の旅</a><span class="categoryBar-list-count">17</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_26.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS70の旅/&quot;);" href="javascript:void(0);">CS70の旅</a><span class="categoryBar-list-count">24</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_27.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CSAPPの旅/&quot;);" href="javascript:void(0);">CSAPPの旅</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_28.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/计算机组成原理/&quot;);" href="javascript:void(0);">计算机组成原理</a><span class="categoryBar-list-count">47</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_29.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/编程基础/&quot;);" href="javascript:void(0);">编程基础</a><span class="categoryBar-list-count">14</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_30.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/JAVAの旅/&quot;);" href="javascript:void(0);">JAVAの旅</a><span class="categoryBar-list-count">10</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_31.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/MIT-6-031-Software-Construction/&quot;);" href="javascript:void(0);">MIT 6.031:Software Construction</a><span class="categoryBar-list-count">16</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_32.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS-110L/&quot;);" href="javascript:void(0);">CS 110L</a><span class="categoryBar-list-count">3</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_33.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/数据库の旅/&quot;);" href="javascript:void(0);">数据库の旅</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_34.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/灵魂の旅/&quot;);" href="javascript:void(0);">灵魂の旅</a><span class="categoryBar-list-count">2</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_35.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/个人安排/&quot;);" href="javascript:void(0);">个人安排</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_36.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/杂项/&quot;);" href="javascript:void(0);">杂项</a><span class="categoryBar-list-count">13</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_37.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/文学/&quot;);" href="javascript:void(0);">文学</a><span class="categoryBar-list-count">49</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_38.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/力扣の旅/&quot;);" href="javascript:void(0);">力扣の旅</a><span class="categoryBar-list-count">20</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_39.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/计算机网络/&quot;);" href="javascript:void(0);">计算机网络</a><span class="categoryBar-list-count">18</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_40.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/千里十二行/&quot;);" href="javascript:void(0);">千里十二行</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_41.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/🗡指offer/&quot;);" href="javascript:void(0);">🗡指offer</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_42.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/少年游/&quot;);" href="javascript:void(0);">少年游</a><span class="categoryBar-list-count">2</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_43.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/算法提高课/&quot;);" href="javascript:void(0);">算法提高课</a><span class="categoryBar-list-count">3</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_44.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/汇编の旅/&quot;);" href="javascript:void(0);">汇编の旅</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_44.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/C-实训/&quot;);" href="javascript:void(0);">C++实训</a><span class="categoryBar-list-count">8</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_45.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS知识/&quot;);" href="javascript:void(0);">CS知识</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_46.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/编译原理/&quot;);" href="javascript:void(0);">编译原理</a><span class="categoryBar-list-count">22</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_48.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/操作系统/&quot;);" href="javascript:void(0);">操作系统</a><span class="categoryBar-list-count">18</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(undefined);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/个人计划/&quot;);" href="javascript:void(0);">个人计划</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li></ul></div></div>';
+      console.log('已挂载butterfly_categories_card')
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+      }
+    if( document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+    butterfly_categories_card_injector_config()
+    }
+  </script><script data-pjax>
+  function butterfly_swiper_injector_config(){
+    var parent_div_git = document.getElementById('recent-posts');
+    var item_html = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms;"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;诗录/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/4b31456c6f0f4489f99177f89e936de7286431045.png@1256w_708h_!web-article-pic.avif" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-10-01</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;诗录/&quot;);" href="javascript:void(0);" alt="">诗录</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;诗录/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;诗兴大发/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://source.fomal.cc/img/default_cover_69.webp" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-01-29</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;诗兴大发/&quot;);" href="javascript:void(0);" alt="">诗兴大发</a><div class="blog-slider__text">未觉，却是中二少年的诗仙梦</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;诗兴大发/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;TotoroのPlan/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/51d37eba99d243607ddedfff6e91568f617436609.jpg@1256w_1884h_!web-article-pic.avif" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-10-05</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;TotoroのPlan/&quot;);" href="javascript:void(0);" alt="">TotoroのPlan</a><div class="blog-slider__text">方便大二看（）</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;TotoroのPlan/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;Markdown格式/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/ushio-api-img-moe@5.0.48/img_482_1920x1080_96_null_normal.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-03-03</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;Markdown格式/&quot;);" href="javascript:void(0);" alt="">Markdown格式</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;Markdown格式/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载butterfly_swiper')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_swiper_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_swiper_injector_config();
+  }
+  </script><script defer src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.js"></script><script defer data-pjax src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper_init.js"></script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>

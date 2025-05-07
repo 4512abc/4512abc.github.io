@@ -1,0 +1,2806 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>操作系统CH6 | Totoroの旅</title><meta name="author" content="Totoro"><meta name="copyright" content="Totoro"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="CH6-Deadlock 死锁（Deadlocks）概述  1. 资源（Resources） • 资源的定义： Definition of Resources: • 资源是任何可以在某一时刻被单个进程使用，并且必须经过获取、使用和释放的过程。 A resource is anything that can be used by a single process at any in">
+<meta property="og:type" content="article">
+<meta property="og:title" content="操作系统CH6">
+<meta property="og:url" content="http://totorocatcat.top/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FCH6/index.html">
+<meta property="og:site_name" content="Totoroの旅">
+<meta property="og:description" content="CH6-Deadlock 死锁（Deadlocks）概述  1. 资源（Resources） • 资源的定义： Definition of Resources: • 资源是任何可以在某一时刻被单个进程使用，并且必须经过获取、使用和释放的过程。 A resource is anything that can be used by a single process at any in">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E4%BE%A0%E5%AE%A2-%E5%89%91%E6%9D%A5-%E5%8F%A4%E9%A3%8E.png">
+<meta property="article:published_time" content="2025-05-07T13:07:41.000Z">
+<meta property="article:modified_time" content="2025-05-07T13:08:20.619Z">
+<meta property="article:author" content="Totoro">
+<meta property="article:tag" content="提高">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E4%BE%A0%E5%AE%A2-%E5%89%91%E6%9D%A5-%E5%8F%A4%E9%A3%8E.png"><link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/b5ca6e582a7a45e6fde46e616eeb68e.png"><link rel="canonical" href="http://totorocatcat.top/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FCH6/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta/><link rel="stylesheet" href="/css/index.css?v=4.12.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  noticeOutdate: {"limitDay":765,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体中文","cht_to_chs":"你已切换为简体中文","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"top-right"},
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '操作系统CH6',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: true,
+  isToc: true,
+  postUpdate: '2025-05-07 21:08:20'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const now = new Date()
+          const hour = now.getHours()
+          const isNight = hour <= 6 || hour >= 18
+          if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/universe.css"><link rel="stylesheet" href="/css/scrollbar.css"><link rel="stylesheet" href="/css/cat.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-categories-card@1.0.0/lib/categorybar.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-double-row-display@1.00/cardlistpost.min.css"/>
+<style>#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags:before {content:"\A";
+  white-space: pre;}#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags > .article-meta__separator{display:none}</style>
+<link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiperstyle.css" media="print" onload="this.media='all'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><div class="loading-img"></div><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><script>window.paceOptions = {
+  restartOnPushState: false
+}
+
+document.addEventListener('pjax:send', () => {
+  Pace.restart()
+})
+</script><link rel="stylesheet" href="/css/progress_bar.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/px3.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">846</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">37</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home-alt"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-envelope-open"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 趣味</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/project/"><i class="fa-fw fas fas fa-folder"></i><span> 项目</span></a></div><div class="menus_item"><a class="site-page" href="/stars/"><i class="fa-fw fas fa-bookmark"></i><span> 收藏</span></a></div><div class="menus_item"><a class="site-page" href="/bilibili/"><i class="fa-fw fas fa-tv"></i><span> 追番</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E4%BE%A0%E5%AE%A2-%E5%89%91%E6%9D%A5-%E5%8F%A4%E9%A3%8E.png')"><nav id="nav"><span id="blog-info"><a href="/" title="Totoroの旅"><span class="site-name">Totoroの旅</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home-alt"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-envelope-open"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 趣味</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/project/"><i class="fa-fw fas fas fa-folder"></i><span> 项目</span></a></div><div class="menus_item"><a class="site-page" href="/stars/"><i class="fa-fw fas fa-bookmark"></i><span> 收藏</span></a></div><div class="menus_item"><a class="site-page" href="/bilibili/"><i class="fa-fw fas fa-tv"></i><span> 追番</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">操作系统CH6</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-05-07T13:07:41.000Z" title="发表于 2025-05-07 21:07:41">2025-05-07</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-05-07T13:08:20.619Z" title="更新于 2025-05-07 21:08:20">2025-05-07</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">18.6k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>75分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="操作系统CH6"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FCH6/#post-comment" itemprop="discussionUrl"><span class="valine-comment-count" data-xid="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FCH6/" itemprop="commentCount"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="ch6-deadlock">CH6-Deadlock</h1>
+<h2 id="死锁deadlocks概述"><strong>死锁（Deadlocks）概述</strong></h2>
+<hr>
+<h4 id="资源resources"><strong>1. 资源（Resources）</strong></h4>
+<p>• <strong>资源的定义：</strong><br>
+<strong>Definition of Resources:</strong><br>
+•
+资源是任何可以在某一时刻被单个进程使用，并且必须经过获取、使用和释放的过程。<br>
+<strong>A resource is anything that can be used by a single process at
+any instant of time and must be acquired, used, and released over
+time.</strong></p>
+<p>• <strong>资源类型：</strong><br>
+<strong>Resource Types:</strong><br>
+• 资源类型包括CPU周期、内存空间、I/O设备、数据库记录等。<br>
+<strong>Resource types include CPU cycles, memory space, I/O devices,
+database records, etc.</strong><br>
+• 每种资源类型 <span class="math inline">\(R_i\)</span> 有 <span class="math inline">\(W_i\)</span> 个实例。<br>
+<strong>Each resource type <span class="math inline">\(R_i\)</span> has
+<span class="math inline">\(W_i\)</span> instances.</strong></p>
+<p>• <strong>资源的分类：</strong><br>
+<strong>Classification of Resources:</strong><br>
+1. <strong>可抢占资源（Preemptable Resources）：</strong><br>
+◦ 可以从进程中强制收回而不会对进程造成影响。<br>
+<strong>Can be taken away from a process without ill
+effects.</strong><br>
+◦ 示例：CPU、内存。<br>
+<strong>Examples: CPU, memory.</strong><br>
+2. <strong>不可抢占资源（Nonpreemptable Resources）：</strong><br>
+◦ 如果被强制收回，会导致进程失败。<br>
+<strong>If taken away, it will cause the process to fail.</strong><br>
+◦ 示例：CD刻录机、打印机。<br>
+<strong>Examples: CD recorder, printer.</strong></p>
+<hr>
+<h4 id="死锁的定义introduction-to-deadlocks"><strong>2.
+死锁的定义（Introduction to Deadlocks）</strong></h4>
+<p>• <strong>死锁的发生条件：</strong><br>
+<strong>Conditions for Deadlocks:</strong><br>
+• 进程需要以合理的顺序访问资源。<br>
+<strong>Processes need to access resources in a reasonable
+order.</strong><br>
+• 如果一个进程持有资源 <span class="math inline">\(A\)</span> 并请求资源
+<span class="math inline">\(B\)</span>，而另一个进程持有资源 <span class="math inline">\(B\)</span> 并请求资源 <span class="math inline">\(A\)</span>，则两个进程都会被阻塞。<br>
+<strong>If one process holds resource A and requests resource B, while
+another process holds resource B and requests resource A, both processes
+will be blocked.</strong><br>
+• 当进程被授予对设备的独占访问权时，死锁可能发生。<br>
+<strong>Deadlocks occur when processes are granted exclusive access to
+devices.</strong></p>
+<hr>
+<h4 id="死锁的资源使用过程"><strong>3. 死锁的资源使用过程</strong></h4>
+<p>• <strong>资源的使用步骤：</strong><br>
+<strong>Steps in Resource Usage:</strong><br>
+1. <strong>请求资源（Request the Resource）：</strong><br>
+◦ 进程请求资源以执行任务。<br>
+<strong>The process requests a resource to perform a
+task.</strong><br>
+2. <strong>使用资源（Use the Resource）：</strong><br>
+◦ 进程占用资源并执行任务。<br>
+<strong>The process uses the resource to perform the
+task.</strong><br>
+3. <strong>释放资源（Release the Resource）：</strong><br>
+◦ 进程完成任务后释放资源。<br>
+<strong>The process releases the resource after completing the
+task.</strong></p>
+<p>• <strong>请求被拒绝的情况：</strong><br>
+<strong>When a Request is Denied:</strong><br>
+• 请求资源的进程可能会被阻塞。<br>
+<strong>The requesting process may be blocked.</strong><br>
+• 进程可能会因错误代码而失败。<br>
+<strong>The process may fail with an error code.</strong></p>
+<hr>
+<h4 id="死锁的示例"><strong>4. 死锁的示例</strong></h4>
+<p>• <strong>死锁的场景：</strong><br>
+<strong>Deadlock Scenario:</strong><br>
+• 假设有两个进程 <span class="math inline">\(P_1\)</span> 和 <span class="math inline">\(P_2\)</span>：<br>
+<strong>Suppose there are two processes <span class="math inline">\(P_1\)</span> and <span class="math inline">\(P_2\)</span>:</strong><br>
+1. <span class="math inline">\(P_1\)</span> 持有资源 <span class="math inline">\(A\)</span>（例如扫描仪），并请求资源 <span class="math inline">\(B\)</span>（例如CD刻录机）。<br>
+<strong><span class="math inline">\(P_1\)</span> holds resource A (e.g.,
+scanner) and requests resource B (e.g., CD recorder).</strong><br>
+2. <span class="math inline">\(P_2\)</span> 持有资源 <span class="math inline">\(B\)</span>（CD刻录机），并请求资源 <span class="math inline">\(A\)</span>（扫描仪）。<br>
+<strong><span class="math inline">\(P_2\)</span> holds resource B (CD
+recorder) and requests resource A (scanner).</strong><br>
+3. 两个进程都被阻塞，并且一直保持阻塞状态。<br>
+<strong>Both processes are blocked and remain so.</strong></p>
+<p>• <strong>死锁的条件（死锁的四个必要条件）：</strong><br>
+<strong>Conditions for Deadlocks (Four Necessary
+Conditions):</strong><br>
+1. <strong>互斥条件（Mutual Exclusion）：</strong><br>
+◦ 资源一次只能被一个进程占用。<br>
+<strong>A resource can be held by only one process at a
+time.</strong><br>
+2. <strong>占有并等待（Hold and Wait）：</strong><br>
+◦ 进程持有至少一个资源，并等待获取其他被占用的资源。<br>
+<strong>A process holds at least one resource and is waiting to acquire
+other resources that are currently held.</strong><br>
+3. <strong>不可抢占（No Preemption）：</strong><br>
+◦ 资源不能被强制从进程中收回，只能由进程主动释放。<br>
+<strong>Resources cannot be forcibly taken away from a process; they
+must be released voluntarily.</strong><br>
+4. <strong>循环等待（Circular Wait）：</strong><br>
+◦ 存在一个进程环，每个进程都在等待环中的下一个进程持有的资源。<br>
+<strong>There exists a circular chain of processes, where each process
+is waiting for a resource held by the next process in the
+chain.</strong></p>
+<hr>
+<h4 id="死锁的处理方法"><strong>5. 死锁的处理方法</strong></h4>
+<h5 id="鸵鸟算法the-ostrich-algorithm"><strong>5.1 鸵鸟算法（The Ostrich
+Algorithm）</strong></h5>
+<p>• <strong>定义：</strong><br>
+<strong>Definition:</strong><br>
+• 忽略死锁问题，假设死锁不会发生或发生的概率极低。<br>
+<strong>Ignore the deadlock problem, assuming that deadlocks either do
+not occur or occur with very low probability.</strong> •
+<strong>优点：</strong><br>
+<strong>Advantages:</strong><br>
+• 简单易实现。<br>
+<strong>Simple and easy to implement.</strong><br>
+• <strong>缺点：</strong><br>
+<strong>Disadvantages:</strong><br>
+• 不适用于需要高可靠性的系统。<br>
+<strong>Not suitable for systems requiring high
+reliability.</strong></p>
+<hr>
+<h5 id="死锁检测与恢复deadlock-detection-and-recovery"><strong>5.2
+死锁检测与恢复（Deadlock Detection and Recovery）</strong></h5>
+<p>• <strong>检测：</strong><br>
+<strong>Detection:</strong><br>
+• 使用资源分配图或其他算法检测系统中是否存在死锁。<br>
+<strong>Use resource allocation graphs or other algorithms to detect
+deadlocks in the system.</strong> • <strong>恢复：</strong><br>
+<strong>Recovery:</strong><br>
+• 通过终止某些进程或强制回收资源来解除死锁。<br>
+<strong>Terminate some processes or forcibly reclaim resources to
+resolve the deadlock.</strong></p>
+<hr>
+<h5 id="死锁避免deadlock-avoidance"><strong>5.3 死锁避免（Deadlock
+Avoidance）</strong></h5>
+<p>• <strong>定义：</strong><br>
+<strong>Definition:</strong><br>
+•
+在分配资源之前，系统会预测是否会导致死锁，从而避免进入不安全状态。<br>
+<strong>Before allocating resources, the system predicts whether a
+deadlock will occur, thereby avoiding unsafe states.</strong> •
+<strong>算法：</strong><br>
+<strong>Algorithms:</strong><br>
+• <strong>银行家算法（Banker's Algorithm）：</strong><br>
+◦ 通过模拟资源分配过程，确保系统始终处于安全状态。<br>
+<strong>Simulates resource allocation to ensure the system remains in a
+safe state.</strong></p>
+<hr>
+<h5 id="死锁预防deadlock-prevention"><strong>5.4 死锁预防（Deadlock
+Prevention）</strong></h5>
+<p>• <strong>定义：</strong><br>
+<strong>Definition:</strong><br>
+• 通过破坏死锁的四个必要条件之一来预防死锁的发生。<br>
+<strong>Prevent deadlocks by breaking one of the four necessary
+conditions for deadlocks.</strong> • <strong>方法：</strong><br>
+<strong>Methods:</strong><br>
+1. <strong>破坏互斥条件：</strong><br>
+◦ 允许多个进程共享某些资源（如只读文件）。<br>
+<strong>Allow multiple processes to share certain resources (e.g.,
+read-only files).</strong><br>
+2. <strong>破坏占有并等待：</strong><br>
+◦ 要求进程在请求资源时一次性申请所有需要的资源。<br>
+<strong>Require processes to request all needed resources at
+once.</strong><br>
+3. <strong>破坏不可抢占：</strong><br>
+◦ 允许强制回收资源（仅适用于可抢占资源）。<br>
+<strong>Allow forced reclamation of resources (only applicable to
+preemptable resources).</strong><br>
+4. <strong>破坏循环等待：</strong><br>
+◦ 对资源进行编号，要求进程按编号顺序请求资源。<br>
+<strong>Number resources and require processes to request them in
+order.</strong></p>
+<hr>
+<h4 id="其他问题other-issues"><strong>6. 其他问题（Other
+Issues）</strong></h4>
+<p>• <strong>死锁与饥饿的区别：</strong><br>
+<strong>Difference Between Deadlock and Starvation:</strong><br>
+• <strong>死锁：</strong> 所有相关进程都被永久阻塞。<br>
+<strong>Deadlock: All involved processes are permanently
+blocked.</strong><br>
+• <strong>饥饿：</strong>
+某些进程可能长期得不到资源，但并非所有进程都被阻塞。<br>
+<strong>Starvation: Some processes may be denied resources for a long
+time, but not all processes are blocked.</strong></p>
+<p>• <strong>资源分配策略：</strong><br>
+<strong>Resource Allocation Policies:</strong><br>
+• 公平分配资源，避免某些进程长期占用资源。<br>
+<strong>Fairly allocate resources to avoid long-term resource occupation
+by certain processes.</strong></p>
+<hr>
+<h3 id="总结"><strong>总结</strong></h3>
+<p>•
+<strong>死锁是操作系统中常见的问题，发生时会导致系统性能下降甚至完全不可用。</strong><br>
+<strong>Deadlocks are a common problem in operating systems, causing
+performance degradation or complete system unavailability when they
+occur.</strong></p>
+<p>•
+<strong>死锁的四个必要条件：互斥、占有并等待、不可抢占、循环等待。</strong><br>
+<strong>The four necessary conditions for deadlocks are mutual
+exclusion, hold and wait, no preemption, and circular wait.</strong></p>
+<p>•
+<strong>处理死锁的方法包括：忽略（鸵鸟算法）、检测与恢复、避免（银行家算法）、预防（破坏死锁条件）。</strong><br>
+<strong>Deadlock handling methods include ignoring (ostrich algorithm),
+detection and recovery, avoidance (Banker's Algorithm), and prevention
+(breaking deadlock conditions).</strong></p>
+<p>•
+<strong>死锁预防和避免是操作系统中重要的资源管理策略，能够有效提高系统的可靠性和性能。</strong><br>
+<strong>Deadlock prevention and avoidance are important resource
+management strategies in operating systems, significantly improving
+system reliability and performance.</strong></p>
+<hr>
+<h2 id="死锁的深入分析"><strong>死锁的深入分析</strong></h2>
+<h4 id="使用信号量共享资源using-semaphore-to-share-resource"><strong>1.
+使用信号量共享资源（Using Semaphore to Share Resource）</strong></h4>
+<p>• <strong>信号量的作用：</strong><br>
+<strong>Role of Semaphores:</strong><br>
+•
+信号量用于控制对共享资源的访问，确保同一时间只有一个进程可以访问资源。<br>
+<strong>Semaphores are used to control access to shared resources,
+ensuring that only one process can access a resource at a
+time.</strong></p>
+<p>• <strong>示例：两个进程共享两个资源（A和B）</strong><br>
+<strong>Example: Two Processes Sharing Two Resources (A and
+B)</strong></p>
+<h5 id="代码示例-1正常情况"><strong>代码示例 1：正常情况</strong></h5>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Process <span class="title function_">P</span><span class="params">()</span> &#123;</span><br><span class="line">    A.Down();  <span class="comment">// 请求资源A</span></span><br><span class="line">    B.Down();  <span class="comment">// 请求资源B</span></span><br><span class="line">    <span class="comment">// 使用资源A和B</span></span><br><span class="line">    B.Up();    <span class="comment">// 释放资源B</span></span><br><span class="line">    A.Up();    <span class="comment">// 释放资源A</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Process <span class="title function_">Q</span><span class="params">()</span> &#123;</span><br><span class="line">    A.Down();  <span class="comment">// 请求资源A</span></span><br><span class="line">    B.Down();  <span class="comment">// 请求资源B</span></span><br><span class="line">    <span class="comment">// 使用资源A和B</span></span><br><span class="line">    B.Up();    <span class="comment">// 释放资源B</span></span><br><span class="line">    A.Up();    <span class="comment">// 释放资源A</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>• <strong>信号量初始化：</strong><br>
+• 如果信号量 <span class="math inline">\(A(1),
+B(1)\)</span>，表示资源A和B初始可用。<br>
+<strong>If semaphore <span class="math inline">\(A(1), B(1)\)</span>,
+resources A and B are initially available.</strong></p>
+<p>• <strong>问题：</strong><br>
+• 如果两个进程同时请求资源A和B，可能会导致死锁。<br>
+<strong>If two processes request resources A and B simultaneously, a
+deadlock may occur.</strong></p>
+<hr>
+<h5 id="代码示例-2可能导致死锁的情况"><strong>代码示例
+2：可能导致死锁的情况</strong></h5>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Process <span class="title function_">P</span><span class="params">()</span> &#123;</span><br><span class="line">    A.Down();  <span class="comment">// 请求资源A</span></span><br><span class="line">    B.Down();  <span class="comment">// 请求资源B</span></span><br><span class="line">    <span class="comment">// 使用资源A和B</span></span><br><span class="line">    B.Up();    <span class="comment">// 释放资源B</span></span><br><span class="line">    A.Up();    <span class="comment">// 释放资源A</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Process <span class="title function_">Q</span><span class="params">()</span> &#123;</span><br><span class="line">    B.Down();  <span class="comment">// 请求资源B</span></span><br><span class="line">    A.Down();  <span class="comment">// 请求资源A</span></span><br><span class="line">    <span class="comment">// 使用资源A和B</span></span><br><span class="line">    A.Up();    <span class="comment">// 释放资源A</span></span><br><span class="line">    B.Up();    <span class="comment">// 释放资源B</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>• <strong>信号量初始化：</strong><br>
+• 如果信号量 <span class="math inline">\(A(1),
+B(1)\)</span>，两个进程可能会进入死锁状态：<br>
+<strong>If semaphore <span class="math inline">\(A(1), B(1)\)</span>,
+the two processes may enter a deadlock state:</strong><br>
+1. <span class="math inline">\(P\)</span> 请求 <span class="math inline">\(A\)</span>，<span class="math inline">\(Q\)</span>
+请求 <span class="math inline">\(B\)</span>。<br>
+<strong><span class="math inline">\(P\)</span> requests <span class="math inline">\(A\)</span>, <span class="math inline">\(Q\)</span>
+requests <span class="math inline">\(B\)</span>.</strong><br>
+2. <span class="math inline">\(P\)</span> 等待 <span class="math inline">\(B\)</span>，<span class="math inline">\(Q\)</span>
+等待 <span class="math inline">\(A\)</span>。<br>
+<strong><span class="math inline">\(P\)</span> waits for <span class="math inline">\(B\)</span>, <span class="math inline">\(Q\)</span>
+waits for <span class="math inline">\(A\)</span>.</strong><br>
+3. 两个进程互相等待，导致死锁。<br>
+<strong>Both processes wait for each other, causing a
+deadlock.</strong></p>
+<hr>
+<h4 id="死锁的实际案例桥的交叉问题bridge-crossing-example"><strong>2.
+死锁的实际案例：桥的交叉问题（Bridge Crossing Example）</strong></h4>
+<p>• <strong>场景描述：</strong><br>
+<strong>Scenario Description:</strong><br>
+• 桥上的交通只能单向行驶。<br>
+<strong>Traffic on the bridge can only travel in one
+direction.</strong><br>
+• 桥的每个部分可以被视为一个资源。<br>
+<strong>Each section of the bridge can be viewed as a
+resource.</strong><br>
+• 如果两辆车从桥的相反方向进入，可能会导致死锁。<br>
+<strong>If two cars enter the bridge from opposite sides, a deadlock may
+occur.</strong></p>
+<p>• <strong>死锁的解决方法：</strong><br>
+<strong>Deadlock Resolution:</strong><br>
+• 如果发生死锁，其中一辆车需要倒车（抢占资源并回滚）。<br>
+<strong>If a deadlock occurs, one car needs to back up (preempt
+resources and roll back).</strong><br>
+• 如果多辆车同时进入桥，可能需要多辆车倒车。<br>
+<strong>If multiple cars enter the bridge simultaneously, multiple cars
+may need to back up.</strong></p>
+<hr>
+<h4 id="死锁的正式定义formal-definition-of-deadlock"><strong>3.
+死锁的正式定义（Formal Definition of Deadlock）</strong></h4>
+<p>• <strong>定义：</strong><br>
+<strong>Definition:</strong><br>
+•
+如果一组进程中的每个进程都在等待一个事件，而该事件只能由该组中的另一个进程引发，则这组进程处于死锁状态。<br>
+<strong>A set of processes is deadlocked if each process in the set is
+waiting for an event that only another process in the set can
+cause.</strong></p>
+<p>• <strong>通常的事件：</strong><br>
+<strong>Typical Event:</strong><br>
+• 资源的释放。<br>
+<strong>Release of a currently held resource.</strong></p>
+<p>• <strong>死锁的表现：</strong><br>
+<strong>Manifestations of Deadlock:</strong><br>
+• 进程无法运行。<br>
+<strong>Processes cannot run.</strong><br>
+• 进程无法释放资源。<br>
+<strong>Processes cannot release resources.</strong><br>
+• 进程无法被唤醒。<br>
+<strong>Processes cannot be awakened.</strong></p>
+<hr>
+<h4 id="死锁的四个必要条件four-conditions-for-deadlock"><strong>4.
+死锁的四个必要条件（Four Conditions for Deadlock）</strong></h4>
+<p>• <strong>条件 1：互斥条件（Mutual Exclusion
+Condition）</strong><br>
+• 每个资源一次只能分配给一个进程，或者处于可用状态。<br>
+<strong>Each resource is assigned to one process or is
+available.</strong></p>
+<p>• <strong>条件 2：占有并等待条件（Hold and Wait
+Condition）</strong><br>
+• 持有资源的进程可以请求额外的资源。<br>
+<strong>A process holding resources can request additional
+resources.</strong></p>
+<p>• <strong>条件 3：不可抢占条件（No Preemption
+Condition）</strong><br>
+• 已分配的资源不能被强制收回，必须由持有进程显式释放。<br>
+<strong>Previously granted resources cannot be forcibly taken away; they
+must be explicitly released by the holding process.</strong></p>
+<p>• <strong>条件 4：循环等待条件（Circular Wait
+Condition）</strong><br>
+•
+必须存在一个由两个或更多进程组成的循环链，每个进程都在等待下一个进程持有的资源。<br>
+<strong>There must be a circular chain of two or more processes, where
+each is waiting for a resource held by the next member of the
+chain.</strong></p>
+<p>• <strong>死锁的发生：</strong><br>
+• 如果上述四个条件同时满足，则可能发生死锁。<br>
+<strong>Deadlock can arise if all four conditions are satisfied
+simultaneously.</strong></p>
+<hr>
+<h4 id="死锁的示例与分析"><strong>5. 死锁的示例与分析</strong></h4>
+<h5 id="示例-1正常情况"><strong>示例 1：正常情况</strong></h5>
+<p>• <strong>信号量初始化：</strong> <span class="math inline">\(A(1),
+B(1)\)</span><br>
+• <strong>进程执行顺序：</strong><br>
+1. <span class="math inline">\(P\)</span> 请求 <span class="math inline">\(A\)</span>，成功。<br>
+2. <span class="math inline">\(P\)</span> 请求 <span class="math inline">\(B\)</span>，成功。<br>
+3. <span class="math inline">\(P\)</span> 释放 <span class="math inline">\(B\)</span> 和 <span class="math inline">\(A\)</span>。<br>
+4. <span class="math inline">\(Q\)</span> 请求 <span class="math inline">\(A\)</span>，成功。<br>
+5. <span class="math inline">\(Q\)</span> 请求 <span class="math inline">\(B\)</span>，成功。<br>
+6. <span class="math inline">\(Q\)</span> 释放 <span class="math inline">\(B\)</span> 和 <span class="math inline">\(A\)</span>。</p>
+<p>• <strong>结果：</strong><br>
+• 没有死锁，资源分配合理。<br>
+<strong>No deadlock, resources are allocated reasonably.</strong></p>
+<hr>
+<h5 id="示例-2死锁情况"><strong>示例 2：死锁情况</strong></h5>
+<p>• <strong>信号量初始化：</strong> <span class="math inline">\(A(1),
+B(1)\)</span><br>
+• <strong>进程执行顺序：</strong><br>
+1. <span class="math inline">\(P\)</span> 请求 <span class="math inline">\(A\)</span>，成功。<br>
+2. <span class="math inline">\(Q\)</span> 请求 <span class="math inline">\(B\)</span>，成功。<br>
+3. <span class="math inline">\(P\)</span> 请求 <span class="math inline">\(B\)</span>，被阻塞（因为 <span class="math inline">\(B\)</span> 被 <span class="math inline">\(Q\)</span> 持有）。<br>
+4. <span class="math inline">\(Q\)</span> 请求 <span class="math inline">\(A\)</span>，被阻塞（因为 <span class="math inline">\(A\)</span> 被 <span class="math inline">\(P\)</span> 持有）。</p>
+<p>• <strong>结果：</strong><br>
+• 死锁发生，两个进程互相等待。<br>
+<strong>Deadlock occurs, with both processes waiting for each
+other.</strong></p>
+<hr>
+<h4 id="死锁的解决方法"><strong>6. 死锁的解决方法</strong></h4>
+<h5 id="方法-1死锁检测与恢复"><strong>方法
+1：死锁检测与恢复</strong></h5>
+<p>• <strong>检测：</strong><br>
+• 使用资源分配图或其他算法检测系统中是否存在死锁。<br>
+<strong>Use resource allocation graphs or other algorithms to detect
+deadlocks in the system.</strong> • <strong>恢复：</strong><br>
+• 终止某些进程或强制回收资源以解除死锁。<br>
+<strong>Terminate some processes or forcibly reclaim resources to
+resolve the deadlock.</strong></p>
+<hr>
+<h5 id="方法-2死锁避免"><strong>方法 2：死锁避免</strong></h5>
+<p>• <strong>银行家算法（Banker's Algorithm）：</strong><br>
+• 通过模拟资源分配过程，确保系统始终处于安全状态。<br>
+<strong>Simulate resource allocation to ensure the system remains in a
+safe state.</strong></p>
+<hr>
+<h5 id="方法-3死锁预防"><strong>方法 3：死锁预防</strong></h5>
+<p>• <strong>破坏互斥条件：</strong><br>
+• 允许多个进程共享某些资源（如只读文件）。<br>
+<strong>Allow multiple processes to share certain resources (e.g.,
+read-only files).</strong> • <strong>破坏占有并等待：</strong><br>
+• 要求进程在请求资源时一次性申请所有需要的资源。<br>
+<strong>Require processes to request all needed resources at
+once.</strong> • <strong>破坏不可抢占：</strong><br>
+• 允许强制回收资源（仅适用于可抢占资源）。<br>
+<strong>Allow forced reclamation of resources (only applicable to
+preemptable resources).</strong> • <strong>破坏循环等待：</strong><br>
+• 对资源进行编号，要求进程按编号顺序请求资源。<br>
+<strong>Number resources and require processes to request them in
+order.</strong></p>
+<hr>
+<h3 id="总结-1"><strong>总结</strong></h3>
+<p>•
+<strong>死锁是操作系统中常见的问题，发生时会导致系统性能下降甚至完全不可用。</strong><br>
+<strong>Deadlocks are a common problem in operating systems, causing
+performance degradation or complete system unavailability when they
+occur.</strong></p>
+<p>•
+<strong>死锁的四个必要条件：互斥、占有并等待、不可抢占、循环等待。</strong><br>
+<strong>The four necessary conditions for deadlocks are mutual
+exclusion, hold and wait, no preemption, and circular wait.</strong></p>
+<p>•
+<strong>解决死锁的方法包括：检测与恢复、避免（银行家算法）、预防（破坏死锁条件）。</strong><br>
+<strong>Deadlock handling methods include detection and recovery,
+avoidance (Banker's Algorithm), and prevention (breaking deadlock
+conditions).</strong></p>
+<p>•
+<strong>信号量是控制资源共享的重要工具，但如果不正确使用，可能会导致死锁。</strong><br>
+<strong>Semaphores are important tools for controlling resource sharing,
+but improper use can lead to deadlocks.</strong></p>
+<hr>
+<h2 id="死锁建模deadlock-modeling"><strong>死锁建模（Deadlock
+Modeling）</strong></h2>
+<hr>
+<h4 id="死锁建模的基本概念"><strong>1. 死锁建模的基本概念</strong></h4>
+<p>• <strong>死锁建模的方式：</strong><br>
+<strong>Deadlock Modeling Approach:</strong><br>
+• 使用<strong>有向图（Directed
+Graph）</strong>来表示系统中进程和资源之间的关系。<br>
+<strong>Use a directed graph to represent the relationships between
+processes and resources in a system.</strong></p>
+<p>• <strong>图的组成：</strong><br>
+<strong>Graph Components:</strong><br>
+• <strong>顶点集合 <span class="math inline">\(V\)</span>：</strong><br>
+◦ 包含两类顶点：进程 <span class="math inline">\(P\)</span> 和资源 <span class="math inline">\(R\)</span>。<br>
+<strong>Consists of two types of vertices: processes <span class="math inline">\(P\)</span> and resources <span class="math inline">\(R\)</span>.</strong><br>
+• <strong>边集合 <span class="math inline">\(E\)</span>：</strong><br>
+◦ 包含两种边：请求边（request edge）和分配边（assignment edge）。<br>
+<strong>Consists of two types of edges: request edges and assignment
+edges.</strong></p>
+<hr>
+<h4 id="资源分配图resource-allocation-graph-rag"><strong>2.
+资源分配图（Resource Allocation Graph, RAG）</strong></h4>
+<p>• <strong>定义：</strong><br>
+<strong>Definition:</strong><br>
+• 资源分配图是一个有向图，用于表示系统中进程和资源的关系。<br>
+<strong>A Resource Allocation Graph (RAG) is a directed graph that
+represents the relationships between processes and resources in a
+system.</strong></p>
+<p>• <strong>顶点集合 <span class="math inline">\(V\)</span>：</strong><br>
+<strong>Vertex Set <span class="math inline">\(V\)</span>:</strong><br>
+• <span class="math inline">\(V\)</span> 被划分为两类：<br>
+<strong><span class="math inline">\(V\)</span> is partitioned into two
+types:</strong><br>
+1. <strong>进程集合 <span class="math inline">\(P\)</span>：</strong><br>
+◦ 包含系统中所有进程 <span class="math inline">\(P_1, P_2, \dots,
+P_n\)</span>。<br>
+<strong>Contains all processes in the system: <span class="math inline">\(P_1, P_2, \dots, P_n\)</span>.</strong><br>
+2. <strong>资源集合 <span class="math inline">\(R\)</span>：</strong><br>
+◦ 包含系统中所有资源类型 <span class="math inline">\(R_1, R_2, \dots,
+R_m\)</span>。<br>
+<strong>Contains all resource types in the system: <span class="math inline">\(R_1, R_2, \dots, R_m\)</span>.</strong></p>
+<p>• <strong>边集合 <span class="math inline">\(E\)</span>：</strong><br>
+<strong>Edge Set <span class="math inline">\(E\)</span>:</strong><br>
+• <strong>请求边（Request Edge）：</strong><br>
+◦ 表示进程 <span class="math inline">\(P_i\)</span> 正在请求资源 <span class="math inline">\(R_j\)</span>。<br>
+<strong>Indicates that process <span class="math inline">\(P_i\)</span>
+is requesting resource <span class="math inline">\(R_j\)</span>.</strong><br>
+◦ 表示为：<span class="math inline">\(P_i \to R_j\)</span>。<br>
+<strong>Represented as: <span class="math inline">\(P_i \to
+R_j\)</span>.</strong><br>
+• <strong>分配边（Assignment Edge）：</strong><br>
+◦ 表示资源 <span class="math inline">\(R_j\)</span> 已分配给进程 <span class="math inline">\(P_i\)</span>。<br>
+<strong>Indicates that resource <span class="math inline">\(R_j\)</span>
+is assigned to process <span class="math inline">\(P_i\)</span>.</strong><br>
+◦ 表示为：<span class="math inline">\(R_j \to P_i\)</span>。<br>
+<strong>Represented as: <span class="math inline">\(R_j \to
+P_i\)</span>.</strong></p>
+<figure>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/20250507201957.png" alt="img">
+<figcaption aria-hidden="true">img</figcaption>
+</figure>
+<hr>
+<h4 id="死锁的建模示例"><strong>3. 死锁的建模示例</strong></h4>
+<p>• <strong>示例场景：</strong><br>
+<strong>Example Scenario:</strong><br>
+• 进程 <span class="math inline">\(A\)</span> 持有资源 <span class="math inline">\(R_1\)</span>，并请求资源 <span class="math inline">\(R_2\)</span>。<br>
+<strong>Process <span class="math inline">\(A\)</span> holds resource
+<span class="math inline">\(R_1\)</span> and requests resource <span class="math inline">\(R_2\)</span>.</strong><br>
+• 进程 <span class="math inline">\(B\)</span> 持有资源 <span class="math inline">\(R_2\)</span>，并请求资源 <span class="math inline">\(R_1\)</span>。<br>
+<strong>Process <span class="math inline">\(B\)</span> holds resource
+<span class="math inline">\(R_2\)</span> and requests resource <span class="math inline">\(R_1\)</span>.</strong><br>
+• 进程 <span class="math inline">\(C\)</span> 和 <span class="math inline">\(D\)</span> 在资源 <span class="math inline">\(T\)</span> 和 <span class="math inline">\(U\)</span> 上发生死锁。<br>
+<strong>Processes <span class="math inline">\(C\)</span> and <span class="math inline">\(D\)</span> are deadlocked over resources <span class="math inline">\(T\)</span> and <span class="math inline">\(U\)</span>.</strong></p>
+<p>• <strong>资源分配图的表示：</strong><br>
+<strong>Representation of the Resource Allocation Graph:</strong><br>
+• <strong>节点：</strong><br>
+◦ 进程节点：<span class="math inline">\(A, B, C, D\)</span>。<br>
+◦ 资源节点：<span class="math inline">\(R_1, R_2, T, U\)</span>。<br>
+• <strong>边：</strong><br>
+◦ <span class="math inline">\(A \to R_2\)</span>：进程 <span class="math inline">\(A\)</span> 请求资源 <span class="math inline">\(R_2\)</span>。<br>
+◦ <span class="math inline">\(R_1 \to A\)</span>：资源 <span class="math inline">\(R_1\)</span> 分配给进程 <span class="math inline">\(A\)</span>。<br>
+◦ <span class="math inline">\(B \to R_1\)</span>：进程 <span class="math inline">\(B\)</span> 请求资源 <span class="math inline">\(R_1\)</span>。<br>
+◦ <span class="math inline">\(R_2 \to B\)</span>：资源 <span class="math inline">\(R_2\)</span> 分配给进程 <span class="math inline">\(B\)</span>。<br>
+◦ <span class="math inline">\(C \to T, T \to D, D \to U, U \to
+C\)</span>：进程 <span class="math inline">\(C\)</span> 和 <span class="math inline">\(D\)</span> 在资源 <span class="math inline">\(T\)</span> 和 <span class="math inline">\(U\)</span> 上形成循环等待，导致死锁。</p>
+<hr>
+<h4 id="死锁的发生条件"><strong>4. 死锁的发生条件</strong></h4>
+<p>• <strong>无环图：</strong><br>
+<strong>Acyclic Graph:</strong><br>
+• 如果资源分配图中没有环，则系统中不存在死锁。<br>
+<strong>If the resource allocation graph contains no cycles, there is no
+deadlock in the system.</strong></p>
+<p>• <strong>有环图：</strong><br>
+<strong>Cyclic Graph:</strong><br>
+• 如果资源分配图中存在环，则可能存在死锁。<br>
+<strong>If the resource allocation graph contains cycles, deadlock may
+occur.</strong><br>
+• <strong>单资源实例：</strong><br>
+◦ 如果每个资源类型只有一个实例，则图中存在环意味着一定存在死锁。<br>
+<strong>If there is only one instance per resource type, a cycle in the
+graph guarantees a deadlock.</strong><br>
+• <strong>多资源实例：</strong><br>
+◦ 如果每个资源类型有多个实例，则图中存在环仅表示可能存在死锁。<br>
+<strong>If there are multiple instances per resource type, a cycle in
+the graph indicates the possibility of deadlock.</strong></p>
+<hr>
+<h4 id="死锁建模的示例分析"><strong>5. 死锁建模的示例分析</strong></h4>
+<h5 id="示例-1无死锁的资源分配图"><strong>示例
+1：无死锁的资源分配图</strong></h5>
+<p>• <strong>资源分配图：</strong><br>
+• 进程 <span class="math inline">\(P_1\)</span> 持有资源 <span class="math inline">\(R_1\)</span>。<br>
+• 进程 <span class="math inline">\(P_2\)</span> 持有资源 <span class="math inline">\(R_2\)</span>。<br>
+• 进程 <span class="math inline">\(P_1\)</span> 请求资源 <span class="math inline">\(R_2\)</span>。<br>
+• 进程 <span class="math inline">\(P_2\)</span> 请求资源 <span class="math inline">\(R_1\)</span>。<br>
+<strong>But no deadlock occurs because the processes are not yet holding
+the requested resources.</strong></p>
+<p>• <strong>图表示：</strong><br>
+• <span class="math inline">\(P_1 \to R_2\)</span>：进程 <span class="math inline">\(P_1\)</span> 请求资源 <span class="math inline">\(R_2\)</span>。<br>
+• <span class="math inline">\(P_2 \to R_1\)</span>：进程 <span class="math inline">\(P_2\)</span> 请求资源 <span class="math inline">\(R_1\)</span>。<br>
+• <span class="math inline">\(R_1 \to P_2\)</span>：资源 <span class="math inline">\(R_1\)</span> 分配给进程 <span class="math inline">\(P_2\)</span>。<br>
+• <span class="math inline">\(R_2 \to P_1\)</span>：资源 <span class="math inline">\(R_2\)</span> 分配给进程 <span class="math inline">\(P_1\)</span>。<br>
+<strong>No cycle exists, so no deadlock.</strong></p>
+<hr>
+<h5 id="示例-2有死锁的资源分配图"><strong>示例
+2：有死锁的资源分配图</strong></h5>
+<p>• <strong>资源分配图：</strong><br>
+• 进程 <span class="math inline">\(P_1\)</span> 持有资源 <span class="math inline">\(R_1\)</span>，并请求资源 <span class="math inline">\(R_2\)</span>。<br>
+• 进程 <span class="math inline">\(P_2\)</span> 持有资源 <span class="math inline">\(R_2\)</span>，并请求资源 <span class="math inline">\(R_1\)</span>。<br>
+<strong>A cycle exists: <span class="math inline">\(P_1 \to R_2 \to P_2
+\to R_1 \to P_1\)</span>.</strong></p>
+<p>• <strong>图表示：</strong><br>
+• <span class="math inline">\(P_1 \to R_2\)</span>：进程 <span class="math inline">\(P_1\)</span> 请求资源 <span class="math inline">\(R_2\)</span>。<br>
+• <span class="math inline">\(R_1 \to P_1\)</span>：资源 <span class="math inline">\(R_1\)</span> 分配给进程 <span class="math inline">\(P_1\)</span>。<br>
+• <span class="math inline">\(P_2 \to R_1\)</span>：进程 <span class="math inline">\(P_2\)</span> 请求资源 <span class="math inline">\(R_1\)</span>。<br>
+• <span class="math inline">\(R_2 \to P_2\)</span>：资源 <span class="math inline">\(R_2\)</span> 分配给进程 <span class="math inline">\(P_2\)</span>。<br>
+<strong>Cycle exists, so deadlock occurs.</strong></p>
+<hr>
+<h5 id="示例-3多资源实例的不确定情况"><strong>示例
+3：多资源实例的不确定情况</strong></h5>
+<p>• <strong>资源分配图：</strong><br>
+• 进程 <span class="math inline">\(P_1\)</span> 持有资源 <span class="math inline">\(R_1\)</span> 和 <span class="math inline">\(R_2\)</span>。<br>
+• 进程 <span class="math inline">\(P_2\)</span> 持有资源 <span class="math inline">\(R_3\)</span>，并请求资源 <span class="math inline">\(R_1\)</span>。<br>
+• 进程 <span class="math inline">\(P_3\)</span> 持有资源 <span class="math inline">\(R_2\)</span>，并请求资源 <span class="math inline">\(R_3\)</span>。<br>
+<strong>No deadlock because multiple instances of resources exist, and
+processes can eventually proceed.</strong></p>
+<p>• <strong>图表示：</strong><br>
+• <span class="math inline">\(P_1 \to R_2, R_1 \to P_1\)</span>。<br>
+• <span class="math inline">\(P_2 \to R_1, R_3 \to P_2\)</span>。<br>
+• <span class="math inline">\(P_3 \to R_3, R_2 \to P_3\)</span>。<br>
+<strong>No cycle exists, so no deadlock.</strong></p>
+<hr>
+<h4 id="死锁建模的基本事实"><strong>6. 死锁建模的基本事实</strong></h4>
+<p>• <strong>无环图：</strong><br>
+<strong>Acyclic Graph:</strong><br>
+• 如果资源分配图中没有环，则系统中不存在死锁。<br>
+<strong>If the resource allocation graph contains no cycles, there is no
+deadlock in the system.</strong></p>
+<p>• <strong>有环图：</strong><br>
+<strong>Cyclic Graph:</strong><br>
+• 如果资源分配图中存在环，则可能存在死锁。<br>
+<strong>If the resource allocation graph contains cycles, deadlock may
+occur.</strong><br>
+• <strong>单资源实例：</strong><br>
+◦ 如果每个资源类型只有一个实例，则图中存在环意味着一定存在死锁。<br>
+<strong>If there is only one instance per resource type, a cycle in the
+graph guarantees a deadlock.</strong><br>
+• <strong>多资源实例：</strong><br>
+◦ 如果每个资源类型有多个实例，则图中存在环仅表示可能存在死锁。<br>
+<strong>If there are multiple instances per resource type, a cycle in
+the graph indicates the possibility of deadlock.</strong></p>
+<hr>
+<h3 id="总结-2"><strong>总结</strong></h3>
+<p>•
+<strong>资源分配图是分析死锁的重要工具，通过图的顶点和边可以直观地表示进程和资源之间的关系。</strong><br>
+<strong>The Resource Allocation Graph is an important tool for analyzing
+deadlocks, as it intuitively represents the relationships between
+processes and resources.</strong></p>
+<p>•
+<strong>死锁的发生条件可以通过资源分配图中的环来判断：</strong><br>
+<strong>Deadlock conditions can be determined by cycles in the Resource
+Allocation Graph:</strong><br>
+1. <strong>无环图：</strong> 无死锁。<br>
+<strong>Acyclic graph: No deadlock.</strong><br>
+2. <strong>有环图：</strong><br>
+◦ 单资源实例：一定存在死锁。<br>
+<strong>Single resource instance: Deadlock is guaranteed.</strong><br>
+◦ 多资源实例：可能存在死锁。<br>
+<strong>Multiple resource instances: Deadlock is possible.</strong></p>
+<p>•
+<strong>通过资源分配图，可以有效地检测和分析系统中的死锁情况，为死锁预防和恢复提供依据。</strong><br>
+<strong>Using the Resource Allocation Graph, deadlocks in a system can
+be effectively detected and analyzed, providing a basis for deadlock
+prevention and recovery.</strong></p>
+<hr>
+<h2 id="死锁处理方法methods-for-handling-deadlocks"><strong>死锁处理方法（Methods
+for Handling Deadlocks）</strong></h2>
+<hr>
+<h4 id="忽略死锁the-ostrich-algorithm"><strong>1. 忽略死锁（The Ostrich
+Algorithm）</strong></h4>
+<p>• <strong>定义：</strong><br>
+<strong>Definition:</strong><br>
+• 假设死锁不会发生，或者发生的概率极低，因此忽略死锁问题。<br>
+<strong>Pretend there is no problem by assuming that deadlocks either do
+not occur or occur with very low probability.</strong></p>
+<p>• <strong>适用场景：</strong><br>
+<strong>Applicable Scenarios:</strong><br>
+• 死锁发生的概率非常低。<br>
+<strong>Deadlocks occur very rarely.</strong><br>
+• 预防死锁的成本过高。<br>
+<strong>The cost of prevention is high.</strong></p>
+<p>• <strong>优点：</strong><br>
+<strong>Advantages:</strong><br>
+• 简单易实现，适合对可靠性要求不高的系统。<br>
+<strong>Simple and easy to implement, suitable for systems with low
+reliability requirements.</strong></p>
+<p>• <strong>缺点：</strong><br>
+<strong>Disadvantages:</strong><br>
+• 不适用于需要高可靠性的系统。<br>
+<strong>Not suitable for systems requiring high
+reliability.</strong></p>
+<p>• <strong>实际应用：</strong><br>
+<strong>Real-World Applications:</strong><br>
+• UNIX 和 Windows 系统采用了这种方法。<br>
+<strong>UNIX and Windows adopt this approach.</strong><br>
+•
+这是一种<strong>便利性</strong>和<strong>正确性</strong>之间的权衡。<br>
+<strong>A trade-off between convenience and correctness.</strong></p>
+<hr>
+<h4 id="死锁检测与恢复deadlock-detection-and-recovery-1"><strong>2.
+死锁检测与恢复（Deadlock Detection and Recovery）</strong></h4>
+<p>• <strong>定义：</strong><br>
+<strong>Definition:</strong><br>
+•
+允许系统进入死锁状态，但通过定期运行死锁检测算法来发现死锁，并通过恢复算法解除死锁。<br>
+<strong>Allow the system to enter a deadlock state, but periodically run
+a Deadlock Detection algorithm to find deadlocks and a Recovery
+algorithm to resolve them.</strong></p>
+<p>• <strong>检测算法：</strong><br>
+<strong>Detection Algorithm:</strong><br>
+• 使用资源分配图（Resource Allocation Graph,
+RAG）来检测系统中是否存在死锁。<br>
+<strong>Use a Resource Allocation Graph (RAG) to detect deadlocks in the
+system.</strong> • <strong>单资源实例：</strong><br>
+◦ 如果图中存在环，则一定存在死锁。<br>
+<strong>If a cycle exists in the graph, a deadlock is
+guaranteed.</strong> • <strong>多资源实例：</strong><br>
+◦ 如果图中存在环，则可能存在死锁。<br>
+<strong>If a cycle exists in the graph, a deadlock is
+possible.</strong></p>
+<p>• <strong>恢复算法：</strong><br>
+<strong>Recovery Algorithm:</strong><br>
+• <strong>终止进程：</strong><br>
+◦ 终止部分进程以释放资源，解除死锁。<br>
+<strong>Terminate some processes to release resources and resolve the
+deadlock.</strong><br>
+• <strong>资源抢占：</strong><br>
+◦ 强制回收某些进程的资源并分配给其他进程。<br>
+<strong>Forcefully reclaim resources from some processes and allocate
+them to others.</strong></p>
+<p>• <strong>优点：</strong><br>
+<strong>Advantages:</strong><br>
+• 系统可以在死锁发生后恢复，适合高可靠性系统。<br>
+<strong>The system can recover after a deadlock occurs, making it
+suitable for highly reliable systems.</strong></p>
+<p>• <strong>缺点：</strong><br>
+<strong>Disadvantages:</strong><br>
+• 检测和恢复过程可能带来额外的开销。<br>
+<strong>Detection and recovery processes may incur additional
+overhead.</strong></p>
+<hr>
+<h4 id="死锁避免deadlock-avoidance-1"><strong>3. 死锁避免（Deadlock
+Avoidance）</strong></h4>
+<p>• <strong>定义：</strong><br>
+<strong>Definition:</strong><br>
+•
+在分配资源之前，系统会预测是否会导致死锁，从而避免进入不安全状态。<br>
+<strong>Before allocating resources, the system predicts whether a
+deadlock will occur, thereby avoiding unsafe states.</strong></p>
+<p>• <strong>算法：</strong><br>
+<strong>Algorithms:</strong><br>
+• <strong>银行家算法（Banker's Algorithm）：</strong><br>
+◦ 通过模拟资源分配过程，确保系统始终处于安全状态。<br>
+<strong>Simulates resource allocation to ensure the system remains in a
+safe state.</strong></p>
+<p>• <strong>优点：</strong><br>
+<strong>Advantages:</strong><br>
+• 系统不会进入死锁状态，资源利用率较高。<br>
+<strong>The system will not enter a deadlock state, and resource
+utilization is higher.</strong></p>
+<p>• <strong>缺点：</strong><br>
+<strong>Disadvantages:</strong><br>
+• 需要提前知道进程的资源需求，实现复杂。<br>
+<strong>Requires prior knowledge of process resource requirements,
+making implementation complex.</strong></p>
+<hr>
+<h4 id="死锁预防deadlock-prevention-1"><strong>4. 死锁预防（Deadlock
+Prevention）</strong></h4>
+<p>• <strong>定义：</strong><br>
+<strong>Definition:</strong><br>
+• 通过破坏死锁的四个必要条件之一来预防死锁的发生。<br>
+<strong>Prevent deadlocks by breaking one of the four necessary
+conditions for deadlocks.</strong></p>
+<p>• <strong>死锁的四个必要条件：</strong><br>
+<strong>Four Necessary Conditions for Deadlocks:</strong><br>
+1. <strong>互斥条件（Mutual Exclusion Condition）：</strong><br>
+◦ 每个资源一次只能分配给一个进程，或者处于可用状态。<br>
+<strong>Each resource is assigned to one process or is
+available.</strong><br>
+2. <strong>占有并等待条件（Hold and Wait Condition）：</strong><br>
+◦ 持有资源的进程可以请求额外的资源。<br>
+<strong>A process holding resources can request additional
+resources.</strong><br>
+3. <strong>不可抢占条件（No Preemption Condition）：</strong><br>
+◦ 已分配的资源不能被强制收回，必须由持有进程显式释放。<br>
+<strong>Previously granted resources cannot be forcibly taken away; they
+must be explicitly released by the holding process.</strong><br>
+4. <strong>循环等待条件（Circular Wait Condition）：</strong><br>
+◦
+必须存在一个由两个或更多进程组成的循环链，每个进程都在等待下一个进程持有的资源。<br>
+<strong>There must be a circular chain of two or more processes, where
+each is waiting for a resource held by the next member of the
+chain.</strong></p>
+<p>• <strong>预防方法：</strong><br>
+<strong>Prevention Methods:</strong><br>
+1. <strong>破坏互斥条件：</strong><br>
+◦ 允许多个进程共享某些资源（如只读文件）。<br>
+<strong>Allow multiple processes to share certain resources (e.g.,
+read-only files).</strong><br>
+2. <strong>破坏占有并等待：</strong><br>
+◦ 要求进程在请求资源时一次性申请所有需要的资源。<br>
+<strong>Require processes to request all needed resources at
+once.</strong><br>
+3. <strong>破坏不可抢占：</strong><br>
+◦ 允许强制回收资源（仅适用于可抢占资源）。<br>
+<strong>Allow forced reclamation of resources (only applicable to
+preemptable resources).</strong><br>
+4. <strong>破坏循环等待：</strong><br>
+◦ 对资源进行编号，要求进程按编号顺序请求资源。<br>
+<strong>Number resources and require processes to request them in
+order.</strong></p>
+<p>• <strong>优点：</strong><br>
+<strong>Advantages:</strong><br>
+• 系统不会进入死锁状态，可靠性高。<br>
+<strong>The system will not enter a deadlock state, ensuring high
+reliability.</strong></p>
+<p>• <strong>缺点：</strong><br>
+<strong>Disadvantages:</strong><br>
+• 可能降低资源利用率。<br>
+<strong>May reduce resource utilization.</strong></p>
+<hr>
+<h4 id="死锁检测算法的详细实现"><strong>5.
+死锁检测算法的详细实现</strong></h4>
+<h5 id="检测单资源类型的死锁"><strong>5.1
+检测单资源类型的死锁</strong></h5>
+<p>• <strong>方法：</strong><br>
+• 使用资源分配图（RAG）检测图中是否存在环。<br>
+<strong>Use a Resource Allocation Graph (RAG) to detect cycles in the
+graph.</strong></p>
+<p>• <strong>步骤：</strong><br>
+1. <strong>记录资源所有权和请求：</strong><br>
+◦ 记录每个进程持有的资源和请求的资源。<br>
+<strong>Record the resources held and requested by each
+process.</strong> 2. <strong>检测环：</strong><br>
+◦ 如果图中存在环，则说明存在死锁。<br>
+<strong>If a cycle exists in the graph, it indicates a
+deadlock.</strong></p>
+<hr>
+<h5 id="有向图中检测环的算法"><strong>5.2
+有向图中检测环的算法</strong></h5>
+<p>• <strong>数据结构：</strong><br>
+• <span class="math inline">\(L\)</span>：一个节点列表，用于记录访问路径。<br>
+<strong><span class="math inline">\(L\)</span>: A list of nodes to
+record the traversal path.</strong><br>
+• 弧标记：标记已检查的弧，防止重复检查。<br>
+<strong>Arcs are marked to indicate they have been inspected, preventing
+repeated inspections.</strong></p>
+<p>• <strong>算法步骤：</strong><br>
+1. <strong>初始化：</strong><br>
+◦ 将 <span class="math inline">\(L\)</span>
+初始化为空列表，所有弧标记为未检查。<br>
+<strong>Initialize <span class="math inline">\(L\)</span> as an empty
+list and mark all arcs as unmarked.</strong> 2.
+<strong>遍历节点：</strong><br>
+◦ 对于图中的每个节点 <span class="math inline">\(N\)</span>，执行以下步骤：<br>
+<strong>For each node <span class="math inline">\(N\)</span> in the
+graph, perform the following steps:</strong> ◦ 将当前节点加入 <span class="math inline">\(L\)</span>。<br>
+<strong>Add the current node to the end of <span class="math inline">\(L\)</span>.</strong> ◦ 如果当前节点在 <span class="math inline">\(L\)</span>
+中出现两次，则图中存在环，算法终止。<br>
+<strong>If the node appears twice in <span class="math inline">\(L\)</span>, a cycle exists, and the algorithm
+terminates.</strong> ◦ 检查当前节点是否有未标记的出弧：<br>
+<strong>Check if the current node has any unmarked outgoing
+arcs:</strong><br>
+▪ 如果有，随机选择一个未标记的弧并标记，移动到新节点，重复步骤 2。<br>
+<strong>If yes, pick an unmarked outgoing arc, mark it, move to the new
+node, and repeat step 2.</strong> ▪ 如果没有，回溯到上一个节点，重复步骤
+3。<br>
+<strong>If no, backtrack to the previous node and repeat step
+3.</strong> ◦ 如果回溯到初始节点且未发现环，则图中无环，算法终止。<br>
+<strong>If backtracking reaches the initial node without finding a
+cycle, the graph is acyclic, and the algorithm terminates.</strong></p>
+<hr>
+<h4 id="死锁处理方法的对比总结"><strong>6.
+死锁处理方法的对比总结</strong></h4>
+<table>
+<colgroup>
+<col style="width: 15%">
+<col style="width: 32%">
+<col style="width: 27%">
+<col style="width: 23%">
+</colgroup>
+<thead>
+<tr>
+<th><strong>方法</strong></th>
+<th><strong>特点</strong></th>
+<th><strong>优点</strong></th>
+<th><strong>缺点</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>忽略死锁（Ostrich）</strong></td>
+<td>假设死锁不会发生。</td>
+<td>简单易实现，适合低可靠性系统。</td>
+<td>不适用于高可靠性系统。</td>
+</tr>
+<tr>
+<td><strong>检测与恢复</strong></td>
+<td>允许死锁发生，定期检测并恢复。</td>
+<td>系统可以在死锁发生后恢复，适合高可靠性系统。</td>
+<td>检测和恢复过程可能带来额外开销。</td>
+</tr>
+<tr>
+<td><strong>动态避免（Avoidance）</strong></td>
+<td>在分配资源前预测是否会导致死锁，避免进入不安全状态。</td>
+<td>系统不会进入死锁状态，资源利用率较高。</td>
+<td>需要提前知道进程的资源需求，实现复杂。</td>
+</tr>
+<tr>
+<td><strong>预防（Prevention）</strong></td>
+<td>破坏死锁的四个必要条件之一，预防死锁发生。</td>
+<td>系统不会进入死锁状态，可靠性高。</td>
+<td>可能降低资源利用率。</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="总结-3"><strong>总结</strong></h3>
+<p>•
+<strong>死锁是操作系统中常见的问题，处理方法包括忽略、检测与恢复、动态避免和预防。</strong><br>
+<strong>Deadlocks are a common problem in operating systems, with
+handling methods including ignoring, detection and recovery, avoidance,
+and prevention.</strong></p>
+<p>•
+<strong>忽略死锁适用于低可靠性系统，而检测与恢复、动态避免和预防适用于高可靠性系统。</strong><br>
+<strong>Ignoring deadlocks is suitable for low-reliability systems,
+while detection and recovery, avoidance, and prevention are suitable for
+high-reliability systems.</strong></p>
+<p>•
+<strong>动态避免和预防通过资源分配策略避免死锁，但可能降低资源利用率。</strong><br>
+<strong>Dynamic avoidance and prevention avoid deadlocks through
+resource allocation strategies but may reduce resource
+utilization.</strong></p>
+<p>•
+<strong>检测与恢复允许死锁发生，但通过算法检测和恢复，适合需要高可靠性的系统。</strong><br>
+<strong>Detection and recovery allow deadlocks to occur but resolve them
+through algorithms, making them suitable for highly reliable
+systems.</strong></p>
+<h2 id="死锁检测与恢复的详细讲解"><strong>死锁检测与恢复的详细讲解</strong></h2>
+<hr>
+<h4 id="死锁检测算法"><strong>1. 死锁检测算法</strong></h4>
+<h5 id="单资源类型的死锁检测"><strong>1.1
+单资源类型的死锁检测</strong></h5>
+<p>• <strong>算法目标：</strong><br>
+<strong>Goal:</strong><br>
+• 检测资源分配图中是否存在环，若存在环，则说明可能存在死锁。<br>
+<strong>Detect cycles in the Resource Allocation Graph (RAG). If a cycle
+exists, it indicates a possible deadlock.</strong></p>
+<p>• <strong>算法步骤：</strong><br>
+<strong>Steps:</strong><br>
+1. 初始化一个空列表 <span class="math inline">\(L\)</span>，用于记录访问路径。<br>
+<strong>Initialize an empty list <span class="math inline">\(L\)</span>
+to record the traversal path.</strong><br>
+2. 从任意节点开始遍历图：<br>
+<strong>Traverse the graph starting from any node:</strong><br>
+◦ 将当前节点加入 <span class="math inline">\(L\)</span>。<br>
+<strong>Add the current node to <span class="math inline">\(L\)</span>.</strong><br>
+◦ 如果当前节点在 <span class="math inline">\(L\)</span>
+中出现两次，则说明存在环，算法终止。<br>
+<strong>If the node appears twice in <span class="math inline">\(L\)</span>, a cycle exists, and the algorithm
+terminates.</strong><br>
+◦
+如果当前节点有未标记的出弧，则随机选择一个未标记的弧并标记，移动到新节点，重复步骤
+2。<br>
+<strong>If the node has unmarked outgoing arcs, randomly pick an
+unmarked arc, mark it, move to the new node, and repeat step
+2.</strong><br>
+◦ 如果当前节点没有未标记的出弧，则回溯到上一个节点，重复步骤 3。<br>
+<strong>If the node has no unmarked outgoing arcs, backtrack to the
+previous node and repeat step 3.</strong><br>
+3. 如果回溯到初始节点且未发现环，则图中无环，算法终止。<br>
+<strong>If backtracking reaches the initial node without finding a
+cycle, the graph is acyclic, and the algorithm terminates.</strong></p>
+<p>• <strong>示例 1：无环图</strong> • <strong>路径记录：</strong><br>
+<span class="math inline">\(L = \{R, A, S\}\)</span><br>
+◦ 从 <span class="math inline">\(R\)</span> 到 <span class="math inline">\(A\)</span>，再到 <span class="math inline">\(S\)</span>，<span class="math inline">\(S\)</span>
+是死胡同（没有出弧）。<br>
+<strong>From <span class="math inline">\(R\)</span> to <span class="math inline">\(A\)</span>, then to <span class="math inline">\(S\)</span>, which is a dead end.</strong><br>
+◦ 回溯到 <span class="math inline">\(A\)</span>，再回溯到 <span class="math inline">\(R\)</span>，未发现环。<br>
+<strong>Backtrack to <span class="math inline">\(A\)</span>, then to
+<span class="math inline">\(R\)</span>, no cycle
+detected.</strong><br>
+• <strong>结论：</strong> 图中无环，无死锁。<br>
+<strong>Conclusion: No cycle exists, no deadlock.</strong></p>
+<p>• <strong>示例 2：有环图</strong> • <strong>路径记录：</strong><br>
+<span class="math inline">\(L = \{B, T, E, V, G, U, D\}\)</span><br>
+◦ 从 <span class="math inline">\(B\)</span> 开始，经过 <span class="math inline">\(T, E, V, G, U\)</span>，到达 <span class="math inline">\(D\)</span>。<br>
+<strong>From <span class="math inline">\(B\)</span>, traverse <span class="math inline">\(T, E, V, G, U\)</span>, and reach <span class="math inline">\(D\)</span>.</strong><br>
+◦ 从 <span class="math inline">\(D\)</span> 随机选择弧到 <span class="math inline">\(S\)</span>，但 <span class="math inline">\(S\)</span> 是死胡同。<br>
+<strong>From <span class="math inline">\(D\)</span>, randomly pick an
+arc to <span class="math inline">\(S\)</span>, which is a dead
+end.</strong><br>
+◦ 回溯到 <span class="math inline">\(D\)</span>，选择另一条弧回到 <span class="math inline">\(T\)</span>，此时 <span class="math inline">\(T\)</span> 在 <span class="math inline">\(L\)</span> 中出现两次，说明存在环。<br>
+<strong>Backtrack to <span class="math inline">\(D\)</span>, pick
+another arc back to <span class="math inline">\(T\)</span>, and <span class="math inline">\(T\)</span> appears twice in <span class="math inline">\(L\)</span>, indicating a cycle.</strong><br>
+• <strong>结论：</strong> 图中存在环，可能存在死锁。<br>
+<strong>Conclusion: A cycle exists, indicating a possible
+deadlock.</strong></p>
+<figure>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/20250507202935.png" alt="img">
+<figcaption aria-hidden="true">img</figcaption>
+</figure>
+<hr>
+<h5 id="多资源类型的死锁检测"><strong>1.2
+多资源类型的死锁检测</strong></h5>
+<p>• <strong>算法目标：</strong><br>
+<strong>Goal:</strong><br>
+• 检测多资源类型的情况下，系统中是否存在死锁。<br>
+<strong>Detect deadlocks in a system with multiple instances of each
+resource type.</strong></p>
+<p>• <strong>所需数据结构：</strong><br>
+<strong>Data Structures Needed:</strong><br>
+1. <strong><span class="math inline">\(C_{ij}\)</span>：</strong>
+每个进程 <span class="math inline">\(P_i\)</span> 对资源类型 <span class="math inline">\(R_j\)</span> 的当前需求矩阵。<br>
+<strong><span class="math inline">\(C_{ij}\)</span>: Current demand
+matrix for each process <span class="math inline">\(P_i\)</span> for
+resource type <span class="math inline">\(R_j\)</span>.</strong><br>
+2. <strong><span class="math inline">\(A_j\)</span>：</strong>
+每种资源类型 <span class="math inline">\(R_j\)</span>
+的可用实例数。<br>
+<strong><span class="math inline">\(A_j\)</span>: Available instances of
+each resource type <span class="math inline">\(R_j\)</span>.</strong><br>
+3. <strong><span class="math inline">\(E_j\)</span>：</strong>
+每种资源类型 <span class="math inline">\(R_j\)</span> 的总实例数。<br>
+<strong><span class="math inline">\(E_j\)</span>: Total instances of
+each resource type <span class="math inline">\(R_j\)</span>.</strong><br>
+4. <strong><span class="math inline">\(C_{ij} + A_j =
+E_j\)</span>：</strong> 资源分配的基本公式。<br>
+<strong><span class="math inline">\(C_{ij} + A_j = E_j\)</span>: Basic
+formula for resource allocation.</strong></p>
+<p>• <strong>算法步骤：</strong><br>
+<strong>Steps:</strong><br>
+1. 初始化所有进程为未标记状态。<br>
+<strong>Initialize all processes as unmarked.</strong><br>
+2. 找到一个未标记的进程 <span class="math inline">\(P_i\)</span>，其资源需求 <span class="math inline">\(C_{ij}\)</span> 小于等于可用资源 <span class="math inline">\(A_j\)</span>。<br>
+<strong>Find an unmarked process <span class="math inline">\(P_i\)</span> whose resource demand <span class="math inline">\(C_{ij} \leq A_j\)</span>.</strong><br>
+3. 如果找到这样的进程：<br>
+<strong>If such a process is found:</strong><br>
+◦ 将 <span class="math inline">\(C_{ij}\)</span> 的值加到 <span class="math inline">\(A_j\)</span> 中，表示释放资源。<br>
+<strong>Add <span class="math inline">\(C_{ij}\)</span> to <span class="math inline">\(A_j\)</span>, indicating resource
+release.</strong><br>
+◦ 标记进程 <span class="math inline">\(P_i\)</span>，表示该进程已完成。<br>
+<strong>Mark process <span class="math inline">\(P_i\)</span>,
+indicating it has completed.</strong><br>
+◦ 回到步骤 2，继续寻找下一个未标记的进程。<br>
+<strong>Go back to step 2 and continue searching for the next unmarked
+process.</strong><br>
+4. 如果没有找到这样的进程，则算法终止。<br>
+<strong>If no such process is found, the algorithm
+terminates.</strong><br>
+5. 未标记的进程即为死锁进程。<br>
+<strong>Unmarked processes are deadlocked.</strong></p>
+<hr>
+<h5 id="多资源类型检测的示例"><strong>1.3
+多资源类型检测的示例</strong></h5>
+<p>• <strong>场景描述：</strong><br>
+<strong>Scenario Description:</strong><br>
+• 系统中有多种资源类型，每个资源类型有多个实例。<br>
+<strong>There are multiple resource types in the system, and each type
+has multiple instances.</strong><br>
+• 进程 <span class="math inline">\(P_1, P_2, P_3\)</span>
+分别持有和请求不同的资源。<br>
+<strong>Processes <span class="math inline">\(P_1, P_2, P_3\)</span>
+hold and request different resources.</strong></p>
+<p>• <strong>检测过程：</strong><br>
+<strong>Detection Process:</strong><br>
+1. 初始化 <span class="math inline">\(A_j\)</span> 为可用资源数。<br>
+<strong>Initialize <span class="math inline">\(A_j\)</span> as the
+number of available resources.</strong><br>
+2. 找到一个进程 <span class="math inline">\(P_i\)</span>，其资源需求
+<span class="math inline">\(C_{ij} \leq A_j\)</span>。<br>
+<strong>Find a process <span class="math inline">\(P_i\)</span> where
+<span class="math inline">\(C_{ij} \leq A_j\)</span>.</strong><br>
+3. 更新 <span class="math inline">\(A_j\)</span> 并标记进程 <span class="math inline">\(P_i\)</span>。<br>
+<strong>Update <span class="math inline">\(A_j\)</span> and mark process
+<span class="math inline">\(P_i\)</span>.</strong><br>
+4. 重复上述步骤，直到没有满足条件的进程。<br>
+<strong>Repeat the above steps until no more processes satisfy the
+condition.</strong><br>
+5. 未标记的进程即为死锁进程。<br>
+<strong>Unmarked processes are deadlocked.</strong></p>
+<hr>
+<h4 id="死锁恢复recovery-from-deadlock"><strong>2. 死锁恢复（Recovery
+from Deadlock）</strong></h4>
+<p>• <strong>恢复的目标：</strong><br>
+<strong>Goal of Recovery:</strong><br>
+• 解除死锁状态，释放资源，使系统恢复正常运行。<br>
+<strong>Resolve the deadlock state, release resources, and restore
+normal system operation.</strong></p>
+<p>• <strong>恢复方法：</strong></p>
+<h5 id="通过抢占恢复recovery-through-preemption"><strong>2.1
+通过抢占恢复（Recovery through Preemption）</strong></h5>
+<p>• <strong>定义：</strong><br>
+<strong>Definition:</strong><br>
+• 从某些进程中抢占资源并分配给其他进程，以解除死锁。<br>
+<strong>Take resources from some processes and allocate them to others
+to resolve the deadlock.</strong></p>
+<p>• <strong>实现方式：</strong><br>
+<strong>Implementation:</strong><br>
+1. 根据资源的性质选择抢占的进程。<br>
+<strong>Select processes for preemption based on the nature of the
+resources.</strong><br>
+2. 抢占资源后，释放被抢占进程的状态。<br>
+<strong>After preemption, release the state of the preempted
+processes.</strong></p>
+<p>• <strong>优点：</strong><br>
+<strong>Advantages:</strong><br>
+• 不需要终止进程，资源利用率较高。<br>
+<strong>Does not require terminating processes, ensuring higher resource
+utilization.</strong></p>
+<p>• <strong>缺点：</strong><br>
+<strong>Disadvantages:</strong><br>
+• 抢占可能导致某些进程状态丢失，需要额外的恢复机制。<br>
+<strong>Preemption may cause loss of process state, requiring additional
+recovery mechanisms.</strong></p>
+<hr>
+<h5 id="通过回滚恢复recovery-through-rollback"><strong>2.2
+通过回滚恢复（Recovery through Rollback）</strong></h5>
+<p>• <strong>定义：</strong><br>
+<strong>Definition:</strong><br>
+•
+定期保存进程的检查点（checkpoint），在检测到死锁时，将进程回滚到之前的状态并重新运行。<br>
+<strong>Periodically save checkpoints of processes. When a deadlock is
+detected, roll back the processes to their previous states and restart
+them.</strong></p>
+<p>• <strong>实现方式：</strong><br>
+<strong>Implementation:</strong><br>
+1. 定期保存进程的状态（如寄存器值、内存状态等）。<br>
+<strong>Periodically save the state of processes (e.g., register values,
+memory state).</strong><br>
+2. 检测到死锁时，选择一个或多个进程进行回滚。<br>
+<strong>When a deadlock is detected, select one or more processes to
+roll back.</strong><br>
+3. 将进程恢复到之前的检查点状态，并重新运行。<br>
+<strong>Restore the process to its previous checkpoint state and restart
+it.</strong></p>
+<p>• <strong>优点：</strong><br>
+<strong>Advantages:</strong><br>
+• 不需要终止进程，资源利用率较高。<br>
+<strong>Does not require terminating processes, ensuring higher resource
+utilization.</strong><br>
+• 回滚后可以继续完成任务。<br>
+<strong>Processes can continue their tasks after rollback.</strong></p>
+<p>• <strong>缺点：</strong><br>
+<strong>Disadvantages:</strong><br>
+• 需要额外的存储空间保存检查点。<br>
+<strong>Requires additional storage space for
+checkpoints.</strong><br>
+• 回滚可能导致任务延迟。<br>
+<strong>Rollback may cause task delays.</strong></p>
+<hr>
+<h4 id="死锁检测与恢复的对比总结"><strong>3.
+死锁检测与恢复的对比总结</strong></h4>
+<table>
+<colgroup>
+<col style="width: 9%">
+<col style="width: 26%">
+<col style="width: 33%">
+<col style="width: 30%">
+</colgroup>
+<thead>
+<tr>
+<th><strong>方法</strong></th>
+<th><strong>特点</strong></th>
+<th><strong>优点</strong></th>
+<th><strong>缺点</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>检测与恢复</strong></td>
+<td>允许死锁发生，定期检测并恢复。</td>
+<td>系统可以在死锁发生后恢复，适合高可靠性系统。</td>
+<td>检测和恢复过程可能带来额外开销。</td>
+</tr>
+<tr>
+<td><strong>通过抢占恢复</strong></td>
+<td>从某些进程中抢占资源并分配给其他进程。</td>
+<td>不需要终止进程，资源利用率较高。</td>
+<td>抢占可能导致某些进程状态丢失，需要额外的恢复机制。</td>
+</tr>
+<tr>
+<td><strong>通过回滚恢复</strong></td>
+<td>定期保存检查点，在检测到死锁时回滚进程状态。</td>
+<td>不需要终止进程，资源利用率较高，回滚后可以继续完成任务。</td>
+<td>需要额外的存储空间保存检查点，回滚可能导致任务延迟。</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="总结-4"><strong>总结</strong></h3>
+<p>•
+<strong>死锁检测与恢复是操作系统中重要的机制，用于处理系统中可能发生的死锁问题。</strong><br>
+<strong>Deadlock detection and recovery are important mechanisms in
+operating systems for handling potential deadlocks.</strong></p>
+<p>•
+<strong>检测算法通过资源分配图或向量比较发现死锁，恢复方法包括抢占和回滚。</strong><br>
+<strong>Detection algorithms discover deadlocks through Resource
+Allocation Graphs or vector comparisons, while recovery methods include
+preemption and rollback.</strong></p>
+<p>•
+<strong>选择合适的恢复方法需要权衡资源利用率、任务延迟和系统复杂性。</strong><br>
+<strong>Choosing the appropriate recovery method requires balancing
+resource utilization, task delays, and system complexity.</strong></p>
+<hr>
+<h2 id="死锁避免deadlock-avoidance-2"><strong>死锁避免（Deadlock
+Avoidance）</strong></h2>
+<hr>
+<h4 id="死锁避免的基本概念"><strong>1. 死锁避免的基本概念</strong></h4>
+<p>• <strong>定义：</strong><br>
+<strong>Definition:</strong><br>
+•
+死锁避免算法通过动态检查资源分配状态，确保系统永远不会进入循环等待条件（Circular
+Wait Condition）。<br>
+<strong>Deadlock avoidance algorithms dynamically examine the resource
+allocation state to ensure that there can never be a circular wait
+condition.</strong></p>
+<p>• <strong>特点：</strong><br>
+<strong>Characteristics:</strong><br>
+1. <strong>需要额外的先验信息：</strong><br>
+◦ 系统需要知道每个进程可能需要的每种资源的最大数量。<br>
+<strong>The system requires some additional a priori information, such
+as the maximum number of each type of resource that each process may
+need.</strong> 2. <strong>目标：</strong><br>
+◦ 避免系统进入不安全状态，从而防止死锁的发生。<br>
+<strong>The goal is to prevent the system from entering an unsafe state,
+thereby avoiding deadlocks.</strong></p>
+<p>• <strong>应用场景：</strong><br>
+<strong>Application Scenarios:</strong><br>
+• 适用于需要高可靠性的系统，例如银行系统、实时系统等。<br>
+<strong>Suitable for highly reliable systems, such as banking systems,
+real-time systems, etc.</strong></p>
+<hr>
+<h4 id="基于安全状态的死锁避免算法"><strong>2.
+基于安全状态的死锁避免算法</strong></h4>
+<p>• <strong>安全状态的定义：</strong><br>
+<strong>Definition of a Safe State:</strong><br>
+•
+如果系统处于安全状态，则不存在死锁，并且可以通过某种顺序运行所有进程来满足所有未完成的资源请求。<br>
+<strong>A state is safe if the system is not in a deadlock and there is
+a way to satisfy all pending requests by running the processes in some
+order.</strong></p>
+<p>• <strong>安全序列（Safe Sequence）：</strong><br>
+<strong>Safe Sequence:</strong><br>
+•
+安全序列是指一组进程的执行顺序，按照该顺序运行所有进程可以满足所有资源请求，而不会导致死锁。<br>
+<strong>A safe sequence is an order of process execution in which all
+resource requests can be satisfied without causing a
+deadlock.</strong></p>
+<p>• <strong>算法目标：</strong><br>
+<strong>Goal of the Algorithm:</strong><br>
+•
+在每次资源分配时，系统必须判断立即分配资源是否会将系统置于安全状态。<br>
+<strong>The system must determine whether immediately allocating
+resources will leave the system in a safe state.</strong></p>
+<hr>
+<h4 id="安全状态与不安全状态"><strong>3.
+安全状态与不安全状态</strong></h4>
+<h5 id="安全状态的示例"><strong>3.1 安全状态的示例</strong></h5>
+<p>• <strong>场景描述：</strong><br>
+<strong>Scenario Description:</strong><br>
+• 系统中有两个进程 <span class="math inline">\(B\)</span> 和 <span class="math inline">\(C\)</span>，以及三种资源类型 <span class="math inline">\(R_1, R_2, R_3\)</span>。<br>
+<strong>The system has two processes <span class="math inline">\(B\)</span> and <span class="math inline">\(C\)</span>, and three resource types <span class="math inline">\(R_1, R_2, R_3\)</span>.</strong><br>
+• 当前资源分配状态如下：<br>
+<strong>Current resource allocation state:</strong><br>
+◦ <span class="math inline">\(B\)</span> 已分配资源 <span class="math inline">\(R_1\)</span> 和 <span class="math inline">\(R_2\)</span>，并请求 <span class="math inline">\(R_3\)</span>。<br>
+<strong><span class="math inline">\(B\)</span> has been allocated <span class="math inline">\(R_1\)</span> and <span class="math inline">\(R_2\)</span>, and is requesting <span class="math inline">\(R_3\)</span>.</strong><br>
+◦ <span class="math inline">\(C\)</span> 已分配资源 <span class="math inline">\(R_3\)</span>，并请求 <span class="math inline">\(R_1\)</span>。<br>
+<strong><span class="math inline">\(C\)</span> has been allocated <span class="math inline">\(R_3\)</span>, and is requesting <span class="math inline">\(R_1\)</span>.</strong><br>
+◦ 系统中有足够的资源满足 <span class="math inline">\(B\)</span> 和 <span class="math inline">\(C\)</span> 的请求。</p>
+<p>• <strong>安全序列：</strong><br>
+<strong>Safe Sequence:</strong><br>
+• 假设 <span class="math inline">\(B\)</span> 先完成并释放资源 <span class="math inline">\(R_3\)</span>，然后 <span class="math inline">\(C\)</span> 可以完成并释放资源 <span class="math inline">\(R_1\)</span>。<br>
+<strong>Assume <span class="math inline">\(B\)</span> completes first
+and releases <span class="math inline">\(R_3\)</span>, then <span class="math inline">\(C\)</span> can complete and release <span class="math inline">\(R_1\)</span>.</strong><br>
+• 安全序列为：<span class="math inline">\(B \to C\)</span>。<br>
+<strong>Safe sequence: <span class="math inline">\(B \to
+C\)</span>.</strong></p>
+<hr>
+<h5 id="不安全状态的示例"><strong>3.2 不安全状态的示例</strong></h5>
+<p>• <strong>场景描述：</strong><br>
+<strong>Scenario Description:</strong><br>
+• 系统中有两个进程 <span class="math inline">\(B\)</span> 和 <span class="math inline">\(C\)</span>，以及三种资源类型 <span class="math inline">\(R_1, R_2, R_3\)</span>。<br>
+<strong>The system has two processes <span class="math inline">\(B\)</span> and <span class="math inline">\(C\)</span>, and three resource types <span class="math inline">\(R_1, R_2, R_3\)</span>.</strong><br>
+• 当前资源分配状态如下：<br>
+<strong>Current resource allocation state:</strong><br>
+◦ <span class="math inline">\(B\)</span> 已分配资源 <span class="math inline">\(R_1\)</span>，并请求 <span class="math inline">\(R_3\)</span>。<br>
+<strong><span class="math inline">\(B\)</span> has been allocated <span class="math inline">\(R_1\)</span>, and is requesting <span class="math inline">\(R_3\)</span>.</strong><br>
+◦ <span class="math inline">\(C\)</span> 已分配资源 <span class="math inline">\(R_3\)</span>，并请求 <span class="math inline">\(R_1\)</span>。<br>
+<strong><span class="math inline">\(C\)</span> has been allocated <span class="math inline">\(R_3\)</span>, and is requesting <span class="math inline">\(R_1\)</span>.</strong><br>
+◦ 系统中没有足够的资源同时满足 <span class="math inline">\(B\)</span> 和
+<span class="math inline">\(C\)</span> 的请求。</p>
+<p>• <strong>不安全状态的原因：</strong><br>
+<strong>Reason for Unsafe State:</strong><br>
+• 如果 <span class="math inline">\(B\)</span> 和 <span class="math inline">\(C\)</span>
+同时持有部分资源并等待对方释放资源，则系统可能进入死锁状态。<br>
+<strong>If <span class="math inline">\(B\)</span> and <span class="math inline">\(C\)</span> each hold part of the resources and
+wait for the other to release resources, the system may enter a deadlock
+state.</strong></p>
+<hr>
+<h4 id="死锁避免的基本事实"><strong>4. 死锁避免的基本事实</strong></h4>
+<p>• <strong>安全状态与死锁的关系：</strong><br>
+<strong>Relationship Between Safe State and Deadlock:</strong><br>
+1. <strong>如果系统处于安全状态，则不存在死锁。</strong><br>
+<strong>If the system is in a safe state, there are no
+deadlocks.</strong><br>
+2. <strong>如果系统处于不安全状态，则可能存在死锁。</strong><br>
+<strong>If the system is in an unsafe state, a deadlock may
+occur.</strong><br>
+3.
+<strong>死锁避免的目标是确保系统永远不会进入不安全状态。</strong><br>
+<strong>The goal of deadlock avoidance is to ensure that the system
+never enters an unsafe state.</strong></p>
+<figure>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/20250507205256.png" alt="img">
+<figcaption aria-hidden="true">img</figcaption>
+</figure>
+<hr>
+<h4 id="银行家算法bankers-algorithm"><strong>5. 银行家算法（Banker's
+Algorithm）</strong></h4>
+<p>• <strong>定义：</strong><br>
+<strong>Definition:</strong><br>
+•
+银行家算法是一种经典的死锁避免算法，通过模拟资源分配过程，确保系统始终处于安全状态。<br>
+<strong>The Banker's Algorithm is a classic deadlock avoidance algorithm
+that ensures the system remains in a safe state by simulating resource
+allocation.</strong></p>
+<p>• <strong>算法步骤：</strong><br>
+<strong>Steps of the Algorithm:</strong><br>
+1. <strong>初始化：</strong><br>
+◦ 系统记录每个进程的最大资源需求 <span class="math inline">\(Max\)</span>、已分配资源 <span class="math inline">\(Allocation\)</span>、剩余需求 <span class="math inline">\(Need\)</span>，以及可用资源 <span class="math inline">\(Available\)</span>。<br>
+<strong>The system records the maximum resource demand <span class="math inline">\(Max\)</span>, allocated resources <span class="math inline">\(Allocation\)</span>, remaining demand <span class="math inline">\(Need\)</span>, and available resources <span class="math inline">\(Available\)</span> for each
+process.</strong><br>
+2. <strong>资源请求检查：</strong><br>
+◦ 当进程 <span class="math inline">\(P_i\)</span>
+请求资源时，检查分配后系统是否仍处于安全状态。<br>
+<strong>When process <span class="math inline">\(P_i\)</span> requests
+resources, check whether the system remains in a safe state after
+allocation.</strong><br>
+3. <strong>安全状态检查：</strong><br>
+◦
+使用安全序列算法，判断是否存在一个安全序列，使得所有进程都能完成。<br>
+<strong>Use the safe sequence algorithm to determine whether a safe
+sequence exists that allows all processes to complete.</strong><br>
+4. <strong>资源分配：</strong><br>
+◦ 如果安全状态检查通过，则分配资源；否则拒绝请求。<br>
+<strong>If the safe state check passes, allocate resources; otherwise,
+deny the request.</strong></p>
+<p>• <strong>示例：</strong><br>
+<strong>Example:</strong><br>
+• 假设系统中有两个进程 <span class="math inline">\(P_1\)</span> 和 <span class="math inline">\(P_2\)</span>，资源类型为 <span class="math inline">\(R_1, R_2\)</span>。<br>
+<strong>Assume there are two processes <span class="math inline">\(P_1\)</span> and <span class="math inline">\(P_2\)</span>, with resource types <span class="math inline">\(R_1, R_2\)</span>.</strong><br>
+◦ <span class="math inline">\(P_1\)</span> 的最大需求为 <span class="math inline">\((3, 2)\)</span>，已分配 <span class="math inline">\((1, 0)\)</span>，剩余需求为 <span class="math inline">\((2, 2)\)</span>。<br>
+<strong><span class="math inline">\(P_1\)</span>: Max = (3, 2),
+Allocation = (1, 0), Need = (2, 2).</strong><br>
+◦ <span class="math inline">\(P_2\)</span> 的最大需求为 <span class="math inline">\((1, 3)\)</span>，已分配 <span class="math inline">\((0, 2)\)</span>，剩余需求为 <span class="math inline">\((1, 1)\)</span>。<br>
+<strong><span class="math inline">\(P_2\)</span>: Max = (1, 3),
+Allocation = (0, 2), Need = (1, 1).</strong><br>
+◦ 可用资源为 <span class="math inline">\((1, 1)\)</span>。<br>
+<strong>Available = (1, 1).</strong><br>
+• 如果 <span class="math inline">\(P_1\)</span> 请求资源 <span class="math inline">\((1,
+1)\)</span>，系统会检查分配后是否仍处于安全状态。<br>
+<strong>If <span class="math inline">\(P_1\)</span> requests <span class="math inline">\((1, 1)\)</span>, the system checks whether the
+system remains in a safe state after allocation.</strong></p>
+<hr>
+<h4 id="安全状态与不安全状态的对比总结"><strong>6.
+安全状态与不安全状态的对比总结</strong></h4>
+<table>
+<colgroup>
+<col style="width: 10%">
+<col style="width: 45%">
+<col style="width: 43%">
+</colgroup>
+<thead>
+<tr>
+<th><strong>状态</strong></th>
+<th><strong>定义</strong></th>
+<th><strong>特点</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>安全状态</strong></td>
+<td>系统中不存在死锁，并且存在一个安全序列使得所有进程都能完成。</td>
+<td>- 系统可以正常运行，不会发生死锁。</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>- 资源分配策略需要确保系统始终处于安全状态。</td>
+</tr>
+<tr>
+<td><strong>不安全状态</strong></td>
+<td>系统中可能存在死锁，因为没有安全序列使得所有进程都能完成。</td>
+<td>- 系统可能进入死锁状态，需要通过死锁避免或检测机制来恢复。</td>
+</tr>
+</tbody>
+</table>
+<figure>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/20250507205412.png" alt="img">
+<figcaption aria-hidden="true">img</figcaption>
+</figure>
+<hr>
+<h4 id="死锁避免的优缺点"><strong>7. 死锁避免的优缺点</strong></h4>
+<p>• <strong>优点：</strong><br>
+<strong>Advantages:</strong><br>
+1. <strong>预防死锁：</strong><br>
+◦ 系统不会进入死锁状态，可靠性高。<br>
+<strong>Prevents deadlocks, ensuring high reliability.</strong><br>
+2. <strong>资源利用率较高：</strong><br>
+◦ 通过动态检查资源分配状态，可以更高效地利用资源。<br>
+<strong>Higher resource utilization through dynamic checking of resource
+allocation states.</strong></p>
+<p>• <strong>缺点：</strong><br>
+<strong>Disadvantages:</strong><br>
+1. <strong>复杂性高：</strong><br>
+◦ 需要额外的先验信息，并且算法复杂度较高。<br>
+<strong>High complexity, requiring additional a priori information and
+complex algorithms.</strong><br>
+2. <strong>可能降低资源利用率：</strong><br>
+◦ 过于保守的资源分配策略可能导致资源利用率降低。<br>
+<strong>May reduce resource utilization due to overly conservative
+allocation strategies.</strong></p>
+<hr>
+<h3 id="总结-5"><strong>总结</strong></h3>
+<p>•
+<strong>死锁避免通过动态检查资源分配状态，确保系统永远不会进入不安全状态，从而预防死锁的发生。</strong><br>
+<strong>Deadlock avoidance dynamically examines resource allocation
+states to ensure the system never enters an unsafe state, thereby
+preventing deadlocks.</strong></p>
+<p>•
+<strong>安全状态是死锁避免的核心概念，系统必须确保每次资源分配后仍处于安全状态。</strong><br>
+<strong>Safe states are the core concept of deadlock avoidance, and the
+system must ensure that it remains in a safe state after each resource
+allocation.</strong></p>
+<p>•
+<strong>银行家算法是死锁避免的经典实现，通过模拟资源分配过程，确保系统始终处于安全状态。</strong><br>
+<strong>The Banker's Algorithm is a classic implementation of deadlock
+avoidance, ensuring the system remains in a safe state by simulating
+resource allocation.</strong></p>
+<p>•
+<strong>死锁避免的优点是预防死锁，缺点是复杂性较高，可能降低资源利用率。</strong><br>
+<strong>The advantages of deadlock avoidance are prevention of
+deadlocks, while the disadvantages are higher complexity and potential
+reduction in resource utilization.</strong></p>
+<hr>
+<h2 id="银行家算法bankers-algorithm详解"><strong>银行家算法（Banker's
+Algorithm）详解</strong></h2>
+<hr>
+<h4 id="银行家算法的基本原理"><strong>1.
+银行家算法的基本原理</strong></h4>
+<p>• <strong>定义：</strong><br>
+<strong>Definition:</strong><br>
+• 银行家算法是一种经典的死锁避免算法，由 Dijkstra 在 1965 年提出。<br>
+<strong>The Banker's Algorithm is a classic deadlock avoidance algorithm
+proposed by Dijkstra in 1965.</strong></p>
+<p>• <strong>核心思想：</strong><br>
+<strong>Core Idea:</strong><br>
+•
+系统在分配资源之前，模拟资源分配过程，检查分配后系统是否仍处于安全状态。<br>
+<strong>The system simulates the resource allocation process before
+allocating resources to check whether the system remains in a safe state
+after the allocation.</strong></p>
+<p>• <strong>类比：</strong><br>
+<strong>Analogy:</strong><br>
+• 银行家算法类似于银行家在贷款时的风险评估：<br>
+◦ 每个客户（进程）告诉银行家其最大贷款需求。<br>
+◦
+银行家只在确保贷款不会导致银行破产（系统进入不安全状态）的情况下发放贷款。<br>
+<strong>The Banker's Algorithm is analogous to a banker assessing loan
+risks: Each customer (process) tells the banker their maximum loan
+demand. The banker only lends money if it ensures the bank will not go
+bankrupt (the system will not enter an unsafe state).</strong></p>
+<p>• <strong>关键概念：</strong><br>
+<strong>Key Concepts:</strong><br>
+1. <strong>安全状态（Safe State）：</strong><br>
+◦ 系统中存在一个安全序列，使得所有进程都能完成。<br>
+<strong>A safe state is one where there exists a sequence of resource
+allocations such that all processes can complete.</strong><br>
+2. <strong>不安全状态（Unsafe State）：</strong><br>
+◦ 系统中不存在安全序列，可能进入死锁状态。<br>
+<strong>An unsafe state is one where no such sequence exists, and the
+system may enter a deadlock.</strong></p>
+<hr>
+<h4 id="银行家算法的基本假设"><strong>2.
+银行家算法的基本假设</strong></h4>
+<p>• <strong>进程的资源需求：</strong><br>
+<strong>Resource Requirements of Processes:</strong><br>
+• 每个进程在运行前声明其对每种资源的最大需求 <span class="math inline">\(Max\)</span>。<br>
+<strong>Each process declares the maximum demand for each resource type
+before running.</strong><br>
+• 进程的实际资源使用量 <span class="math inline">\(Allocation\)</span>
+不超过其声明的最大需求。<br>
+<strong>The actual resource usage <span class="math inline">\(Allocation\)</span> of a process does not exceed
+its declared maximum demand.</strong></p>
+<p>• <strong>系统资源状态：</strong><br>
+<strong>System Resource State:</strong><br>
+• 系统记录当前可用资源 <span class="math inline">\(Available\)</span>。<br>
+<strong>The system keeps track of the currently available resources
+<span class="math inline">\(Available\)</span>.</strong><br>
+• 系统还记录每个进程的剩余需求 <span class="math inline">\(Need = Max -
+Allocation\)</span>。<br>
+<strong>The system also tracks the remaining demand <span class="math inline">\(Need = Max - Allocation\)</span> for each
+process.</strong></p>
+<hr>
+<h4 id="单资源情况下的银行家算法"><strong>3.
+单资源情况下的银行家算法</strong></h4>
+<p>• <strong>场景描述：</strong><br>
+<strong>Scenario Description:</strong><br>
+• 系统中只有一个资源类型 <span class="math inline">\(R\)</span>。<br>
+<strong>There is only one resource type <span class="math inline">\(R\)</span> in the system.</strong><br>
+• 系统中有 <span class="math inline">\(n\)</span>
+个进程，每个进程声明了其对资源的最大需求 <span class="math inline">\(Max\)</span>。<br>
+<strong>There are <span class="math inline">\(n\)</span> processes, each
+declaring a maximum demand <span class="math inline">\(Max\)</span> for
+the resource.</strong></p>
+<p>• <strong>安全状态的定义：</strong><br>
+<strong>Definition of a Safe State:</strong><br>
+•
+如果系统中存在一个进程执行序列，使得所有进程都能完成，则系统处于安全状态。<br>
+<strong>A system is in a safe state if there exists a sequence of
+process executions such that all processes can complete.</strong></p>
+<p>• <strong>算法步骤：</strong><br>
+<strong>Steps of the Algorithm:</strong><br>
+1. 找到一个进程 <span class="math inline">\(P_i\)</span>，其剩余需求
+<span class="math inline">\(Need[i] \leq Available\)</span>。<br>
+<strong>Find a process <span class="math inline">\(P_i\)</span> where
+<span class="math inline">\(Need[i] \leq
+Available\)</span>.</strong><br>
+2. 假设该进程完成并释放资源，更新可用资源 <span class="math inline">\(Available = Available +
+Allocation[i]\)</span>。<br>
+<strong>Assume the process completes and releases resources, updating
+<span class="math inline">\(Available = Available +
+Allocation[i]\)</span>.</strong><br>
+3. 标记该进程为已完成，并重复步骤 1 和 2。<br>
+<strong>Mark the process as completed and repeat steps 1 and
+2.</strong><br>
+4.
+如果所有进程都被标记为已完成，则系统处于安全状态；否则，系统处于不安全状态。<br>
+<strong>If all processes are marked as completed, the system is in a
+safe state; otherwise, it is in an unsafe state.</strong></p>
+<hr>
+<h4 id="多资源情况下的银行家算法"><strong>4.
+多资源情况下的银行家算法</strong></h4>
+<p>• <strong>场景描述：</strong><br>
+<strong>Scenario Description:</strong><br>
+• 系统中有多种资源类型 <span class="math inline">\(R_1, R_2, \dots,
+R_m\)</span>。<br>
+<strong>There are multiple resource types <span class="math inline">\(R_1, R_2, \dots, R_m\)</span> in the
+system.</strong><br>
+• 系统中有 <span class="math inline">\(n\)</span>
+个进程，每个进程声明了其对每种资源的最大需求 <span class="math inline">\(Max[i][j]\)</span>。<br>
+<strong>There are <span class="math inline">\(n\)</span> processes, each
+declaring a maximum demand <span class="math inline">\(Max[i][j]\)</span> for each resource type <span class="math inline">\(R_j\)</span>.</strong></p>
+<p>• <strong>数据结构：</strong><br>
+<strong>Data Structures:</strong><br>
+1. <strong><span class="math inline">\(Max[i][j]\)</span>：</strong><br>
+◦ 进程 <span class="math inline">\(P_i\)</span> 对资源类型 <span class="math inline">\(R_j\)</span> 的最大需求。<br>
+<strong>The maximum demand of process <span class="math inline">\(P_i\)</span> for resource type <span class="math inline">\(R_j\)</span>.</strong><br>
+2. <strong><span class="math inline">\(Allocation[i][j]\)</span>：</strong><br>
+◦ 进程 <span class="math inline">\(P_i\)</span> 当前已分配的资源 <span class="math inline">\(R_j\)</span> 的数量。<br>
+<strong>The number of resources <span class="math inline">\(R_j\)</span>
+currently allocated to process <span class="math inline">\(P_i\)</span>.</strong><br>
+3. <strong><span class="math inline">\(Need[i][j]\)</span>：</strong><br>
+◦ 进程 <span class="math inline">\(P_i\)</span> 对资源类型 <span class="math inline">\(R_j\)</span> 的剩余需求，计算公式为：<br>
+<span class="math display">\[
+       Need[i][j] = Max[i][j] - Allocation[i][j]
+     \]</span> <strong>The remaining demand of process <span class="math inline">\(P_i\)</span> for resource type <span class="math inline">\(R_j\)</span>, calculated as <span class="math inline">\(Need[i][j] = Max[i][j] -
+Allocation[i][j]\)</span>.</strong><br>
+4. <strong><span class="math inline">\(Available[j]\)</span>：</strong><br>
+◦ 当前系统中每种资源类型 <span class="math inline">\(R_j\)</span>
+的可用数量。<br>
+<strong>The number of available resources of type <span class="math inline">\(R_j\)</span> in the system.</strong></p>
+<p>• <strong>安全状态检查的步骤：</strong><br>
+<strong>Steps to Check for a Safe State:</strong><br>
+1. 初始化工作向量 <span class="math inline">\(Work = Available\)</span>
+和完成标记数组 <span class="math inline">\(Finish[i] =
+false\)</span>。<br>
+<strong>Initialize the work vector <span class="math inline">\(Work =
+Available\)</span> and the completion flag array <span class="math inline">\(Finish[i] = false\)</span>.</strong><br>
+2. 找到一个进程 <span class="math inline">\(P_i\)</span>，满足：<br>
+◦ <span class="math inline">\(Finish[i] = false\)</span>。<br>
+◦ <span class="math inline">\(Need[i][j] \leq Work[j]\)</span>
+对所有资源类型 <span class="math inline">\(R_j\)</span> 成立。<br>
+<strong>Find a process <span class="math inline">\(P_i\)</span> such
+that <span class="math inline">\(Finish[i] = false\)</span> and <span class="math inline">\(Need[i][j] \leq Work[j]\)</span> for all resource
+types <span class="math inline">\(R_j\)</span>.</strong><br>
+3. 如果找到这样的进程：<br>
+◦ 假设该进程完成并释放资源，更新 <span class="math inline">\(Work = Work
++ Allocation[i]\)</span>。<br>
+<strong>If such a process is found, assume it completes and releases
+resources, updating <span class="math inline">\(Work = Work +
+Allocation[i]\)</span>.</strong><br>
+◦ 标记该进程为已完成，<span class="math inline">\(Finish[i] =
+true\)</span>。<br>
+<strong>Mark the process as completed, <span class="math inline">\(Finish[i] = true\)</span>.</strong><br>
+◦ 回到步骤 2。<br>
+<strong>Go back to step 2.</strong><br>
+4.
+如果所有进程都被标记为已完成，则系统处于安全状态；否则，系统处于不安全状态。<br>
+<strong>If all processes are marked as completed, the system is in a
+safe state; otherwise, it is in an unsafe state.</strong></p>
+<hr>
+<h4 id="银行家算法的优缺点"><strong>7. 银行家算法的优缺点</strong></h4>
+<p>• <strong>优点：</strong><br>
+<strong>Advantages:</strong><br>
+1. <strong>预防死锁：</strong><br>
+◦ 系统不会进入死锁状态，可靠性高。<br>
+<strong>Prevents deadlocks, ensuring high reliability.</strong><br>
+2. <strong>动态资源分配：</strong><br>
+◦ 系统可以在运行时动态调整资源分配策略。<br>
+<strong>Allows dynamic resource allocation and adjustment during
+runtime.</strong></p>
+<p>• <strong>缺点：</strong><br>
+<strong>Disadvantages:</strong><br>
+1. <strong>复杂性高：</strong><br>
+◦ 需要额外的先验信息，并且算法复杂度较高。<br>
+<strong>High complexity, requiring additional a priori information and
+complex algorithms.</strong><br>
+2. <strong>保守性：</strong><br>
+◦ 过于保守的资源分配策略可能导致资源利用率降低。<br>
+<strong>Conservative resource allocation may reduce resource
+utilization.</strong></p>
+<hr>
+<h3 id="总结-6"><strong>总结</strong></h3>
+<p>•
+<strong>银行家算法是一种经典的死锁避免算法，通过模拟资源分配过程，确保系统始终处于安全状态。</strong><br>
+<strong>The Banker's Algorithm is a classic deadlock avoidance algorithm
+that ensures the system remains in a safe state by simulating resource
+allocation.</strong></p>
+<p>•
+**安全状态是银行家算法的核心概念，系统必须确保每次资源分配后仍处于</p>
+<h2 id="死锁预防deadlock-prevention-2"><strong>死锁预防（Deadlock
+Prevention）</strong></h2>
+<p>以下是关于死锁预防的详细讲解，包括其基本思想、针对死锁四个必要条件的破坏方法，以及每种方法的优缺点和实际应用场景。</p>
+<hr>
+<h4 id="死锁预防的基本思想"><strong>1. 死锁预防的基本思想</strong></h4>
+<p>• <strong>定义：</strong><br>
+<strong>Definition:</strong><br>
+•
+死锁预防通过破坏死锁的四个必要条件之一，确保系统永远不会进入死锁状态。<br>
+<strong>Deadlock prevention ensures that the system will never enter a
+deadlock state by breaking one of the four necessary conditions for
+deadlocks.</strong></p>
+<p>• <strong>死锁的四个必要条件：</strong><br>
+<strong>Four Necessary Conditions for Deadlocks:</strong><br>
+1. <strong>互斥条件（Mutual Exclusion Condition）：</strong><br>
+◦ 每个资源一次只能分配给一个进程，或者处于可用状态。<br>
+<strong>Each resource is assigned to one process or is
+available.</strong><br>
+2. <strong>占有并等待条件（Hold and Wait Condition）：</strong><br>
+◦ 持有资源的进程可以请求额外的资源。<br>
+<strong>A process holding resources can request additional
+resources.</strong><br>
+3. <strong>不可抢占条件（No Preemption Condition）：</strong><br>
+◦ 已分配的资源不能被强制收回，必须由持有进程显式释放。<br>
+<strong>Previously granted resources cannot be forcibly taken away; they
+must be explicitly released by the holding process.</strong><br>
+4. <strong>循环等待条件（Circular Wait Condition）：</strong><br>
+◦
+必须存在一个由两个或更多进程组成的循环链，每个进程都在等待下一个进程持有的资源。<br>
+<strong>There must be a circular chain of two or more processes, where
+each is waiting for a resource held by the next member of the
+chain.</strong></p>
+<p>• <strong>预防方法：</strong><br>
+<strong>Prevention Methods:</strong><br>
+• 针对每个条件采取相应的策略，破坏其成立的可能性。<br>
+<strong>Adopt strategies to break each condition, making it impossible
+for the condition to hold.</strong></p>
+<hr>
+<h4 id="针对互斥条件mutual-exclusion-condition的预防"><strong>2.
+针对互斥条件（Mutual Exclusion Condition）的预防</strong></h4>
+<p>• <strong>基本思想：</strong><br>
+<strong>Basic Idea:</strong><br>
+• 尽量避免资源的独占分配，允许多个进程共享某些资源。<br>
+<strong>Avoid exclusive allocation of resources as much as possible,
+allowing multiple processes to share certain resources.</strong></p>
+<p>• <strong>具体方法：</strong><br>
+<strong>Specific Methods:</strong><br>
+1. <strong>资源池化（Spooling）：</strong><br>
+◦ 将某些资源（如打印机）的操作集中到一个守护进程（daemon）中。<br>
+<strong>Centralize the operation of certain resources (e.g., printers)
+into a daemon process.</strong><br>
+◦ 守护进程独占资源，其他进程通过守护进程间接使用资源。<br>
+<strong>The daemon exclusively uses the resource, and other processes
+use the resource indirectly through the daemon.</strong><br>
+◦ <strong>优点：</strong><br>
+◦ 消除了对打印机等资源的竞争，避免了死锁。<br>
+<strong>Eliminates competition for resources like printers, avoiding
+deadlocks.</strong><br>
+◦ <strong>缺点：</strong><br>
+◦ 如果池化空间有限，仍可能发生死锁。<br>
+<strong>If the spooling space is limited, deadlocks may still
+occur.</strong><br>
+◦ 并非所有资源都可以池化（如独占设备）。<br>
+<strong>Not all resources can be spooled (e.g., exclusive
+devices).</strong></p>
+<p>• <strong>示例：打印机资源池化</strong><br>
+<strong>Example: Printer Spooling</strong><br>
+• 假设多个进程同时请求打印机资源，守护进程将所有打印任务集中处理。<br>
+<strong>If multiple processes request the printer resource
+simultaneously, the daemon processes all print tasks
+centrally.</strong><br>
+•
+如果守护进程占用了过多的池化空间，可能导致其他进程无法继续运行，从而引发死锁。<br>
+<strong>If the daemon occupies too much spooling space, other processes
+may be unable to proceed, causing a deadlock.</strong></p>
+<hr>
+<h4 id="针对占有并等待条件hold-and-wait-condition的预防"><strong>3.
+针对占有并等待条件（Hold and Wait Condition）的预防</strong></h4>
+<p>• <strong>基本思想：</strong><br>
+<strong>Basic Idea:</strong><br>
+•
+要求进程在请求资源时一次性申请所有需要的资源，或者在运行过程中不持有任何资源时才能请求新资源。<br>
+<strong>Require processes to request all needed resources at once, or
+not hold any resources while requesting new ones.</strong></p>
+<p>• <strong>具体方法：</strong><br>
+<strong>Specific Methods:</strong><br>
+1. <strong>一次性请求所有资源：</strong><br>
+◦ 进程在启动前必须声明并申请所有需要的资源。<br>
+<strong>Processes must declare and request all required resources before
+starting.</strong><br>
+◦ <strong>优点：</strong><br>
+◦ 进程不会在运行过程中等待资源，避免了死锁。<br>
+<strong>Processes do not need to wait for resources during execution,
+avoiding deadlocks.</strong><br>
+◦ <strong>缺点：</strong><br>
+◦ 进程可能无法在启动时准确知道所需的资源数量。<br>
+<strong>Processes may not know the exact amount of resources needed at
+startup.</strong><br>
+◦ 可能导致资源利用率降低，因为其他进程无法使用被占用的资源。<br>
+<strong>May reduce resource utilization, as other processes cannot use
+the allocated resources.</strong></p>
+<ol start="2" type="1">
+<li><strong>释放当前资源再请求新资源：</strong><br>
+◦ 进程在请求新资源时，必须先释放当前持有的所有资源。<br>
+<strong>Processes must release all currently held resources before
+requesting new ones.</strong><br>
+◦ <strong>优点：</strong><br>
+◦ 减少了资源竞争的可能性。<br>
+<strong>Reduces the likelihood of resource competition.</strong><br>
+◦ <strong>缺点：</strong><br>
+◦ 频繁的资源释放和重新分配可能导致性能下降。<br>
+<strong>Frequent resource release and reallocation may degrade
+performance.</strong></li>
+</ol>
+<hr>
+<h4 id="针对不可抢占条件no-preemption-condition的预防"><strong>4.
+针对不可抢占条件（No Preemption Condition）的预防</strong></h4>
+<p>• <strong>基本思想：</strong><br>
+<strong>Basic Idea:</strong><br>
+• 允许强制回收某些进程的资源，并将其分配给其他进程。<br>
+<strong>Allow forced reclamation of resources from some processes and
+allocate them to others.</strong></p>
+<p>• <strong>具体方法：</strong><br>
+<strong>Specific Methods:</strong><br>
+1. <strong>资源抢占：</strong><br>
+◦ 如果一个进程请求的资源已被其他进程占用，则强制回收该资源。<br>
+<strong>If a process requests a resource held by another process,
+forcibly reclaim the resource.</strong><br>
+◦ <strong>问题：</strong><br>
+◦ 并非所有资源都可以被抢占（如打印机、磁盘等）。<br>
+<strong>Not all resources can be preempted (e.g., printers,
+disks).</strong><br>
+◦ 抢占可能导致正在运行的进程失败，需要额外的恢复机制。<br>
+<strong>Preemption may cause running processes to fail, requiring
+additional recovery mechanisms.</strong></p>
+<ol start="2" type="1">
+<li><strong>资源虚拟化：</strong><br>
+◦
+将资源的使用抽象化，例如通过将打印任务写入磁盘缓冲区，由守护进程统一处理。<br>
+<strong>Virtualize resource usage, such as spooling print tasks to a
+disk buffer for the daemon to process.</strong><br>
+◦ <strong>优点：</strong><br>
+◦ 减少了直接竞争资源的可能性。<br>
+<strong>Reduces direct competition for resources.</strong><br>
+◦ <strong>缺点：</strong><br>
+◦ 并非所有资源都可以虚拟化。<br>
+<strong>Not all resources can be virtualized.</strong></li>
+</ol>
+<hr>
+<h4 id="针对循环等待条件circular-wait-condition的预防"><strong>5.
+针对循环等待条件（Circular Wait Condition）的预防</strong></h4>
+<p>• <strong>基本思想：</strong><br>
+<strong>Basic Idea:</strong><br>
+•
+对资源进行编号，要求进程按编号顺序请求资源，从而破坏循环等待的可能性。<br>
+<strong>Number resources and require processes to request them in order,
+breaking the possibility of circular waiting.</strong></p>
+<p>• <strong>具体方法：</strong><br>
+<strong>Specific Methods:</strong><br>
+1. <strong>全局资源排序：</strong><br>
+◦ 为所有资源分配一个全局编号，进程必须按编号从小到大的顺序请求资源。
+(正在持有资源的请求进程优先级会更高) <strong>Assign a global number to
+all resources, and processes must request resources in ascending
+order.</strong><br>
+◦ <strong>优点：</strong><br>
+◦ 简单有效，适用于资源类型较少的情况。<br>
+<strong>Simple and effective for systems with fewer resource
+types.</strong><br>
+◦ <strong>缺点：</strong><br>
+◦ 资源编号可能难以确定，增加了编程复杂性。<br>
+<strong>Resource numbering may be difficult to determine, increasing
+programming complexity.</strong></p>
+<ol start="2" type="1">
+<li><strong>逐步请求资源：</strong><br>
+◦ 进程每次只能请求一个资源，释放当前资源后再请求下一个资源。<br>
+<strong>Processes can request only one resource at a time, releasing the
+current resource before requesting the next.</strong><br>
+◦ <strong>优点：</strong><br>
+◦ 避免了循环等待的可能性。<br>
+<strong>Avoids circular waiting.</strong><br>
+◦ <strong>缺点：</strong><br>
+◦ 频繁的资源请求和释放可能导致性能下降。<br>
+<strong>Frequent resource requests and releases may degrade
+performance.</strong></li>
+</ol>
+<hr>
+<h4 id="死锁预防方法的对比总结"><strong>6.
+死锁预防方法的对比总结</strong></h4>
+<table>
+<colgroup>
+<col style="width: 15%">
+<col style="width: 10%">
+<col style="width: 30%">
+<col style="width: 43%">
+</colgroup>
+<thead>
+<tr>
+<th><strong>方法</strong></th>
+<th><strong>破坏的条件</strong></th>
+<th><strong>优点</strong></th>
+<th><strong>缺点</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>破坏互斥条件</strong></td>
+<td>互斥条件</td>
+<td>允许多个进程共享资源，减少竞争。</td>
+<td>并非所有资源都可以共享，可能导致池化空间不足。</td>
+</tr>
+<tr>
+<td><strong>破坏占有并等待条件</strong></td>
+<td>占有并等待条件</td>
+<td>减少了进程在运行过程中等待资源的可能性。</td>
+<td>进程可能无法提前知道所需资源，可能导致资源利用率降低。</td>
+</tr>
+<tr>
+<td><strong>破坏不可抢占条件</strong></td>
+<td>不可抢占条件</td>
+<td>允许强制回收资源，减少死锁的可能性。</td>
+<td>并非所有资源都可以被抢占，可能导致进程失败。</td>
+</tr>
+<tr>
+<td><strong>破坏循环等待条件</strong></td>
+<td>循环等待条件</td>
+<td>通过资源排序或逐步请求资源，避免循环等待。</td>
+<td>资源编号可能难以确定，频繁的资源请求和释放可能导致性能下降。</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h4 id="死锁预防的优缺点"><strong>7. 死锁预防的优缺点</strong></h4>
+<p>• <strong>优点：</strong><br>
+<strong>Advantages:</strong><br>
+1. <strong>可靠性高：</strong><br>
+◦ 系统不会进入死锁状态，适合高可靠性要求的场景。<br>
+<strong>High reliability; the system will not enter a deadlock state,
+suitable for scenarios requiring high reliability.</strong><br>
+2. <strong>预防性强：</strong><br>
+◦ 通过破坏死锁的必要条件，从根本上避免了死锁的发生。<br>
+<strong>Proactive; fundamentally avoids deadlocks by breaking their
+necessary conditions.</strong></p>
+<p>• <strong>缺点：</strong><br>
+<strong>Disadvantages:</strong><br>
+1. <strong>资源利用率低：</strong><br>
+◦ 某些预防方法可能导致资源利用率降低。<br>
+<strong>Some prevention methods may reduce resource
+utilization.</strong><br>
+2. <strong>复杂性高：</strong><br>
+◦ 需要对资源和进程进行额外的管理和控制。<br>
+<strong>Requires additional management and control of resources and
+processes.</strong><br>
+3. <strong>灵活性差：</strong><br>
+◦ 某些方法（如全局资源排序）可能限制了系统的灵活性。<br>
+<strong>Some methods (e.g., global resource ordering) may limit system
+flexibility.</strong></p>
+<hr>
+<h3 id="总结-7"><strong>总结</strong></h3>
+<figure>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/20250507210420.png" alt="img">
+<figcaption aria-hidden="true">img</figcaption>
+</figure>
+<p>•
+<strong>死锁预防通过破坏死锁的四个必要条件之一，确保系统永远不会进入死锁状态。</strong><br>
+<strong>Deadlock prevention ensures that the system will never enter a
+deadlock state by breaking one of the four necessary conditions for
+deadlocks.</strong></p>
+<p>•
+<strong>针对互斥条件、占有并等待条件、不可抢占条件和循环等待条件，分别有不同的预防方法。</strong><br>
+<strong>There are different prevention methods for mutual exclusion,
+hold and wait, no preemption, and circular wait conditions.</strong></p>
+<p>•
+<strong>死锁预防的优点是可靠性高，缺点是可能导致资源利用率降低和复杂性增加。</strong><br>
+<strong>The advantages of deadlock prevention are high reliability, but
+it may reduce resource utilization and increase complexity.</strong></p>
+<p>•
+<strong>在实际系统中，死锁预防通常与其他机制（如死锁检测与恢复）结合使用，以实现更高的系统性能和可靠性。</strong><br>
+<strong>In real systems, deadlock prevention is often combined with
+other mechanisms (e.g., deadlock detection and recovery) to achieve
+higher system performance and reliability.</strong></p>
+<hr>
+<h2 id="其他死锁相关问题两阶段锁通信死锁活锁和饥饿"><strong>其他死锁相关问题：两阶段锁、通信死锁、活锁和饥饿</strong></h2>
+<p>以下是对两阶段锁（Two-Phase Locking）、通信死锁（Communication
+Deadlocks）、活锁（Livelock）和饥饿（Starvation）的详细讲解，包括它们的定义、特点、示例以及解决方法。</p>
+<hr>
+<h4 id="两阶段锁two-phase-locking-2pl"><strong>1. 两阶段锁（Two-Phase
+Locking, 2PL）</strong></h4>
+<p>• <strong>定义：</strong><br>
+<strong>Definition:</strong><br>
+• 两阶段锁是一种并发控制协议，用于在事务中管理资源的锁定和解锁。<br>
+<strong>Two-Phase Locking is a concurrency control protocol used to
+manage resource locking and unlocking in transactions.</strong></p>
+<p>• <strong>工作原理：</strong><br>
+<strong>How It Works:</strong><br>
+1. <strong>第一阶段（Growing Phase）：</strong><br>
+◦ 事务尝试逐个锁定它需要的所有记录。<br>
+<strong>The transaction tries to lock all the records it needs, one at a
+time.</strong><br>
+◦ 如果所需的记录已被锁定，则事务回滚并重新开始。<br>
+<strong>If a required record is already locked, the transaction rolls
+back and restarts.</strong><br>
+2. <strong>第二阶段（Shrinking Phase）：</strong><br>
+◦ 事务成功完成第一阶段后，开始执行更新操作。<br>
+<strong>After successfully completing the first phase, the transaction
+begins performing updates.</strong><br>
+◦ 在此阶段，事务只能释放锁，不能再请求新的锁。<br>
+<strong>In this phase, the transaction can only release locks and cannot
+request new ones.</strong></p>
+<p>• <strong>特点：</strong><br>
+<strong>Characteristics:</strong><br>
+• 类似于死锁预防中的“一次性请求所有资源”策略。<br>
+<strong>Similar to the deadlock prevention strategy of requesting all
+resources at once.</strong><br>
+• 如果事务在第一阶段成功完成，则不会发生死锁。<br>
+<strong>If the transaction successfully completes the first phase, no
+deadlock will occur.</strong></p>
+<p>• <strong>优缺点：</strong><br>
+<strong>Advantages and Disadvantages:</strong><br>
+• <strong>优点：</strong><br>
+◦ 简单有效，避免了事务间的死锁。<br>
+<strong>Simple and effective, avoids deadlocks between
+transactions.</strong><br>
+◦ 适用于需要严格顺序访问资源的场景。<br>
+<strong>Suitable for scenarios requiring strict sequential access to
+resources.</strong><br>
+• <strong>缺点：</strong><br>
+◦ 如果事务需要频繁回滚，可能导致性能下降。<br>
+<strong>If the transaction needs to roll back frequently, performance
+may degrade.</strong><br>
+◦ 不适用于需要动态调整资源访问顺序的场景。<br>
+<strong>Not suitable for scenarios requiring dynamic adjustment of
+resource access order.</strong></p>
+<hr>
+<h4 id="通信死锁communication-deadlocks"><strong>2.
+通信死锁（Communication Deadlocks）</strong></h4>
+<p>• <strong>定义：</strong><br>
+<strong>Definition:</strong><br>
+• 通信死锁是一种特殊的死锁，发生在进程之间通过消息传递进行通信时。<br>
+<strong>Communication deadlock is a special type of deadlock that occurs
+when processes communicate via message passing.</strong></p>
+<p>• <strong>特点：</strong><br>
+<strong>Characteristics:</strong><br>
+• 每个进程都在等待对方发送消息或事件，从而导致所有进程都被阻塞。<br>
+<strong>Each process is waiting for the other to send a message or
+event, causing all processes to be blocked.</strong></p>
+<p>• <strong>示例：</strong><br>
+<strong>Example:</strong><br>
+• <strong>场景描述：</strong><br>
+◦ 进程 A 向进程 B 发送请求消息后阻塞，等待 B 的回复。<br>
+◦ 如果请求消息丢失，B 会阻塞等待 A 的请求消息，而 A 则阻塞等待 B
+的回复。<br>
+<strong>Scenario Description:</strong><br>
+◦ Process A sends a request message to process B and blocks, waiting for
+a reply from B.<br>
+◦ If the request message is lost, B blocks waiting for a request from A,
+while A blocks waiting for a reply from B.<br>
+• <strong>解决方法：</strong><br>
+◦ 使用超时机制（Timeout）：<br>
+◦ 如果进程在一定时间内未收到回复，则重发消息或终止等待。<br>
+<strong>Use a timeout mechanism: If a process does not receive a reply
+within a certain time, it retransmits the message or terminates the
+wait.</strong></p>
+<hr>
+<h4 id="活锁livelock"><strong>3. 活锁（Livelock）</strong></h4>
+<p>• <strong>定义：</strong><br>
+<strong>Definition:</strong><br>
+• 活锁是一种特殊的状态，进程虽然没有被阻塞，但无法取得进展。<br>
+<strong>Livelock is a special state where processes are not blocked but
+cannot make progress.</strong></p>
+<p>• <strong>特点：</strong><br>
+<strong>Characteristics:</strong><br>
+• 活锁与死锁的区别：<br>
+◦ <strong>死锁：</strong> 进程被阻塞，无法继续执行。<br>
+◦ <strong>活锁：</strong> 进程在运行，但无法取得进展。<br>
+<strong>Deadlock: Processes are blocked and cannot continue
+execution.</strong><br>
+<strong>Livelock: Processes are running but cannot make
+progress.</strong></p>
+<p>• <strong>示例：</strong><br>
+<strong>Example:</strong><br>
+• <strong>场景描述：</strong><br>
+◦ 进程 A 和进程 B 分别持有资源 <span class="math inline">\(R_1\)</span>
+和 <span class="math inline">\(R_2\)</span>，并试图获取对方持有的资源。<br>
+◦
+如果两个进程都采用“忙等待”（Polling）的方式尝试获取资源，则它们会不断重试，但始终无法取得进展。<br>
+<strong>Scenario Description:</strong><br>
+◦ Process A and process B each hold resource <span class="math inline">\(R_1\)</span> and <span class="math inline">\(R_2\)</span>, respectively, and attempt to acquire
+the resource held by the other.<br>
+◦ If both processes use a "busy waiting" (polling) approach to acquire
+the resource, they will keep retrying but never make progress.</p>
+<p>• <strong>解决方法：</strong><br>
+<strong>Solutions:</strong><br>
+1. <strong>引入随机性：</strong><br>
+◦ 在重试时引入随机延迟，避免两个进程同时重试。<br>
+<strong>Introduce randomness: Add random delays during retries to avoid
+simultaneous retries.</strong><br>
+2. <strong>优先级机制：</strong><br>
+◦ 为进程分配优先级，确保某些进程可以优先获取资源。<br>
+<strong>Use a priority mechanism: Assign priorities to processes to
+ensure some processes can acquire resources first.</strong></p>
+<hr>
+<h4 id="饥饿starvation"><strong>4. 饥饿（Starvation）</strong></h4>
+<p>• <strong>定义：</strong><br>
+<strong>Definition:</strong><br>
+•
+饥饿是一种资源分配问题，某些进程由于资源分配策略的不公平性，长时间无法获得所需资源。<br>
+<strong>Starvation is a resource allocation problem where some processes
+cannot obtain the required resources for a long time due to unfair
+resource allocation policies.</strong></p>
+<p>• <strong>特点：</strong><br>
+<strong>Characteristics:</strong><br>
+• 饥饿与死锁的区别：<br>
+◦ <strong>死锁：</strong> 所有相关进程都被永久阻塞。<br>
+◦ <strong>饥饿：</strong>
+某些进程长时间无法获得资源，但并非所有进程都被阻塞。<br>
+<strong>Deadlock: All related processes are permanently
+blocked.</strong><br>
+<strong>Starvation: Some processes cannot obtain resources for a long
+time, but not all processes are blocked.</strong></p>
+<p>• <strong>示例：</strong><br>
+<strong>Example:</strong><br>
+• <strong>场景描述：</strong><br>
+◦ 系统采用“最短作业优先”（Shortest Job First, SJF）策略分配资源。<br>
+◦ 如果系统中存在大量短作业，则长作业可能会被无限期推迟。<br>
+<strong>Scenario Description:</strong><br>
+◦ The system uses the "Shortest Job First" (SJF) policy to allocate
+resources.<br>
+◦ If there are many short jobs in the system, long jobs may be postponed
+indefinitely.</p>
+<p>• <strong>解决方法：</strong><br>
+<strong>Solutions:</strong><br>
+1. <strong>公平调度策略：</strong><br>
+◦ 使用“先来先服务”（First Come, First Served,
+FCFS）策略，确保所有进程都能公平地获得资源。<br>
+<strong>Use a fair scheduling policy: Use the "First Come, First Served"
+(FCFS) policy to ensure all processes can fairly obtain
+resources.</strong><br>
+2. <strong>动态优先级调整：</strong><br>
+◦ 动态调整进程的优先级，避免某些进程长期得不到资源。<br>
+<strong>Dynamically adjust process priorities to prevent certain
+processes from being neglected for a long time.</strong></p>
+<hr>
+<h4 id="活锁与饥饿的对比总结"><strong>5.
+活锁与饥饿的对比总结</strong></h4>
+<table>
+<colgroup>
+<col style="width: 16%">
+<col style="width: 44%">
+<col style="width: 38%">
+</colgroup>
+<thead>
+<tr>
+<th><strong>问题</strong></th>
+<th><strong>定义</strong></th>
+<th><strong>特点</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>活锁（Livelock）</strong></td>
+<td>进程在运行，但无法取得进展。</td>
+<td>- 进程未被阻塞，但由于不断重试或竞争资源而无法完成。</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>- 类似于死锁，但进程并未被阻塞。</td>
+</tr>
+<tr>
+<td><strong>饥饿（Starvation）</strong></td>
+<td>某些进程由于资源分配策略的不公平性，长时间无法获得所需资源。</td>
+<td>- 某些进程长期得不到资源，但并非所有进程都被阻塞。</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>- 可能由不公平的调度策略或资源分配算法引起。</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h4 id="活锁与饥饿的解决方法对比"><strong>6.
+活锁与饥饿的解决方法对比</strong></h4>
+<table>
+<colgroup>
+<col style="width: 26%">
+<col style="width: 73%">
+</colgroup>
+<thead>
+<tr>
+<th><strong>问题</strong></th>
+<th><strong>解决方法</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>活锁（Livelock）</strong></td>
+<td>1. 引入随机性：在重试时添加随机延迟，避免进程同时重试。</td>
+</tr>
+<tr>
+<td></td>
+<td>2. 优先级机制：为进程分配优先级，确保某些进程可以优先获取资源。</td>
+</tr>
+<tr>
+<td><strong>饥饿（Starvation）</strong></td>
+<td>1.
+公平调度策略：使用“先来先服务”策略，确保所有进程都能公平地获得资源。</td>
+</tr>
+<tr>
+<td></td>
+<td>2.
+动态优先级调整：动态调整进程的优先级，避免某些进程长期得不到资源。</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h4 id="总结-8"><strong>7. 总结</strong></h4>
+<p>• <strong>两阶段锁（2PL）：</strong><br>
+• 通过分阶段锁定资源，避免事务间的死锁。<br>
+<strong>Two-Phase Locking avoids deadlocks between transactions by
+locking resources in phases.</strong></p>
+<p>• <strong>通信死锁：</strong><br>
+• 发生在进程间通过消息传递进行通信时，通常可以通过超时机制解决。<br>
+<strong>Communication deadlocks occur during inter-process communication
+and can often be resolved using timeout mechanisms.</strong></p>
+<p>• <strong>活锁：</strong><br>
+• 进程未被阻塞，但由于不断重试或竞争资源而无法完成。<br>
+<strong>Livelock occurs when processes are not blocked but cannot
+complete due to constant retries or resource competition.</strong></p>
+<p>• <strong>饥饿：</strong><br>
+• 某些进程由于资源分配策略的不公平性，长时间无法获得所需资源。<br>
+<strong>Starvation occurs when some processes cannot obtain the required
+resources for a long time due to unfair resource allocation
+policies.</strong></p>
+<p>• <strong>解决方法：</strong><br>
+•
+针对活锁，可以引入随机性或优先级机制；针对饥饿，可以采用公平调度策略或动态优先级调整。<br>
+<strong>For livelock, randomness or priority mechanisms can be
+introduced; for starvation, fair scheduling policies or dynamic priority
+adjustments can be used.</strong></p>
+<h3 id="死锁处理的总结与权衡"><strong>死锁处理的总结与权衡</strong></h3>
+<p>以下是对死锁处理的总结，包括死锁检测与避免的成本分析、权衡方法、以及实际系统中的常用策略。</p>
+<hr>
+<h4 id="死锁处理的基本问题"><strong>1. 死锁处理的基本问题</strong></h4>
+<p>• <strong>死锁的不可避免性：</strong><br>
+<strong>Inevitability of Deadlocks:</strong><br>
+•
+在复杂的系统中，完全避免死锁是非常困难的，尤其是在资源分配和进程调度复杂的情况下。<br>
+<strong>In complex systems, it is very difficult to completely avoid
+deadlocks, especially in cases with complex resource allocation and
+process scheduling.</strong></p>
+<p>• <strong>死锁处理的两种主要方法：</strong><br>
+<strong>Two Main Approaches to Handle Deadlocks:</strong><br>
+1. <strong>死锁检测与恢复（Detection and Recovery）：</strong><br>
+◦ 允许死锁发生，但通过定期检测死锁并采取恢复措施来解除死锁。<br>
+<strong>Allow deadlocks to occur but detect them periodically and take
+recovery measures to resolve them.</strong><br>
+2. <strong>死锁避免（Avoidance）：</strong><br>
+◦
+在资源分配之前，通过算法检查是否会导致死锁，从而避免进入不安全状态。<br>
+<strong>Avoid deadlocks by checking whether resource allocation will
+lead to a deadlock before allocating resources.</strong></p>
+<hr>
+<h4 id="死锁检测与避免的成本分析"><strong>2.
+死锁检测与避免的成本分析</strong></h4>
+<p>• <strong>死锁检测的成本：</strong><br>
+<strong>Costs of Deadlock Detection:</strong><br>
+1. <strong>资源分配图的维护：</strong><br>
+◦ 需要动态维护资源分配图（Resource Allocation Graph,
+RAG），并在每次资源分配或释放时更新图的状态。<br>
+<strong>Requires dynamic maintenance of the Resource Allocation Graph
+(RAG) and updating the graph state during each resource allocation or
+release.</strong><br>
+2. <strong>周期性检测的开销：</strong><br>
+◦ 定期运行死锁检测算法（如基于图的环检测算法）会消耗系统资源。<br>
+<strong>Running deadlock detection algorithms periodically (e.g.,
+graph-based cycle detection) consumes system resources.</strong></p>
+<p>• <strong>死锁避免的成本：</strong><br>
+<strong>Costs of Deadlock Avoidance:</strong><br>
+1. <strong>额外信息的维护：</strong><br>
+◦ 需要提前知道每个进程的最大资源需求（如 <span class="math inline">\(Max[i][j]\)</span>），这可能增加系统的复杂性。<br>
+<strong>Requires prior knowledge of each process's maximum resource
+demands (e.g., <span class="math inline">\(Max[i][j]\)</span>),
+increasing system complexity.</strong><br>
+2. <strong>算法复杂性：</strong><br>
+◦
+死锁避免算法（如银行家算法）需要复杂的计算，可能影响系统的实时性和性能。<br>
+<strong>Deadlock avoidance algorithms (e.g., the Banker's Algorithm)
+require complex calculations, potentially affecting system real-time
+performance.</strong></p>
+<p>• <strong>权衡：</strong><br>
+<strong>Trade-offs:</strong><br>
+•
+死锁检测与恢复通常适用于资源分配较为动态的系统，而死锁避免适用于对系统可靠性要求较高的场景。<br>
+<strong>Deadlock detection and recovery are often suitable for systems
+with dynamic resource allocation, while deadlock avoidance is more
+appropriate for scenarios requiring high system
+reliability.</strong></p>
+<hr>
+<h4 id="死锁避免的潜在问题"><strong>3. 死锁避免的潜在问题</strong></h4>
+<p>• <strong>无限延迟（Indefinite Postponement）：</strong><br>
+<strong>Indefinite Postponement:</strong><br>
+•
+在某些情况下，死锁避免算法可能导致某些进程长时间无法获得资源，从而引发“饥饿”问题。<br>
+<strong>In some cases, deadlock avoidance algorithms may cause certain
+processes to be unable to obtain resources for a long time, leading to
+starvation.</strong><br>
+• <strong>示例：</strong><br>
+◦
+在银行家算法中，如果某些进程的资源需求较大，可能会导致这些进程长时间无法获得资源。<br>
+<strong>Example:</strong><br>
+◦ In the Banker's Algorithm, if some processes have large resource
+demands, they may be unable to obtain resources for a long time.</p>
+<p>• <strong>资源利用率降低：</strong><br>
+<strong>Reduced Resource Utilization:</strong><br>
+• 死锁避免算法可能过于保守，导致资源利用率降低。<br>
+<strong>Deadlock avoidance algorithms may be overly conservative,
+reducing resource utilization.</strong><br>
+• <strong>示例：</strong><br>
+◦
+在银行家算法中，某些资源可能被保留以满足未来的需求，但实际上并未被使用。<br>
+<strong>Example:</strong><br>
+◦ In the Banker's Algorithm, some resources may be reserved to meet
+future demands but are not actually used.</p>
+<hr>
+<h4 id="实际系统中的死锁处理策略"><strong>4.
+实际系统中的死锁处理策略</strong></h4>
+<p>• <strong>忽略死锁（Ostrich Algorithm）：</strong><br>
+<strong>Ignoring Deadlocks (Ostrich Algorithm):</strong><br>
+• <strong>定义：</strong><br>
+◦
+假设死锁发生的概率非常低，或者死锁的影响可以接受，因此忽略死锁问题。<br>
+<strong>Assume that the probability of deadlocks is very low, or the
+impact of deadlocks is acceptable, so the problem is
+ignored.</strong><br>
+• <strong>优点：</strong><br>
+◦ 简单易实现，适合对可靠性要求不高的系统。<br>
+<strong>Simple and easy to implement, suitable for systems with low
+reliability requirements.</strong><br>
+• <strong>缺点：</strong><br>
+◦ 不适用于需要高可靠性的系统。<br>
+<strong>Not suitable for systems requiring high
+reliability.</strong><br>
+• <strong>实际应用：</strong><br>
+◦ UNIX 和 Windows 系统采用了这种方法。<br>
+<strong>UNIX and Windows systems adopt this approach.</strong></p>
+<p>• <strong>检测与恢复（Detection and Recovery）：</strong><br>
+<strong>Detection and Recovery:</strong><br>
+• <strong>定义：</strong><br>
+◦ 允许死锁发生，但通过定期检测死锁并采取恢复措施来解除死锁。<br>
+<strong>Allow deadlocks to occur but detect them periodically and take
+recovery measures to resolve them.</strong><br>
+• <strong>优点：</strong><br>
+◦ 系统可以在死锁发生后恢复，适合高可靠性系统。<br>
+<strong>The system can recover after a deadlock occurs, making it
+suitable for highly reliable systems.</strong><br>
+• <strong>缺点：</strong><br>
+◦ 检测和恢复过程可能带来额外的开销。<br>
+<strong>Detection and recovery processes may incur additional
+overhead.</strong></p>
+<p>• <strong>动态避免（Dynamic Avoidance）：</strong><br>
+<strong>Dynamic Avoidance:</strong><br>
+• <strong>定义：</strong><br>
+◦ 在资源分配之前，动态检查资源分配状态，确保不会进入不安全状态。<br>
+<strong>Dynamically check the resource allocation state before
+allocating resources to ensure the system does not enter an unsafe
+state.</strong><br>
+• <strong>优点：</strong><br>
+◦ 提高了系统的可靠性。<br>
+<strong>Improves system reliability.</strong><br>
+• <strong>缺点：</strong><br>
+◦ 算法复杂性较高，可能影响系统性能。<br>
+<strong>The algorithm is complex and may affect system
+performance.</strong></p>
+<hr>
+<h4 id="死锁处理的权衡总结"><strong>5. 死锁处理的权衡总结</strong></h4>
+<table>
+<colgroup>
+<col style="width: 27%">
+<col style="width: 30%">
+<col style="width: 41%">
+</colgroup>
+<thead>
+<tr>
+<th><strong>方法</strong></th>
+<th><strong>优点</strong></th>
+<th><strong>缺点</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>忽略死锁（Ostrich Algorithm）</strong></td>
+<td>简单易实现，适合低可靠性系统。</td>
+<td>不适用于高可靠性系统。</td>
+</tr>
+<tr>
+<td><strong>检测与恢复（Detection and Recovery）</strong></td>
+<td>系统可以在死锁发生后恢复，适合高可靠性系统。</td>
+<td>检测和恢复过程可能带来额外开销。</td>
+</tr>
+<tr>
+<td><strong>动态避免（Dynamic Avoidance）</strong></td>
+<td>提高系统可靠性，避免进入不安全状态。</td>
+<td>算法复杂性高，可能影响系统性能。</td>
+</tr>
+<tr>
+<td><strong>死锁避免（Deadlock Avoidance）</strong></td>
+<td>预防死锁，确保系统不会进入不安全状态。</td>
+<td>可能导致资源利用率降低，某些进程可能长时间无法获得资源（饥饿问题）。</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h4 id="实际系统中的权衡策略"><strong>6.
+实际系统中的权衡策略</strong></h4>
+<p>• <strong>UNIX 和 Windows 的忽略策略：</strong><br>
+<strong>The Ignoring Strategy in UNIX and Windows:</strong><br>
+• <strong>原因：</strong><br>
+◦
+死锁发生的概率较低，且死锁的影响通常可以通过重启进程或系统来解决。<br>
+<strong>Deadlocks occur infrequently, and their impact can usually be
+resolved by restarting processes or the system.</strong><br>
+◦ 忽略死锁的策略在大多数情况下是可行的，尤其是在用户级应用程序中。<br>
+<strong>Ignoring deadlocks is feasible in most cases, especially in
+user-level applications.</strong><br>
+• <strong>权衡：</strong><br>
+◦ 这种策略牺牲了部分可靠性以换取更高的性能和简单性。<br>
+<strong>This strategy sacrifices some reliability for higher performance
+and simplicity.</strong></p>
+<p>• <strong>高可靠性系统中的检测与恢复：</strong><br>
+<strong>Detection and Recovery in High-Reliability
+Systems:</strong><br>
+• <strong>原因：</strong><br>
+◦
+在高可靠性系统中，死锁可能导致严重的后果（如系统崩溃或服务中断），因此需要及时检测和恢复。<br>
+<strong>In high-reliability systems, deadlocks can have serious
+consequences (e.g., system crashes or service interruptions), so timely
+detection and recovery are necessary.</strong><br>
+• <strong>权衡：</strong><br>
+◦ 检测和恢复过程可能带来额外的开销，但可以显著提高系统的可靠性。<br>
+<strong>Detection and recovery processes may incur additional overhead
+but significantly improve system reliability.</strong></p>
+<p>• <strong>资源分配中的动态避免：</strong><br>
+<strong>Dynamic Avoidance in Resource Allocation:</strong><br>
+• <strong>原因：</strong><br>
+◦
+在某些实时系统中，动态避免策略可以确保资源分配的安全性，同时尽量提高资源利用率。<br>
+<strong>In some real-time systems, dynamic avoidance strategies can
+ensure the safety of resource allocation while maximizing resource
+utilization.</strong><br>
+• <strong>权衡：</strong><br>
+◦ 动态避免算法的复杂性较高，可能影响系统的实时性能。<br>
+<strong>Dynamic avoidance algorithms are complex and may affect system
+real-time performance.</strong></p>
+<hr>
+<h4 id="死锁处理的最佳实践"><strong>7. 死锁处理的最佳实践</strong></h4>
+<p>• <strong>根据系统需求选择合适的策略：</strong><br>
+<strong>Choose the Right Strategy Based on System
+Requirements:</strong><br>
+• 对于低可靠性系统（如用户级应用程序），可以采用忽略死锁的策略。<br>
+<strong>For low-reliability systems (e.g., user-level applications), the
+ignoring strategy is appropriate.</strong><br>
+•
+对于高可靠性系统（如银行系统、实时系统），应采用检测与恢复或动态避免策略。<br>
+<strong>For high-reliability systems (e.g., banking systems, real-time
+systems), detection and recovery or dynamic avoidance strategies should
+be used.</strong></p>
+<p>• <strong>结合多种策略：</strong><br>
+<strong>Combine Multiple Strategies:</strong><br>
+• 在某些系统中，可以结合忽略、检测与恢复、以及动态避免策略。<br>
+<strong>In some systems, a combination of ignoring, detection and
+recovery, and dynamic avoidance strategies can be used.</strong><br>
+• <strong>示例：</strong><br>
+◦ 在大多数情况下忽略死锁，但在检测到严重死锁时触发恢复机制。<br>
+<strong>Example:</strong><br>
+◦ Ignore deadlocks most of the time but trigger recovery mechanisms when
+serious deadlocks are detected.</p>
+<p>• <strong>优化资源分配策略：</strong><br>
+<strong>Optimize Resource Allocation Strategies:</strong><br>
+•
+通过合理的资源分配策略（如优先级调度、资源预留等），减少死锁发生的可能性。<br>
+<strong>Use reasonable resource allocation strategies (e.g., priority
+scheduling, resource reservation) to reduce the likelihood of
+deadlocks.</strong></p>
+<hr>
+<h4 id="总结-9"><strong>8. 总结</strong></h4>
+<p>• <strong>死锁处理的核心在于权衡：</strong><br>
+<strong>The core of deadlock handling lies in trade-offs:</strong><br>
+• 检测与恢复可以提高系统的可靠性，但可能带来额外的开销。<br>
+<strong>Detection and recovery improve system reliability but may incur
+additional overhead.</strong><br>
+• 动态避免可以预防死锁，但可能降低资源利用率。<br>
+<strong>Dynamic avoidance prevents deadlocks but may reduce resource
+utilization.</strong><br>
+• 忽略死锁简单高效，但不适用于高可靠性系统。<br>
+<strong>Ignoring deadlocks is simple and efficient but not suitable for
+high-reliability systems.</strong></p>
+<p>• <strong>实际系统中，通常根据需求选择合适的策略：</strong><br>
+<strong>In real systems, appropriate strategies are chosen based on
+requirements:</strong><br>
+• 低可靠性系统：忽略死锁。<br>
+<strong>Low-reliability systems: Ignore deadlocks.</strong><br>
+• 高可靠性系统：检测与恢复或动态避免。<br>
+<strong>High-reliability systems: Detection and recovery or dynamic
+avoidance.</strong></p>
+<p>• <strong>最终目标：</strong><br>
+<strong>The ultimate goal:</strong><br>
+• 在性能、可靠性和资源利用率之间找到平衡点。<br>
+<strong>Find a balance between performance, reliability, and resource
+utilization.</strong></p>
+<hr>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://www.totorocatcat.top/">Totoro</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://totorocatcat.top/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FCH6/">http://totorocatcat.top/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FCH6/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://totorocatcat.top" target="_blank">Totoroの旅</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%8F%90%E9%AB%98/">提高</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E4%BE%A0%E5%AE%A2-%E5%89%91%E6%9D%A5-%E5%8F%A4%E9%A3%8E.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FCH5/" title="操作系统CH5"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E4%BE%A0%E5%AE%A2-%E5%89%91%E6%9D%A5-%E5%8F%A4%E9%A3%8E.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">操作系统CH5</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/'Lec2%20Logic%20and%20Proof,%20Sets,%20and%20Function'/" title="Lec2 Logic and Proof, Sets, and Function"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/1fe6130ca86bb9e7e6a37c9187a32c8.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-11-20</div><div class="title">Lec2 Logic and Proof, Sets, and Function</div></div></a></div><div><a href="/02%EF%BC%89/" title="CS61B 课程笔记（Lecture 02）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/v2-2ed7f4c9e1a7a699a3ef300a6f761abe_720w.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-11</div><div class="title">CS61B 课程笔记（Lecture 02）</div></div></a></div><div><a href="/03%EF%BC%89/" title="CS61B 课程笔记（Lecture 03）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/v2-2ed7f4c9e1a7a699a3ef300a6f761abe_720w.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-12</div><div class="title">CS61B 课程笔记（Lecture 03）</div></div></a></div><div><a href="/04%EF%BC%89/" title="CS61B 课程笔记（Lecture 04）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/2749a496aabc7d650b2912e256582e390a0a636b.jpg@1256w_1246h_!web-article-pic.avif" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-13</div><div class="title">CS61B 课程笔记（Lecture 04）</div></div></a></div><div><a href="/06%EF%BC%89/" title="CS61B 课程笔记（Lecture 06）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/f00af0d55cc81c18403ccbb4957ae6bc298252208.jpg@1256w_1374h_!web-article-pic.avif" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-15</div><div class="title">CS61B 课程笔记（Lecture 06）</div></div></a></div><div><a href="/05%EF%BC%89/" title="CS61B 课程笔记（Lecture 05）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/4ccebbc43a0ca31a719afadee2f86b4902402baf.jpg@1256w_786h_!web-article-pic.avif" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-14</div><div class="title">CS61B 课程笔记（Lecture 05）</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/px3.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Totoro</div><div class="author-info__description">热爱文学的SCUT软件学院学生</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">846</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">37</div></a></div><a id="card-info-btn" href="https://github.com/4512abc"><i class="fab fa-github"></i><span>🛴前往小窝......</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/4512abc" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:4512abc@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到龙猫の小窝</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#ch6-deadlock"><span class="toc-text">CH6-Deadlock</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%BB%E9%94%81deadlocks%E6%A6%82%E8%BF%B0"><span class="toc-text">死锁（Deadlocks）概述</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B5%84%E6%BA%90resources"><span class="toc-text">1. 资源（Resources）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%BB%E9%94%81%E7%9A%84%E5%AE%9A%E4%B9%89introduction-to-deadlocks"><span class="toc-text">2.
+死锁的定义（Introduction to Deadlocks）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%BB%E9%94%81%E7%9A%84%E8%B5%84%E6%BA%90%E4%BD%BF%E7%94%A8%E8%BF%87%E7%A8%8B"><span class="toc-text">3. 死锁的资源使用过程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%BB%E9%94%81%E7%9A%84%E7%A4%BA%E4%BE%8B"><span class="toc-text">4. 死锁的示例</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%BB%E9%94%81%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95"><span class="toc-text">5. 死锁的处理方法</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%B8%B5%E9%B8%9F%E7%AE%97%E6%B3%95the-ostrich-algorithm"><span class="toc-text">5.1 鸵鸟算法（The Ostrich
+Algorithm）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%AD%BB%E9%94%81%E6%A3%80%E6%B5%8B%E4%B8%8E%E6%81%A2%E5%A4%8Ddeadlock-detection-and-recovery"><span class="toc-text">5.2
+死锁检测与恢复（Deadlock Detection and Recovery）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%AD%BB%E9%94%81%E9%81%BF%E5%85%8Ddeadlock-avoidance"><span class="toc-text">5.3 死锁避免（Deadlock
+Avoidance）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%AD%BB%E9%94%81%E9%A2%84%E9%98%B2deadlock-prevention"><span class="toc-text">5.4 死锁预防（Deadlock
+Prevention）</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E9%97%AE%E9%A2%98other-issues"><span class="toc-text">6. 其他问题（Other
+Issues）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%BB%E9%94%81%E7%9A%84%E6%B7%B1%E5%85%A5%E5%88%86%E6%9E%90"><span class="toc-text">死锁的深入分析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E4%BF%A1%E5%8F%B7%E9%87%8F%E5%85%B1%E4%BA%AB%E8%B5%84%E6%BA%90using-semaphore-to-share-resource"><span class="toc-text">1.
+使用信号量共享资源（Using Semaphore to Share Resource）</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B-1%E6%AD%A3%E5%B8%B8%E6%83%85%E5%86%B5"><span class="toc-text">代码示例 1：正常情况</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B-2%E5%8F%AF%E8%83%BD%E5%AF%BC%E8%87%B4%E6%AD%BB%E9%94%81%E7%9A%84%E6%83%85%E5%86%B5"><span class="toc-text">代码示例
+2：可能导致死锁的情况</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%BB%E9%94%81%E7%9A%84%E5%AE%9E%E9%99%85%E6%A1%88%E4%BE%8B%E6%A1%A5%E7%9A%84%E4%BA%A4%E5%8F%89%E9%97%AE%E9%A2%98bridge-crossing-example"><span class="toc-text">2.
+死锁的实际案例：桥的交叉问题（Bridge Crossing Example）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%BB%E9%94%81%E7%9A%84%E6%AD%A3%E5%BC%8F%E5%AE%9A%E4%B9%89formal-definition-of-deadlock"><span class="toc-text">3.
+死锁的正式定义（Formal Definition of Deadlock）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%BB%E9%94%81%E7%9A%84%E5%9B%9B%E4%B8%AA%E5%BF%85%E8%A6%81%E6%9D%A1%E4%BB%B6four-conditions-for-deadlock"><span class="toc-text">4.
+死锁的四个必要条件（Four Conditions for Deadlock）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%BB%E9%94%81%E7%9A%84%E7%A4%BA%E4%BE%8B%E4%B8%8E%E5%88%86%E6%9E%90"><span class="toc-text">5. 死锁的示例与分析</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-1%E6%AD%A3%E5%B8%B8%E6%83%85%E5%86%B5"><span class="toc-text">示例 1：正常情况</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-2%E6%AD%BB%E9%94%81%E6%83%85%E5%86%B5"><span class="toc-text">示例 2：死锁情况</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%BB%E9%94%81%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="toc-text">6. 死锁的解决方法</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%96%B9%E6%B3%95-1%E6%AD%BB%E9%94%81%E6%A3%80%E6%B5%8B%E4%B8%8E%E6%81%A2%E5%A4%8D"><span class="toc-text">方法
+1：死锁检测与恢复</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%96%B9%E6%B3%95-2%E6%AD%BB%E9%94%81%E9%81%BF%E5%85%8D"><span class="toc-text">方法 2：死锁避免</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%96%B9%E6%B3%95-3%E6%AD%BB%E9%94%81%E9%A2%84%E9%98%B2"><span class="toc-text">方法 3：死锁预防</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-1"><span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%BB%E9%94%81%E5%BB%BA%E6%A8%A1deadlock-modeling"><span class="toc-text">死锁建模（Deadlock
+Modeling）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%BB%E9%94%81%E5%BB%BA%E6%A8%A1%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-text">1. 死锁建模的基本概念</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B5%84%E6%BA%90%E5%88%86%E9%85%8D%E5%9B%BEresource-allocation-graph-rag"><span class="toc-text">2.
+资源分配图（Resource Allocation Graph, RAG）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%BB%E9%94%81%E7%9A%84%E5%BB%BA%E6%A8%A1%E7%A4%BA%E4%BE%8B"><span class="toc-text">3. 死锁的建模示例</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%BB%E9%94%81%E7%9A%84%E5%8F%91%E7%94%9F%E6%9D%A1%E4%BB%B6"><span class="toc-text">4. 死锁的发生条件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%BB%E9%94%81%E5%BB%BA%E6%A8%A1%E7%9A%84%E7%A4%BA%E4%BE%8B%E5%88%86%E6%9E%90"><span class="toc-text">5. 死锁建模的示例分析</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-1%E6%97%A0%E6%AD%BB%E9%94%81%E7%9A%84%E8%B5%84%E6%BA%90%E5%88%86%E9%85%8D%E5%9B%BE"><span class="toc-text">示例
+1：无死锁的资源分配图</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-2%E6%9C%89%E6%AD%BB%E9%94%81%E7%9A%84%E8%B5%84%E6%BA%90%E5%88%86%E9%85%8D%E5%9B%BE"><span class="toc-text">示例
+2：有死锁的资源分配图</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-3%E5%A4%9A%E8%B5%84%E6%BA%90%E5%AE%9E%E4%BE%8B%E7%9A%84%E4%B8%8D%E7%A1%AE%E5%AE%9A%E6%83%85%E5%86%B5"><span class="toc-text">示例
+3：多资源实例的不确定情况</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%BB%E9%94%81%E5%BB%BA%E6%A8%A1%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BA%8B%E5%AE%9E"><span class="toc-text">6. 死锁建模的基本事实</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-2"><span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%BB%E9%94%81%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95methods-for-handling-deadlocks"><span class="toc-text">死锁处理方法（Methods
+for Handling Deadlocks）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BF%BD%E7%95%A5%E6%AD%BB%E9%94%81the-ostrich-algorithm"><span class="toc-text">1. 忽略死锁（The Ostrich
+Algorithm）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%BB%E9%94%81%E6%A3%80%E6%B5%8B%E4%B8%8E%E6%81%A2%E5%A4%8Ddeadlock-detection-and-recovery-1"><span class="toc-text">2.
+死锁检测与恢复（Deadlock Detection and Recovery）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%BB%E9%94%81%E9%81%BF%E5%85%8Ddeadlock-avoidance-1"><span class="toc-text">3. 死锁避免（Deadlock
+Avoidance）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%BB%E9%94%81%E9%A2%84%E9%98%B2deadlock-prevention-1"><span class="toc-text">4. 死锁预防（Deadlock
+Prevention）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%BB%E9%94%81%E6%A3%80%E6%B5%8B%E7%AE%97%E6%B3%95%E7%9A%84%E8%AF%A6%E7%BB%86%E5%AE%9E%E7%8E%B0"><span class="toc-text">5.
+死锁检测算法的详细实现</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%A3%80%E6%B5%8B%E5%8D%95%E8%B5%84%E6%BA%90%E7%B1%BB%E5%9E%8B%E7%9A%84%E6%AD%BB%E9%94%81"><span class="toc-text">5.1
+检测单资源类型的死锁</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%9C%89%E5%90%91%E5%9B%BE%E4%B8%AD%E6%A3%80%E6%B5%8B%E7%8E%AF%E7%9A%84%E7%AE%97%E6%B3%95"><span class="toc-text">5.2
+有向图中检测环的算法</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%BB%E9%94%81%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95%E7%9A%84%E5%AF%B9%E6%AF%94%E6%80%BB%E7%BB%93"><span class="toc-text">6.
+死锁处理方法的对比总结</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-3"><span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%BB%E9%94%81%E6%A3%80%E6%B5%8B%E4%B8%8E%E6%81%A2%E5%A4%8D%E7%9A%84%E8%AF%A6%E7%BB%86%E8%AE%B2%E8%A7%A3"><span class="toc-text">死锁检测与恢复的详细讲解</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%BB%E9%94%81%E6%A3%80%E6%B5%8B%E7%AE%97%E6%B3%95"><span class="toc-text">1. 死锁检测算法</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8D%95%E8%B5%84%E6%BA%90%E7%B1%BB%E5%9E%8B%E7%9A%84%E6%AD%BB%E9%94%81%E6%A3%80%E6%B5%8B"><span class="toc-text">1.1
+单资源类型的死锁检测</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%A4%9A%E8%B5%84%E6%BA%90%E7%B1%BB%E5%9E%8B%E7%9A%84%E6%AD%BB%E9%94%81%E6%A3%80%E6%B5%8B"><span class="toc-text">1.2
+多资源类型的死锁检测</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%A4%9A%E8%B5%84%E6%BA%90%E7%B1%BB%E5%9E%8B%E6%A3%80%E6%B5%8B%E7%9A%84%E7%A4%BA%E4%BE%8B"><span class="toc-text">1.3
+多资源类型检测的示例</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%BB%E9%94%81%E6%81%A2%E5%A4%8Drecovery-from-deadlock"><span class="toc-text">2. 死锁恢复（Recovery
+from Deadlock）</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%80%9A%E8%BF%87%E6%8A%A2%E5%8D%A0%E6%81%A2%E5%A4%8Drecovery-through-preemption"><span class="toc-text">2.1
+通过抢占恢复（Recovery through Preemption）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%80%9A%E8%BF%87%E5%9B%9E%E6%BB%9A%E6%81%A2%E5%A4%8Drecovery-through-rollback"><span class="toc-text">2.2
+通过回滚恢复（Recovery through Rollback）</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%BB%E9%94%81%E6%A3%80%E6%B5%8B%E4%B8%8E%E6%81%A2%E5%A4%8D%E7%9A%84%E5%AF%B9%E6%AF%94%E6%80%BB%E7%BB%93"><span class="toc-text">3.
+死锁检测与恢复的对比总结</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-4"><span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%BB%E9%94%81%E9%81%BF%E5%85%8Ddeadlock-avoidance-2"><span class="toc-text">死锁避免（Deadlock
+Avoidance）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%BB%E9%94%81%E9%81%BF%E5%85%8D%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-text">1. 死锁避免的基本概念</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E5%AE%89%E5%85%A8%E7%8A%B6%E6%80%81%E7%9A%84%E6%AD%BB%E9%94%81%E9%81%BF%E5%85%8D%E7%AE%97%E6%B3%95"><span class="toc-text">2.
+基于安全状态的死锁避免算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E5%85%A8%E7%8A%B6%E6%80%81%E4%B8%8E%E4%B8%8D%E5%AE%89%E5%85%A8%E7%8A%B6%E6%80%81"><span class="toc-text">3.
+安全状态与不安全状态</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AE%89%E5%85%A8%E7%8A%B6%E6%80%81%E7%9A%84%E7%A4%BA%E4%BE%8B"><span class="toc-text">3.1 安全状态的示例</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%8D%E5%AE%89%E5%85%A8%E7%8A%B6%E6%80%81%E7%9A%84%E7%A4%BA%E4%BE%8B"><span class="toc-text">3.2 不安全状态的示例</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%BB%E9%94%81%E9%81%BF%E5%85%8D%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BA%8B%E5%AE%9E"><span class="toc-text">4. 死锁避免的基本事实</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%93%B6%E8%A1%8C%E5%AE%B6%E7%AE%97%E6%B3%95bankers-algorithm"><span class="toc-text">5. 银行家算法（Banker&#39;s
+Algorithm）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E5%85%A8%E7%8A%B6%E6%80%81%E4%B8%8E%E4%B8%8D%E5%AE%89%E5%85%A8%E7%8A%B6%E6%80%81%E7%9A%84%E5%AF%B9%E6%AF%94%E6%80%BB%E7%BB%93"><span class="toc-text">6.
+安全状态与不安全状态的对比总结</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%BB%E9%94%81%E9%81%BF%E5%85%8D%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="toc-text">7. 死锁避免的优缺点</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-5"><span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%93%B6%E8%A1%8C%E5%AE%B6%E7%AE%97%E6%B3%95bankers-algorithm%E8%AF%A6%E8%A7%A3"><span class="toc-text">银行家算法（Banker&#39;s
+Algorithm）详解</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%93%B6%E8%A1%8C%E5%AE%B6%E7%AE%97%E6%B3%95%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86"><span class="toc-text">1.
+银行家算法的基本原理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%93%B6%E8%A1%8C%E5%AE%B6%E7%AE%97%E6%B3%95%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%81%87%E8%AE%BE"><span class="toc-text">2.
+银行家算法的基本假设</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%95%E8%B5%84%E6%BA%90%E6%83%85%E5%86%B5%E4%B8%8B%E7%9A%84%E9%93%B6%E8%A1%8C%E5%AE%B6%E7%AE%97%E6%B3%95"><span class="toc-text">3.
+单资源情况下的银行家算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%9A%E8%B5%84%E6%BA%90%E6%83%85%E5%86%B5%E4%B8%8B%E7%9A%84%E9%93%B6%E8%A1%8C%E5%AE%B6%E7%AE%97%E6%B3%95"><span class="toc-text">4.
+多资源情况下的银行家算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%93%B6%E8%A1%8C%E5%AE%B6%E7%AE%97%E6%B3%95%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="toc-text">7. 银行家算法的优缺点</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-6"><span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%BB%E9%94%81%E9%A2%84%E9%98%B2deadlock-prevention-2"><span class="toc-text">死锁预防（Deadlock
+Prevention）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%BB%E9%94%81%E9%A2%84%E9%98%B2%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%80%9D%E6%83%B3"><span class="toc-text">1. 死锁预防的基本思想</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%92%88%E5%AF%B9%E4%BA%92%E6%96%A5%E6%9D%A1%E4%BB%B6mutual-exclusion-condition%E7%9A%84%E9%A2%84%E9%98%B2"><span class="toc-text">2.
+针对互斥条件（Mutual Exclusion Condition）的预防</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%92%88%E5%AF%B9%E5%8D%A0%E6%9C%89%E5%B9%B6%E7%AD%89%E5%BE%85%E6%9D%A1%E4%BB%B6hold-and-wait-condition%E7%9A%84%E9%A2%84%E9%98%B2"><span class="toc-text">3.
+针对占有并等待条件（Hold and Wait Condition）的预防</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%92%88%E5%AF%B9%E4%B8%8D%E5%8F%AF%E6%8A%A2%E5%8D%A0%E6%9D%A1%E4%BB%B6no-preemption-condition%E7%9A%84%E9%A2%84%E9%98%B2"><span class="toc-text">4.
+针对不可抢占条件（No Preemption Condition）的预防</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%92%88%E5%AF%B9%E5%BE%AA%E7%8E%AF%E7%AD%89%E5%BE%85%E6%9D%A1%E4%BB%B6circular-wait-condition%E7%9A%84%E9%A2%84%E9%98%B2"><span class="toc-text">5.
+针对循环等待条件（Circular Wait Condition）的预防</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%BB%E9%94%81%E9%A2%84%E9%98%B2%E6%96%B9%E6%B3%95%E7%9A%84%E5%AF%B9%E6%AF%94%E6%80%BB%E7%BB%93"><span class="toc-text">6.
+死锁预防方法的对比总结</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%BB%E9%94%81%E9%A2%84%E9%98%B2%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="toc-text">7. 死锁预防的优缺点</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-7"><span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E6%AD%BB%E9%94%81%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98%E4%B8%A4%E9%98%B6%E6%AE%B5%E9%94%81%E9%80%9A%E4%BF%A1%E6%AD%BB%E9%94%81%E6%B4%BB%E9%94%81%E5%92%8C%E9%A5%A5%E9%A5%BF"><span class="toc-text">其他死锁相关问题：两阶段锁、通信死锁、活锁和饥饿</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%A4%E9%98%B6%E6%AE%B5%E9%94%81two-phase-locking-2pl"><span class="toc-text">1. 两阶段锁（Two-Phase
+Locking, 2PL）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%9A%E4%BF%A1%E6%AD%BB%E9%94%81communication-deadlocks"><span class="toc-text">2.
+通信死锁（Communication Deadlocks）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B4%BB%E9%94%81livelock"><span class="toc-text">3. 活锁（Livelock）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A5%A5%E9%A5%BFstarvation"><span class="toc-text">4. 饥饿（Starvation）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B4%BB%E9%94%81%E4%B8%8E%E9%A5%A5%E9%A5%BF%E7%9A%84%E5%AF%B9%E6%AF%94%E6%80%BB%E7%BB%93"><span class="toc-text">5.
+活锁与饥饿的对比总结</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B4%BB%E9%94%81%E4%B8%8E%E9%A5%A5%E9%A5%BF%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95%E5%AF%B9%E6%AF%94"><span class="toc-text">6.
+活锁与饥饿的解决方法对比</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-8"><span class="toc-text">7. 总结</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%BB%E9%94%81%E5%A4%84%E7%90%86%E7%9A%84%E6%80%BB%E7%BB%93%E4%B8%8E%E6%9D%83%E8%A1%A1"><span class="toc-text">死锁处理的总结与权衡</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%BB%E9%94%81%E5%A4%84%E7%90%86%E7%9A%84%E5%9F%BA%E6%9C%AC%E9%97%AE%E9%A2%98"><span class="toc-text">1. 死锁处理的基本问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%BB%E9%94%81%E6%A3%80%E6%B5%8B%E4%B8%8E%E9%81%BF%E5%85%8D%E7%9A%84%E6%88%90%E6%9C%AC%E5%88%86%E6%9E%90"><span class="toc-text">2.
+死锁检测与避免的成本分析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%BB%E9%94%81%E9%81%BF%E5%85%8D%E7%9A%84%E6%BD%9C%E5%9C%A8%E9%97%AE%E9%A2%98"><span class="toc-text">3. 死锁避免的潜在问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E9%99%85%E7%B3%BB%E7%BB%9F%E4%B8%AD%E7%9A%84%E6%AD%BB%E9%94%81%E5%A4%84%E7%90%86%E7%AD%96%E7%95%A5"><span class="toc-text">4.
+实际系统中的死锁处理策略</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%BB%E9%94%81%E5%A4%84%E7%90%86%E7%9A%84%E6%9D%83%E8%A1%A1%E6%80%BB%E7%BB%93"><span class="toc-text">5. 死锁处理的权衡总结</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E9%99%85%E7%B3%BB%E7%BB%9F%E4%B8%AD%E7%9A%84%E6%9D%83%E8%A1%A1%E7%AD%96%E7%95%A5"><span class="toc-text">6.
+实际系统中的权衡策略</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%BB%E9%94%81%E5%A4%84%E7%90%86%E7%9A%84%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5"><span class="toc-text">7. 死锁处理的最佳实践</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-9"><span class="toc-text">8. 总结</span></a></li></ol></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FCH6/" title="操作系统CH6"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E4%BE%A0%E5%AE%A2-%E5%89%91%E6%9D%A5-%E5%8F%A4%E9%A3%8E.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="操作系统CH6"/></a><div class="content"><a class="title" href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FCH6/" title="操作系统CH6">操作系统CH6</a><time datetime="2025-05-07T13:07:41.000Z" title="发表于 2025-05-07 21:07:41">2025-05-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FCH5/" title="操作系统CH5"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E4%BE%A0%E5%AE%A2-%E5%89%91%E6%9D%A5-%E5%8F%A4%E9%A3%8E.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="操作系统CH5"/></a><div class="content"><a class="title" href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FCH5/" title="操作系统CH5">操作系统CH5</a><time datetime="2025-05-07T12:07:07.000Z" title="发表于 2025-05-07 20:07:07">2025-05-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FCH4/" title="操作系统CH4"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E4%BE%A0%E5%AE%A2-%E5%89%91%E6%9D%A5-%E5%8F%A4%E9%A3%8E.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="操作系统CH4"/></a><div class="content"><a class="title" href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FCH4/" title="操作系统CH4">操作系统CH4</a><time datetime="2025-05-07T11:18:34.000Z" title="发表于 2025-05-07 19:18:34">2025-05-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FCH3%EF%BC%88B%EF%BC%89/" title="操作系统CH3（B）"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E4%BE%A0%E5%AE%A2-%E5%89%91%E6%9D%A5-%E5%8F%A4%E9%A3%8E.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="操作系统CH3（B）"/></a><div class="content"><a class="title" href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FCH3%EF%BC%88B%EF%BC%89/" title="操作系统CH3（B）">操作系统CH3（B）</a><time datetime="2025-05-07T08:30:57.000Z" title="发表于 2025-05-07 16:30:57">2025-05-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E6%97%B6%E9%97%B4%E7%BA%BF%E8%A1%A8/" title="时间线表"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E4%BE%A0%E5%AE%A2-%E5%89%91%E6%9D%A5-%E5%8F%A4%E9%A3%8E.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="时间线表"/></a><div class="content"><a class="title" href="/%E6%97%B6%E9%97%B4%E7%BA%BF%E8%A1%A8/" title="时间线表">时间线表</a><time datetime="2025-05-06T16:24:18.000Z" title="发表于 2025-05-07 00:24:18">2025-05-07</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 - 2025 By Totoro</div><div class="footer_custom_text">I wish you to become your own sun, no need to rely on who's light.<p><a target="_blank" href="https://hexo.io/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&logo=hexo" title="博客框架为Hexo"></a>&nbsp;<a target="_blank" href="https://butterfly.js.org/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&logo=bitdefender" title="主题采用butterfly"></a>&nbsp;<a target="_blank" href="https://www.jsdelivr.com/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&logo=jsDelivr" title="本站使用JsDelivr为静态资源提供CDN加速"></a> &nbsp;<a target="_blank" href="https://vercel.com/ "><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Hosted-Vervel-brightgreen?style=flat&logo=Vercel" title="本站采用双线部署，默认线路托管于Vercel"></a>&nbsp;<a target="_blank" href="https://vercel.com/ "><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Hosted-Coding-0cedbe?style=flat&logo=Codio" title="本站采用双线部署，联通线路托管于Coding"></a>&nbsp;<a target="_blank" href="https://github.com/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&logo=GitHub" title="本站项目由Gtihub托管"></a>&nbsp;<a target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&logo=Claris" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"></a></p></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat-btn" type="button" title="聊天"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="/js/tw_cn.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@5.2.0/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'HT1PalaKkPaG1UqAXBhJXIu8-gzGzoHsz',
+      appKey: 'iT0TnVVAwf9zuZ7NqwclQItY',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://cdn.jsdelivr.net/npm/valine@1.5.1/dist/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><script defer src="/js/light.js"></script><canvas id="universe"></canvas><script defer src="/js/universe.js"></script><script async src="/js/title.js"></script><script defer src="https://npm.elemecdn.com/jquery@latest/dist/jquery.min.js"></script><script defer data-pjax src="/js/cat.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="1" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener
+  btf.removeGlobalFnEvent('pjax')
+  btf.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.12.0"></script></div></div><!-- hexo injector body_end start --><script data-pjax>
+    function butterfly_categories_card_injector_config(){
+      var parent_div_git = document.getElementById('recent-posts');
+      var item_html = '<style>li.categoryBar-list-item{width:32.3%;}.categoryBar-list{max-height: 380px;overflow:auto;}.categoryBar-list::-webkit-scrollbar{width:0!important}@media screen and (max-width: 650px){.categoryBar-list{max-height: 320px;}}</style><div class="recent-post-item" style="height:auto;width:100%;padding:0px;"><div id="categoryBar"><ul class="categoryBar-list"><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_12.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/离散数学/&quot;);" href="javascript:void(0);">离散数学</a><span class="categoryBar-list-count">33</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_13.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS61B/&quot;);" href="javascript:void(0);">CS61B</a><span class="categoryBar-list-count">76</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_14.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/期末の旅/&quot;);" href="javascript:void(0);">期末の旅</a><span class="categoryBar-list-count">99</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_17.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/刷题计划/&quot;);" href="javascript:void(0);">刷题计划</a><span class="categoryBar-list-count">60</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_18.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/区域赛の旅/&quot;);" href="javascript:void(0);">区域赛の旅</a><span class="categoryBar-list-count">7</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_19.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/Codeforcesの旅/&quot;);" href="javascript:void(0);">Codeforcesの旅</a><span class="categoryBar-list-count">24</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_20.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/牛客の旅/&quot;);" href="javascript:void(0);">牛客の旅</a><span class="categoryBar-list-count">65</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_21.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/ACMの旅/&quot;);" href="javascript:void(0);">ACMの旅</a><span class="categoryBar-list-count">42</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_22.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/数学建模/&quot;);" href="javascript:void(0);">数学建模</a><span class="categoryBar-list-count">26</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_22.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/前端の旅/&quot;);" href="javascript:void(0);">前端の旅</a><span class="categoryBar-list-count">17</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_23.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/数据结构/&quot;);" href="javascript:void(0);">数据结构</a><span class="categoryBar-list-count">47</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_24.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/Atcoderの旅/&quot;);" href="javascript:void(0);">Atcoderの旅</a><span class="categoryBar-list-count">53</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_25.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/C-の旅/&quot;);" href="javascript:void(0);">C++の旅</a><span class="categoryBar-list-count">17</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_26.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS70の旅/&quot;);" href="javascript:void(0);">CS70の旅</a><span class="categoryBar-list-count">24</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_27.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CSAPPの旅/&quot;);" href="javascript:void(0);">CSAPPの旅</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_28.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/计算机组成原理/&quot;);" href="javascript:void(0);">计算机组成原理</a><span class="categoryBar-list-count">47</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_29.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/编程基础/&quot;);" href="javascript:void(0);">编程基础</a><span class="categoryBar-list-count">14</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_30.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/JAVAの旅/&quot;);" href="javascript:void(0);">JAVAの旅</a><span class="categoryBar-list-count">10</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_31.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/MIT-6-031-Software-Construction/&quot;);" href="javascript:void(0);">MIT 6.031:Software Construction</a><span class="categoryBar-list-count">16</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_32.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS-110L/&quot;);" href="javascript:void(0);">CS 110L</a><span class="categoryBar-list-count">3</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_33.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/数据库の旅/&quot;);" href="javascript:void(0);">数据库の旅</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_34.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/灵魂の旅/&quot;);" href="javascript:void(0);">灵魂の旅</a><span class="categoryBar-list-count">2</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_35.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/个人安排/&quot;);" href="javascript:void(0);">个人安排</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_36.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/杂项/&quot;);" href="javascript:void(0);">杂项</a><span class="categoryBar-list-count">13</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_37.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/文学/&quot;);" href="javascript:void(0);">文学</a><span class="categoryBar-list-count">49</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_38.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/力扣の旅/&quot;);" href="javascript:void(0);">力扣の旅</a><span class="categoryBar-list-count">20</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_39.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/计算机网络/&quot;);" href="javascript:void(0);">计算机网络</a><span class="categoryBar-list-count">18</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_40.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/千里十二行/&quot;);" href="javascript:void(0);">千里十二行</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_41.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/🗡指offer/&quot;);" href="javascript:void(0);">🗡指offer</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_42.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/少年游/&quot;);" href="javascript:void(0);">少年游</a><span class="categoryBar-list-count">2</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_43.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/算法提高课/&quot;);" href="javascript:void(0);">算法提高课</a><span class="categoryBar-list-count">3</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_44.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/汇编の旅/&quot;);" href="javascript:void(0);">汇编の旅</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_44.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/C-实训/&quot;);" href="javascript:void(0);">C++实训</a><span class="categoryBar-list-count">8</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_45.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS知识/&quot;);" href="javascript:void(0);">CS知识</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_46.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/编译原理/&quot;);" href="javascript:void(0);">编译原理</a><span class="categoryBar-list-count">22</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_48.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/操作系统/&quot;);" href="javascript:void(0);">操作系统</a><span class="categoryBar-list-count">18</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(undefined);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/个人计划/&quot;);" href="javascript:void(0);">个人计划</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li></ul></div></div>';
+      console.log('已挂载butterfly_categories_card')
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+      }
+    if( document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+    butterfly_categories_card_injector_config()
+    }
+  </script><script data-pjax>
+  function butterfly_swiper_injector_config(){
+    var parent_div_git = document.getElementById('recent-posts');
+    var item_html = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms;"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;诗录/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/4b31456c6f0f4489f99177f89e936de7286431045.png@1256w_708h_!web-article-pic.avif" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-10-01</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;诗录/&quot;);" href="javascript:void(0);" alt="">诗录</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;诗录/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;诗兴大发/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://source.fomal.cc/img/default_cover_69.webp" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-01-29</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;诗兴大发/&quot;);" href="javascript:void(0);" alt="">诗兴大发</a><div class="blog-slider__text">未觉，却是中二少年的诗仙梦</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;诗兴大发/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;TotoroのPlan/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/51d37eba99d243607ddedfff6e91568f617436609.jpg@1256w_1884h_!web-article-pic.avif" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-10-05</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;TotoroのPlan/&quot;);" href="javascript:void(0);" alt="">TotoroのPlan</a><div class="blog-slider__text">方便大二看（）</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;TotoroのPlan/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;Markdown格式/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/ushio-api-img-moe@5.0.48/img_482_1920x1080_96_null_normal.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-03-03</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;Markdown格式/&quot;);" href="javascript:void(0);" alt="">Markdown格式</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;Markdown格式/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载butterfly_swiper')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_swiper_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_swiper_injector_config();
+  }
+  </script><script defer src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.js"></script><script defer data-pjax src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper_init.js"></script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>
