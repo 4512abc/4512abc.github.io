@@ -1,0 +1,872 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>2017年408真题操作系统篇 | Totoroの旅</title><meta name="author" content="Totoro"><meta name="copyright" content="Totoro"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="2017年408真题操作系统篇 选择题  ✅ 第23题：作业调度选择题（共1分） 问题： 假设4个作业到达系统的时刻和运行时间如下：    作业 到达时刻 运行时间     J1 0 3   J2 1 3   J3 1 2   J4 3 1    系统在 t &#x3D; 2 时开始调度。若分别采用先来先服务（FCFS）和短作业优">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2017年408真题操作系统篇">
+<meta property="og:url" content="http://totorocatcat.top/2017%E5%B9%B4408%E7%9C%9F%E9%A2%98%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AF%87/index.html">
+<meta property="og:site_name" content="Totoroの旅">
+<meta property="og:description" content="2017年408真题操作系统篇 选择题  ✅ 第23题：作业调度选择题（共1分） 问题： 假设4个作业到达系统的时刻和运行时间如下：    作业 到达时刻 运行时间     J1 0 3   J2 1 3   J3 1 2   J4 3 1    系统在 t &#x3D; 2 时开始调度。若分别采用先来先服务（FCFS）和短作业优">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/e8bda1e2c913f89a3c56a20c6924652.png">
+<meta property="article:published_time" content="2025-05-09T16:54:45.000Z">
+<meta property="article:modified_time" content="2025-05-09T16:55:12.134Z">
+<meta property="article:author" content="Totoro">
+<meta property="article:tag" content="基础">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/e8bda1e2c913f89a3c56a20c6924652.png"><link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/b5ca6e582a7a45e6fde46e616eeb68e.png"><link rel="canonical" href="http://totorocatcat.top/2017%E5%B9%B4408%E7%9C%9F%E9%A2%98%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AF%87/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta/><link rel="stylesheet" href="/css/index.css?v=4.12.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  noticeOutdate: {"limitDay":765,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体中文","cht_to_chs":"你已切换为简体中文","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"top-right"},
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '2017年408真题操作系统篇',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: true,
+  isToc: true,
+  postUpdate: '2025-05-10 00:55:12'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const now = new Date()
+          const hour = now.getHours()
+          const isNight = hour <= 6 || hour >= 18
+          if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/universe.css"><link rel="stylesheet" href="/css/scrollbar.css"><link rel="stylesheet" href="/css/cat.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-categories-card@1.0.0/lib/categorybar.css"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiperstyle.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-double-row-display@1.00/cardlistpost.min.css"/>
+<style>#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags:before {content:"\A";
+  white-space: pre;}#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags > .article-meta__separator{display:none}</style>
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><div class="loading-img"></div><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><script>window.paceOptions = {
+  restartOnPushState: false
+}
+
+document.addEventListener('pjax:send', () => {
+  Pace.restart()
+})
+</script><link rel="stylesheet" href="/css/progress_bar.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E4%BE%A0%E5%AE%A2-%E6%AD%A6%E4%BE%A0%E5%9C%BA%E6%99%AF-%E6%B8%B8%E6%88%8F.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">874</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">36</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home-alt"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-envelope-open"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 趣味</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/project/"><i class="fa-fw fas fas fa-folder"></i><span> 项目</span></a></div><div class="menus_item"><a class="site-page" href="/stars/"><i class="fa-fw fas fa-bookmark"></i><span> 收藏</span></a></div><div class="menus_item"><a class="site-page" href="/bilibili/"><i class="fa-fw fas fa-tv"></i><span> 追番</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/e8bda1e2c913f89a3c56a20c6924652.png')"><nav id="nav"><span id="blog-info"><a href="/" title="Totoroの旅"><span class="site-name">Totoroの旅</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home-alt"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-envelope-open"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 趣味</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/project/"><i class="fa-fw fas fas fa-folder"></i><span> 项目</span></a></div><div class="menus_item"><a class="site-page" href="/stars/"><i class="fa-fw fas fa-bookmark"></i><span> 收藏</span></a></div><div class="menus_item"><a class="site-page" href="/bilibili/"><i class="fa-fw fas fa-tv"></i><span> 追番</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">2017年408真题操作系统篇</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-05-09T16:54:45.000Z" title="发表于 2025-05-10 00:54:45">2025-05-10</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-05-09T16:55:12.134Z" title="更新于 2025-05-10 00:55:12">2025-05-10</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">4k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>13分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="2017年408真题操作系统篇"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2017%E5%B9%B4408%E7%9C%9F%E9%A2%98%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AF%87/#post-comment" itemprop="discussionUrl"><span class="valine-comment-count" data-xid="/2017%E5%B9%B4408%E7%9C%9F%E9%A2%98%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AF%87/" itemprop="commentCount"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="年408真题操作系统篇">2017年408真题操作系统篇</h1>
+<h1 id="选择题">选择题</h1>
+<hr>
+<h2 id="第23题作业调度选择题共1分">✅
+<strong>第23题：作业调度选择题（共1分）</strong></h2>
+<h3 id="问题"><strong>问题：</strong></h3>
+<p>假设4个作业到达系统的时刻和运行时间如下：</p>
+<table>
+<thead>
+<tr>
+<th>作业</th>
+<th>到达时刻</th>
+<th>运行时间</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>J1</td>
+<td>0</td>
+<td>3</td>
+</tr>
+<tr>
+<td>J2</td>
+<td>1</td>
+<td>3</td>
+</tr>
+<tr>
+<td>J3</td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr>
+<td>J4</td>
+<td>3</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>系统在 <strong>t = 2</strong>
+时开始调度。若分别采用<strong>先来先服务（FCFS）</strong>和<strong>短作业优先（SJF）</strong>调度算法，则选中的作业分别是（）。</p>
+<h3 id="选项"><strong>选项：</strong></h3>
+<p>A. J2、J3 B. J1、J4 C. J2、J4 D. J1、J3</p>
+<hr>
+<h3 id="答案d.-j1j3">✅ <strong>答案：D. J1、J3</strong></h3>
+<h3 id="解析">✅ <strong>解析：</strong></h3>
+<ul>
+<li><strong>时刻 t = 2</strong> 时，系统中已到达的作业有：
+<ul>
+<li>J1（到达时间0）</li>
+<li>J2（到达时间1）</li>
+<li>J3（到达时间1）</li>
+</ul></li>
+<li><strong>先来先服务（FCFS）</strong>：
+<ul>
+<li>优先调度<strong>最早到达</strong>的作业。</li>
+<li>J1 到达最早 → 选中 <strong>J1</strong></li>
+</ul></li>
+<li><strong>短作业优先（SJF）</strong>：
+<ul>
+<li>在已到达的作业中选运行时间最短的。</li>
+<li>J1 和 J2：运行时间3；J3：运行时间2 → 选中 <strong>J3</strong></li>
+</ul></li>
+</ul>
+<hr>
+<h2 id="第24题系统调用过程共1分">✅
+<strong>第24题：系统调用过程（共1分）</strong></h2>
+<h3 id="问题-1"><strong>问题：</strong></h3>
+<p>执行系统调用的过程包括如下操作：</p>
+<p>① 返回用户态 ② 执行陷入 (trap) 指令 ③ 传递系统调用参数 ④
+执行相应的服务程序</p>
+<p>正确的执行顺序是（）。</p>
+<h3 id="选项-1"><strong>选项：</strong></h3>
+<p>A. ②→③→①→④ B. ②→④→③→① C. ③→②→④→① D. ③→④→②→①</p>
+<hr>
+<h3 id="答案c.-③②④①">✅ <strong>答案：C. ③→②→④→①</strong></h3>
+<h3 id="解析-1">✅ <strong>解析：</strong></h3>
+<ol type="1">
+<li><strong>③ 传递系统调用参数</strong>：
+<ul>
+<li>用户程序调用系统调用前，会把参数通过寄存器、栈或内存等方式传递给操作系统。</li>
+</ul></li>
+<li><strong>② 执行陷入 (trap) 指令</strong>：
+<ul>
+<li>用于从用户态切换到内核态，是发起系统调用的方式。</li>
+</ul></li>
+<li><strong>④ 执行相应的服务程序</strong>：
+<ul>
+<li>操作系统接收系统调用号及参数后，进入内核，执行对应的服务功能。</li>
+</ul></li>
+<li><strong>① 返回用户态</strong>：
+<ul>
+<li>系统调用执行完毕，返回用户态，继续执行用户进程。</li>
+</ul></li>
+</ol>
+<h2 id="第25题内存回收与空闲分区合并动态分区分配">✅
+<strong>第25题：内存回收与空闲分区合并（动态分区分配）</strong></h2>
+<h3 id="问题-2"><strong>问题：</strong></h3>
+<p>某计算机按字节编址，采用<strong>最佳适应算法（Best
+Fit）*<em>进行*</em>动态分区内存管理</strong>，每次分配和回收后都会对空闲分区链<strong>重新排序</strong>。</p>
+<p>当前空闲分区信息如下：</p>
+<table>
+<thead>
+<tr>
+<th>分区起始地址</th>
+<th>分区大小</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>20K</td>
+<td>40KB</td>
+</tr>
+<tr>
+<td>500K</td>
+<td>80KB</td>
+</tr>
+<tr>
+<td>1000K</td>
+<td>100KB</td>
+</tr>
+<tr>
+<td>200K</td>
+<td>200KB</td>
+</tr>
+</tbody>
+</table>
+<p>现在回收一个起始地址为 <strong>60K</strong>、大小为
+<strong>140KB</strong> 的分区。回收后：</p>
+<p>空闲分区的数量、空闲分区链第一个分区的起始地址和大小分别是（）。</p>
+<h3 id="选项-2"><strong>选项：</strong></h3>
+<p>A. 3、20K、380KB B. 3、500K、80KB C. 4、20K、180KB D.
+4、500K、80KB</p>
+<hr>
+<h3 id="答案b.-3500k80kb">✅ <strong>答案：B.
+3、500K、80KB</strong></h3>
+<h3 id="解析-2">✅ <strong>解析：</strong></h3>
+<ul>
+<li>回收的分区：起始地址 <strong>60K</strong>，大小
+<strong>140KB</strong></li>
+<li>当前空闲区中：
+<ul>
+<li>地址20K，大小40KB → 其末尾地址是 20K + 40KB = 60K</li>
+<li>地址200K，大小200KB</li>
+</ul></li>
+</ul>
+<h4 id="合并分析">✅ 合并分析：</h4>
+<ul>
+<li><strong>20K–60K</strong> 与 <strong>60K–200K</strong> 是连续的 →
+可以合并成 <strong>20K–200K</strong> 的 <strong>380KB</strong></li>
+<li>这个新分区将替代原来的两个分区，地址为 <strong>20K</strong>，大小为
+<strong>380KB</strong></li>
+<li>其他未涉及的空闲分区保持不变（500K、80KB 和 1000K、100KB）</li>
+</ul>
+<h4 id="回收后空闲分区情况为">✅ 回收后空闲分区情况为：</h4>
+<table>
+<thead>
+<tr>
+<th>起始地址</th>
+<th>大小</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>500K</td>
+<td>80KB</td>
+</tr>
+<tr>
+<td>1000K</td>
+<td>100KB</td>
+</tr>
+<tr>
+<td>20K</td>
+<td>380KB</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>空闲分区数：<strong>3 个</strong></li>
+<li>空闲分区链排序后第一个分区为：<strong>500K，80KB</strong>（因为采用按地址或大小升序排序）</li>
+</ul>
+<hr>
+<h2 id="第26题文件系统簇空间分配">✅
+<strong>第26题：文件系统簇空间分配</strong></h2>
+<h3 id="问题-3"><strong>问题：</strong></h3>
+<p>某文件系统中：</p>
+<ul>
+<li><strong>簇大小</strong>为：1KB（1024B）</li>
+<li><strong>扇区大小</strong>为：512B</li>
+</ul>
+<p>若一个文件大小为
+<strong>1026B</strong>，则系统为其分配的磁盘空间大小是（）。</p>
+<h3 id="选项-3"><strong>选项：</strong></h3>
+<p>A. 1026B B. 1536B C. 1538B D. 2048B</p>
+<hr>
+<h3 id="答案d.-2048b">✅ <strong>答案：D. 2048B</strong></h3>
+<h3 id="解析-3">✅ <strong>解析：</strong></h3>
+<ul>
+<li>文件系统是以<strong>簇（cluster）</strong>为单位进行磁盘空间分配的。</li>
+<li>一个簇 = <strong>1KB = 1024B</strong></li>
+<li>文件大小为 <strong>1026B &gt; 1KB</strong>，超过了1个簇，需要
+<strong>两个簇</strong>
+<ul>
+<li>⌈1026 / 1024⌉ = <strong>2</strong></li>
+</ul></li>
+<li>分配的磁盘空间为：<strong>2 × 1KB = 2048B</strong></li>
+</ul>
+<p>⚠️ 注意：</p>
+<ul>
+<li>虽然扇区为 512B，但文件系统不是按扇区而是按簇分配空间。</li>
+<li>多出的部分会造成<strong>内部碎片</strong>，但不会影响分配逻辑。</li>
+</ul>
+<hr>
+<h2 id="第27题时间片轮转调度中错误说法">✅
+<strong>第27题：时间片轮转调度中错误说法</strong></h2>
+<h3 id="问题-4"><strong>问题：</strong></h3>
+<p>下列有关<strong>基于时间片的进程调度</strong>的叙述中，<strong>错误的是（
+）</strong>。</p>
+<h3 id="选项-4"><strong>选项：</strong></h3>
+<p>A. 时间片越短，进程切换的次数越多，系统开销也越大 B.
+当前进程的时间片用完后，该进程状态由执行态变为阻塞态 C.
+时钟中断发生后，系统会修改当前进程在时间片内的剩余时间 D.
+影响时间片大小的主要因素包括响应时间、系统开销和进程数量等</p>
+<hr>
+<h3 id="答案b.-当前进程的时间片用完后该进程状态由执行态变为阻塞态">✅
+<strong>答案：B.
+当前进程的时间片用完后，该进程状态由执行态变为阻塞态</strong></h3>
+<h3 id="解析-4">✅ <strong>解析：</strong></h3>
+<ul>
+<li><strong>A
+正确</strong>：时间片越短，切换越频繁，<strong>上下文切换的开销越大</strong>，系统效率可能降低。</li>
+<li><strong>B
+错误（答案）</strong>：时间片用完后，进程不是阻塞，而是<strong>变为就绪态</strong>，等待重新调度。只有当进程等待资源（如I/O）时，才会变为阻塞态。</li>
+<li><strong>C 正确</strong>：系统通过<strong>时钟中断（Clock
+Interrupt）</strong>定期检查并更新当前进程的时间片剩余时间。</li>
+<li><strong>D
+正确</strong>：时间片大小影响<strong>响应时间</strong>、<strong>系统切换开销</strong>和<strong>进程公平性</strong>等，因此需综合考量。</li>
+</ul>
+<hr>
+<h2 id="第28题多道程序系统优点">✅
+<strong>第28题：多道程序系统优点</strong></h2>
+<h3 id="问题-5"><strong>问题：</strong></h3>
+<p>与<strong>单道程序系统</strong>相比，多道程序系统的优点是（ ）。</p>
+<h3 id="选项-5"><strong>选项：</strong></h3>
+<p>Ⅰ. CPU利用率高 Ⅱ. 系统开销小 Ⅲ. 系统吞吐量大 Ⅳ. I/O设备利用率高</p>
+<p>A. 仅Ⅰ、Ⅲ B. 仅Ⅰ、Ⅳ C. 仅Ⅱ、Ⅲ D. 仅Ⅰ、Ⅲ、Ⅳ</p>
+<hr>
+<h3 id="答案d.-仅ⅰⅲⅳ">✅ <strong>答案：D. 仅Ⅰ、Ⅲ、Ⅳ</strong></h3>
+<h3 id="解析-5">✅ <strong>解析：</strong></h3>
+<ul>
+<li><strong>Ⅰ. CPU利用率高：正确</strong>
+多道程序系统可以并发执行多个进程，<strong>在一个进程等待I/O时，另一个进程可以使用CPU</strong>，提高CPU使用率。</li>
+<li><strong>Ⅱ. 系统开销小：错误</strong>
+多道程序系统需要<strong>更多的管理机制</strong>（如调度器、内存管理），其系统开销相对单道程序更大。</li>
+<li><strong>Ⅲ. 系统吞吐量大：正确</strong>
+并发执行多个程序，提高了单位时间内完成的任务数，即吞吐量更大。</li>
+<li><strong>Ⅳ. I/O设备利用率高：正确</strong>
+I/O等待期间切换到其他进程可以避免设备空闲，<strong>充分利用I/O资源</strong>。</li>
+</ul>
+<hr>
+<h2 id="第29题逻辑格式化程序的工作内容">✅
+<strong>第29题：逻辑格式化程序的工作内容</strong></h2>
+<h3 id="问题-6"><strong>问题：</strong></h3>
+<p>下列选项中，<strong>磁盘逻辑格式化程序</strong>所做的工作是（
+）。</p>
+<h3 id="选项-6"><strong>选项：</strong></h3>
+<p>Ⅰ. 对磁盘进行分区 Ⅱ. 建立文件系统的根目录 Ⅲ.
+确定磁盘扇区校验码所占位数 Ⅳ.
+对保存空闲磁盘块信息的数据结构进行初始化</p>
+<p>A. 仅Ⅱ B. 仅Ⅱ、Ⅳ C. 仅Ⅲ、Ⅳ D. 仅Ⅰ、Ⅱ、Ⅳ</p>
+<hr>
+<h3 id="答案b.-仅ⅱⅳ">✅ <strong>答案：B. 仅Ⅱ、Ⅳ</strong></h3>
+<h3 id="解析-6">✅ <strong>解析：</strong></h3>
+<ul>
+<li><strong>逻辑格式化（高级格式化）</strong>的任务是：
+<ul>
+<li>在磁盘上创建文件系统（包括根目录、FAT表、空闲空间表等）。</li>
+<li>初始化用于管理文件的结构（如位图、FAT、inode表等）。</li>
+</ul></li>
+<li><strong>Ⅰ
+错误</strong>：磁盘分区（如创建C盘、D盘）是<strong>物理格式化</strong>前的准备工作，不属于逻辑格式化的任务。</li>
+<li><strong>Ⅱ
+正确</strong>：逻辑格式化会创建<strong>文件系统的根目录</strong>。</li>
+<li><strong>Ⅲ
+错误</strong>：CRC校验位等与<strong>扇区格式结构</strong>有关，是<strong>物理格式化</strong>的一部分。</li>
+<li><strong>Ⅳ
+正确</strong>：逻辑格式化会初始化<strong>空闲磁盘块信息的数据结构</strong>，如FAT或空闲位图。</li>
+</ul>
+<hr>
+<h2 id="第30题文件权限位数计算">✅
+<strong>第30题：文件权限位数计算</strong></h2>
+<h3 id="问题-7"><strong>问题：</strong></h3>
+<p>某文件系统中，针对每个文件，用户类别分为4类：安全管理员、文件主、文件主的伙伴、其他用户；访问权限分为5种：完全控制、执行、修改、读取、写入。若文件控制块中用二进制位串表示文件权限，为表示不同类别用户对一个文件的访问权限，则描述文件权限的位数<strong>至少应为（
+）</strong>。</p>
+<h3 id="选项-7"><strong>选项：</strong></h3>
+<p>A. 5 B. 9 C. 12 D. 20</p>
+<hr>
+<h3 id="答案d.-20">✅ <strong>答案：D. 20</strong></h3>
+<h3 id="解析-7">✅ <strong>解析：</strong></h3>
+<ul>
+<li>本题是一个<strong>组合位权限控制问题</strong>，每个用户类别对应一组权限位。</li>
+<li><strong>用户类别</strong>：4类 <strong>权限类型</strong>：5种 ⇒
+需要表示的权限组合总数 = 4 × 5 = <strong>20 位</strong>。</li>
+</ul>
+<p>每一位代表“某用户是否具有某种权限”，最少需要 20
+位二进制数来分别表示这些权限。</p>
+<hr>
+<h2 id="第31题硬链接文件的打开行为">✅
+<strong>第31题：硬链接文件的打开行为</strong></h2>
+<h3 id="问题-8"><strong>问题：</strong></h3>
+<p>若文件 <code>f1</code> 的<strong>硬链接</strong>为
+<code>f2</code>，两个进程分别打开 <code>f1</code> 和
+<code>f2</code>，获得对应的文件描述符为 <code>fd1</code> 和
+<code>fd2</code>，则下列叙述中，正确的是（ ）。</p>
+<h3 id="选项-8"><strong>选项：</strong></h3>
+<p>Ⅰ. <code>f1</code> 和 <code>f2</code> 的读写指针位置保持相同 Ⅱ.
+<code>f1</code> 和 <code>f2</code> 共享同一个内存索引结点（inode） Ⅲ.
+<code>fd1</code> 和 <code>fd2</code>
+分别指向各自的用户打开文件表中的一项</p>
+<p>A. 仅Ⅲ B. 仅Ⅱ、Ⅲ C. 仅Ⅰ、Ⅱ D. Ⅰ、Ⅱ和Ⅲ</p>
+<hr>
+<h3 id="答案b.-仅ⅱⅲ">✅ <strong>答案：B. 仅Ⅱ、Ⅲ</strong></h3>
+<h3 id="解析-8">✅ <strong>解析：</strong></h3>
+<ul>
+<li><strong>Ⅰ 错误</strong>：<code>fd1</code> 和 <code>fd2</code>
+是两个进程的不同文件描述符，分别指向各自用户打开文件表中的项，因此它们的读写指针是独立的，<strong>不会保持同步</strong>。</li>
+<li><strong>Ⅱ 正确</strong>：硬链接意味着 <code>f1</code> 和
+<code>f2</code> 指向的是同一个
+inode（即同一个实际文件），<strong>共享同一个内核索引节点</strong>。</li>
+<li><strong>Ⅲ 正确</strong>：文件描述符 <code>fd1</code> 和
+<code>fd2</code> 来自不同的进程，分别指向各自进程的用户打开文件表（user
+open file table）中的不同条目。</li>
+</ul>
+<hr>
+<h2 id="第32题dma-数据传输过程">✅ <strong>第32题：DMA
+数据传输过程</strong></h2>
+<h3 id="问题-9"><strong>问题：</strong></h3>
+<p>系统将数据从磁盘读到内存的过程包括以下操作：</p>
+<p>① DMA 控制器发出中断请求 ② 初始化 DMA 控制器并启动磁盘 ③
+从磁盘传输一块数据到内存缓冲区 ④ 执行“DMA 结束”中断服务程序</p>
+<p>正确的执行顺序是（ ）。</p>
+<h3 id="选项-9"><strong>选项：</strong></h3>
+<p>A. ③→①→②→④ B. ②→③→①→④ C. ②→①→③→④ D. ①→②→④→③</p>
+<hr>
+<h3 id="答案b.-②③①④">✅ <strong>答案：B. ②→③→①→④</strong></h3>
+<h3 id="解析-9">✅ <strong>解析：</strong></h3>
+<p>正确的 DMA 传输过程如下：</p>
+<ol type="1">
+<li><strong>② 初始化 DMA 控制器并启动磁盘</strong>：CPU 负责配置 DMA
+控制器，指定源地址、目标地址和数据长度，启动传输。</li>
+<li><strong>③ 从磁盘传输一块数据到内存缓冲区</strong>：DMA
+控制器控制数据流动，CPU 不干预。</li>
+<li><strong>① DMA 控制器发出中断请求</strong>：数据传输完成后，DMA
+控制器向 CPU 发出中断信号。</li>
+<li><strong>④ 执行“DMA 结束”中断服务程序</strong>：CPU 响应中断，运行
+ISR（中断服务例程）处理后续任务。</li>
+</ol>
+<hr>
+<h1 id="分页">分页</h1>
+<hr>
+<h2 id="第45题二级分页虚拟存储管理及函数代码分析">✅
+<strong>第45题：二级分页虚拟存储管理及函数代码分析</strong></h2>
+<h3 id="问题-10"><strong>问题：</strong></h3>
+<p>假定题44给出的计算机M采用二级分页虚拟存储管理方式，虚拟地址格式如下：</p>
+<p>| 页目录号（10位） | 页表索引（10位） | 页内偏移量（12位） |</p>
+<p>函数 <code>f1</code> 的代码如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">f1</span><span class="params">(<span class="type">unsigned</span> n)</span> &#123; </span><br><span class="line">    <span class="type">int</span> sum = <span class="number">1</span>, power = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">unsigned</span> i = <span class="number">0</span>; i &lt;= n<span class="number">-1</span>; i++) &#123; </span><br><span class="line">        power *= <span class="number">2</span>;</span><br><span class="line">        sum += power;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> sum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>和题44中的机器指令代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">1   00401020 55         push ebp</span><br><span class="line">    ...      ...        ...</span><br><span class="line">    for (unsigned i = 0; i &lt;= n-1; i++)</span><br><span class="line">    ...      ...        ...</span><br><span class="line">20  0040105E 39 4D F4   cmp dword ptr [ebp-0Ch],ecx</span><br><span class="line">    ...      ...        ...</span><br><span class="line">    &#123; power *= 2;</span><br><span class="line">    ...      ...        ...</span><br><span class="line">23  00401066 D1 E2      shl edx,1</span><br><span class="line">    ...      ...        ...</span><br><span class="line">    return sum;</span><br><span class="line">    ...      ...        ...</span><br><span class="line">35  0040107F C3         ret</span><br></pre></td></tr></table></figure>
+<p>回答下列问题：</p>
+<hr>
+<h3 id="函数-f1-的机器指令代码占多少页"><strong>(1) 函数 <code>f1</code>
+的机器指令代码占多少页？</strong></h3>
+<h3 id="取第1条指令push-ebp时若在进行地址变换的过程中需要访问内存中的页目录和页表则会分别访问它们各自的第几个表项编号从0开始"><strong>(2)
+取第1条指令（<code>push ebp</code>）时，若在进行地址变换的过程中需要访问内存中的页目录和页表，则会分别访问它们各自的第几个表项（编号从0开始）？</strong></h3>
+<h3 id="m的io采用中断控制方式若进程p在调用-f1-之前通过-scanf-获取-n-的值则在执行-scanf-的过程中进程p的状态会如何变化cpu是否会进入内核态"><strong>(3)
+M的I/O采用中断控制方式。若进程P在调用 <code>f1</code> 之前通过
+<code>scanf()</code> 获取 <code>n</code> 的值，则在执行
+<code>scanf()</code>
+的过程中，进程P的状态会如何变化？CPU是否会进入内核态？</strong></h3>
+<hr>
+<h3 id="答案与解析">✅ <strong>答案与解析：</strong></h3>
+<h4 id="函数-f1-的机器指令代码占多少页-1"><strong>(1) 函数
+<code>f1</code> 的机器指令代码占多少页？</strong></h4>
+<ul>
+<li><p><strong>虚拟地址格式分析</strong>：根据题目，虚拟地址格式为：</p>
+<ul>
+<li>页目录号（10位）</li>
+<li>页表索引（10位）</li>
+<li>页内偏移量（12位） 总共32位（4字节），即每个虚拟地址占用4字节。</li>
+</ul></li>
+<li><p><strong>机器指令分析</strong>：函数 <code>f1</code> 的指令代码从
+<code>00401020H</code>
+开始，假设这段代码是连续的，并且每条指令占用4字节。</p></li>
+<li><p>页目录号占10位、页表索引占10位，共占10+10=20位。函数f1的代码段中所有指令的虚拟地址的高20位相同，均为00401H，则所有的指令在同一页中。因此，<strong>函数
+<code>f1</code> 的机器指令代码占用1页</strong>。</p></li>
+</ul>
+<h4 id="取第1条指令push-ebp时若在进行地址变换的过程中需要访问内存中的页目录和页表则会分别访问它们各自的第几个表项编号从0开始-1"><strong>(2)
+取第1条指令（<code>push ebp</code>）时，若在进行地址变换的过程中需要访问内存中的页目录和页表，则会分别访问它们各自的第几个表项（编号从0开始）？</strong></h4>
+<ul>
+<li><p><strong><code>push ebp</code>
+指令的虚拟地址</strong>：<code>00401020H</code></p>
+<ul>
+<li><p><strong>虚拟地址格式</strong>：</p>
+<ul>
+<li>页目录号（10位）：<code>0000000001</code>（即 <code>1</code>）</li>
+<li>页表索引（10位）：<code>0000000001</code>（即 <code>1</code>）</li>
+<li>页内偏移量（12位）：<code>000000001000</code>（即
+<code>16</code>）</li>
+</ul></li>
+</ul></li>
+<li><p><strong>页目录访问</strong>：</p>
+<ul>
+<li>页目录号为 <code>1</code>，因此访问页目录的第 <strong>1</strong>
+个表项（编号从0开始）。</li>
+</ul></li>
+<li><p><strong>页表访问</strong>：</p>
+<ul>
+<li>页表索引为 <code>1</code>，因此访问页表的第 <strong>1</strong>
+个表项（编号从0开始）。</li>
+</ul></li>
+</ul>
+<h4 id="m的io采用中断控制方式若进程p在调用-f1-之前通过-scanf-获取-n-的值则在执行-scanf-的过程中进程p的状态会如何变化cpu是否会进入内核态-1"><strong>(3)
+M的I/O采用中断控制方式。若进程P在调用 <code>f1</code> 之前通过
+<code>scanf()</code> 获取 <code>n</code> 的值，则在执行
+<code>scanf()</code>
+的过程中，进程P的状态会如何变化？CPU是否会进入内核态？</strong></h4>
+<ul>
+<li><p><strong>进程状态变化</strong>：</p>
+<ul>
+<li>在执行 <code>scanf()</code> 时，进程P需要等待用户输入，因此进程P会从
+<strong>执行态</strong> 转变为
+<strong>阻塞态</strong>（因为它在等待I/O）。</li>
+<li>用户输入完成后，输入数据会触发一个中断，进程P被中断服务程序唤醒并转为
+<strong>就绪态</strong>。</li>
+<li>当调度程序再次调度进程P时，它会进入 <strong>运行态</strong>。</li>
+</ul></li>
+<li><p><strong>CPU是否进入内核态</strong>：</p>
+<ul>
+<li><code>scanf()</code> 是一个涉及 I/O 操作的库函数，在 I/O
+操作过程中，CPU 必须进入 <strong>内核态</strong> 以确保对 I/O
+设备的访问和控制。</li>
+<li>因此，在执行 <code>scanf()</code> 期间，<strong>CPU
+会进入内核态</strong>。</li>
+</ul></li>
+</ul>
+<hr>
+<h3 id="总结"><strong>总结：</strong></h3>
+<ol type="1">
+<li><strong>函数 <code>f1</code> 的机器指令代码占用 1 页</strong>。</li>
+<li>访问 <code>push ebp</code>
+指令时，<strong>访问页目录的第1个表项和页表的第1个表项</strong>。</li>
+<li>在执行 <code>scanf()</code> 时，进程P会从 <strong>执行态</strong>
+变为 <strong>阻塞态</strong>，并且 CPU 会进入
+<strong>内核态</strong>。</li>
+</ol>
+<h1 id="pv问题">PV问题</h1>
+<hr>
+<h2 id="第46题线程同步与互斥">✅
+<strong>第46题：线程同步与互斥</strong></h2>
+<h3 id="问题-11"><strong>问题：</strong></h3>
+<p>某进程中有3个并发执行的线程
+<code>thread1</code>、<code>thread2</code>、<code>thread3</code>，其伪代码如下所示。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//复数的结构类型定义</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="type">float</span> a;</span><br><span class="line">    <span class="type">float</span> b;</span><br><span class="line">&#125;cnum;</span><br><span class="line">cnum x, y, z; <span class="comment">//全局变量</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//计算两个复数之和</span></span><br><span class="line">cnum <span class="title function_">add</span><span class="params">(cnum p, cnum q)</span></span><br><span class="line">&#123;</span><br><span class="line">    cnum s;</span><br><span class="line">    s.a = p.a + q.a;</span><br><span class="line">    s.b = p.b + q.b;</span><br><span class="line">    <span class="keyword">return</span> s;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">thread1</span><br><span class="line">&#123;</span><br><span class="line">    cnum w;</span><br><span class="line">    w = add(x, y);</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">thread2</span><br><span class="line">&#123;</span><br><span class="line">    cnum w;</span><br><span class="line">    w = add(y, z);</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">thread3</span><br><span class="line">&#123;</span><br><span class="line">    cnum w;</span><br><span class="line">    w.a = <span class="number">1</span>;</span><br><span class="line">    w.b = <span class="number">2</span>;</span><br><span class="line">    z = add(z, w);</span><br><span class="line">    y = add(y, w);</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>请添加必要的信号量和 P、V（或
+<code>wait()</code>、<code>signal()</code>）操作，要求确保线程互斥访问临界资源，并且最大程度地并发执行。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">semaphore mutex_y1; <span class="comment">// mutex_y1用于thread1和thread3对变量y的互斥访问</span></span><br><span class="line">semaphore mutex_y2; <span class="comment">// mutex_y2用于thread2和thread3对变量y的互斥访问</span></span><br><span class="line">semaphore mutex_z;  <span class="comment">// mutex_z用于变量z的互斥访问</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//复数的结构类型定义</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="type">float</span> a;</span><br><span class="line">    <span class="type">float</span> b;</span><br><span class="line">&#125;cnum;</span><br><span class="line">cnum x, y, z; <span class="comment">//全局变量</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//计算两个复数之和</span></span><br><span class="line">cnum <span class="title function_">add</span><span class="params">(cnum p, cnum q)</span></span><br><span class="line">&#123;</span><br><span class="line">    cnum s;</span><br><span class="line">    s.a = p.a + q.a;</span><br><span class="line">    s.b = p.b + q.b;</span><br><span class="line">    <span class="keyword">return</span> s;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">thread1</span><br><span class="line">&#123;</span><br><span class="line">    cnum w;</span><br><span class="line">    wait(mutex_y1); <span class="comment">// 等待mutex_y1以保证对y的互斥访问</span></span><br><span class="line">    w = add(x, y);</span><br><span class="line">    signal(mutex_y1); <span class="comment">// 释放mutex_y1</span></span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">thread2</span><br><span class="line">&#123;</span><br><span class="line">    cnum w;</span><br><span class="line">    wait(mutex_y2); <span class="comment">// 等待mutex_y2以保证对y的互斥访问</span></span><br><span class="line">    wait(mutex_z);  <span class="comment">// 等待mutex_z以保证对z的互斥访问</span></span><br><span class="line">    w = add(y, z);</span><br><span class="line">    signal(mutex_z); <span class="comment">// 释放mutex_z</span></span><br><span class="line">    signal(mutex_y2); <span class="comment">// 释放mutex_y2</span></span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">thread3</span><br><span class="line">&#123;</span><br><span class="line">    cnum w;</span><br><span class="line">    w.a = <span class="number">1</span>;</span><br><span class="line">    w.b = <span class="number">2</span>;</span><br><span class="line">    wait(mutex_z);  <span class="comment">// 等待mutex_z以保证对z的互斥访问</span></span><br><span class="line">    z = add(z, w);</span><br><span class="line">    signal(mutex_z); <span class="comment">// 释放mutex_z</span></span><br><span class="line">    wait(mutex_y1);  <span class="comment">// 等待mutex_y1以保证对y的互斥访问</span></span><br><span class="line">    wait(mutex_y2);  <span class="comment">// 等待mutex_y2以保证对y的互斥访问</span></span><br><span class="line">    y = add(y, w);</span><br><span class="line">    signal(mutex_y1); <span class="comment">// 释放mutex_y1</span></span><br><span class="line">    signal(mutex_y2); <span class="comment">// 释放mutex_y2</span></span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="总结-1"><strong>总结：</strong></h4>
+<ol type="1">
+<li><strong><code>mutex_y1</code></strong>：用于保证
+<code>thread1</code> 和 <code>thread3</code> 对全局变量 <code>y</code>
+的互斥访问。</li>
+<li><strong><code>mutex_y2</code></strong>：用于保证
+<code>thread2</code> 和 <code>thread3</code> 对全局变量 <code>y</code>
+的互斥访问。</li>
+<li><strong><code>mutex_z</code></strong>：用于保证 <code>thread2</code>
+和 <code>thread3</code> 对全局变量 <code>z</code> 的互斥访问。</li>
+</ol>
+<p>通过合理地设计信号量操作，可以确保线程在访问临界资源时互斥，同时尽可能地提高并发性。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://www.totorocatcat.top/">Totoro</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://totorocatcat.top/2017%E5%B9%B4408%E7%9C%9F%E9%A2%98%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AF%87/">http://totorocatcat.top/2017%E5%B9%B4408%E7%9C%9F%E9%A2%98%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AF%87/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://totorocatcat.top" target="_blank">Totoroの旅</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%9F%BA%E7%A1%80/">基础</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/e8bda1e2c913f89a3c56a20c6924652.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2018%E5%B9%B4408%E7%9C%9F%E9%A2%98%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AF%87/" title="2018年408真题操作系统篇"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/e8bda1e2c913f89a3c56a20c6924652.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">2018年408真题操作系统篇</div></div></a></div><div class="next-post pull-right"><a href="/2016%E5%B9%B4408%E7%9C%9F%E9%A2%98%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AF%87/" title="2016年408真题操作系统篇"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E5%89%91%E5%AE%A2-%E6%B0%B4%E5%A2%A8-%E9%BB%91%E7%99%BD%E9%A3%8E.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">2016年408真题操作系统篇</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2010%E5%B9%B4%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%9F%E8%80%83-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" title="2010年计算机统考-数据结构"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/e345af5b515d2f76bb44fdaa6eff3db4d6f598d3.jpg@1256w_908h_!web-article-pic.avif" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-10-04</div><div class="title">2010年计算机统考-数据结构</div></div></a></div><div><a href="/2012%E5%B9%B4%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%9F%E8%80%83-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E9%83%A8%E5%88%86/" title="2012年计算机统考-数据结构部分"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/e345af5b515d2f76bb44fdaa6eff3db4d6f598d3.jpg@1256w_908h_!web-article-pic.avif" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-10-05</div><div class="title">2012年计算机统考-数据结构部分</div></div></a></div><div><a href="/2022%E5%B9%B4C-%E8%AF%95%E5%8D%B7%E8%BD%AF%E4%BB%B6%E5%AD%A6%E9%99%A2/" title="2022年C++试卷软件学院"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://source.fomal.cc/img/default_cover_80.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-05-16</div><div class="title">2022年C++试卷软件学院</div></div></a></div><div><a href="/2011%E5%B9%B4%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%9F%E8%80%83-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E9%83%A8%E5%88%86/" title="2011年计算机统考-数据结构部分"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/e345af5b515d2f76bb44fdaa6eff3db4d6f598d3.jpg@1256w_908h_!web-article-pic.avif" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-10-05</div><div class="title">2011年计算机统考-数据结构部分</div></div></a></div><div><a href="/2022C-%E8%AF%95%E5%8D%B7/" title="2022C++试卷"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://source.fomal.cc/img/default_cover_80.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-05-16</div><div class="title">2022C++试卷</div></div></a></div><div><a href="/AJAX%E5%9F%BA%E7%A1%80/" title="AJAX基础"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/ushio-api-img-moe@5.0.16/img_169_2560x1440_96_null_normal.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-05-16</div><div class="title">AJAX基础</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E4%BE%A0%E5%AE%A2-%E6%AD%A6%E4%BE%A0%E5%9C%BA%E6%99%AF-%E6%B8%B8%E6%88%8F.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Totoro</div><div class="author-info__description">热爱文学的SCUT软件学院学生</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">874</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">36</div></a></div><a id="card-info-btn" href="https://github.com/4512abc"><i class="fab fa-github"></i><span>🛴前往小窝......</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/4512abc" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:4512abc@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到龙猫の小窝</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B9%B4408%E7%9C%9F%E9%A2%98%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AF%87"><span class="toc-text">2017年408真题操作系统篇</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%E9%A2%98"><span class="toc-text">选择题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC23%E9%A2%98%E4%BD%9C%E4%B8%9A%E8%B0%83%E5%BA%A6%E9%80%89%E6%8B%A9%E9%A2%98%E5%85%B11%E5%88%86"><span class="toc-text">✅
+第23题：作业调度选择题（共1分）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E9%A2%98"><span class="toc-text">问题：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%89%E9%A1%B9"><span class="toc-text">选项：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AD%94%E6%A1%88d.-j1j3"><span class="toc-text">✅ 答案：D. J1、J3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E6%9E%90"><span class="toc-text">✅ 解析：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC24%E9%A2%98%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E8%BF%87%E7%A8%8B%E5%85%B11%E5%88%86"><span class="toc-text">✅
+第24题：系统调用过程（共1分）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E9%A2%98-1"><span class="toc-text">问题：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%89%E9%A1%B9-1"><span class="toc-text">选项：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AD%94%E6%A1%88c.-%E2%91%A2%E2%91%A1%E2%91%A3%E2%91%A0"><span class="toc-text">✅ 答案：C. ③→②→④→①</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E6%9E%90-1"><span class="toc-text">✅ 解析：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC25%E9%A2%98%E5%86%85%E5%AD%98%E5%9B%9E%E6%94%B6%E4%B8%8E%E7%A9%BA%E9%97%B2%E5%88%86%E5%8C%BA%E5%90%88%E5%B9%B6%E5%8A%A8%E6%80%81%E5%88%86%E5%8C%BA%E5%88%86%E9%85%8D"><span class="toc-text">✅
+第25题：内存回收与空闲分区合并（动态分区分配）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E9%A2%98-2"><span class="toc-text">问题：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%89%E9%A1%B9-2"><span class="toc-text">选项：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AD%94%E6%A1%88b.-3500k80kb"><span class="toc-text">✅ 答案：B.
+3、500K、80KB</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E6%9E%90-2"><span class="toc-text">✅ 解析：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%88%E5%B9%B6%E5%88%86%E6%9E%90"><span class="toc-text">✅ 合并分析：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9B%9E%E6%94%B6%E5%90%8E%E7%A9%BA%E9%97%B2%E5%88%86%E5%8C%BA%E6%83%85%E5%86%B5%E4%B8%BA"><span class="toc-text">✅ 回收后空闲分区情况为：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC26%E9%A2%98%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E7%B0%87%E7%A9%BA%E9%97%B4%E5%88%86%E9%85%8D"><span class="toc-text">✅
+第26题：文件系统簇空间分配</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E9%A2%98-3"><span class="toc-text">问题：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%89%E9%A1%B9-3"><span class="toc-text">选项：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AD%94%E6%A1%88d.-2048b"><span class="toc-text">✅ 答案：D. 2048B</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E6%9E%90-3"><span class="toc-text">✅ 解析：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC27%E9%A2%98%E6%97%B6%E9%97%B4%E7%89%87%E8%BD%AE%E8%BD%AC%E8%B0%83%E5%BA%A6%E4%B8%AD%E9%94%99%E8%AF%AF%E8%AF%B4%E6%B3%95"><span class="toc-text">✅
+第27题：时间片轮转调度中错误说法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E9%A2%98-4"><span class="toc-text">问题：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%89%E9%A1%B9-4"><span class="toc-text">选项：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AD%94%E6%A1%88b.-%E5%BD%93%E5%89%8D%E8%BF%9B%E7%A8%8B%E7%9A%84%E6%97%B6%E9%97%B4%E7%89%87%E7%94%A8%E5%AE%8C%E5%90%8E%E8%AF%A5%E8%BF%9B%E7%A8%8B%E7%8A%B6%E6%80%81%E7%94%B1%E6%89%A7%E8%A1%8C%E6%80%81%E5%8F%98%E4%B8%BA%E9%98%BB%E5%A1%9E%E6%80%81"><span class="toc-text">✅
+答案：B.
+当前进程的时间片用完后，该进程状态由执行态变为阻塞态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E6%9E%90-4"><span class="toc-text">✅ 解析：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC28%E9%A2%98%E5%A4%9A%E9%81%93%E7%A8%8B%E5%BA%8F%E7%B3%BB%E7%BB%9F%E4%BC%98%E7%82%B9"><span class="toc-text">✅
+第28题：多道程序系统优点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E9%A2%98-5"><span class="toc-text">问题：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%89%E9%A1%B9-5"><span class="toc-text">选项：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AD%94%E6%A1%88d.-%E4%BB%85%E2%85%B0%E2%85%B2%E2%85%B3"><span class="toc-text">✅ 答案：D. 仅Ⅰ、Ⅲ、Ⅳ</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E6%9E%90-5"><span class="toc-text">✅ 解析：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC29%E9%A2%98%E9%80%BB%E8%BE%91%E6%A0%BC%E5%BC%8F%E5%8C%96%E7%A8%8B%E5%BA%8F%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%86%85%E5%AE%B9"><span class="toc-text">✅
+第29题：逻辑格式化程序的工作内容</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E9%A2%98-6"><span class="toc-text">问题：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%89%E9%A1%B9-6"><span class="toc-text">选项：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AD%94%E6%A1%88b.-%E4%BB%85%E2%85%B1%E2%85%B3"><span class="toc-text">✅ 答案：B. 仅Ⅱ、Ⅳ</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E6%9E%90-6"><span class="toc-text">✅ 解析：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC30%E9%A2%98%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90%E4%BD%8D%E6%95%B0%E8%AE%A1%E7%AE%97"><span class="toc-text">✅
+第30题：文件权限位数计算</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E9%A2%98-7"><span class="toc-text">问题：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%89%E9%A1%B9-7"><span class="toc-text">选项：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AD%94%E6%A1%88d.-20"><span class="toc-text">✅ 答案：D. 20</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E6%9E%90-7"><span class="toc-text">✅ 解析：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC31%E9%A2%98%E7%A1%AC%E9%93%BE%E6%8E%A5%E6%96%87%E4%BB%B6%E7%9A%84%E6%89%93%E5%BC%80%E8%A1%8C%E4%B8%BA"><span class="toc-text">✅
+第31题：硬链接文件的打开行为</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E9%A2%98-8"><span class="toc-text">问题：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%89%E9%A1%B9-8"><span class="toc-text">选项：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AD%94%E6%A1%88b.-%E4%BB%85%E2%85%B1%E2%85%B2"><span class="toc-text">✅ 答案：B. 仅Ⅱ、Ⅲ</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E6%9E%90-8"><span class="toc-text">✅ 解析：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC32%E9%A2%98dma-%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E8%BF%87%E7%A8%8B"><span class="toc-text">✅ 第32题：DMA
+数据传输过程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E9%A2%98-9"><span class="toc-text">问题：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%89%E9%A1%B9-9"><span class="toc-text">选项：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AD%94%E6%A1%88b.-%E2%91%A1%E2%91%A2%E2%91%A0%E2%91%A3"><span class="toc-text">✅ 答案：B. ②→③→①→④</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E6%9E%90-9"><span class="toc-text">✅ 解析：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%86%E9%A1%B5"><span class="toc-text">分页</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC45%E9%A2%98%E4%BA%8C%E7%BA%A7%E5%88%86%E9%A1%B5%E8%99%9A%E6%8B%9F%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86%E5%8F%8A%E5%87%BD%E6%95%B0%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90"><span class="toc-text">✅
+第45题：二级分页虚拟存储管理及函数代码分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E9%A2%98-10"><span class="toc-text">问题：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BD%E6%95%B0-f1-%E7%9A%84%E6%9C%BA%E5%99%A8%E6%8C%87%E4%BB%A4%E4%BB%A3%E7%A0%81%E5%8D%A0%E5%A4%9A%E5%B0%91%E9%A1%B5"><span class="toc-text">(1) 函数 f1
+的机器指令代码占多少页？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%96%E7%AC%AC1%E6%9D%A1%E6%8C%87%E4%BB%A4push-ebp%E6%97%B6%E8%8B%A5%E5%9C%A8%E8%BF%9B%E8%A1%8C%E5%9C%B0%E5%9D%80%E5%8F%98%E6%8D%A2%E7%9A%84%E8%BF%87%E7%A8%8B%E4%B8%AD%E9%9C%80%E8%A6%81%E8%AE%BF%E9%97%AE%E5%86%85%E5%AD%98%E4%B8%AD%E7%9A%84%E9%A1%B5%E7%9B%AE%E5%BD%95%E5%92%8C%E9%A1%B5%E8%A1%A8%E5%88%99%E4%BC%9A%E5%88%86%E5%88%AB%E8%AE%BF%E9%97%AE%E5%AE%83%E4%BB%AC%E5%90%84%E8%87%AA%E7%9A%84%E7%AC%AC%E5%87%A0%E4%B8%AA%E8%A1%A8%E9%A1%B9%E7%BC%96%E5%8F%B7%E4%BB%8E0%E5%BC%80%E5%A7%8B"><span class="toc-text">(2)
+取第1条指令（push ebp）时，若在进行地址变换的过程中需要访问内存中的页目录和页表，则会分别访问它们各自的第几个表项（编号从0开始）？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#m%E7%9A%84io%E9%87%87%E7%94%A8%E4%B8%AD%E6%96%AD%E6%8E%A7%E5%88%B6%E6%96%B9%E5%BC%8F%E8%8B%A5%E8%BF%9B%E7%A8%8Bp%E5%9C%A8%E8%B0%83%E7%94%A8-f1-%E4%B9%8B%E5%89%8D%E9%80%9A%E8%BF%87-scanf-%E8%8E%B7%E5%8F%96-n-%E7%9A%84%E5%80%BC%E5%88%99%E5%9C%A8%E6%89%A7%E8%A1%8C-scanf-%E7%9A%84%E8%BF%87%E7%A8%8B%E4%B8%AD%E8%BF%9B%E7%A8%8Bp%E7%9A%84%E7%8A%B6%E6%80%81%E4%BC%9A%E5%A6%82%E4%BD%95%E5%8F%98%E5%8C%96cpu%E6%98%AF%E5%90%A6%E4%BC%9A%E8%BF%9B%E5%85%A5%E5%86%85%E6%A0%B8%E6%80%81"><span class="toc-text">(3)
+M的I&#x2F;O采用中断控制方式。若进程P在调用 f1 之前通过
+scanf() 获取 n 的值，则在执行
+scanf()
+的过程中，进程P的状态会如何变化？CPU是否会进入内核态？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AD%94%E6%A1%88%E4%B8%8E%E8%A7%A3%E6%9E%90"><span class="toc-text">✅ 答案与解析：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%87%BD%E6%95%B0-f1-%E7%9A%84%E6%9C%BA%E5%99%A8%E6%8C%87%E4%BB%A4%E4%BB%A3%E7%A0%81%E5%8D%A0%E5%A4%9A%E5%B0%91%E9%A1%B5-1"><span class="toc-text">(1) 函数
+f1 的机器指令代码占多少页？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%96%E7%AC%AC1%E6%9D%A1%E6%8C%87%E4%BB%A4push-ebp%E6%97%B6%E8%8B%A5%E5%9C%A8%E8%BF%9B%E8%A1%8C%E5%9C%B0%E5%9D%80%E5%8F%98%E6%8D%A2%E7%9A%84%E8%BF%87%E7%A8%8B%E4%B8%AD%E9%9C%80%E8%A6%81%E8%AE%BF%E9%97%AE%E5%86%85%E5%AD%98%E4%B8%AD%E7%9A%84%E9%A1%B5%E7%9B%AE%E5%BD%95%E5%92%8C%E9%A1%B5%E8%A1%A8%E5%88%99%E4%BC%9A%E5%88%86%E5%88%AB%E8%AE%BF%E9%97%AE%E5%AE%83%E4%BB%AC%E5%90%84%E8%87%AA%E7%9A%84%E7%AC%AC%E5%87%A0%E4%B8%AA%E8%A1%A8%E9%A1%B9%E7%BC%96%E5%8F%B7%E4%BB%8E0%E5%BC%80%E5%A7%8B-1"><span class="toc-text">(2)
+取第1条指令（push ebp）时，若在进行地址变换的过程中需要访问内存中的页目录和页表，则会分别访问它们各自的第几个表项（编号从0开始）？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#m%E7%9A%84io%E9%87%87%E7%94%A8%E4%B8%AD%E6%96%AD%E6%8E%A7%E5%88%B6%E6%96%B9%E5%BC%8F%E8%8B%A5%E8%BF%9B%E7%A8%8Bp%E5%9C%A8%E8%B0%83%E7%94%A8-f1-%E4%B9%8B%E5%89%8D%E9%80%9A%E8%BF%87-scanf-%E8%8E%B7%E5%8F%96-n-%E7%9A%84%E5%80%BC%E5%88%99%E5%9C%A8%E6%89%A7%E8%A1%8C-scanf-%E7%9A%84%E8%BF%87%E7%A8%8B%E4%B8%AD%E8%BF%9B%E7%A8%8Bp%E7%9A%84%E7%8A%B6%E6%80%81%E4%BC%9A%E5%A6%82%E4%BD%95%E5%8F%98%E5%8C%96cpu%E6%98%AF%E5%90%A6%E4%BC%9A%E8%BF%9B%E5%85%A5%E5%86%85%E6%A0%B8%E6%80%81-1"><span class="toc-text">(3)
+M的I&#x2F;O采用中断控制方式。若进程P在调用 f1 之前通过
+scanf() 获取 n 的值，则在执行
+scanf()
+的过程中，进程P的状态会如何变化？CPU是否会进入内核态？</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#pv%E9%97%AE%E9%A2%98"><span class="toc-text">PV问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC46%E9%A2%98%E7%BA%BF%E7%A8%8B%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5"><span class="toc-text">✅
+第46题：线程同步与互斥</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E9%A2%98-11"><span class="toc-text">问题：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-1"><span class="toc-text">总结：</span></a></li></ol></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023%E5%B9%B4408%E7%9C%9F%E9%A2%98%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AF%87/" title="2023年408真题操作系统篇"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E6%8F%92%E7%94%BB%E5%B8%85%E5%93%A5-%E9%BB%91%E7%99%BD%E6%B0%B4%E5%A2%A8%E9%A3%8E%20(1).png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="2023年408真题操作系统篇"/></a><div class="content"><a class="title" href="/2023%E5%B9%B4408%E7%9C%9F%E9%A2%98%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AF%87/" title="2023年408真题操作系统篇">2023年408真题操作系统篇</a><time datetime="2025-05-09T18:09:09.000Z" title="发表于 2025-05-10 02:09:09">2025-05-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022%E5%B9%B4408%E7%9C%9F%E9%A2%98%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AF%87/" title="2022年408真题操作系统篇"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E6%8F%92%E7%94%BB%E5%B8%85%E5%93%A5-%E9%BB%91%E7%99%BD%E6%B0%B4%E5%A2%A8%E9%A3%8E%20(1).png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="2022年408真题操作系统篇"/></a><div class="content"><a class="title" href="/2022%E5%B9%B4408%E7%9C%9F%E9%A2%98%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AF%87/" title="2022年408真题操作系统篇">2022年408真题操作系统篇</a><time datetime="2025-05-09T18:00:09.000Z" title="发表于 2025-05-10 02:00:09">2025-05-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021%E5%B9%B4408%E7%9C%9F%E9%A2%98%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AF%87/" title="2021年408真题操作系统篇"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E5%8F%A4%E9%A3%8E%E4%BA%BA%E7%89%A9-%E6%84%8F%E5%A2%83%E7%94%BB%E9%9D%A2.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="2021年408真题操作系统篇"/></a><div class="content"><a class="title" href="/2021%E5%B9%B4408%E7%9C%9F%E9%A2%98%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AF%87/" title="2021年408真题操作系统篇">2021年408真题操作系统篇</a><time datetime="2025-05-09T17:49:37.000Z" title="发表于 2025-05-10 01:49:37">2025-05-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020%E5%B9%B4408%E7%9C%9F%E9%A2%98%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AF%87/" title="2020年408真题操作系统篇"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E5%8F%A4%E9%A3%8E%E4%BA%BA%E7%89%A9-%E6%84%8F%E5%A2%83%E7%94%BB%E9%9D%A2.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="2020年408真题操作系统篇"/></a><div class="content"><a class="title" href="/2020%E5%B9%B4408%E7%9C%9F%E9%A2%98%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AF%87/" title="2020年408真题操作系统篇">2020年408真题操作系统篇</a><time datetime="2025-05-09T17:40:25.000Z" title="发表于 2025-05-10 01:40:25">2025-05-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2019%E5%B9%B4408%E7%9C%9F%E9%A2%98%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AF%87/" title="2019年408真题操作系统篇"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E5%8F%A4%E9%A3%8E%E4%BA%BA%E7%89%A9-%E6%84%8F%E5%A2%83%E7%94%BB%E9%9D%A2.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="2019年408真题操作系统篇"/></a><div class="content"><a class="title" href="/2019%E5%B9%B4408%E7%9C%9F%E9%A2%98%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AF%87/" title="2019年408真题操作系统篇">2019年408真题操作系统篇</a><time datetime="2025-05-09T17:28:53.000Z" title="发表于 2025-05-10 01:28:53">2025-05-10</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 - 2025 By Totoro</div><div class="footer_custom_text">I wish you to become your own sun, no need to rely on who's light.<p><a target="_blank" href="https://hexo.io/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&logo=hexo" title="博客框架为Hexo"></a>&nbsp;<a target="_blank" href="https://butterfly.js.org/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&logo=bitdefender" title="主题采用butterfly"></a>&nbsp;<a target="_blank" href="https://www.jsdelivr.com/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&logo=jsDelivr" title="本站使用JsDelivr为静态资源提供CDN加速"></a> &nbsp;<a target="_blank" href="https://vercel.com/ "><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Hosted-Vervel-brightgreen?style=flat&logo=Vercel" title="本站采用双线部署，默认线路托管于Vercel"></a>&nbsp;<a target="_blank" href="https://vercel.com/ "><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Hosted-Coding-0cedbe?style=flat&logo=Codio" title="本站采用双线部署，联通线路托管于Coding"></a>&nbsp;<a target="_blank" href="https://github.com/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&logo=GitHub" title="本站项目由Gtihub托管"></a>&nbsp;<a target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&logo=Claris" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"></a></p></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat-btn" type="button" title="聊天"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="/js/tw_cn.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@5.2.0/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'HT1PalaKkPaG1UqAXBhJXIu8-gzGzoHsz',
+      appKey: 'iT0TnVVAwf9zuZ7NqwclQItY',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://cdn.jsdelivr.net/npm/valine@1.5.1/dist/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><script defer src="/js/light.js"></script><canvas id="universe"></canvas><script defer src="/js/universe.js"></script><script async src="/js/title.js"></script><script defer src="https://npm.elemecdn.com/jquery@latest/dist/jquery.min.js"></script><script defer data-pjax src="/js/cat.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="1" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener
+  btf.removeGlobalFnEvent('pjax')
+  btf.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.12.0"></script></div></div><!-- hexo injector body_end start --><script data-pjax>
+    function butterfly_categories_card_injector_config(){
+      var parent_div_git = document.getElementById('recent-posts');
+      var item_html = '<style>li.categoryBar-list-item{width:32.3%;}.categoryBar-list{max-height: 380px;overflow:auto;}.categoryBar-list::-webkit-scrollbar{width:0!important}@media screen and (max-width: 650px){.categoryBar-list{max-height: 320px;}}</style><div class="recent-post-item" style="height:auto;width:100%;padding:0px;"><div id="categoryBar"><ul class="categoryBar-list"><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_12.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS61B/&quot;);" href="javascript:void(0);">CS61B</a><span class="categoryBar-list-count">76</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_13.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/离散数学/&quot;);" href="javascript:void(0);">离散数学</a><span class="categoryBar-list-count">33</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_14.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/期末の旅/&quot;);" href="javascript:void(0);">期末の旅</a><span class="categoryBar-list-count">99</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_17.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/刷题计划/&quot;);" href="javascript:void(0);">刷题计划</a><span class="categoryBar-list-count">60</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_18.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/区域赛の旅/&quot;);" href="javascript:void(0);">区域赛の旅</a><span class="categoryBar-list-count">7</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_19.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/Codeforcesの旅/&quot;);" href="javascript:void(0);">Codeforcesの旅</a><span class="categoryBar-list-count">24</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_20.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/牛客の旅/&quot;);" href="javascript:void(0);">牛客の旅</a><span class="categoryBar-list-count">65</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_21.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/ACMの旅/&quot;);" href="javascript:void(0);">ACMの旅</a><span class="categoryBar-list-count">42</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_22.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/数据结构/&quot;);" href="javascript:void(0);">数据结构</a><span class="categoryBar-list-count">47</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_22.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/前端の旅/&quot;);" href="javascript:void(0);">前端の旅</a><span class="categoryBar-list-count">17</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_23.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/数学建模/&quot;);" href="javascript:void(0);">数学建模</a><span class="categoryBar-list-count">26</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_24.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/Atcoderの旅/&quot;);" href="javascript:void(0);">Atcoderの旅</a><span class="categoryBar-list-count">53</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_25.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/C-の旅/&quot;);" href="javascript:void(0);">C++の旅</a><span class="categoryBar-list-count">17</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_26.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS70の旅/&quot;);" href="javascript:void(0);">CS70の旅</a><span class="categoryBar-list-count">24</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_27.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CSAPPの旅/&quot;);" href="javascript:void(0);">CSAPPの旅</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_28.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/计算机组成原理/&quot;);" href="javascript:void(0);">计算机组成原理</a><span class="categoryBar-list-count">47</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_29.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/编程基础/&quot;);" href="javascript:void(0);">编程基础</a><span class="categoryBar-list-count">14</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_30.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/JAVAの旅/&quot;);" href="javascript:void(0);">JAVAの旅</a><span class="categoryBar-list-count">10</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_31.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/MIT-6-031-Software-Construction/&quot;);" href="javascript:void(0);">MIT 6.031:Software Construction</a><span class="categoryBar-list-count">16</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_32.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS-110L/&quot;);" href="javascript:void(0);">CS 110L</a><span class="categoryBar-list-count">3</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_33.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/数据库の旅/&quot;);" href="javascript:void(0);">数据库の旅</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_34.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/灵魂の旅/&quot;);" href="javascript:void(0);">灵魂の旅</a><span class="categoryBar-list-count">2</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_35.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/个人安排/&quot;);" href="javascript:void(0);">个人安排</a><span class="categoryBar-list-count">2</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_36.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/杂项/&quot;);" href="javascript:void(0);">杂项</a><span class="categoryBar-list-count">13</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_37.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/文学/&quot;);" href="javascript:void(0);">文学</a><span class="categoryBar-list-count">49</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_38.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/力扣の旅/&quot;);" href="javascript:void(0);">力扣の旅</a><span class="categoryBar-list-count">20</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_39.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/计算机网络/&quot;);" href="javascript:void(0);">计算机网络</a><span class="categoryBar-list-count">23</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_40.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/千里十二行/&quot;);" href="javascript:void(0);">千里十二行</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_41.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/少年游/&quot;);" href="javascript:void(0);">少年游</a><span class="categoryBar-list-count">2</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_42.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/🗡指offer/&quot;);" href="javascript:void(0);">🗡指offer</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_43.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/操作系统/&quot;);" href="javascript:void(0);">操作系统</a><span class="categoryBar-list-count">41</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_44.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/算法提高课/&quot;);" href="javascript:void(0);">算法提高课</a><span class="categoryBar-list-count">3</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_44.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/汇编の旅/&quot;);" href="javascript:void(0);">汇编の旅</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_45.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/C-实训/&quot;);" href="javascript:void(0);">C++实训</a><span class="categoryBar-list-count">8</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_46.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/编译原理/&quot;);" href="javascript:void(0);">编译原理</a><span class="categoryBar-list-count">22</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_48.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS知识/&quot;);" href="javascript:void(0);">CS知识</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li></ul></div></div>';
+      console.log('已挂载butterfly_categories_card')
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+      }
+    if( document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+    butterfly_categories_card_injector_config()
+    }
+  </script><script data-pjax>
+  function butterfly_swiper_injector_config(){
+    var parent_div_git = document.getElementById('recent-posts');
+    var item_html = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms;"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;诗兴大发/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://source.fomal.cc/img/default_cover_69.webp" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-01-29</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;诗兴大发/&quot;);" href="javascript:void(0);" alt="">诗兴大发</a><div class="blog-slider__text">未觉，却是中二少年的诗仙梦</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;诗兴大发/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;诗录/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/4b31456c6f0f4489f99177f89e936de7286431045.png@1256w_708h_!web-article-pic.avif" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-10-01</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;诗录/&quot;);" href="javascript:void(0);" alt="">诗录</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;诗录/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;TotoroのPlan/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/51d37eba99d243607ddedfff6e91568f617436609.jpg@1256w_1884h_!web-article-pic.avif" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-10-05</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;TotoroのPlan/&quot;);" href="javascript:void(0);" alt="">TotoroのPlan</a><div class="blog-slider__text">方便大二看（）</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;TotoroのPlan/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;Markdown格式/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/ushio-api-img-moe@5.0.48/img_482_1920x1080_96_null_normal.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-03-03</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;Markdown格式/&quot;);" href="javascript:void(0);" alt="">Markdown格式</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;Markdown格式/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载butterfly_swiper')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_swiper_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_swiper_injector_config();
+  }
+  </script><script defer src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.js"></script><script defer data-pjax src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper_init.js"></script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>
