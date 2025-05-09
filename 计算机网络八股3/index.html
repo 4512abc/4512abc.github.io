@@ -1,0 +1,1681 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>计算机网络八股3 | Totoroの旅</title><meta name="author" content="Totoro"><meta name="copyright" content="Totoro"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="计算机网络八股3  📚 TCP 三次握手（Three-Way Handshake） TCP 三次握手是建立可靠连接的过程，它确保了客户端与服务器之间的通信可以同步进行。每一次握手的作用是确认双方都已准备好进行数据传输。 三次握手流程 1. 第一次握手：客户端发送 SYN 请求  动作：客户端向服务器发送一个包含 SYN 标志的 TCP 报文段，表示希望建立连接。报文段中还会">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机网络八股3">
+<meta property="og:url" content="http://totorocatcat.top/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%85%AB%E8%82%A13/index.html">
+<meta property="og:site_name" content="Totoroの旅">
+<meta property="og:description" content="计算机网络八股3  📚 TCP 三次握手（Three-Way Handshake） TCP 三次握手是建立可靠连接的过程，它确保了客户端与服务器之间的通信可以同步进行。每一次握手的作用是确认双方都已准备好进行数据传输。 三次握手流程 1. 第一次握手：客户端发送 SYN 请求  动作：客户端向服务器发送一个包含 SYN 标志的 TCP 报文段，表示希望建立连接。报文段中还会">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E5%89%91%E5%AE%A2-%E5%8F%A4%E9%A3%8E%E6%8F%92%E7%94%BB.png">
+<meta property="article:published_time" content="2025-05-09T07:40:49.000Z">
+<meta property="article:modified_time" content="2025-05-09T07:41:21.051Z">
+<meta property="article:author" content="Totoro">
+<meta property="article:tag" content="基础">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E5%89%91%E5%AE%A2-%E5%8F%A4%E9%A3%8E%E6%8F%92%E7%94%BB.png"><link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/b5ca6e582a7a45e6fde46e616eeb68e.png"><link rel="canonical" href="http://totorocatcat.top/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%85%AB%E8%82%A13/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta/><link rel="stylesheet" href="/css/index.css?v=4.12.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  noticeOutdate: {"limitDay":765,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体中文","cht_to_chs":"你已切换为简体中文","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"top-right"},
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '计算机网络八股3',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: true,
+  isToc: true,
+  postUpdate: '2025-05-09 15:41:21'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const now = new Date()
+          const hour = now.getHours()
+          const isNight = hour <= 6 || hour >= 18
+          if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/universe.css"><link rel="stylesheet" href="/css/scrollbar.css"><link rel="stylesheet" href="/css/cat.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-categories-card@1.0.0/lib/categorybar.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-double-row-display@1.00/cardlistpost.min.css"/>
+<style>#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags:before {content:"\A";
+  white-space: pre;}#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags > .article-meta__separator{display:none}</style>
+<link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiperstyle.css" media="print" onload="this.media='all'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><div class="loading-img"></div><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><script>window.paceOptions = {
+  restartOnPushState: false
+}
+
+document.addEventListener('pjax:send', () => {
+  Pace.restart()
+})
+</script><link rel="stylesheet" href="/css/progress_bar.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E4%BE%A0%E5%AE%A2-%E6%AD%A6%E4%BE%A0%E5%9C%BA%E6%99%AF-%E6%B8%B8%E6%88%8F.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">859</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">36</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home-alt"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-envelope-open"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 趣味</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/project/"><i class="fa-fw fas fas fa-folder"></i><span> 项目</span></a></div><div class="menus_item"><a class="site-page" href="/stars/"><i class="fa-fw fas fa-bookmark"></i><span> 收藏</span></a></div><div class="menus_item"><a class="site-page" href="/bilibili/"><i class="fa-fw fas fa-tv"></i><span> 追番</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img fixed" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="Totoroの旅"><span class="site-name">Totoroの旅</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home-alt"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-envelope-open"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 趣味</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/project/"><i class="fa-fw fas fas fa-folder"></i><span> 项目</span></a></div><div class="menus_item"><a class="site-page" href="/stars/"><i class="fa-fw fas fa-bookmark"></i><span> 收藏</span></a></div><div class="menus_item"><a class="site-page" href="/bilibili/"><i class="fa-fw fas fa-tv"></i><span> 追番</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">计算机网络八股3</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-05-09T07:40:49.000Z" title="发表于 2025-05-09 15:40:49">2025-05-09</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-05-09T07:41:21.051Z" title="更新于 2025-05-09 15:41:21">2025-05-09</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">11k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>34分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="计算机网络八股3"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%85%AB%E8%82%A13/#post-comment" itemprop="discussionUrl"><span class="valine-comment-count" data-xid="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%85%AB%E8%82%A13/" itemprop="commentCount"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div><article class="post-content" id="article-container"><h1 id="计算机网络八股3">计算机网络八股3</h1>
+<hr>
+<h1 id="tcp-三次握手three-way-handshake">📚 <strong>TCP
+三次握手（Three-Way Handshake）</strong></h1>
+<p>TCP
+三次握手是建立可靠连接的过程，它确保了客户端与服务器之间的通信可以同步进行。每一次握手的作用是确认双方都已准备好进行数据传输。</p>
+<h3 id="三次握手流程"><strong>三次握手流程</strong></h3>
+<h4 id="第一次握手客户端发送-syn-请求">1. <strong>第一次握手：客户端发送
+SYN 请求</strong></h4>
+<ul>
+<li><strong>动作</strong>：客户端向服务器发送一个包含 SYN 标志的 TCP
+报文段，表示希望建立连接。报文段中还会包含一个初始序列号
+<code>x</code>，用于后续的数据传输。</li>
+<li><strong>目的</strong>：客户端通知服务器它希望建立连接，并告知服务器自己的初始序列号。</li>
+<li><strong>客户端状态</strong>：进入 <strong>SYN_SENT</strong>
+状态。</li>
+</ul>
+<h4 id="第二次握手服务器回应-syn-ack">2. <strong>第二次握手：服务器回应
+SYN + ACK</strong></h4>
+<ul>
+<li><strong>动作</strong>：服务器收到客户端的 SYN
+请求后，若同意建立连接，服务器会回复一个带有 SYN 和 ACK
+标志的报文段。服务器会选择一个随机序列号
+<code>y</code>，并将客户端的序列号 <code>x</code> 加 1
+作为确认号（<code>x + 1</code>），返回给客户端。</li>
+<li><strong>目的</strong>：服务器确认收到客户端的连接请求，并通知客户端服务器自己的初始序列号。</li>
+<li><strong>服务器状态</strong>：进入 <strong>SYN_RCVD</strong>
+状态。</li>
+</ul>
+<h4 id="第三次握手客户端发送-ack-确认">3. <strong>第三次握手：客户端发送
+ACK 确认</strong></h4>
+<ul>
+<li><strong>动作</strong>：客户端收到服务器的 SYN + ACK
+后，向服务器发送一个确认报文段。这个报文段的 ACK 位被设置为
+1，确认号设置为服务器的序列号 <code>y + 1</code>，并且自己的序列号设置为
+<code>x + 1</code>。</li>
+<li><strong>目的</strong>：客户端确认服务器的响应，完成连接建立。</li>
+<li><strong>客户端状态</strong>：进入 <strong>ESTABLISHED</strong>
+状态；此时服务器收到客户端的 ACK 后也进入 <strong>ESTABLISHED</strong>
+状态。</li>
+</ul>
+<h3 id="总结"><strong>总结：</strong></h3>
+<ol type="1">
+<li>客户端 -&gt; 服务器：<code>SYN, seq = x</code></li>
+<li>服务器 -&gt;
+客户端：<code>SYN, ACK, seq = y, ack = x + 1</code></li>
+<li>客户端 -&gt; 服务器：<code>ACK, seq = x + 1, ack = y + 1</code></li>
+</ol>
+<p>连接建立后，客户端和服务器可以开始数据传输。</p>
+<hr>
+<h1 id="大白话解释">📚 <strong>大白话解释：</strong></h1>
+<p>TCP 三次握手的过程类似于两个人进行确认后才开始对话：</p>
+<ol type="1">
+<li><strong>第一次握手：发起连接</strong>
+假设你和某人要开始谈话，但由于嘈杂的环境，你想确认对方是否能听到你。你首先大声问：“嗨，你听得到我说话吗？”这就像客户端发送
+SYN 请求，表明你想开始交流，并提供了自己的“起点”（初始序列号）。</li>
+<li><strong>第二次握手：对方回应</strong>
+对方听到你的声音后，回应：“是的，我听到了。我也准备好了。”这个回应就像服务器发送
+SYN + ACK
+报文，确认双方都准备好开始对话，并告诉你它的“起点”（服务器序列号）。</li>
+<li><strong>第三次握手：最终确认</strong>
+为了确保对方的回应听清楚，你再回应：“太好了，我确认了你准备好了，我们可以开始交流了！”这个回应就是客户端发送的
+ACK 确认，双方都确认了对方的状态。</li>
+<li><strong>开始交流</strong>
+在双方都确认准备好之后，你们可以开始正式的交流了。</li>
+</ol>
+<hr>
+<h1 id="syn-的概念与作用">📚 <strong>SYN 的概念与作用：</strong></h1>
+<h3 id="syn-标志位"><strong>SYN 标志位</strong></h3>
+<ul>
+<li><strong>定义</strong>：SYN 是 TCP
+协议中用来建立连接的一个标志位，全称为 <strong>Synchronize Sequence
+Numbers</strong>（同步序列号）。它用于告诉对方当前连接的同步请求，是三次握手过程中的关键。</li>
+</ul>
+<h3 id="作用"><strong>作用：</strong></h3>
+<ul>
+<li><strong>同步序列号</strong>：SYN
+用来标记初次请求建立连接时的同步信息。它告诉对方，连接请求的序列号需要同步，为之后的可靠数据传输做准备。</li>
+<li><strong>防止旧报文干扰</strong>：SYN
+位的使用能够有效防止旧的报文段误被当作新连接的请求。例如，在网络中，若以前的连接报文仍未消失，SYN
+位可确保新的连接请求与旧的报文段区分开来，避免数据混乱。</li>
+</ul>
+<h3 id="示意图"><strong>示意图</strong>：</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">客户端               服务器</span><br><span class="line">  |                      |</span><br><span class="line">  |---- SYN (x)  --------&gt;|</span><br><span class="line">  |                      |</span><br><span class="line">  |&lt;---- SYN + ACK (y, x+1) |</span><br><span class="line">  |                      |</span><br><span class="line">  |---- ACK (x+1, y+1) ---&gt;|</span><br><span class="line">  |                      |</span><br><span class="line">  |    连接建立           |</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="实际例子">📚 <strong>实际例子：</strong></h1>
+<p>假设你是客户（客户端），想和某个企业代表（服务器）讨论合作事宜。为了确认彼此都准备好了并且愿意交流，按照以下步骤进行：</p>
+<ol type="1">
+<li><strong>第一次握手：</strong>
+你向代表问候：“您好，我是客户小张，我们可以谈谈合作吗？”（这是你发出的连接请求）</li>
+<li><strong>第二次握手：</strong>
+代表听到你的话后，确认：“你好，我是企业代表小李，我也准备好了。”（这是代表同意建立连接，并告知自己的序列号）</li>
+<li><strong>第三次握手：</strong>
+为了确认对方的回应，你说：“太好了，我确认你准备好了，咱们可以开始讨论合作事宜。”（你确认对方的回应并准备好开始对话）</li>
+<li><strong>开始讨论：</strong>
+一旦确认完毕，双方就可以开始正式讨论合作事宜，数据交流正式开始。</li>
+</ol>
+<hr>
+<h3 id="小结"><strong>小结：</strong></h3>
+<ul>
+<li><strong>三次握手</strong>
+是为了确保双方都能接收到对方的连接请求，并且都准备好开始数据传输。</li>
+<li><strong>SYN 标志位</strong>
+确保了序列号同步，防止无效或重复连接请求干扰数据传输。</li>
+</ul>
+<h1 id="tcp-三次握手为什么是三次为什么不能是两次或四次"><strong>TCP
+三次握手为什么是三次，为什么不能是两次或四次？</strong></h1>
+<p>TCP 三次握手（Three-Way
+Handshake）是用于建立可靠连接的机制。其目的是确保双方能够同步序列号并确认双方都准备好通信。三次握手的设计有其特定的原因和背景，下面详细解析三次握手的必要性及为什么不能是两次或四次。</p>
+<hr>
+<h3 id="为什么是三次握手"><strong>为什么是三次握手？</strong></h3>
+<p>TCP 三次握手的设计确保了以下几个重要目标：</p>
+<ol type="1">
+<li><strong>确保客户端和服务器都准备好建立连接</strong>：
+<ul>
+<li>第一次握手，客户端通过发送 SYN
+包告诉服务器它希望建立连接。服务器收到这个请求后知道客户端准备好了。</li>
+<li>第二次握手，服务器确认收到连接请求，并告诉客户端它也准备好了。</li>
+<li>第三次握手，客户端确认接收到服务器的回应，确保双发双方都可以进行通信。</li>
+</ul></li>
+<li><strong>序列号同步</strong>：
+<ul>
+<li>在 TCP 中，每个数据包都有一个序列号，用来保证数据的顺序传输。</li>
+<li>第一次握手中，客户端通过 SYN
+包提供自己的序列号；第二次握手中，服务器提供自己的序列号并确认客户端的序列号；第三次握手中，客户端再次确认服务器的序列号，确保双方都同步了序列号。</li>
+</ul></li>
+</ol>
+<hr>
+<h3 id="为什么不能是两次握手"><strong>为什么不能是两次握手？</strong></h3>
+<p>如果 TCP 握手只进行两次，会存在以下潜在问题：</p>
+<ol type="1">
+<li><strong>防止丢包引起的连接问题</strong>：
+<ul>
+<li>假设客户端发送 SYN 包给服务器后，服务器立即响应 SYN-ACK 包。如果这个
+ACK
+包丢失了，服务器就无法知道客户端是否已经收到了它的回应，服务器就会继续等待客户端发送
+ACK 包。</li>
+<li>如果没有第三次握手，服务器可能会一直保持等待状态，即使客户端实际上没有收到确认。这样，客户端和服务器之间就没有可靠的同步信息，连接就可能无法正常建立。</li>
+</ul></li>
+<li><strong>防止无效连接的建立</strong>：
+<ul>
+<li>如果没有第三次握手，客户端在没有确认服务器响应的情况下就开始数据传输，可能会导致错误的连接被建立。特别是在网络延迟较大的情况下，丢失的报文可能导致错误连接的生成。</li>
+</ul></li>
+<li><strong>丢失请求后的重传机制</strong>：
+<ul>
+<li>通过三次握手，客户端和服务器都有机会确认数据包的发送和接收。如果是两次握手，客户端和服务器只能在第一次和第二次握手后假设连接建立完毕，没有进一步的确认，这样可能会出现连接没有实际建立的情况。</li>
+</ul></li>
+</ol>
+<hr>
+<h3 id="为什么不能是四次握手"><strong>为什么不能是四次握手？</strong></h3>
+<p>三次握手已经足够建立可靠连接，而四次握手并不会带来额外的好处，反而增加了复杂度和不必要的开销。具体原因如下：</p>
+<ol type="1">
+<li><strong>四次握手没有额外的实际用途</strong>：
+<ul>
+<li>三次握手已经确保了客户端和服务器能够同步其初始序列号，并且双方都能确认彼此准备好建立连接。第四次握手会造成不必要的延迟，并且不会增加协议的可靠性。</li>
+<li>因此，增加第四次握手不仅浪费资源，还会导致连接建立的延迟增大，不符合高效传输的需求。</li>
+</ul></li>
+<li><strong>三次握手已能确认连接的双方准备好通信</strong>：
+<ul>
+<li>第三次握手完成时，双方已经知道对方准备好，且同步了序列号。增加第四次握手不会改善连接质量，反而增加了协议的复杂性。</li>
+</ul></li>
+</ol>
+<hr>
+<h3 id="总结为什么是三次握手"><strong>总结：为什么是三次握手？</strong></h3>
+<ul>
+<li><strong>三次握手</strong>
+确保了双方都已经准备好，并且在数据传输前成功同步了序列号。它通过防止丢包、重传、以及未确认的连接请求等问题，确保了可靠的连接建立。</li>
+<li><strong>两次握手</strong>
+不足以保证连接的可靠性，可能会导致丢包或连接错误。</li>
+<li><strong>四次握手</strong>
+不必要，三次握手已足够，增加额外的握手次数只会增加延迟和开销。</li>
+</ul>
+<hr>
+<h3 id="tcp-握手与泛洪攻击"><strong>TCP 握手与“泛洪攻击”</strong></h3>
+<p>在某些情况下，TCP 三次握手机制可能会被恶意攻击者利用，进行
+<strong>SYN Flood（泛洪攻击）</strong>，即发送大量伪造的 SYN
+包，导致服务器资源耗尽，无法处理正常的连接请求。</p>
+<h4 id="syn-flood-攻击"><strong>SYN Flood 攻击</strong>：</h4>
+<ol type="1">
+<li>攻击者伪造大量 SYN 包发送到目标服务器，导致服务器响应并为每个 SYN
+包分配资源（为每个半开连接预留资源）。</li>
+<li>由于攻击者不会完成第三次握手，服务器会在半连接队列中保持这些无效的连接，浪费服务器资源。</li>
+<li>这种攻击会导致服务器无法处理正常的请求，最终导致
+<strong>拒绝服务（DoS）</strong>。</li>
+</ol>
+<h4 id="解决方案"><strong>解决方案</strong>：</h4>
+<ul>
+<li><strong>SYN Cookies</strong>：使用 SYN Cookies 技术，通过对 SYN-ACK
+包编码连接信息，服务器不再为每个连接分配资源，直到客户端完成第三次握手，从而防止资源被消耗掉。</li>
+<li><strong>半连接队列长度限制</strong>：控制半连接队列的长度，防止半连接被过度占用。</li>
+</ul>
+<hr>
+<h3 id="重新设计-tcp-连接建立过程"><strong>重新设计 TCP
+连接建立过程：</strong></h3>
+<p>如果重新设计 TCP 连接建立过程，以下几点可以考虑：</p>
+<ol type="1">
+<li><strong>SYN Cookies</strong>：如上所述，SYN Cookies
+技术能够减少资源占用，防止 SYN Flood
+攻击，保证服务器在不增加额外开销的情况下能处理大量连接请求。</li>
+<li><strong>增加验证机制</strong>：可以设计更高级的验证机制，在握手过程中使用更复杂的加密方式来防止伪造
+SYN 请求。</li>
+<li><strong>连接预确认</strong>：考虑在三次握手之前，进行一个简单的双向确认，以确保双方都能可靠地接收到对方的信息。</li>
+</ol>
+<hr>
+<h3 id="结论"><strong>结论</strong>：</h3>
+<p>TCP
+三次握手是为了建立可靠连接，防止丢包和冗余连接请求的产生。两次握手无法保证双方都准备好，四次握手则没有必要。因此，三次握手既高效又确保了连接的可靠性。</p>
+<h1 id="tcp-三次握手过程中的超时与重传机制"><strong>TCP
+三次握手过程中的超时与重传机制</strong></h1>
+<p>在 TCP
+三次握手过程中，每一步如果没有收到对方的报文，都会导致重传机制的启动，直到超时或达到最大重试次数。以下是每次握手中未收到报文时发生的情况：</p>
+<hr>
+<h3 id="第一次握手服务端未收到-syn-报文"><strong>第一次握手：服务端未收到
+SYN 报文</strong></h3>
+<ul>
+<li><strong>客户端发送 SYN 包</strong>：客户端发起连接请求，发送 SYN
+包给服务端，等待服务端的响应。</li>
+<li><strong>服务端未收到 SYN 包</strong>：
+<ul>
+<li>如果服务端没有收到客户端的 SYN
+包（可能因为网络丢包等原因），它不会做出任何响应。</li>
+<li><strong>客户端的反应</strong>：客户端会在一定的超时时间后重传 SYN
+包。这个过程会重复，直到客户端收到服务端的 SYN-ACK
+包或者超过最大重传次数。超时后，客户端会返回连接失败的错误。</li>
+</ul></li>
+</ul>
+<p><strong>结论</strong>：第一次握手没有成功时，客户端会重传 SYN
+包，直到连接超时或达到最大重试次数。</p>
+<hr>
+<h3 id="第二次握手客户端未收到-ack-报文"><strong>第二次握手：客户端未收到
+ACK 报文</strong></h3>
+<ul>
+<li><strong>服务端响应客户端的 SYN 包</strong>：服务端收到客户端的 SYN
+包后，发送 SYN-ACK 包确认客户端的请求，并告知自己也准备好建立连接。</li>
+<li><strong>客户端未收到 ACK 包</strong>：
+<ul>
+<li>如果客户端没有收到服务端的 ACK 包（可能是因为 ACK
+包丢失），它会继续重传 SYN 包，直到接收到 ACK 或超时。</li>
+<li><strong>服务端的反应</strong>：此时，服务端会在
+<code>accept()</code> 系统调用处阻塞，等待客户端发来的 ACK
+包，直到连接建立完成。</li>
+<li><strong>客户端的超时机制</strong>：如果超过最大重试次数，客户端会放弃连接，并返回连接建立失败的错误。</li>
+</ul></li>
+</ul>
+<p><strong>结论</strong>：第二次握手未收到 ACK
+时，客户端会继续重传，服务端在 <code>accept()</code>
+阻塞，等待客户端完成连接确认。</p>
+<hr>
+<h3 id="第三次握手服务端未收到-ack-报文"><strong>第三次握手：服务端未收到
+ACK 报文</strong></h3>
+<ul>
+<li><strong>客户端发送 ACK 包</strong>：客户端收到服务端的 SYN-ACK
+后，发送最终的 ACK 包，完成连接建立的最后一步。</li>
+<li><strong>服务端未收到客户端的 ACK 包</strong>：
+<ul>
+<li>如果服务端未收到客户端发送的 ACK 包（可能因为 ACK
+包丢失），服务端会使用超时重传机制，重试发送 SYN-ACK 包。</li>
+<li><strong>客户端的反应</strong>：此时客户端已经认为自己已经建立了连接，并开始尝试向服务端发送数据。</li>
+<li><strong>服务端的处理</strong>：如果服务端在 <code>accept()</code>
+阻塞状态下未收到客户端的 ACK
+包，会继续等待，直到超时。如果重试超过最大次数，服务端会返回错误并关闭连接。</li>
+<li><strong>客户端的异常行为</strong>：由于客户端没有收到服务端的确认，客户端仍认为连接已成功建立，会向服务端发送数据。此时，服务端可能已不在监听状态，接收到数据时会发送
+RST（重置）包给客户端，拒绝数据传输并终止连接。</li>
+</ul></li>
+</ul>
+<p><strong>结论</strong>：如果第三次握手失败，客户端和服务端之间会出现连接失败的情况，服务端会拒绝客户端的请求并发送
+RST 包。</p>
+<hr>
+<h3 id="关于第二次握手为什么需要同时传回-ack-和-syn"><strong>关于第二次握手：为什么需要同时传回
+ACK 和 SYN？</strong></h3>
+<p><strong>第二次握手的 SYN 和 ACK 包作用：</strong></p>
+<ol type="1">
+<li><strong>ACK（确认）</strong>：
+<ul>
+<li>服务器发送的 ACK 包是为了确认客户端发送的 SYN
+包（连接请求）已经成功接收。ACK
+通过设置确认号字段（<code>ACK=客户端发送的序列号+1</code>）告知客户端，服务端已接收到客户端的请求。</li>
+</ul></li>
+<li><strong>SYN（同步）</strong>：
+<ul>
+<li>同时，服务器还会发送 SYN
+包，表示服务端也准备好建立连接。由于服务端需要同步自己的初始序列号，它必须发送一个
+SYN
+包给客户端，告知客户端服务端准备就绪，并且发送自己的初始序列号。</li>
+</ul></li>
+</ol>
+<p>因此，第二次握手需要传回 SYN 和 ACK：</p>
+<ul>
+<li><strong>SYN</strong>：表示服务端希望建立连接。</li>
+<li><strong>ACK</strong>：确认收到客户端的 SYN 包。</li>
+</ul>
+<p>这两者合在一起，标志着双方都已准备好建立连接，并开始数据传输。</p>
+<hr>
+<h3 id="第三次握手可以携带数据吗"><strong>第三次握手可以携带数据吗？</strong></h3>
+<p><strong>第三次握手是否可以携带数据？</strong></p>
+<ul>
+<li><strong>可以携带数据</strong>：第三次握手是可以携带数据的。当第三次握手完成时，连接已经建立，客户端和服务器可以交换数据。
+<ul>
+<li><strong>客户端的状态</strong>：客户端此时已经进入
+ESTABLISHED（已建立）状态，连接建立完成，确认双方的接收和发送能力都是正常的，可以开始正常的数据传输。</li>
+</ul></li>
+<li><strong>第一次握手不携带数据的原因</strong>：
+<ul>
+<li>第一次握手使用 SYN 包进行连接请求时，不能携带数据。主要是出于
+<strong>安全考虑</strong>，因为如果允许在 SYN
+包中携带数据，恶意攻击者可能利用此特性发送大量数据，导致服务器在处理时消耗大量的
+CPU 和内存资源，影响服务器的正常运行。</li>
+</ul></li>
+</ul>
+<p><strong>结论</strong>：第三次握手可以携带数据，因为此时连接已经建立，并且双方已经准备好交换数据。</p>
+<hr>
+<h3 id="总结-1"><strong>总结：</strong></h3>
+<ol type="1">
+<li><strong>第一次握手</strong>：客户端发送 SYN
+包，服务端收到后进行响应。如果服务端未收到 SYN
+包，客户端会重试，直到最大重试次数或连接失败。</li>
+<li><strong>第二次握手</strong>：服务端回应 SYN-ACK 包，客户端收到后发送
+ACK 确认。如果客户端未收到 ACK 包，会继续重传。</li>
+<li><strong>第三次握手</strong>：客户端确认服务端的响应后发送
+ACK，连接建立成功。如果第三次握手失败，客户端和服务端之间会出现连接错误，服务端会发送
+RST 包。</li>
+</ol>
+<p><strong>SYN 和 ACK
+的双重作用</strong>在每一步确保了双方正确同步并确认连接的建立，而第三次握手在连接建立后可以携带数据。</p>
+<h1 id="tcp-半连接状态half-open-connection"><strong>TCP
+半连接状态（Half-Open Connection）</strong></h1>
+<p>TCP 半连接指的是在 TCP 三次握手的过程中，服务端已接收到客户端的 SYN
+包并发送了 SYN-ACK 包，但客户端尚未发送确认的 ACK
+包，连接处于“半开”状态。此时的连接还没有完全建立，虽然服务端已经做出了响应，但还没有收到客户端的最终确认。</p>
+<h4 id="半连接队列syn-队列"><strong>半连接队列（SYN 队列）</strong></h4>
+<p>在三次握手过程中，服务端在收到客户端的 SYN
+包后，会将连接放入半连接队列（SYN 队列）。此时，服务端处于
+<strong>SYN_RCVD</strong> 状态，表示它已经收到客户端的连接请求并回复了
+SYN-ACK 包。</p>
+<ul>
+<li><strong>半连接队列</strong> 存放那些已经发送 SYN-ACK
+但还没有收到最终 ACK 的连接。</li>
+<li>在收到客户端的 ACK 包后，连接才会被移至 <strong>全连接队列（ACCEPT
+队列）</strong>，并完成三次握手。</li>
+</ul>
+<h4 id="三次握手过程中的队列作用"><strong>三次握手过程中的队列作用</strong></h4>
+<ul>
+<li><strong>LISTEN
+状态</strong>：服务端准备好接受连接，此时不会有任何连接建立。</li>
+<li><strong>SYN 队列（半连接队列）</strong>：当服务端收到客户端的 SYN
+包并回复 SYN-ACK 时，连接处于半连接状态，放入半连接队列。</li>
+<li><strong>ACCEPT 队列（全连接队列）</strong>：当客户端收到服务端的
+SYN-ACK 后，回复
+ACK，完成三次握手，连接进入全连接队列，等待应用程序处理。</li>
+</ul>
+<h4 id="为什么半连接队列很重要"><strong>为什么半连接队列很重要？</strong></h4>
+<ul>
+<li><strong>资源分配</strong>：半连接队列用于暂存那些正在建立中的连接。在此队列中，服务端为连接分配了资源，但这些连接尚未完全建立，无法用于数据交换。</li>
+<li><strong>限制队列大小</strong>：系统通常对半连接队列大小有一定限制，若队列满，新的连接请求将被拒绝。这样会防止服务器在处理正常请求的同时，耗尽资源。</li>
+</ul>
+<hr>
+<h3 id="syn-flood-攻击-1"><strong>SYN Flood 攻击</strong></h3>
+<p><strong>SYN Flood</strong>
+是一种典型的拒绝服务（DoS）攻击，攻击者发送大量伪造的 SYN
+请求到目标服务器，但不响应服务器的 SYN-ACK
+包，导致服务器的半连接队列（SYN
+队列）被填满，无法处理正常的连接请求，从而导致服务不可用。</p>
+<ul>
+<li><strong>攻击过程</strong>：
+<ol type="1">
+<li>攻击者伪造源 IP 地址，向目标服务器发送大量的 SYN 包。</li>
+<li>服务器收到 SYN 包后，回复 SYN-ACK 包（即第三次握手的第二步）。</li>
+<li>攻击者并不回复
+ACK，导致服务器的半连接队列中的连接无法完成三次握手。</li>
+<li>服务器资源消耗殆尽，无法再处理来自合法客户端的连接请求，导致服务器崩溃或拒绝服务。</li>
+</ol></li>
+<li><strong>攻击影响</strong>：这种攻击会造成服务器资源被耗尽，使得无法为正常用户提供服务。</li>
+</ul>
+<hr>
+<h3 id="syn-flood-攻击的应对方案"><strong>SYN Flood
+攻击的应对方案</strong></h3>
+<ol type="1">
+<li><strong>SYN Cookies</strong>：
+<ul>
+<li><strong>原理</strong>：SYN Cookies 是一种防止 SYN Flood
+攻击的技术。当服务器接收到 SYN
+包时，它不会立即分配资源，而是根据客户端的 IP
+地址、端口号等信息计算出一个唯一的 cookie 值，并将该值作为序列号发送
+SYN-ACK 包。</li>
+<li><strong>过程</strong>：
+<ul>
+<li>服务器收到 SYN 包后，回复 SYN-ACK 包并携带计算出的 cookie 值。</li>
+<li>只有当客户端回复 ACK 时，服务器才能根据该 ACK
+包的序列号验证是否与计算出的 cookie 一致，若一致才真正建立连接。</li>
+<li>如果不一致，服务器会丢弃该连接请求。</li>
+</ul></li>
+<li><strong>优势</strong>：通过 SYN
+Cookies，可以避免攻击者占用过多的资源，因为服务器没有为每个连接分配资源，只有在验证
+ACK 包时才会实际分配资源。</li>
+</ul></li>
+<li><strong>SYN Proxy 防火墙</strong>：
+<ul>
+<li><strong>原理</strong>：SYN Proxy 是一种防火墙技术，能够代理和拦截
+SYN 包，伪造响应包并缓存连接状态，直到客户端回复正确的 ACK
+包，才真正建立连接。</li>
+<li><strong>过程</strong>：
+<ul>
+<li>防火墙接收到 SYN
+请求后，不直接将其转发给目标服务器，而是与客户端建立自己的连接，并伪造一个
+SYN-ACK 包返回给客户端。</li>
+<li>客户端完成三次握手后，防火墙将连接信息传递给目标服务器，完成真正的
+TCP 连接建立。</li>
+</ul></li>
+<li><strong>优势</strong>：通过 SYN Proxy，防火墙能有效地过滤掉恶意的
+SYN Flood 攻击，只允许合法的连接请求通过。</li>
+</ul></li>
+</ol>
+<hr>
+<h3 id="java-面试中的-tcp-半连接问题"><strong>Java 面试中的 TCP
+半连接问题</strong></h3>
+<p>在 Java 面试中，关于 TCP
+半连接状态的问题，可能会询问服务器如何管理连接、半连接队列的作用、以及如何防止
+SYN Flood 攻击等。可以根据以下思路回答：</p>
+<ul>
+<li><strong>半连接状态</strong>：在三次握手的第二步，服务器收到客户端的
+SYN 包并回复 SYN-ACK，连接处于半连接状态，等待客户端的
+ACK。此时连接被存储在半连接队列中。</li>
+<li><strong>半连接队列大小限制</strong>：半连接队列的大小通常是有限制的，若队列已满，后续的连接请求会被拒绝或丢弃。因此，服务器需要合理配置半连接队列大小。</li>
+<li><strong>SYN Flood 防御</strong>：为了防止 SYN Flood
+攻击，服务器可以使用 SYN Cookies 或者 SYN Proxy
+防火墙技术。这些技术能有效保护服务器免受 DoS
+攻击，同时确保正常用户的连接请求能够被处理。</li>
+</ul>
+<hr>
+<h3 id="总结-2"><strong>总结</strong></h3>
+<ul>
+<li><strong>TCP 半连接</strong>
+是指在三次握手过程中，服务端已经收到客户端的 SYN 包并回复
+SYN-ACK，但还没有收到客户端的 ACK 包，连接处于半连接队列中。</li>
+<li><strong>半连接队列（SYN 队列）</strong>
+存放这些未完成的连接，直到客户端完成最后的 ACK
+才能转移到全连接队列。</li>
+<li><strong>SYN Flood 攻击</strong> 通过伪造大量的 SYN
+请求，占用服务器的半连接队列资源，导致合法请求无法得到处理。</li>
+<li><strong>应对方案</strong>：SYN Cookies 和 SYN Proxy
+防火墙能够有效防止 SYN Flood 攻击，保护服务器的资源。</li>
+</ul>
+<p>这种情况的理解和应对方案是 TCP
+网络编程和安全领域的重要知识点，尤其是在大规模分布式系统中非常关键。</p>
+<h3 id="tcp-四次挥手过程four-way-handshake"><strong>TCP
+四次挥手过程（Four-Way Handshake）</strong></h3>
+<p>TCP 连接的断开过程使用了四次挥手（Four-Way
+Handshake）来确保连接的正确终止。在这个过程中，客户端和服务器必须相互确认各自的关闭请求，以保证双方都知道连接已经完全断开。</p>
+<h3 id="详细过程"><strong>详细过程</strong></h3>
+<ol type="1">
+<li><strong>第一次挥手：客户端发送 FIN 报文</strong>
+<ul>
+<li>客户端发送
+<strong>FIN</strong>（Finish）报文，表示客户端没有数据要发送了，但仍然可以接收数据。客户端进入
+<strong>FIN-WAIT-1</strong> 状态，等待服务器的确认。</li>
+<li><strong>解释</strong>：这时客户端像服务器宣布，它已经没有数据要发了，但还没完全结束连接，它仍然会接收服务器的数据。</li>
+</ul></li>
+<li><strong>第二次挥手：服务器确认接收 FIN 报文</strong>
+<ul>
+<li>服务器收到 <strong>FIN</strong> 报文后，发送
+<strong>ACK</strong>（Acknowledgment）报文来确认客户端的关闭请求，进入
+<strong>CLOSE-WAIT</strong> 状态，表示已经准备好断开连接。</li>
+<li><strong>解释</strong>：服务器确认收到了客户端发来的断开请求，服务器暂时还没有完全关闭连接，它可能需要先发送一些剩余的数据。</li>
+</ul></li>
+<li><strong>第三次挥手：服务器发送 FIN 报文</strong>
+<ul>
+<li>当服务器确认所有的数据都已发送完后，服务器会向客户端发送
+<strong>FIN</strong>
+报文，表示它也没有数据要发送了，准备关闭连接。此时服务器进入
+<strong>LAST-ACK</strong> 状态，等待客户端的确认。</li>
+<li><strong>解释</strong>：服务器发送 <strong>FIN</strong>
+包，通知客户端它已经完成数据的发送，并请求关闭连接。</li>
+</ul></li>
+<li><strong>第四次挥手：客户端确认接收 FIN 报文</strong>
+<ul>
+<li>客户端接收到服务器发送的 <strong>FIN</strong> 报文后，回复一个
+<strong>ACK</strong>
+报文，表示客户端确认服务器的关闭请求。此时客户端进入
+<strong>TIME-WAIT</strong> 状态，等待一段时间以确保服务器接收到
+<strong>ACK</strong> 报文。客户端之后进入 <strong>CLOSED</strong>
+状态。</li>
+<li>服务器接收到 <strong>ACK</strong> 报文后，进入
+<strong>CLOSED</strong> 状态，连接完全断开。</li>
+</ul></li>
+</ol>
+<h3 id="总结-3"><strong>总结</strong></h3>
+<ul>
+<li><strong>四次挥手的目的是保证双方都知道连接已经完全关闭</strong>，防止数据丢失或者在连接未完全关闭的情况下就开始新的连接。</li>
+<li>在整个过程中，客户端和服务器都会经历不同的状态，确保在数据传输和关闭连接时没有遗漏。</li>
+</ul>
+<hr>
+<h3 id="四次挥手在实际应用中的意义"><strong>四次挥手在实际应用中的意义</strong></h3>
+<ol type="1">
+<li><strong>防止数据丢失</strong>：通过确保每一方都发送和确认了断开请求，可以防止在连接未完全关闭时发送数据，从而避免数据丢失。</li>
+<li><strong>确保连接彻底关闭</strong>：每次挥手都确认了另一方的状态，确保没有一方在还未完全准备好的情况下关闭连接。</li>
+<li><strong>TIME-WAIT 状态</strong>：客户端的 TIME-WAIT
+状态保证客户端能够确认服务器是否已经收到最后的 ACK
+报文，防止旧的重复数据包影响新的连接。</li>
+</ol>
+<hr>
+<h3 id="tcp-四次挥手的总结"><strong>TCP 四次挥手的总结</strong></h3>
+<ul>
+<li>TCP
+连接的断开并不是瞬间的，它需要四次挥手的过程，每一次都需要确认，确保双方都知道连接即将关闭。</li>
+<li>这个过程包括了客户端的发起、服务器的确认，双方分别发送和确认关闭请求，最后确保没有数据丢失，并彻底关闭连接。</li>
+</ul>
+<p>这四次挥手的过程在网络编程和服务端开发中非常重要，它保证了数据连接的安全关闭，并防止资源浪费。</p>
+<hr>
+<h1 id="为什么-tcp-挥手需要四次">✅<strong>为什么 TCP
+挥手需要四次？</strong></h1>
+<h3 id="核心答案">🎯 核心答案：</h3>
+<p>因为 <strong>TCP
+是全双工通信协议</strong>（<strong>full-duplex</strong>），双方的关闭是
+<strong>独立进行的</strong>，发送和接收都必须分别关闭，因此需要
+<strong>“你关你的，我关我的”</strong> —— 所以需要
+<strong>四次</strong>挥手来完成连接的彻底断开。</p>
+<hr>
+<h2 id="分析-tcp-四次挥手的原因">🧠 分析 TCP 四次挥手的原因</h2>
+<h3 id="全双工通信的含义">🔁 全双工通信的含义：</h3>
+<p>TCP 连接是双向的（你能发我也能发），所以：</p>
+<ul>
+<li>一端“说我不发了”（用 <strong>FIN</strong>
+报文）只能关闭自己发送数据的通道；</li>
+<li>另一端还可能有数据要发，它得“自己说”自己也不发了。</li>
+</ul>
+<p>所以：</p>
+<blockquote>
+<p>每个方向都需要发送一个 <strong>FIN</strong> 和接收一个
+<strong>ACK</strong>，加起来就是四次挥手。</p>
+</blockquote>
+<hr>
+<h2 id="握手与挥手对比">📶 握手与挥手对比</h2>
+<table>
+<colgroup>
+<col style="width: 14%">
+<col style="width: 44%">
+<col style="width: 40%">
+</colgroup>
+<thead>
+<tr>
+<th>项目</th>
+<th>三次握手</th>
+<th>四次挥手</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>目的</td>
+<td><strong>建立连接</strong></td>
+<td><strong>断开连接</strong></td>
+</tr>
+<tr>
+<td>传输方向</td>
+<td>双向一次完成</td>
+<td>每个方向单独关闭</td>
+</tr>
+<tr>
+<td>是否可以合并</td>
+<td>客户端 SYN 和 ACK 可合并（2次变3次）</td>
+<td>两个 FIN 必须分开发出（不能合并）</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="四次挥手流程详解">📝 四次挥手流程详解</h2>
+<h3 id="第一次挥手客户端发送-fin">1️⃣ 第一次挥手：客户端发送 FIN</h3>
+<ul>
+<li>客户端告诉服务端：我没有数据要发了，但还能收。</li>
+<li>客户端进入：<code>FIN-WAIT-1</code> 状态。</li>
+</ul>
+<h3 id="第二次挥手服务端回复-ack">2️⃣ 第二次挥手：服务端回复 ACK</h3>
+<ul>
+<li>服务端确认收到 FIN，说：“我知道你要关闭了”。</li>
+<li>服务端进入：<code>CLOSE-WAIT</code>，客户端进入
+<code>FIN-WAIT-2</code>。</li>
+</ul>
+<p>此时：</p>
+<ul>
+<li>客户端不再发送数据，但仍接收服务端的数据。</li>
+<li>服务端继续处理剩下的事，并可能继续发数据。</li>
+</ul>
+<h3 id="第三次挥手服务端发送-fin">3️⃣ 第三次挥手：服务端发送 FIN</h3>
+<ul>
+<li>服务端也发完数据，发送 FIN 报文，表示也要关闭连接。</li>
+<li>服务端进入：<code>LAST-ACK</code> 状态。</li>
+</ul>
+<h3 id="第四次挥手客户端回复-ack">4️⃣ 第四次挥手：客户端回复 ACK</h3>
+<ul>
+<li>客户端接收 FIN，回复 ACK。</li>
+<li>客户端进入
+<code>TIME-WAIT</code>，等待一段时间（2MSL），确保服务端收到 ACK
+后，最终关闭连接。</li>
+</ul>
+<hr>
+<h2 id="四次挥手状态图简要">🔄 四次挥手状态图简要：</h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">客户端                      服务端</span><br><span class="line"> FIN-WAIT-1   --&gt;        CLOSE-WAIT</span><br><span class="line"> FIN-WAIT-2   &lt;--  ACK</span><br><span class="line"> (接收服务端数据)</span><br><span class="line"> TIME-WAIT    &lt;--  FIN     LAST-ACK</span><br><span class="line"> CLOSED       --&gt;  ACK     CLOSED</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="举个大白话例子自己版本">🧾 举个大白话例子（自己版本）</h2>
+<p>你和你的朋友在打语音电话聊天：</p>
+<ol type="1">
+<li><strong>你说</strong>：“我没什么好说的了，我要挂电话了。”（第一次挥手，FIN）</li>
+<li><strong>朋友说</strong>：“好的，我知道了，但我还没说完，你听我说完。”（第二次挥手，ACK）</li>
+<li><strong>朋友说完后说</strong>：“我现在也说完了，我们可以挂电话了。”（第三次挥手，FIN）</li>
+<li><strong>你说</strong>：“收到，我确认你也说完了，我们正式挂电话。”（第四次挥手，ACK，进入
+TIME-WAIT）</li>
+</ol>
+<hr>
+<h2 id="time-wait-为什么存在">⏲️ TIME-WAIT 为什么存在？</h2>
+<p>客户端需要等待一段时间（通常是 2 倍 MSL）是为了防止：</p>
+<ul>
+<li>服务端没收到最后一个 ACK，再次重发 FIN；</li>
+<li>客户端能重新发出 ACK，确保对方彻底关闭连接。</li>
+</ul>
+<hr>
+<h1 id="tcp-四次挥手为什么要等待-2msl-才进入-closed">✅ TCP
+四次挥手为什么要等待 2MSL 才进入 CLOSED？</h1>
+<hr>
+<h3 id="什么是-msl">📌 什么是 MSL？</h3>
+<p><strong>MSL</strong>（Maximum Segment
+Lifetime）：报文段在网络中<strong>最大生存时间</strong>，超过这个时间还没被接收，报文将被丢弃。</p>
+<ul>
+<li><strong>由操作系统决定</strong>，常见系统中 MSL 约为 30 秒或 60
+秒；</li>
+<li>所以 <strong>2MSL 通常是 60s 或 120s</strong>。</li>
+</ul>
+<hr>
+<h2 id="为什么要等待-2msl两个核心原因">🧠 为什么要等待
+2MSL？——两个核心原因：</h2>
+<hr>
+<h3 id="确保对方收到了最后的-ack">🟡 1. 确保对方收到了最后的 ACK</h3>
+<ul>
+<li>在第四次挥手中，<strong>客户端（主动关闭方）发出 ACK
+后</strong>，状态变为 <code>TIME_WAIT</code>。</li>
+<li>但万一这个 ACK
+<strong>在网络中丢失</strong>，<strong>服务端（被动关闭方）就会重发它的
+FIN 报文</strong>。</li>
+<li>如果客户端<strong>立即关闭连接</strong>，就
+<strong>无法响应这个重传的 FIN</strong> —— 这会导致服务端
+<strong>无法正常进入 CLOSED 状态</strong>，连接无法正确释放。</li>
+<li>因此，客户端必须保留一段时间（<strong>2MSL</strong>）来
+<strong>等待可能的 FIN 重传</strong>，并 <strong>能及时重发 ACK
+报文</strong>。</li>
+</ul>
+<p>📌 <strong>一句话总结：为让服务端安心下线，客户端等一等，确保 ACK
+不会丢！</strong></p>
+<hr>
+<h3 id="避免旧连接的报文污染新连接">🟡 2.
+避免旧连接的报文污染新连接</h3>
+<ul>
+<li>假设你立即关闭连接并新建了一个相同四元组（源 IP、源端口、目的
+IP、目的端口）的连接。</li>
+<li>如果旧连接中的报文（如旧的 FIN
+或数据包）还<strong>滞留在网络中</strong>，就可能被误当作新连接的有效数据处理。</li>
+<li>这种“脏数据”进入新连接，会引起数据错乱或安全问题。</li>
+</ul>
+<p>📌 <strong>等待 2MSL
+就能确保旧连接的所有报文都“过期”，不再污染新的连接。</strong></p>
+<hr>
+<h2 id="为什么是2-倍-msl-而不是-1-倍">🔁 为什么是“2 倍” MSL 而不是 1
+倍？</h2>
+<h3 id="来-1-回-2msl">1 来 + 1 回 = 2MSL</h3>
+<ul>
+<li>第一次：服务器重发的 FIN 从服务端到客户端，最多 MSL。</li>
+<li>第二次：客户端再次确认 ACK，从客户端到服务端，再用 MSL。</li>
+<li>所以一来一回：<strong>需要 2MSL 才最安全</strong>。</li>
+</ul>
+<hr>
+<h2 id="time_wait-状态的关键意义">🔚 TIME_WAIT 状态的关键意义</h2>
+<table>
+<thead>
+<tr>
+<th>问题</th>
+<th>解决方案</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ACK 丢失，服务端重发 FIN？</td>
+<td>TIME_WAIT 中客户端还能重发 ACK</td>
+</tr>
+<tr>
+<td>脏数据污染新连接？</td>
+<td>等待 2MSL 让旧连接数据自然“过期”</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h1 id="tcp-保活计时器keepalive-timer">✅ TCP 保活计时器（KeepAlive
+Timer）</h1>
+<hr>
+<h3 id="一什么是-tcp-保活计时器">📌 一、什么是 TCP 保活计时器？</h3>
+<p><strong>TCP
+保活计时器</strong>是一种<strong>用于检测对端是否仍然存活</strong>的机制。</p>
+<ul>
+<li>它不是 TCP
+协议强制要求的部分，但大多数操作系统都实现了这一机制。</li>
+<li>如果长时间没有收到对方的数据，系统会通过发送
+<strong>探测报文（keepalive probe）</strong> 来判断连接是否还有效。</li>
+</ul>
+<hr>
+<h3 id="二为什么需要保活计时器">📦 二、为什么需要保活计时器？</h3>
+<h4 id="场景举例">🔸 场景举例：</h4>
+<ul>
+<li>客户端和服务器建立了 TCP 连接。</li>
+<li>客户端突然掉电或崩溃，<strong>无法主动发送 FIN
+来断开连接</strong>。</li>
+<li>此时服务器并不知道客户端已经不可用，还会一直保留这个连接，占用资源。</li>
+</ul>
+<p>🧠 <strong>解决方案</strong>： 使用
+<strong>保活计时器</strong>，主动检测对方是否“还活着”，否则主动关闭连接，避免资源浪费。</p>
+<hr>
+<h3 id="三保活计时器的工作机制">⚙️ 三、保活计时器的工作机制</h3>
+<ol type="1">
+<li><strong>每当收到一次对方的数据，就重置保活计时器。</strong></li>
+<li><strong>如果设定时间（如 2
+小时）内没有收到数据</strong>，就触发保活机制。</li>
+<li>发送 <strong>探测报文（KeepAlive Probe）</strong> 给对方 ——
+通常是一个带 ACK 标志、无数据负载的报文。</li>
+<li>如果对方响应，说明还活着，重新启动计时器。</li>
+<li>如果对方不响应，继续间隔发送探测包 —— 默认间隔：<strong>75
+秒</strong>。</li>
+<li>连续发送 <strong>10
+次探测报文都没有响应</strong>，则认定连接已断，主动关闭。</li>
+</ol>
+<hr>
+<h3 id="四默认时间参数以-linux-为例">⏱️ 四、默认时间参数（以 Linux
+为例）</h3>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 23%">
+<col style="width: 46%">
+</colgroup>
+<thead>
+<tr>
+<th>参数</th>
+<th>默认值</th>
+<th>含义说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tcp_keepalive_time</code></td>
+<td>7200 秒（2 小时）</td>
+<td>空闲多久开始发送保活探测包</td>
+</tr>
+<tr>
+<td><code>tcp_keepalive_intvl</code></td>
+<td>75 秒</td>
+<td>探测包之间的间隔</td>
+</tr>
+<tr>
+<td><code>tcp_keepalive_probes</code></td>
+<td>10 次</td>
+<td>最多发多少次探测包无响应就断开连接</td>
+</tr>
+</tbody>
+</table>
+<p>💡 即最多 2 小时 + 9 × 75 秒 ≈ <strong>2 小时 11
+分钟后断开无响应连接</strong></p>
+<hr>
+<h3 id="五和-time_waitfin-等计时器的区别">🧾 五、和 TIME_WAIT、FIN
+等计时器的区别</h3>
+<table>
+<colgroup>
+<col style="width: 22%">
+<col style="width: 44%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr>
+<th>名称</th>
+<th>作用</th>
+<th>属于哪一方主动发起</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>TIME_WAIT</strong></td>
+<td>等待报文老化、安全关闭连接</td>
+<td>客户端最后一个 ACK 后</td>
+</tr>
+<tr>
+<td><strong>保活计时器</strong></td>
+<td>探测连接是否还活着</td>
+<td>服务端主动探测</td>
+</tr>
+<tr>
+<td><strong>FIN 等</strong></td>
+<td>正常四次挥手中的超时重发控制</td>
+<td>双方都可能使用</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="六使用保活的常见应用场景">💡 六、使用保活的常见应用场景</h3>
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>长连接服务如 FTP、SSH</td>
+<td>检测客户端是否断开</td>
+</tr>
+<tr>
+<td>服务端资源有限时</td>
+<td>避免僵尸连接占用 socket 资源</td>
+</tr>
+<tr>
+<td>客户端连接无线网络或 NAT 设备</td>
+<td>检测连接是否被 NAT 中断</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="七总结一句话">✅ 七、总结一句话：</h3>
+<blockquote>
+<p><strong>TCP
+保活计时器是“主动心跳检测机制”，防止一方突然断开而不通知，确保连接不是僵尸连接。</strong></p>
+</blockquote>
+<hr>
+<h1 id="close-wait-和-time-wait-的状态与意义">✅ CLOSE-WAIT 和 TIME-WAIT
+的状态与意义</h1>
+<hr>
+<h3 id="一close-wait-状态">🧩 一、CLOSE-WAIT 状态</h3>
+<h4 id="定义">🔹 1. 定义：</h4>
+<p>当<strong>对方主动关闭连接（发送
+FIN）</strong>，本端<strong>接收到这个 FIN 报文，并发送 ACK
+确认报文</strong>后，就会进入 <code>CLOSE-WAIT</code> 状态。</p>
+<h4 id="出现场景">🔹 2. 出现场景：</h4>
+<ul>
+<li>常出现在<strong>服务器端</strong>（服务端是被动关闭连接的一方）。</li>
+<li>表示“对方已经关闭了连接，但我还没关”。</li>
+</ul>
+<h4 id="状态转换路径">🔹 3. 状态转换路径：</h4>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ESTABLISHED（连接建立） </span><br><span class="line">→ 对方发送 FIN </span><br><span class="line">→ 本方接收并回 ACK </span><br><span class="line">→ 进入 CLOSE-WAIT</span><br></pre></td></tr></table></figure>
+<h4 id="意义和作用">🔹 4. 意义和作用：</h4>
+<ul>
+<li><strong>让本端有时间完成剩余数据的发送或清理工作</strong>，再主动关闭连接（即发送
+FIN）。</li>
+<li>如果本端忘记调用 <code>close()</code>，可能长时间停留在
+CLOSE-WAIT，造成<strong>资源泄露（连接泄漏）</strong>。</li>
+</ul>
+<h4 id="重点记忆">🧠 重点记忆：</h4>
+<blockquote>
+<p>CLOSE-WAIT
+是“<strong>对方说要断，我说等一下，我还有事没做</strong>”。</p>
+</blockquote>
+<hr>
+<h3 id="二time-wait-状态">🧩 二、TIME-WAIT 状态</h3>
+<h4 id="定义-1">🔹 1. 定义：</h4>
+<p>当 TCP 连接关闭时，本端发送了最后一个 <strong>ACK</strong>（确认对方
+FIN 报文），就进入 <code>TIME-WAIT</code> 状态。</p>
+<h4 id="出现场景-1">🔹 2. 出现场景：</h4>
+<ul>
+<li>常出现在<strong>主动关闭连接的一方</strong>（一般是客户端）。</li>
+</ul>
+<h4 id="状态转换路径-1">🔹 3. 状态转换路径：</h4>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">LAST-ACK ← 被动关闭方等待 ACK</span><br><span class="line">→ 主动方收到对方 FIN，发出 ACK → 进入 TIME-WAIT</span><br></pre></td></tr></table></figure>
+<h4 id="意义和作用-1">🔹 4. 意义和作用：</h4>
+<h5 id="time-wait-的两个主要目的">✅ TIME-WAIT 的两个主要目的：</h5>
+<ol type="1">
+<li><strong>保证被动关闭方收到最终 ACK 报文</strong>：
+<ul>
+<li>若 ACK 丢失，被动关闭方会重发 FIN。</li>
+<li>此时 TIME-WAIT 状态能重新发送 ACK。</li>
+</ul></li>
+<li><strong>防止旧连接的重复报文干扰新连接</strong>：
+<ul>
+<li>若新连接重复使用旧的 4 元组（源/目标 IP +
+端口），旧报文段若未超时可能会误判为新连接数据。</li>
+<li>所以 TIME-WAIT 需等待 2×MSL 确保旧连接相关数据都消失。</li>
+</ul></li>
+</ol>
+<hr>
+<h3 id="三time-wait-中的-msl-补充知识">🧾 三、TIME-WAIT 中的 MSL
+补充知识</h3>
+<table>
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr>
+<th>名称</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>MSL（Maximum Segment Lifetime）</strong></td>
+<td>报文在网络中最长生存时间</td>
+</tr>
+<tr>
+<td>通常取值</td>
+<td>30 秒 ~ 2 分钟（Linux 默认 2 分钟）</td>
+</tr>
+<tr>
+<td>TIME-WAIT 时间</td>
+<td><strong>2 × MSL</strong>，即一个来回传输</td>
+</tr>
+</tbody>
+</table>
+<p>🔁 <strong>为什么是两倍？</strong></p>
+<ul>
+<li>一个 MSL 是 ACK 发送出去的时间；</li>
+<li>一个 MSL 是对方重发 FIN 再次被我接收的时间。</li>
+</ul>
+<hr>
+<h3 id="四close-wait-和-time-wait-常见问题对比">🔧 四、CLOSE-WAIT 和
+TIME-WAIT 常见问题对比</h3>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 27%">
+<col style="width: 36%">
+<col style="width: 35%">
+</colgroup>
+<thead>
+<tr>
+<th>对比项</th>
+<th>CLOSE-WAIT</th>
+<th>TIME-WAIT</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>出现在哪一方</td>
+<td>被动关闭方（通常是服务端）</td>
+<td>主动关闭方（通常是客户端）</td>
+</tr>
+<tr>
+<td>是否已经收到对方 FIN</td>
+<td>✅ 是</td>
+<td>✅ 是</td>
+</tr>
+<tr>
+<td>是否已经发送 ACK</td>
+<td>✅ 是</td>
+<td>✅ 是</td>
+</tr>
+<tr>
+<td>是否已发送自己的 FIN</td>
+<td>❌ 否，还没</td>
+<td>✅ 是</td>
+</tr>
+<tr>
+<td>状态含义</td>
+<td>等我处理完我再关闭连接</td>
+<td>等我确认连接彻底关闭</td>
+</tr>
+<tr>
+<td>持续时间</td>
+<td>一般由程序控制</td>
+<td>至少 2 × MSL（系统控制）</td>
+</tr>
+<tr>
+<td>潜在风险</td>
+<td>忘记调用 close 导致连接泄漏</td>
+<td>太多 TIME_WAIT 占用端口</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h1 id="time_wait-状态过多会导致什么问题如何解决">✅ TIME_WAIT
+状态过多会导致什么问题？如何解决？</h1>
+<hr>
+<h3 id="一什么是-time_wait-状态">🧩 一、什么是 TIME_WAIT 状态？</h3>
+<p>当 TCP 连接由本地主动关闭（即发送了最后一个 ACK），会进入 TIME_WAIT
+状态，保持 2 × MSL 时间，确保连接安全彻底关闭。</p>
+<hr>
+<h3 id="二time_wait-状态过多带来的问题">❗二、TIME_WAIT
+状态过多带来的问题</h3>
+<h4 id="系统资源浪费尤其是高并发下">✅ 1.
+系统资源浪费（尤其是高并发下）</h4>
+<table>
+<colgroup>
+<col style="width: 26%">
+<col style="width: 73%">
+</colgroup>
+<thead>
+<tr>
+<th>危害</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>⏳ <strong>占用内核内存资源</strong></td>
+<td>每个 TCP 连接都要占用内核维护的连接表项（TCB 结构），TIME_WAIT
+状态越多，占用越多</td>
+</tr>
+<tr>
+<td>🎯 <strong>占用本地端口号</strong></td>
+<td>每个连接唯一由四元组 (源 IP+端口, 目标 IP+端口) 标识，TIME_WAIT
+状态的连接仍占用本地端口</td>
+</tr>
+<tr>
+<td>❌ <strong>导致新连接失败</strong></td>
+<td>若短时间内快速建立断开连接，端口资源耗尽，报错如 “Address already in
+use”</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="三常见场景">🧪 三、常见场景</h3>
+<table>
+<colgroup>
+<col style="width: 32%">
+<col style="width: 67%">
+</colgroup>
+<thead>
+<tr>
+<th>场景</th>
+<th>特征</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>高频率的短连接</td>
+<td>如 HTTP/1.0 每次请求一个 TCP 连接，极易出现大量 TIME_WAIT</td>
+</tr>
+<tr>
+<td>客户端与服务端频繁通信</td>
+<td>若服务端主动断开连接，将产生大量 TIME_WAIT</td>
+</tr>
+<tr>
+<td>压测/调试时反复创建 TCP 连接</td>
+<td>容易造成 TIME_WAIT 洪水</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="四解决-time_wait-过多的方法系统-应用层">🧰 四、解决 TIME_WAIT
+过多的方法（系统 + 应用层）</h3>
+<hr>
+<h4 id="方法-1设置-so_reuseaddr-套接字选项">✅ 方法 1：设置 SO_REUSEADDR
+套接字选项</h4>
+<ul>
+<li>🔧 在程序中设置 <code>SO_REUSEADDR</code>，使得在 TIME_WAIT
+状态下，端口可以被立即重用。</li>
+<li>✅ 适用于快速重启服务器、避免“地址已被占用”错误。</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> optval = <span class="number">1</span>;</span><br><span class="line">setsockopt(sock, SOL_SOCKET, SO_REUSEADDR, &amp;optval, <span class="keyword">sizeof</span>(optval));</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>🚫 但不能完全避免 TIME_WAIT
+的出现，只是允许在一定条件下重用端口。</p>
+</blockquote>
+<hr>
+<h4 id="方法-2使用长连接keep-alive">✅ 方法
+2：使用长连接（Keep-Alive）</h4>
+<ul>
+<li>🧲 通过使用持久连接减少连接创建/销毁频率，显著降低 TIME_WAIT
+数量。</li>
+<li>常用于 HTTP/1.1 默认启用的
+<code>Connection: keep-alive</code>。</li>
+<li>适用于高频交互场景（如 RPC、数据库连接池等）。</li>
+</ul>
+<hr>
+<h4 id="方法-3内核参数优化linux">✅ 方法 3：内核参数优化（Linux）</h4>
+<p>通过修改系统内核参数，调控 TIME_WAIT 状态行为：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 允许 TIME_WAIT 连接被快速重用</span></span><br><span class="line"><span class="built_in">echo</span> 1 &gt; /proc/sys/net/ipv4/tcp_tw_reuse</span><br><span class="line"></span><br><span class="line"><span class="comment"># 允许 TIME_WAIT 的端口快速回收</span></span><br><span class="line"><span class="built_in">echo</span> 1 &gt; /proc/sys/net/ipv4/tcp_tw_recycle   <span class="comment"># ⚠️ 已废弃，慎用</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看 TIME_WAIT 等状态数量</span></span><br><span class="line">netstat -nat | grep TIME_WAIT | <span class="built_in">wc</span> -l</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>⚠️ <code>tcp_tw_recycle</code> 在高
+NAT/多客户端场景下会导致连接异常，自 Linux 4.12 起已被移除。</p>
+</blockquote>
+<hr>
+<h4 id="方法-4使用负载均衡或代理层卸载连接">✅ 方法
+4：使用负载均衡或代理层卸载连接</h4>
+<ul>
+<li>🔀 通过 <strong>Nginx / LVS / HAProxy</strong>
+等中间层代理，让其统一管理连接，客户端不直接连接后端服务。</li>
+<li>后端服务维持更少连接，避免过多 TIME_WAIT。</li>
+</ul>
+<hr>
+<h3 id="五time_wait-产生在哪一方">🧾 五、TIME_WAIT 产生在哪一方？</h3>
+<table>
+<thead>
+<tr>
+<th>主动关闭连接的一方</th>
+<th>会进入 TIME_WAIT</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>被动关闭连接的一方</td>
+<td>进入 CLOSE-WAIT</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>✅ 因此，<strong>客户端通常进入 TIME_WAIT
+状态</strong>，如果你看到服务端有大量
+TIME_WAIT，很可能是<strong>服务端主动断开连接</strong>了！</p>
+</blockquote>
+<hr>
+<h3 id="六总结一句话">✅ 六、总结一句话：</h3>
+<blockquote>
+<p><strong>TIME_WAIT
+是为连接安全关闭做的必要等待，但过多会带来端口耗尽和资源浪费，可通过长连接、端口重用、内核调优等手段缓解。</strong></p>
+</blockquote>
+<hr>
+<h1 id="tcp-报文头部格式详解tcp-header">✅ TCP 报文头部格式详解（TCP
+Header）</h1>
+<hr>
+<h3 id="一tcp-报文段结构">📦 一、TCP 报文段结构</h3>
+<p>一个 TCP 报文段由两部分组成：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[TCP 报文头部 (Header)] + [TCP 数据部分 (Data)]</span><br></pre></td></tr></table></figure>
+<p>其中，<strong>头部最小 20 字节，最大 60
+字节</strong>，取决于是否有“选项字段（Options）”。</p>
+<hr>
+<h3 id="二tcp-报文头部格式标准-20-字节">📐 二、TCP 报文头部格式（标准 20
+字节）</h3>
+<p>以下是标准 TCP 报文头部的字段结构：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">  0          4          8         12         16         20</span><br><span class="line">+-----------+-----------+-----------+-----------+</span><br><span class="line">|    源端口号 (16 bits) |   目标端口号 (16 bits)  |</span><br><span class="line">+-----------+-----------+-----------+-----------+</span><br><span class="line">|                序列号 Sequence Number (32 bits)              |</span><br><span class="line">+--------------------------------------------------------------+</span><br><span class="line">|              确认号 Acknowledgment Number (32 bits)          |</span><br><span class="line">+-----------+-----------+-----------+-----------+</span><br><span class="line">| 数据偏移 | 保留 | 控制位 Flags（6位） | 窗口大小 (16 bits) |</span><br><span class="line">|   4 bits | 6 bits |    6 bits     |                 |</span><br><span class="line">+-----------+-----------+-----------+-----------+</span><br><span class="line">|           校验和 (Checksum) (16 bits)        | 紧急指针 (16 bits) |</span><br><span class="line">+-----------+-----------+-----------+-----------+</span><br><span class="line">|     （可选字段 Options 及其填充 Padding，0~40 字节）       |</span><br><span class="line">+--------------------------------------------------------------+</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="三字段解释按顺序">🧩 三、字段解释（按顺序）</h3>
+<table>
+<colgroup>
+<col style="width: 40%">
+<col style="width: 10%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr>
+<th>字段</th>
+<th>位数</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>源端口号</strong> Source Port</td>
+<td>16</td>
+<td>表示发送方应用程序使用的端口号</td>
+</tr>
+<tr>
+<td><strong>目标端口号</strong> Destination Port</td>
+<td>16</td>
+<td>表示接收方应用程序的端口号</td>
+</tr>
+<tr>
+<td><strong>序列号</strong> Sequence Number</td>
+<td>32</td>
+<td>数据字节流的起始序号，确保有序传输</td>
+</tr>
+<tr>
+<td><strong>确认号</strong> Acknowledgment Number</td>
+<td>32</td>
+<td>表示期望接收到的下一个字节序号（ACK 用）</td>
+</tr>
+<tr>
+<td><strong>数据偏移</strong> Data Offset</td>
+<td>4</td>
+<td>表头长度，以 4 字节为单位（最小值为 5）</td>
+</tr>
+<tr>
+<td><strong>保留</strong> Reserved</td>
+<td>6</td>
+<td>保留未用，值应为 0（留作扩展）</td>
+</tr>
+<tr>
+<td><strong>控制位</strong> Flags</td>
+<td>6</td>
+<td>控制数据传输行为，详见下表</td>
+</tr>
+<tr>
+<td><strong>窗口大小</strong> Window Size</td>
+<td>16</td>
+<td>告诉对方还能接收多少字节（流量控制）</td>
+</tr>
+<tr>
+<td><strong>校验和</strong> Checksum</td>
+<td>16</td>
+<td>校验整个 TCP 报文是否被破坏</td>
+</tr>
+<tr>
+<td><strong>紧急指针</strong> Urgent Pointer</td>
+<td>16</td>
+<td>指出紧急数据的位置，配合 URG 使用</td>
+</tr>
+<tr>
+<td><strong>选项字段</strong> Options（可选）</td>
+<td>0~40字节</td>
+<td>包括如 MSS、窗口扩大、时间戳等选项</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="四控制位-flags6-位标志位">🚩 四、控制位 Flags（6 位标志位）</h3>
+<table>
+<thead>
+<tr>
+<th>位名</th>
+<th>含义</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>URG</strong></td>
+<td>紧急标志</td>
+<td>配合紧急指针使用，优先处理紧急数据</td>
+</tr>
+<tr>
+<td><strong>ACK</strong></td>
+<td>确认标志</td>
+<td>确认号字段有效，正常通信必带</td>
+</tr>
+<tr>
+<td><strong>PSH</strong></td>
+<td>推送标志</td>
+<td>立即推送数据到应用层</td>
+</tr>
+<tr>
+<td><strong>RST</strong></td>
+<td>重置连接</td>
+<td>异常关闭连接，强制断开</td>
+</tr>
+<tr>
+<td><strong>SYN</strong></td>
+<td>同步序号</td>
+<td>用于建立连接（三次握手中）</td>
+</tr>
+<tr>
+<td><strong>FIN</strong></td>
+<td>结束标志</td>
+<td>表示数据发送完成，请求关闭连接（挥手）</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>✅ <strong>三次握手：SYN，SYN+ACK，ACK</strong> ✅
+<strong>四次挥手：FIN，ACK，FIN，ACK</strong></p>
+</blockquote>
+<hr>
+<h3 id="五关键字段使用场景小结">📝 五、关键字段使用场景小结</h3>
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>相关字段</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>建立连接（三次握手）</td>
+<td>SYN, ACK, Sequence Number</td>
+</tr>
+<tr>
+<td>断开连接（四次挥手）</td>
+<td>FIN, ACK</td>
+</tr>
+<tr>
+<td>流量控制</td>
+<td>Window Size</td>
+</tr>
+<tr>
+<td>错误检测</td>
+<td>Checksum</td>
+</tr>
+<tr>
+<td>数据有序传输</td>
+<td>Sequence Number, Acknowledgment Number</td>
+</tr>
+<tr>
+<td>加快数据处理</td>
+<td>PSH</td>
+</tr>
+<tr>
+<td>紧急中断通知</td>
+<td>URG, Urgent Pointer</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://www.totorocatcat.top/">Totoro</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://totorocatcat.top/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%85%AB%E8%82%A13/">http://totorocatcat.top/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%85%AB%E8%82%A13/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://totorocatcat.top" target="_blank">Totoroの旅</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%9F%BA%E7%A1%80/">基础</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E5%89%91%E5%AE%A2-%E5%8F%A4%E9%A3%8E%E6%8F%92%E7%94%BB.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%85%AB%E8%82%A14/" title="计算机网络八股4"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E5%89%91%E5%AE%A2-%E5%8F%A4%E9%A3%8E%E6%8F%92%E7%94%BB.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">计算机网络八股4</div></div></a></div><div class="next-post pull-right"><a href="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%85%AB%E8%82%A12/" title="计算机网络八股2"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E5%89%91%E5%AE%A2-%E5%8F%A4%E9%A3%8E%E6%8F%92%E7%94%BB.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">计算机网络八股2</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2010%E5%B9%B4%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%9F%E8%80%83-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" title="2010年计算机统考-数据结构"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/e345af5b515d2f76bb44fdaa6eff3db4d6f598d3.jpg@1256w_908h_!web-article-pic.avif" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-10-04</div><div class="title">2010年计算机统考-数据结构</div></div></a></div><div><a href="/2011%E5%B9%B4%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%9F%E8%80%83-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E9%83%A8%E5%88%86/" title="2011年计算机统考-数据结构部分"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/e345af5b515d2f76bb44fdaa6eff3db4d6f598d3.jpg@1256w_908h_!web-article-pic.avif" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-10-05</div><div class="title">2011年计算机统考-数据结构部分</div></div></a></div><div><a href="/2012%E5%B9%B4%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%9F%E8%80%83-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E9%83%A8%E5%88%86/" title="2012年计算机统考-数据结构部分"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/e345af5b515d2f76bb44fdaa6eff3db4d6f598d3.jpg@1256w_908h_!web-article-pic.avif" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-10-05</div><div class="title">2012年计算机统考-数据结构部分</div></div></a></div><div><a href="/2022%E5%B9%B4C-%E8%AF%95%E5%8D%B7%E8%BD%AF%E4%BB%B6%E5%AD%A6%E9%99%A2/" title="2022年C++试卷软件学院"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://source.fomal.cc/img/default_cover_80.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-05-16</div><div class="title">2022年C++试卷软件学院</div></div></a></div><div><a href="/2022C-%E8%AF%95%E5%8D%B7/" title="2022C++试卷"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://source.fomal.cc/img/default_cover_80.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-05-16</div><div class="title">2022C++试卷</div></div></a></div><div><a href="/AJAX%E5%9F%BA%E7%A1%80/" title="AJAX基础"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/ushio-api-img-moe@5.0.16/img_169_2560x1440_96_null_normal.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-05-16</div><div class="title">AJAX基础</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E4%BE%A0%E5%AE%A2-%E6%AD%A6%E4%BE%A0%E5%9C%BA%E6%99%AF-%E6%B8%B8%E6%88%8F.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Totoro</div><div class="author-info__description">热爱文学的SCUT软件学院学生</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">859</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">36</div></a></div><a id="card-info-btn" href="https://github.com/4512abc"><i class="fab fa-github"></i><span>🛴前往小窝......</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/4512abc" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:4512abc@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到龙猫の小窝</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%85%AB%E8%82%A13"><span class="toc-text">计算机网络八股3</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#tcp-%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8Bthree-way-handshake"><span class="toc-text">📚 TCP
+三次握手（Three-Way Handshake）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E6%B5%81%E7%A8%8B"><span class="toc-text">三次握手流程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%8F%91%E9%80%81-syn-%E8%AF%B7%E6%B1%82"><span class="toc-text">1. 第一次握手：客户端发送
+SYN 请求</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E6%AC%A1%E6%8F%A1%E6%89%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%9B%9E%E5%BA%94-syn-ack"><span class="toc-text">2. 第二次握手：服务器回应
+SYN + ACK</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%8F%91%E9%80%81-ack-%E7%A1%AE%E8%AE%A4"><span class="toc-text">3. 第三次握手：客户端发送
+ACK 确认</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A4%A7%E7%99%BD%E8%AF%9D%E8%A7%A3%E9%87%8A"><span class="toc-text">📚 大白话解释：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#syn-%E7%9A%84%E6%A6%82%E5%BF%B5%E4%B8%8E%E4%BD%9C%E7%94%A8"><span class="toc-text">📚 SYN 的概念与作用：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#syn-%E6%A0%87%E5%BF%97%E4%BD%8D"><span class="toc-text">SYN 标志位</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%9C%E7%94%A8"><span class="toc-text">作用：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E6%84%8F%E5%9B%BE"><span class="toc-text">示意图：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%9E%E9%99%85%E4%BE%8B%E5%AD%90"><span class="toc-text">📚 实际例子：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%8F%E7%BB%93"><span class="toc-text">小结：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#tcp-%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E4%B8%BA%E4%BB%80%E4%B9%88%E6%98%AF%E4%B8%89%E6%AC%A1%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E8%83%BD%E6%98%AF%E4%B8%A4%E6%AC%A1%E6%88%96%E5%9B%9B%E6%AC%A1"><span class="toc-text">TCP
+三次握手为什么是三次，为什么不能是两次或四次？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E6%98%AF%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B"><span class="toc-text">为什么是三次握手？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E8%83%BD%E6%98%AF%E4%B8%A4%E6%AC%A1%E6%8F%A1%E6%89%8B"><span class="toc-text">为什么不能是两次握手？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E8%83%BD%E6%98%AF%E5%9B%9B%E6%AC%A1%E6%8F%A1%E6%89%8B"><span class="toc-text">为什么不能是四次握手？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93%E4%B8%BA%E4%BB%80%E4%B9%88%E6%98%AF%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B"><span class="toc-text">总结：为什么是三次握手？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tcp-%E6%8F%A1%E6%89%8B%E4%B8%8E%E6%B3%9B%E6%B4%AA%E6%94%BB%E5%87%BB"><span class="toc-text">TCP 握手与“泛洪攻击”</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#syn-flood-%E6%94%BB%E5%87%BB"><span class="toc-text">SYN Flood 攻击：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="toc-text">解决方案：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8D%E6%96%B0%E8%AE%BE%E8%AE%A1-tcp-%E8%BF%9E%E6%8E%A5%E5%BB%BA%E7%AB%8B%E8%BF%87%E7%A8%8B"><span class="toc-text">重新设计 TCP
+连接建立过程：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%93%E8%AE%BA"><span class="toc-text">结论：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#tcp-%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E8%BF%87%E7%A8%8B%E4%B8%AD%E7%9A%84%E8%B6%85%E6%97%B6%E4%B8%8E%E9%87%8D%E4%BC%A0%E6%9C%BA%E5%88%B6"><span class="toc-text">TCP
+三次握手过程中的超时与重传机制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E6%AC%A1%E6%8F%A1%E6%89%8B%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%9C%AA%E6%94%B6%E5%88%B0-syn-%E6%8A%A5%E6%96%87"><span class="toc-text">第一次握手：服务端未收到
+SYN 报文</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%9C%AA%E6%94%B6%E5%88%B0-ack-%E6%8A%A5%E6%96%87"><span class="toc-text">第二次握手：客户端未收到
+ACK 报文</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%9C%AA%E6%94%B6%E5%88%B0-ack-%E6%8A%A5%E6%96%87"><span class="toc-text">第三次握手：服务端未收到
+ACK 报文</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E7%AC%AC%E4%BA%8C%E6%AC%A1%E6%8F%A1%E6%89%8B%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E5%90%8C%E6%97%B6%E4%BC%A0%E5%9B%9E-ack-%E5%92%8C-syn"><span class="toc-text">关于第二次握手：为什么需要同时传回
+ACK 和 SYN？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%8F%AF%E4%BB%A5%E6%90%BA%E5%B8%A6%E6%95%B0%E6%8D%AE%E5%90%97"><span class="toc-text">第三次握手可以携带数据吗？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-1"><span class="toc-text">总结：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#tcp-%E5%8D%8A%E8%BF%9E%E6%8E%A5%E7%8A%B6%E6%80%81half-open-connection"><span class="toc-text">TCP
+半连接状态（Half-Open Connection）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%8A%E8%BF%9E%E6%8E%A5%E9%98%9F%E5%88%97syn-%E9%98%9F%E5%88%97"><span class="toc-text">半连接队列（SYN 队列）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E8%BF%87%E7%A8%8B%E4%B8%AD%E7%9A%84%E9%98%9F%E5%88%97%E4%BD%9C%E7%94%A8"><span class="toc-text">三次握手过程中的队列作用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E5%8D%8A%E8%BF%9E%E6%8E%A5%E9%98%9F%E5%88%97%E5%BE%88%E9%87%8D%E8%A6%81"><span class="toc-text">为什么半连接队列很重要？</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#syn-flood-%E6%94%BB%E5%87%BB-1"><span class="toc-text">SYN Flood 攻击</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#syn-flood-%E6%94%BB%E5%87%BB%E7%9A%84%E5%BA%94%E5%AF%B9%E6%96%B9%E6%A1%88"><span class="toc-text">SYN Flood
+攻击的应对方案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#java-%E9%9D%A2%E8%AF%95%E4%B8%AD%E7%9A%84-tcp-%E5%8D%8A%E8%BF%9E%E6%8E%A5%E9%97%AE%E9%A2%98"><span class="toc-text">Java 面试中的 TCP
+半连接问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-2"><span class="toc-text">总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tcp-%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B%E8%BF%87%E7%A8%8Bfour-way-handshake"><span class="toc-text">TCP
+四次挥手过程（Four-Way Handshake）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%A6%E7%BB%86%E8%BF%87%E7%A8%8B"><span class="toc-text">详细过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-3"><span class="toc-text">总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B%E5%9C%A8%E5%AE%9E%E9%99%85%E5%BA%94%E7%94%A8%E4%B8%AD%E7%9A%84%E6%84%8F%E4%B9%89"><span class="toc-text">四次挥手在实际应用中的意义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tcp-%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B%E7%9A%84%E6%80%BB%E7%BB%93"><span class="toc-text">TCP 四次挥手的总结</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88-tcp-%E6%8C%A5%E6%89%8B%E9%9C%80%E8%A6%81%E5%9B%9B%E6%AC%A1"><span class="toc-text">✅为什么 TCP
+挥手需要四次？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E7%AD%94%E6%A1%88"><span class="toc-text">🎯 核心答案：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E6%9E%90-tcp-%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B%E7%9A%84%E5%8E%9F%E5%9B%A0"><span class="toc-text">🧠 分析 TCP 四次挥手的原因</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%A8%E5%8F%8C%E5%B7%A5%E9%80%9A%E4%BF%A1%E7%9A%84%E5%90%AB%E4%B9%89"><span class="toc-text">🔁 全双工通信的含义：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%A1%E6%89%8B%E4%B8%8E%E6%8C%A5%E6%89%8B%E5%AF%B9%E6%AF%94"><span class="toc-text">📶 握手与挥手对比</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B%E6%B5%81%E7%A8%8B%E8%AF%A6%E8%A7%A3"><span class="toc-text">📝 四次挥手流程详解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E6%AC%A1%E6%8C%A5%E6%89%8B%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%8F%91%E9%80%81-fin"><span class="toc-text">1️⃣ 第一次挥手：客户端发送 FIN</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E6%AC%A1%E6%8C%A5%E6%89%8B%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%9B%9E%E5%A4%8D-ack"><span class="toc-text">2️⃣ 第二次挥手：服务端回复 ACK</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E6%AC%A1%E6%8C%A5%E6%89%8B%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%8F%91%E9%80%81-fin"><span class="toc-text">3️⃣ 第三次挥手：服务端发送 FIN</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%9B%9E%E5%A4%8D-ack"><span class="toc-text">4️⃣ 第四次挥手：客户端回复 ACK</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B%E7%8A%B6%E6%80%81%E5%9B%BE%E7%AE%80%E8%A6%81"><span class="toc-text">🔄 四次挥手状态图简要：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BE%E4%B8%AA%E5%A4%A7%E7%99%BD%E8%AF%9D%E4%BE%8B%E5%AD%90%E8%87%AA%E5%B7%B1%E7%89%88%E6%9C%AC"><span class="toc-text">🧾 举个大白话例子（自己版本）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#time-wait-%E4%B8%BA%E4%BB%80%E4%B9%88%E5%AD%98%E5%9C%A8"><span class="toc-text">⏲️ TIME-WAIT 为什么存在？</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#tcp-%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E7%AD%89%E5%BE%85-2msl-%E6%89%8D%E8%BF%9B%E5%85%A5-closed"><span class="toc-text">✅ TCP
+四次挥手为什么要等待 2MSL 才进入 CLOSED？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-msl"><span class="toc-text">📌 什么是 MSL？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E7%AD%89%E5%BE%85-2msl%E4%B8%A4%E4%B8%AA%E6%A0%B8%E5%BF%83%E5%8E%9F%E5%9B%A0"><span class="toc-text">🧠 为什么要等待
+2MSL？——两个核心原因：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A1%AE%E4%BF%9D%E5%AF%B9%E6%96%B9%E6%94%B6%E5%88%B0%E4%BA%86%E6%9C%80%E5%90%8E%E7%9A%84-ack"><span class="toc-text">🟡 1. 确保对方收到了最后的 ACK</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%81%BF%E5%85%8D%E6%97%A7%E8%BF%9E%E6%8E%A5%E7%9A%84%E6%8A%A5%E6%96%87%E6%B1%A1%E6%9F%93%E6%96%B0%E8%BF%9E%E6%8E%A5"><span class="toc-text">🟡 2.
+避免旧连接的报文污染新连接</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E6%98%AF2-%E5%80%8D-msl-%E8%80%8C%E4%B8%8D%E6%98%AF-1-%E5%80%8D"><span class="toc-text">🔁 为什么是“2 倍” MSL 而不是 1
+倍？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9D%A5-1-%E5%9B%9E-2msl"><span class="toc-text">1 来 + 1 回 &#x3D; 2MSL</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#time_wait-%E7%8A%B6%E6%80%81%E7%9A%84%E5%85%B3%E9%94%AE%E6%84%8F%E4%B9%89"><span class="toc-text">🔚 TIME_WAIT 状态的关键意义</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#tcp-%E4%BF%9D%E6%B4%BB%E8%AE%A1%E6%97%B6%E5%99%A8keepalive-timer"><span class="toc-text">✅ TCP 保活计时器（KeepAlive
+Timer）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E4%BB%80%E4%B9%88%E6%98%AF-tcp-%E4%BF%9D%E6%B4%BB%E8%AE%A1%E6%97%B6%E5%99%A8"><span class="toc-text">📌 一、什么是 TCP 保活计时器？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E4%BF%9D%E6%B4%BB%E8%AE%A1%E6%97%B6%E5%99%A8"><span class="toc-text">📦 二、为什么需要保活计时器？</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9C%BA%E6%99%AF%E4%B8%BE%E4%BE%8B"><span class="toc-text">🔸 场景举例：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E4%BF%9D%E6%B4%BB%E8%AE%A1%E6%97%B6%E5%99%A8%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%9C%BA%E5%88%B6"><span class="toc-text">⚙️ 三、保活计时器的工作机制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B%E9%BB%98%E8%AE%A4%E6%97%B6%E9%97%B4%E5%8F%82%E6%95%B0%E4%BB%A5-linux-%E4%B8%BA%E4%BE%8B"><span class="toc-text">⏱️ 四、默认时间参数（以 Linux
+为例）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%94%E5%92%8C-time_waitfin-%E7%AD%89%E8%AE%A1%E6%97%B6%E5%99%A8%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">🧾 五、和 TIME_WAIT、FIN
+等计时器的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%AD%E4%BD%BF%E7%94%A8%E4%BF%9D%E6%B4%BB%E7%9A%84%E5%B8%B8%E8%A7%81%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-text">💡 六、使用保活的常见应用场景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%83%E6%80%BB%E7%BB%93%E4%B8%80%E5%8F%A5%E8%AF%9D"><span class="toc-text">✅ 七、总结一句话：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#close-wait-%E5%92%8C-time-wait-%E7%9A%84%E7%8A%B6%E6%80%81%E4%B8%8E%E6%84%8F%E4%B9%89"><span class="toc-text">✅ CLOSE-WAIT 和 TIME-WAIT
+的状态与意义</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80close-wait-%E7%8A%B6%E6%80%81"><span class="toc-text">🧩 一、CLOSE-WAIT 状态</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89"><span class="toc-text">🔹 1. 定义：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%87%BA%E7%8E%B0%E5%9C%BA%E6%99%AF"><span class="toc-text">🔹 2. 出现场景：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%8A%B6%E6%80%81%E8%BD%AC%E6%8D%A2%E8%B7%AF%E5%BE%84"><span class="toc-text">🔹 3. 状态转换路径：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%84%8F%E4%B9%89%E5%92%8C%E4%BD%9C%E7%94%A8"><span class="toc-text">🔹 4. 意义和作用：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%87%8D%E7%82%B9%E8%AE%B0%E5%BF%86"><span class="toc-text">🧠 重点记忆：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8Ctime-wait-%E7%8A%B6%E6%80%81"><span class="toc-text">🧩 二、TIME-WAIT 状态</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89-1"><span class="toc-text">🔹 1. 定义：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%87%BA%E7%8E%B0%E5%9C%BA%E6%99%AF-1"><span class="toc-text">🔹 2. 出现场景：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%8A%B6%E6%80%81%E8%BD%AC%E6%8D%A2%E8%B7%AF%E5%BE%84-1"><span class="toc-text">🔹 3. 状态转换路径：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%84%8F%E4%B9%89%E5%92%8C%E4%BD%9C%E7%94%A8-1"><span class="toc-text">🔹 4. 意义和作用：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#time-wait-%E7%9A%84%E4%B8%A4%E4%B8%AA%E4%B8%BB%E8%A6%81%E7%9B%AE%E7%9A%84"><span class="toc-text">✅ TIME-WAIT 的两个主要目的：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89time-wait-%E4%B8%AD%E7%9A%84-msl-%E8%A1%A5%E5%85%85%E7%9F%A5%E8%AF%86"><span class="toc-text">🧾 三、TIME-WAIT 中的 MSL
+补充知识</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9Bclose-wait-%E5%92%8C-time-wait-%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E5%AF%B9%E6%AF%94"><span class="toc-text">🔧 四、CLOSE-WAIT 和
+TIME-WAIT 常见问题对比</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#time_wait-%E7%8A%B6%E6%80%81%E8%BF%87%E5%A4%9A%E4%BC%9A%E5%AF%BC%E8%87%B4%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3"><span class="toc-text">✅ TIME_WAIT
+状态过多会导致什么问题？如何解决？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E4%BB%80%E4%B9%88%E6%98%AF-time_wait-%E7%8A%B6%E6%80%81"><span class="toc-text">🧩 一、什么是 TIME_WAIT 状态？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8Ctime_wait-%E7%8A%B6%E6%80%81%E8%BF%87%E5%A4%9A%E5%B8%A6%E6%9D%A5%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-text">❗二、TIME_WAIT
+状态过多带来的问题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E8%B5%84%E6%BA%90%E6%B5%AA%E8%B4%B9%E5%B0%A4%E5%85%B6%E6%98%AF%E9%AB%98%E5%B9%B6%E5%8F%91%E4%B8%8B"><span class="toc-text">✅ 1.
+系统资源浪费（尤其是高并发下）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E5%B8%B8%E8%A7%81%E5%9C%BA%E6%99%AF"><span class="toc-text">🧪 三、常见场景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B%E8%A7%A3%E5%86%B3-time_wait-%E8%BF%87%E5%A4%9A%E7%9A%84%E6%96%B9%E6%B3%95%E7%B3%BB%E7%BB%9F-%E5%BA%94%E7%94%A8%E5%B1%82"><span class="toc-text">🧰 四、解决 TIME_WAIT
+过多的方法（系统 + 应用层）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E6%B3%95-1%E8%AE%BE%E7%BD%AE-so_reuseaddr-%E5%A5%97%E6%8E%A5%E5%AD%97%E9%80%89%E9%A1%B9"><span class="toc-text">✅ 方法 1：设置 SO_REUSEADDR
+套接字选项</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E6%B3%95-2%E4%BD%BF%E7%94%A8%E9%95%BF%E8%BF%9E%E6%8E%A5keep-alive"><span class="toc-text">✅ 方法
+2：使用长连接（Keep-Alive）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E6%B3%95-3%E5%86%85%E6%A0%B8%E5%8F%82%E6%95%B0%E4%BC%98%E5%8C%96linux"><span class="toc-text">✅ 方法 3：内核参数优化（Linux）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E6%B3%95-4%E4%BD%BF%E7%94%A8%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E6%88%96%E4%BB%A3%E7%90%86%E5%B1%82%E5%8D%B8%E8%BD%BD%E8%BF%9E%E6%8E%A5"><span class="toc-text">✅ 方法
+4：使用负载均衡或代理层卸载连接</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%94time_wait-%E4%BA%A7%E7%94%9F%E5%9C%A8%E5%93%AA%E4%B8%80%E6%96%B9"><span class="toc-text">🧾 五、TIME_WAIT 产生在哪一方？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%AD%E6%80%BB%E7%BB%93%E4%B8%80%E5%8F%A5%E8%AF%9D"><span class="toc-text">✅ 六、总结一句话：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#tcp-%E6%8A%A5%E6%96%87%E5%A4%B4%E9%83%A8%E6%A0%BC%E5%BC%8F%E8%AF%A6%E8%A7%A3tcp-header"><span class="toc-text">✅ TCP 报文头部格式详解（TCP
+Header）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80tcp-%E6%8A%A5%E6%96%87%E6%AE%B5%E7%BB%93%E6%9E%84"><span class="toc-text">📦 一、TCP 报文段结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8Ctcp-%E6%8A%A5%E6%96%87%E5%A4%B4%E9%83%A8%E6%A0%BC%E5%BC%8F%E6%A0%87%E5%87%86-20-%E5%AD%97%E8%8A%82"><span class="toc-text">📐 二、TCP 报文头部格式（标准 20
+字节）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E5%AD%97%E6%AE%B5%E8%A7%A3%E9%87%8A%E6%8C%89%E9%A1%BA%E5%BA%8F"><span class="toc-text">🧩 三、字段解释（按顺序）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B%E6%8E%A7%E5%88%B6%E4%BD%8D-flags6-%E4%BD%8D%E6%A0%87%E5%BF%97%E4%BD%8D"><span class="toc-text">🚩 四、控制位 Flags（6 位标志位）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%94%E5%85%B3%E9%94%AE%E5%AD%97%E6%AE%B5%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF%E5%B0%8F%E7%BB%93"><span class="toc-text">📝 五、关键字段使用场景小结</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%85%AB%E8%82%A15/" title="计算机网络八股5"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E4%BA%9A%E7%B4%A2-%E5%8A%A8%E6%BC%AB%E9%A3%8E.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="计算机网络八股5"/></a><div class="content"><a class="title" href="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%85%AB%E8%82%A15/" title="计算机网络八股5">计算机网络八股5</a><time datetime="2025-05-09T08:24:49.000Z" title="发表于 2025-05-09 16:24:49">2025-05-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%85%AB%E8%82%A14/" title="计算机网络八股4"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E5%89%91%E5%AE%A2-%E5%8F%A4%E9%A3%8E%E6%8F%92%E7%94%BB.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="计算机网络八股4"/></a><div class="content"><a class="title" href="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%85%AB%E8%82%A14/" title="计算机网络八股4">计算机网络八股4</a><time datetime="2025-05-09T08:07:39.000Z" title="发表于 2025-05-09 16:07:39">2025-05-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%85%AB%E8%82%A13/" title="计算机网络八股3"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E5%89%91%E5%AE%A2-%E5%8F%A4%E9%A3%8E%E6%8F%92%E7%94%BB.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="计算机网络八股3"/></a><div class="content"><a class="title" href="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%85%AB%E8%82%A13/" title="计算机网络八股3">计算机网络八股3</a><time datetime="2025-05-09T07:40:49.000Z" title="发表于 2025-05-09 15:40:49">2025-05-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%85%AB%E8%82%A12/" title="计算机网络八股2"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E5%89%91%E5%AE%A2-%E5%8F%A4%E9%A3%8E%E6%8F%92%E7%94%BB.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="计算机网络八股2"/></a><div class="content"><a class="title" href="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%85%AB%E8%82%A12/" title="计算机网络八股2">计算机网络八股2</a><time datetime="2025-05-09T07:06:53.000Z" title="发表于 2025-05-09 15:06:53">2025-05-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%85%AB%E8%82%A11/" title="计算机网络八股1"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E5%89%91%E5%AE%A2-%E5%8F%A4%E9%A3%8E%E6%8F%92%E7%94%BB.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="计算机网络八股1"/></a><div class="content"><a class="title" href="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%85%AB%E8%82%A11/" title="计算机网络八股1">计算机网络八股1</a><time datetime="2025-05-09T06:05:30.000Z" title="发表于 2025-05-09 14:05:30">2025-05-09</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 - 2025 By Totoro</div><div class="footer_custom_text">I wish you to become your own sun, no need to rely on who's light.<p><a target="_blank" href="https://hexo.io/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&logo=hexo" title="博客框架为Hexo"></a>&nbsp;<a target="_blank" href="https://butterfly.js.org/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&logo=bitdefender" title="主题采用butterfly"></a>&nbsp;<a target="_blank" href="https://www.jsdelivr.com/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&logo=jsDelivr" title="本站使用JsDelivr为静态资源提供CDN加速"></a> &nbsp;<a target="_blank" href="https://vercel.com/ "><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Hosted-Vervel-brightgreen?style=flat&logo=Vercel" title="本站采用双线部署，默认线路托管于Vercel"></a>&nbsp;<a target="_blank" href="https://vercel.com/ "><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Hosted-Coding-0cedbe?style=flat&logo=Codio" title="本站采用双线部署，联通线路托管于Coding"></a>&nbsp;<a target="_blank" href="https://github.com/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&logo=GitHub" title="本站项目由Gtihub托管"></a>&nbsp;<a target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&logo=Claris" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"></a></p></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat-btn" type="button" title="聊天"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="/js/tw_cn.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@5.2.0/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'HT1PalaKkPaG1UqAXBhJXIu8-gzGzoHsz',
+      appKey: 'iT0TnVVAwf9zuZ7NqwclQItY',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://cdn.jsdelivr.net/npm/valine@1.5.1/dist/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><script defer src="/js/light.js"></script><canvas id="universe"></canvas><script defer src="/js/universe.js"></script><script async src="/js/title.js"></script><script defer src="https://npm.elemecdn.com/jquery@latest/dist/jquery.min.js"></script><script defer data-pjax src="/js/cat.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="1" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener
+  btf.removeGlobalFnEvent('pjax')
+  btf.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.12.0"></script></div></div><!-- hexo injector body_end start --><script data-pjax>
+    function butterfly_categories_card_injector_config(){
+      var parent_div_git = document.getElementById('recent-posts');
+      var item_html = '<style>li.categoryBar-list-item{width:32.3%;}.categoryBar-list{max-height: 380px;overflow:auto;}.categoryBar-list::-webkit-scrollbar{width:0!important}@media screen and (max-width: 650px){.categoryBar-list{max-height: 320px;}}</style><div class="recent-post-item" style="height:auto;width:100%;padding:0px;"><div id="categoryBar"><ul class="categoryBar-list"><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_12.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/离散数学/&quot;);" href="javascript:void(0);">离散数学</a><span class="categoryBar-list-count">33</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_13.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS61B/&quot;);" href="javascript:void(0);">CS61B</a><span class="categoryBar-list-count">76</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_14.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/期末の旅/&quot;);" href="javascript:void(0);">期末の旅</a><span class="categoryBar-list-count">99</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_17.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/刷题计划/&quot;);" href="javascript:void(0);">刷题计划</a><span class="categoryBar-list-count">60</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_18.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/区域赛の旅/&quot;);" href="javascript:void(0);">区域赛の旅</a><span class="categoryBar-list-count">7</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_19.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/Codeforcesの旅/&quot;);" href="javascript:void(0);">Codeforcesの旅</a><span class="categoryBar-list-count">24</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_20.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/牛客の旅/&quot;);" href="javascript:void(0);">牛客の旅</a><span class="categoryBar-list-count">65</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_21.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/ACMの旅/&quot;);" href="javascript:void(0);">ACMの旅</a><span class="categoryBar-list-count">42</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_22.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/数学建模/&quot;);" href="javascript:void(0);">数学建模</a><span class="categoryBar-list-count">26</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_22.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/前端の旅/&quot;);" href="javascript:void(0);">前端の旅</a><span class="categoryBar-list-count">17</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_23.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/数据结构/&quot;);" href="javascript:void(0);">数据结构</a><span class="categoryBar-list-count">47</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_24.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/Atcoderの旅/&quot;);" href="javascript:void(0);">Atcoderの旅</a><span class="categoryBar-list-count">53</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_25.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/C-の旅/&quot;);" href="javascript:void(0);">C++の旅</a><span class="categoryBar-list-count">17</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_26.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS70の旅/&quot;);" href="javascript:void(0);">CS70の旅</a><span class="categoryBar-list-count">24</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_27.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CSAPPの旅/&quot;);" href="javascript:void(0);">CSAPPの旅</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_28.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/计算机组成原理/&quot;);" href="javascript:void(0);">计算机组成原理</a><span class="categoryBar-list-count">47</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_29.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/编程基础/&quot;);" href="javascript:void(0);">编程基础</a><span class="categoryBar-list-count">14</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_30.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/JAVAの旅/&quot;);" href="javascript:void(0);">JAVAの旅</a><span class="categoryBar-list-count">10</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_31.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/MIT-6-031-Software-Construction/&quot;);" href="javascript:void(0);">MIT 6.031:Software Construction</a><span class="categoryBar-list-count">16</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_32.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS-110L/&quot;);" href="javascript:void(0);">CS 110L</a><span class="categoryBar-list-count">3</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_33.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/数据库の旅/&quot;);" href="javascript:void(0);">数据库の旅</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_34.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/灵魂の旅/&quot;);" href="javascript:void(0);">灵魂の旅</a><span class="categoryBar-list-count">2</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_35.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/个人安排/&quot;);" href="javascript:void(0);">个人安排</a><span class="categoryBar-list-count">2</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_36.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/杂项/&quot;);" href="javascript:void(0);">杂项</a><span class="categoryBar-list-count">13</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_37.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/文学/&quot;);" href="javascript:void(0);">文学</a><span class="categoryBar-list-count">49</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_38.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/力扣の旅/&quot;);" href="javascript:void(0);">力扣の旅</a><span class="categoryBar-list-count">20</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_39.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/计算机网络/&quot;);" href="javascript:void(0);">计算机网络</a><span class="categoryBar-list-count">23</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_40.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/千里十二行/&quot;);" href="javascript:void(0);">千里十二行</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_41.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/🗡指offer/&quot;);" href="javascript:void(0);">🗡指offer</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_42.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/少年游/&quot;);" href="javascript:void(0);">少年游</a><span class="categoryBar-list-count">2</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_43.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/算法提高课/&quot;);" href="javascript:void(0);">算法提高课</a><span class="categoryBar-list-count">3</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_44.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/汇编の旅/&quot;);" href="javascript:void(0);">汇编の旅</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_44.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/C-实训/&quot;);" href="javascript:void(0);">C++实训</a><span class="categoryBar-list-count">8</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_45.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS知识/&quot;);" href="javascript:void(0);">CS知识</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_46.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/编译原理/&quot;);" href="javascript:void(0);">编译原理</a><span class="categoryBar-list-count">22</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_48.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/操作系统/&quot;);" href="javascript:void(0);">操作系统</a><span class="categoryBar-list-count">26</span><span class="categoryBar-list-descr"></span></li></ul></div></div>';
+      console.log('已挂载butterfly_categories_card')
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+      }
+    if( document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+    butterfly_categories_card_injector_config()
+    }
+  </script><script data-pjax>
+  function butterfly_swiper_injector_config(){
+    var parent_div_git = document.getElementById('recent-posts');
+    var item_html = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms;"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;诗录/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/4b31456c6f0f4489f99177f89e936de7286431045.png@1256w_708h_!web-article-pic.avif" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-10-01</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;诗录/&quot;);" href="javascript:void(0);" alt="">诗录</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;诗录/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;诗兴大发/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://source.fomal.cc/img/default_cover_69.webp" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-01-29</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;诗兴大发/&quot;);" href="javascript:void(0);" alt="">诗兴大发</a><div class="blog-slider__text">未觉，却是中二少年的诗仙梦</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;诗兴大发/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;TotoroのPlan/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/51d37eba99d243607ddedfff6e91568f617436609.jpg@1256w_1884h_!web-article-pic.avif" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-10-05</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;TotoroのPlan/&quot;);" href="javascript:void(0);" alt="">TotoroのPlan</a><div class="blog-slider__text">方便大二看（）</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;TotoroのPlan/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;Markdown格式/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/ushio-api-img-moe@5.0.48/img_482_1920x1080_96_null_normal.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-03-03</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;Markdown格式/&quot;);" href="javascript:void(0);" alt="">Markdown格式</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;Markdown格式/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载butterfly_swiper')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_swiper_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_swiper_injector_config();
+  }
+  </script><script defer src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.js"></script><script defer data-pjax src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper_init.js"></script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>
