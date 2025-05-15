@@ -1,0 +1,1337 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>UML復習 | Totoroの旅</title><meta name="author" content="Totoro"><meta name="copyright" content="Totoro"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="UML復習 1. What is a Use-Case Model?英文答案:A Use-Case Model is:• A model that describes a system’s functional requirements in terms of use cases.• A model of the system’s intended functionality (use cases">
+<meta property="og:type" content="article">
+<meta property="og:title" content="UML復習">
+<meta property="og:url" content="http://totorocatcat.top/UML%E5%BE%A9%E7%BF%92/index.html">
+<meta property="og:site_name" content="Totoroの旅">
+<meta property="og:description" content="UML復習 1. What is a Use-Case Model?英文答案:A Use-Case Model is:• A model that describes a system’s functional requirements in terms of use cases.• A model of the system’s intended functionality (use cases">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E6%8F%92%E7%94%BB%E5%B8%85%E5%93%A5-%E9%BB%91%E7%99%BD%E6%B0%B4%E5%A2%A8%E9%A3%8E.png">
+<meta property="article:published_time" content="2025-05-15T04:21:03.000Z">
+<meta property="article:modified_time" content="2025-05-15T04:21:19.644Z">
+<meta property="article:author" content="Totoro">
+<meta property="article:tag" content="提高">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E6%8F%92%E7%94%BB%E5%B8%85%E5%93%A5-%E9%BB%91%E7%99%BD%E6%B0%B4%E5%A2%A8%E9%A3%8E.png"><link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/b5ca6e582a7a45e6fde46e616eeb68e.png"><link rel="canonical" href="http://totorocatcat.top/UML%E5%BE%A9%E7%BF%92/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta/><link rel="stylesheet" href="/css/index.css?v=4.12.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  noticeOutdate: {"limitDay":765,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体中文","cht_to_chs":"你已切换为简体中文","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"top-right"},
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'UML復習',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: true,
+  isToc: true,
+  postUpdate: '2025-05-15 12:21:19'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const now = new Date()
+          const hour = now.getHours()
+          const isNight = hour <= 6 || hour >= 18
+          if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/universe.css"><link rel="stylesheet" href="/css/scrollbar.css"><link rel="stylesheet" href="/css/cat.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiperstyle.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-categories-card@1.0.0/lib/categorybar.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-double-row-display@1.00/cardlistpost.min.css"/>
+<style>#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags:before {content:"\A";
+  white-space: pre;}#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags > .article-meta__separator{display:none}</style>
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><div class="loading-img"></div><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><script>window.paceOptions = {
+  restartOnPushState: false
+}
+
+document.addEventListener('pjax:send', () => {
+  Pace.restart()
+})
+</script><link rel="stylesheet" href="/css/progress_bar.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E4%BE%A0%E5%AE%A2-%E6%AD%A6%E4%BE%A0%E5%9C%BA%E6%99%AF-%E6%B8%B8%E6%88%8F.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">909</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">37</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home-alt"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-envelope-open"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 趣味</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/project/"><i class="fa-fw fas fas fa-folder"></i><span> 项目</span></a></div><div class="menus_item"><a class="site-page" href="/stars/"><i class="fa-fw fas fa-bookmark"></i><span> 收藏</span></a></div><div class="menus_item"><a class="site-page" href="/bilibili/"><i class="fa-fw fas fa-tv"></i><span> 追番</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E6%8F%92%E7%94%BB%E5%B8%85%E5%93%A5-%E9%BB%91%E7%99%BD%E6%B0%B4%E5%A2%A8%E9%A3%8E.png')"><nav id="nav"><span id="blog-info"><a href="/" title="Totoroの旅"><span class="site-name">Totoroの旅</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home-alt"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-envelope-open"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 趣味</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/project/"><i class="fa-fw fas fas fa-folder"></i><span> 项目</span></a></div><div class="menus_item"><a class="site-page" href="/stars/"><i class="fa-fw fas fa-bookmark"></i><span> 收藏</span></a></div><div class="menus_item"><a class="site-page" href="/bilibili/"><i class="fa-fw fas fa-tv"></i><span> 追番</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">UML復習</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-05-15T04:21:03.000Z" title="发表于 2025-05-15 12:21:03">2025-05-15</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-05-15T04:21:19.644Z" title="更新于 2025-05-15 12:21:19">2025-05-15</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/UML/">UML</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">12.5k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>48分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="UML復習"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/UML%E5%BE%A9%E7%BF%92/#post-comment" itemprop="discussionUrl"><span class="valine-comment-count" data-xid="/UML%E5%BE%A9%E7%BF%92/" itemprop="commentCount"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="UML復習"><a href="#UML復習" class="headerlink" title="UML復習"></a>UML復習</h2><hr>
+<h3 id="1-What-is-a-Use-Case-Model"><a href="#1-What-is-a-Use-Case-Model" class="headerlink" title="1. What is a Use-Case Model?"></a><strong>1. What is a Use-Case Model?</strong></h3><p><strong>英文答案:</strong><br>A Use-Case Model is:<br>• A model that describes a system’s functional requirements in terms of use cases.<br>• A model of the system’s intended functionality (use cases) and its environment (actors).  </p>
+<p><strong>中文答案:</strong><br>用例模型是：<br>• 一种以用例的形式描述系统功能需求的模型。<br>• 一种描述系统预期功能（用例）及其环境（参与者）的模型。  </p>
+<hr>
+<h3 id="2-What-is-an-Actor"><a href="#2-What-is-an-Actor" class="headerlink" title="2. What is an Actor?"></a><strong>2. What is an Actor?</strong></h3><p><strong>英文答案:</strong><br>An actor represents anything that interacts with the system.  </p>
+<p><strong>中文答案:</strong><br>参与者是指与系统交互的任何事物。  </p>
+<hr>
+<h3 id="3-What-is-a-Use-Case-List-examples-of-use-case-properties"><a href="#3-What-is-a-Use-Case-List-examples-of-use-case-properties" class="headerlink" title="3. What is a Use Case? List examples of use case properties."></a><strong>3. What is a Use Case? List examples of use case properties.</strong></h3><p><strong>英文答案:</strong><br>A use case is:<br>• A sequence of actions a system performs that yields an observable result of value to a particular actor.  </p>
+<p><strong>Examples of use case properties:</strong><br>• <strong>Name:</strong> A unique identifier for the use case.<br>• <strong>Actors:</strong> The external entities interacting with the use case.<br>• <strong>Preconditions:</strong> Conditions that must be true before the use case can start.<br>• <strong>Postconditions:</strong> Conditions that must be true after the use case is completed.<br>• <strong>Primary Flow:</strong> The main sequence of events in the use case.<br>• <strong>Alternate Flow:</strong> Variations or exceptional flows of the use case.<br>• <strong>Exceptions:</strong> Errors or unexpected conditions that may occur during the use case.  </p>
+<p><strong>中文答案:</strong><br>用例是：<br>• 系统执行的一系列动作，为特定参与者产生可观察且有价值的结果。  </p>
+<p><strong>用例属性示例:</strong><br>• <strong>名称 (Name):</strong> 用例的唯一标识符。<br>• <strong>参与者 (Actors):</strong> 与用例交互的外部实体。<br>• <strong>前置条件 (Preconditions):</strong> 用例开始前必须满足的条件。<br>• <strong>后置条件 (Postconditions):</strong> 用例完成后必须满足的条件。<br>• <strong>主流程 (Primary Flow):</strong> 用例中的主要事件序列。<br>• <strong>备选流程 (Alternate Flow):</strong> 用例的变体或异常流程。<br>• <strong>异常 (Exceptions):</strong> 用例执行过程中可能发生的错误或意外情况。  </p>
+<hr>
+<h3 id="4-What-is-the-difference-between-a-use-case-and-a-scenario"><a href="#4-What-is-the-difference-between-a-use-case-and-a-scenario" class="headerlink" title="4. What is the difference between a use case and a scenario?"></a><strong>4. What is the difference between a use case and a scenario?</strong></h3><p><strong>英文答案:</strong><br>• <strong>Use Case:</strong> A use case is a general description of a system’s functionality, representing all possible interactions between the system and its actors.<br>• <strong>Scenario:</strong> A scenario is an instance of a use case, describing a specific sequence of interactions between the system and its actors.  </p>
+<p><strong>中文答案:</strong><br>• <strong>用例 (Use Case):</strong> 用例是对系统功能的总体描述，表示系统与其参与者之间所有可能的交互。<br>• <strong>场景 (Scenario):</strong> 场景是用例的一个实例，描述系统与其参与者之间的特定交互序列。  </p>
+<hr>
+<h3 id="5-What-is-a-Supplementary-Specification-and-what-does-it-include"><a href="#5-What-is-a-Supplementary-Specification-and-what-does-it-include" class="headerlink" title="5. What is a Supplementary Specification and what does it include?"></a><strong>5. What is a Supplementary Specification and what does it include?</strong></h3><p><strong>英文答案:</strong><br>A <strong>Supplementary Specification</strong> is a document that complements the use-case model by providing additional details about the system’s requirements.  </p>
+<p><strong>It includes:</strong><br>• <strong>Functionality:</strong> Additional functional requirements not covered in the use cases.<br>• <strong>Usability:</strong> Requirements related to the user interface and user experience.<br>• <strong>Reliability:</strong> Requirements for system availability, fault tolerance, and recovery.<br>• <strong>Performance:</strong> Requirements for system speed, responsiveness, and scalability.<br>• <strong>Supportability:</strong> Requirements for system maintenance, updates, and support.<br>• <strong>Design Constraints:</strong> Technical or environmental constraints that affect the system design.<br>• <strong>Supplementary Information:</strong> Any additional information relevant to the system’s requirements.  </p>
+<p><strong>中文答案:</strong><br><strong>补充规格说明 (Supplementary Specification)</strong> 是一份补充用例模型的文档，提供有关系统需求的附加细节。  </p>
+<p><strong>它包括:</strong><br>• <strong>功能性 (Functionality):</strong> 用例中未涵盖的附加功能需求。<br>• <strong>可用性 (Usability):</strong> 与用户界面和用户体验相关的需求。<br>• <strong>可靠性 (Reliability):</strong> 系统可用性、容错能力和恢复能力的需求。<br>• <strong>性能 (Performance):</strong> 系统速度、响应能力和可扩展性的需求。<br>• <strong>可支持性 (Supportability):</strong> 系统维护、更新和支持的需求。<br>• <strong>设计约束 (Design Constraints):</strong> 影响系统设计的技术或环境约束。<br>• <strong>补充信息 (Supplementary Information):</strong> 与系统需求相关的任何附加信息。  </p>
+<hr>
+<h3 id="总结表格"><a href="#总结表格" class="headerlink" title="总结表格"></a><strong>总结表格</strong></h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th><strong>问题编号</strong></th>
+<th><strong>英文问题</strong></th>
+<th><strong>中文问题</strong></th>
+<th><strong>答案</strong></th>
+<th><strong>解释 (Explanation)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>What is a Use-Case Model?</td>
+<td>什么是用例模型？</td>
+<td>用例模型描述系统的功能需求，表示系统的预期功能和与其交互的环境。</td>
+<td>用例模型是系统的功能需求和参与者交互的抽象描述。</td>
+</tr>
+<tr>
+<td>2</td>
+<td>What is an actor?</td>
+<td>什么是参与者？</td>
+<td>参与者是与系统交互的任何事物。</td>
+<td>参与者可以是用户、外部系统或其他实体。</td>
+</tr>
+<tr>
+<td>3</td>
+<td>What is a use case? List examples of use case properties.</td>
+<td>什么是用例？列出用例的属性示例。</td>
+<td>用例是系统执行的一系列动作，为特定参与者产生可观察且有价值的结果。</td>
+<td>用例属性包括名称、参与者、前置条件、后置条件、主流程、备选流程和异常等。</td>
+</tr>
+<tr>
+<td>4</td>
+<td>What is the difference between a use case and a scenario?</td>
+<td>用例和场景有什么区别？</td>
+<td>用例是系统功能的总体描述，场景是用例的一个实例，描述特定的交互序列。</td>
+<td>用例是抽象的功能描述，场景是具体的交互实例。</td>
+</tr>
+<tr>
+<td>5</td>
+<td>What is a Supplementary Specification and what does it include?</td>
+<td>什么是补充规格说明？它包括什么？</td>
+<td>补充规格说明提供系统需求的附加细节，包括功能性、可用性、可靠性、性能、可支持性、设计约束和补充信息。</td>
+<td>补充规格说明是对用例模型的补充，提供更详细的需求描述。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h3 id="复习建议"><a href="#复习建议" class="headerlink" title="复习建议"></a><strong>复习建议</strong></h3><ol>
+<li><p><strong>用例模型 (Use-Case Model):</strong><br>• 理解用例模型的作用，掌握如何通过用例描述系统功能。<br>• 区分用例和场景，明确用例是抽象描述，场景是具体实例。</p>
+</li>
+<li><p><strong>参与者 (Actor):</strong><br>• 参与者可以是用户、外部系统或其他实体，理解其与系统的交互关系。</p>
+</li>
+<li><p><strong>用例 (Use Case):</strong><br>• 掌握用例的定义和属性，能够列出用例的常见属性（如前置条件、后置条件、主流程等）。</p>
+</li>
+<li><p><strong>补充规格说明 (Supplementary Specification):</strong><br>• 理解补充规格说明的作用，能够列举其包含的内容（如功能性、性能、可靠性等）。</p>
+</li>
+</ol>
+<p>以下是针对 <strong>Module 3: Analysis and Design Overview</strong> 的问题和答案的详细解答，包含中英文对照，确保清晰易懂：</p>
+<hr>
+<h3 id="1-What-is-the-purpose-of-the-Analysis-and-Design-Discipline"><a href="#1-What-is-the-purpose-of-the-Analysis-and-Design-Discipline" class="headerlink" title="1. What is the purpose of the Analysis and Design Discipline?"></a><strong>1. What is the purpose of the Analysis and Design Discipline?</strong></h3><p><strong>英文答案:</strong><br>The purposes of Analysis and Design are to:  </p>
+<ol>
+<li>Transform the requirements into a design of the system-to-be.  </li>
+<li>Evolve a robust architecture for the system.  </li>
+<li>Adapt the design to match the implementation environment, designing it for performance.  </li>
+</ol>
+<p><strong>中文答案:</strong><br>分析和设计的目的包括：  </p>
+<ol>
+<li>将需求转化为待建系统的设计。  </li>
+<li>为系统构建一个健壮的架构。  </li>
+<li>调整设计以适应实现环境，并针对性能进行设计。  </li>
+</ol>
+<hr>
+<h3 id="2-Name-and-briefly-describe-the-4-1-Views-of-Architecture"><a href="#2-Name-and-briefly-describe-the-4-1-Views-of-Architecture" class="headerlink" title="2. Name and briefly describe the 4+1 Views of Architecture."></a><strong>2. Name and briefly describe the 4+1 Views of Architecture.</strong></h3><p><strong>英文答案:</strong><br>The <strong>4+1 View Model</strong> is a framework for describing software architecture from multiple perspectives. It includes:</p>
+<ol>
+<li><p><strong>Logical View:</strong><br>• Focuses on the functional requirements of the system.<br>• Describes the design of classes, their relationships, and interactions.<br>• Key artifact: Class diagrams.  </p>
+</li>
+<li><p><strong>Process View:</strong><br>• Focuses on the runtime behavior of the system, including concurrency and synchronization.<br>• Describes how objects interact dynamically.<br>• Key artifact: Sequence diagrams, activity diagrams.  </p>
+</li>
+<li><p><strong>Physical View (Deployment View):</strong><br>• Focuses on the physical deployment of the system, including hardware and software components.<br>• Describes how the system is distributed across nodes.<br>• Key artifact: Deployment diagrams.  </p>
+</li>
+<li><p><strong>Development View:</strong><br>• Focuses on the organization of the software in the development environment.<br>• Describes the structure of modules, packages, and files.<br>• Key artifact: Component diagrams.  </p>
+</li>
+<li><p><strong>Use Case View (Scenarios):</strong><br>• Focuses on the functional scenarios and user interactions with the system.<br>• Provides a narrative description of how the system is used.<br>• Key artifact: Use case diagrams, sequence diagrams.  </p>
+</li>
+</ol>
+<hr>
+<p><strong>中文答案:</strong><br><strong>4+1 视图模型 (4+1 View Model)</strong> 是一种从多个角度描述软件架构的框架。它包括以下视图：</p>
+<ol>
+<li><p><strong>逻辑视图 (Logical View):</strong><br>• 关注系统的功能需求。<br>• 描述类的设计、类之间的关系及其交互。<br>• 主要工件：类图。  </p>
+</li>
+<li><p><strong>过程视图 (Process View):</strong><br>• 关注系统的运行时行为，包括并发性和同步性。<br>• 描述对象如何动态交互。<br>• 主要工件：序列图、活动图。  </p>
+</li>
+<li><p><strong>物理视图（部署视图，Physical View/Deployment View):</strong><br>• 关注系统的物理部署，包括硬件和软件组件。<br>• 描述系统如何在节点上分布。<br>• 主要工件：部署图。  </p>
+</li>
+<li><p><strong>开发视图 (Development View):</strong><br>• 关注软件开发环境中的软件组织。<br>• 描述模块、包和文件的结构。<br>• 主要工件：组件图。  </p>
+</li>
+<li><p><strong>用例视图 (Use Case View):</strong><br>• 关注功能场景和用户与系统的交互。<br>• 提供系统如何使用的叙述性描述。<br>• 主要工件：用例图、序列图。  </p>
+</li>
+</ol>
+<hr>
+<h3 id="3-What-is-the-difference-between-Analysis-and-Design"><a href="#3-What-is-the-difference-between-Analysis-and-Design" class="headerlink" title="3. What is the difference between Analysis and Design?"></a><strong>3. What is the difference between Analysis and Design?</strong></h3><p><strong>英文答案:</strong><br>| <strong>Aspect</strong>                       | <strong>Analysis</strong>                                           | <strong>Design</strong>                                                   |<br>| ———————————————— | ——————————————————————————— | —————————————————————————————— |<br>| <strong>Focus</strong>                        | Focus on understanding the problem.                    | Focus on understanding the solution.                         |<br>| <strong>Design Level</strong>                 | Idealized design (high-level).                         | Operations and attributes (detailed).                        |<br>| <strong>Behavior vs. Structure</strong>       | Behavior (what the system does).                       | System structure (how the system is organized).              |<br>| <strong>Functional vs. Nonfunctional</strong> | Functional requirements (what the system should do).   | Nonfunctional requirements (performance, scalability, etc.). |<br>| <strong>Model Size</strong>                   | A small model that captures the essence of the system. | A large model that includes detailed design elements.        |</p>
+<p><strong>中文答案:</strong><br>| <strong>方面</strong>                                               | <strong>分析 (Analysis)</strong>          | <strong>设计 (Design)</strong>                |<br>| ——————————————————————————— | —————————————— | ———————————————— |<br>| <strong>关注点 (Focus)</strong>                                     | 关注理解问题。               | 关注理解解决方案。               |<br>| <strong>设计层次 (Design Level)</strong>                            | 理想化设计（高层次）。       | 操作和属性（详细设计）。         |<br>| <strong>行为 vs. 结构 (Behavior vs. Structure)</strong>             | 行为（系统做什么）。         | 系统结构（系统如何组织）。       |<br>| <strong>功能性 vs. 非功能性 (Functional vs. Nonfunctional)</strong> | 功能需求（系统应该做什么）。 | 非功能需求（性能、可扩展性等）。 |<br>| <strong>模型规模 (Model Size)</strong>                              | 捕获系统本质的小模型。       | 包含详细设计元素的大模型。       |</p>
+<hr>
+<h3 id="4-What-is-architecture"><a href="#4-What-is-architecture" class="headerlink" title="4. What is architecture?"></a><strong>4. What is architecture?</strong></h3><p><strong>英文答案:</strong><br>Software architecture encompasses a set of significant decisions about the organization of a software system. These decisions include:<br>• The selection of structural elements and their interfaces by which the system is composed.<br>• The behavior of the structural elements as they interact.<br>• The composition of structural elements into larger subsystems.<br>• The architectural style that guides the organization of the system (e.g., layered, microservices).<br>• The allocation of responsibilities and constraints on the system’s design and evolution.  </p>
+<p><strong>中文答案:</strong><br>软件架构包括关于软件系统组织的一系列重要决策。这些决策包括：<br>• 系统的组成结构元素及其接口的选择。<br>• 结构元素之间的交互行为。<br>• 将结构元素组合成更大的子系统。<br>• 指导系统组织的架构风格（如分层架构、微服务架构）。<br>• 系统设计和演化的职责分配及约束条件。  </p>
+<hr>
+<h3 id="总结表格-1"><a href="#总结表格-1" class="headerlink" title="总结表格"></a><strong>总结表格</strong></h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th><strong>问题编号</strong></th>
+<th><strong>英文问题</strong></th>
+<th><strong>中文问题</strong></th>
+<th><strong>答案</strong></th>
+<th><strong>解释 (Explanation)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>What is the purpose of the Analysis and Design Discipline?</td>
+<td>分析和设计的目的有哪些？</td>
+<td>分析和设计的目的是将需求转化为系统设计，构建健壮的架构，并使设计适应实现环境。</td>
+<td>分析和设计是软件开发中的关键阶段，连接需求与实现。</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Name and briefly describe the 4+1 Views of Architecture.</td>
+<td>列出并简要描述软件架构的 4+1 视图模型。</td>
+<td>4+1 视图包括逻辑视图、过程视图、物理视图、开发视图和用例视图，分别从不同角度描述系统架构。</td>
+<td>4+1 视图模型通过多个视角全面描述系统架构，适合复杂系统的设计。</td>
+</tr>
+<tr>
+<td>3</td>
+<td>What is the difference between Analysis and Design?</td>
+<td>分析和设计有什么区别？</td>
+<td>分析关注问题理解，设计关注解决方案；分析是高层次的理想化设计，设计是详细的实现导向设计。</td>
+<td>分析和设计是软件开发中的两个阶段，分析是理解需求，设计是构建解决方案。</td>
+</tr>
+<tr>
+<td>4</td>
+<td>What is architecture?</td>
+<td>什么是软件架构？</td>
+<td>软件架构是关于软件系统组织的一系列重要决策，包括结构元素、行为、组合方式和架构风格等。</td>
+<td>软件架构决定了系统的整体结构和设计原则，影响系统的开发、维护和演化。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h3 id="复习建议-1"><a href="#复习建议-1" class="headerlink" title="复习建议"></a><strong>复习建议</strong></h3><ol>
+<li><p><strong>分析和设计的目的 (Purpose of Analysis and Design):</strong><br>• 理解分析和设计的核心目标是将需求转化为系统设计，并构建健壮的架构。<br>• 分析关注问题，设计关注解决方案。</p>
+</li>
+<li><p><strong>4+1 视图模型 (4+1 View Model):</strong><br>• 掌握 4+1 视图的五个视角及其用途。<br>• 理解每个视图的关注点和主要工件（如类图、序列图、部署图等）。</p>
+</li>
+<li><p><strong>分析和设计的区别 (Difference Between Analysis and Design):</strong><br>• 分析是高层次的理想化设计，关注需求和功能。<br>• 设计是详细的实现导向设计，关注性能和非功能需求。</p>
+</li>
+<li><p><strong>软件架构 (Software Architecture):</strong><br>• 理解软件架构的定义及其重要性。<br>• 掌握软件架构的关键决策内容，包括结构元素、行为、组合方式和架构风格。</p>
+</li>
+</ol>
+<p>以下是针对 <strong>Module 4: Architectural Analysis</strong> 的问题和答案的详细解答，包含中英文对照，确保清晰易懂：</p>
+<hr>
+<h3 id="1-What-is-a-package"><a href="#1-What-is-a-package" class="headerlink" title="1. What is a package?"></a><strong>1. What is a package?</strong></h3><p><strong>英文答案:</strong><br>A package is a general-purpose mechanism for organizing elements into groups. It is a model element that can contain other model elements.  </p>
+<p>Packages are used to:<br>• Group related model elements (e.g., classes, interfaces, use cases) together.<br>• Provide a namespace to avoid naming conflicts.<br>• Support modular design and improve the organization of large systems.  </p>
+<p><strong>中文答案:</strong><br>包是一种用于将元素分组组织的通用机制。它是一种模型元素，可以包含其他模型元素。  </p>
+<p>包的用途包括：<br>• 将相关的模型元素（如类、接口、用例等）分组在一起。<br>• 提供命名空间以避免命名冲突。<br>• 支持模块化设计，改善大型系统的组织结构。  </p>
+<hr>
+<h3 id="2-What-is-a-layered-architecture-Give-examples-of-typical-layers"><a href="#2-What-is-a-layered-architecture-Give-examples-of-typical-layers" class="headerlink" title="2. What is a layered architecture? Give examples of typical layers."></a><strong>2. What is a layered architecture? Give examples of typical layers.</strong></h3><ol>
+<li><strong>应用子系统层 (Application Subsystems):</strong><ul>
+<li>表示实现业务工作流的核心应用程序组件。</li>
+<li>示例：订单管理、客户管理或库存管理。</li>
+</ul>
+</li>
+<li><strong>业务特定层 (Business-Specific):</strong><ul>
+<li>包含组织或领域特定的业务逻辑和规则。</li>
+<li>示例：支付处理、税务计算或合规规则。</li>
+</ul>
+</li>
+<li><strong>中间件层 (Middleware):</strong><ul>
+<li>作为应用程序与底层基础设施之间的中介。</li>
+<li>示例：消息队列、API 网关或通信协议。</li>
+</ul>
+</li>
+<li><strong>系统软件层 (System Software):</strong><ul>
+<li>提供系统运行所需的基础软件环境。</li>
+<li>示例：操作系统、数据库管理系统或虚拟化层</li>
+</ul>
+</li>
+</ol>
+<hr>
+<p>以下是针对 <strong>Module 5: Use-Case Analysis</strong> 的问题和答案的详细解答，包含中英文对照，确保清晰易懂：</p>
+<hr>
+<h3 id="1-What-is-an-analysis-class-Name-and-describe-the-three-analysis-stereotypes"><a href="#1-What-is-an-analysis-class-Name-and-describe-the-three-analysis-stereotypes" class="headerlink" title="1. What is an analysis class? Name and describe the three analysis stereotypes."></a><strong>1. What is an analysis class? Name and describe the three analysis stereotypes.</strong></h3><p><strong>英文答案:</strong><br>An <strong>analysis class</strong> is a class identified during the analysis phase of a system. It represents a conceptual model of the system’s structure and behavior, focusing on the responsibilities and relationships of the system’s components rather than their implementation details.</p>
+<p>The three analysis stereotypes are:</p>
+<ol>
+<li><p><strong>Boundary Class:</strong><br>• Represents the interaction between the system and its external environment (e.g., users, other systems).<br>• Encapsulates the system’s interface and handles communication with external actors.<br>• Examples: User interfaces, APIs, or system entry points.  </p>
+</li>
+<li><p><strong>Entity Class:</strong><br>• Represents the core business entities or domain objects of the system.<br>• Encapsulates the data and behavior related to the system’s business logic.<br>• Examples: Customer, Order, Product.  </p>
+</li>
+<li><p><strong>Control Class:</strong><br>• Represents the logic that coordinates the interactions between boundary classes and entity classes.<br>• Encapsulates the flow of control and decision-making in the system.<br>• Examples: Controllers, workflow managers, or process handlers.  </p>
+</li>
+</ol>
+<hr>
+<p><strong>中文答案:</strong><br><strong>分析类 (Analysis Class)</strong> 是在系统分析阶段识别出的类。它表示系统的概念模型，关注系统组件的职责和关系，而不是其实现细节。</p>
+<p>三种分析构造型 (Analysis Stereotypes) 包括：</p>
+<ol>
+<li><p><strong>边界类 (Boundary Class):</strong><br>• 表示系统与外部环境（如用户、其他系统）之间的交互。<br>• 封装系统的接口并处理与外部参与者的通信。<br>• 示例：用户界面、API 或系统入口点。  </p>
+</li>
+<li><p><strong>实体类 (Entity Class):</strong><br>• 表示系统的核心业务实体或领域对象。<br>• 封装与系统业务逻辑相关的数据和行为。<br>• 示例：客户、订单、产品。  </p>
+</li>
+<li><p><strong>控制类 (Control Class):</strong><br>• 表示协调边界类和实体类之间交互的逻辑。<br>• 封装系统中的控制流和决策逻辑。<br>• 示例：控制器、工作流管理器或流程处理器。  </p>
+</li>
+</ol>
+<hr>
+<h3 id="2-What-is-a-Use-Case-Realization"><a href="#2-What-is-a-Use-Case-Realization" class="headerlink" title="2. What is a Use-Case Realization?"></a><strong>2. What is a Use-Case Realization?</strong></h3><p><strong>英文答案:</strong><br>A <strong>Use-Case Realization</strong> is a design artifact that describes how a specific use case is implemented in the system. It provides traceability from the <strong>Analysis</strong> and <strong>Design</strong> phases back to the <strong>Requirements</strong> phase.  </p>
+<p>• <strong>Purpose:</strong><br>  • To ensure that the design aligns with the functional requirements captured in the use case.<br>  • To document how the system will fulfill the responsibilities and behaviors described in the use case.  </p>
+<p>• <strong>Key Elements:</strong><br>  • <strong>Actors:</strong> External entities interacting with the system.<br>  • <strong>Objects:</strong> Analysis or design classes (e.g., boundary, entity, control classes) involved in the use case.<br>  • <strong>Interactions:</strong> Messages or operations exchanged between objects to achieve the use case’s goal.  </p>
+<hr>
+<p><strong>中文答案:</strong><br><strong>用例实现 (Use-Case Realization)</strong> 是一种设计工件，描述了系统中如何实现特定的用例。它提供了从<strong>分析</strong>和<strong>设计</strong>阶段到<strong>需求</strong>阶段的可追溯性。</p>
+<p>• <strong>目的 (Purpose):</strong><br>  • 确保设计符合用例中捕获的功能需求。<br>  • 记录系统如何履行用例中描述的责任和行为。  </p>
+<p>• <strong>关键要素 (Key Elements):</strong><br>  • <strong>参与者 (Actors):</strong> 与系统交互的外部实体。<br>  • <strong>对象 (Objects):</strong> 参与用例的分析类或设计类（如边界类、实体类、控制类）。<br>  • <strong>交互 (Interactions):</strong> 对象之间交换的消息或操作，以实现用例的目标。  </p>
+<hr>
+<h3 id="3-How-many-Interaction-diagrams-should-be-produced-during-Use-Case-Analysis"><a href="#3-How-many-Interaction-diagrams-should-be-produced-during-Use-Case-Analysis" class="headerlink" title="3. How many Interaction diagrams should be produced during Use-Case Analysis?"></a><strong>3. How many Interaction diagrams should be produced during Use-Case Analysis?</strong></h3><p><strong>英文答案:</strong><br>During Use-Case Analysis, <strong>two interaction diagrams</strong> should typically be produced:  </p>
+<ol>
+<li><p><strong>Collaboration Diagram (Communication Diagram):</strong><br>• Focuses on the relationships and interactions between objects.<br>• Shows how objects are connected and how they collaborate to achieve the use case’s goal.  </p>
+</li>
+<li><p><strong>Sequence Diagram:</strong><br>• Focuses on the time sequence of messages exchanged between objects.<br>• Shows the order in which operations are invoked and completed.  </p>
+</li>
+</ol>
+<p>Both diagrams provide complementary views of the system’s behavior during the execution of a use case.</p>
+<hr>
+<p><strong>中文答案:</strong><br>在用例分析期间，通常应生成 <strong>两种交互图</strong>：</p>
+<ol>
+<li><p><strong>协作图（Collaboration Diagram，也称为通信图）:</strong><br>• 关注对象之间的关系和交互。<br>• 显示对象如何连接以及它们如何协作以实现用例的目标。  </p>
+</li>
+<li><p><strong>序列图 (Sequence Diagram):</strong><br>• 关注对象之间消息交换的时间顺序。<br>• 显示操作被调用和完成的顺序。  </p>
+</li>
+</ol>
+<p>这两种图提供了用例执行期间系统行为的互补视图。</p>
+<hr>
+<h3 id="总结表格-2"><a href="#总结表格-2" class="headerlink" title="总结表格"></a><strong>总结表格</strong></h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th><strong>问题编号</strong></th>
+<th><strong>英文问题</strong></th>
+<th><strong>中文问题</strong></th>
+<th><strong>答案</strong></th>
+<th><strong>解释 (Explanation)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>What is an analysis class? Name and describe the three analysis stereotypes.</td>
+<td>什么是分析类？列出并描述三种分析构造型。</td>
+<td>分析类是系统分析阶段识别的类，表示系统的概念模型。三种分析构造型包括边界类、实体类和控制类。</td>
+<td>边界类处理系统与外部的交互，实体类表示业务实体，控制类协调边界类和实体类的交互。</td>
+</tr>
+<tr>
+<td>2</td>
+<td>What is a Use-Case Realization?</td>
+<td>什么是用例实现？</td>
+<td>用例实现是一种设计工件，描述系统中如何实现特定的用例，并提供从分析和设计到需求的可追溯性。</td>
+<td>用例实现确保设计符合需求，并记录系统如何履行用例中的行为和责任。</td>
+</tr>
+<tr>
+<td>3</td>
+<td>How many Interaction diagrams should be produced during Use-Case Analysis?</td>
+<td>在用例分析期间应生成多少种交互图？</td>
+<td>应生成两种交互图：协作图（通信图）和序列图。它们分别从对象关系和时间顺序的角度描述用例的行为。</td>
+<td>协作图关注对象之间的关系，序列图关注消息的时间顺序，两者共同描述用例的执行过程。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h3 id="复习建议-2"><a href="#复习建议-2" class="headerlink" title="复习建议"></a><strong>复习建议</strong></h3><ol>
+<li><p><strong>分析类 (Analysis Class):</strong><br>• 理解分析类的作用是描述系统的概念模型，而不是实现细节。<br>• 掌握三种分析构造型（边界类、实体类、控制类）的职责和用途。</p>
+</li>
+<li><p><strong>用例实现 (Use-Case Realization):</strong><br>• 理解用例实现的作用是连接需求、分析和设计。<br>• 确保设计符合用例的功能需求，并记录系统的行为。</p>
+</li>
+<li><p><strong>交互图 (Interaction Diagrams):</strong><br>• 掌握协作图和序列图的用途和区别。<br>• 协作图关注对象关系，序列图关注时间顺序，两者共同描述用例的执行过程。</p>
+</li>
+</ol>
+<p>以下是针对 <strong>Module 6: Identify Design Elements</strong> 的问题和答案的详细解答，包含中英文对照，确保清晰易懂：</p>
+<hr>
+<h3 id="1-What-is-an-interface"><a href="#1-What-is-an-interface" class="headerlink" title="1. What is an interface?"></a><strong>1. What is an interface?</strong></h3><p><strong>英文答案:</strong><br>An <strong>interface</strong> is a contract that defines the operations, methods, or services that a class, subsystem, or component provides to other parts of the system. It specifies <strong>what</strong> a component does but not <strong>how</strong> it does it.  </p>
+<p><strong>Purpose:</strong><br>To identify the interfaces of the subsystems based on their responsibilities.  </p>
+<hr>
+<p><strong>中文答案:</strong><br><strong>接口 (Interface)</strong> 是一种契约，定义了类、子系统或组件向系统其他部分提供的操作、方法或服务。它指定了组件 <strong>做什么</strong>，但不指定 <strong>如何做</strong>。</p>
+<p><strong>目的 (Purpose):</strong><br>基于子系统的职责，识别子系统的接口。</p>
+<hr>
+<h3 id="2-What-is-a-subsystem-How-does-it-differ-from-a-package"><a href="#2-What-is-a-subsystem-How-does-it-differ-from-a-package" class="headerlink" title="2. What is a subsystem? How does it differ from a package?"></a><strong>2. What is a subsystem? How does it differ from a package?</strong></h3><p><strong>英文答案:</strong><br>A <strong>subsystem</strong> is a modular unit of a system that encapsulates a set of related functionalities. It provides a clear and independent capability with well-defined interfaces, making it reusable and replaceable.  </p>
+<p><strong>Differences between Subsystems and Packages:</strong>  </p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th><strong>Aspect</strong></th>
+<th><strong>Subsystems</strong></th>
+<th><strong>Packages</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Purpose</strong></td>
+<td>Provide behavior and encapsulate functionality independently.</td>
+<td>Organize and group related elements (e.g., classes, interfaces) without providing behavior.</td>
+</tr>
+<tr>
+<td><strong>Encapsulation</strong></td>
+<td>Completely encapsulate their contents.</td>
+<td>Do not completely encapsulate their contents.</td>
+</tr>
+<tr>
+<td><strong>Reusability</strong></td>
+<td>Designed for potential reuse across systems or projects.</td>
+<td>Not designed for reuse; primarily for organization.</td>
+</tr>
+<tr>
+<td><strong>Replaceability</strong></td>
+<td>Easily replaced with alternative implementations.</td>
+<td>May not be easily replaced.</td>
+</tr>
+<tr>
+<td><strong>Behavior</strong></td>
+<td>Provide behavior and define clear interfaces.</td>
+<td>Do not provide behavior.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+<p><strong>中文答案:</strong><br><strong>子系统 (Subsystem)</strong> 是系统的一个模块化单元，封装了一组相关的功能。它提供明确且独立的能力，并具有定义良好的接口，使其具有可重用性和可替换性。</p>
+<p><strong>子系统与包的区别 (Differences between Subsystems and Packages):</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th><strong>方面</strong></th>
+<th><strong>子系统 (Subsystems)</strong></th>
+<th><strong>包 (Packages)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>目的 (Purpose)</strong></td>
+<td>提供行为并独立封装功能。</td>
+<td>组织和分组相关元素（如类、接口），但不提供行为。</td>
+</tr>
+<tr>
+<td><strong>封装性 (Encapsulation)</strong></td>
+<td>完全封装其内容。</td>
+<td>不完全封装其内容。</td>
+</tr>
+<tr>
+<td><strong>可重用性 (Reusability)</strong></td>
+<td>设计用于跨系统或项目的潜在重用。</td>
+<td>不是为重用设计的，主要用于组织。</td>
+</tr>
+<tr>
+<td><strong>可替换性 (Replaceability)</strong></td>
+<td>可以轻松替换为其他实现。</td>
+<td>可能不容易替换。</td>
+</tr>
+<tr>
+<td><strong>行为 (Behavior)</strong></td>
+<td>提供行为并定义清晰的接口。</td>
+<td>不提供行为。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h3 id="3-What-is-a-subsystem-used-for-and-how-do-you-identify-them"><a href="#3-What-is-a-subsystem-used-for-and-how-do-you-identify-them" class="headerlink" title="3. What is a subsystem used for, and how do you identify them?"></a><strong>3. What is a subsystem used for, and how do you identify them?</strong></h3><p><strong>英文答案:</strong><br><strong>Purpose of Subsystems:</strong><br>• To partition the system into parts that can be independently developed, tested, deployed, and maintained.<br>• To encapsulate specific capabilities or functionalities of the system.<br>• To improve modularity, scalability, and maintainability.  </p>
+<p><strong>How to Identify Subsystems:</strong><br>• Look for <strong>high-level responsibilities</strong> or <strong>capabilities</strong> in the system.<br>• Identify groups of related <strong>classes, interfaces, or components</strong> that work together to fulfill a specific function.<br>• Consider <strong>independence</strong> and <strong>reusability</strong>: Can the group of elements function independently or be reused in another system?<br>• Evaluate <strong>interfaces</strong>: Does the group expose well-defined interfaces for interaction with other parts of the system?  </p>
+<hr>
+<p><strong>中文答案:</strong><br><strong>子系统的用途 (Purpose of Subsystems):</strong><br>• 将系统划分为可以独立开发、测试、部署和维护的部分。<br>• 封装系统的特定能力或功能。<br>• 提高模块化、可扩展性和可维护性。  </p>
+<p><strong>如何识别子系统 (How to Identify Subsystems):</strong><br>• 查找系统中具有 <strong>高层次职责</strong> 或 <strong>能力</strong> 的部分。<br>• 识别一组相关的 <strong>类、接口或组件</strong>，它们协同工作以实现特定功能。<br>• 考虑 <strong>独立性</strong> 和 <strong>可重用性</strong>：这组元素是否可以独立运行或在其他系统中重用？<br>• 评估 <strong>接口</strong>：这组元素是否暴露了清晰的接口以与其他系统部分交互？  </p>
+<hr>
+<h3 id="4-What-are-some-layering-and-partitioning-considerations"><a href="#4-What-are-some-layering-and-partitioning-considerations" class="headerlink" title="4. What are some layering and partitioning considerations?"></a><strong>4. What are some layering and partitioning considerations?</strong></h3><p><strong>英文答案:</strong>  </p>
+<h4 id="Layering-Considerations"><a href="#Layering-Considerations" class="headerlink" title="Layering Considerations:"></a><strong>Layering Considerations:</strong></h4><ol>
+<li><strong>Visibility:</strong><br>• Define which layers are visible to others and ensure that lower layers do not depend on higher layers.  </li>
+<li><strong>Volatility:</strong><br>• Place frequently changing components in more flexible layers to minimize the impact of changes.  </li>
+<li><strong>Generality:</strong><br>• General-purpose components should be placed in lower layers to allow reuse across multiple systems.  </li>
+<li><strong>Number of Layers:</strong><br>• Avoid too many layers, as this can increase complexity. Balance between granularity and simplicity.  </li>
+</ol>
+<h4 id="Partitioning-Considerations"><a href="#Partitioning-Considerations" class="headerlink" title="Partitioning Considerations:"></a><strong>Partitioning Considerations:</strong></h4><ol>
+<li><strong>Coupling and Cohesion:</strong><br>• Minimize coupling (dependencies) between partitions and maximize cohesion (related responsibilities) within partitions.  </li>
+<li><strong>User Organization:</strong><br>• Partition based on user roles, responsibilities, or organizational structure.  </li>
+<li><strong>Competency and/or Skill Areas:</strong><br>• Assign partitions to teams or individuals based on their expertise or skill sets.  </li>
+<li><strong>System Distribution:</strong><br>• Consider how the system will be distributed across hardware or network environments.  </li>
+<li><strong>Secrecy:</strong><br>• Partition sensitive or confidential components separately to ensure security.  </li>
+<li><strong>Variability:</strong><br>• Partition components that are likely to change independently into separate modules.  </li>
+</ol>
+<hr>
+<p><strong>中文答案:</strong>  </p>
+<h4 id="分层考虑-Layering-Considerations"><a href="#分层考虑-Layering-Considerations" class="headerlink" title="分层考虑 (Layering Considerations):"></a><strong>分层考虑 (Layering Considerations):</strong></h4><ol>
+<li><strong>可见性 (Visibility):</strong><br>• 定义哪些层次对其他层次可见，并确保下层不依赖于上层。  </li>
+<li><strong>易变性 (Volatility):</strong><br>• 将频繁变化的组件放在更灵活的层次中，以减少变更的影响。  </li>
+<li><strong>通用性 (Generality):</strong><br>• 通用组件应放在较低的层次中，以便在多个系统中重用。  </li>
+<li><strong>层数 (Number of Layers):</strong><br>• 避免过多的层次，因为这会增加复杂性。在粒度和简单性之间找到平衡。  </li>
+</ol>
+<h4 id="分区考虑-Partitioning-Considerations"><a href="#分区考虑-Partitioning-Considerations" class="headerlink" title="分区考虑 (Partitioning Considerations):"></a><strong>分区考虑 (Partitioning Considerations):</strong></h4><ol>
+<li><strong>耦合性和内聚性 (Coupling and Cohesion):</strong><br>• 最小化分区之间的耦合（依赖关系），并最大化分区内的内聚性（相关职责）。  </li>
+<li><strong>用户组织 (User Organization):</strong><br>• 根据用户角色、职责或组织结构进行分区。  </li>
+<li><strong>能力和技能领域 (Competency and/or Skill Areas):</strong><br>• 根据团队或个人的专业知识或技能分配分区。  </li>
+<li><strong>系统分布 (System Distribution):</strong><br>• 考虑系统如何在硬件或网络环境中分布。  </li>
+<li><strong>保密性 (Secrecy):</strong><br>• 将敏感或机密组件单独分区，以确保安全性。  </li>
+<li><strong>可变性 (Variability):</strong><br>• 将可能独立变化的组件分到不同的模块中。  </li>
+</ol>
+<hr>
+<h3 id="总结表格-3"><a href="#总结表格-3" class="headerlink" title="总结表格"></a><strong>总结表格</strong></h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th><strong>问题编号</strong></th>
+<th><strong>英文问题</strong></th>
+<th><strong>中文问题</strong></th>
+<th><strong>答案</strong></th>
+<th><strong>解释 (Explanation)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>What is an interface?</td>
+<td>什么是接口？</td>
+<td>接口是一种契约，定义了类、子系统或组件提供的操作、方法或服务。</td>
+<td>接口指定了组件“做什么”，但不指定“如何做”，用于解耦和模块化设计。</td>
+</tr>
+<tr>
+<td>2</td>
+<td>What is a subsystem? How does it differ from a package?</td>
+<td>什么是子系统？它与包有什么区别？</td>
+<td>子系统是系统的模块化单元，封装了独立的功能和行为；包是组织和分组相关元素，但不提供行为。</td>
+<td>子系统具有独立性和可重用性，而包主要用于组织元素，不提供行为。</td>
+</tr>
+<tr>
+<td>3</td>
+<td>What is a subsystem used for, and how do you identify them?</td>
+<td>子系统的用途是什么？如何识别子系统？</td>
+<td>子系统用于将系统划分为独立开发、测试和维护的部分；通过高层次职责、相关类和接口、独立性和接口来识别子系统。</td>
+<td>子系统通过模块化和分层设计提高系统的可维护性和可扩展性。</td>
+</tr>
+<tr>
+<td>4</td>
+<td>What are some layering and partitioning considerations?</td>
+<td>分层和分区有哪些考虑因素？</td>
+<td>分层考虑可见性、易变性、通用性和层数；分区考虑耦合性、用户组织、技能领域、系统分布、保密性和可变性。</td>
+<td>分层和分区是系统设计中的重要原则，分层关注层次结构，分区关注模块划分，两者共同提高系统的模块化和灵活性。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h3 id="复习建议-3"><a href="#复习建议-3" class="headerlink" title="复习建议"></a><strong>复习建议</strong></h3><ol>
+<li><p><strong>接口 (Interface):</strong><br>• 理解接口的作用是定义组件的契约，明确“做什么”而不关心“如何做”。<br>• 接口用于解耦系统组件，提高系统的模块化和可维护性。</p>
+</li>
+<li><p><strong>子系统 (Subsystem):</strong><br>• 子系统是系统的模块化单元，封装独立的功能和行为。<br>• 子系统具有独立性和可重用性，易于替换和扩展。</p>
+</li>
+<li><p><strong>分层和分区 (Layering and Partitioning):</strong><br>• 分层关注系统的层次结构，确保下层不依赖上层，减少变更影响。<br>• 分区关注模块划分，最小化耦合性，最大化内聚性，并根据用户、技能和系统需求进行划分。</p>
+</li>
+</ol>
+<p>以下是针对 <strong>Module 7: Describe the Run-time Architecture</strong> 的问题和答案的详细解答，包含中英文对照，确保清晰易懂：</p>
+<hr>
+<h3 id="1-What-is-a-process-What-is-a-thread"><a href="#1-What-is-a-process-What-is-a-thread" class="headerlink" title="1. What is a process? What is a thread?"></a><strong>1. What is a process? What is a thread?</strong></h3><p><strong>英文答案:</strong><br>A <strong>process</strong> and a <strong>thread</strong> are fundamental concepts in concurrent and distributed systems:</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th><strong>Aspect</strong></th>
+<th><strong>Process</strong></th>
+<th><strong>Thread</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Definition</strong></td>
+<td>A process is a heavyweight flow of control that provides a stand-alone execution environment.</td>
+<td>A thread is a lightweight flow of control that runs within the context of a process.</td>
+</tr>
+<tr>
+<td><strong>Resource Usage</strong></td>
+<td>A process has its own memory space and system resources.</td>
+<td>Threads share the memory space and resources of the process they belong to.</td>
+</tr>
+<tr>
+<td><strong>Independence</strong></td>
+<td>A process is independent and cannot directly access the memory or resources of another process.</td>
+<td>Threads within the same process can share memory and resources.</td>
+</tr>
+<tr>
+<td><strong>Creation Overhead</strong></td>
+<td>Creating a new process is resource-intensive and slower.</td>
+<td>Creating a new thread is faster and less resource-intensive.</td>
+</tr>
+<tr>
+<td><strong>Communication</strong></td>
+<td>Inter-process communication (IPC) is complex and slower.</td>
+<td>Thread communication is faster because threads share the same memory space.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+<p><strong>中文答案:</strong><br><strong>进程 (Process)</strong> 和 <strong>线程 (Thread)</strong> 是并发和分布式系统中的基本概念：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th><strong>方面</strong></th>
+<th><strong>进程 (Process)</strong></th>
+<th><strong>线程 (Thread)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>定义 (Definition)</strong></td>
+<td>进程是一个重量级的控制流，提供独立的执行环境。</td>
+<td>线程是一个轻量级的控制流，在进程的上下文中运行。</td>
+</tr>
+<tr>
+<td><strong>资源使用 (Resource Usage)</strong></td>
+<td>每个进程都有独立的内存空间和系统资源。</td>
+<td>线程共享其所属进程的内存空间和资源。</td>
+</tr>
+<tr>
+<td><strong>独立性 (Independence)</strong></td>
+<td>进程是独立的，不能直接访问其他进程的内存或资源。</td>
+<td>同一进程中的线程可以共享内存和资源。</td>
+</tr>
+<tr>
+<td><strong>创建开销 (Creation Overhead)</strong></td>
+<td>创建新进程的资源开销较大且速度较慢。</td>
+<td>创建新线程的速度更快，资源开销更小。</td>
+</tr>
+<tr>
+<td><strong>通信 (Communication)</strong></td>
+<td>进程间通信（IPC）复杂且速度较慢。</td>
+<td>线程间通信更快，因为线程共享同一内存空间。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h3 id="2-Describe-the-two-strategies-for-mapping-classes-and-subsystems-to-processes"><a href="#2-Describe-the-two-strategies-for-mapping-classes-and-subsystems-to-processes" class="headerlink" title="2. Describe the two strategies for mapping classes and subsystems to processes."></a><strong>2. Describe the two strategies for mapping classes and subsystems to processes.</strong></h3><p><strong>英文答案:</strong><br>There are two strategies for mapping classes and subsystems to processes, which are often used simultaneously:</p>
+<h4 id="1-Inside-Out-Strategy"><a href="#1-Inside-Out-Strategy" class="headerlink" title="1) Inside-Out Strategy:"></a><strong>1) Inside-Out Strategy:</strong></h4><p>• <strong>Focus:</strong> Start from the internal structure of the system and group elements based on their cooperation and execution requirements.<br>• <strong>Steps:</strong>  </p>
+<ol>
+<li>Group elements that closely cooperate and must execute in the same thread of control.  </li>
+<li>Separate elements that do not interact or have minimal interaction.  </li>
+<li>Repeat the process until you reach the minimum number of processes that still provide the required distribution and effective resource utilization.  </li>
+</ol>
+<h4 id="2-Outside-In-Strategy"><a href="#2-Outside-In-Strategy" class="headerlink" title="2) Outside-In Strategy:"></a><strong>2) Outside-In Strategy:</strong></h4><p>• <strong>Focus:</strong> Start from the external interactions and stimuli to define the required processes and threads.<br>• <strong>Steps:</strong>  </p>
+<ol>
+<li>Define a separate thread of control for each external stimulus (e.g., user input, network request).  </li>
+<li>Define a separate server thread of control for each service provided by the system.  </li>
+<li>Reduce the number of threads to the minimum number that the system can support efficiently.  </li>
+</ol>
+<hr>
+<p><strong>中文答案:</strong><br>将类和子系统映射到进程的两种策略通常是同时使用的：</p>
+<h4 id="1-内部驱动策略-Inside-Out-Strategy"><a href="#1-内部驱动策略-Inside-Out-Strategy" class="headerlink" title="1) 内部驱动策略 (Inside-Out Strategy):"></a><strong>1) 内部驱动策略 (Inside-Out Strategy):</strong></h4><p>• <strong>重点:</strong> 从系统的内部结构出发，根据元素的协作关系和执行需求进行分组。<br>• <strong>步骤:</strong>  </p>
+<ol>
+<li>将紧密协作且必须在同一控制线程中执行的元素分组。  </li>
+<li>将不交互或交互较少的元素分开。  </li>
+<li>重复上述过程，直到达到满足分布需求和资源利用率的最小进程数。  </li>
+</ol>
+<h4 id="2-外部驱动策略-Outside-In-Strategy"><a href="#2-外部驱动策略-Outside-In-Strategy" class="headerlink" title="2) 外部驱动策略 (Outside-In Strategy):"></a><strong>2) 外部驱动策略 (Outside-In Strategy):</strong></h4><p>• <strong>重点:</strong> 从外部交互和刺激出发，定义所需的进程和线程。<br>• <strong>步骤:</strong>  </p>
+<ol>
+<li>为每个外部刺激（如用户输入、网络请求）定义一个独立的控制线程。  </li>
+<li>为系统提供的每项服务定义一个独立的服务线程。  </li>
+<li>将线程数减少到系统能够高效支持的最小数量。  </li>
+</ol>
+<hr>
+<h3 id="3-How-do-you-model-the-Process-View-What-modeling-elements-and-diagrams-are-used"><a href="#3-How-do-you-model-the-Process-View-What-modeling-elements-and-diagrams-are-used" class="headerlink" title="3. How do you model the Process View? What modeling elements and diagrams are used?"></a><strong>3. How do you model the Process View? What modeling elements and diagrams are used?</strong></h3><p><strong>英文答案:</strong><br>The <strong>Process View</strong> models the runtime behavior of the system, focusing on processes, threads, and their interactions. It can be modeled using the following elements and diagrams:</p>
+<h4 id="Modeling-Elements"><a href="#Modeling-Elements" class="headerlink" title="Modeling Elements:"></a><strong>Modeling Elements:</strong></h4><ol>
+<li><p><strong>Active Classes (Class Diagrams):</strong><br>• Represent processes or threads as active classes.<br>• Active classes have their own thread of control and can initiate actions independently.  </p>
+</li>
+<li><p><strong>Objects (Interaction Diagrams):</strong><br>• Represent instances of active classes or other objects that participate in the runtime behavior.  </p>
+</li>
+<li><p><strong>Components (Component Diagrams):</strong><br>• Represent the physical or logical components of the system that are deployed and executed as part of the process.  </p>
+</li>
+</ol>
+<h4 id="Diagrams-Used"><a href="#Diagrams-Used" class="headerlink" title="Diagrams Used:"></a><strong>Diagrams Used:</strong></h4><ol>
+<li><p><strong>Class Diagrams:</strong><br>• Use active classes to model processes or threads.<br>• Show relationships between active classes and other system components.  </p>
+</li>
+<li><p><strong>Sequence Diagrams:</strong><br>• Model the interactions between processes, threads, and objects over time.  </p>
+</li>
+<li><p><strong>Activity Diagrams:</strong><br>• Represent the flow of activities within a process or thread.  </p>
+</li>
+<li><p><strong>Component Diagrams:</strong><br>• Show the deployment and interaction of components across processes.  </p>
+</li>
+</ol>
+<hr>
+<p><strong>中文答案:</strong><br><strong>进程视图 (Process View)</strong> 模型描述了系统的运行时行为，重点关注进程、线程及其交互。可以使用以下建模元素和图来建模进程视图：</p>
+<h4 id="建模元素-Modeling-Elements"><a href="#建模元素-Modeling-Elements" class="headerlink" title="建模元素 (Modeling Elements):"></a><strong>建模元素 (Modeling Elements):</strong></h4><ol>
+<li><p><strong>活动类 (Active Classes):</strong><br>• 在类图中将进程或线程表示为活动类。<br>• 活动类具有独立的控制线程，可以独立启动操作。  </p>
+</li>
+<li><p><strong>对象 (Objects):</strong><br>• 表示活动类或其他参与运行时行为的对象的实例。  </p>
+</li>
+<li><p><strong>组件 (Components):</strong><br>• 表示系统中的物理或逻辑组件，这些组件作为进程的一部分被部署和执行。  </p>
+</li>
+</ol>
+<h4 id="使用的图-Diagrams-Used"><a href="#使用的图-Diagrams-Used" class="headerlink" title="使用的图 (Diagrams Used):"></a><strong>使用的图 (Diagrams Used):</strong></h4><ol>
+<li><p><strong>类图 (Class Diagrams):</strong><br>• 使用活动类建模进程或线程。<br>• 显示活动类与其他系统组件之间的关系。  </p>
+</li>
+<li><p><strong>序列图 (Sequence Diagrams):</strong><br>• 模拟进程、线程和对象之间的交互随时间的变化。  </p>
+</li>
+<li><p><strong>活动图 (Activity Diagrams):</strong><br>• 表示进程或线程内的活动流。  </p>
+</li>
+<li><p><strong>组件图 (Component Diagrams):</strong><br>• 显示组件在进程中的部署和交互。  </p>
+</li>
+</ol>
+<hr>
+<h3 id="总结表格-4"><a href="#总结表格-4" class="headerlink" title="总结表格"></a><strong>总结表格</strong></h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th><strong>问题编号</strong></th>
+<th><strong>英文问题</strong></th>
+<th><strong>中文问题</strong></th>
+<th><strong>答案</strong></th>
+<th><strong>解释 (Explanation)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>What is a process? What is a thread?</td>
+<td>什么是进程？什么是线程？</td>
+<td>进程是重量级的控制流，提供独立的执行环境；线程是轻量级的控制流，在进程上下文中运行。</td>
+<td>进程具有独立的内存空间，线程共享进程的内存空间。进程创建开销大，线程创建开销小。</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Describe the two strategies for mapping classes and subsystems to processes.</td>
+<td>描述将类和子系统映射到进程的两种策略。</td>
+<td>内部驱动策略（Inside-Out）从内部结构出发分组元素；外部驱动策略（Outside-In）从外部交互出发定义线程和服务。</td>
+<td>内部驱动策略关注协作关系，外部驱动策略关注外部刺激，两者结合可实现高效的进程和线程映射。</td>
+</tr>
+<tr>
+<td>3</td>
+<td>How do you model the Process View? What modeling elements and diagrams are used?</td>
+<td>如何建模进程视图？使用哪些建模元素和图？</td>
+<td>使用活动类、对象和组件建模；使用类图、序列图、活动图和组件图表示进程视图。</td>
+<td>进程视图通过活动类表示进程和线程，通过交互图表示线程和对象的交互，通过组件图表示部署和交互关系。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h3 id="复习建议-4"><a href="#复习建议-4" class="headerlink" title="复习建议"></a><strong>复习建议</strong></h3><ol>
+<li><p><strong>进程与线程 (Process vs. Thread):</strong><br>• 理解进程是独立的执行环境，具有独立的内存空间；线程是轻量级的控制流，共享进程的内存空间。<br>• 掌握进程创建开销大、线程创建开销小的特点。</p>
+</li>
+<li><p><strong>映射策略 (Mapping Strategies):</strong><br>• 内部驱动策略（Inside-Out）关注系统内部协作关系，外部驱动策略（Outside-In）关注外部交互和刺激。<br>• 两种策略结合使用，可以实现高效的进程和线程映射。</p>
+</li>
+<li><p><strong>进程视图建模 (Process View Modeling):</strong><br>• 使用活动类、对象和组件表示进程和线程。<br>• 使用类图、序列图、活动图和组件图描述进程视图的运行时行为。</p>
+</li>
+</ol>
+<p>以下是针对 <strong>Module 8: Describe Distribution</strong> 的问题和答案的详细解答，包含中英文对照，确保清晰易懂：</p>
+<hr>
+<h3 id="1-What-is-a-node-Describe-the-two-different-“types”-of-nodes"><a href="#1-What-is-a-node-Describe-the-two-different-“types”-of-nodes" class="headerlink" title="1. What is a node? Describe the two different “types” of nodes."></a><strong>1. What is a node? Describe the two different “types” of nodes.</strong></h3><p><strong>英文答案:</strong><br>A <strong>node</strong> is a physical runtime computational resource that supports the execution of software components in a distributed system.  </p>
+<h4 id="Two-Types-of-Nodes"><a href="#Two-Types-of-Nodes" class="headerlink" title="Two Types of Nodes:"></a><strong>Two Types of Nodes:</strong></h4><ol>
+<li><p><strong>Processor Node:</strong><br>• Executes system software, such as applications, services, or middleware.<br>• Examples: Servers, personal computers, or embedded systems with processing capabilities.  </p>
+</li>
+<li><p><strong>Device Node:</strong><br>• Represents a physical device that supports specific hardware functionality.<br>• Typically controlled by a processor node.<br>• Examples: Printers, sensors, cameras, or IoT devices.  </p>
+</li>
+</ol>
+<hr>
+<p><strong>中文答案:</strong><br><strong>节点 (Node)</strong> 是分布式系统中支持软件组件运行的物理运行时计算资源。</p>
+<h4 id="两种类型的节点-Two-Types-of-Nodes"><a href="#两种类型的节点-Two-Types-of-Nodes" class="headerlink" title="两种类型的节点 (Two Types of Nodes):"></a><strong>两种类型的节点 (Two Types of Nodes):</strong></h4><ol>
+<li><p><strong>处理器节点 (Processor Node):</strong><br>• 执行系统软件，例如应用程序、服务或中间件。<br>• 示例：服务器、个人计算机或具有处理能力的嵌入式系统。  </p>
+</li>
+<li><p><strong>设备节点 (Device Node):</strong><br>• 表示支持特定硬件功能的物理设备。<br>• 通常由处理器节点控制。<br>• 示例：打印机、传感器、摄像头或物联网设备。  </p>
+</li>
+</ol>
+<hr>
+<h3 id="2-Describe-some-of-the-considerations-when-mapping-processes-to-nodes"><a href="#2-Describe-some-of-the-considerations-when-mapping-processes-to-nodes" class="headerlink" title="2. Describe some of the considerations when mapping processes to nodes."></a><strong>2. Describe some of the considerations when mapping processes to nodes.</strong></h3><p><strong>英文答案:</strong><br>When mapping processes to nodes, the following considerations are important:</p>
+<h4 id="Process-to-Node-Allocation-Considerations"><a href="#Process-to-Node-Allocation-Considerations" class="headerlink" title="Process-to-Node Allocation Considerations:"></a><strong>Process-to-Node Allocation Considerations:</strong></h4><ol>
+<li><p><strong>Distribution Patterns:</strong><br>• Decide whether processes should be distributed across multiple nodes or centralized on a single node.<br>• Consider factors like fault tolerance, scalability, and performance.  </p>
+</li>
+<li><p><strong>Response Time and System Throughput:</strong><br>• Ensure that the distribution of processes minimizes response time and maximizes system throughput.<br>• Avoid bottlenecks by balancing the workload across nodes.  </p>
+</li>
+<li><p><strong>Minimization of Cross-Network Traffic:</strong><br>• Reduce communication between nodes to minimize network traffic and latency.<br>• Place tightly coupled processes on the same node if possible.  </p>
+</li>
+<li><p><strong>Node Capacity:</strong><br>• Ensure that the selected node has sufficient computational, memory, and storage resources to handle the assigned processes.  </p>
+</li>
+<li><p><strong>Communication Medium Bandwidth:</strong><br>• Consider the bandwidth of the communication medium when placing processes on different nodes.<br>• High-bandwidth requirements may require faster communication links.  </p>
+</li>
+<li><p><strong>Availability of Hardware and Communication Links:</strong><br>• Ensure that the required hardware and communication links are available and reliable.  </p>
+</li>
+<li><p><strong>Rerouting Requirements:</strong><br>• Plan for failover and redundancy by considering how processes can be rerouted in case of node or link failure.  </p>
+</li>
+</ol>
+<hr>
+<p><strong>中文答案:</strong><br>在将进程映射到节点时，需要考虑以下因素：</p>
+<h4 id="进程到节点分配的考虑因素-Process-to-Node-Allocation-Considerations"><a href="#进程到节点分配的考虑因素-Process-to-Node-Allocation-Considerations" class="headerlink" title="进程到节点分配的考虑因素 (Process-to-Node Allocation Considerations):"></a><strong>进程到节点分配的考虑因素 (Process-to-Node Allocation Considerations):</strong></h4><ol>
+<li><p><strong>分布模式 (Distribution Patterns):</strong><br>• 决定进程是分布在多个节点上还是集中在单个节点上。<br>• 考虑容错性、可扩展性和性能等因素。  </p>
+</li>
+<li><p><strong>响应时间和系统吞吐量 (Response Time and System Throughput):</strong><br>• 确保进程分布能够最小化响应时间并最大化系统吞吐量。<br>• 通过平衡节点间的工作负载避免瓶颈。  </p>
+</li>
+<li><p><strong>最小化跨网络流量 (Minimization of Cross-Network Traffic):</strong><br>• 减少节点间的通信以降低网络流量和延迟。<br>• 尽可能将紧密耦合的进程放在同一个节点上。  </p>
+</li>
+<li><p><strong>节点容量 (Node Capacity):</strong><br>• 确保所选节点具有足够的计算、内存和存储资源来处理分配的进程。  </p>
+</li>
+<li><p><strong>通信介质带宽 (Communication Medium Bandwidth):</strong><br>• 在将进程分布到不同节点时，考虑通信介质的带宽。<br>• 高带宽需求可能需要更快的通信链路。  </p>
+</li>
+<li><p><strong>硬件和通信链路的可用性 (Availability of Hardware and Communication Links):</strong><br>• 确保所需的硬件和通信链路可用且可靠。  </p>
+</li>
+<li><p><strong>重路由需求 (Rerouting Requirements):</strong><br>• 考虑节点或链路故障时的故障转移和冗余，规划进程如何重新路由。  </p>
+</li>
+</ol>
+<hr>
+<h3 id="3-How-do-you-model-the-Deployment-View-What-modeling-elements-and-diagrams-are-used"><a href="#3-How-do-you-model-the-Deployment-View-What-modeling-elements-and-diagrams-are-used" class="headerlink" title="3. How do you model the Deployment View? What modeling elements and diagrams are used?"></a><strong>3. How do you model the Deployment View? What modeling elements and diagrams are used?</strong></h3><p><strong>英文答案:</strong><br>The <strong>Deployment View</strong> models the physical deployment of software components on hardware nodes in a distributed system. It describes how processes and threads are mapped to nodes and how nodes are interconnected.</p>
+<h4 id="Modeling-Elements-1"><a href="#Modeling-Elements-1" class="headerlink" title="Modeling Elements:"></a><strong>Modeling Elements:</strong></h4><ol>
+<li><p><strong>Nodes:</strong><br>• Represent physical or logical computational resources (e.g., servers, devices).<br>• Can be classified as <strong>Processor Nodes</strong> or <strong>Device Nodes</strong>.  </p>
+</li>
+<li><p><strong>Connections:</strong><br>• Represent the communication mechanisms between nodes.<br>• Include physical media (e.g., cables) and software protocols (e.g., HTTP, TCP/IP).  </p>
+</li>
+</ol>
+<h4 id="Diagrams-Used-1"><a href="#Diagrams-Used-1" class="headerlink" title="Diagrams Used:"></a><strong>Diagrams Used:</strong></h4><ol>
+<li><p><strong>Deployment Diagrams:</strong><br>• Show the relationships between nodes and the placement of components on nodes.<br>• Represent connections between nodes to illustrate communication paths.  </p>
+</li>
+<li><p><strong>Component Diagrams (Optional):</strong><br>• Can be used to show the relationship between software components and the nodes they are deployed on.  </p>
+</li>
+</ol>
+<hr>
+<p><strong>中文答案:</strong><br><strong>部署视图 (Deployment View)</strong> 模型描述了分布式系统中软件组件在硬件节点上的物理部署方式。它描述了进程和线程如何映射到节点，以及节点如何互连。</p>
+<h4 id="建模元素-Modeling-Elements-1"><a href="#建模元素-Modeling-Elements-1" class="headerlink" title="建模元素 (Modeling Elements):"></a><strong>建模元素 (Modeling Elements):</strong></h4><ol>
+<li><p><strong>节点 (Nodes):</strong><br>• 表示物理或逻辑的计算资源（如服务器、设备）。<br>• 可分为 <strong>处理器节点 (Processor Nodes)</strong> 和 <strong>设备节点 (Device Nodes)</strong>。  </p>
+</li>
+<li><p><strong>连接 (Connections):</strong><br>• 表示节点之间的通信机制。<br>• 包括物理介质（如电缆）和软件协议（如 HTTP、TCP/IP）。  </p>
+</li>
+</ol>
+<h4 id="使用的图-Diagrams-Used-1"><a href="#使用的图-Diagrams-Used-1" class="headerlink" title="使用的图 (Diagrams Used):"></a><strong>使用的图 (Diagrams Used):</strong></h4><ol>
+<li><p><strong>部署图 (Deployment Diagrams):</strong><br>• 显示节点之间的关系以及组件在节点上的部署位置。<br>• 表示节点之间的连接以说明通信路径。  </p>
+</li>
+<li><p><strong>组件图 (Component Diagrams) [可选]:</strong><br>• 可用于显示软件组件与部署它们的节点之间的关系。  </p>
+</li>
+</ol>
+<hr>
+<h3 id="总结表格-5"><a href="#总结表格-5" class="headerlink" title="总结表格"></a><strong>总结表格</strong></h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th><strong>问题编号</strong></th>
+<th><strong>英文问题</strong></th>
+<th><strong>中文问题</strong></th>
+<th><strong>答案</strong></th>
+<th><strong>解释 (Explanation)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>What is a node? Describe the two different “types” of nodes.</td>
+<td>什么是节点？描述两种不同类型的节点。</td>
+<td>节点是分布式系统中的物理计算资源。分为处理器节点（执行系统软件）和设备节点（支持硬件功能）。</td>
+<td>处理器节点如服务器、PC，设备节点如打印机、传感器，通常由处理器节点控制。</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Describe some of the considerations when mapping processes to nodes.</td>
+<td>描述将进程映射到节点时的一些考虑因素。</td>
+<td>包括分布模式、响应时间和吞吐量、跨网络流量最小化、节点容量、通信带宽、硬件可用性和重路由需求。</td>
+<td>进程映射到节点需要综合考虑性能、负载均衡、通信开销和容错性等因素。</td>
+</tr>
+<tr>
+<td>3</td>
+<td>How do you model the Deployment View? What modeling elements and diagrams are used?</td>
+<td>如何建模部署视图？使用哪些建模元素和图？</td>
+<td>使用节点和连接作为建模元素，部署图用于表示节点关系和组件部署，组件图可选用于显示组件与节点的关系。</td>
+<td>部署视图通过部署图描述软件组件在硬件节点上的物理部署，连接表示节点间的通信机制。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h3 id="复习建议-5"><a href="#复习建议-5" class="headerlink" title="复习建议"></a><strong>复习建议</strong></h3><ol>
+<li><p><strong>节点 (Node):</strong><br>• 理解节点是分布式系统中的物理计算资源，分为处理器节点和设备节点。<br>• 处理器节点执行系统软件，设备节点支持硬件功能，通常由处理器节点控制。</p>
+</li>
+<li><p><strong>进程到节点的映射 (Process-to-Node Mapping):</strong><br>• 考虑分布模式、响应时间、吞吐量、跨网络流量、节点容量、通信带宽、硬件可用性和重路由需求。<br>• 目标是优化性能、负载均衡和容错性。</p>
+</li>
+<li><p><strong>部署视图建模 (Deployment View Modeling):</strong><br>• 使用部署图表示节点关系和组件部署。<br>• 使用连接表示节点间的通信机制，确保设计满足性能和可靠性需求。</p>
+</li>
+</ol>
+<p>通过针对性练习这些问题，可以快速巩固分布式系统设计的核心概念！</p>
+<p>以下是针对 <strong>Module 9: Use-Case Design</strong> 的问题和答案的详细解答，包含中英文对照，确保清晰易懂：</p>
+<hr>
+<h3 id="1-What-is-meant-by-encapsulating-subsystem-interactions-Why-is-it-a-good-thing-to-do"><a href="#1-What-is-meant-by-encapsulating-subsystem-interactions-Why-is-it-a-good-thing-to-do" class="headerlink" title="1. What is meant by encapsulating subsystem interactions? Why is it a good thing to do?"></a><strong>1. What is meant by encapsulating subsystem interactions? Why is it a good thing to do?</strong></h3><p><strong>英文答案:</strong><br><strong>Encapsulating subsystem interactions</strong> means defining and isolating the interactions between subsystems in a way that hides their internal details and exposes only the necessary interfaces. This is achieved by describing the interactions at a higher level of abstraction, often using interaction diagrams specific to the subsystems.</p>
+<h4 id="Advantages-of-Encapsulating-Subsystem-Interactions"><a href="#Advantages-of-Encapsulating-Subsystem-Interactions" class="headerlink" title="Advantages of Encapsulating Subsystem Interactions:"></a><strong>Advantages of Encapsulating Subsystem Interactions:</strong></h4><ol>
+<li><p><strong>Simplified Use-Case Realizations:</strong><br>• Use-case realizations become less cluttered because the internal details of subsystems are hidden.<br>• Only the interactions relevant to the use case are visible, making the design easier to understand and maintain.</p>
+</li>
+<li><p><strong>Parallel Development:</strong><br>• Subsystem interactions can be designed and modeled independently of the internal details of the subsystems.<br>• This allows teams to work on different subsystems simultaneously, enabling parallel development.</p>
+</li>
+<li><p><strong>Flexibility and Reusability:</strong><br>• Encapsulated interactions make the use-case realizations more generic and easier to modify.<br>• Subsystems can be substituted or replaced without affecting the overall system design, as long as the interfaces remain consistent.</p>
+</li>
+<li><p><strong>Improved Maintainability:</strong><br>• Changes to the internal design of a subsystem do not propagate to other subsystems or the overall system design.<br>• This reduces the risk of introducing errors during maintenance or updates.</p>
+</li>
+</ol>
+<hr>
+<p><strong>中文答案:</strong><br><strong>封装子系统交互 (Encapsulating Subsystem Interactions)</strong> 是指以一种隐藏子系统内部细节并仅暴露必要接口的方式定义和隔离子系统之间的交互。这通常通过使用特定于子系统的交互图在更高的抽象层次上描述交互来实现。</p>
+<h4 id="封装子系统交互的优点-Advantages-of-Encapsulating-Subsystem-Interactions"><a href="#封装子系统交互的优点-Advantages-of-Encapsulating-Subsystem-Interactions" class="headerlink" title="封装子系统交互的优点 (Advantages of Encapsulating Subsystem Interactions):"></a><strong>封装子系统交互的优点 (Advantages of Encapsulating Subsystem Interactions):</strong></h4><ol>
+<li><p><strong>简化的用例实现 (Simplified Use-Case Realizations):</strong><br>• 用例实现变得更加简洁，因为子系统的内部细节被隐藏。<br>• 只有与用例相关的交互是可见的，这使得设计更易于理解和维护。</p>
+</li>
+<li><p><strong>并行开发 (Parallel Development):</strong><br>• 子系统交互可以独立于子系统的内部细节进行设计和建模。<br>• 这允许多个团队同时处理不同的子系统，从而实现并行开发。</p>
+</li>
+<li><p><strong>灵活性和可重用性 (Flexibility and Reusability):</strong><br>• 封装的交互使用例实现更加通用，更容易修改。<br>• 只要保持接口一致，子系统可以被替换或更换，而不会影响整体系统设计。</p>
+</li>
+<li><p><strong>提高可维护性 (Improved Maintainability):</strong><br>• 子系统的内部设计变更不会传播到其他子系统或整体系统设计。<br>• 这降低了在维护或更新过程中引入错误的风险。</p>
+</li>
+</ol>
+<hr>
+<h3 id="总结表格-6"><a href="#总结表格-6" class="headerlink" title="总结表格"></a><strong>总结表格</strong></h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th><strong>问题编号</strong></th>
+<th><strong>英文问题</strong></th>
+<th><strong>中文问题</strong></th>
+<th><strong>答案</strong></th>
+<th><strong>解释 (Explanation)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>What is meant by encapsulating subsystem interactions? Why is it a good thing to do?</td>
+<td>什么是封装子系统交互？为什么这是一个好事情？</td>
+<td>封装子系统交互是指隐藏子系统内部细节并仅暴露必要接口的过程，通过高层次的交互图描述子系统间的交互。封装的优点包括简化用例实现、支持并行开发、提高灵活性和可重用性，以及增强可维护性。</td>
+<td>封装子系统交互通过隐藏内部细节，减少了设计的复杂性，支持团队并行工作，并使系统更易于维护和扩展。封装还提高了系统的灵活性，允许子系统被替换而不影响整体设计。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h3 id="复习建议-6"><a href="#复习建议-6" class="headerlink" title="复习建议"></a><strong>复习建议</strong></h3><ol>
+<li><p><strong>封装子系统交互 (Encapsulating Subsystem Interactions):</strong><br>• 理解封装的目的是隐藏子系统的内部细节，仅暴露必要的接口。<br>• 封装通过高层次的交互图描述子系统间的交互，简化了用例实现。</p>
+</li>
+<li><p><strong>封装的优点:</strong><br>• <strong>简化用例实现:</strong> 隐藏子系统细节，使设计更清晰。<br>• <strong>并行开发:</strong> 子系统可以独立设计和开发，支持团队协作。<br>• <strong>灵活性和可重用性:</strong> 子系统可以替换或更换，而不会影响整体设计。<br>• <strong>提高可维护性:</strong> 子系统的内部变更不会传播到其他部分，降低维护风险。</p>
+</li>
+</ol>
+<p>以下是针对 <strong>Module 10: Subsystem Design</strong> 和 <strong>Module 11: Class Design</strong> 的问题和答案的详细解答，包含中英文对照，确保清晰易懂：</p>
+<hr>
+<h3 id="Module-10-Subsystem-Design"><a href="#Module-10-Subsystem-Design" class="headerlink" title="Module 10: Subsystem Design"></a><strong>Module 10: Subsystem Design</strong></h3><h4 id="1-How-many-interaction-diagrams-should-be-produced-during-Subsystem-Design"><a href="#1-How-many-interaction-diagrams-should-be-produced-during-Subsystem-Design" class="headerlink" title="1. How many interaction diagrams should be produced during Subsystem Design?"></a><strong>1. How many interaction diagrams should be produced during Subsystem Design?</strong></h4><p><strong>英文答案:</strong><br>During Subsystem Design, <strong>one or more interaction diagrams</strong> should be produced for each interface operation.  </p>
+<p>• Each interaction diagram represents a specific flow of events or scenarios related to the interface operation.<br>• The number of diagrams depends on the complexity of the interface and the different scenarios it supports.</p>
+<hr>
+<p><strong>中文答案:</strong><br>在子系统设计期间，每个接口操作应生成 <strong>一个或多个交互图</strong>。</p>
+<p>• 每个交互图表示与接口操作相关的特定事件流或场景。<br>• 图的数量取决于接口的复杂性以及它支持的不同场景。</p>
+<hr>
+<h3 id="Module-11-Class-Design"><a href="#Module-11-Class-Design" class="headerlink" title="Module 11: Class Design"></a><strong>Module 11: Class Design</strong></h3><h4 id="1-Are-statecharts-created-for-every-class"><a href="#1-Are-statecharts-created-for-every-class" class="headerlink" title="1. Are statecharts created for every class?"></a><strong>1. Are statecharts created for every class?</strong></h4><p><strong>英文答案:</strong><br>No, statecharts are not created for every class.  </p>
+<p>• A <strong>statechart</strong> is a directed graph of states (nodes) connected by transitions (directed arcs).<br>• Statecharts are created only for classes that exhibit <strong>state-controlled behavior</strong>, where the behavior of the class depends on its current state.</p>
+<hr>
+<p><strong>中文答案:</strong><br>不，并不是每个类都需要创建状态图。</p>
+<p>• <strong>状态图 (Statechart)</strong> 是一个由状态（节点）通过转换（有向弧）连接的有向图。<br>• 状态图仅用于具有 <strong>状态控制行为</strong> 的类，即类的行为取决于其当前状态。</p>
+<hr>
+<h4 id="2-What-are-the-major-components-of-a-statechart-Provide-a-brief-description-of-each"><a href="#2-What-are-the-major-components-of-a-statechart-Provide-a-brief-description-of-each" class="headerlink" title="2. What are the major components of a statechart? Provide a brief description of each."></a><strong>2. What are the major components of a statechart? Provide a brief description of each.</strong></h4><p><strong>英文答案:</strong><br>The major components of a statechart include:</p>
+<ol>
+<li><p><strong>Significant, Dynamic Attributes:</strong><br>• Attributes that define the state of the object and may change during its lifecycle.  </p>
+</li>
+<li><p><strong>Existence and Non-Existence of Certain Links:</strong><br>• Represents relationships between objects that may exist or disappear depending on the state.  </p>
+</li>
+<li><p><strong>Events:</strong><br>• Triggers that cause transitions between states.<br>• Examples: User actions, system events, or external stimuli.  </p>
+</li>
+<li><p><strong>Transitions:</strong><br>• Represent the movement from one state to another in response to an event.<br>• Transitions are triggered by events and may have guards (conditions) and actions.  </p>
+</li>
+<li><p><strong>Activities and Actions:</strong><br>• <strong>Activities:</strong> Ongoing processes that occur within a state (e.g., a timer running).<br>• <strong>Actions:</strong> Specific operations executed during a transition or while in a state.  </p>
+</li>
+</ol>
+<hr>
+<p><strong>中文答案:</strong><br>状态图的主要组成部分包括：</p>
+<ol>
+<li><p><strong>重要的动态属性 (Significant, Dynamic Attributes):</strong><br>• 定义对象状态的属性，这些属性在对象的生命周期中可能会发生变化。  </p>
+</li>
+<li><p><strong>某些链接的存在与否 (Existence and Non-Existence of Certain Links):</strong><br>• 表示对象之间的关系可能会根据状态的存在或消失而变化。  </p>
+</li>
+<li><p><strong>事件 (Events):</strong><br>• 触发状态之间转换的事件。<br>• 示例：用户操作、系统事件或外部刺激。  </p>
+</li>
+<li><p><strong>转换 (Transitions):</strong><br>• 表示对象从一个状态响应事件转移到另一个状态的过程。<br>• 转换由事件触发，可能包含条件（guards）和动作（actions）。  </p>
+</li>
+<li><p><strong>活动和动作 (Activities and Actions):</strong><br>• <strong>活动 (Activities):</strong> 在某个状态下持续进行的过程（例如，计时器运行）。<br>• <strong>动作 (Actions):</strong> 在转换期间或处于某个状态时执行的具体操作。  </p>
+</li>
+</ol>
+<hr>
+<h4 id="3-What-is-the-difference-between-an-association-and-a-dependency"><a href="#3-What-is-the-difference-between-an-association-and-a-dependency" class="headerlink" title="3. What is the difference between an association and a dependency?"></a><strong>3. What is the difference between an association and a dependency?</strong></h4><p><strong>英文答案:</strong><br>| <strong>Aspect</strong>     | <strong>Association</strong>                                              | <strong>Dependency</strong>                                               |<br>| ——————— | —————————————————————————————— | —————————————————————————————— |<br>| <strong>Definition</strong> | A structural relationship between two classes that indicates a long-term connection. | A nonstructural relationship that indicates a temporary dependency between objects. |<br>| <strong>Nature</strong>     | Structural (static relationship between classes).            | Nonstructural (dynamic relationship between objects).        |<br>| <strong>Visibility</strong> | Links created by associations are visible in the system’s structure. | Dependencies do not create permanent links and are context-dependent. |<br>| <strong>Duration</strong>   | Associations are long-term and persistent.                   | Dependencies are transient and short-lived.                  |<br>| <strong>Example</strong>    | A “Student” is associated with a “Course” (structural relationship). | A “Method” depends on another “Class” to perform its functionality (temporary). |</p>
+<hr>
+<p><strong>中文答案:</strong><br>| <strong>方面</strong>                | <strong>关联 (Association)</strong>                   | <strong>依赖 (Dependency)</strong>                          |<br>| ———————————- | ———————————————————— | ——————————————————————— |<br>| <strong>定义 (Definition)</strong>   | 类之间的结构关系，表示长期的连接。       | 对象之间的非结构关系，表示临时的依赖。         |<br>| <strong>性质 (Nature)</strong>       | 结构性（类之间的静态关系）。             | 非结构性（对象之间的动态关系）。               |<br>| <strong>可见性 (Visibility)</strong> | 由关联创建的链接在系统结构中是可见的。   | 依赖不会创建永久链接，而是依赖于上下文。       |<br>| <strong>持续时间 (Duration)</strong> | 关联是长期的、持久的。                   | 依赖是短暂的、瞬时的。                         |<br>| <strong>示例 (Example)</strong>      | “学生”与“课程”之间的关联（结构性关系）。 | “方法”依赖于另一个“类”以执行其功能（临时性）。 |</p>
+<hr>
+<h3 id="总结表格-7"><a href="#总结表格-7" class="headerlink" title="总结表格"></a><strong>总结表格</strong></h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th><strong>模块</strong></th>
+<th><strong>问题编号</strong></th>
+<th><strong>英文问题</strong></th>
+<th><strong>中文问题</strong></th>
+<th><strong>答案</strong></th>
+<th><strong>解释 (Explanation)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Module 10</strong></td>
+<td>1</td>
+<td>How many interaction diagrams should be produced during Subsystem Design?</td>
+<td>在子系统设计期间应生成多少个交互图？</td>
+<td>每个接口操作应生成一个或多个交互图，具体数量取决于接口的复杂性和支持的场景。</td>
+<td>交互图用于描述接口操作的事件流，复杂接口可能需要多个交互图来表示不同的场景。</td>
+</tr>
+<tr>
+<td><strong>Module 11</strong></td>
+<td>1</td>
+<td>Are statecharts created for every class?</td>
+<td>是否为每个类都创建状态图？</td>
+<td>不是，状态图仅用于具有状态控制行为的类，即类的行为取决于其当前状态。</td>
+<td>状态图用于建模对象的状态变化，只有状态相关的类才需要状态图。</td>
+</tr>
+<tr>
+<td><strong>Module 11</strong></td>
+<td>2</td>
+<td>What are the major components of a statechart? Provide a brief description of each.</td>
+<td>状态图的主要组成部分是什么？请简要描述每个部分。</td>
+<td>状态图包括动态属性、链接的存在与否、事件、转换、活动和动作。这些部分共同描述了对象的状态变化和行为。</td>
+<td>动态属性定义对象状态，事件触发转换，转换表示状态变化，活动和动作描述状态内的行为或转换时的操作。</td>
+</tr>
+<tr>
+<td><strong>Module 11</strong></td>
+<td>3</td>
+<td>What is the difference between an association and a dependency?</td>
+<td>关联和依赖之间的区别是什么？</td>
+<td>关联是类之间的结构性关系，表示长期连接；依赖是非结构性关系，表示临时依赖。关联可见且持久，依赖短暂且上下文相关。</td>
+<td>关联用于描述类之间的静态关系，依赖用于描述对象之间的动态关系。关联是持久的，依赖是短暂的，依赖通常通过方法调用实现。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h3 id="复习建议-7"><a href="#复习建议-7" class="headerlink" title="复习建议"></a><strong>复习建议</strong></h3><ol>
+<li><p><strong>子系统设计中的交互图 (Interaction Diagrams in Subsystem Design):</strong><br>• 每个接口操作可能需要一个或多个交互图，具体数量取决于接口的复杂性和支持的场景。<br>• 交互图用于描述接口操作的事件流，帮助清晰地定义子系统的行为。</p>
+</li>
+<li><p><strong>状态图 (Statechart):</strong><br>• 状态图仅用于具有状态控制行为的类，描述对象的状态变化和触发状态转换的事件。<br>• 状态图的核心组成部分包括动态属性、事件、转换、活动和动作。</p>
+</li>
+<li><p><strong>关联与依赖的区别 (Association vs. Dependency):</strong><br>• <strong>关联 (Association):</strong> 类之间的结构性关系，表示长期连接，可见且持久。<br>• <strong>依赖 (Dependency):</strong> 对象之间的非结构性关系，表示临时依赖，短暂且上下文相关。</p>
+</li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://www.totorocatcat.top/">Totoro</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://totorocatcat.top/UML%E5%BE%A9%E7%BF%92/">http://totorocatcat.top/UML%E5%BE%A9%E7%BF%92/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://totorocatcat.top" target="_blank">Totoroの旅</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%8F%90%E9%AB%98/">提高</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E6%8F%92%E7%94%BB%E5%B8%85%E5%93%A5-%E9%BB%91%E7%99%BD%E6%B0%B4%E5%A2%A8%E9%A3%8E.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/UML%E7%B0%A1%E7%AD%94%E9%A1%8C/" title="UML簡答題"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E6%8F%92%E7%94%BB%E5%B8%85%E5%93%A5-%E9%BB%91%E7%99%BD%E6%B0%B4%E5%A2%A8%E9%A3%8E.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">UML簡答題</div></div></a></div><div class="next-post pull-right"><a href="/UML%E5%A4%8D%E4%B9%A0/" title="UML复习"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E6%8F%92%E7%94%BB%E5%B8%85%E5%93%A5-%E9%BB%91%E7%99%BD%E6%B0%B4%E5%A2%A8%E9%A3%8E.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">UML复习</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/'Lec2%20Logic%20and%20Proof,%20Sets,%20and%20Function'/" title="Lec2 Logic and Proof, Sets, and Function"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/1fe6130ca86bb9e7e6a37c9187a32c8.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-11-20</div><div class="title">Lec2 Logic and Proof, Sets, and Function</div></div></a></div><div><a href="/02%EF%BC%89/" title="CS61B 课程笔记（Lecture 02）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/v2-2ed7f4c9e1a7a699a3ef300a6f761abe_720w.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-11</div><div class="title">CS61B 课程笔记（Lecture 02）</div></div></a></div><div><a href="/04%EF%BC%89/" title="CS61B 课程笔记（Lecture 04）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/2749a496aabc7d650b2912e256582e390a0a636b.jpg@1256w_1246h_!web-article-pic.avif" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-13</div><div class="title">CS61B 课程笔记（Lecture 04）</div></div></a></div><div><a href="/03%EF%BC%89/" title="CS61B 课程笔记（Lecture 03）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/v2-2ed7f4c9e1a7a699a3ef300a6f761abe_720w.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-12</div><div class="title">CS61B 课程笔记（Lecture 03）</div></div></a></div><div><a href="/07%EF%BC%89/" title="CS61B 课程笔记（Lecture 07）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/ef0c9dc1434371965c925677e389b329298252208.png@1256w_1702h_!web-article-pic.avif" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-16</div><div class="title">CS61B 课程笔记（Lecture 07）</div></div></a></div><div><a href="/06%EF%BC%89/" title="CS61B 课程笔记（Lecture 06）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/f00af0d55cc81c18403ccbb4957ae6bc298252208.jpg@1256w_1374h_!web-article-pic.avif" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-15</div><div class="title">CS61B 课程笔记（Lecture 06）</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E4%BE%A0%E5%AE%A2-%E6%AD%A6%E4%BE%A0%E5%9C%BA%E6%99%AF-%E6%B8%B8%E6%88%8F.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Totoro</div><div class="author-info__description">热爱文学的SCUT软件学院学生</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">909</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">37</div></a></div><a id="card-info-btn" href="https://github.com/4512abc"><i class="fab fa-github"></i><span>🛴前往小窝......</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/4512abc" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:4512abc@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到龙猫の小窝</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#UML%E5%BE%A9%E7%BF%92"><span class="toc-text">UML復習</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-What-is-a-Use-Case-Model"><span class="toc-text">1. What is a Use-Case Model?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-What-is-an-Actor"><span class="toc-text">2. What is an Actor?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-What-is-a-Use-Case-List-examples-of-use-case-properties"><span class="toc-text">3. What is a Use Case? List examples of use case properties.</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-What-is-the-difference-between-a-use-case-and-a-scenario"><span class="toc-text">4. What is the difference between a use case and a scenario?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-What-is-a-Supplementary-Specification-and-what-does-it-include"><span class="toc-text">5. What is a Supplementary Specification and what does it include?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93%E8%A1%A8%E6%A0%BC"><span class="toc-text">总结表格</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%8D%E4%B9%A0%E5%BB%BA%E8%AE%AE"><span class="toc-text">复习建议</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-What-is-the-purpose-of-the-Analysis-and-Design-Discipline"><span class="toc-text">1. What is the purpose of the Analysis and Design Discipline?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Name-and-briefly-describe-the-4-1-Views-of-Architecture"><span class="toc-text">2. Name and briefly describe the 4+1 Views of Architecture.</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-What-is-the-difference-between-Analysis-and-Design"><span class="toc-text">3. What is the difference between Analysis and Design?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-What-is-architecture"><span class="toc-text">4. What is architecture?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93%E8%A1%A8%E6%A0%BC-1"><span class="toc-text">总结表格</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%8D%E4%B9%A0%E5%BB%BA%E8%AE%AE-1"><span class="toc-text">复习建议</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-What-is-a-package"><span class="toc-text">1. What is a package?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-What-is-a-layered-architecture-Give-examples-of-typical-layers"><span class="toc-text">2. What is a layered architecture? Give examples of typical layers.</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-What-is-an-analysis-class-Name-and-describe-the-three-analysis-stereotypes"><span class="toc-text">1. What is an analysis class? Name and describe the three analysis stereotypes.</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-What-is-a-Use-Case-Realization"><span class="toc-text">2. What is a Use-Case Realization?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-How-many-Interaction-diagrams-should-be-produced-during-Use-Case-Analysis"><span class="toc-text">3. How many Interaction diagrams should be produced during Use-Case Analysis?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93%E8%A1%A8%E6%A0%BC-2"><span class="toc-text">总结表格</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%8D%E4%B9%A0%E5%BB%BA%E8%AE%AE-2"><span class="toc-text">复习建议</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-What-is-an-interface"><span class="toc-text">1. What is an interface?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-What-is-a-subsystem-How-does-it-differ-from-a-package"><span class="toc-text">2. What is a subsystem? How does it differ from a package?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-What-is-a-subsystem-used-for-and-how-do-you-identify-them"><span class="toc-text">3. What is a subsystem used for, and how do you identify them?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-What-are-some-layering-and-partitioning-considerations"><span class="toc-text">4. What are some layering and partitioning considerations?</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Layering-Considerations"><span class="toc-text">Layering Considerations:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Partitioning-Considerations"><span class="toc-text">Partitioning Considerations:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E5%B1%82%E8%80%83%E8%99%91-Layering-Considerations"><span class="toc-text">分层考虑 (Layering Considerations):</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E5%8C%BA%E8%80%83%E8%99%91-Partitioning-Considerations"><span class="toc-text">分区考虑 (Partitioning Considerations):</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93%E8%A1%A8%E6%A0%BC-3"><span class="toc-text">总结表格</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%8D%E4%B9%A0%E5%BB%BA%E8%AE%AE-3"><span class="toc-text">复习建议</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-What-is-a-process-What-is-a-thread"><span class="toc-text">1. What is a process? What is a thread?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Describe-the-two-strategies-for-mapping-classes-and-subsystems-to-processes"><span class="toc-text">2. Describe the two strategies for mapping classes and subsystems to processes.</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-Inside-Out-Strategy"><span class="toc-text">1) Inside-Out Strategy:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-Outside-In-Strategy"><span class="toc-text">2) Outside-In Strategy:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%86%85%E9%83%A8%E9%A9%B1%E5%8A%A8%E7%AD%96%E7%95%A5-Inside-Out-Strategy"><span class="toc-text">1) 内部驱动策略 (Inside-Out Strategy):</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%A4%96%E9%83%A8%E9%A9%B1%E5%8A%A8%E7%AD%96%E7%95%A5-Outside-In-Strategy"><span class="toc-text">2) 外部驱动策略 (Outside-In Strategy):</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-How-do-you-model-the-Process-View-What-modeling-elements-and-diagrams-are-used"><span class="toc-text">3. How do you model the Process View? What modeling elements and diagrams are used?</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Modeling-Elements"><span class="toc-text">Modeling Elements:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Diagrams-Used"><span class="toc-text">Diagrams Used:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BB%BA%E6%A8%A1%E5%85%83%E7%B4%A0-Modeling-Elements"><span class="toc-text">建模元素 (Modeling Elements):</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E7%9A%84%E5%9B%BE-Diagrams-Used"><span class="toc-text">使用的图 (Diagrams Used):</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93%E8%A1%A8%E6%A0%BC-4"><span class="toc-text">总结表格</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%8D%E4%B9%A0%E5%BB%BA%E8%AE%AE-4"><span class="toc-text">复习建议</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-What-is-a-node-Describe-the-two-different-%E2%80%9Ctypes%E2%80%9D-of-nodes"><span class="toc-text">1. What is a node? Describe the two different “types” of nodes.</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Two-Types-of-Nodes"><span class="toc-text">Two Types of Nodes:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%A4%E7%A7%8D%E7%B1%BB%E5%9E%8B%E7%9A%84%E8%8A%82%E7%82%B9-Two-Types-of-Nodes"><span class="toc-text">两种类型的节点 (Two Types of Nodes):</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Describe-some-of-the-considerations-when-mapping-processes-to-nodes"><span class="toc-text">2. Describe some of the considerations when mapping processes to nodes.</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Process-to-Node-Allocation-Considerations"><span class="toc-text">Process-to-Node Allocation Considerations:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E5%88%B0%E8%8A%82%E7%82%B9%E5%88%86%E9%85%8D%E7%9A%84%E8%80%83%E8%99%91%E5%9B%A0%E7%B4%A0-Process-to-Node-Allocation-Considerations"><span class="toc-text">进程到节点分配的考虑因素 (Process-to-Node Allocation Considerations):</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-How-do-you-model-the-Deployment-View-What-modeling-elements-and-diagrams-are-used"><span class="toc-text">3. How do you model the Deployment View? What modeling elements and diagrams are used?</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Modeling-Elements-1"><span class="toc-text">Modeling Elements:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Diagrams-Used-1"><span class="toc-text">Diagrams Used:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BB%BA%E6%A8%A1%E5%85%83%E7%B4%A0-Modeling-Elements-1"><span class="toc-text">建模元素 (Modeling Elements):</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E7%9A%84%E5%9B%BE-Diagrams-Used-1"><span class="toc-text">使用的图 (Diagrams Used):</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93%E8%A1%A8%E6%A0%BC-5"><span class="toc-text">总结表格</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%8D%E4%B9%A0%E5%BB%BA%E8%AE%AE-5"><span class="toc-text">复习建议</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-What-is-meant-by-encapsulating-subsystem-interactions-Why-is-it-a-good-thing-to-do"><span class="toc-text">1. What is meant by encapsulating subsystem interactions? Why is it a good thing to do?</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Advantages-of-Encapsulating-Subsystem-Interactions"><span class="toc-text">Advantages of Encapsulating Subsystem Interactions:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B0%81%E8%A3%85%E5%AD%90%E7%B3%BB%E7%BB%9F%E4%BA%A4%E4%BA%92%E7%9A%84%E4%BC%98%E7%82%B9-Advantages-of-Encapsulating-Subsystem-Interactions"><span class="toc-text">封装子系统交互的优点 (Advantages of Encapsulating Subsystem Interactions):</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93%E8%A1%A8%E6%A0%BC-6"><span class="toc-text">总结表格</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%8D%E4%B9%A0%E5%BB%BA%E8%AE%AE-6"><span class="toc-text">复习建议</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Module-10-Subsystem-Design"><span class="toc-text">Module 10: Subsystem Design</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-How-many-interaction-diagrams-should-be-produced-during-Subsystem-Design"><span class="toc-text">1. How many interaction diagrams should be produced during Subsystem Design?</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Module-11-Class-Design"><span class="toc-text">Module 11: Class Design</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-Are-statecharts-created-for-every-class"><span class="toc-text">1. Are statecharts created for every class?</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-What-are-the-major-components-of-a-statechart-Provide-a-brief-description-of-each"><span class="toc-text">2. What are the major components of a statechart? Provide a brief description of each.</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-What-is-the-difference-between-an-association-and-a-dependency"><span class="toc-text">3. What is the difference between an association and a dependency?</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93%E8%A1%A8%E6%A0%BC-7"><span class="toc-text">总结表格</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%8D%E4%B9%A0%E5%BB%BA%E8%AE%AE-7"><span class="toc-text">复习建议</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/%E7%BB%86%E5%B0%8FUML%E8%80%83%E7%82%B9/" title="细小UML考点"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E6%8F%92%E7%94%BB%E5%B8%85%E5%93%A5-%E9%BB%91%E7%99%BD%E6%B0%B4%E5%A2%A8%E9%A3%8E.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="细小UML考点"/></a><div class="content"><a class="title" href="/%E7%BB%86%E5%B0%8FUML%E8%80%83%E7%82%B9/" title="细小UML考点">细小UML考点</a><time datetime="2025-05-15T04:22:42.000Z" title="发表于 2025-05-15 12:22:42">2025-05-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/UML%E9%A0%90%E7%BF%92%E8%88%87%E5%BE%A9%E7%BF%92/" title="UML預習與復習"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E6%8F%92%E7%94%BB%E5%B8%85%E5%93%A5-%E9%BB%91%E7%99%BD%E6%B0%B4%E5%A2%A8%E9%A3%8E.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="UML預習與復習"/></a><div class="content"><a class="title" href="/UML%E9%A0%90%E7%BF%92%E8%88%87%E5%BE%A9%E7%BF%92/" title="UML預習與復習">UML預習與復習</a><time datetime="2025-05-15T04:22:08.000Z" title="发表于 2025-05-15 12:22:08">2025-05-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/UML%E7%B0%A1%E7%AD%94%E9%A1%8C/" title="UML簡答題"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E6%8F%92%E7%94%BB%E5%B8%85%E5%93%A5-%E9%BB%91%E7%99%BD%E6%B0%B4%E5%A2%A8%E9%A3%8E.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="UML簡答題"/></a><div class="content"><a class="title" href="/UML%E7%B0%A1%E7%AD%94%E9%A1%8C/" title="UML簡答題">UML簡答題</a><time datetime="2025-05-15T04:21:34.000Z" title="发表于 2025-05-15 12:21:34">2025-05-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/UML%E5%BE%A9%E7%BF%92/" title="UML復習"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E6%8F%92%E7%94%BB%E5%B8%85%E5%93%A5-%E9%BB%91%E7%99%BD%E6%B0%B4%E5%A2%A8%E9%A3%8E.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="UML復習"/></a><div class="content"><a class="title" href="/UML%E5%BE%A9%E7%BF%92/" title="UML復習">UML復習</a><time datetime="2025-05-15T04:21:03.000Z" title="发表于 2025-05-15 12:21:03">2025-05-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/UML%E5%A4%8D%E4%B9%A0/" title="UML复习"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E6%8F%92%E7%94%BB%E5%B8%85%E5%93%A5-%E9%BB%91%E7%99%BD%E6%B0%B4%E5%A2%A8%E9%A3%8E.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="UML复习"/></a><div class="content"><a class="title" href="/UML%E5%A4%8D%E4%B9%A0/" title="UML复习">UML复习</a><time datetime="2025-05-15T04:20:07.000Z" title="发表于 2025-05-15 12:20:07">2025-05-15</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 - 2025 By Totoro</div><div class="footer_custom_text">I wish you to become your own sun, no need to rely on who's light.<p><a target="_blank" href="https://hexo.io/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&logo=hexo" title="博客框架为Hexo"></a>&nbsp;<a target="_blank" href="https://butterfly.js.org/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&logo=bitdefender" title="主题采用butterfly"></a>&nbsp;<a target="_blank" href="https://www.jsdelivr.com/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&logo=jsDelivr" title="本站使用JsDelivr为静态资源提供CDN加速"></a> &nbsp;<a target="_blank" href="https://vercel.com/ "><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Hosted-Vervel-brightgreen?style=flat&logo=Vercel" title="本站采用双线部署，默认线路托管于Vercel"></a>&nbsp;<a target="_blank" href="https://vercel.com/ "><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Hosted-Coding-0cedbe?style=flat&logo=Codio" title="本站采用双线部署，联通线路托管于Coding"></a>&nbsp;<a target="_blank" href="https://github.com/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&logo=GitHub" title="本站项目由Gtihub托管"></a>&nbsp;<a target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&logo=Claris" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"></a></p></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat-btn" type="button" title="聊天"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="/js/tw_cn.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@5.2.0/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'HT1PalaKkPaG1UqAXBhJXIu8-gzGzoHsz',
+      appKey: 'iT0TnVVAwf9zuZ7NqwclQItY',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://cdn.jsdelivr.net/npm/valine@1.5.1/dist/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><script defer src="/js/light.js"></script><canvas id="universe"></canvas><script defer src="/js/universe.js"></script><script async src="/js/title.js"></script><script defer src="https://npm.elemecdn.com/jquery@latest/dist/jquery.min.js"></script><script defer data-pjax src="/js/cat.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="1" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener
+  btf.removeGlobalFnEvent('pjax')
+  btf.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.12.0"></script></div></div><!-- hexo injector body_end start --><script data-pjax>
+  function butterfly_swiper_injector_config(){
+    var parent_div_git = document.getElementById('recent-posts');
+    var item_html = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms;"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;诗录/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/4b31456c6f0f4489f99177f89e936de7286431045.png@1256w_708h_!web-article-pic.avif" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-10-01</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;诗录/&quot;);" href="javascript:void(0);" alt="">诗录</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;诗录/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;诗兴大发/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://source.fomal.cc/img/default_cover_69.webp" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-01-29</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;诗兴大发/&quot;);" href="javascript:void(0);" alt="">诗兴大发</a><div class="blog-slider__text">未觉，却是中二少年的诗仙梦</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;诗兴大发/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;TotoroのPlan/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/51d37eba99d243607ddedfff6e91568f617436609.jpg@1256w_1884h_!web-article-pic.avif" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-10-05</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;TotoroのPlan/&quot;);" href="javascript:void(0);" alt="">TotoroのPlan</a><div class="blog-slider__text">方便大二看（）</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;TotoroのPlan/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;Markdown格式/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/ushio-api-img-moe@5.0.48/img_482_1920x1080_96_null_normal.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-03-03</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;Markdown格式/&quot;);" href="javascript:void(0);" alt="">Markdown格式</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;Markdown格式/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载butterfly_swiper')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_swiper_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_swiper_injector_config();
+  }
+  </script><script defer src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.js"></script><script defer data-pjax src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper_init.js"></script><script data-pjax>
+    function butterfly_categories_card_injector_config(){
+      var parent_div_git = document.getElementById('recent-posts');
+      var item_html = '<style>li.categoryBar-list-item{width:32.3%;}.categoryBar-list{max-height: 380px;overflow:auto;}.categoryBar-list::-webkit-scrollbar{width:0!important}@media screen and (max-width: 650px){.categoryBar-list{max-height: 320px;}}</style><div class="recent-post-item" style="height:auto;width:100%;padding:0px;"><div id="categoryBar"><ul class="categoryBar-list"><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_12.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/离散数学/&quot;);" href="javascript:void(0);">离散数学</a><span class="categoryBar-list-count">33</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_13.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS61B/&quot;);" href="javascript:void(0);">CS61B</a><span class="categoryBar-list-count">76</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_14.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/计算机网络/&quot;);" href="javascript:void(0);">计算机网络</a><span class="categoryBar-list-count">38</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_17.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/操作系统/&quot;);" href="javascript:void(0);">操作系统</a><span class="categoryBar-list-count">41</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_18.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/期末の旅/&quot;);" href="javascript:void(0);">期末の旅</a><span class="categoryBar-list-count">99</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_19.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/刷题计划/&quot;);" href="javascript:void(0);">刷题计划</a><span class="categoryBar-list-count">60</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_20.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/区域赛の旅/&quot;);" href="javascript:void(0);">区域赛の旅</a><span class="categoryBar-list-count">7</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_21.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/Codeforcesの旅/&quot;);" href="javascript:void(0);">Codeforcesの旅</a><span class="categoryBar-list-count">24</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_22.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/牛客の旅/&quot;);" href="javascript:void(0);">牛客の旅</a><span class="categoryBar-list-count">65</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_22.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/ACMの旅/&quot;);" href="javascript:void(0);">ACMの旅</a><span class="categoryBar-list-count">42</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_23.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/数学建模/&quot;);" href="javascript:void(0);">数学建模</a><span class="categoryBar-list-count">26</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_24.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/前端の旅/&quot;);" href="javascript:void(0);">前端の旅</a><span class="categoryBar-list-count">17</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_25.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/数据结构/&quot;);" href="javascript:void(0);">数据结构</a><span class="categoryBar-list-count">47</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_26.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/Atcoderの旅/&quot;);" href="javascript:void(0);">Atcoderの旅</a><span class="categoryBar-list-count">53</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_27.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/C-の旅/&quot;);" href="javascript:void(0);">C++の旅</a><span class="categoryBar-list-count">17</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_28.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS70の旅/&quot;);" href="javascript:void(0);">CS70の旅</a><span class="categoryBar-list-count">24</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_29.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CSAPPの旅/&quot;);" href="javascript:void(0);">CSAPPの旅</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_30.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/计算机组成原理/&quot;);" href="javascript:void(0);">计算机组成原理</a><span class="categoryBar-list-count">47</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_31.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/编程基础/&quot;);" href="javascript:void(0);">编程基础</a><span class="categoryBar-list-count">14</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_32.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/JAVAの旅/&quot;);" href="javascript:void(0);">JAVAの旅</a><span class="categoryBar-list-count">10</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_33.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/MIT-6-031-Software-Construction/&quot;);" href="javascript:void(0);">MIT 6.031:Software Construction</a><span class="categoryBar-list-count">16</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_34.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS-110L/&quot;);" href="javascript:void(0);">CS 110L</a><span class="categoryBar-list-count">3</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_35.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/数据库の旅/&quot;);" href="javascript:void(0);">数据库の旅</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_36.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/灵魂の旅/&quot;);" href="javascript:void(0);">灵魂の旅</a><span class="categoryBar-list-count">2</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_37.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/个人安排/&quot;);" href="javascript:void(0);">个人安排</a><span class="categoryBar-list-count">2</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_38.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/杂项/&quot;);" href="javascript:void(0);">杂项</a><span class="categoryBar-list-count">13</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_39.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/文学/&quot;);" href="javascript:void(0);">文学</a><span class="categoryBar-list-count">49</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_40.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/力扣の旅/&quot;);" href="javascript:void(0);">力扣の旅</a><span class="categoryBar-list-count">20</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_41.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/千里十二行/&quot;);" href="javascript:void(0);">千里十二行</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_42.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/🗡指offer/&quot;);" href="javascript:void(0);">🗡指offer</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_43.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/少年游/&quot;);" href="javascript:void(0);">少年游</a><span class="categoryBar-list-count">2</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_44.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/算法提高课/&quot;);" href="javascript:void(0);">算法提高课</a><span class="categoryBar-list-count">3</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_44.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/汇编の旅/&quot;);" href="javascript:void(0);">汇编の旅</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_45.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/C-实训/&quot;);" href="javascript:void(0);">C++实训</a><span class="categoryBar-list-count">8</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_46.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/编译原理/&quot;);" href="javascript:void(0);">编译原理</a><span class="categoryBar-list-count">33</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_48.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS知识/&quot;);" href="javascript:void(0);">CS知识</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(undefined);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/UML/&quot;);" href="javascript:void(0);">UML</a><span class="categoryBar-list-count">9</span><span class="categoryBar-list-descr"></span></li></ul></div></div>';
+      console.log('已挂载butterfly_categories_card')
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+      }
+    if( document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+    butterfly_categories_card_injector_config()
+    }
+  </script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>

@@ -1,0 +1,1002 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>UML簡答題 | Totoroの旅</title><meta name="author" content="Totoro"><meta name="copyright" content="Totoro"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="UML簡答題1. Design and Analysis英文:• Design: Emphasizes a conceptual solution that fulfills the requirements, rather than its implementation.• Analysis: Emphasizes an investigation of the problems and req">
+<meta property="og:type" content="article">
+<meta property="og:title" content="UML簡答題">
+<meta property="og:url" content="http://totorocatcat.top/UML%E7%B0%A1%E7%AD%94%E9%A1%8C/index.html">
+<meta property="og:site_name" content="Totoroの旅">
+<meta property="og:description" content="UML簡答題1. Design and Analysis英文:• Design: Emphasizes a conceptual solution that fulfills the requirements, rather than its implementation.• Analysis: Emphasizes an investigation of the problems and req">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E6%8F%92%E7%94%BB%E5%B8%85%E5%93%A5-%E9%BB%91%E7%99%BD%E6%B0%B4%E5%A2%A8%E9%A3%8E.png">
+<meta property="article:published_time" content="2025-05-15T04:21:34.000Z">
+<meta property="article:modified_time" content="2025-05-15T04:21:50.226Z">
+<meta property="article:author" content="Totoro">
+<meta property="article:tag" content="提高">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E6%8F%92%E7%94%BB%E5%B8%85%E5%93%A5-%E9%BB%91%E7%99%BD%E6%B0%B4%E5%A2%A8%E9%A3%8E.png"><link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/b5ca6e582a7a45e6fde46e616eeb68e.png"><link rel="canonical" href="http://totorocatcat.top/UML%E7%B0%A1%E7%AD%94%E9%A1%8C/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta/><link rel="stylesheet" href="/css/index.css?v=4.12.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  noticeOutdate: {"limitDay":765,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体中文","cht_to_chs":"你已切换为简体中文","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"top-right"},
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'UML簡答題',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: true,
+  isToc: true,
+  postUpdate: '2025-05-15 12:21:50'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const now = new Date()
+          const hour = now.getHours()
+          const isNight = hour <= 6 || hour >= 18
+          if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/universe.css"><link rel="stylesheet" href="/css/scrollbar.css"><link rel="stylesheet" href="/css/cat.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiperstyle.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-categories-card@1.0.0/lib/categorybar.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-double-row-display@1.00/cardlistpost.min.css"/>
+<style>#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags:before {content:"\A";
+  white-space: pre;}#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags > .article-meta__separator{display:none}</style>
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><div class="loading-img"></div><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><script>window.paceOptions = {
+  restartOnPushState: false
+}
+
+document.addEventListener('pjax:send', () => {
+  Pace.restart()
+})
+</script><link rel="stylesheet" href="/css/progress_bar.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E4%BE%A0%E5%AE%A2-%E6%AD%A6%E4%BE%A0%E5%9C%BA%E6%99%AF-%E6%B8%B8%E6%88%8F.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">909</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">37</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home-alt"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-envelope-open"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 趣味</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/project/"><i class="fa-fw fas fas fa-folder"></i><span> 项目</span></a></div><div class="menus_item"><a class="site-page" href="/stars/"><i class="fa-fw fas fa-bookmark"></i><span> 收藏</span></a></div><div class="menus_item"><a class="site-page" href="/bilibili/"><i class="fa-fw fas fa-tv"></i><span> 追番</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E6%8F%92%E7%94%BB%E5%B8%85%E5%93%A5-%E9%BB%91%E7%99%BD%E6%B0%B4%E5%A2%A8%E9%A3%8E.png')"><nav id="nav"><span id="blog-info"><a href="/" title="Totoroの旅"><span class="site-name">Totoroの旅</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home-alt"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-envelope-open"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 趣味</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/project/"><i class="fa-fw fas fas fa-folder"></i><span> 项目</span></a></div><div class="menus_item"><a class="site-page" href="/stars/"><i class="fa-fw fas fa-bookmark"></i><span> 收藏</span></a></div><div class="menus_item"><a class="site-page" href="/bilibili/"><i class="fa-fw fas fa-tv"></i><span> 追番</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">UML簡答題</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-05-15T04:21:34.000Z" title="发表于 2025-05-15 12:21:34">2025-05-15</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-05-15T04:21:50.226Z" title="更新于 2025-05-15 12:21:50">2025-05-15</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/UML/">UML</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">11.5k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>41分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="UML簡答題"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/UML%E7%B0%A1%E7%AD%94%E9%A1%8C/#post-comment" itemprop="discussionUrl"><span class="valine-comment-count" data-xid="/UML%E7%B0%A1%E7%AD%94%E9%A1%8C/" itemprop="commentCount"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="UML簡答題"><a href="#UML簡答題" class="headerlink" title="UML簡答題"></a>UML簡答題</h1><h3 id="1-Design-and-Analysis"><a href="#1-Design-and-Analysis" class="headerlink" title="1. Design and Analysis"></a>1. <strong>Design and Analysis</strong></h3><p><strong>英文:</strong><br>• <strong>Design:</strong> Emphasizes a conceptual solution that fulfills the requirements, rather than its implementation.<br>• <strong>Analysis:</strong> Emphasizes an investigation of the problems and requirements, rather than a solution.</p>
+<p><strong>中文:</strong><br>• <strong>设计 (Design):</strong> 强调满足需求的<strong>概念性解决方案</strong>，而不是具体的实现。<br>• <strong>分析 (Analysis):</strong> 强调对问题和需求的<strong>调查和研究</strong>，而不是解决方案。</p>
+<p><strong>解释 (Explanation):</strong><br>• <strong>设计 (Design):</strong> 设计阶段关注如何构建系统以满足需求，通常包括高层次的架构设计和模块划分，但不涉及具体的代码实现。<br>• <strong>分析 (Analysis):</strong> 分析阶段关注理解问题和需求，明确系统的目标和功能，通常包括需求收集和问题建模。</p>
+<hr>
+<h3 id="2-OOD-Principles-Object-Oriented-Design-Principles"><a href="#2-OOD-Principles-Object-Oriented-Design-Principles" class="headerlink" title="2. OOD Principles (Object-Oriented Design Principles)"></a>2. <strong>OOD Principles (Object-Oriented Design Principles)</strong></h3><p><strong>英文:</strong><br>• <strong>Abstraction:</strong> Focus on essential properties and ignore irrelevant details.<br>• <strong>Encapsulation:</strong> Hide implementation details and expose only necessary interfaces.<br>• <strong>Polymorphism:</strong> Allow objects of different classes to be treated as objects of a common superclass.<br>• <strong>Hierarchy:</strong> Organize classes into levels of abstraction, where higher-level classes are more general and lower-level classes are more specific.</p>
+<p><strong>中文:</strong><br>• <strong>抽象 (Abstraction):</strong> 关注事物的本质属性，忽略无关细节。<br>• <strong>封装 (Encapsulation):</strong> 隐藏实现细节，仅暴露必要的接口。<br>• <strong>多态 (Polymorphism):</strong> 允许不同类的对象以统一的方式被处理。<br>• <strong>层次化 (Hierarchy):</strong> 将类按抽象层次组织，高层类更通用，低层类更具体。</p>
+<p><strong>解释 (Explanation):</strong><br>• <strong>抽象 (Abstraction):</strong> 通过提取关键特征简化复杂问题，便于理解和建模。<br>• <strong>封装 (Encapsulation):</strong> 通过隐藏内部实现细节，提高系统的安全性和可维护性。<br>• <strong>多态 (Polymorphism):</strong> 提高代码的灵活性和复用性，允许不同对象对同一操作做出不同的响应。<br>• <strong>层次化 (Hierarchy):</strong> 通过分层组织类，简化系统设计并支持扩展。</p>
+<hr>
+<h3 id="3-UML-Unified-Modeling-Language"><a href="#3-UML-Unified-Modeling-Language" class="headerlink" title="3. UML (Unified Modeling Language)"></a>3. <strong>UML (Unified Modeling Language)</strong></h3><p><strong>英文:</strong><br>UML is a visual language for specifying, constructing, and documenting the artifacts of systems.</p>
+<p><strong>中文:</strong><br>UML是一种用于<strong>指定、构建和记录系统工件</strong>的可视化语言。</p>
+<p><strong>解释 (Explanation):</strong><br>• UML提供了一套标准化的图形符号，用于描述系统的结构、行为和交互。<br>• 它广泛应用于软件工程中，帮助开发者和利益相关者理解系统设计和需求。<br>• <strong>用途:</strong> 包括用例图、类图、顺序图、活动图等，用于建模系统的不同方面。</p>
+<hr>
+<h3 id="4-UP-Unified-Process"><a href="#4-UP-Unified-Process" class="headerlink" title="4. UP (Unified Process)"></a>4. <strong>UP (Unified Process)</strong></h3><p><strong>英文:</strong><br>UP is a popular iterative software development process for building object-oriented systems.</p>
+<p><strong>中文:</strong><br>UP是一种流行的<strong>迭代式软件开发过程</strong>，用于构建面向对象的系统。</p>
+<p><strong>解释 (Explanation):</strong><br>• UP是一种灵活的开发框架，支持迭代开发和增量交付。<br>• 它强调需求驱动、风险管理和持续改进。<br>• UP的核心特点包括：<br>  • <strong>迭代开发:</strong> 将开发过程分为多个迭代周期，每个周期交付部分功能。<br>  • <strong>用例驱动:</strong> 以用例为核心，指导系统设计和实现。<br>  • <strong>架构为中心:</strong> 强调系统架构在整个开发过程中的作用。</p>
+<hr>
+<h3 id="5-Software-Development-Process"><a href="#5-Software-Development-Process" class="headerlink" title="5. Software Development Process"></a>5. <strong>Software Development Process</strong></h3><p><strong>英文:</strong><br>The software development process describes an approach to building, deploying, and possibly maintaining software.</p>
+<p><strong>中文:</strong><br>软件开发过程描述了<strong>构建、部署和可能维护软件的方法</strong>。</p>
+<p><strong>解释 (Explanation):</strong><br>• 软件开发过程是软件开发生命周期的框架，定义了从需求分析到部署和维护的各个阶段。<br>• 常见的软件开发过程模型包括：<br>  • <strong>瀑布模型 (Waterfall Model):</strong> 线性顺序开发，每个阶段完成后进入下一阶段。<br>  • <strong>敏捷开发 (Agile Development):</strong> 迭代和增量开发，强调快速响应变化。<br>  • <strong>迭代模型 (Iterative Model):</strong> 将开发分为多个迭代周期，逐步完善系统。<br>• <strong>目标:</strong> 确保软件按时交付，满足用户需求，并具有良好的质量。</p>
+<hr>
+<h3 id="总结-Summary"><a href="#总结-Summary" class="headerlink" title="总结 (Summary):"></a><strong>总结 (Summary):</strong></h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th><strong>术语 (Term)</strong></th>
+<th><strong>英文定义 (English Definition)</strong></th>
+<th><strong>中文定义 (Chinese Definition)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Design and Analysis</strong></td>
+<td>Design: Conceptual solution for requirements. Analysis: Investigation of problems and needs.</td>
+<td>设计: 满足需求的<strong>概念性解决方案</strong>。分析: 对问题和需求的<strong>调查和研究</strong>。</td>
+</tr>
+<tr>
+<td><strong>OOD Principles</strong></td>
+<td>Abstraction, Encapsulation, Polymorphism, Hierarchy.</td>
+<td>抽象、封装、多态、层次化。</td>
+</tr>
+<tr>
+<td><strong>UML</strong></td>
+<td>A visual language for specifying, constructing, and documenting system artifacts.</td>
+<td>用于<strong>指定、构建和记录系统工件</strong>的可视化语言。</td>
+</tr>
+<tr>
+<td><strong>UP</strong></td>
+<td>An iterative software development process for building object-oriented systems.</td>
+<td>一种<strong>迭代式软件开发过程</strong>，用于构建面向对象的系统。</td>
+</tr>
+<tr>
+<td><strong>Software Development Process</strong></td>
+<td>An approach to building, deploying, and possibly maintaining software.</td>
+<td><strong>构建、部署和可能维护软件的方法</strong>。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h3 id="关键要点-Key-Takeaways"><a href="#关键要点-Key-Takeaways" class="headerlink" title="关键要点 (Key Takeaways):"></a><strong>关键要点 (Key Takeaways):</strong></h3><ol>
+<li><strong>设计 vs 分析:</strong> 设计关注解决方案，分析关注问题。  </li>
+<li><strong>OOD原则:</strong> 抽象、封装、多态和层次化是面向对象设计的核心原则。  </li>
+<li><strong>UML:</strong> 是一种标准化的建模语言，用于描述系统的结构和行为。  </li>
+<li><strong>UP:</strong> 是一种迭代开发框架，强调需求驱动和架构为中心。  </li>
+<li><strong>软件开发过程:</strong> 描述了从需求分析到部署和维护的整个生命周期。</li>
+</ol>
+<h3 id="6-Domain-Model"><a href="#6-Domain-Model" class="headerlink" title="6. Domain Model"></a>6. <strong>Domain Model</strong></h3><p><strong>英文:</strong><br>A visual representation of conceptual classes or real-situation objects in a domain.</p>
+<p><strong>中文:</strong><br>领域模型是对领域中的概念类或实际场景对象的可视化表示。</p>
+<p><strong>解释 (Explanation):</strong><br>• <strong>定义:</strong> 领域模型是对特定领域（如业务领域）中的核心概念和对象的结构化描述，通常以图形化方式展示类及其关系。<br>• <strong>用途:</strong> 帮助开发者和利益相关者理解领域的核心概念和它们之间的关系，为系统设计提供基础。<br>• <strong>例子:</strong> 在“图书馆管理系统”中，领域模型可能包括<code>Book</code>（书）、<code>Member</code>（会员）和<code>LibrarySystem</code>（图书馆系统）等类，以及它们之间的关系（如会员可以借书）。</p>
+<hr>
+<h3 id="7-Main-Phases-of-UP-Unified-Process"><a href="#7-Main-Phases-of-UP-Unified-Process" class="headerlink" title="7. Main Phases of UP (Unified Process)"></a>7. <strong>Main Phases of UP (Unified Process)</strong></h3><p><strong>英文:</strong><br>• <strong>Inception:</strong> Approximate vision, business case, scope, vague estimates.<br>• <strong>Elaboration:</strong> Refined vision, iterative implementation of the core architecture.<br>• <strong>Construction:</strong> Iterative implementation of remaining lower risk and easier elements, and preparation for development.<br>• <strong>Transition:</strong> Beta tests, deployment.</p>
+<p><strong>中文:</strong><br>• <strong>初始阶段 (Inception):</strong> 初步愿景、商业案例、范围、粗略估算。<br>• <strong>细化阶段 (Elaboration):</strong> 细化愿景，迭代实现核心架构。<br>• <strong>构建阶段 (Construction):</strong> 迭代实现剩余风险较低且较容易的元素，并为开发做准备。<br>• <strong>交付阶段 (Transition):</strong> 测试版测试、部署。</p>
+<p><strong>解释 (Explanation):</strong><br>• <strong>初始阶段 (Inception):</strong> 确定项目的基本目标、范围和可行性，识别主要风险。<br>• <strong>细化阶段 (Elaboration):</strong> 深入分析需求，设计核心架构，验证技术可行性。<br>• <strong>构建阶段 (Construction):</strong> 完成剩余功能的开发，优化系统性能，准备发布。<br>• <strong>交付阶段 (Transition):</strong> 将系统交付给用户，进行测试和部署，收集反馈。</p>
+<hr>
+<h3 id="8-Iterations"><a href="#8-Iterations" class="headerlink" title="8. Iterations"></a>8. <strong>Iterations</strong></h3><p><strong>英文:</strong><br>Development is organized into a series of short, fixed-length mini-projects called iterations.</p>
+<p><strong>中文:</strong><br>开发被组织为一系列短期的、固定长度的小型项目，称为迭代。</p>
+<p><strong>解释 (Explanation):</strong><br>• <strong>定义:</strong> 迭代开发是一种将整个开发过程划分为多个短周期的方法，每个周期完成一部分功能并交付可运行的版本。<br>• <strong>优点:</strong><br>  • <strong>快速反馈:</strong> 每个迭代结束后，利益相关者可以提供反馈，帮助改进后续开发。<br>  • <strong>降低风险:</strong> 通过逐步实现功能，早期发现和解决潜在问题。<br>  • <strong>灵活性:</strong> 可以根据需求变化调整后续迭代计划。<br>• <strong>例子:</strong> 在敏捷开发中，一个迭代可能持续2周，每个迭代完成一个或多个用例的实现。</p>
+<hr>
+<h3 id="9-Requirement-FURPS"><a href="#9-Requirement-FURPS" class="headerlink" title="9. Requirement (FURPS+)"></a>9. <strong>Requirement (FURPS+)</strong></h3><p><strong>英文:</strong><br>• <strong>Functional:</strong> Features and functions of the system.<br>• <strong>Usability:</strong> User interface design and ease of use.<br>• <strong>Reliability:</strong> System stability and error handling.<br>• <strong>Performance:</strong> System speed and responsiveness.<br>• <strong>Supportability:</strong> Maintainability, testability, and compatibility.<br>• <strong>+ (Other):</strong> Design constraints, implementation requirements, interface requirements, etc.</p>
+<p><strong>中文:</strong><br>• <strong>功能性 (Functional):</strong> 系统的功能和特性。<br>• <strong>可用性 (Usability):</strong> 用户界面设计和易用性。<br>• <strong>可靠性 (Reliability):</strong> 系统的稳定性和错误处理能力。<br>• <strong>性能 (Performance):</strong> 系统的速度和响应能力。<br>• <strong>可支持性 (Supportability):</strong> 系统的可维护性、可测试性和兼容性。<br>• <strong>+ (其他):</strong> 设计约束、实现需求、接口需求等。</p>
+<p><strong>解释 (Explanation):</strong><br>• <strong>FURPS+ 是一种需求分类方法，用于系统化地组织和分析需求。</strong><br>• <strong>功能性 (Functional):</strong> 描述系统需要实现的核心功能。<br>• <strong>非功能性需求 (Usability, Reliability, Performance, Supportability):</strong> 关注系统的质量属性，确保系统满足用户体验和性能要求。<br>• <strong>+ (其他):</strong> 包括一些额外的需求，如法律合规性、安全性等。</p>
+<hr>
+<h3 id="10-Agile-Method"><a href="#10-Agile-Method" class="headerlink" title="10. Agile Method"></a>10. <strong>Agile Method</strong></h3><p><strong>英文:</strong><br>Short timeboxed iterations with evolutionary refinement of plans, requirements, and design is a basic practice of the methods.</p>
+<p><strong>中文:</strong><br>短期的时间盒迭代，计划、需求和设计的逐步完善是敏捷方法的基本实践。</p>
+<p><strong>解释 (Explanation):</strong><br>• <strong>定义:</strong> 敏捷方法是一种以快速迭代和持续改进为核心的软件开发方法，强调灵活性和对变化的快速响应。<br>• <strong>核心特点:</strong><br>  • <strong>短迭代 (Short Iterations):</strong> 每个迭代周期通常为1-4周，完成一部分功能并交付可运行的版本。<br>  • <strong>时间盒 (Timeboxing):</strong> 每个迭代有固定的时间限制，确保团队专注于当前目标。<br>  • <strong>逐步完善 (Evolutionary Refinement):</strong> 计划、需求和设计在每个迭代中不断优化和调整。<br>  • <strong>协作 (Collaboration):</strong> 强调团队协作和利益相关者的持续沟通。<br>• <strong>例子:</strong> Scrum 和 Kanban 是敏捷方法的典型实践。</p>
+<hr>
+<h3 id="总结-Summary-1"><a href="#总结-Summary-1" class="headerlink" title="总结 (Summary)"></a><strong>总结 (Summary)</strong></h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th><strong>术语 (Term)</strong></th>
+<th><strong>英文定义 (English Definition)</strong></th>
+<th><strong>中文定义 (Chinese Definition)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Domain Model</strong></td>
+<td>A visual representation of conceptual classes or real-situation objects in a domain.</td>
+<td>领域模型是对领域中的概念类或实际场景对象的可视化表示。</td>
+</tr>
+<tr>
+<td><strong>Main Phases of UP</strong></td>
+<td>Inception, Elaboration, Construction, Transition.</td>
+<td>初始阶段、细化阶段、构建阶段、交付阶段。</td>
+</tr>
+<tr>
+<td><strong>Iterations</strong></td>
+<td>Development is organized into short, fixed-length mini-projects called iterations.</td>
+<td>开发被组织为一系列短期的、固定长度的小型项目，称为迭代。</td>
+</tr>
+<tr>
+<td><strong>Requirement (FURPS+)</strong></td>
+<td>Functional, Usability, Reliability, Performance, Supportability, and other constraints.</td>
+<td>功能性、可用性、可靠性、性能、可支持性及其他约束。</td>
+</tr>
+<tr>
+<td><strong>Agile Method</strong></td>
+<td>Short timeboxed iterations with evolutionary refinement of plans, requirements, and design.</td>
+<td>短期的时间盒迭代，计划、需求和设计的逐步完善是敏捷方法的基本实践。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h3 id="关键要点-Key-Takeaways-1"><a href="#关键要点-Key-Takeaways-1" class="headerlink" title="关键要点 (Key Takeaways):"></a><strong>关键要点 (Key Takeaways):</strong></h3><ol>
+<li><strong>领域模型 (Domain Model):</strong> 用于描述领域的核心概念和对象之间的关系，帮助理解系统需求。  </li>
+<li><strong>UP阶段 (Main Phases of UP):</strong> 包括初始、细化、构建和交付四个阶段，强调迭代开发和风险管理。  </li>
+<li><strong>迭代开发 (Iterations):</strong> 将开发分为多个短周期，每个周期完成部分功能并交付可运行版本。  </li>
+<li><strong>需求分类 (FURPS+):</strong> 系统化地组织功能性需求和非功能性需求，确保系统满足质量要求。  </li>
+<li><strong>敏捷方法 (Agile Method):</strong> 强调快速迭代、持续改进和对变化的灵活响应，适合动态需求的项目。</li>
+</ol>
+<h3 id="11-Disciplines-and-Phases"><a href="#11-Disciplines-and-Phases" class="headerlink" title="11. Disciplines and Phases"></a>11. <strong>Disciplines and Phases</strong></h3><p><strong>英文:</strong><br>• <strong>Disciplines:</strong> A set of activities in one subject.<br>• <strong>Artifact:</strong> The general term for any work product.</p>
+<p><strong>中文:</strong><br>• <strong>学科 (Disciplines):</strong> 某一领域中的一组活动。<br>• <strong>工件 (Artifact):</strong> 任何工作成果的统称。</p>
+<p><strong>解释 (Explanation):</strong><br>• <strong>学科 (Disciplines):</strong> 在软件开发中，学科是指与特定领域相关的活动集合。例如，在面向对象开发中，”分析”和”设计”是两个不同的学科，分别关注需求分析和系统设计。<br>• <strong>工件 (Artifact):</strong> 工件是开发过程中产生的任何成果，例如用例图、类图、代码、文档等。工件的形式可以是模型、文件或可运行的软件。</p>
+<hr>
+<h3 id="12-Use-Case"><a href="#12-Use-Case" class="headerlink" title="12. Use Case"></a>12. <strong>Use Case</strong></h3><p><strong>英文:</strong><br>• <strong>Use Case:</strong> Text stories of some actor using a system to meet a goal. (A collection of related success and failure scenarios that describe an actor using a system to support the goal.)<br>• <strong>Actor:</strong> Something with behavior.<br>• <strong>Scenario:</strong> Specific sequence of actions and interactions between actors and the system. (Use case instance)</p>
+<p><strong>中文:</strong><br>• <strong>用例 (Use Case):</strong> 描述某个参与者使用系统以实现目标的文本故事。（一组相关的成功和失败场景，描述参与者如何使用系统支持目标。）<br>• <strong>参与者 (Actor):</strong> 具有行为的实体。<br>• <strong>场景 (Scenario):</strong> 参与者和系统之间的特定动作和交互序列。（用例的一个实例。）</p>
+<p><strong>解释 (Explanation):</strong><br>• <strong>用例 (Use Case):</strong> 用例是从参与者的角度描述系统功能的一种方式，通常以文本形式记录。它包括成功路径（正常流程）和失败路径（异常流程）。<br>• <strong>参与者 (Actor):</strong> 参与者是与系统交互的外部实体，可以是用户、设备或其他系统。<br>• <strong>场景 (Scenario):</strong> 场景是用例的具体实例，描述了参与者和系统之间的具体交互过程。</p>
+<hr>
+<h3 id="13-Use-Case-Model"><a href="#13-Use-Case-Model" class="headerlink" title="13. Use Case Model"></a>13. <strong>Use Case Model</strong></h3><p><strong>英文:</strong><br>A set of all written use cases and a model of the system’s functionality and environment.</p>
+<p><strong>中文:</strong><br>用例模型是所有书面用例的集合，描述了系统的功能和运行环境。</p>
+<p><strong>解释 (Explanation):</strong><br>• <strong>定义:</strong> 用例模型是对系统功能的整体描述，包含所有用例及其关系，展示了系统如何与外部参与者交互。<br>• <strong>用途:</strong> 用例模型帮助开发者和利益相关者理解系统的功能需求，并为后续的设计和分析提供基础。<br>• <strong>例子:</strong> 在“图书馆管理系统”中，用例模型可能包括<code>Borrow Book</code>（借书）、<code>Return Book</code>（还书）等用例，以及参与者<code>Member</code>（会员）和<code>Librarian</code>（图书管理员）。</p>
+<hr>
+<h3 id="14-Use-Case-Relationship"><a href="#14-Use-Case-Relationship" class="headerlink" title="14. Use Case Relationship"></a>14. <strong>Use Case Relationship</strong></h3><p><strong>英文:</strong><br>• <strong>Extend:</strong> An extension of a base use case, adding optional behavior.<br>• <strong>Include:</strong> A base use case explicitly incorporates another use case to reuse its behavior.<br>• <strong>Generalization:</strong> A relationship where a specialized use case inherits behavior from a general use case.</p>
+<p><strong>中文:</strong><br>• <strong>扩展 (Extend):</strong> 对基本用例的扩展，添加可选行为。<br>• <strong>包含 (Include):</strong> 基本用例显式地包含另一个用例以复用其行为。<br>• <strong>泛化 (Generalization):</strong> 一种继承关系，特殊用例继承一般用例的行为。</p>
+<p><strong>解释 (Explanation):</strong><br>• <strong>扩展 (Extend):</strong><br>  • <strong>用途:</strong> 当某个用例在特定条件下需要额外的行为时使用扩展关系。<br>  • <strong>例子:</strong> 在“借书”用例中，如果会员的借书额度不足，可以扩展出一个<code>Check Loan Limit</code>（检查借书额度）用例。<br>• <strong>包含 (Include):</strong><br>  • <strong>用途:</strong> 当多个用例共享某些共同行为时，将这些行为提取到一个单独的用例中，并通过包含关系复用。<br>  • <strong>例子:</strong> 在“借书”和“还书”用例中，可能都需要验证会员身份，可以将<code>Verify Membership</code>（验证会员身份）提取为一个公共用例。<br>• <strong>泛化 (Generalization):</strong><br>  • <strong>用途:</strong> 表示用例之间的继承关系，特殊用例可以继承一般用例的行为并添加自己的特定行为。<br>  • <strong>例子:</strong> <code>Student</code>（学生）和<code>Professor</code>（教授）可以泛化为<code>User</code>（用户），并继承<code>Login</code>（登录）行为。</p>
+<hr>
+<h3 id="15-Use-Case-Realization"><a href="#15-Use-Case-Realization" class="headerlink" title="15. Use Case Realization"></a>15. <strong>Use Case Realization</strong></h3><p><strong>英文:</strong><br>How a particular use case is realized within the design model in terms of collaborating objects.</p>
+<p><strong>中文:</strong><br>用例实现是指在系统设计模型中，通过协作对象的方式实现特定用例的过程。</p>
+<p><strong>解释 (Explanation):</strong><br>• <strong>定义:</strong> 用例实现描述了如何通过设计模型中的对象协作来完成用例的功能。<br>• <strong>用途:</strong> 将用例的功能需求转化为具体的设计实现，明确哪些对象参与协作以及它们之间的关系。<br>• <strong>例子:</strong><br>  • <strong>用例:</strong> <code>Borrow Book</code>（借书）<br>  • <strong>实现:</strong><br>    ◦ 参与对象: <code>Member</code>（会员）、<code>LibrarySystem</code>（图书馆系统）、<code>Book</code>（书）。<br>    ◦ 交互过程:  </p>
+<pre><code>  1. 会员请求借书。  
+  2. 图书馆系统检查书籍库存。  
+  3. 图书馆系统更新书籍状态为“已借出”。  
+</code></pre><hr>
+<h3 id="总结-Summary-2"><a href="#总结-Summary-2" class="headerlink" title="总结 (Summary)"></a><strong>总结 (Summary)</strong></h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th><strong>术语 (Term)</strong></th>
+<th><strong>英文定义 (English Definition)</strong></th>
+<th><strong>中文定义 (Chinese Definition)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Disciplines</strong></td>
+<td>A set of activities in one subject.</td>
+<td>某一领域中的一组活动。</td>
+</tr>
+<tr>
+<td><strong>Artifact</strong></td>
+<td>The general term for any work product.</td>
+<td>任何工作成果的统称。</td>
+</tr>
+<tr>
+<td><strong>Use Case</strong></td>
+<td>Text stories of some actor using a system to meet a goal.</td>
+<td>描述参与者如何使用系统实现目标的文本故事。</td>
+</tr>
+<tr>
+<td><strong>Actor</strong></td>
+<td>Something with behavior.</td>
+<td>具有行为的实体。</td>
+</tr>
+<tr>
+<td><strong>Scenario</strong></td>
+<td>Specific sequence of actions and interactions between actors and the system.</td>
+<td>参与者和系统之间的特定动作和交互序列。</td>
+</tr>
+<tr>
+<td><strong>Use Case Model</strong></td>
+<td>A set of all written use cases and a model of the system’s functionality and environment.</td>
+<td>所有用例的集合，描述系统的功能和运行环境。</td>
+</tr>
+<tr>
+<td><strong>Use Case Relationship</strong></td>
+<td>Extend, Include, Generalization</td>
+<td>扩展、包含、泛化是用例之间的三种关系，分别表示扩展行为、复用行为和继承行为。</td>
+</tr>
+<tr>
+<td><strong>Use Case Realization</strong></td>
+<td>How a particular use case is realized within the design model in terms of collaborating objects.</td>
+<td>用例实现描述了如何通过设计模型中的对象协作来完成用例的功能。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h3 id="关键要点-Key-Takeaways-2"><a href="#关键要点-Key-Takeaways-2" class="headerlink" title="关键要点 (Key Takeaways):"></a><strong>关键要点 (Key Takeaways):</strong></h3><ol>
+<li><strong>学科和工件 (Disciplines and Artifacts):</strong> 学科是某一领域的活动集合，工件是开发过程中产生的成果。  </li>
+<li><strong>用例 (Use Case):</strong> 描述参与者如何使用系统实现目标，包括成功和失败场景。  </li>
+<li><strong>用例模型 (Use Case Model):</strong> 包含所有用例及其关系，描述系统的功能和运行环境。  </li>
+<li><strong>用例关系 (Use Case Relationship):</strong> 包括扩展、包含和泛化，用于描述用例之间的交互和复用。  </li>
+<li><strong>用例实现 (Use Case Realization):</strong> 将用例的功能需求转化为设计模型中的对象协作。</li>
+</ol>
+<h3 id="16-Architecture"><a href="#16-Architecture" class="headerlink" title="16. Architecture"></a>16. <strong>Architecture</strong></h3><p><strong>英文:</strong><br>Architecture is the fundamental organization of a system.</p>
+<p><strong>中文:</strong><br>架构是系统的基本组织结构。</p>
+<p><strong>解释 (Explanation):</strong><br>• <strong>定义:</strong> 系统架构描述了系统的整体结构，包括组件、模块、它们之间的关系以及系统的运行方式。<br>• <strong>用途:</strong> 架构为系统的设计、开发和维护提供了一个高层次的蓝图，确保系统满足功能需求和非功能需求（如性能、可扩展性、安全性等）。<br>• <strong>例子:</strong> 在一个Web应用中，架构可能包括前端、后端、数据库和网络通信模块。</p>
+<hr>
+<h3 id="17-4-1-View"><a href="#17-4-1-View" class="headerlink" title="17. 4+1 View"></a>17. <strong>4+1 View</strong></h3><p><strong>英文:</strong><br>• <strong>Logical View:</strong> Focuses on the design of the system’s functionality and how it is implemented.<br>• <strong>Physical View:</strong> Describes the physical deployment of the system, including hardware and software components.<br>• <strong>Process View:</strong> Models the system’s processes and their interactions, focusing on runtime behavior.<br>• <strong>Deployment View:</strong> Shows the system’s hardware and software components and their connections.<br>• <strong>Use Case View:</strong> Represents the system’s functionality from the perspective of use cases, showing how users interact with the system.</p>
+<p><strong>中文:</strong><br>• <strong>逻辑视图 (Logical View):</strong> 关注系统的功能设计和实现方式。<br>• <strong>物理视图 (Physical View):</strong> 描述系统的物理部署，包括硬件和软件组件。<br>• <strong>过程视图 (Process View):</strong> 模型系统的运行时行为，展示进程及其交互。<br>• <strong>部署视图 (Deployment View):</strong> 展示系统的硬件和软件组件及其连接关系。<br>• <strong>用例视图 (Use Case View):</strong> 从用例的角度表示系统的功能，展示用户如何与系统交互。</p>
+<p><strong>解释 (Explanation):</strong><br>• <strong>4+1 视图模型:</strong> 是一种多视角的系统建模方法，用于描述系统的不同方面。<br>  • <strong>逻辑视图:</strong> 关注系统的功能设计和实现，通常通过类图、序列图等表示。<br>  • <strong>物理视图:</strong> 描述系统的物理部署，通常包括服务器、网络设备和软件组件。<br>  • <strong>过程视图:</strong> 关注系统的运行时行为，展示进程、线程及其交互。<br>  • <strong>部署视图:</strong> 展示系统的硬件和软件组件的分布和连接关系。<br>  • <strong>用例视图:</strong> 从用户的角度描述系统的功能，展示用例和参与者的交互。</p>
+<hr>
+<h3 id="18-GRASP"><a href="#18-GRASP" class="headerlink" title="18. GRASP"></a>18. <strong>GRASP</strong></h3><p><strong>英文:</strong><br>GRASP (General Responsibility Assignment Software Patterns) is a set of design patterns that provide guidelines for assigning responsibilities to objects in object-oriented design.</p>
+<p><strong>中文:</strong><br>GRASP（通用职责分配软件模式）是一组设计模式，为面向对象设计中职责分配提供指导原则。</p>
+<p><strong>解释 (Explanation):</strong><br>• <strong>定义:</strong> GRASP 是一组设计原则，用于在面向对象设计中合理分配对象的职责。<br>• <strong>主要模式:</strong><br>  • <strong>信息专家 (Information Expert):</strong> 将职责分配给拥有完成任务所需信息的对象。<br>  • <strong>创建者 (Creator):</strong> 负责创建对象的类通常是依赖该对象的对象。<br>  • <strong>低耦合 (Low Coupling):</strong> 减少对象之间的依赖，提高系统的灵活性。<br>  • <strong>高内聚 (High Cohesion):</strong> 确保对象的功能集中且单一。<br>  • <strong>控制器 (Controller):</strong> 将系统与用户交互的职责分配给控制器对象。<br>  • <strong>多态 (Polymorphism):</strong> 使用多态来处理行为的扩展。<br>  • <strong>纯虚构 (Pure Fabrication):</strong> 创建没有直接现实对应关系的类来简化设计。<br>  • <strong>间接性 (Indirection):</strong> 通过中间对象减少直接依赖。<br>  • <strong>防止变异 (Protected Variations):</strong> 隔离可能变化的元素，保护系统其他部分不受影响。</p>
+<hr>
+<h3 id="19-Design-Principles"><a href="#19-Design-Principles" class="headerlink" title="19. Design Principles"></a>19. <strong>Design Principles</strong></h3><p><strong>英文:</strong><br>• <strong>Decomposition:</strong> Break down a system into smaller, manageable components.<br>• <strong>Abstract:</strong> Focus on essential properties while ignoring irrelevant details.<br>• <strong>Separation of Concerns:</strong> Divide a system into distinct sections, each addressing a specific concern.<br>• <strong>Information Hiding and Localization:</strong> Hide implementation details and localize data to reduce complexity.<br>• <strong>Modularity:</strong> Design the system as a collection of independent, reusable modules.<br>• <strong>SOLID Principles:</strong><br>  • <strong>Single Responsibility Principle (SRP):</strong> A class should have only one reason to change.<br>  • <strong>Open/Closed Principle (OCP):</strong> Software entities should be open for extension but closed for modification.<br>  • <strong>Liskov Substitution Principle (LSP):</strong> Subtypes must be substitutable for their base types.<br>  • <strong>Interface Segregation Principle (ISP):</strong> Interfaces should be small and focused, avoiding unnecessary dependencies.<br>  • <strong>Dependency Inversion Principle (DIP):</strong> High-level modules should not depend on low-level modules; both should depend on abstractions.</p>
+<p><strong>中文:</strong><br>• <strong>分解 (Decomposition):</strong> 将系统分解为更小、更易管理的组件。<br>• <strong>抽象 (Abstract):</strong> 关注事物的本质属性，忽略无关细节。<br>• <strong>职责分离 (Separation of Concerns):</strong> 将系统划分为不同的部分，每部分专注于特定的关注点。<br>• <strong>信息隐藏与局部化 (Information Hiding and Localization):</strong> 隐藏实现细节并将数据局部化以降低复杂性。<br>• <strong>模块化 (Modularity):</strong> 将系统设计为独立的、可重用的模块集合。<br>• <strong>SOLID 原则:</strong><br>  • <strong>单一职责原则 (SRP):</strong> 一个类应该只有一个修改的原因。<br>  • <strong>开闭原则 (OCP):</strong> 软件实体应该对扩展开放，对修改关闭。<br>  • <strong>里氏替换原则 (LSP):</strong> 子类必须能够替换其基类。<br>  • <strong>接口隔离原则 (ISP):</strong> 接口应该小而专注，避免不必要的依赖。<br>  • <strong>依赖倒置原则 (DIP):</strong> 高层模块不应依赖低层模块，两者都应依赖抽象。</p>
+<p><strong>解释 (Explanation):</strong><br>• <strong>设计原则:</strong> 是指导软件设计的基本规则，确保系统具有良好的可维护性、可扩展性和灵活性。<br>• <strong>SOLID 原则:</strong> 是面向对象设计的五个核心原则，旨在提高代码质量和系统的可维护性。</p>
+<hr>
+<h3 id="20-GoF-Gang-of-Four-Design-Patterns"><a href="#20-GoF-Gang-of-Four-Design-Patterns" class="headerlink" title="20. GoF (Gang of Four) Design Patterns"></a>20. <strong>GoF (Gang of Four) Design Patterns</strong></h3><p><strong>英文:</strong><br>• <strong>Adapter:</strong> Converts the interface of a class into another interface that clients expect.<br>• <strong>Factory Method:</strong> Defines an interface for creating an object but lets subclasses alter the type of objects that will be created.<br>• <strong>Observer:</strong> Defines a one-to-many dependency between objects so that when one object changes state, all its dependents are notified.<br>• <strong>Strategy:</strong> Defines a family of algorithms, encapsulates each one, and makes them interchangeable.<br>• <strong>Facade:</strong> Provides a simplified interface to a larger body of code.<br>• <strong>Singleton:</strong> Ensures a class has only one instance and provides a global point of access to it.<br>• <strong>Composite:</strong> Composes objects into tree structures to represent part-whole hierarchies.</p>
+<p><strong>中文:</strong><br>• <strong>适配器 (Adapter):</strong> 将一个类的接口转换为客户端期望的另一种接口。<br>• <strong>工厂方法 (Factory Method):</strong> 定义创建对象的接口，但允许子类决定实例化的对象类型。<br>• <strong>观察者 (Observer):</strong> 定义对象之间的一对多依赖关系，当一个对象状态改变时，所有依赖对象都会被通知。<br>• <strong>策略 (Strategy):</strong> 定义一系列算法，将每个算法封装起来并使其可以互换。<br>• <strong>外观 (Facade):</strong> 为复杂的代码提供一个简化的接口。<br>• <strong>单例 (Singleton):</strong> 确保一个类只有一个实例，并提供全局访问点。<br>• <strong>组合 (Composite):</strong> 将对象组织成树形结构，表示部分-整体的层次关系。</p>
+<p><strong>解释 (Explanation):</strong><br>• <strong>GoF 设计模式:</strong> 是由 Erich Gamma、Richard Helm、Ralph Johnson 和 John Vlissides 提出的 23 种经典设计模式，分为创建型、结构型和行为型三类。<br>• <strong>用途:</strong> 这些模式为常见的设计问题提供了可重用的解决方案，帮助开发者设计更灵活、可维护的系统。</p>
+<hr>
+<h3 id="总结-Summary-3"><a href="#总结-Summary-3" class="headerlink" title="总结 (Summary)"></a><strong>总结 (Summary)</strong></h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th><strong>术语 (Term)</strong></th>
+<th><strong>英文定义 (English Definition)</strong></th>
+<th><strong>中文定义 (Chinese Definition)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Architecture</strong></td>
+<td>The fundamental organization of a system.</td>
+<td>系统的基本组织结构。</td>
+</tr>
+<tr>
+<td><strong>4+1 View</strong></td>
+<td>Logical, Physical, Process, Deployment, and Use Case Views.</td>
+<td>逻辑视图、物理视图、过程视图、部署视图和用例视图。</td>
+</tr>
+<tr>
+<td><strong>GRASP</strong></td>
+<td>Guidelines for assigning responsibilities in object-oriented design.</td>
+<td>面向对象设计中职责分配的指导原则。</td>
+</tr>
+<tr>
+<td><strong>Design Principles</strong></td>
+<td>Decomposition, Abstract, Separation of Concerns, Information Hiding, Modularity, SOLID Principles.</td>
+<td>分解、抽象、职责分离、信息隐藏、模块化、SOLID 原则。</td>
+</tr>
+<tr>
+<td><strong>GoF Design Patterns</strong></td>
+<td>Adapter, Factory Method, Observer, Strategy, Facade, Singleton, Composite.</td>
+<td>适配器、工厂方法、观察者、策略、外观、单例、组合等设计模式。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h3 id="关键要点-Key-Takeaways-3"><a href="#关键要点-Key-Takeaways-3" class="headerlink" title="关键要点 (Key Takeaways):"></a><strong>关键要点 (Key Takeaways):</strong></h3><ol>
+<li><strong>架构 (Architecture):</strong> 系统的整体结构，为设计和开发提供蓝图。  </li>
+<li><strong>4+1 视图:</strong> 从不同角度描述系统，帮助全面理解系统设计。  </li>
+<li><strong>GRASP:</strong> 提供职责分配的指导原则，帮助设计灵活的系统。  </li>
+<li><strong>设计原则:</strong> 包括分解、抽象、职责分离等，确保系统具有良好的可维护性和扩展性。  </li>
+<li><strong>GoF 设计模式:</strong> 提供常见设计问题的解决方案，帮助开发者编写高质量代码。</li>
+</ol>
+<h3 id="21-Relationship-of-Class"><a href="#21-Relationship-of-Class" class="headerlink" title="21. Relationship of Class"></a>21. <strong>Relationship of Class</strong></h3><p><strong>英文:</strong><br>• <strong>Association:</strong> A relationship between two classes that indicates some kind of connection or interaction.<br>• <strong>Aggregation:</strong> A special type of association where one class represents a “whole” and the other represents a “part.” The part can exist independently of the whole.<br>• <strong>Generalization:</strong> A relationship where one class is a specialized version of another class (a subclass of the other class). It represents “is a kind of” relationship.</p>
+<p><strong>中文:</strong><br>• <strong>关联 (Association):</strong> 表示两个类之间的某种连接或交互关系。<br>• <strong>聚合 (Aggregation):</strong> 一种特殊的关联关系，其中一个类表示“整体”，另一个类表示“部分”。部分可以独立于整体存在。<br>• <strong>泛化 (Generalization):</strong> 一种继承关系，其中一个类是另一个类的特殊版本（子类）。它表示“是一种”关系。</p>
+<p><strong>解释 (Explanation):</strong><br>• <strong>关联 (Association):</strong><br>  • <strong>用途:</strong> 描述类之间的连接关系，通常用于表示“拥有”、“使用”等关系。<br>  • <strong>例子:</strong> 在“图书馆管理系统”中，<code>Student</code>类和<code>Book</code>类之间存在关联关系，表示学生可以借阅书籍。  </p>
+<p>• <strong>聚合 (Aggregation):</strong><br>  • <strong>用途:</strong> 表示“整体-部分”关系，但部分可以独立于整体存在。<br>  • <strong>例子:</strong> 在“汽车系统”中，<code>Car</code>类和<code>Wheel</code>类之间是聚合关系，因为车轮可以独立于汽车存在。  </p>
+<p>• <strong>泛化 (Generalization):</strong><br>  • <strong>用途:</strong> 表示类之间的继承关系，子类继承父类的属性和行为。<br>  • <strong>例子:</strong> 在“动物系统”中，<code>Dog</code>类是<code>Animal</code>类的子类，表示“狗是一种动物”。  </p>
+<hr>
+<h3 id="22-Diagrams"><a href="#22-Diagrams" class="headerlink" title="22. Diagrams"></a>22. <strong>Diagrams</strong></h3><p><strong>英文:</strong><br>• <strong>SSD (System Sequence Diagram):</strong> A diagram that shows the interactions between system objects in response to a system operation, focusing on the flow of messages between objects.</p>
+<p><strong>中文:</strong><br>• <strong>系统序列图 (SSD):</strong> 一种展示系统对象在响应系统操作时的交互的图，重点描述对象之间的消息传递流程。</p>
+<p><strong>解释 (Explanation):</strong><br>• <strong>定义:</strong> 系统序列图（SSD）是一种动态建模工具，用于描述系统在执行某个操作时，各个对象之间的交互过程。<br>• <strong>用途:</strong><br>  • 展示系统如何响应外部请求。<br>  • 描述对象之间的消息传递顺序。<br>• <strong>例子:</strong><br>  • 在“在线购物系统”中，当用户下订单时，系统序列图可能展示以下交互：  </p>
+<pre><code>1. 用户 → 系统: 提交订单请求。  
+2. 系统 → 库存模块: 检查库存。  
+3. 系统 → 支付模块: 处理支付。  
+4. 系统 → 用户: 返回订单确认信息。  
+</code></pre><hr>
+<h3 id="总结-Summary-4"><a href="#总结-Summary-4" class="headerlink" title="总结 (Summary)"></a><strong>总结 (Summary)</strong></h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th><strong>术语 (Term)</strong></th>
+<th><strong>英文定义 (English Definition)</strong></th>
+<th><strong>中文定义 (Chinese Definition)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Association</strong></td>
+<td>A relationship between two classes indicating some kind of connection or interaction.</td>
+<td>类之间的连接或交互关系。</td>
+</tr>
+<tr>
+<td><strong>Aggregation</strong></td>
+<td>A special type of association where one class is a “whole” and the other is a “part.”</td>
+<td>表示“整体-部分”关系，部分可以独立于整体存在。</td>
+</tr>
+<tr>
+<td><strong>Generalization</strong></td>
+<td>A relationship where one class is a specialized version of another class (“is a kind of”).</td>
+<td>表示类之间的继承关系，子类是父类的特殊版本。</td>
+</tr>
+<tr>
+<td><strong>SSD (System Sequence Diagram)</strong></td>
+<td>A diagram showing interactions between system objects in response to a system operation.</td>
+<td>系统序列图，展示系统对象在响应系统操作时的交互过程。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h3 id="关键要点-Key-Takeaways-4"><a href="#关键要点-Key-Takeaways-4" class="headerlink" title="关键要点 (Key Takeaways):"></a><strong>关键要点 (Key Takeaways):</strong></h3><ol>
+<li><p><strong>类关系 (Class Relationships):</strong><br>• <strong>关联 (Association):</strong> 描述类之间的连接关系。<br>• <strong>聚合 (Aggregation):</strong> 表示“整体-部分”关系，部分可以独立存在。<br>• <strong>泛化 (Generalization):</strong> 表示类之间的继承关系，子类继承父类的属性和行为。  </p>
+</li>
+<li><p><strong>系统序列图 (SSD):</strong><br>• 用于描述系统在执行某个操作时，对象之间的消息传递顺序。<br>• 帮助理解系统的动态行为和交互流程。</p>
+</li>
+</ol>
+<h3 id="Use-Case-Model"><a href="#Use-Case-Model" class="headerlink" title="Use-Case Model"></a><strong>Use-Case Model</strong></h3><p><strong>英文:</strong><br>A set of typical scenarios of using a system. There are primarily for functional (behavioral) requirements.</p>
+<p><strong>中文:</strong><br>用例模型是一组典型的系统使用场景，主要用于描述系统的功能（行为）需求。</p>
+<p><strong>解释 (Explanation):</strong><br>• <strong>定义:</strong> 用例模型是对系统功能的整体描述，包含所有用例及其关系，展示了系统如何与外部参与者交互以实现目标。<br>• <strong>用途:</strong><br>  • 描述系统的功能需求。<br>  • 为后续的设计和分析提供基础。<br>• <strong>例子:</strong> 在“图书馆管理系统”中，用例模型可能包括<code>Borrow Book</code>（借书）、<code>Return Book</code>（还书）等用例，以及参与者<code>Member</code>（会员）和<code>Librarian</code>（图书管理员）。</p>
+<hr>
+<h3 id="Supplementary-Specification"><a href="#Supplementary-Specification" class="headerlink" title="Supplementary Specification"></a><strong>Supplementary Specification</strong></h3><p><strong>英文:</strong><br>Basically, everything not in the use cases. This artifact is primarily for all non-functional requirements, such as performance or licensing. It is also the place to record functional features not expressed (or expressible) as use cases; for example, a report generation.</p>
+<p><strong>中文:</strong><br>补充说明是所有未包含在用例中的内容。这个工件主要用于描述所有非功能性需求，例如性能或许可。它还用于记录无法用用例表达的功能特性，例如报告生成。</p>
+<p><strong>解释 (Explanation):</strong><br>• <strong>定义:</strong> 补充说明是对用例模型的补充，记录了系统的非功能性需求和无法通过用例表达的功能特性。<br>• <strong>用途:</strong><br>  • 描述系统的非功能性需求，如性能、安全性、许可等。<br>  • 记录无法通过用例表达的功能特性，例如报告生成、日志记录等。<br>• <strong>例子:</strong><br>  • 非功能性需求: 系统需要在1秒内响应用户的查询请求。<br>  • 功能特性: 系统需要定期生成销售报告。</p>
+<hr>
+<h3 id="Glossary"><a href="#Glossary" class="headerlink" title="Glossary"></a><strong>Glossary</strong></h3><p><strong>英文:</strong><br>In its simplest form, the glossary defines noteworthy terms. It also encompasses the concept of the data dictionary, which records requirements related to data, such as validation rules, acceptable values, and so forth. The glossary can detail any element: an attribute of an object, a parameter of an operation call, a report layout, and so forth.</p>
+<p><strong>中文:</strong><br>术语表以最简单的形式定义了值得注意的术语。它还包括数据字典的概念，记录与数据相关的需求，例如验证规则、可接受的值等。术语表可以详细描述任何元素：对象的属性、操作调用的参数、报告布局等。</p>
+<p><strong>解释 (Explanation):</strong><br>• <strong>定义:</strong> 术语表是一个记录系统中重要术语和数据定义的文档，帮助统一团队对术语的理解。<br>• <strong>用途:</strong><br>  • 定义系统中的关键术语，避免歧义。<br>  • 记录数据相关的需求，如字段的验证规则、取值范围等。<br>• <strong>例子:</strong><br>  • 术语: <code>Customer</code>（客户）<br>    ◦ 定义: 系统中注册的用户。<br>    ◦ 验证规则: 客户姓名必须包含字母，长度不超过50个字符。<br>  • 数据字段: <code>Email</code><br>    ◦ 可接受值: 必须是有效的电子邮件格式。</p>
+<hr>
+<h3 id="Vision"><a href="#Vision" class="headerlink" title="Vision"></a><strong>Vision</strong></h3><p><strong>英文:</strong><br>Summarizes high-level requirements that are elaborated in the Use-Case Model and Supplementary Specification, and summarizes the business case for the project. A short executive overview document for quickly learning the project’s big ideas.</p>
+<p><strong>中文:</strong><br>愿景总结了用例模型和补充说明中详细描述的高层次需求，并概述了项目的商业案例。它是一个简短的高管概览文档，用于快速了解项目的主要思想。</p>
+<p><strong>解释 (Explanation):</strong><br>• <strong>定义:</strong> 愿景文档是对项目高层次需求的总结，描述了项目的目标、范围和商业价值。<br>• <strong>用途:</strong><br>  • 提供项目的总体方向和目标。<br>  • 帮助利益相关者快速理解项目的核心思想。<br>• <strong>例子:</strong><br>  • 项目目标: 开发一个在线购物系统，提升用户体验并增加销售额。<br>  • 商业价值: 通过优化用户界面和提高系统性能，预计在一年内增加20%的销售额。</p>
+<hr>
+<h3 id="Business-Rules"><a href="#Business-Rules" class="headerlink" title="Business Rules"></a><strong>Business Rules</strong></h3><p><strong>英文:</strong><br>Business rules (also called Domain Rules) typically describe requirements or policies that transcend one software project—they are required in the domain or business and many applications may need to conform to them. An excellent example is government tax laws. Domain rule details may be recorded in the Supplementary Specification, but because they are usually more enduring and applicable than for one software project, placing them in a central Business Rules artifact (shared by all analysts of the company) makes for better reuse of the analysis effort.</p>
+<p><strong>中文:</strong><br>业务规则（也称为领域规则）通常描述超越单个软件项目的需求或政策，这些规则在某个领域或业务中是必需的，并且许多应用程序可能需要遵守它们。一个很好的例子是政府税收法。领域规则的详细信息可以记录在补充说明中，但由于它们通常比单个软件项目更持久且适用范围更广，因此将它们放在一个中央业务规则工件中（由公司所有分析师共享）可以更好地重用分析工作。</p>
+<p><strong>解释 (Explanation):</strong><br>• <strong>定义:</strong> 业务规则是描述业务领域中通用需求或政策的规则，适用于多个项目或系统。<br>• <strong>用途:</strong><br>  • 确保系统设计符合业务领域的政策和法规。<br>  • 提高分析工作的重用性，避免重复定义规则。<br>• <strong>例子:</strong><br>  • 政府税收法: 所有在线销售系统必须遵守税收法规，自动计算并收取增值税。<br>  • 公司政策: 员工请假需要经过经理批准，系统需记录请假申请和审批状态。</p>
+<hr>
+<h3 id="总结-Summary-5"><a href="#总结-Summary-5" class="headerlink" title="总结 (Summary)"></a><strong>总结 (Summary)</strong></h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th><strong>术语 (Term)</strong></th>
+<th><strong>英文定义 (English Definition)</strong></th>
+<th><strong>中文定义 (Chinese Definition)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Use-Case Model</strong></td>
+<td>A set of typical scenarios of using a system, focusing on functional requirements.</td>
+<td>用例模型是一组典型的系统使用场景，主要用于描述系统的功能需求。</td>
+</tr>
+<tr>
+<td><strong>Supplementary Specification</strong></td>
+<td>Everything not in the use cases, including non-functional requirements and unexpressed features.</td>
+<td>补充说明是所有未包含在用例中的内容，包括非功能性需求和无法通过用例表达的功能特性。</td>
+</tr>
+<tr>
+<td><strong>Glossary</strong></td>
+<td>Defines noteworthy terms and data dictionary, recording requirements related to data.</td>
+<td>术语表定义了值得注意的术语和数据字典，记录与数据相关的需求。</td>
+</tr>
+<tr>
+<td><strong>Vision</strong></td>
+<td>Summarizes high-level requirements and the business case for the project.</td>
+<td>愿景总结了项目的高层次需求和商业案例，提供项目的总体方向和目标。</td>
+</tr>
+<tr>
+<td><strong>Business Rules</strong></td>
+<td>Rules that transcend one software project, describing requirements or policies in the domain.</td>
+<td>业务规则是描述业务领域中通用需求或政策的规则，适用于多个项目或系统。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h3 id="关键要点-Key-Takeaways-5"><a href="#关键要点-Key-Takeaways-5" class="headerlink" title="关键要点 (Key Takeaways):"></a><strong>关键要点 (Key Takeaways):</strong></h3><ol>
+<li><strong>用例模型 (Use-Case Model):</strong> 描述系统的功能需求，展示系统如何与用户交互。  </li>
+<li><strong>补充说明 (Supplementary Specification):</strong> 记录非功能性需求和无法通过用例表达的功能特性。  </li>
+<li><strong>术语表 (Glossary):</strong> 定义系统中的关键术语和数据规则，确保团队对术语的理解一致。  </li>
+<li><strong>愿景 (Vision):</strong> 提供项目的总体方向和目标，帮助利益相关者快速理解项目的核心思想。  </li>
+<li><strong>业务规则 (Business Rules):</strong> 描述业务领域的通用规则，确保系统设计符合业务政策和法规。</li>
+</ol>
+<h3 id="Contract-Co2-enterItem"><a href="#Contract-Co2-enterItem" class="headerlink" title="Contract Co2: enterItem"></a><strong>Contract Co2: enterItem</strong></h3><p><strong>英文:</strong><br><strong>Operation:</strong><br>• <strong>Name:</strong> <code>enterItem(itemID: ItemID, quantity: integer)</code><br>• <strong>Description:</strong> This operation is used to add an item to the current sale. It creates a <code>SalesLineItem</code> instance, associates it with the current sale, sets its quantity, and links it to a <code>ProductDescription</code> based on the provided <code>itemID</code>.</p>
+<p><strong>Cross References:</strong><br>• <strong>Use Cases:</strong> <code>Process Sale</code>  </p>
+<p><strong>Preconditions:</strong><br>• There is a sale underway.  </p>
+<p><strong>Postconditions:</strong><br>• A <code>SalesLineItem</code> instance <code>sli</code> was created (instance creation).<br>• <code>sli</code> was associated with the current <code>Sale</code> (association formed).<br>• <code>sli.quantity</code> became <code>quantity</code> (attribute modification).<br>• <code>sli</code> was associated with a <code>ProductDescription</code>, based on the <code>itemID</code> match (association formed).  </p>
+<hr>
+<p><strong>中文:</strong><br><strong>操作 (Operation):</strong><br>• <strong>名称:</strong> <code>enterItem(itemID: ItemID, quantity: integer)</code><br>• <strong>描述:</strong> 该操作用于将商品添加到当前销售中。它会创建一个<code>SalesLineItem</code>实例，将其与当前销售关联，设置其数量，并根据提供的<code>itemID</code>将其与<code>ProductDescription</code>关联。</p>
+<p><strong>交叉引用 (Cross References):</strong><br>• <strong>用例:</strong> <code>Process Sale</code>  </p>
+<p><strong>前置条件 (Preconditions):</strong><br>• 当前有一个销售正在进行中。</p>
+<p><strong>后置条件 (Postconditions):</strong><br>• 创建了一个<code>SalesLineItem</code>实例<code>sli</code>（实例创建）。<br>• <code>sli</code>与当前<code>Sale</code>关联（关联形成）。<br>• <code>sli.quantity</code>被设置为<code>quantity</code>（属性修改）。<br>• 根据<code>itemID</code>匹配，<code>sli</code>与一个<code>ProductDescription</code>关联（关联形成）。  </p>
+<hr>
+<h3 id="解释-Explanation"><a href="#解释-Explanation" class="headerlink" title="解释 (Explanation):"></a><strong>解释 (Explanation):</strong></h3><ol>
+<li><p><strong>操作 (Operation):</strong><br>• <code>enterItem(itemID: ItemID, quantity: integer)</code> 是一个操作，用于在销售过程中添加商品。<br>• 参数:<br>  ◦ <code>itemID</code>: 商品的唯一标识符。<br>  ◦ <code>quantity</code>: 商品的数量。  </p>
+</li>
+<li><p><strong>交叉引用 (Cross References):</strong><br>• 该操作与用例<code>Process Sale</code>相关联，表示它是销售流程的一部分。</p>
+</li>
+<li><p><strong>前置条件 (Preconditions):</strong><br>• 在调用此操作之前，必须有一个正在进行的销售流程。</p>
+</li>
+<li><p><strong>后置条件 (Postconditions):</strong><br>• <strong>实例创建:</strong> 创建了一个<code>SalesLineItem</code>实例<code>sli</code>，用于表示销售中的商品行项目。<br>• <strong>关联形成:</strong><br>  ◦ <code>sli</code>与当前<code>Sale</code>关联，表示该商品行项目属于当前销售。<br>  ◦ <code>sli</code>与一个<code>ProductDescription</code>关联，基于<code>itemID</code>匹配，表示该商品行项目的详细信息（如名称、价格等）。<br>• <strong>属性修改:</strong> <code>sli.quantity</code>被设置为传入的<code>quantity</code>，表示该商品的数量。</p>
+</li>
+</ol>
+<hr>
+<h3 id="场景示例-Scenario-Example"><a href="#场景示例-Scenario-Example" class="headerlink" title="场景示例 (Scenario Example):"></a><strong>场景示例 (Scenario Example):</strong></h3><p>假设用户在销售系统中输入商品ID为<code>123</code>，数量为<code>2</code>，系统执行以下步骤：  </p>
+<ol>
+<li>检查是否有一个正在进行的销售（前置条件）。  </li>
+<li>根据<code>itemID</code>查找对应的<code>ProductDescription</code>（如商品名称、价格等）。  </li>
+<li>创建一个新的<code>SalesLineItem</code>实例<code>sli</code>。  </li>
+<li>将<code>sli</code>与当前<code>Sale</code>关联。  </li>
+<li>设置<code>sli.quantity</code>为<code>2</code>。  </li>
+<li>将<code>sli</code>与对应的<code>ProductDescription</code>关联。  </li>
+</ol>
+<p>最终，销售系统中会记录一条商品行项目，表示用户购买了2个ID为<code>123</code>的商品。</p>
+<hr>
+<h3 id="总结-Summary-6"><a href="#总结-Summary-6" class="headerlink" title="总结 (Summary):"></a><strong>总结 (Summary):</strong></h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th><strong>术语 (Term)</strong></th>
+<th><strong>英文定义 (English Definition)</strong></th>
+<th><strong>中文定义 (Chinese Definition)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Operation</strong></td>
+<td><code>enterItem(itemID: ItemID, quantity: integer)</code></td>
+<td>将商品添加到当前销售中的操作。</td>
+</tr>
+<tr>
+<td><strong>Preconditions</strong></td>
+<td>There is a sale underway.</td>
+<td>前置条件：当前有一个销售正在进行中。</td>
+</tr>
+<tr>
+<td><strong>Postconditions</strong></td>
+<td>- A <code>SalesLineItem</code> instance is created. <br> - Associations are formed with <code>Sale</code> and <code>ProductDescription</code>. <br> - Quantity is set.</td>
+<td>后置条件：创建<code>SalesLineItem</code>实例，与<code>Sale</code>和<code>ProductDescription</code>关联，并设置数量。</td>
+</tr>
+<tr>
+<td><strong>Use Case</strong></td>
+<td><code>Process Sale</code></td>
+<td>该操作属于<code>Process Sale</code>用例，描述了销售流程中添加商品的步骤。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h3 id="关键要点-Key-Takeaways-6"><a href="#关键要点-Key-Takeaways-6" class="headerlink" title="关键要点 (Key Takeaways):"></a><strong>关键要点 (Key Takeaways):</strong></h3><ol>
+<li><p><strong>操作 (Operation):</strong><br>• <code>enterItem</code> 是一个核心操作，用于在销售系统中添加商品行项目。  </p>
+</li>
+<li><p><strong>前置条件 (Preconditions):</strong><br>• 必须有一个正在进行的销售流程，否则操作无法执行。  </p>
+</li>
+<li><p><strong>后置条件 (Postconditions):</strong><br>• 创建<code>SalesLineItem</code>实例并完成必要的关联和属性设置。  </p>
+</li>
+<li><p><strong>用例 (Use Case):</strong><br>• 该操作是<code>Process Sale</code>用例的一部分，描述了销售流程中添加商品的具体步骤。  </p>
+</li>
+<li><p><strong>场景示例 (Scenario Example):</strong><br>• 提供了一个具体的例子，展示了如何通过<code>enterItem</code>操作将商品添加到销售中。</p>
+</li>
+</ol>
+<h3 id="GRASP-Summary"><a href="#GRASP-Summary" class="headerlink" title="GRASP Summary"></a><strong>GRASP Summary</strong></h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th><strong>GRASP Principle</strong></th>
+<th><strong>英文定义 (English Definition)</strong></th>
+<th><strong>中文定义 (Chinese Definition)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Low Coupling</strong></td>
+<td>How to support low dependency, low change impact, and increased reuse?</td>
+<td>如何支持低依赖、低变更影响以及提高重用性？</td>
+</tr>
+<tr>
+<td><strong>High Cohesion</strong></td>
+<td>How to keep objects focused, understandable, and manageable, and as a side effect, support Low Coupling?</td>
+<td>如何保持对象的专注性、可理解性和可管理性，并间接支持低耦合？</td>
+</tr>
+<tr>
+<td><strong>Creator</strong></td>
+<td>Who creates the Square object?</td>
+<td>谁负责创建<code>Square</code>对象？</td>
+</tr>
+<tr>
+<td><strong>Information Expert</strong></td>
+<td>What is a general principle of assigning responsibilities to objects?</td>
+<td>分配对象职责的一般原则是什么？</td>
+</tr>
+<tr>
+<td><strong>Controller</strong></td>
+<td>What is the first object beyond the UI layer that receives and coordinates (“controls”) a system operation?</td>
+<td>在UI层之外，第一个接收并协调（“控制”）系统操作的对象是什么？</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th><strong>GRASP Pattern</strong></th>
+<th><strong>英文定义 (English Definition)</strong></th>
+<th><strong>中文定义 (Chinese Definition)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Polymorphism</strong></td>
+<td>Use polymorphism to handle variations in behavior by assigning behavior to subclasses.</td>
+<td>使用多态性通过将行为分配给子类来处理行为的变化。</td>
+</tr>
+<tr>
+<td><strong>Indirection</strong></td>
+<td>Use an intermediary object to reduce direct dependencies between objects.</td>
+<td>使用中介对象减少对象之间的直接依赖。</td>
+</tr>
+<tr>
+<td><strong>Pure Fabrication</strong></td>
+<td>Create a class with no direct real-world correspondence to handle responsibilities that do not naturally belong to any domain object.</td>
+<td>创建一个没有直接现实对应关系的类，用于处理不属于任何领域对象的职责。</td>
+</tr>
+<tr>
+<td><strong>Protected Variations</strong></td>
+<td>Identify points of predicted variation or instability and encapsulate them to protect the system from their impact.</td>
+<td>识别预测中的变化点或不稳定性，并将其封装起来，以保护系统免受其影响。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h3 id="详细解释-Detailed-Explanation"><a href="#详细解释-Detailed-Explanation" class="headerlink" title="详细解释 (Detailed Explanation):"></a><strong>详细解释 (Detailed Explanation):</strong></h3><h4 id="1-Low-Coupling-低耦合"><a href="#1-Low-Coupling-低耦合" class="headerlink" title="1. Low Coupling (低耦合):"></a><strong>1. Low Coupling (低耦合):</strong></h4><p>• <strong>英文定义:</strong> How to support low dependency, low change impact, and increased reuse?<br>• <strong>中文定义:</strong> 如何支持低依赖、低变更影响以及提高重用性？<br>• <strong>解释:</strong><br>  • <strong>目的:</strong> 减少对象之间的依赖关系，使系统更灵活，易于维护和扩展。<br>  • <strong>方法:</strong><br>    ◦ 使用接口或抽象类定义交互。<br>    ◦ 避免直接依赖具体实现。<br>  • <strong>例子:</strong> 在支付系统中，<code>PaymentProcessor</code>类依赖于<code>PaymentStrategy</code>接口，而不是具体的支付方式（如信用卡或支付宝），从而降低耦合。</p>
+<hr>
+<h4 id="2-High-Cohesion-高内聚"><a href="#2-High-Cohesion-高内聚" class="headerlink" title="2. High Cohesion (高内聚):"></a><strong>2. High Cohesion (高内聚):</strong></h4><p>• <strong>英文定义:</strong> How to keep objects focused, understandable, and manageable, and as a side effect, support Low Coupling?<br>• <strong>中文定义:</strong> 如何保持对象的专注性、可理解性和可管理性，并间接支持低耦合？<br>• <strong>解释:</strong><br>  • <strong>目的:</strong> 确保每个对象只负责一个明确的功能或职责，避免功能过于分散。<br>  • <strong>方法:</strong><br>    ◦ 将相关的功能集中在一个类中。<br>    ◦ 避免将不相关的功能放在同一个类中。<br>  • <strong>例子:</strong> <code>Order</code>类只负责订单管理，而<code>Payment</code>类只负责支付处理。</p>
+<hr>
+<h4 id="3-Creator-创建者"><a href="#3-Creator-创建者" class="headerlink" title="3. Creator (创建者):"></a><strong>3. Creator (创建者):</strong></h4><p>• <strong>英文定义:</strong> Who creates the Square object?<br>• <strong>中文定义:</strong> 谁负责创建<code>Square</code>对象？<br>• <strong>解释:</strong><br>  • <strong>目的:</strong> 确定哪个类应该负责创建另一个类的实例。<br>  • <strong>原则:</strong><br>    ◦ 如果一个类依赖于另一个类的创建，通常由依赖类自己创建，或者由更高层次的类创建。<br>  • <strong>例子:</strong> 在图形系统中，<code>ShapeFactory</code>类负责创建<code>Square</code>对象。</p>
+<hr>
+<h4 id="4-Information-Expert-信息专家"><a href="#4-Information-Expert-信息专家" class="headerlink" title="4. Information Expert (信息专家):"></a><strong>4. Information Expert (信息专家):</strong></h4><p>• <strong>英文定义:</strong> What is a general principle of assigning responsibilities to objects?<br>• <strong>中文定义:</strong> 分配对象职责的一般原则是什么？<br>• <strong>解释:</strong><br>  • <strong>目的:</strong> 确定将职责分配给哪个类的最佳方式。<br>  • <strong>原则:</strong><br>    ◦ 将职责分配给拥有完成任务所需信息的类。<br>  • <strong>例子:</strong> 在订单系统中，<code>Order</code>类负责计算总价，因为它拥有商品和数量的信息。</p>
+<hr>
+<h4 id="5-Controller-控制器"><a href="#5-Controller-控制器" class="headerlink" title="5. Controller (控制器):"></a><strong>5. Controller (控制器):</strong></h4><p>• <strong>英文定义:</strong> What is the first object beyond the UI layer that receives and coordinates (“controls”) a system operation?<br>• <strong>中文定义:</strong> 在UI层之外，第一个接收并协调（“控制”）系统操作的对象是什么？<br>• <strong>解释:</strong><br>  • <strong>目的:</strong> 管理用户输入并协调系统的响应。<br>  • <strong>原则:</strong><br>    ◦ 控制器位于UI层之上，负责接收用户输入并调用适当的业务逻辑。<br>  • <strong>例子:</strong> 在Web应用中，<code>UserController</code>处理用户注册请求并调用<code>UserService</code>完成注册。</p>
+<hr>
+<h4 id="6-Polymorphism-多态"><a href="#6-Polymorphism-多态" class="headerlink" title="6. Polymorphism (多态):"></a><strong>6. Polymorphism (多态):</strong></h4><p>• <strong>英文定义:</strong> Use polymorphism to handle variations in behavior by assigning behavior to subclasses.<br>• <strong>中文定义:</strong> 使用多态性通过将行为分配给子类来处理行为的变化。<br>• <strong>解释:</strong><br>  • <strong>目的:</strong> 通过继承和接口实现行为的动态变化。<br>  • <strong>方法:</strong><br>    ◦ 定义一个基类或接口，并在子类中实现具体行为。<br>  • <strong>例子:</strong> 在图形系统中，<code>Shape</code>接口定义了<code>draw()</code>方法，<code>Circle</code>和<code>Square</code>类分别实现了<code>draw()</code>方法。</p>
+<hr>
+<h4 id="7-Indirection-间接性"><a href="#7-Indirection-间接性" class="headerlink" title="7. Indirection (间接性):"></a><strong>7. Indirection (间接性):</strong></h4><p>• <strong>英文定义:</strong> Use an intermediary object to reduce direct dependencies between objects.<br>• <strong>中文定义:</strong> 使用中介对象减少对象之间的直接依赖。<br>• <strong>解释:</strong><br>  • <strong>目的:</strong> 降低对象之间的耦合度，提高系统的灵活性。<br>  • <strong>方法:</strong><br>    ◦ 引入中介对象（如代理、服务层）来协调对象之间的交互。<br>  • <strong>例子:</strong> 在支付系统中，<code>PaymentGateway</code>作为中介，协调<code>Order</code>和<code>PaymentProcessor</code>之间的交互。</p>
+<hr>
+<h4 id="8-Pure-Fabrication-纯虚构"><a href="#8-Pure-Fabrication-纯虚构" class="headerlink" title="8. Pure Fabrication (纯虚构):"></a><strong>8. Pure Fabrication (纯虚构):</strong></h4><p>• <strong>英文定义:</strong> Create a class with no direct real-world correspondence to handle responsibilities that do not naturally belong to any domain object.<br>• <strong>中文定义:</strong> 创建一个没有直接现实对应关系的类，用于处理不属于任何领域对象的职责。<br>• <strong>解释:</strong><br>  • <strong>目的:</strong> 解决领域对象无法直接承担某些职责的情况。<br>  • <strong>方法:</strong><br>    ◦ 创建一个专门的服务类来处理这些职责。<br>  • <strong>例子:</strong> 在订单系统中，<code>OrderValidator</code>类负责验证订单，但它并不直接对应现实中的某个实体。</p>
+<hr>
+<h4 id="9-Protected-Variations-保护变化"><a href="#9-Protected-Variations-保护变化" class="headerlink" title="9. Protected Variations (保护变化):"></a><strong>9. Protected Variations (保护变化):</strong></h4><p>• <strong>英文定义:</strong> Identify points of predicted variation or instability and encapsulate them to protect the system from their impact.<br>• <strong>中文定义:</strong> 识别预测中的变化点或不稳定性，并将其封装起来，以保护系统免受其影响。<br>• <strong>解释:</strong><br>  • <strong>目的:</strong> 提高系统的稳定性，减少外部变化对系统的影响。<br>  • <strong>方法:</strong><br>    ◦ 使用接口或抽象类封装可能变化的实现。<br>  • <strong>例子:</strong> 在支付系统中，<code>PaymentStrategy</code>接口封装了不同的支付方式（如信用卡、支付宝），当新增支付方式时，只需实现该接口，而不需要修改现有代码。</p>
+<hr>
+<h3 id="总结-Summary-7"><a href="#总结-Summary-7" class="headerlink" title="总结 (Summary):"></a><strong>总结 (Summary):</strong></h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th><strong>GRASP Principle/Pattern</strong></th>
+<th><strong>英文定义 (English Definition)</strong></th>
+<th><strong>中文定义 (Chinese Definition)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Low Coupling</strong></td>
+<td>How to support low dependency, low change impact, and increased reuse?</td>
+<td>如何支持低依赖、低变更影响以及提高重用性？</td>
+</tr>
+<tr>
+<td><strong>High Cohesion</strong></td>
+<td>How to keep objects focused, understandable, and manageable, and as a side effect, support Low Coupling?</td>
+<td>如何保持对象的专注性、可理解性和可管理性，并间接支持低耦合？</td>
+</tr>
+<tr>
+<td><strong>Creator</strong></td>
+<td>Who creates the Square object?</td>
+<td>谁负责创建<code>Square</code>对象？</td>
+</tr>
+<tr>
+<td><strong>Information Expert</strong></td>
+<td>What is a general principle of assigning responsibilities to objects?</td>
+<td>分配对象职责的一般原则是什么？</td>
+</tr>
+<tr>
+<td><strong>Controller</strong></td>
+<td>What is the first object beyond the UI layer that receives and coordinates (“controls”) a system operation?</td>
+<td>在UI层之外，第一个接收并协调（“控制”）系统操作的对象是什么？</td>
+</tr>
+<tr>
+<td><strong>Polymorphism</strong></td>
+<td>Use polymorphism to handle variations in behavior by assigning behavior to subclasses.</td>
+<td>使用多态性通过将行为分配给子类来处理行为的变化。</td>
+</tr>
+<tr>
+<td><strong>Indirection</strong></td>
+<td>Use an intermediary object to reduce direct dependencies between objects.</td>
+<td>使用中介对象减少对象之间的直接依赖。</td>
+</tr>
+<tr>
+<td><strong>Pure Fabrication</strong></td>
+<td>Create a class with no direct real-world correspondence to handle responsibilities that do not naturally belong to any domain object.</td>
+<td>创建一个没有直接现实对应关系的类，用于处理不属于任何领域对象的职责。</td>
+</tr>
+<tr>
+<td><strong>Protected Variations</strong></td>
+<td>Identify points of predicted variation or instability and encapsulate them to protect the system from their impact.</td>
+<td>识别预测中的变化点或不稳定性，并将其封装起来，以保护系统免受其影响。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h3 id="关键要点-Key-Takeaways-7"><a href="#关键要点-Key-Takeaways-7" class="headerlink" title="关键要点 (Key Takeaways):"></a><strong>关键要点 (Key Takeaways):</strong></h3><ol>
+<li><strong>GRASP 原则:</strong> 提供了分配职责和设计系统的指导原则，如低耦合、高内聚、信息专家等。  </li>
+<li><strong>GRASP 模式:</strong> 提供了解决特定问题的设计模式，如多态、间接性、纯虚构和保护变化。  </li>
+<li><strong>目标:</strong> 通过这些原则和模式，设计出灵活、可维护和可扩展的系统。</li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://www.totorocatcat.top/">Totoro</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://totorocatcat.top/UML%E7%B0%A1%E7%AD%94%E9%A1%8C/">http://totorocatcat.top/UML%E7%B0%A1%E7%AD%94%E9%A1%8C/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://totorocatcat.top" target="_blank">Totoroの旅</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%8F%90%E9%AB%98/">提高</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E6%8F%92%E7%94%BB%E5%B8%85%E5%93%A5-%E9%BB%91%E7%99%BD%E6%B0%B4%E5%A2%A8%E9%A3%8E.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/UML%E9%A0%90%E7%BF%92%E8%88%87%E5%BE%A9%E7%BF%92/" title="UML預習與復習"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E6%8F%92%E7%94%BB%E5%B8%85%E5%93%A5-%E9%BB%91%E7%99%BD%E6%B0%B4%E5%A2%A8%E9%A3%8E.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">UML預習與復習</div></div></a></div><div class="next-post pull-right"><a href="/UML%E5%BE%A9%E7%BF%92/" title="UML復習"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E6%8F%92%E7%94%BB%E5%B8%85%E5%93%A5-%E9%BB%91%E7%99%BD%E6%B0%B4%E5%A2%A8%E9%A3%8E.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">UML復習</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/'Lec2%20Logic%20and%20Proof,%20Sets,%20and%20Function'/" title="Lec2 Logic and Proof, Sets, and Function"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/1fe6130ca86bb9e7e6a37c9187a32c8.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-11-20</div><div class="title">Lec2 Logic and Proof, Sets, and Function</div></div></a></div><div><a href="/02%EF%BC%89/" title="CS61B 课程笔记（Lecture 02）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/v2-2ed7f4c9e1a7a699a3ef300a6f761abe_720w.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-11</div><div class="title">CS61B 课程笔记（Lecture 02）</div></div></a></div><div><a href="/04%EF%BC%89/" title="CS61B 课程笔记（Lecture 04）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/2749a496aabc7d650b2912e256582e390a0a636b.jpg@1256w_1246h_!web-article-pic.avif" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-13</div><div class="title">CS61B 课程笔记（Lecture 04）</div></div></a></div><div><a href="/03%EF%BC%89/" title="CS61B 课程笔记（Lecture 03）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/v2-2ed7f4c9e1a7a699a3ef300a6f761abe_720w.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-12</div><div class="title">CS61B 课程笔记（Lecture 03）</div></div></a></div><div><a href="/07%EF%BC%89/" title="CS61B 课程笔记（Lecture 07）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/ef0c9dc1434371965c925677e389b329298252208.png@1256w_1702h_!web-article-pic.avif" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-16</div><div class="title">CS61B 课程笔记（Lecture 07）</div></div></a></div><div><a href="/06%EF%BC%89/" title="CS61B 课程笔记（Lecture 06）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/f00af0d55cc81c18403ccbb4957ae6bc298252208.jpg@1256w_1374h_!web-article-pic.avif" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-15</div><div class="title">CS61B 课程笔记（Lecture 06）</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E4%BE%A0%E5%AE%A2-%E6%AD%A6%E4%BE%A0%E5%9C%BA%E6%99%AF-%E6%B8%B8%E6%88%8F.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Totoro</div><div class="author-info__description">热爱文学的SCUT软件学院学生</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">909</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">37</div></a></div><a id="card-info-btn" href="https://github.com/4512abc"><i class="fab fa-github"></i><span>🛴前往小窝......</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/4512abc" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:4512abc@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到龙猫の小窝</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#UML%E7%B0%A1%E7%AD%94%E9%A1%8C"><span class="toc-text">UML簡答題</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Design-and-Analysis"><span class="toc-text">1. Design and Analysis</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-OOD-Principles-Object-Oriented-Design-Principles"><span class="toc-text">2. OOD Principles (Object-Oriented Design Principles)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-UML-Unified-Modeling-Language"><span class="toc-text">3. UML (Unified Modeling Language)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-UP-Unified-Process"><span class="toc-text">4. UP (Unified Process)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-Software-Development-Process"><span class="toc-text">5. Software Development Process</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-Summary"><span class="toc-text">总结 (Summary):</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E9%94%AE%E8%A6%81%E7%82%B9-Key-Takeaways"><span class="toc-text">关键要点 (Key Takeaways):</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-Domain-Model"><span class="toc-text">6. Domain Model</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-Main-Phases-of-UP-Unified-Process"><span class="toc-text">7. Main Phases of UP (Unified Process)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-Iterations"><span class="toc-text">8. Iterations</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-Requirement-FURPS"><span class="toc-text">9. Requirement (FURPS+)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-Agile-Method"><span class="toc-text">10. Agile Method</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-Summary-1"><span class="toc-text">总结 (Summary)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E9%94%AE%E8%A6%81%E7%82%B9-Key-Takeaways-1"><span class="toc-text">关键要点 (Key Takeaways):</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-Disciplines-and-Phases"><span class="toc-text">11. Disciplines and Phases</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-Use-Case"><span class="toc-text">12. Use Case</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-Use-Case-Model"><span class="toc-text">13. Use Case Model</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#14-Use-Case-Relationship"><span class="toc-text">14. Use Case Relationship</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#15-Use-Case-Realization"><span class="toc-text">15. Use Case Realization</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-Summary-2"><span class="toc-text">总结 (Summary)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E9%94%AE%E8%A6%81%E7%82%B9-Key-Takeaways-2"><span class="toc-text">关键要点 (Key Takeaways):</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#16-Architecture"><span class="toc-text">16. Architecture</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#17-4-1-View"><span class="toc-text">17. 4+1 View</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#18-GRASP"><span class="toc-text">18. GRASP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#19-Design-Principles"><span class="toc-text">19. Design Principles</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#20-GoF-Gang-of-Four-Design-Patterns"><span class="toc-text">20. GoF (Gang of Four) Design Patterns</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-Summary-3"><span class="toc-text">总结 (Summary)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E9%94%AE%E8%A6%81%E7%82%B9-Key-Takeaways-3"><span class="toc-text">关键要点 (Key Takeaways):</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#21-Relationship-of-Class"><span class="toc-text">21. Relationship of Class</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#22-Diagrams"><span class="toc-text">22. Diagrams</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-Summary-4"><span class="toc-text">总结 (Summary)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E9%94%AE%E8%A6%81%E7%82%B9-Key-Takeaways-4"><span class="toc-text">关键要点 (Key Takeaways):</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Use-Case-Model"><span class="toc-text">Use-Case Model</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Supplementary-Specification"><span class="toc-text">Supplementary Specification</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Glossary"><span class="toc-text">Glossary</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vision"><span class="toc-text">Vision</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Business-Rules"><span class="toc-text">Business Rules</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-Summary-5"><span class="toc-text">总结 (Summary)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E9%94%AE%E8%A6%81%E7%82%B9-Key-Takeaways-5"><span class="toc-text">关键要点 (Key Takeaways):</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Contract-Co2-enterItem"><span class="toc-text">Contract Co2: enterItem</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E9%87%8A-Explanation"><span class="toc-text">解释 (Explanation):</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%BA%E6%99%AF%E7%A4%BA%E4%BE%8B-Scenario-Example"><span class="toc-text">场景示例 (Scenario Example):</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-Summary-6"><span class="toc-text">总结 (Summary):</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E9%94%AE%E8%A6%81%E7%82%B9-Key-Takeaways-6"><span class="toc-text">关键要点 (Key Takeaways):</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GRASP-Summary"><span class="toc-text">GRASP Summary</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%A6%E7%BB%86%E8%A7%A3%E9%87%8A-Detailed-Explanation"><span class="toc-text">详细解释 (Detailed Explanation):</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-Low-Coupling-%E4%BD%8E%E8%80%A6%E5%90%88"><span class="toc-text">1. Low Coupling (低耦合):</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-High-Cohesion-%E9%AB%98%E5%86%85%E8%81%9A"><span class="toc-text">2. High Cohesion (高内聚):</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-Creator-%E5%88%9B%E5%BB%BA%E8%80%85"><span class="toc-text">3. Creator (创建者):</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-Information-Expert-%E4%BF%A1%E6%81%AF%E4%B8%93%E5%AE%B6"><span class="toc-text">4. Information Expert (信息专家):</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-Controller-%E6%8E%A7%E5%88%B6%E5%99%A8"><span class="toc-text">5. Controller (控制器):</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-Polymorphism-%E5%A4%9A%E6%80%81"><span class="toc-text">6. Polymorphism (多态):</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-Indirection-%E9%97%B4%E6%8E%A5%E6%80%A7"><span class="toc-text">7. Indirection (间接性):</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-Pure-Fabrication-%E7%BA%AF%E8%99%9A%E6%9E%84"><span class="toc-text">8. Pure Fabrication (纯虚构):</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9-Protected-Variations-%E4%BF%9D%E6%8A%A4%E5%8F%98%E5%8C%96"><span class="toc-text">9. Protected Variations (保护变化):</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-Summary-7"><span class="toc-text">总结 (Summary):</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E9%94%AE%E8%A6%81%E7%82%B9-Key-Takeaways-7"><span class="toc-text">关键要点 (Key Takeaways):</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/%E7%BB%86%E5%B0%8FUML%E8%80%83%E7%82%B9/" title="细小UML考点"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E6%8F%92%E7%94%BB%E5%B8%85%E5%93%A5-%E9%BB%91%E7%99%BD%E6%B0%B4%E5%A2%A8%E9%A3%8E.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="细小UML考点"/></a><div class="content"><a class="title" href="/%E7%BB%86%E5%B0%8FUML%E8%80%83%E7%82%B9/" title="细小UML考点">细小UML考点</a><time datetime="2025-05-15T04:22:42.000Z" title="发表于 2025-05-15 12:22:42">2025-05-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/UML%E9%A0%90%E7%BF%92%E8%88%87%E5%BE%A9%E7%BF%92/" title="UML預習與復習"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E6%8F%92%E7%94%BB%E5%B8%85%E5%93%A5-%E9%BB%91%E7%99%BD%E6%B0%B4%E5%A2%A8%E9%A3%8E.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="UML預習與復習"/></a><div class="content"><a class="title" href="/UML%E9%A0%90%E7%BF%92%E8%88%87%E5%BE%A9%E7%BF%92/" title="UML預習與復習">UML預習與復習</a><time datetime="2025-05-15T04:22:08.000Z" title="发表于 2025-05-15 12:22:08">2025-05-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/UML%E7%B0%A1%E7%AD%94%E9%A1%8C/" title="UML簡答題"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E6%8F%92%E7%94%BB%E5%B8%85%E5%93%A5-%E9%BB%91%E7%99%BD%E6%B0%B4%E5%A2%A8%E9%A3%8E.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="UML簡答題"/></a><div class="content"><a class="title" href="/UML%E7%B0%A1%E7%AD%94%E9%A1%8C/" title="UML簡答題">UML簡答題</a><time datetime="2025-05-15T04:21:34.000Z" title="发表于 2025-05-15 12:21:34">2025-05-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/UML%E5%BE%A9%E7%BF%92/" title="UML復習"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E6%8F%92%E7%94%BB%E5%B8%85%E5%93%A5-%E9%BB%91%E7%99%BD%E6%B0%B4%E5%A2%A8%E9%A3%8E.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="UML復習"/></a><div class="content"><a class="title" href="/UML%E5%BE%A9%E7%BF%92/" title="UML復習">UML復習</a><time datetime="2025-05-15T04:21:03.000Z" title="发表于 2025-05-15 12:21:03">2025-05-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/UML%E5%A4%8D%E4%B9%A0/" title="UML复习"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E6%8F%92%E7%94%BB%E5%B8%85%E5%93%A5-%E9%BB%91%E7%99%BD%E6%B0%B4%E5%A2%A8%E9%A3%8E.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="UML复习"/></a><div class="content"><a class="title" href="/UML%E5%A4%8D%E4%B9%A0/" title="UML复习">UML复习</a><time datetime="2025-05-15T04:20:07.000Z" title="发表于 2025-05-15 12:20:07">2025-05-15</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 - 2025 By Totoro</div><div class="footer_custom_text">I wish you to become your own sun, no need to rely on who's light.<p><a target="_blank" href="https://hexo.io/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&logo=hexo" title="博客框架为Hexo"></a>&nbsp;<a target="_blank" href="https://butterfly.js.org/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&logo=bitdefender" title="主题采用butterfly"></a>&nbsp;<a target="_blank" href="https://www.jsdelivr.com/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&logo=jsDelivr" title="本站使用JsDelivr为静态资源提供CDN加速"></a> &nbsp;<a target="_blank" href="https://vercel.com/ "><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Hosted-Vervel-brightgreen?style=flat&logo=Vercel" title="本站采用双线部署，默认线路托管于Vercel"></a>&nbsp;<a target="_blank" href="https://vercel.com/ "><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Hosted-Coding-0cedbe?style=flat&logo=Codio" title="本站采用双线部署，联通线路托管于Coding"></a>&nbsp;<a target="_blank" href="https://github.com/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&logo=GitHub" title="本站项目由Gtihub托管"></a>&nbsp;<a target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&logo=Claris" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"></a></p></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat-btn" type="button" title="聊天"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="/js/tw_cn.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@5.2.0/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'HT1PalaKkPaG1UqAXBhJXIu8-gzGzoHsz',
+      appKey: 'iT0TnVVAwf9zuZ7NqwclQItY',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://cdn.jsdelivr.net/npm/valine@1.5.1/dist/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><script defer src="/js/light.js"></script><canvas id="universe"></canvas><script defer src="/js/universe.js"></script><script async src="/js/title.js"></script><script defer src="https://npm.elemecdn.com/jquery@latest/dist/jquery.min.js"></script><script defer data-pjax src="/js/cat.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="1" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener
+  btf.removeGlobalFnEvent('pjax')
+  btf.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.12.0"></script></div></div><!-- hexo injector body_end start --><script data-pjax>
+  function butterfly_swiper_injector_config(){
+    var parent_div_git = document.getElementById('recent-posts');
+    var item_html = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms;"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;诗录/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/4b31456c6f0f4489f99177f89e936de7286431045.png@1256w_708h_!web-article-pic.avif" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-10-01</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;诗录/&quot;);" href="javascript:void(0);" alt="">诗录</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;诗录/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;诗兴大发/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://source.fomal.cc/img/default_cover_69.webp" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-01-29</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;诗兴大发/&quot;);" href="javascript:void(0);" alt="">诗兴大发</a><div class="blog-slider__text">未觉，却是中二少年的诗仙梦</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;诗兴大发/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;TotoroのPlan/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/4512abc/Pictures@main/Pictures/51d37eba99d243607ddedfff6e91568f617436609.jpg@1256w_1884h_!web-article-pic.avif" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-10-05</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;TotoroのPlan/&quot;);" href="javascript:void(0);" alt="">TotoroのPlan</a><div class="blog-slider__text">方便大二看（）</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;TotoroのPlan/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;Markdown格式/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/ushio-api-img-moe@5.0.48/img_482_1920x1080_96_null_normal.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-03-03</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;Markdown格式/&quot;);" href="javascript:void(0);" alt="">Markdown格式</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;Markdown格式/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载butterfly_swiper')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_swiper_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_swiper_injector_config();
+  }
+  </script><script defer src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.js"></script><script defer data-pjax src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper_init.js"></script><script data-pjax>
+    function butterfly_categories_card_injector_config(){
+      var parent_div_git = document.getElementById('recent-posts');
+      var item_html = '<style>li.categoryBar-list-item{width:32.3%;}.categoryBar-list{max-height: 380px;overflow:auto;}.categoryBar-list::-webkit-scrollbar{width:0!important}@media screen and (max-width: 650px){.categoryBar-list{max-height: 320px;}}</style><div class="recent-post-item" style="height:auto;width:100%;padding:0px;"><div id="categoryBar"><ul class="categoryBar-list"><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_12.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/离散数学/&quot;);" href="javascript:void(0);">离散数学</a><span class="categoryBar-list-count">33</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_13.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS61B/&quot;);" href="javascript:void(0);">CS61B</a><span class="categoryBar-list-count">76</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_14.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/计算机网络/&quot;);" href="javascript:void(0);">计算机网络</a><span class="categoryBar-list-count">38</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_17.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/操作系统/&quot;);" href="javascript:void(0);">操作系统</a><span class="categoryBar-list-count">41</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_18.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/期末の旅/&quot;);" href="javascript:void(0);">期末の旅</a><span class="categoryBar-list-count">99</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_19.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/刷题计划/&quot;);" href="javascript:void(0);">刷题计划</a><span class="categoryBar-list-count">60</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_20.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/区域赛の旅/&quot;);" href="javascript:void(0);">区域赛の旅</a><span class="categoryBar-list-count">7</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_21.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/Codeforcesの旅/&quot;);" href="javascript:void(0);">Codeforcesの旅</a><span class="categoryBar-list-count">24</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_22.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/牛客の旅/&quot;);" href="javascript:void(0);">牛客の旅</a><span class="categoryBar-list-count">65</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_22.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/ACMの旅/&quot;);" href="javascript:void(0);">ACMの旅</a><span class="categoryBar-list-count">42</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_23.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/数学建模/&quot;);" href="javascript:void(0);">数学建模</a><span class="categoryBar-list-count">26</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_24.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/前端の旅/&quot;);" href="javascript:void(0);">前端の旅</a><span class="categoryBar-list-count">17</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_25.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/数据结构/&quot;);" href="javascript:void(0);">数据结构</a><span class="categoryBar-list-count">47</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_26.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/Atcoderの旅/&quot;);" href="javascript:void(0);">Atcoderの旅</a><span class="categoryBar-list-count">53</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_27.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/C-の旅/&quot;);" href="javascript:void(0);">C++の旅</a><span class="categoryBar-list-count">17</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_28.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS70の旅/&quot;);" href="javascript:void(0);">CS70の旅</a><span class="categoryBar-list-count">24</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_29.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CSAPPの旅/&quot;);" href="javascript:void(0);">CSAPPの旅</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_30.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/计算机组成原理/&quot;);" href="javascript:void(0);">计算机组成原理</a><span class="categoryBar-list-count">47</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_31.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/编程基础/&quot;);" href="javascript:void(0);">编程基础</a><span class="categoryBar-list-count">14</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_32.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/JAVAの旅/&quot;);" href="javascript:void(0);">JAVAの旅</a><span class="categoryBar-list-count">10</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_33.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/MIT-6-031-Software-Construction/&quot;);" href="javascript:void(0);">MIT 6.031:Software Construction</a><span class="categoryBar-list-count">16</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_34.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS-110L/&quot;);" href="javascript:void(0);">CS 110L</a><span class="categoryBar-list-count">3</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_35.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/数据库の旅/&quot;);" href="javascript:void(0);">数据库の旅</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_36.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/灵魂の旅/&quot;);" href="javascript:void(0);">灵魂の旅</a><span class="categoryBar-list-count">2</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_37.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/个人安排/&quot;);" href="javascript:void(0);">个人安排</a><span class="categoryBar-list-count">2</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_38.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/杂项/&quot;);" href="javascript:void(0);">杂项</a><span class="categoryBar-list-count">13</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_39.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/文学/&quot;);" href="javascript:void(0);">文学</a><span class="categoryBar-list-count">49</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_40.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/力扣の旅/&quot;);" href="javascript:void(0);">力扣の旅</a><span class="categoryBar-list-count">20</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_41.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/千里十二行/&quot;);" href="javascript:void(0);">千里十二行</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_42.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/🗡指offer/&quot;);" href="javascript:void(0);">🗡指offer</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_43.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/少年游/&quot;);" href="javascript:void(0);">少年游</a><span class="categoryBar-list-count">2</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_44.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/算法提高课/&quot;);" href="javascript:void(0);">算法提高课</a><span class="categoryBar-list-count">3</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_44.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/汇编の旅/&quot;);" href="javascript:void(0);">汇编の旅</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_45.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/C-实训/&quot;);" href="javascript:void(0);">C++实训</a><span class="categoryBar-list-count">8</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_46.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/编译原理/&quot;);" href="javascript:void(0);">编译原理</a><span class="categoryBar-list-count">33</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(https://source.fomal.cc/img/default_cover_48.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/CS知识/&quot;);" href="javascript:void(0);">CS知识</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(undefined);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/UML/&quot;);" href="javascript:void(0);">UML</a><span class="categoryBar-list-count">9</span><span class="categoryBar-list-descr"></span></li></ul></div></div>';
+      console.log('已挂载butterfly_categories_card')
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+      }
+    if( document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+    butterfly_categories_card_injector_config()
+    }
+  </script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>
